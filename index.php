@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<header>
+    Xstarp
+</header>
+
+<nav>
+    <ul>
+        <li>用例1</li>
+        <li>用例2</li>
+    </ul>
+</nav>
+
+<aside>侧边栏</aside>
+
+<article>
+    <section>
+        内容1
+    </section>
+    <section>
+        内容2
+    </section>
+</article>
+
+<article>
+    <section>
+        内容3
+    </section>
+    <section>
+        内容4
+    </section>
+</article>
+
+<footer>
+    copyright
+</footer>
+
+
+<script type="text/javascript">
+//    $.imgView({
+//        imgs:[
+//            'img/1.jpg',
+//            'img/2.jpg',
+//            'img/3.jpg',
+//            'img/4.jpg',
+//            'img/5.jpg',
+//            'img/6.jpg'
+//        ]
+//    });
+</script>
+</body>
+</html>
