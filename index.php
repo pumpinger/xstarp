@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <meta charset="UTF-8">
     <title>title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="css/init.css"/>
+    <style>
+
+        /*后期改用 scss  且解决 基础色问题*/
+        header {background: #ff9aa9;color: #ffffff;}
+        header h2{padding: 10px 0 10px 10px;}
+
+
+        footer {background: #bbbbbb;color: #ffffff;position: fixed;bottom: 0;width: 100%;text-align: center;}
+        footer p{padding: 3px 0;}
+    </style>
 </head>
 <body>
 <header>
-    Xstarp
+    <h2>Xstarp</h2>
 </header>
 
 <nav>
@@ -25,7 +39,9 @@
     </div>
     <div>
         样式
-        <div>基础css(颜色 居中  字体大小)</div>
+        <div>基础css(颜色 居中  字体大小  边距 补白 风格(扁平 3d 现代 极简))</div>
+        <div>文字</div>
+        <div>图标</div>
         <div>按钮</div>
         <div>tip</div>
         <div>表单元素</div>
@@ -42,14 +58,18 @@
     </div>
     <div>
         插件
+        <div>loading</div>
         <div>图片</div>
         <div>树</div>
         <div>弹窗</div>
         <div>表格</div>
+        <div>页面控制台</div>
     </div>
     <div>
         封装
-        <div></div>
+        <div>地图</div>
+        <div>图表</div>
+        <div>时间选择器</div>
     </div>
     <div>
         文档
@@ -76,7 +96,7 @@
 </article>
 
 <footer>
-    copyright
+    <p>©2015 小步创想 All Rights Reserved</p>
 </footer>
 
 
