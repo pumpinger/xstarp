@@ -9,6 +9,7 @@
     <meta name="renderer" content="webkit">
     <script type="text/javascript" src="lib/jquery-2.1.4.js"></script>
     <link rel="stylesheet" href="css/init.css"/>
+    <link rel="stylesheet" href="src/scss/global.css"/>
     <style>
 
         /*后期改用 scss  且解决 基础色问题*/
@@ -46,7 +47,7 @@
     <div class="aside_1">
         <p>样式</p>
         <a href="base.php" class="aside_2">基础css</a>
-        <a class="aside_2">文字</a>
+        <a href="text.php" class="aside_2">文字</a>
         <a class="aside_2">图标</a>
         <a class="aside_2">按钮</a>
         <a class="aside_2">tip</a>

@@ -6,6 +6,7 @@
  * Time: 15:49
  */
 
+
 include "header.php";
 
 ?>
@@ -16,6 +17,8 @@ include "header.php";
         <li>关于我们</li>
     </ul>
 </nav>
+
+
 <section>
     解决问题:
 </section>
