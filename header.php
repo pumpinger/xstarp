@@ -9,6 +9,7 @@
     <meta name="renderer" content="webkit">
     <script type="text/javascript" src="lib/jquery-2.1.4.js"></script>
     <link rel="stylesheet" href="css/init.css"/>
+    <link rel="stylesheet" href="lib/iconfont/iconfont.css"/>
     <link rel="stylesheet" href="src/scss/global.css"/>
     <style>
 
@@ -48,7 +49,7 @@
         <p>样式</p>
         <a href="base.php" class="aside_2">基础css</a>
         <a href="text.php" class="aside_2">文字</a>
-        <a class="aside_2">图标</a>
+        <a href="icon.php" class="aside_2">图标</a>
         <a class="aside_2">按钮</a>
         <a class="aside_2">tip</a>
         <a class="aside_2">表单元素</a>
