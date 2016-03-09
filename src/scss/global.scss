@@ -1,3 +1,4 @@
+/*字体相关*/
 $baseFontSize: 14;
 $minFontSize: 12;
 $maxFontSize: 36;
@@ -7,3 +8,4 @@ $fontSizeUnit: 'px';
 @for $i from $minFontSize through $maxFontSize {
   .x-font-#{$i} { font-size: #{$i}px; }
 }
+

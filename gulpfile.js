@@ -8,20 +8,20 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     spriter = require('gulp-css-spriter');
 
-gulp.task('spriter', function () {
+gulp.task('spriterAndCss', function () {
 
     var timestamp = +new Date();
-    //ĞèÒª×Ô¶¯ºÏ²¢Ñ©±ÌÍ¼µÄÑùÊ½ÎÄ¼ş
+    //éœ€è¦è‡ªåŠ¨åˆå¹¶é›ªç¢§å›¾çš„æ ·å¼æ–‡ä»¶
     return gulp.src('./src/css/spriter.css')
         .pipe(spriter({
-            // Éú³ÉµÄspriterµÄÎ»ÖÃ
+            // ç”Ÿæˆçš„spriterçš„ä½ç½®
             'spriteSheet': './img/sprite.png',
-            // Éú³ÉÑùÊ½ÎÄ¼şÍ¼Æ¬ÒıÓÃµØÖ·µÄÂ·¾¶
-            // ÈçÏÂ½«Éú²ú£ºbackgound:url(../images/sprite20324232.png)
+            // ç”Ÿæˆæ ·å¼æ–‡ä»¶å›¾ç‰‡å¼•ç”¨åœ°å€çš„è·¯å¾„
+            // å¦‚ä¸‹å°†ç”Ÿäº§ï¼šbackgound:url(../images/sprite20324232.png)
             'pathToSpriteSheetFromCSS': '../img/sprite.png'
         }))
         //.pipe(minifyCSS())
-        //²ú³öÂ·¾¶
+        //äº§å‡ºè·¯å¾„
         .pipe(gulp.dest('./css'));
 });
 

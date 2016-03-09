@@ -50,37 +50,35 @@
         <a href="base.php" class="aside_2">基础css</a>
         <a href="text.php" class="aside_2">文字</a>
         <a href="icon.php" class="aside_2">图标</a>
-        <a class="aside_2">按钮</a>
-        <a class="aside_2">tip</a>
-        <a class="aside_2">表单元素</a>
-        <a class="aside_2">面板</a>
+        <a href="button.php" class="aside_2">按钮</a>
+        <a href="tip.php" class="aside_2">提示</a>
+        <a href="from.php" class="aside_2">表单元素</a>
     </div>
     <div class="aside_1">
         <p>组件</p>
-        <a class="aside_2">header</a>
-        <a class="aside_2">侧边栏</a>
-        <a class="aside_2">tab</a>
-        <a class="aside_2">表格</a>
-        <a class="aside_2">表单</a>
-
+        <a href="header.php" class="aside_2">header</a>
+        <a href="asdie.php" class="aside_2">侧边栏</a>
+        <a href="nav.php" class="aside_2">导航</a>
+        <a href="tab.php" class="aside_2">标签页</a>
+        <a href="panel.php" class="aside_2">面板</a>
     </div>
     <div class="aside_1">
         <p>插件</p>
-        <a class="aside_2">loading</a>
-        <a class="aside_2">图片</a>
-        <a class="aside_2">树</a>
-        <a class="aside_2">弹窗</a>
-        <a class="aside_2">表格</a>
-        <a class="aside_2">页面控制台</a>
+        <a href="loading.php" class="aside_2">载入、等待</a>
+        <a href="imgview.php" class="aside_2">图片</a>
+        <a href="tree.php" class="aside_2">树</a>
+        <a href="pop.php" class="aside_2">弹窗</a>
+        <a href="table.php" class="aside_2">表格</a>
+        <a href="console.php" class="aside_2">页面控制台</a>
     </div>
     <div class="aside_1">
         <p>封装</p>
-        <a class="aside_2">地图</a>
-        <a class="aside_2">图表</a>
-        <a class="aside_2">时间选择器</a>
+        <a href="map.php" class="aside_2">地图</a>
+        <a href="chart.php" class="aside_2">图表</a>
+        <a href="time.php" class="aside_2">时间选择器</a>
     </div>
     <div class="aside_1">
-        <a>文档</a>
+        <a href="doc.php" >文档</a>
     </div>
 </aside>
 
