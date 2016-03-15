@@ -7,10 +7,10 @@
     <meta content="telephone=no,email=no" name="format-detection" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
     <meta name="renderer" content="webkit">
-    <script type="text/javascript" src="lib/jquery-2.1.4.js"></script>
-    <link rel="stylesheet" href="css/init.css"/>
-    <link rel="stylesheet" href="lib/iconfont/iconfont.css"/>
-    <link rel="stylesheet" href="src/scss/global.css"/>
+    <script type="text/javascript" src="./lib/jquery-2.1.4.js"></script>
+    <link rel="stylesheet" href="./css/init.css"/>
+    <link rel="stylesheet" href="./lib/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="./css/global.css"/>
     <style>
 
         /*后期改用 scss  且解决 基础色问题*/
@@ -23,9 +23,9 @@
 
 
         aside {display: inline-block;width: 100px;position: absolute; }
-        .aside_1 {border: 1px solid #ff9aa9;cursor: pointer; }
-        aside .active .aside_2{display: block;}
-        .aside_2 {display: none;}
+        .aside_level1 {border: 1px solid #ff9aa9;cursor: pointer; }
+        aside .active .aside_level2{display: block;}
+        .aside_level2 {display: none;}
 
 
         footer {background: #000;color: #ffffff;position: fixed;bottom: 0;width: 100%;text-align: center;}
@@ -42,42 +42,42 @@
 
 
 <aside>
-    <div class="aside_1">
+    <div class="aside_level1">
         <a href="index.php">首页</a>
     </div>
-    <div class="aside_1">
+    <div class="aside_level1">
         <p>样式</p>
-        <a href="base.php" class="aside_2">基础css</a>
-        <a href="text.php" class="aside_2">文字</a>
-        <a href="icon.php" class="aside_2">图标</a>
-        <a href="button.php" class="aside_2">按钮</a>
-        <a href="tip.php" class="aside_2">提示</a>
-        <a href="from.php" class="aside_2">表单元素</a>
+        <a href="base.php" class="aside_level2">基础css</a>
+        <a href="text.php" class="aside_level2">文字</a>
+        <a href="icon.php" class="aside_level2">图标</a>
+        <a href="button.php" class="aside_level2">按钮</a>
+        <a href="tip.php" class="aside_level2">提示</a>
+        <a href="from.php" class="aside_level2">表单元素</a>
     </div>
-    <div class="aside_1">
-        <p>组件</p>
-        <a href="header.php" class="aside_2">header</a>
-        <a href="asdie.php" class="aside_2">侧边栏</a>
-        <a href="nav.php" class="aside_2">导航</a>
-        <a href="tab.php" class="aside_2">标签页</a>
-        <a href="panel.php" class="aside_2">面板</a>
+    <div class="aside_level1">
+        <p>结构</p>
+        <a href="header.php" class="aside_level2">header</a>
+        <a href="asdie.php" class="aside_level2">侧边栏</a>
+        <a href="nav.php" class="aside_level2">导航</a>
+        <a href="tab.php" class="aside_level2">标签页</a>
+        <a href="panel.php" class="aside_level2">面板</a>
     </div>
-    <div class="aside_1">
+    <div class="aside_level1">
         <p>插件</p>
-        <a href="loading.php" class="aside_2">载入、等待</a>
-        <a href="imgview.php" class="aside_2">图片</a>
-        <a href="tree.php" class="aside_2">树</a>
-        <a href="pop.php" class="aside_2">弹窗</a>
-        <a href="table.php" class="aside_2">表格</a>
-        <a href="console.php" class="aside_2">页面控制台</a>
+        <a href="loading.php" class="aside_level2">载入、等待</a>
+        <a href="imgview.php" class="aside_level2">图片</a>
+        <a href="tree.php" class="aside_level2">树</a>
+        <a href="pop.php" class="aside_level2">弹窗</a>
+        <a href="table.php" class="aside_level2">表格</a>
+        <a href="console.php" class="aside_level2">页面控制台</a>
     </div>
-    <div class="aside_1">
+    <div class="aside_level1">
         <p>封装</p>
-        <a href="map.php" class="aside_2">地图</a>
-        <a href="chart.php" class="aside_2">图表</a>
-        <a href="time.php" class="aside_2">时间选择器</a>
+        <a href="map.php" class="aside_level2">地图</a>
+        <a href="chart.php" class="aside_level2">图表</a>
+        <a href="time.php" class="aside_level2">时间选择器</a>
     </div>
-    <div class="aside_1">
+    <div class="aside_level1">
         <a href="doc.php" >文档</a>
     </div>
 </aside>

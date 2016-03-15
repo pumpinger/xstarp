@@ -1,0 +1,29 @@
+/*主题*/
+$baseColorMain:#3399CC;
+$baseColorSecond:#336699;
+$baseColorThird:#99CC33;
+$borderColorDeep:#333;
+$borderColorLight:#666;
+$bgColorDeep:#ccc;
+$bgColorLight:#fff;
+
+
+$radiusLevel:8px;
+
+
+/*样式-字体*/
+$baseFontSize: 14;
+$minFontSize: 12;
+$maxFontSize: 36;
+$fontSizeUnit: px;
+
+
+@for $i from $minFontSize through $maxFontSize {
+  .x-font-#{$i} { font-size: #{$i}$fontSizeUnit; }
+}
+
+
+
+/*结构-面板*/
+.x-panel {border: 1px solid $borderColorDeep;border-top-right-radius: $radiusLevel;border-top-left-radius: $radiusLevel;}
+.x-panel-title {background-color: $baseColorThird;}

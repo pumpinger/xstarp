@@ -9,8 +9,8 @@
 
 <script type="text/javascript">
 
-    $('.aside_1').click(function (){
-//        $(this).siblings().removeClass('active');
+    $('.aside_level1').click(function (){
+        $(this).siblings().removeClass('active');
         $(this).addClass('active');
     });
     //    $.imgView({

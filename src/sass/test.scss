@@ -14,14 +14,14 @@ label {cursor:pointer;}
 input, button, textarea, select {font-size: inherit;width: auto;padding:0;}
 
 
-/*±äÁ¿*/
+/*å˜é‡*/
 $baseFontSize:          14px !default;
 $samllFontSize:         $baseFontSize - 2px  !default;
 h1{
   border: $samllFontSize solid #ff9aa9;
 }
 
-/*Êı×é Ñ­»·    ¹ØÁªÊı×é@each Ñ­»·*/
+/*æ•°ç»„ å¾ªç¯    å…³è”æ•°ç»„@each å¾ªç¯*/
 $linkColor:         #08c #333 !default;
 a{
   color:nth($linkColor,1);
@@ -42,7 +42,7 @@ $headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
   }
 }
 
-/*Ç¶Ì× css  Ç¶Ì× Ñ¡ÔôÆ÷*/
+/*åµŒå¥— css  åµŒå¥— é€‰è´¼å™¨*/
 .fakeshadow {
   .test {
     border:2px;
@@ -60,7 +60,7 @@ $headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
   }
 }
 
-/*cssÄ£°å    @mixinÉêÃ÷     @includeµ÷ÓÃ*/
+/*cssæ¨¡æ¿    @mixinç”³æ˜     @includeè°ƒç”¨*/
 @mixin opacity($opacity:50) {
   opacity: $opacity / 100;
   filter: alpha(opacity=$opacity);
@@ -73,7 +73,7 @@ $headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
 }
 
 
-/*¼Ì³Ğ   @extend*/
+/*ç»§æ‰¿   @extend*/
 h1{
   border: 4px solid #ff9aa9;
 }
@@ -83,7 +83,7 @@ h1{
 }
 
 
-/*º¯Êı*/
+/*å‡½æ•°*/
 @function pxToRem($px) {
   @return $px / 2 + px;
 }
