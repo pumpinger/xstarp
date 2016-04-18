@@ -53,6 +53,7 @@
         <a href="button.php" class="aside_level2">按钮</a>
         <a href="tip.php" class="aside_level2">提示</a>
         <a href="from.php" class="aside_level2">表单元素</a>
+        <a href="progress.php" class="aside_level2">进度条</a>
     </div>
     <div class="aside_level1">
         <p>结构</p>
@@ -74,6 +75,7 @@
     <div class="aside_level1">
         <p>封装</p>
         <a href="map.php" class="aside_level2">地图</a>
+        <a href="ajax.php" class="aside_level2">Ajax</a>
         <a href="chart.php" class="aside_level2">图表</a>
         <a href="time.php" class="aside_level2">时间选择器</a>
     </div>
