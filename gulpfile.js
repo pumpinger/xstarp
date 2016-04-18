@@ -14,7 +14,7 @@ gulp.task('minifyCssWithSpriter', function () {
     return gulp.src('./src/css/spriter.css')
         .pipe(spriter({
             // 生成的spriter的位置
-            'spriteSheet': './img/sprite.png',
+            'spriteSheet': './dest/img/sprite.png',
             // 生成样式文件图片引用地址的路径
             // 如下将生产：backgound:url(../images/sprite20324232.png)
             'pathToSpriteSheetFromCSS': '../img/sprite.png'
@@ -29,7 +29,7 @@ gulp.task('minifyCssWithSpriter', function () {
 gulp.task('sassToCss',function (){
         return gulp.src("./src/sass/global.scss")
             .pipe(sass().on('error', sass.logError))
-            .pipe(gulp.dest("./css/"));
+            .pipe(gulp.dest("./dest/css/"));
 });
 
 gulp.task('watch',function (){

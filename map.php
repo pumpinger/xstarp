@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <meta charset="UTF-8">
     <title>title</title>
-    <link rel="stylesheet" href="./css/init.css"/>
-    <script type="text/javascript" src="./lib/jquery-2.1.4.js"></script>
+    <link rel="stylesheet" href="dest/css/init.css"/>
+    <script type="text/javascript" src="dest/lib/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值&plugin=AMap.Driving"></script>
     <style>
         #container {width: 100%;height: 500px;}

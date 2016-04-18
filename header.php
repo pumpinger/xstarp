@@ -7,10 +7,10 @@
     <meta content="telephone=no,email=no" name="format-detection" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
     <meta name="renderer" content="webkit">
-    <script type="text/javascript" src="./lib/jquery-2.1.4.js"></script>
-    <link rel="stylesheet" href="./css/init.css"/>
-    <link rel="stylesheet" href="./lib/iconfont/iconfont.css"/>
-    <link rel="stylesheet" href="./css/global.css"/>
+    <script type="text/javascript" src="dest/lib/jquery-2.1.4.js"></script>
+    <link rel="stylesheet" href="dest/css/init.css"/>
+    <link rel="stylesheet" href="dest/lib/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="dest/css/global.css"/>
     <style>
 
         /*后期改用 scss  且解决 基础色问题*/
