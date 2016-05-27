@@ -21,6 +21,7 @@ include "header.php";
 
 <section>
     解决问题:
+    如何模块化  如何更新项目   尽快搭建工程化    项目如何解决静态文件缓存
 </section>
 <section>
     技术内容:

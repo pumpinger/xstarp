@@ -13,11 +13,138 @@ include "header.php";
 <div class="x-panel">
     <div class="x-panel-title">标题1</div>
     <div class="x-panel-content">
-        内容详情
+        内<p>方法一</p>
+
+        <div class="member_tree" style="width: 200px;height: 300px;border: 1px solid #333;"></div>
+
+        <p>方法二</p>
+        <div>
+            <input class="member_tree2" placeholder="">
+        </div>
+
+
+        <div class="panel">
+                <pre>
+
+
+                    属性
+                    is_trigger:true,  //是否需要触发? 否则直接显示
+                    has_search:false,
+                    only_child:true,//是否结果只要 child
+                    node_merge:true,//是否需要合并结果
+                    zIndex:1,
+                    choose:false,  //哪些是选中的？优先级高于data
+                    is_node_first:false,//是否需要节点排在前面  否则按照data的顺序
+                    is_multi:true,//是否多选
+                    expand:false, //是否展开    todo
+                    rootId:0,
+                    width:null,
+                    maxHeight:null,
+                    data:[],
+
+                    事件
+                    onInit: function () {},
+                    onOpen: function () {}, //触发时
+                    onBeforeOpen: function () {},
+                    onClose: function (has_chg) {
+                        console.log('是否产生变化：'+has_chg);
+                    },
+                    onChange: function () {}
+
+
+                    方法
+                    start:function(){},
+                    end:function(){},
+                    getName:function(){},
+                    getId:function(){},
+                    cancelItem:function(){},
+                    checkItem:function(){},
+                    getItem:function(){},
+                    search:function(){},
+
+
+
+                    ex:
+
+                    var $tree1=$('.member_tree').tree({
+                    only_child:false,
+                    is_trigger:false,
+                    is_multi:false,
+                    has_search:false,
+                    is_node_first:true,
+                    data:[
+                        {id:1,name:'行政部',nodeId:0,is_node:true,is_check:false},
+                        {id:3,name:'财务部',nodeId:1,is_node:true,is_check:false},
+                        {id:5,name:'财务部2',nodeId:3,is_node:true,is_check:false},
+                        {id:6,name:'财务部3',nodeId:5,is_node:true,is_check:false},
+                        {id:7,name:'财务部4',nodeId:6,is_node:true,is_check:false},
+                        {id:8,name:'财务部5',nodeId:7,is_node:true,is_check:false},
+                        {id:9,name:'财务部6',nodeId:8,is_node:true,is_check:false},
+                        {id:5,name:'李职员',nodeId:9,is_node:false,is_check:false},
+                        {id:6,name:'孙职员',nodeId:8,is_node:false,is_check:false},
+                        {id:2,name:'张部长',nodeId:1,is_node:false,is_check:false},
+                        {id:4,name:'刘职员',nodeId:3,is_node:false,is_check:false},
+                        {id:1,name:'王经理',nodeId:0,is_node:false,is_check:false}
+                    ],
+                    choose:{
+                        nodeId:[1],
+                        id:[1]
+                    },
+                    onInit: function (name,ids,item) {
+                        //this.dom.val(name);
+                    },
+                    onOpen: function () {
+                    },
+                    onBeforeOpen: function () {
+                    },
+                    onClose: function (hasChange,ids,item) {
+                        //console.log(hasChange);
+                        //console.log(ids);
+            //            console.log(item);
+                    },
+                    onChange: function (name,item,target) {
+                    }
+                }).start();
+
+                var $tree2=$('.member_tree2').tree({
+                    only_child:false,
+                    has_search:false,
+                    is_node_first:true,
+                    data:[
+                        {id:2,name:'四川',nodeId:0,is_node:true,is_check:false},
+                        {id:3,name:'成都',nodeId:2,is_node:false,is_check:false},
+                        {id:4,name:'湖北',nodeId:0,is_node:true,is_check:false},
+                        {id:5,name:'武汉',nodeId:4,is_node:false,is_check:false},
+                        {id:6,name:'北京',nodeId:0,is_node:false,is_check:false}
+                    ],
+                    onInit: function (name,ids,item) {
+                        //this.dom.val(name);
+                    },
+                    onOpen: function () {
+                    },
+                    onBeforeOpen: function () {
+                    },
+                    onClose: function (hasChange) {
+                        console.log(hasChange);
+                        console.log($tree2);
+                        //console.log(hasChange);
+                        //console.log(ids);
+            //            console.log(item);
+                    },
+                    onChange: function (name,item,target) {
+                    }
+                });
+                </pre>
+        </div>
+
     </div>
 </div>
 
 <script>
+
+
+
+
 
     /**
      * 命名大意：
@@ -152,7 +279,7 @@ include "header.php";
                 this.opt.onBeforeOpen();
                 this._showPanel();
                 this._showData();
-                this._expand();
+//                this._expand();
                 this._is_open=true;
                 this.html.find('.search_ipt_s').focus();
                 this.opt.onOpen();
@@ -577,15 +704,14 @@ include "header.php";
                 $html.find('input').on('click',function(){
                     if(obj.opt.is_multi){
                         item.is_check=!item.is_check;
-                        obj._chgItem(item,$(this));
-                    }
-                    else{
+                    }else{
                         $.each(obj.data,function(index,item){item.is_check = false;});
-                        obj.html.find('input').prop("checked",false);
                         item.is_check=true;
-                        $(this).prop('checked',true);
-                        obj.opt.onChange();
                     }
+
+
+                    obj._chgItem(item,$(this));
+
                 });
 
                 return $html;
@@ -614,18 +740,39 @@ include "header.php";
             },
 
             _chgItem:function(item,dom){
-                if(item.is_node){
-                    dom.parent().find('input').prop('checked',item.is_check);
-                    this._chgAllChildren(item.id,item.is_check);
-                }
 
-                if(!item.is_check){
-                    this._cancelParentNode(item.nodeId);
+                if(this.opt.is_multi){
+                    if(item.is_node){
+                        dom.parent().find('input').prop('checked',item.is_check);
+                        this._chgAllChildren(item.id,item.is_check);
+                    }
+
+                    if(!item.is_check){
+                        this._cancelParentNode(item.nodeId);
+                    }else{
+                        this._checkParentNode(item.nodeId);
+                    }
                 }else{
-                    this._checkParentNode(item.nodeId);
+//                    this.html.find('input').prop("checked",false);
+//                    $(this).prop('checked',true);
                 }
 
-                this.opt.onChange();
+                var  childArr=[];
+                this._getChild(item,childArr);
+
+
+                this.opt.onChange(item,dom,childArr);
+            },
+            _getChild:function (node,cont) {
+                var that=this;
+                $.each(that.data,function(i,n){
+                    if(n.nodeId ==node.id ){
+                        cont.push(n);
+                        if(n.is_node){
+                            that._getChild(n,cont);
+                        }
+                    }
+                })
             },
             _cancelParentNode:function(id){
                 var obj=this;
@@ -655,7 +802,7 @@ include "header.php";
             },
             _chgAllChildren:function(nodeid,bol){
                 var obj=this;
-                $.each($.extend(true,[], this.data),function(i,n){
+                $.each($.extend(true,[], this.data),function(i,n){   //这句话 看起来 好像 不用 extend
                     if(n.nodeId == nodeid){
                         obj.data[i].is_check=bol;
                         if(n.is_node){
@@ -712,6 +859,88 @@ include "header.php";
 
 
     })($);
+
+
+
+
+</script>
+
+
+<script>
+
+    var $tree3=$('.member_tree').tree({
+    only_child:true,
+    is_trigger:false,
+    is_multi:true,
+    has_search:false,
+    is_node_first:true,
+    expand:3,
+    data:[
+    {id:1,name:'行政部',nodeId:0,is_node:true,is_check:false},
+    {id:3,name:'财务部',nodeId:1,is_node:true,is_check:false},
+    {id:5,name:'财务部2',nodeId:3,is_node:true,is_check:false},
+    {id:6,name:'财务部3',nodeId:5,is_node:true,is_check:false},
+    {id:7,name:'财务部4',nodeId:6,is_node:true,is_check:false},
+    {id:8,name:'财务部5',nodeId:7,is_node:true,is_check:false},
+    {id:9,name:'财务部6',nodeId:8,is_node:true,is_check:false},
+    {id:5,name:'李职员',nodeId:9,is_node:false,is_check:false},
+    {id:6,name:'孙职员',nodeId:8,is_node:false,is_check:false},
+    {id:2,name:'张部长',nodeId:1,is_node:false,is_check:false},
+    {id:4,name:'刘职员',nodeId:3,is_node:false,is_check:false},
+    {id:1,name:'王经理',nodeId:0,is_node:false,is_check:false}
+    ],
+    //        choose:{
+    //            nodeId:[1],
+    //            id:[1]
+    //        },
+    onInit: function (name,ids,item) {
+    //this.dom.val(name);
+    },
+    onOpen: function () {
+    },
+    onBeforeOpen: function () {
+    },
+    onClose: function (hasChange,ids,item) {
+    //console.log(hasChange);
+    //console.log(ids);
+    //            console.log(item);
+    },
+    onChange: function (item,dom,childrenItem) {
+        console.log(childrenItem);
+    }
+    }).start();
+
+
+
+
+    var $tree2=$('.member_tree2').tree({
+    only_child:false,
+    has_search:false,
+    is_node_first:true,
+    data:[
+    {id:2,name:'四川',nodeId:0,is_node:true,is_check:false},
+    {id:3,name:'成都',nodeId:2,is_node:false,is_check:false},
+    {id:4,name:'湖北',nodeId:0,is_node:true,is_check:false},
+    {id:5,name:'武汉',nodeId:4,is_node:false,is_check:false},
+    {id:6,name:'北京',nodeId:0,is_node:false,is_check:false}
+    ],
+    onInit: function (name,ids,item) {
+    //this.dom.val(name);
+    },
+    onOpen: function () {
+    },
+    onBeforeOpen: function () {
+    },
+    onClose: function (hasChange) {
+    console.log(hasChange);
+    console.log($tree2);
+    //console.log(hasChange);
+    //console.log(ids);
+    //            console.log(item);
+    },
+    onChange: function (name,item,target) {
+    }
+    });
 
 
 
