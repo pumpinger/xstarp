@@ -49,7 +49,8 @@ include "header.php";
                     onClose: function (has_chg) {
                         console.log('是否产生变化：'+has_chg);
                     },
-                    onChange: function () {}
+                    onCheck: function (item,dom,childItem) {}
+                    onCancel: function (item,dom,childItem) {}
 
 
                     方法
@@ -101,8 +102,6 @@ include "header.php";
                         //console.log(hasChange);
                         //console.log(ids);
             //            console.log(item);
-                    },
-                    onChange: function (name,item,target) {
                     }
                 }).start();
 
@@ -130,8 +129,6 @@ include "header.php";
                         //console.log(hasChange);
                         //console.log(ids);
             //            console.log(item);
-                    },
-                    onChange: function (name,item,target) {
                     }
                 });
                 </pre>
@@ -188,7 +185,8 @@ include "header.php";
             onClose: function (has_chg) {
                 console.log('是否产生变化：'+has_chg);
             },
-            onChange: function () {}
+            onCheck: function (item,dom,childrenItem) {}
+            onCancel: function (item,dom,childrenItem) {}
             //事件的命名空间 应该有配置项
             //data  单个的class icon
         };
@@ -408,7 +406,7 @@ include "header.php";
                     item.is_check = false;
                 });
                 this.html.find('input').prop("checked",false);
-                this.opt.onChange();
+                this.opt.onCancel();
             },
             checkItem:function (id,type){
                 var item={};
@@ -429,7 +427,7 @@ include "header.php";
                         item.is_check = true;
                     });
                     this.html.find('input').prop("checked",true);
-                    this.opt.onChange();
+                    this.opt.onCheck();
                 }
             },
             getItem:function(){
@@ -761,7 +759,16 @@ include "header.php";
                 this._getChild(item,childArr);
 
 
-                this.opt.onChange(item,dom,childArr);
+
+                if(!item.is_check){
+                    this.opt.onCancel(item,dom,childArr);
+
+                }else{
+                    this.opt.onCheck(item,dom,childArr);
+
+                }
+
+
             },
             _getChild:function (node,cont) {
                 var that=this;
@@ -904,9 +911,6 @@ include "header.php";
     //console.log(hasChange);
     //console.log(ids);
     //            console.log(item);
-    },
-    onChange: function (item,dom,childrenItem) {
-        console.log(childrenItem);
     }
     }).start();
 
@@ -937,8 +941,6 @@ include "header.php";
     //console.log(hasChange);
     //console.log(ids);
     //            console.log(item);
-    },
-    onChange: function (name,item,target) {
     }
     });
 
