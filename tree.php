@@ -755,6 +755,8 @@ include "header.php";
 //                    $(this).prop('checked',true);
                 }
 
+
+                //todo  childArr 没有 考虑  onlychildren
                 var  childArr=[];
                 this._getChild(item,childArr);
 
