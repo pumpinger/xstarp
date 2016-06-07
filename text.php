@@ -6,7 +6,7 @@
  * Time: 15:49
  */
 
-include "header.php";
+include "layout_header.php";
 
 ?>
 <p class ='x-font-12'>这是12px的文字</p>
@@ -19,5 +19,5 @@ include "header.php";
 
 <?php
 
-include "footer.php";
+include "layout_footer.php";
 ?>

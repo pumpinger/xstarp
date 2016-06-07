@@ -6,7 +6,7 @@
  * Time: 15:49
  */
 
-include "header.php";
+include "layout_header.php";
 
 ?>
 <p>(颜色 居中  字体大小  边距 补白 风格(扁平 3d 现代 极简))</p>
@@ -15,5 +15,5 @@ include "header.php";
 
 <?php
 
-include "footer.php";
+include "layout_footer.php";
 ?>

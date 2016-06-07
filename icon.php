@@ -6,7 +6,7 @@
  * Time: 15:49
  */
 
-include "header.php";
+include "layout_header.php";
 
 ?>
 <i class="iconfont">&#xe600;</i>
@@ -15,5 +15,5 @@ include "header.php";
 
 <?php
 
-include "footer.php";
+include "layout_footer.php";
 ?>

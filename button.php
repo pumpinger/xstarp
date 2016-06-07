@@ -6,7 +6,7 @@
  * Time: 15:49
  */
 
-include "header.php";
+include "layout_header.php";
 
 ?>
 <a class="x-button-large x-button x-button-blue">
@@ -19,5 +19,5 @@ include "header.php";
 
 <?php
 
-include "footer.php";
+include "layout_footer.php";
 ?>
