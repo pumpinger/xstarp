@@ -1,5 +1,6 @@
 
 
+</div>
 
 
 <footer>
@@ -11,17 +12,18 @@
 
     $(document).ready(function(){
         //左边菜单栏下拉
-        $(".menu p.menu-head").click(function() {
-            $(this).next("div.menu-body").slideToggle(300).siblings("div.menu-body").slideUp("slow");
+        $(".aside p.aside-head").click(function() {
+            $(this).next("div.aside-body").slideToggle(300).siblings("div.aside-body").slideUp("slow");
         });
 
 
-        $('.user-name').mousedown(function(){
-            $('.user-more').toggle();
+        $('.header-user-name').mousedown(function(){
+            $('.header-user-more').toggle();
         });
-        $('.header-user').mouseleave(function(){
-            $('.user-more').hide();
-        });
+
+//        $('.header-user').mouseleave(function(){
+//            $('.header-user-more').hide();
+//        });
     });
 </script>
 </body>
