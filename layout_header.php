@@ -104,7 +104,6 @@
         <div class="aside-body">
             <a href="base.php" >基础css</a>
             <a href="text.php" >文字</a>
-            <a href="icon.php" >图标</a>
             <a href="button.php" >按钮</a>
             <a href="tip.php" >提示</a>
             <a href="from.php" >表单元素</a>
@@ -131,6 +130,7 @@
         <p class="aside-head"><span class="aside-sy">封装</span></p>
         <div class="aside-body">
             <a href="map.php" >地图</a>
+            <a href="icon.php" >图标</a>
             <a href="ajax.php" >Ajax</a>
             <a href="chart.php" >图表</a>
             <a href="time.php" >时间选择器</a>

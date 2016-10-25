@@ -11,6 +11,11 @@ $bgColorLight:#fff;
 $radiusLevel:8px;
 
 
+/*颜色数组*/
+$colors: (red: #FF0000, darkred: #8B0000, mediumvioletred: #C71585,indianred:CD5C5C);
+
+
+
 /*样式-字体*/
 $baseFontSize: 14;
 $minFontSize: 12;
@@ -53,6 +58,8 @@ $fontSizeUnit: px;
 .x-style-floatRight {float: right;}
 .x-style-floatLeft {float: left;}
 
+/*样式-按钮*/
+.x-button {}
 
 
 /*结构-面板*/
