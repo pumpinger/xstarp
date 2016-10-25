@@ -24,7 +24,7 @@
         /*头部*/
         .header{height:60px;padding:0 20px;background:#f5f5f5;border-bottom:1px solid #e6e6e6;}
         .header-logo{display:block;float:left;height: 100%;}
-        .header-logo img{vertical-align: middle;}
+        .header-logo img{vertical-align: middle;margin-top: 10px;}
 
         .header-user {position:relative;float:right;width:170px;height: 100%;padding-left:10px;padding-top:7px;box-sizing:border-box;border-left: 1px solid #dee1ea;font-size: 12px;color: #585b5d;}
         .header-user img{display:inline-block;vertical-align: middle;}
@@ -56,7 +56,7 @@
 
 
         .aside{width:220px;position:fixed;height:100%;top:60px;bottom:0;left:0;background:#444d58;border-right:1px solid #e6e6e6;z-index: 102;overflow-x: hidden;}
-        .aside-con{width: 240px;height: 100%; overflow: auto;overflow-x: hidden;}
+        .aside-con{height: 100%; overflow: auto;overflow-x: hidden;}
         .aside-head{height:60px;line-height:60px;color:#fff;background:url(img/icon_menu_arrow.png) no-repeat 192px;border-bottom:1px solid #353b45;}
 
         .aside span{display:block;text-indent:55px;}
@@ -65,6 +65,9 @@
         .aside-body a{display:block;width:100%;line-height:41px;text-indent:55px;color:#9ca3ac;background:#353b45;}
         .aside-body a:hover{color:#fff;background:#777f89;}
         .aside-sy{background:url(img/user.png) no-repeat 20px center;}
+
+
+        .content {margin-left: 240px;margin-top: 10px;}
 
     </style>
 
@@ -107,7 +110,7 @@
             <a href="from.php" >表单元素</a>
             <a href="progress.php" >进度条</a>
         </div>
-        <p class="aside-head"><span class="aside-sy">样式</span></p>
+        <p class="aside-head"><span class="aside-sy">结构</span></p>
         <div class="aside-body">
             <a href="header.php" >header</a>
             <a href="asdie.php" >侧边栏</a>
@@ -122,6 +125,7 @@
             <a href="tree.php" >树</a>
             <a href="pop.php" >弹窗</a>
             <a href="table.php" >表格</a>
+            <a href="format.php" >格式化</a>
             <a href="console.php" >页面控制台</a>
         </div>
         <p class="aside-head"><span class="aside-sy">封装</span></p>
@@ -136,7 +140,7 @@
     </div>
 </div>
 
-<div class="article">
+<div class="content">
 
 
 

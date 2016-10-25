@@ -23,6 +23,37 @@ $fontSizeUnit: px;
 }
 
 
+/*样式-颜色*/
+.x-color-red {color:red;}
+.x-color-darkred {color:darkred;}
+.x-color-mediumvioletred {color:mediumvioletred;}
+.x-color-indianred {color:indianred;}
+.x-color-blue {color:blue;}
+.x-color-cadetblue {color:cadetblue;}
+.x-color-cornflowerblue {color:cornflowerblue;}
+.x-color-darkblue {color:darkblue;}
+.x-color-darkslateblue {color:darkslateblue;}
+.x-color-green {color:green;}
+.x-color-darkgreen {color:darkgreen;}
+.x-color-darkolivegreen {color:darkolivegreen;}
+.x-color-darkseagreen {color:darkseagreen;}
+.x-color-yellow {color:yellow;}
+.x-color-greenyellow {color:greenyellow;}
+.x-color-orange {color:orange;}
+.x-color-darkorange {color:darkorange;}
+.x-color-purple {color:purple;}
+.x-color-mediumpurple {color:mediumpurple;}
+
+/*样式-基础css*/
+
+.x-style-textCenter {text-align: center;}
+.x-style-textLeft {text-align: left;}
+.x-style-textRight {text-align: right;}
+
+.x-style-floatRight {float: right;}
+.x-style-floatLeft {float: left;}
+
+
 
 /*结构-面板*/
 .x-panel {border: 1px solid $borderColorDeep;border-top-right-radius: $radiusLevel;border-top-left-radius: $radiusLevel;}

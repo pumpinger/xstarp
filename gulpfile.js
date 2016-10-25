@@ -6,7 +6,9 @@
 var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     sass = require('gulp-sass'),
-    spriter = require('gulp-css-spriter');
+    spriter = require('gulp-css-spriter'),
+    sourcemaps = require('gulp-sourcemaps');
+
 
 gulp.task('minifyCssWithSpriter', function () {
     var timestamp = +new Date();
@@ -28,7 +30,9 @@ gulp.task('minifyCssWithSpriter', function () {
 
 gulp.task('sassToCss',function (){
         return gulp.src("./src/sass/global.scss")
+            .pipe(sourcemaps.init())
             .pipe(sass().on('error', sass.logError))
+            .pipe(sourcemaps.write())
             .pipe(gulp.dest("./dest/css/"));
 });
 

@@ -4,7 +4,7 @@
 
 
 <footer>
-    <p>©2015 小步创想 All Rights Reserved</p>
+<!--    <p>©2015 小步创想 All Rights Reserved</p>-->
 </footer>
 
 

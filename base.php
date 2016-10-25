@@ -9,7 +9,25 @@
 include "layout_header.php";
 
 ?>
-<p>(颜色 居中  字体大小  边距 补白 风格(扁平 3d 现代 极简))</p>
+
+<div class="base">
+    <p>扁平 3d 现代 极简</p>
+
+    <style>
+        .base_square {width: 10px;height: 10px;}
+    </style>
+
+    <div class="x-panel">
+        <div class="x-panel-title">颜色</div>
+        <div class="x-panel-content">
+            规则：x-color-*
+            <br>
+            <span class="x-color-darkred">drankred: <span class="x-font-20">∎</span></span>
+            <span class="x-color-darkred">drankred: <span class="x-font-20">∎</span></span>
+        </div>
+    </div>
+</div>
+
 
 
 
