@@ -26,5 +26,6 @@
 //        });
     });
 </script>
+<script type="text/javascript" src="lib/prism/prism.js"></script>
 </body>
 </html>

@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="dest/css/spriter.css"/>
 
 
+    <link rel="stylesheet" href="lib/prism/prism.css"/>
+
+
     <style>
         /*@charset "UTF-8";*/
         body{font-family: "Microsoft YaHei","Arial",sans-serif;color:#464646;}

@@ -1,7 +1,9 @@
-/*主题*/
+//主题
 $baseColorMain:#3399CC;
 $baseColorSecond:#336699;
 $baseColorThird:#99CC33;
+$fontColorDeep:#111111;
+$fontColorLight:#fff;
 $borderColorDeep:#333;
 $borderColorLight:#666;
 $bgColorDeep:#ccc;
@@ -11,12 +13,43 @@ $bgColorLight:#fff;
 $radiusLevel:8px;
 
 
-/*颜色数组*/
-$colors: (red: #FF0000, darkred: #8B0000, mediumvioletred: #C71585,indianred:CD5C5C);
+//函数
+
+@function set-notification-text-color($color) {
+  @if (lightness($color) < 70) {
+    @return $fontColorLight;
+  } @else {
+    @return $fontColorDeep;
+  }
+}
+
+
+//颜色数组
+$colors: (
+    red: #FF0000,
+    darkred: #8B0000,
+    mediumvioletred: #C71585,
+    indianred:#CD5C5C,
+    blue:#0000FF,
+    cadetblue:#5F9EA0,
+    cornflowerblue:#6495ED,
+    darkblue:#00008B,
+    darkslateblue:#483D8B,
+    green:#008000,
+    darkgreen:#006400,
+    darkolivegreen:#556B2F,
+    darkseagreen:#8FBC8F,
+    yellow:#FFFF00,
+    greenyellow:#ADFF2F,
+    orange:#FFA500,
+    darkorange:#FF8C00,
+    purple:#800080,
+    mediumpurple:#9370DB,
+);
 
 
 
-/*样式-字体*/
+//样式-字体
 $baseFontSize: 14;
 $minFontSize: 12;
 $maxFontSize: 36;
@@ -28,28 +61,14 @@ $fontSizeUnit: px;
 }
 
 
-/*样式-颜色*/
-.x-color-red {color:red;}
-.x-color-darkred {color:darkred;}
-.x-color-mediumvioletred {color:mediumvioletred;}
-.x-color-indianred {color:indianred;}
-.x-color-blue {color:blue;}
-.x-color-cadetblue {color:cadetblue;}
-.x-color-cornflowerblue {color:cornflowerblue;}
-.x-color-darkblue {color:darkblue;}
-.x-color-darkslateblue {color:darkslateblue;}
-.x-color-green {color:green;}
-.x-color-darkgreen {color:darkgreen;}
-.x-color-darkolivegreen {color:darkolivegreen;}
-.x-color-darkseagreen {color:darkseagreen;}
-.x-color-yellow {color:yellow;}
-.x-color-greenyellow {color:greenyellow;}
-.x-color-orange {color:orange;}
-.x-color-darkorange {color:darkorange;}
-.x-color-purple {color:purple;}
-.x-color-mediumpurple {color:mediumpurple;}
+//样式-颜色
 
-/*样式-基础css*/
+@each $key, $value in $colors {
+  .x-color-#{$key} {color:$value;}
+}
+
+
+//样式-基础css
 
 .x-style-textCenter {text-align: center;}
 .x-style-textLeft {text-align: left;}
@@ -58,10 +77,35 @@ $fontSizeUnit: px;
 .x-style-floatRight {float: right;}
 .x-style-floatLeft {float: left;}
 
-/*样式-按钮*/
-.x-button {}
+//样式-按钮
+.x-button {display: inline-block;background-color: $baseColorMain;border: 2px solid $borderColorDeep;color:set-notification-text-color($baseColorMain);border-radius: 10px;cursor: pointer;}
+.x-button-large {padding: 10px 20px;}
+.x-button-middle {padding: 5px 10px;}
+.x-button-small {padding: 2px 4px;}
+@each $key, $value in $colors {
+  .x-button-#{$key} {background-color:$value;border: 2px solid darken($value,10%);color:set-notification-text-color($value);}
+}
 
+//结构-面板
+.x-panel {
+  border: 1px solid $borderColorDeep;
+  border: {
+    top: {
+      left-radius: $radiusLevel;
+      right-radius: $radiusLevel;
+    }
+  }
+}
 
-/*结构-面板*/
-.x-panel {border: 1px solid $borderColorDeep;border-top-right-radius: $radiusLevel;border-top-left-radius: $radiusLevel;}
 .x-panel-title {background-color: $baseColorThird;}
+
+
+
+//成套css
+@mixin opacity($opacity:50) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+
+//todo 结构写好几个   code插件套进来   主题变化的实现(圆角 颜色)
+

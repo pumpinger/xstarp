@@ -9,11 +9,35 @@
 include "layout_header.php";
 
 ?>
+示例：<br>
+<pre><code class="language-html">
+<textarea>
+    <a class="x-button-large x-button x-button-blue">
+        大号按钮
+    </a>
+    <span class="x-button-middle x-button x-button-cadetblue">
+        中号按钮2
+    </span>
+    <div class="x-button-small x-button x-button-darkseagreen">
+        小号按钮
+    </div>
+    <span class="x-button">
+        默认按钮
+    </span>
+</textarea>
+</code></pre>
+<br>效果：<br><br>
 <a class="x-button-large x-button x-button-blue">
-    按钮1
+    大号按钮
 </a>
-<span class="x-button-large x-button x-button-blue">
-    按钮2
+<span class="x-button-middle x-button x-button-cadetblue">
+    中 号 按 钮
+</span>
+<div class="x-button-small x-button x-button-darkseagreen">
+    小号按钮
+</div>
+<span class="x-button">
+    默认按钮
 </span>
 
 
