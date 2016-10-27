@@ -10,10 +10,35 @@ include "layout_header.php";
 
 ?>
 
+
+
+
 <div class="x-panel">
-    <div class="x-panel-title">标题1</div>
+    <div class="x-panel-title">标题：</div>
     <div class="x-panel-content">
-        内容详情
+
+        <p>示例：</p>
+
+<pre><code class="language-html"><textarea>
+    <div class="x-panel">
+        <div class="x-panel-title">标题1</div>
+        <div class="x-panel-content">
+            内容详情
+        </div>
+    </div>
+</textarea></code></pre>
+
+
+        <p>效果:</p>
+        <div class="x-panel">
+            <div class="x-panel-title">标题1</div>
+            <div class="x-panel-content">
+                内容详情
+            </div>
+        </div>
+
+
+        <p>规则:</p>
     </div>
 </div>
 

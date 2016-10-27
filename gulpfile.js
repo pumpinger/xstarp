@@ -23,7 +23,7 @@ gulp.task('minifyCssWithSpriter', function () {
         }))
         .pipe(minifyCSS())
         //产出路径
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./dest/css'));
 });
 
 
