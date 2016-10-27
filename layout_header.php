@@ -70,7 +70,7 @@
         .aside-sy{background:url(img/user.png) no-repeat 20px center;}
 
 
-        .content {margin-left: 240px;margin-top: 10px;}
+        .content {margin-left: 240px;margin-top: 10px;margin-right: 20px;margin-bottom: 20px;}
 
     </style>
 
@@ -119,6 +119,7 @@
             <a href="nav.php" >导航</a>
             <a href="tab.php" >标签页</a>
             <a href="panel.php" >面板</a>
+            <a href="title.php" >标题</a>
         </div>
         <p class="aside-head"><span class="aside-sy">插件</span></p>
         <div class="aside-body">
@@ -127,6 +128,9 @@
             <a href="tree.php" >树</a>
             <a href="pop.php" >弹窗</a>
             <a href="table.php" >表格</a>
+        </div>
+        <p class="aside-head"><span class="aside-sy">函数</span></p>
+        <div class="aside-body">
             <a href="format.php" >格式化</a>
             <a href="console.php" >页面控制台</a>
         </div>

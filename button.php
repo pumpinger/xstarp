@@ -9,9 +9,14 @@
 include "layout_header.php";
 
 ?>
-示例：<br>
-<pre><code class="language-html">
-<textarea>
+
+<div class="x-panel">
+    <div class="x-panel-title">按钮</div>
+    <div class="x-panel-content">
+
+        <p>示例：</p>
+
+<pre><code class="language-html"><textarea>
     <a class="x-button-large x-button x-button-blue">
         大号按钮
     </a>
@@ -24,21 +29,27 @@ include "layout_header.php";
     <span class="x-button">
         默认按钮
     </span>
-</textarea>
-</code></pre>
-<br>效果：<br><br>
-<a class="x-button-large x-button x-button-blue">
-    大号按钮
-</a>
-<span class="x-button-middle x-button x-button-cadetblue">
-    中 号 按 钮
-</span>
-<div class="x-button-small x-button x-button-darkseagreen">
-    小号按钮
+</textarea></code></pre>
+
+
+        <p>效果:</p>
+        <a class="x-button-large x-button x-button-blue">
+            大号按钮
+        </a>
+        <span class="x-button-middle x-button x-button-cadetblue">
+            中 号 按 钮
+        </span>
+        <div class="x-button-small x-button x-button-darkseagreen">
+            小号按钮
+        </div>
+        <span class="x-button">
+            默认按钮
+        </span>
+
+
+        <p>规则:</p>
 </div>
-<span class="x-button">
-    默认按钮
-</span>
+
 
 
 <?php

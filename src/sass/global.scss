@@ -1,10 +1,10 @@
-//主题
+//全局变量    主题
 $baseColorMain:#3399CC;
 $baseColorSecond:#336699;
 $baseColorThird:#99CC33;
 $fontColorDeep:#111111;
 $fontColorLight:#fff;
-$borderColorDeep:#333;
+$borderColorDeep:#555;
 $borderColorLight:#666;
 $bgColorDeep:#ccc;
 $bgColorLight:#fff;
@@ -14,7 +14,6 @@ $radiusLevel:8px;
 
 
 //函数
-
 @function set-notification-text-color($color) {
   @if (lightness($color) < 70) {
     @return $fontColorLight;
@@ -78,7 +77,7 @@ $fontSizeUnit: px;
 .x-style-floatLeft {float: left;}
 
 //样式-按钮
-.x-button {display: inline-block;background-color: $baseColorMain;border: 2px solid $borderColorDeep;color:set-notification-text-color($baseColorMain);border-radius: 10px;cursor: pointer;}
+.x-button {display: inline-block;background-color: $baseColorMain;border: 2px solid $borderColorDeep;color:set-notification-text-color($baseColorMain);border-radius: 5px;cursor: pointer;}
 .x-button-large {padding: 10px 20px;}
 .x-button-middle {padding: 5px 10px;}
 .x-button-small {padding: 2px 4px;}
@@ -89,15 +88,23 @@ $fontSizeUnit: px;
 //结构-面板
 .x-panel {
   border: 1px solid $borderColorDeep;
+  overflow: auto;
   border: {
     top: {
       left-radius: $radiusLevel;
-      right-radius: $radiusLevel;
+      //right-radius: $radiusLevel;
     }
   }
 }
 
-.x-panel-title {background-color: $baseColorThird;}
+.x-panel-title {background-color: $baseColorThird;font-size: 20px;color: set-notification-text-color($baseColorThird);padding: 10px;}
+.x-panel-content {padding: 10px;}
+
+
+//结构-标题
+.x-title {font-size: 20px;border-bottom: 1px solid $borderColorLight;width: 100%;display: inline-block;}
+
+
 
 
 
