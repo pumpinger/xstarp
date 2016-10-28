@@ -128,6 +128,7 @@
             <a href="tree.php" >树</a>
             <a href="pop.php" >弹窗</a>
             <a href="table.php" >表格</a>
+            <a href="table.php" >文件上传</a>
         </div>
         <p class="aside-head"><span class="aside-sy">函数</span></p>
         <div class="aside-body">
