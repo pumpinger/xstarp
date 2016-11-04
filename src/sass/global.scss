@@ -59,6 +59,9 @@ $fontSizeUnit: px;
   .x-font-#{$i} { font-size: #{$i}$fontSizeUnit; }
 }
 
+.x-font-small {font-size: smaller}
+.x-font-large {font-size: larger;}
+
 
 //样式-颜色
 
