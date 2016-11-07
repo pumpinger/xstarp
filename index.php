@@ -13,6 +13,7 @@ include "layout_header.php";
 
 <nav>
     <ul>
+        <li>如何使用</li>
         <li>功能列表</li>
         <li>关于我们</li>
     </ul>

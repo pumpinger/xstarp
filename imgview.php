@@ -15,7 +15,7 @@ include "layout_header.php";
 </style>
 
 <!--过会做 js 的打包  考虑图片怎么弄-->
-<script type="text/javascript" src="./src/js/imgView/imgview.js"></script>
+<script type="text/javascript" src="src/js/imgview.js"></script>
 
 
 <p class="x-font-24 x-title">图片播放器:</p>

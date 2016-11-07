@@ -12,9 +12,11 @@
 
 
     <link rel="stylesheet" href="dest/css/init.css"/>
-    <link rel="stylesheet" href="dest/css/global.css"/>
     <link rel="stylesheet" href="dest/lib/iconfont/iconfont.css"/>
     <link rel="stylesheet" href="dest/css/spriter.css"/>
+
+    <link rel="stylesheet" href="dest/css/global.css"/>
+
 
 
     <link rel="stylesheet" href="lib/prism/prism.css"/>
