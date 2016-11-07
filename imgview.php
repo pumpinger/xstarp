@@ -14,8 +14,6 @@ include "layout_header.php";
     td,th {border: 1px solid black;}
 </style>
 
-<!--过会做 js 的打包  考虑图片怎么弄-->
-<script type="text/javascript" src="src/js/imgview.js"></script>
 
 
 <p class="x-font-24 x-title">图片播放器:</p>
@@ -195,6 +193,9 @@ include "layout_header.php";
 
 include "layout_footer.php";
 ?>
+
+
+<script type="text/javascript" src="src/js/imgview.js"></script>
 
 <script>
 

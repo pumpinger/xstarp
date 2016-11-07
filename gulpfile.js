@@ -7,6 +7,8 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     sass = require('gulp-sass'),
     spriter = require('gulp-css-spriter'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
     sourcemaps = require('gulp-sourcemaps');
 
 
@@ -24,6 +26,13 @@ gulp.task('minifyCssWithSpriter', function () {
         .pipe(minifyCSS())
         //产出路径
         .pipe(gulp.dest('./dest/css'));
+});
+
+gulp.task('minifyjs', function() {
+    return gulp.src('./src/js/*.js')
+        .pipe(concat('global.js'))    //合并所有js到main.js
+        .pipe(uglify())    //压缩
+        .pipe(gulp.dest('./dest/js'));  //输出
 });
 
 
