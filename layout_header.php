@@ -1,3 +1,28 @@
+<?php
+$scrpit_name = $_SERVER['SCRIPT_NAME'];
+$arr = explode('/', $scrpit_name);
+$activePage =  end($arr);
+$filename = explode('.', $activePage);
+$activePage = $filename[0];
+
+function echoCUr($name)
+{
+    global $activePage;
+    if( is_array($name)){
+        if(   in_array($activePage,$name)){
+            echo 'cur';
+        }
+    }else{
+        if(strstr($activePage, $name)){
+            echo 'cur';
+        }
+    }
+
+}
+
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,6 +94,7 @@
         /*.aside span{display:block;text-indent:55px;}*/
 
         .aside-body{display:none;}
+        .aside-body.cur{display:block;}
         .aside-body a{display:block;width:100%;line-height:41px;text-indent:55px;color:#9ca3ac;background:#353b45;}
         .aside-body a:hover{color:#fff;background:#777f89;}
         .aside-body a.cur{color:#fff;background:#777f89;}
@@ -105,64 +131,50 @@
     <div class="header-rt header-msg "><a href="#"><div class="num">6</div></a></div>
 </div>
 
-<?php
-$scrpit_name = $_SERVER['SCRIPT_NAME'];
-echo $scrpit_name;
-$arr = explode('/', $scrpit_name);
-$activePage =  end($arr);
-$filename = explode('.', $activePage);
-$activePage = $filename[0];
 
-//function in_array_c($str, $arr) {
-//    foreach ($arr as $value) {
-//        if (strstr($str, $value)) return true;
-//    }
-//    return false;
-//}
-?>
 
 <div class="aside">
     <div class="aside-con">
         <p class="aside-head"><i class="iconfont icon-shouye"></i>首页</p>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>样式</p>
-        <div class="aside-body" <?php if(in_array($activePage, array('base', 'text','button','tip','from','progress')))echo 'style="display:block"'; ?>>
-            <a href="base.php" class="<?php if(strstr($activePage, 'base'))echo 'cur' ?>">基础css</a>
-            <a href="text.php" class="<?php if(strstr($activePage, 'text'))echo 'cur' ?>">文字</a>
-            <a href="button.php" class="<?php if(strstr($activePage, 'button'))echo 'cur' ?>">按钮</a>
-            <a href="tip.php" class="<?php if(strstr($activePage, 'tip'))echo 'cur' ?>">提示</a>
-            <a href="from.php" class="<?php if(strstr($activePage, 'from'))echo 'cur' ?>">表单元素</a>
-            <a href="progress.php" class="<?php if(strstr($activePage, 'progress'))echo 'cur' ?>">进度条</a>
+        <div class="aside-body" <?php echoCUr(array('base', 'text','button','tip','from','progress')); ?>>
+            <a href="base.php" class="<?php echoCUr('base'); ?>">基础css</a>
+            <a href="text.php" class="<?php echoCUr('text'); ?>">文字</a>
+            <a href="button.php" class="<?php echoCUr('button') ?>">按钮</a>
+            <a href="tip.php" class="<?php echoCUr('tip') ?>">提示</a>
+            <a href="from.php" class="<?php echoCUr('from') ?>">表单元素</a>
+            <a href="progress.php" class="<?php echoCUr('progress') ?>">进度条</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>结构</p>
-        <div class="aside-body" <?php if(in_array($activePage, array('header', 'asdie','nav','tab','panel','title')))echo 'style="display:block"'; ?>>
-            <a href="header.php" class="<?php if(strstr($activePage, 'header'))echo 'cur' ?>">header</a>
-            <a href="asdie.php" class="<?php if(strstr($activePage, 'asdie'))echo 'cur' ?>">侧边栏</a>
-            <a href="nav.php" class="<?php if(strstr($activePage, 'nav'))echo 'cur' ?>">导航</a>
-            <a href="tab.php" class="<?php if(strstr($activePage, 'tab'))echo 'cur' ?>">标签页</a>
-            <a href="panel.php" class="<?php if(strstr($activePage, 'panel'))echo 'cur' ?>">面板</a>
-            <a href="title.php" class="<?php if(strstr($activePage, 'title'))echo 'cur' ?>">标题</a>
+        <div class="aside-body" <?php echoCUr(array('header', 'asdie','nav','tab','panel','title')) ?>>
+            <a href="header.php" class="<?php echoCUr('header') ?>">header</a>
+            <a href="asdie.php" class="<?php echoCUr('asdie') ?>">侧边栏</a>
+            <a href="nav.php" class="<?php echoCUr('nav') ?>">导航</a>
+            <a href="tab.php" class="<?php echoCUr('tab') ?>">标签页</a>
+            <a href="panel.php" class="<?php echoCUr('panel') ?>">面板</a>
+            <a href="title.php" class="<?php echoCUr('title') ?>">标题</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>插件</p>
-        <div class="aside-body" <?php if(in_array($activePage, array('loading', 'imgview','tree','pop','table','table')))echo 'style="display:block"'; ?>>
-            <a href="loading.php" class="<?php if(strstr($activePage, 'loading'))echo 'cur' ?>">载入、等待</a>
-            <a href="imgview.php" class="<?php if(strstr($activePage, 'imgview'))echo 'cur' ?>" >图片</a>
-            <a href="tree.php" class="<?php if(strstr($activePage, 'tree'))echo 'cur' ?>" >树</a>
-            <a href="pop.php" class="<?php if(strstr($activePage, 'pop'))echo 'cur' ?>" >弹窗</a>
-            <a href="table.php" class="<?php if(strstr($activePage, 'table'))echo 'cur' ?>" >表格</a>
-            <a href="table.php" class="<?php if(strstr($activePage, 'table'))echo 'cur' ?>" >文件上传</a>
+        <div class="aside-body" <?php echoCUr(array('loading', 'imgview','tree','pop','table','table')) ?>>
+            <a href="loading.php" class="<?php echoCUr('loading') ?>">载入、等待</a>
+            <a href="imgview.php" class="<?php echoCUr('imgview') ?>" >图片</a>
+            <a href="tree.php" class="<?php echoCUr('tree') ?>" >树</a>
+            <a href="pop.php" class="<?php echoCUr('pop') ?>" >弹窗</a>
+            <a href="table.php" class="<?php echoCUr('table') ?>" >表格</a>
+            <a href="table.php" class="<?php echoCUr('table') ?>" >文件上传</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>函数</p>
-        <div class="aside-body" <?php if(in_array($activePage, array('format', 'console')))echo 'style="display:block"'; ?>>
-            <a href="format.php" class="<?php if(strstr($activePage, 'format'))echo 'cur' ?>" >格式化</a>
-            <a href="console.php" class="<?php if(strstr($activePage, 'console'))echo 'cur' ?>" >页面控制台</a>
+        <div class="aside-body" <?php echoCUr(array('format', 'console')); ?>>
+            <a href="format.php" class="<?php echoCUr('format') ?>" >格式化</a>
+            <a href="console.php" class="<?php echoCUr('console') ?>" >页面控制台</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>封装</p>
-        <div class="aside-body" <?php if(in_array($activePage, array('map', 'icon','ajax','chart','time')))echo 'style="display:block"'; ?>>
-            <a href="map.php" class="<?php if(strstr($activePage, 'map'))echo 'cur' ?>" >地图</a>
-            <a href="icon.php" class="<?php if(strstr($activePage, 'icon'))echo 'cur' ?>" >图标</a>
-            <a href="ajax.php" class="<?php if(strstr($activePage, 'ajax'))echo 'cur' ?>" >Ajax</a>
-            <a href="chart.php" class="<?php if(strstr($activePage, 'chart'))echo 'cur' ?>" >图表</a>
-            <a href="time.php" class="<?php if(strstr($activePage, 'time'))echo 'cur' ?>" >时间选择器</a>
+        <div class="aside-body" <?php echoCUr(array('map', 'icon','ajax','chart','time')) ?>>
+            <a href="map.php" class="<?php echoCUr('map') ?>" >地图</a>
+            <a href="icon.php" class="<?php echoCUr('icon') ?>" >图标</a>
+            <a href="ajax.php" class="<?php echoCUr('ajax') ?>" >Ajax</a>
+            <a href="chart.php" class="<?php echoCUr('chart') ?>" >图表</a>
+            <a href="time.php" class="<?php echoCUr('time') ?>" >时间选择器</a>
         </div>
 
 
