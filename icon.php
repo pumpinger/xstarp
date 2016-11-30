@@ -33,9 +33,20 @@ include "layout_header.php";
 
 
         <p>库：</p>
-        <i class="iconfont icon-yangshengqi"></i>
-        <i class="iconfont icon-tishi"></i>
-        <i class="iconfont icon-jianqie"></i>
+            <ul>
+                    <li>
+                            <i class="iconfont icon-yangshengqi"></i>
+                            <span>icon-yangshengqi</span>
+                    </li>
+                    <li>
+                            <i class="iconfont icon-tishi"></i>
+                            <span>icon-tishi</span>
+                    </li>
+                    <li>
+                            <i class="iconfont icon-jianqie"></i>
+                            <span>icon-jianqie</span>
+                    </li>
+            </ul>
         <i class="iconfont icon-bianjiwenjian"></i>
         <i class="iconfont icon-dengdaiwenjian"></i>
         <i class="iconfont icon-shanchuwenjian"></i>
