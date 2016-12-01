@@ -280,7 +280,7 @@
             'height':'19px',
             'margin':'10px',
             'cursor':'pointer',
-            'background':'url("./src/img/imgView/square.png") no-repeat'
+            'background':'url("./dest/img/square.png") no-repeat'
         });
 
         ctrl_magnify=$('<span>').appendTo(view_ctrl);
@@ -290,7 +290,7 @@
             'height':'20px',
             'margin':'10px',
             'cursor':'pointer',
-            'background':'url("./src/img/imgView/enlarge.png") no-repeat'
+            'background':'url("./dest/img/enlarge.png") no-repeat'
         });
 
         ctrl_shrink=$('<span>').appendTo(view_ctrl);
@@ -300,7 +300,7 @@
             'height':'20px',
             'margin':'10px',
             'cursor':'pointer',
-            'background':'url("./src/img/imgView/narrow.png") no-repeat'
+            'background':'url("./dest/img/narrow.png") no-repeat'
         });
 
         ctrl_rotate=$('<span>').appendTo(view_ctrl);
@@ -310,7 +310,7 @@
             'height':'20px',
             'margin':'10px',
             'cursor':'pointer',
-            'background':'url("./src/img/imgView/Refresh_1.png") no-repeat'
+            'background':'url("./dest/img/Refresh_1.png") no-repeat'
         });
 
 
@@ -323,7 +323,7 @@
             'left':'1%',
             'top':'48%',
             'cursor':'pointer',
-            'background':'url("./src/img/imgView/Left.png") no-repeat'
+            'background':'url("./dest/img/Left.png") no-repeat'
         });
 
         ctrl_right=$('<span>').appendTo(view);
@@ -335,7 +335,7 @@
             'cursor':'pointer',
             'right':'1%',
             'top':'48%',
-            'background':'url("./src/img/imgView/right.png") no-repeat'
+            'background':'url("./dest/img/right.png") no-repeat'
         });
 
         ctrl_close=$('<span>').appendTo(dialog);
@@ -347,7 +347,7 @@
             'cursor':'pointer',
             'right':'-14px',
             'top':'0',
-            'background':'url("./src/img/imgView/close_1.png") no-repeat'
+            'background':'url("./dest/img/close_1.png") no-repeat'
         });
 
         loading=$('<img>').appendTo(view);
@@ -358,7 +358,7 @@
             'margin-left':'-30px',
             'display':'none'
         });
-        loading.prop('src','./src/img/imgView/load.gif');
+        loading.prop('src','./dest/img/load.gif');
 
 
     }

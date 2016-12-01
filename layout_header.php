@@ -42,6 +42,7 @@ function echoCUr($name)
     <link rel="stylesheet" href="lib/prism/prism.css"/>
 
 
+    <script type="text/javascript" src="dest/js/xstarp.js"></script>
 
     <style>
         /*@charset "UTF-8";*/

@@ -49,7 +49,6 @@
 
     var searchTimer;//应该是this的属性
 
-
     $.fn.extend({
         tree:function(opt){
             return new tree(opt,$(this));
