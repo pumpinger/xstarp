@@ -157,9 +157,6 @@ include "layout_header.php";
     </div>
 </div>
 
-<script type="text/javascript" src="src/js/tree.js"></script>
-
-
 
 <script>
 

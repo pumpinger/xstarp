@@ -195,7 +195,6 @@ include "layout_footer.php";
 ?>
 
 
-<script type="text/javascript" src="src/js/imgview.js"></script>
 
 <script>
 

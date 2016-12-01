@@ -27,5 +27,7 @@
     });
 </script>
 <script type="text/javascript" src="lib/prism/prism.js"></script>
+<script type="text/javascript" src="dest/js/xstarp.js"></script>
+
 </body>
 </html>

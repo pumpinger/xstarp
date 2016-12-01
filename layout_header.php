@@ -36,17 +36,11 @@ function echoCUr($name)
     <script type="text/javascript" src="dest/lib/jquery-2.1.4.js"></script>
 
 
-    <link rel="stylesheet" href="dest/css/init.css"/>
     <link rel="stylesheet" href="dest/lib/iconfont/iconfont.css"/>
-    <link rel="stylesheet" href="dest/css/spriter.css"/>
-
-    <link rel="stylesheet" href="dest/css/global.css"/>
-
-
+    <link rel="stylesheet" href="dest/css/xstarp.css"/>
 
     <link rel="stylesheet" href="lib/prism/prism.css"/>
-    
-    
+
 
 
     <style>
