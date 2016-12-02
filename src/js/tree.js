@@ -11,11 +11,22 @@
  *
  *
  *
+ *
+ *
  * 备注：
- * 1这里html的input显示的时候根据data决定是否check，
- * 2每次的点击input产生的变化是html变了，然后data也变。
+ * 1.这里html的input显示的时候根据data决定是否check，
+ * 2.每次的点击input产生的变化是html变了，然后data也变。
  * 1，2导致容易出错
  * 但我觉得应该是根据操作data数据发生变化，变化完毕，统一一个方法决定html结构的变化，不过效率不一定更高
+ *
+ *
+ * 思路:
+ * 1.node的id和child的id可以重复,因为实际场景可能是两种数据比如,部门和人员.对于省份和城市可能本身就不会重复
+ * 2.选择数据,用户需要的结果是:1.所有child.2.node+child
+ * 3.is_trigger如果是true,是为input框设计的,会去读取input框的宽度作为自身的宽度
+ *
+ *
+ *
  *
  */
 ;(function ($) {
@@ -27,7 +38,7 @@
         only_child:true,//是否结果只要 child
         node_merge:true,//是否需要合并结果
         zIndex:1,
-        choose:false,  //哪些是选中的？优先级高于data
+        choose:false,  //哪些是选中的？优先级高于data  {nodeId:[1,2,3],id:[1,2,3]}
         is_node_first:false,//是否需要节点排在前面  否则按照data的顺序
         is_multi:true,//是否多选
         expand:false, //是否展开，false、true、num
@@ -39,7 +50,6 @@
         onOpen: function () {}, //触发时
         onBeforeOpen: function () {},
         onClose: function (has_chg) {
-            console.log('是否产生变化：'+has_chg);
         },
         onCheck: function (item,dom,childrenItem) {},
         onCancel: function (item,dom,childrenItem) {}
@@ -49,16 +59,14 @@
 
     var searchTimer;//应该是this的属性
 
-    $.fn.extend({
-        tree:function(opt){
-            return new tree(opt,$(this));
-        }
-    });
+    window.xTree=function(opt){
+        return new tree(opt);
+    };
 
 
-    var tree=function(opt,dom){
+    var tree=function(opt){
         this.opt = $.extend(true,{},defOpt,opt);
-        this._init(dom);
+        this._init(opt.dom);
         return this;  //这里只想暴漏 方法 怎么办？
     };
 
@@ -66,6 +74,8 @@
 
 
     tree.prototype={
+        _is_open:false,
+        _originId:false,
         _init:function(dom){
             this.dom = dom;
 
@@ -77,7 +87,6 @@
             }
 
             this.html=this._makePanel();
-
 
 
             this.opt.onInit();
@@ -121,6 +130,7 @@
                 $(document).on('click.treejs', function () {
                     that.end();
                 });
+
             }
         },
 
@@ -143,6 +153,10 @@
                 this.html.hide();
                 this.dom.val(this.getName());
                 var ids=this.getId();
+
+                console.log(ids);
+                console.log(this._originId);
+
                 this._is_open=false;
                 this.opt.onClose(!(ids==this._originId));
                 this._originId=ids;
@@ -347,10 +361,8 @@
 
 
         /**
-         *      内部方法
+         *      视图方法
          */
-
-
 
         _showPanel:function(){
             if(this.opt.is_trigger){
@@ -430,6 +442,112 @@
             this.html.find('div[node-id="'+layer+'"]>div').remove();
             this.html.find('div[node-id="'+layer+'"] span:first').html(makeExpand());
 
+        },
+
+
+
+
+        /**
+         *      数据方法
+         */
+        _getLayerData:function (parent){
+            var res=[];
+            for(var i in this.data){
+                if(this.data[i].nodeId==parent){
+//                if(data[i].is_node){
+//                    res.unshift(data[i])
+//                }else{
+//                    res.push(data[i]);
+//                }
+
+                    res.push(this.data[i]);  //原序
+                }
+            }
+            return res;
+        },
+
+        _chgItem:function(item,dom){
+
+            if(this.opt.is_multi){
+                if(item.is_node){
+                    dom.parent().find('input').prop('checked',item.is_check);
+                    this._chgAllChildren(item.id,item.is_check);
+                }
+
+                if(!item.is_check){
+                    this._cancelParentNode(item.nodeId);
+                }else{
+                    this._checkParentNode(item.nodeId);
+                }
+            }else{
+//                    this.html.find('input').prop("checked",false);
+//                    $(this).prop('checked',true);
+            }
+
+
+            //todo  childArr 没有 考虑  onlychildren
+            var  childArr=[];
+            this._getChild(item,childArr);
+
+
+
+            if(!item.is_check){
+                this.opt.onCancel(item,dom,childArr);
+
+            }else{
+                this.opt.onCheck(item,dom,childArr);
+
+            }
+
+
+        },
+        _getChild:function (node,cont) {
+            var that=this;
+            $.each(that.data,function(i,n){
+                if(n.nodeId ==node.id ){
+                    cont.push(n);
+                    if(n.is_node){
+                        that._getChild(n,cont);
+                    }
+                }
+            })
+        },
+        _cancelParentNode:function(id){
+            var obj=this;
+            $.each(obj.data,function(i,n){
+                if(n.id ==id && n.is_node && n.is_check){
+                    n.is_check=false;
+                    obj.html.find('input[data-isNode="1"][data-id="'+id+'"]').prop('checked',false);
+                    obj._cancelParentNode(n.nodeId);
+                }
+            })
+        },
+        _checkParentNode:function(id){
+            var obj=this;
+            var allChildrenChecked = true;
+            $.each(obj.data,function(i,n){
+                if(n.nodeId==id && !n.is_check){
+                    allChildrenChecked = false;
+                }
+            });
+            $.each(obj.data,function(i,n){
+                if(n.id == id && n.is_node && !n.is_check && allChildrenChecked){
+                    n.is_check=true;
+                    obj.html.find('input[data-isNode="1"][data-id="'+id+'"]').prop('checked',true);
+                    obj._checkParentNode(n.nodeId);
+                }
+            });
+        },
+        _chgAllChildren:function(nodeid,bol){
+            var obj=this;
+            $.each($.extend(true,[], this.data),function(i,n){   //这句话 看起来 好像 不用 extend
+                if(n.nodeId == nodeid){
+                    obj.data[i].is_check=bol;
+                    if(n.is_node){
+                        obj._chgAllChildren(n.id,bol);
+                    }
+                }
+            });
         },
 
 
@@ -568,113 +686,9 @@
             });
 
             return $html;
-        },
-
-
-        /**
-         *      选择事件方法
-         */
-
-
-        _getLayerData:function (parent){
-            var res=[];
-            for(var i in this.data){
-                if(this.data[i].nodeId==parent){
-//                if(data[i].is_node){
-//                    res.unshift(data[i])
-//                }else{
-//                    res.push(data[i]);
-//                }
-
-                    res.push(this.data[i]);  //原序
-                }
-            }
-            return res;
-        },
-
-        _chgItem:function(item,dom){
-
-            if(this.opt.is_multi){
-                if(item.is_node){
-                    dom.parent().find('input').prop('checked',item.is_check);
-                    this._chgAllChildren(item.id,item.is_check);
-                }
-
-                if(!item.is_check){
-                    this._cancelParentNode(item.nodeId);
-                }else{
-                    this._checkParentNode(item.nodeId);
-                }
-            }else{
-//                    this.html.find('input').prop("checked",false);
-//                    $(this).prop('checked',true);
-            }
-
-
-            //todo  childArr 没有 考虑  onlychildren
-            var  childArr=[];
-            this._getChild(item,childArr);
-
-
-
-            if(!item.is_check){
-                this.opt.onCancel(item,dom,childArr);
-
-            }else{
-                this.opt.onCheck(item,dom,childArr);
-
-            }
-
-
-        },
-        _getChild:function (node,cont) {
-            var that=this;
-            $.each(that.data,function(i,n){
-                if(n.nodeId ==node.id ){
-                    cont.push(n);
-                    if(n.is_node){
-                        that._getChild(n,cont);
-                    }
-                }
-            })
-        },
-        _cancelParentNode:function(id){
-            var obj=this;
-            $.each(obj.data,function(i,n){
-                if(n.id ==id && n.is_node && n.is_check){
-                    n.is_check=false;
-                    obj.html.find('input[data-isNode="1"][data-id="'+id+'"]').prop('checked',false);
-                    obj._cancelParentNode(n.nodeId);
-                }
-            })
-        },
-        _checkParentNode:function(id){
-            var obj=this;
-            var allChildrenChecked = true;
-            $.each(obj.data,function(i,n){
-                if(n.nodeId==id && !n.is_check){
-                    allChildrenChecked = false;
-                }
-            });
-            $.each(obj.data,function(i,n){
-                if(n.id == id && n.is_node && !n.is_check && allChildrenChecked){
-                    n.is_check=true;
-                    obj.html.find('input[data-isNode="1"][data-id="'+id+'"]').prop('checked',true);
-                    obj._checkParentNode(n.nodeId);
-                }
-            });
-        },
-        _chgAllChildren:function(nodeid,bol){
-            var obj=this;
-            $.each($.extend(true,[], this.data),function(i,n){   //这句话 看起来 好像 不用 extend
-                if(n.nodeId == nodeid){
-                    obj.data[i].is_check=bol;
-                    if(n.is_node){
-                        obj._chgAllChildren(n.id,bol);
-                    }
-                }
-            });
         }
+
+
     };
 
 

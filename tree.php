@@ -10,6 +10,44 @@ include "layout_header.php";
 
 ?>
 
+<script type="text/javascript" src="src/js/tree.js"></script>
+<input class="test_tree" placeholder="">
+
+
+<script>
+    var testTree=xTree({
+        dom:$('.test_tree'),
+        only_child:false,
+        is_multi:true,
+        has_search:false,
+        expand:3,
+        data:[
+            {id:1,name:'行政部',nodeId:0,is_node:true,is_check:false},
+            {id:3,name:'财务部',nodeId:1,is_node:true,is_check:false},
+            {id:8,name:'财务部2',nodeId:3,is_node:true,is_check:false},
+            {id:5,name:'李职员',nodeId:8,is_node:false,is_check:false},
+            {id:6,name:'孙职员',nodeId:8,is_node:false,is_check:false},
+            {id:2,name:'张部长',nodeId:1,is_node:false,is_check:false},
+            {id:4,name:'刘职员',nodeId:3,is_node:false,is_check:false},
+            {id:1,name:'王经理',nodeId:0,is_node:false,is_check:false}
+        ],
+        //        choose:{
+        //            nodeId:[1],
+        //            id:[1]
+        //        },
+        onInit: function (name,ids,item) {
+            //this.dom.val(name);
+        },
+        onOpen: function () {
+        },
+        onBeforeOpen: function () {
+        },
+        onClose: function (hasChange) {
+        }
+    });
+</script>
+
+
 
 
 <div class="x-panel">
