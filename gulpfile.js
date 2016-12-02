@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 // gulp.task('spritercss', function () {
 //     var timestamp = +new Date();
 //     //需要自动合并雪碧图的样式文件
-//     return gulp.src('./src/css/spriter.css')
+//     return gulp.src('./src/css/spriter.css')min
 //         .pipe(spriter({
 //             // 生成的spriter的位置
 //             'spriteSheet': './dest/img/sprite.png',
