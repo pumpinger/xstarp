@@ -107,7 +107,14 @@ $fontSizeUnit: px;
 //结构-标题
 .x-title {font-size: 20px;border-bottom: 1px solid $borderColorLight;width: 100%;display: inline-block;}
 
-
+//图片
+.x-img-recover{background:url("../img/square.png") no-repeat}
+.x-img-magnify{background:url("../img/enlarge.png") no-repeat}
+.x-img-shrink{background:url("../img/narrow.png") no-repeat}
+.x-img-rotate{background:url("../img/Refresh_1.png") no-repeat}
+.x-img-left{background:url("../img/Left.png") no-repeat}
+.x-img-right{background:url("../img/right.png") no-repeat}
+.x-img-close{background:url("../img/close_1.png") no-repeat}
 
 
 

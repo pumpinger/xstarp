@@ -690,7 +690,7 @@
 
     function makeExpand(){
         var html='<span data-icon="expand">＋</span>';
-        //var html='<i class="iconfont icon-plus"></i>';
+        // var html='<i class="iconfont icon-plus"></i>';
 
         return $(html).css({
             'font-size':'16px',
