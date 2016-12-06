@@ -153,7 +153,7 @@ function echoCUr($name)
             <a href="tree.php" class="<?php echoCUr('tree') ?>" >树</a>
             <a href="pop.php" class="<?php echoCUr('pop') ?>" >弹窗</a>
             <a href="table.php" class="<?php echoCUr('table') ?>" >表格</a>
-            <a href="table.php" class="<?php echoCUr('table') ?>" >文件上传</a>
+            <a href="upload.php" class="<?php echoCUr('table') ?>" >文件上传</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>函数</p>
         <div class="aside-body <?php echoCUr(array('format', 'console')); ?>">

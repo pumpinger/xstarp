@@ -117,6 +117,15 @@ $fontSizeUnit: px;
 .x-tab-content{display:none;}
 .x-tab-content.active{display:block;}
 
+//样式-表单元素
+.x-form .x-form-title {font-weight: bolder;color: #000;}
+.x-form .x-form-base,.x-form-other{border: 1px solid #ccc;    padding:20px;}
+.x-form .x-form-other{margin-top: 20px;}
+.x-form .x-form-base input{    border-radius: 3px; border: 1px solid #ccc; height: 25px;}
+.x-form .x-form-item{margin-top: 20px;}
+.x-form .x-form-submit .submit{padding: 3px 10px;margin-bottom: 20px;}
+.x-form .x-form-item .sex input{height: 13px;margin-left: 10px;}
+
 //插件-图片操作图标
 .x-imgView-recover{background:url("../img/square.png") no-repeat}
 .x-imgView-magnify{background:url("../img/enlarge.png") no-repeat}
