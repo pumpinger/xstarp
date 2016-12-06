@@ -273,17 +273,16 @@
         });
 
 
-        ctrl_recover=$('<span class="x-img-recover">').appendTo(view_ctrl);
+        ctrl_recover=$('<span class="x-imgView-recover">').appendTo(view_ctrl);
         ctrl_recover.css({
             'display':'inline-block',
             'width':'22px',
             'height':'19px',
             'margin':'10px',
-            'cursor':'pointer',
-            // 'background':'url("./dest/img/square.png") no-repeat'
+            'cursor':'pointer'
         });
 
-        ctrl_magnify=$('<span class="x-img-magnify">').appendTo(view_ctrl);
+        ctrl_magnify=$('<span class="x-imgView-magnify">').appendTo(view_ctrl);
         ctrl_magnify.css({
             'display':'inline-block',
             'width':'22px',
@@ -292,7 +291,7 @@
             'cursor':'pointer'
         });
 
-        ctrl_shrink=$('<span class="x-img-shrink">').appendTo(view_ctrl);
+        ctrl_shrink=$('<span class="x-imgView-shrink">').appendTo(view_ctrl);
         ctrl_shrink.css({
             'display':'inline-block',
             'width':'21px',
@@ -301,7 +300,7 @@
             'cursor':'pointer'
         });
 
-        ctrl_rotate=$('<span class="x-img-rotate">').appendTo(view_ctrl);
+        ctrl_rotate=$('<span class="x-imgView-rotate">').appendTo(view_ctrl);
         ctrl_rotate.css({
             'display':'inline-block',
             'width':'20px',
@@ -311,7 +310,7 @@
         });
 
 
-        ctrl_left=$('<span class="x-img-left">').appendTo(view);
+        ctrl_left=$('<span class="x-imgView-left">').appendTo(view);
         ctrl_left.css({
             'display':'inline-block',
             'position':'absolute',
@@ -322,7 +321,7 @@
             'cursor':'pointer'
         });
 
-        ctrl_right=$('<span class="x-img-right">').appendTo(view);
+        ctrl_right=$('<span class="x-imgView-right">').appendTo(view);
         ctrl_right.css({
             'display':'inline-block',
             'position':'absolute',
@@ -333,7 +332,7 @@
             'top':'48%'
         });
 
-        ctrl_close=$('<span class="x-img-close">').appendTo(dialog);
+        ctrl_close=$('<span class="x-imgView-close">').appendTo(dialog);
         ctrl_close.css({
             'display':'inline-block',
             'position':'absolute',
