@@ -101,7 +101,6 @@ function echoCUr($name)
     </style>
 
 
-
 </head>
 <body>
 <div class="header">
@@ -126,13 +125,11 @@ function echoCUr($name)
     <div class="header-rt header-msg "><a href="#"><div class="num">6</div></a></div>
 </div>
 
-
-
 <div class="aside">
     <div class="aside-con">
         <p class="aside-head"><i class="iconfont icon-shouye"></i>首页</p>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>样式</p>
-        <div class="aside-body" <?php echoCUr(array('base', 'text','button','tip','from','progress')); ?>>
+        <div class="aside-body <?php echoCUr(array('base', 'text','button','tip','from','progress')); ?>">
             <a href="base.php" class="<?php echoCUr('base'); ?>">基础css</a>
             <a href="text.php" class="<?php echoCUr('text'); ?>">文字</a>
             <a href="button.php" class="<?php echoCUr('button') ?>">按钮</a>
@@ -141,7 +138,7 @@ function echoCUr($name)
             <a href="progress.php" class="<?php echoCUr('progress') ?>">进度条</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>结构</p>
-        <div class="aside-body" <?php echoCUr(array('header', 'asdie','nav','tab','panel','title')) ?>>
+        <div class="aside-body <?php echoCUr(array('header', 'asdie','nav','tab','panel','title')) ?>">
             <a href="header.php" class="<?php echoCUr('header') ?>">header</a>
             <a href="asdie.php" class="<?php echoCUr('asdie') ?>">侧边栏</a>
             <a href="nav.php" class="<?php echoCUr('nav') ?>">导航</a>
@@ -159,12 +156,12 @@ function echoCUr($name)
             <a href="table.php" class="<?php echoCUr('table') ?>" >文件上传</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>函数</p>
-        <div class="aside-body" <?php echoCUr(array('format', 'console')); ?>>
+        <div class="aside-body <?php echoCUr(array('format', 'console')); ?>">
             <a href="format.php" class="<?php echoCUr('format') ?>" >格式化</a>
             <a href="console.php" class="<?php echoCUr('console') ?>" >页面控制台</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>封装</p>
-        <div class="aside-body" <?php echoCUr(array('map', 'icon','ajax','chart','time')) ?>>
+        <div class="aside-body <?php echoCUr(array('map', 'icon','ajax','chart','time')) ?>">
             <a href="map.php" class="<?php echoCUr('map') ?>" >地图</a>
             <a href="icon.php" class="<?php echoCUr('icon') ?>" >图标</a>
             <a href="ajax.php" class="<?php echoCUr('ajax') ?>" >Ajax</a>
