@@ -75,24 +75,24 @@ include "layout_header.php";
                 <div class="x-form-base">
                     <div class="x-form-title">基本信息：</div>
                     <div class="x-form-item">
-                        <span class="form_key">用户： </span>
-                        <span class="form_value"><input type="text" name="userName"/></span>
+                        <span class="x-form_key">用户： </span>
+                        <span class="x-form_value"><input type="text" name="userName"/></span>
                     </div>
 
                     <div  class="x-form-item">
-                        <span class="form_key">电话：</span>
-                        <span class="form_value"><input type="text" name="phone"/></span>
+                        <span class="x-form_key">电话：</span>
+                        <span class="x-form_value"><input type="text" name="phone"/></span>
                     </div>
                     <div class="x-form-item">
-                        <span class="form_key">性别：</span>
-                        <span class="form_value">
-                            <label class="sex"><input name="sex" type="radio" value="1" checked="checked">男</label>
-                            <label class="sex"><input name="sex" type="radio" value="2">女</label>
+                        <span class="x-form_key">性别：</span>
+                        <span class="x-form_value">
+                            <label class="x-sex"><input name="sex" type="radio" value="1" checked="checked">男</label>
+                            <label class="x-sex"><input name="sex" type="radio" value="2">女</label>
                         </span>
                     </div>
                     <div  class="x-form-item">
-                        <span class="form_key">头像：</span>
-                        <span class="form_value">
+                        <span class="x-form_key">头像：</span>
+                        <span class="x-form_value">
                             <label for="file"></label>
                             <input type="file" name="file" id="file" />
                         </span>
@@ -105,7 +105,7 @@ include "layout_header.php";
                     </div>
                 </div>
                 <div  class="x-form-submit x-form-item">
-                    <input type="submit" name="submit" value="提交" class="submit" />
+                    <input type="submit" name="submit" value="提交" class="x-submit" />
                 </div>
 
             </form>
