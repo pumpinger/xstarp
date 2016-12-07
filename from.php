@@ -11,7 +11,7 @@ include "layout_header.php";
 ?>
 
 <style>
-    .x-form-item .x-sex input{height: 13px;margin-left: 10px;}
+    .x-form-item .sex input{height: 13px;margin-left: 10px;}
 
 </style>
 
