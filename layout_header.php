@@ -129,12 +129,12 @@ function echoCUr($name)
     <div class="aside-con">
         <p class="aside-head"><i class="iconfont icon-shouye"></i>首页</p>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>样式</p>
-        <div class="aside-body <?php echoCUr(array('base', 'text','button','tip','form','progress')); ?>">
+        <div class="aside-body <?php echoCUr(array('base', 'text','button','tip','from','progress')); ?>">
             <a href="base.php" class="<?php echoCUr('base'); ?>">基础css</a>
             <a href="text.php" class="<?php echoCUr('text'); ?>">文字</a>
             <a href="button.php" class="<?php echoCUr('button') ?>">按钮</a>
             <a href="tip.php" class="<?php echoCUr('tip') ?>">提示</a>
-            <a href="form.php" class="<?php echoCUr('form') ?>">表单元素</a>
+            <a href="from.php" class="<?php echoCUr('from') ?>">表单元素</a>
             <a href="progress.php" class="<?php echoCUr('progress') ?>">进度条</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>结构</p>
