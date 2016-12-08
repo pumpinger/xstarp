@@ -7,7 +7,7 @@ $fontColorLight:#fff;
 $borderColorDeep:#666;
 $borderColorLight:#ddd;
 $bgColorDeep:#ccc;
-$bgColorLight:#fff;
+$bgColorLight:#f4f4f4;
 
 
 $radiusLevel:8px;
@@ -88,6 +88,10 @@ $fontSizeUnit: px;
   .x-button-#{$key} {background-color:$value;border: 2px solid darken($value,10%);color:set-notification-text-color($value);}
 }
 
+@each $key, $value in $colors {
+  .x-button-#{$key}:hover{background-color:darken($value,20%);border: 2px solid darken($value,20%);color:set-notification-text-color($value);}
+}
+
 //结构-面板
 .x-panel {
   border: 1px solid $borderColorDeep;
@@ -112,10 +116,19 @@ $fontSizeUnit: px;
 .x-tab-nav{border-bottom:1px solid #ddd;}
 .x-tab-nav li{display:inline-block;margin-bottom:-1px;}
 .x-tab-nav li a{display:block;padding:5px 10px;color:#333;}
-.x-tab-nav li.active a{color:#026b9c;background:$bgColorLight;border-radius:5px 5px 0 0;border:1px solid $borderColorLight;border-bottom-color:transparent;}
+.x-tab-nav li.active a{color:#026b9c;background:#fff;border-radius:5px 5px 0 0;border:1px solid $borderColorLight;border-bottom-color:transparent;}
 .x-tab-contents{padding:10px;border-bottom:1px solid $borderColorLight;}
 .x-tab-content{display:none;}
 .x-tab-content.active{display:block;}
+
+
+//结构-导航
+.x-nav{width:180px;color:$fontColorLight}
+.x-nav-head{display:block;height:45px;line-height:45px;padding-left:10px;font-size:16px;background:#444d58;}
+.x-nav-body{display:none;}
+.x-nav-body a{display:block;height:35px;line-height:35px;padding-left:10px;background:#353b45;color:#9ca3ac;font-size:#{$baseFontSize}$fontSizeUnit;cursor:pointer;}
+.x-nav-body a:hover{background:#777f89;color:$fontColorLight;}
+
 
 //样式-表单元素
 .x-form-title {font-weight: bolder;color: #000;}
@@ -126,6 +139,7 @@ $fontSizeUnit: px;
 .x-form-submit{padding: 3px 10px;margin-bottom: 20px;}
 
 
+
 //插件-图片操作图标
 .x-imgView-recover{background:url("../img/square.png") no-repeat}
 .x-imgView-magnify{background:url("../img/enlarge.png") no-repeat}
@@ -134,6 +148,19 @@ $fontSizeUnit: px;
 .x-imgView-left{background:url("../img/Left.png") no-repeat}
 .x-imgView-right{background:url("../img/right.png") no-repeat}
 .x-imgView-close{background:url("../img/close_1.png") no-repeat}
+
+//插件-表格
+.x-table{width:100%;border-collapse: collapse;margin:20px 0;}
+.x-table-thead{background:$bgColorLight;}
+.x-table-thead th,.x-table-tbody td{height:36px;border:1px solid $borderColorLight;font-size:#{$baseFontSize}$fontSizeUnit;}
+.x-table-even .x-table-tbody:nth-child(even) > td{background:$bgColorLight;}
+.x-table-hover .x-table-tbody:hover{background: $bgColorLight;}
+
+
+//封装-图标
+.x-icon-list{padding:10px;}
+.x-icon-list li{display:inline-block;vertical-align:top;width:80px;height:100px;padding:10px 0;text-align:center;background:#f9f9f9;}
+.x-icon-list li i,.x-icon-list li span{display:block;}
 
 //成套css
 @mixin opacity($opacity:50) {
