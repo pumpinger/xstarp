@@ -13,6 +13,7 @@ include "layout_header.php";
 <style>
     .x-form-item .sex input{height: 13px;margin-left: 10px;}
 
+    .avatar input{padding: 0;}
 </style>
 
 <div class="x-panel">
@@ -57,9 +58,9 @@ include "layout_header.php";
                        其他：  其他相关设置
                    </div>
                </div>
-               <div  class="x-form-submit x-form-item">
+               <div  class="x-form-item">
 
-                   <input type="submit" name="submit" value="提交" class="x-submit" />
+                   <input type="submit" name="submit" value="提交" class="x-form-submit" />
 
                </div>
            </div>
@@ -92,9 +93,9 @@ include "layout_header.php";
 
                     <div  class="x-form-item">
                         <span class="x-form-key">头像：</span>
-                       <span class="x-form-value">
+                       <span class="x-form-value avatar">
                            <label for="file"></label>
-                           <input type="file" name="file" id="file" />
+                           <input type="file"   name="file" id="file" />
                        </span>
                     </div>
                 </div>
@@ -104,9 +105,9 @@ include "layout_header.php";
                         其他：  其他相关设置
                     </div>
                 </div>
-                <div  class="x-form-submit x-form-item">
+                <div  class="x-form-item">
 
-                    <input type="submit" name="submit" value="提交" class="x-submit" />
+                    <input type="submit" name="submit" value="提交" class="x-form-submit" />
 
                 </div>
             </div>
