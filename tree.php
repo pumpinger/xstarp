@@ -19,7 +19,8 @@ include "layout_header.php";
         dom:$('.test_tree'),
         only_child:false,
         is_multi:true,
-        has_search:false,
+        node_merge:false,
+        has_search:true,
         expand:3,
         data:[
             {id:1,name:'行政部',nodeId:0,is_node:true,is_check:false},
@@ -35,14 +36,22 @@ include "layout_header.php";
         //            nodeId:[1],
         //            id:[1]
         //        },
-        onInit: function (name,ids,item) {
-            //this.dom.val(name);
+        onInit: function () {
         },
         onOpen: function () {
         },
         onBeforeOpen: function () {
         },
         onClose: function (hasChange) {
+            console.log(testTree.getId());
+        },
+        onCheck: function (item,dom,childrenItem) {
+//            console.log(this);
+//            console.log(this.getId());
+//            console.log(testTree);
+//            应该是  this.getId()比较规范  还是 testTree.getId()比较规范   this可以做到 只暴漏该暴漏的方法
+        },
+        onCancel: function (item,dom,childrenItem) {
         }
     });
 </script>
@@ -104,7 +113,7 @@ include "layout_header.php";
             onClose: function (hasChange,ids,item) {
                 //console.log(hasChange);
                 //console.log(ids);
-                //            console.log(item);
+                //console.log(item);
             }
         }).start();
 

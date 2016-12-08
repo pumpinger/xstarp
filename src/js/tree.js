@@ -12,81 +12,98 @@
  *
  *
  *
- *
- * 备注：
- * 1.这里html的input显示的时候根据data决定是否check，
- * 2.每次的点击input产生的变化是html变了，然后data也变。
- * 1，2导致容易出错
- * 但我觉得应该是根据操作data数据发生变化，变化完毕，统一一个方法决定html结构的变化，不过效率不一定更高
- *
- *
  * 思路:
  * 1.node的id和child的id可以重复,因为实际场景可能是两种数据比如,部门和人员.对于省份和城市可能本身就不会重复
  * 2.选择数据,用户需要的结果是:1.所有child.2.node+child
  * 3.is_trigger如果是true,是为input框设计的,会去读取input框的宽度作为自身的宽度
- *
- *
+ * 4.这里html的input显示的时候根据data决定是否check，
+ * 5.每次的点击input产生的变化是html变了，然后data也变。
+ * 6.4，5导致容易出错,但我觉得应该是根据操作data数据发生变化，变化完毕，统一一个方法决定html结构的变化，不过效率不一定更高
+ * 7.only_child为true必然不会node_merge
+ * 8.代码中还有一些根据标签(div,span)来做的判断,都不太靠谱
  *
  *
  */
+
 ;(function ($) {
-
-
-    var defOpt = {
-        is_trigger:true,  //是否需要触发? 否则直接显示
-        has_search:false,
-        only_child:true,//是否结果只要 child
-        node_merge:true,//是否需要合并结果
-        zIndex:1,
-        choose:false,  //哪些是选中的？优先级高于data  {nodeId:[1,2,3],id:[1,2,3]}
-        is_node_first:false,//是否需要节点排在前面  否则按照data的顺序
-        is_multi:true,//是否多选
-        expand:false, //是否展开，false、true、num
-        rootId:0,
-        width:null,
-        maxHeight:null,
-        data:[],
-        onInit: function () {},
-        onOpen: function () {}, //触发时
-        onBeforeOpen: function () {},
-        onClose: function (has_chg) {
-        },
-        onCheck: function (item,dom,childrenItem) {},
-        onCancel: function (item,dom,childrenItem) {}
-        //事件的命名空间 应该有配置项
-        //data  单个的class icon
-    };
-
-    var searchTimer;//应该是this的属性
 
     window.xTree=function(opt){
         return new tree(opt);
     };
 
-
-    var tree=function(opt){
-        this.opt = $.extend(true,{},defOpt,opt);
-        this._init(opt.dom);
-        return this;  //这里只想暴漏 方法 怎么办？
+    var defOpt = {
+        dom:'',  //jqueryDom
+        is_trigger:true,  //是否需要触发? 否则直接显示
+        has_search:false,
+        only_child:true,//是否结果只要 child  
+        node_merge:true,//结果只显示最上层  比如   中国被选中  四川,成都则不会显示  否则 每个被勾选的节点都显示
+        zIndex:1,
+        choose:false,  //哪些是选中的？优先级高于data  {nodeId:[1,2,3],id:[1,2,3]}
+        //node_first:false,//是否需要节点排在前面  否则按照data的顺序
+        is_multi:true,//是否多选
+        expand:false, //是否展开，false、true、num  //todo expand
+        rootId:0,//todo  如何去掉这个参数
+        width:null,
+        maxHeight:null,
+        data:[],//{id:1,name:'xx',nodeId:'0',is_node:true,is_check:false},
+        onInit: function () {},
+        onOpen: function () {}, //触发时
+        onBeforeOpen: function () {},
+        onClose: function (has_chg) {
+            //has_chg  是否发生变化
+        },
+        onCheck: function (item,dom,childrenItem) {
+            //item 点击的item
+            //dom 点击的dom
+            //childrenItem  所有影响的子节点
+        },
+        onCancel: function (item,dom,childrenItem) {}
     };
 
 
 
+    var tree=function(opt){
+        this._init(opt);
+        return this;
+        /**
+         * return {
+         *     'start':this.start,
+         *     'end':this.end
+         * };  //todo  这样会导致 this 没有 别的方法 到底 还是不能正常使用
+         */
+
+
+
+    };
+
+
+    /**
+     *
+     * @var opt  用户传进来的option
+     * @var dom 打开tree的载体jquery dom
+     * @var data  做tree的data
+     * @var html tree的html
+     */
+
 
     tree.prototype={
-        _is_open:false,
-        _originId:false,
-        _init:function(dom){
-            this.dom = dom;
+        _is_open:false,  //是否open
+        _originId:{nodeId:[],id:[]},   //上次打开时候选中了哪一些id
+        _searchTimer:'',   //搜索框的定时器
+        _is_first:true,  //是不是第一次打开
+        _init:function(opt){
 
-            this.data=this.opt.data;
+            this.opt = $.extend(true,{},defOpt,opt);
+            this.dom = this.opt.dom;
+            this.data = this.opt.data;
+            this.html = this._makePanel();
 
-            var res=checkData(this.data);
+
+            var res = checkData(this.data);
             if(!res){
                 return false;
             }
 
-            this.html=this._makePanel();
 
 
             this.opt.onInit();
@@ -121,16 +138,15 @@
 
 
             if(this.opt.is_trigger){
-                this.dom.off('click.treejs');
-                this.dom.on('click.treejs', function (e) {
+                this.dom.off('click.xTree');
+                this.dom.on('click.xTree', function (e) {
                     that.start();
                     e.stopPropagation();
                 });
 
-                $(document).on('click.treejs', function () {
+                $(document).on('click.xTree', function () {
                     that.end();
                 });
-
             }
         },
 
@@ -144,7 +160,8 @@
             this._showData();
 //                this._expand();
             this._is_open=true;
-            this.html.find('.search_ipt_s').focus();
+
+            this.html.find('.x-tree-search').focus();
             this.opt.onOpen();
             return this;
         },
@@ -153,12 +170,10 @@
                 this.html.hide();
                 this.dom.val(this.getName());
                 var ids=this.getId();
-
-                console.log(ids);
-                console.log(this._originId);
+                this._is_first=false;
 
                 this._is_open=false;
-                this.opt.onClose(!(ids==this._originId));
+                this.opt.onClose(JSON.stringify(ids) !== JSON.stringify(this._originId));
                 this._originId=ids;
             }
         },
@@ -174,6 +189,7 @@
                     }
                 });
             }else{
+                //todo  这里判断 node_merge
                 var node=[];
                 $.each(data,function(i,n){
                     if(n.is_check && n.is_node){
@@ -384,11 +400,12 @@
 
         },
         _showData:function(){
-            if( ! this.html.find('input[type="checkbox"]').length){
+            if( this._is_first ){
                 this._showLayer(this.opt.rootId);
             }else{
                 this.html.show();
             }
+
         },
         //_expand:function(){
         //    var obj = this;
@@ -418,30 +435,29 @@
         //    });
         //    return expandId;
         //},
-        _showLayer:function(layer){
-            var showData=this._getLayerData(layer);
+        _showLayer:function(layerId){
+            var showData=this._getLayerData(layerId);
             var itemDiv=makeLayer();
 
 
             //这里 0节点的结构 和 子节点的结构 没有处理好    以后尽量让node-id 和  itemdiv 分开
-            if(layer===this.opt.rootId){
+            if(layerId === this.opt.rootId){
                 itemDiv=$(itemDiv).attr('node-id',this.opt.rootId);
                 this.html.append(itemDiv);
                 //itemDiv.parent().attr('node-id',0);
 
             }else{
-                this.html.find('div[node-id="'+layer+'"]').append(itemDiv);
-                this.html.find('div[node-id="'+layer+'"] span:first').html(makeShrink());
+                toShrink(this.html.find('div[node-id="'+layerId+'"] i'));
+                this.html.find('div[node-id="'+layerId+'"]').append(itemDiv);
             }
 
             for(var i in showData){
                 itemDiv.append(this._makeItem(showData[i]));
             }
         },
-        _removeLayer:function(layer){
-            this.html.find('div[node-id="'+layer+'"]>div').remove();
-            this.html.find('div[node-id="'+layer+'"] span:first').html(makeExpand());
-
+        _removeLayer:function(layerId){
+            this.html.find('div[node-id="'+layerId+'"]>div').remove();
+            toExpand(this.html.find('div[node-id="'+layerId+'"] i'));
         },
 
 
@@ -485,32 +501,32 @@
             }
 
 
-            //todo  childArr 没有 考虑  onlychildren
-            var  childArr=[];
-            this._getChild(item,childArr);
-
+            var  childItem=[];
+            this._getChild(item,childItem);
 
 
             if(!item.is_check){
-                this.opt.onCancel(item,dom,childArr);
+                this.opt.onCancel(item,dom,childItem);
 
             }else{
-                this.opt.onCheck(item,dom,childArr);
-
+                this.opt.onCheck(item,dom,childItem);
             }
 
 
         },
         _getChild:function (node,cont) {
-            var that=this;
-            $.each(that.data,function(i,n){
-                if(n.nodeId ==node.id ){
-                    cont.push(n);
-                    if(n.is_node){
-                        that._getChild(n,cont);
+            if(node.is_node){
+                var that=this;
+                $.each(that.data,function(i,n){
+                    if(n.nodeId ==node.id ){
+                        cont.push(n);
+                        if(n.is_node){
+                            that._getChild(n,cont);
+                        }
                     }
-                }
-            })
+                })
+            }
+
         },
         _cancelParentNode:function(id){
             var obj=this;
@@ -591,18 +607,19 @@
             return $(html).css(css);
         },
         _makeSearch:function(html){
-            var search='<input class="search_ipt_s" type="text" placeholder="搜索"/></div>';
+            var search='<input class="x-tree-search" type="text" placeholder="搜索"/></div>';
             search=$(search).css({
                 'border':'none',
                 'padding':'4px 0',
-                'margin':'5px 0 0 0'
+                'margin':'5px auto 0 auto',
+                'display':'block'
             });
 
             var obj=this;
             $(search).on('keyup paste',function(){
                 var dom=this;
-                clearTimeout(searchTimer);
-                searchTimer=setTimeout(function(){
+                clearTimeout(obj._searchTimer);
+                obj._searchTimer=setTimeout(function(){
                     obj.search(dom.value);
                 },100);
             });
@@ -613,14 +630,14 @@
         _makeNode: function (item) {
             var $html;
             if(this.opt.is_multi){
-                $html = $('<div node-id="'+item.id+'">'+makeExpand()+'<input type="checkbox" data-isNode="1" data-id="'+item.id+'" '+(item.is_check?'checked':'')+' data-name="'+item.name+'"/><span>'+item.name+'</span></div>');
+                $html = $('<div node-id="'+item.id+'">'+makeExpand()+'<label><input type="checkbox" data-isNode="1" data-id="'+item.id+'" '+(item.is_check?'checked':'')+' data-name="'+item.name+'"/><span>'+item.name+'</span></label></div>');
             }
             else{
                 if(this.opt.only_child){
                     $html = $('<div node-id="'+item.id+'">'+makeExpand()+'<span>'+item.name+'</span></div>');
                 }
                 else{
-                    $html = $('<div node-id="'+item.id+'">'+makeExpand()+'<input type="radio" name="'+ this.dom.selector +'" data-isNode="1" data-id="'+item.id+'" '+(item.is_check?'checked':'')+' data-name="'+item.name+'"/><span>'+item.name+'</span></div>');
+                    $html = $('<div node-id="'+item.id+'">'+makeExpand()+'<label><input type="radio" name="'+ this.dom.selector +'" data-isNode="1" data-id="'+item.id+'" '+(item.is_check?'checked':'')+' data-name="'+item.name+'"/><span>'+item.name+'</span></label></div>');
                 }
             }
             $html.find('span').css({
@@ -630,9 +647,13 @@
                 '-moz-user-select':'none',
                 '-ms-user-select':'none'
             });
+            $html.find('input').css({
+                'vertical-align':'middle'
+            });
             var obj=this;
-            $html.find('span').on('click',function(e){
-                if(!$html.find('div')[0]){
+            $html.find('i').on('click',function(e){
+                //这里判断有没有数据的方法 感觉有点不靠谱
+                if(!$html.find('i')[1]){
                     obj._showLayer(item.id);
                 }else{
                     obj._removeLayer(item.id);
@@ -659,7 +680,7 @@
                 'display':'inline-block'
             });
             $html.find('input').css({
-                'padding':'2px 0 0 0'
+                'vertical-align':'middle'
             });
             return $html;
         },
@@ -703,27 +724,26 @@
     }
 
     function makeExpand(){
-        var html='<span data-icon="expand">＋</span>';
-        // var html='<i class="iconfont icon-plus"></i>';
+        // var html='<span data-icon="expand">＋</span>';
+        var html='<i class="iconfont icon-jia1"></i>';
 
         return $(html).css({
-            'font-size':'16px',
+            'font-size':'14px',
             'font-weight':'bold',
-            'vertical-align':'text-bottom',
-            'padding-right':'0px'
+            'vertical-align':'base-line',
+            'padding-right':'0px',
+            'cursor':'pointer'
         })[0].outerHTML;
     }
 
-    function makeShrink(){
-        var html='<span data-icon="shrink">－</span>';
-        //var html='<i class="iconfont icon-minus"></i>';
+    function toShrink(dom){
+        dom.removeClass('icon-jia1');
+        dom.addClass('icon-jian1');
+    }
 
-        return $(html).css({
-            'font-size':'16px',
-            'font-weight':'bold',
-            'vertical-align':'text-bottom',
-            'padding-right':'0px'
-        })[0].outerHTML;
+    function toExpand(dom){
+        dom.removeClass('icon-jian1');
+        dom.addClass('icon-jia1');
     }
 
 
