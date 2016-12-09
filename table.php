@@ -125,7 +125,7 @@ include "layout_header.php";
                     <th>Type</th>
                     <th>Date</th>
                     <th>Location</th>
-                    <th>Control</th>
+                    <th>Control</th>K
                 </tr>
             </thead>
             <tbody align="center">
