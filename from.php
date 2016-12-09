@@ -60,7 +60,7 @@ include "layout_header.php";
                </div>
                <div  class="x-form-item">
 
-                   <input type="submit" name="submit" value="提交1" class="x-form-submit" />
+                   <input type="submit" name="submit" value="提交" class="x-form-submit" />
 
                </div>
            </div>
