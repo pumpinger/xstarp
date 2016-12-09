@@ -81,16 +81,17 @@ $fontSizeUnit: px;
 
 //样式-按钮
 .x-button {display: inline-block;background-color: $baseColorMain;border: 2px solid $borderColorDeep;color:set-notification-text-color($baseColorMain);border-radius: 5px;cursor: pointer;}
+.x-button:hover{background-color:darken($baseColorMain,10%)}
 .x-button-large {padding: 10px 20px;}
 .x-button-middle {padding: 5px 10px;}
 .x-button-small {padding: 2px 4px;}
 @each $key, $value in $colors {
   .x-button-#{$key} {background-color:$value;border: 2px solid darken($value,10%);color:set-notification-text-color($value);}
+  .x-button-#{$key}:hover{background-color:darken($value,20%);border: 2px solid darken($value,20%);}
 }
 
-@each $key, $value in $colors {
-  .x-button-#{$key}:hover{background-color:darken($value,20%);border: 2px solid darken($value,20%);color:set-notification-text-color($value);}
-}
+.x-button i{margin-right:10px;}
+
 
 //结构-面板
 .x-panel {
@@ -153,7 +154,7 @@ $fontSizeUnit: px;
 .x-table{width:100%;border-collapse: collapse;margin:20px 0;}
 .x-table-thead{background:$bgColorLight;}
 .x-table-thead th,.x-table-tbody td{height:36px;border:1px solid $borderColorLight;font-size:#{$baseFontSize}$fontSizeUnit;}
-.x-table-even .x-table-tbody:nth-child(even) > td{background:$bgColorLight;}
+.x-table-interval .x-table-tbody:nth-child(even) > td{background:$bgColorLight;}
 .x-table-hover .x-table-tbody:hover{background: $bgColorLight;}
 
 

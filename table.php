@@ -117,7 +117,7 @@ include "layout_header.php";
 
 
         <p>效果:</p>
-        <table class="x-table x-table-even">
+        <table class="x-table x-table-interval">
             <thead align="center">
                 <tr class="x-table-thead">
                     <th>ID</th>
