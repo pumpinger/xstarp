@@ -27,6 +27,8 @@
 
 ;(function ($) {
 
+    //todo 是否需要用户提供isnode？数据
+
     window.xTree=function(opt){
         return new tree(opt);
     };
@@ -64,6 +66,18 @@
 
     var tree=function(opt){
         this._init(opt);
+        // return {
+        //     start:this.start,
+        //     end:this.end,
+        //     getName:this.getName,
+        //     getId:this.getId,
+        //     cancelItem:this.cancelItem,
+        //     cancelAll:this.cancelAll,
+        //     checkItem:this.checkItem,
+        //     checkAll:this.checkAll,
+        //     getItem:this.getItem,
+        //     search:this.search
+        // };
         return this;
         /**
          * return {
@@ -92,12 +106,10 @@
         _searchTimer:'',   //搜索框的定时器
         _is_first:true,  //是不是第一次打开
         _init:function(opt){
-
             this.opt = $.extend(true,{},defOpt,opt);
             this.dom = this.opt.dom;
             this.data = this.opt.data;
             this.html = this._makePanel();
-
 
             var res = checkData(this.data);
             if(!res){
@@ -158,7 +170,7 @@
             this.opt.onBeforeOpen();
             this._showPanel();
             this._showData();
-//                this._expand();
+            this._expand();
             this._is_open=true;
 
             this.html.find('.x-tree-search').focus();
@@ -407,34 +419,34 @@
             }
 
         },
-        //_expand:function(){
-        //    var obj = this;
-        //    if(obj.opt.expand === true){
-        //        $.each(obj.data,function(index,item){
-        //            if(item.is_node){
-        //                obj.html.find('div[node-id="'+item.id+'"] span[data-icon="expand"]').click();
-        //            }
-        //        });
-        //    }else if(obj.opt.expand){
-        //        var expandId = obj.opt.rootId;
-        //        for (var i = 0; i < obj.opt.expand; i++) {
-        //            expandId = obj._expandLevel(expandId);
-        //        }
-        //    }
-        //},
-        //_expandLevel:function(id){
-        //    var obj = this;
-        //    var expandId = [];
-        //    $.each(id,function(index,item){
-        //        $.each(obj.data,function(index2,item2){
-        //            if(item2.nodeId===item){
-        //                expandId.push(item2.id);
-        //                obj.html.find('div[node-id="'+item2.id+'"] span[data-icon="expand"]').click();
-        //            }
-        //        });
-        //    });
-        //    return expandId;
-        //},
+        _expand:function(){
+           var obj = this;
+           if(obj.opt.expand === true){
+               $.each(obj.data,function(index,item){
+                   if(item.is_node){
+                       obj.html.find('div[node-id="'+item.id+'"] span[data-icon="expand"]').click();
+                   }
+               });
+           }else if(obj.opt.expand){
+               var expandId = obj.opt.rootId;
+               for (var i = 0; i < obj.opt.expand; i++) {
+                   expandId = obj._expandLevel(expandId);
+               }
+           }
+        },
+        _expandLevel:function(id){
+           var obj = this;
+           var expandId = [];
+           $.each(id,function(index,item){
+               $.each(obj.data,function(index2,item2){
+                   if(item2.nodeId===item){
+                       expandId.push(item2.id);
+                       obj.html.find('div[node-id="'+item2.id+'"] span[data-icon="expand"]').click();
+                   }
+               });
+           });
+           return expandId;
+        },
         _showLayer:function(layerId){
             var showData=this._getLayerData(layerId);
             var itemDiv=makeLayer();
