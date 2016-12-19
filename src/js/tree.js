@@ -66,18 +66,6 @@
 
     var tree=function(opt){
         this._init(opt);
-        // return {
-        //     start:this.start,
-        //     end:this.end,
-        //     getName:this.getName,
-        //     getId:this.getId,
-        //     cancelItem:this.cancelItem,
-        //     cancelAll:this.cancelAll,
-        //     checkItem:this.checkItem,
-        //     checkAll:this.checkAll,
-        //     getItem:this.getItem,
-        //     search:this.search
-        // };
         return this;
         /**
          * return {
