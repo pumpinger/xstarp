@@ -19,7 +19,7 @@ include "layout_header.php";
         <pre><code class="language-html"><textarea>
 <table class="x-table x-table-even">
             <thead align="center">
-                <tr class="x-table-thead">
+                <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Type</th>
@@ -29,7 +29,7 @@ include "layout_header.php";
                 </tr>
             </thead>
             <tbody align="center">
-                <tr class="x-table-tbody">
+                <tr>
                     <td>1</td>
                     <td>Alisa</td>
                     <td>Write</td>
@@ -40,7 +40,7 @@ include "layout_header.php";
                         <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
                     </td>
                 </tr>
-                <tr class="x-table-tbody">
+                <tr>
                     <td>2</td>
                     <td>Alisa</td>
                     <td>Write</td>
@@ -51,7 +51,7 @@ include "layout_header.php";
                         <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
                     </td>
                 </tr>
-                <tr class="x-table-tbody">
+                <tr>
                     <td>3</td>
                     <td>Alisa</td>
                     <td>Write</td>
@@ -68,7 +68,7 @@ include "layout_header.php";
 
         <table class="x-table x-table-hover">
             <thead align="center">
-            <tr class="x-table-thead">
+            <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Type</th>
@@ -78,7 +78,7 @@ include "layout_header.php";
             </tr>
             </thead>
             <tbody align="center">
-            <tr class="x-table-tbody">
+            <tr>
                 <td>1</td>
                 <td>Alisa</td>
                 <td>Write</td>
@@ -89,7 +89,7 @@ include "layout_header.php";
                     <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
                 </td>
             </tr>
-            <tr class="x-table-tbody">
+            <tr>
                 <td>2</td>
                 <td>Alisa</td>
                 <td>Write</td>
@@ -100,7 +100,7 @@ include "layout_header.php";
                     <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
                 </td>
             </tr>
-            <tr class="x-table-tbody">
+            <tr>
                 <td>3</td>
                 <td>Alisa</td>
                 <td>Write</td>
@@ -119,7 +119,7 @@ include "layout_header.php";
         <p>效果:</p>
         <table class="x-table x-table-interval">
             <thead align="center">
-                <tr class="x-table-thead">
+                <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Type</th>
@@ -129,7 +129,7 @@ include "layout_header.php";
                 </tr>
             </thead>
             <tbody align="center">
-                <tr class="x-table-tbody">
+                <tr>
                     <td>1</td>
                     <td>Alisa</td>
                     <td>Write</td>
@@ -140,7 +140,7 @@ include "layout_header.php";
                         <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
                     </td>
                 </tr>
-                <tr class="x-table-tbody">
+                <tr>
                     <td>2</td>
                     <td>Alisa</td>
                     <td>Write</td>
@@ -151,7 +151,7 @@ include "layout_header.php";
                         <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
                     </td>
                 </tr>
-                <tr class="x-table-tbody">
+                <tr>
                     <td>3</td>
                     <td>Alisa</td>
                     <td>Write</td>
@@ -168,7 +168,7 @@ include "layout_header.php";
 
         <table class="x-table x-table-hover">
             <thead align="center">
-            <tr class="x-table-thead">
+            <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Type</th>
@@ -178,7 +178,7 @@ include "layout_header.php";
             </tr>
             </thead>
             <tbody align="center">
-            <tr class="x-table-tbody">
+            <tr>
                 <td>1</td>
                 <td>Alisa</td>
                 <td>Write</td>
@@ -189,7 +189,7 @@ include "layout_header.php";
                     <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
                 </td>
             </tr>
-            <tr class="x-table-tbody">
+            <tr>
                 <td>2</td>
                 <td>Alisa</td>
                 <td>Write</td>
@@ -200,7 +200,7 @@ include "layout_header.php";
                     <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
                 </td>
             </tr>
-            <tr class="x-table-tbody">
+            <tr>
                 <td>3</td>
                 <td>Alisa</td>
                 <td>Write</td>

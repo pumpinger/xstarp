@@ -12,20 +12,19 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps');
 
 
-// gulp.task('spritercss', function () {
-//     var timestamp = +new Date();
-//     //需要自动合并雪碧图的样式文件
-//     return gulp.src('./src/css/spriter.css')
-//         .pipe(spriter({
-//             // 生成的spriter的位置
-//             'spriteSheet': './dest/img/sprite.png',
-//             // 生成样式文件图片引用地址的路径
-//             // 如下将生产：backgound:url(../images/sprite20324232.png)
-//             'pathToSpriteSheetFromCSS': '../img/sprite.png'
-//         }))
-//         //产出路径
-//         .pipe(gulp.dest('./dest/css'));
-// });
+gulp.task('spriterCss', function () {
+    return gulp.src('./src/css/global.css')
+        .pipe(spriter({
+            // 生成的spriter的位置
+            'spriteSheet': './src/img/sprite.png',
+            // 生成样式文件图片引用地址的路径
+            // 如下将生产：backgound:url(../images/sprite20324232.png)
+            'pathToSpriteSheetFromCSS': '../img/sprite.png'
+            // 'spritesmithOptions':{src: './src/sprite/*.png'}
+        }))
+        //产出路径
+        .pipe(gulp.dest('./src/css/'));
+});
 
 gulp.task('minifyjs', function() {
     return gulp.src('./src/js/*.js')
@@ -34,6 +33,8 @@ gulp.task('minifyjs', function() {
         .pipe(gulp.dest('./dest/js'));  //输出
 });
 
+//todo  拷贝图片到dest
+//todo  lib怎么引用   (配置项通过xstartjs 去引用)
 
 
 
@@ -57,11 +58,11 @@ gulp.task('sassToCss',function (){
 
 
 gulp.task('watch',function (){
-    var watcher=gulp.watch('./src/sass/global.scss',['sassToCss']);
+    var watcher=gulp.watch('./src/sass/global.scss',['sassToCss','spriterCss']);
     watcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
 });
 
 
-gulp.task('dest', [ 'minifyjs','minifycss']);
+gulp.task('dest', [ 'sassToCss','spriterCss','minifyjs','minifycss']);

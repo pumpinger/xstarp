@@ -142,20 +142,21 @@ $fontSizeUnit: px;
 
 
 //插件-图片操作图标
-.x-imgView-recover{background:url("../img/square.png") no-repeat}
-.x-imgView-magnify{background:url("../img/enlarge.png") no-repeat}
-.x-imgView-shrink{background:url("../img/narrow.png") no-repeat}
-.x-imgView-rotate{background:url("../img/Refresh_1.png") no-repeat}
-.x-imgView-left{background:url("../img/Left.png") no-repeat}
-.x-imgView-right{background:url("../img/right.png") no-repeat}
-.x-imgView-close{background:url("../img/close_1.png") no-repeat}
+.x-imgView-recover{background:url("../sprite/square.png") no-repeat}
+.x-imgView-magnify{background:url("../sprite/enlarge.png") no-repeat}
+.x-imgView-shrink{background:url("../sprite/narrow.png") no-repeat}
+.x-imgView-rotate{background:url("../sprite/Refresh_1.png") no-repeat}
+.x-imgView-left{background:url("../sprite/Left.png") no-repeat}
+.x-imgView-right{background:url("../sprite/right.png") no-repeat}
+.x-imgView-close{background:url("../sprite/close_1.png") no-repeat}
+.x-imgView-loading{background:url("../img/load.gif") no-repeat}
 
 //插件-表格
 .x-table{width:100%;border-collapse: collapse;margin:20px 0;}
-.x-table-thead{background:$bgColorLight;}
-.x-table-thead th,.x-table-tbody td{height:36px;border:1px solid $borderColorLight;font-size:#{$baseFontSize}$fontSizeUnit;}
-.x-table-interval .x-table-tbody:nth-child(even) > td{background:$bgColorLight;}
-.x-table-hover .x-table-tbody:hover{background: $bgColorLight;}
+.x-table thead {background:$bgColorLight;}
+.x-table th,.x-table td{height:36px;border:1px solid $borderColorLight;font-size:#{$baseFontSize}$fontSizeUnit;}
+.x-table-interval tr:nth-child(even) > td{background:$bgColorLight;}
+.x-table-hover tr:hover{background: $bgColorLight;}
 
 
 //封装-图标
