@@ -6,7 +6,7 @@
 var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     sass = require('gulp-sass'),
-    spriter = require('gulp-css-spriter'),
+    spriter = require('gulp-css-spritesmith'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     sourcemaps = require('gulp-sourcemaps');
@@ -15,16 +15,30 @@ var gulp = require('gulp'),
 gulp.task('spriterCss', function () {
     return gulp.src('./src/css/global.css')
         .pipe(spriter({
-            // 生成的spriter的位置
-            'spriteSheet': './src/img/sprite.png',
-            // 生成样式文件图片引用地址的路径
-            // 如下将生产：backgound:url(../images/sprite20324232.png)
-            'pathToSpriteSheetFromCSS': '../img/sprite.png'
-            // 'spritesmithOptions':{src: './src/sprite/*.png'}
+            'imagepath': './src/sprite/',
+            'spritedest': './src/img/',
+            'spritepath':'../img/'
         }))
         //产出路径
-        .pipe(gulp.dest('./src/css/'));
+        .pipe(gulp.dest('./'));
 });
+
+
+// gulp.task('spritercss', function () {
+//     var timestamp = +new Date();
+//     //需要自动合并雪碧图的样式文件
+//     return gulp.src('./src/css/spriter.css')
+//         .pipe(spriter({
+//             // 生成的spriter的位置
+//             'spriteSheet': './dest/img/sprite.png',
+//             // 生成样式文件图片引用地址的路径
+//             // 如下将生产：backgound:url(../images/sprite20324232.png)
+//             'pathToSpriteSheetFromCSS': '../img/sprite.png'
+//         }))
+//         //产出路径
+//         .pipe(gulp.dest('./dest/css'));
+// });
+
 
 gulp.task('minifyjs', function() {
     return gulp.src('./src/js/*.js')
