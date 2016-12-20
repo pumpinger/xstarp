@@ -1,3 +1,26 @@
+
+//成套css
+@mixin opacity($opacity:50) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+
+@mixin inlineBlock() {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+//函数
+@function set-notification-text-color($color) {
+  @if (lightness($color) < 70) {
+    @return $fontColorLight;
+  } @else {
+    @return $fontColorDeep;
+  }
+}
+
+
 //全局变量    主题
 $baseColorMain:#3399CC;
 $baseColorSecond:#336699;
@@ -13,14 +36,7 @@ $bgColorLight:#f4f4f4;
 $radiusLevel:8px;
 
 
-//函数
-@function set-notification-text-color($color) {
-  @if (lightness($color) < 70) {
-    @return $fontColorLight;
-  } @else {
-    @return $fontColorDeep;
-  }
-}
+
 
 
 //颜色数组
@@ -99,12 +115,11 @@ $fontSizeUnit: px;
   overflow: auto;
   border: {
     top: {
-      left-radius: $radiusLevel;
-      //right-radius: $radiusLevel;
+      //left-radius: $radiusLevel;
+      right-radius: $radiusLevel;
     }
   }
 }
-
 .x-panel-title {background-color: $baseColorThird;font-size: 20px;color: set-notification-text-color($baseColorThird);padding: 10px;}
 .x-panel-content {padding: 10px;}
 
@@ -137,6 +152,15 @@ $fontSizeUnit: px;
 .x-form-submit{padding: 3px 10px;margin-bottom: 20px;}
 
 
+//样式-分页器
+.x-page {line-height: 28px;}
+.x-page-total {@include inlineBlock;}
+.x-page-pages {@include inlineBlock;float: right;border-right: 1px solid $borderColorDeep;color: $baseColorMain;}
+.x-page-pages li,.x-page-pages select{float: left;padding:0 15px;border: 1px solid $borderColorDeep;border-right: none;cursor: pointer;}
+.x-page-pages select{height: 30px;}
+.x-page-pages .x-active,.x-page-pages li:hover{color:set-notification-text-color($baseColorMain);background: $baseColorMain;}
+
+
 
 //插件-图片操作图标
 .x-imgView-recover{background:url("../sprite/square.png") no-repeat}
@@ -161,11 +185,7 @@ $fontSizeUnit: px;
 .x-icon-list li{display:inline-block;vertical-align:top;width:80px;height:100px;padding:10px 0;text-align:center;background:#f9f9f9;}
 .x-icon-list li i,.x-icon-list li span{display:block;}
 
-//成套css
-@mixin opacity($opacity:50) {
-  opacity: $opacity / 100;
-  filter: alpha(opacity=$opacity);
-}
+
 
 //todo 结构写好几个   code插件套进来   主题变化的实现(圆角 颜色)
 
