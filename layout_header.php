@@ -140,7 +140,7 @@ function echoCUr($name)
             <a href="button.php" class="<?php echoCUr('button') ?>">按钮</a>
             <a href="tip.php" class="<?php echoCUr('tip') ?>">提示</a>
             <a href="from.php" class="<?php echoCUr('from') ?>">表单元素</a>
-            <a href="" class="<?php echoCUr('from') ?>">分页</a>
+            <a href="page.php" class="<?php echoCUr('page') ?>">分页</a>
             <a href="progress.php" class="<?php echoCUr('progress') ?>">进度条</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>结构</p>
