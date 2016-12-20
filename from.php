@@ -140,7 +140,7 @@ include "layout_header.php";
                     <td>一组的左边</td>
                 </tr>
                 <tr>
-                    <td>x-form-key</td>
+                    <td>x-form-value</td>
                     <td>一组的右边</td>
                 </tr>
             </tbody>
