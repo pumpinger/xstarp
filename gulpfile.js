@@ -24,6 +24,13 @@ gulp.task('spriterCss', function () {
 });
 
 
+gulp.task('moveImg', function () {
+    return gulp.src('./src/img/*')
+        //产出路径
+        .pipe(gulp.dest('./dest/img/'));
+});
+
+
 // gulp.task('spritercss', function () {
 //     var timestamp = +new Date();
 //     //需要自动合并雪碧图的样式文件
@@ -79,4 +86,12 @@ gulp.task('watch',function (){
 });
 
 
-gulp.task('dest', [ 'sassToCss','spriterCss','minifyjs','minifycss']);
+
+/*
+sass编译成css
+css里面的雪碧图合成
+img拷贝到dest,
+压缩js,并拷贝到dest
+压缩css,并拷贝到dest
+ */
+gulp.task('dest', [ 'sassToCss','spriterCss','moveImg','minifyjs','minifycss']);
