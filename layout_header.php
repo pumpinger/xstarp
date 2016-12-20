@@ -37,12 +37,17 @@ function echoCUr($name)
 
 
     <link rel="stylesheet" href="dest/lib/iconfont/iconfont.css"/>
-    <link rel="stylesheet" href="dest/css/xstarp.css"/>
 
     <link rel="stylesheet" href="lib/prism/prism.css"/>
 
 
-    <script type="text/javascript" src="dest/js/xstarp.js"></script>
+    <link rel="stylesheet" href="src/css/init.css"/>
+    <link rel="stylesheet" href="src/css/global.css"/>
+    <script type="text/javascript" src="src/js/global.js"></script>
+
+    
+<!--    <link rel="stylesheet" href="dest/css/xstarp.css"/>-->
+<!--    <script type="text/javascript" src="dest/js/xstarp.js"></script>-->
 
     <style>
         /*@charset "UTF-8";*/
@@ -135,6 +140,7 @@ function echoCUr($name)
             <a href="button.php" class="<?php echoCUr('button') ?>">按钮</a>
             <a href="tip.php" class="<?php echoCUr('tip') ?>">提示</a>
             <a href="from.php" class="<?php echoCUr('from') ?>">表单元素</a>
+            <a href="page.php" class="<?php echoCUr('page') ?>">分页</a>
             <a href="progress.php" class="<?php echoCUr('progress') ?>">进度条</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>结构</p>
