@@ -16,8 +16,8 @@ include "layout_header.php";
 
         <p>示例：</p>
 
-        <pre><code class="language-html"><textarea>
-<div class="x-tab">
+<pre><code class="language-html"><textarea>
+        <div class="x-tab">
             <ul class="x-tab-nav">
                 <li class="x-tab-li  active"><a href="#">Section 1</a></li>
                 <li class=""><a href="#">Section 2</a></li>
@@ -35,13 +35,7 @@ include "layout_header.php";
                 </div>
             </div>
         </div>
-        <script>
-            $('.x-tab-nav li').click(function(){
-                var i = $(this).index();
-                $(this).addClass('active').siblings().removeClass('active');
-                $('.x-tab-content').eq(i).addClass('active').siblings().removeClass('active');
-            })
-        </script>
+        
 </textarea></code></pre>
 
 
@@ -65,14 +59,7 @@ include "layout_header.php";
                 </div>
             </div>
         </div>
-        <script>
-            $('.x-tab-nav li').click(function(){
-                var i = $(this).index();
-                $(this).addClass('active').siblings().removeClass('active');
-                $('.x-tab-content').eq(i).addClass('active').siblings().removeClass('active');
-            })
-        </script>
-        
+
 
         <p>规则:</p>
     </div>

@@ -343,15 +343,17 @@
             'top':'0'
         });
 
-        loading=$('<img>').appendTo(view);
+
+        loading=$('<span class="x-imgView-loading">').appendTo(view);
         loading.css({
             'position':'absolute',
             'top':'48%',
             'left':'50%',
+            'width':'40px',
+            'height':'40px',
             'margin-left':'-30px',
             'display':'none'
         });
-        loading.prop('src','./dest/img/load.gif');
 
 
     }
@@ -456,16 +458,21 @@
     };
 
 
-
-    //自动定义
-    $('body').on('click','.x-imgView .x-imgView-item',function (){
-        init();
-        imgs = [];
-        $.each($(this).parent().children(),function (i){
-            imgs[i]=$(this).attr('x-imgView-src');
+    $(document).ready(function(){
+        //自动定义
+        $('body').on('click','.x-imgView .x-imgView-item',function (){
+            init();
+            imgs = [];
+            $.each($(this).parent().children(),function (i){
+                imgs[i]=$(this).attr('x-imgView-src');
+            });
+            showImg(index=$(this).index());
         });
-        showImg(index=$(this).index());
+
+
     });
+
+
 
 
 });
