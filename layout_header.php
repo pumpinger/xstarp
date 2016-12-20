@@ -43,7 +43,9 @@ function echoCUr($name)
 
     <link rel="stylesheet" href="src/css/init.css"/>
     <link rel="stylesheet" href="src/css/global.css"/>
+    <script type="text/javascript" src="src/js/global.js"></script>
 
+    
 <!--    <link rel="stylesheet" href="dest/css/xstarp.css"/>-->
 <!--    <script type="text/javascript" src="dest/js/xstarp.js"></script>-->
 

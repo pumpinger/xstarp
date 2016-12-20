@@ -54,7 +54,7 @@ gulp.task('minifyjs', function() {
         .pipe(gulp.dest('./dest/js'));  //输出
 });
 
-//todo  拷贝图片到dest
+
 //todo  lib怎么引用   (配置项通过xstartjs 去引用)
 
 

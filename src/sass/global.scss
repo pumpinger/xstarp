@@ -132,10 +132,7 @@ $fontSizeUnit: px;
 
 
 //样式-表单元素
-.x-form-title {font-weight: bolder;color: #000;}
-.x-form-items{border: 1px solid $borderColorDeep;    padding:20px;}
-.x-form-items{margin-top: 20px;}
-.x-form-items input{ padding: 1px 5px;   border-radius: 3px; border: 1px solid $borderColorDeep; height: 25px;}
+.x-form-item input{ padding: 1px 5px;   border-radius: 3px; border: 1px solid $borderColorDeep; height: 25px;}
 .x-form-item{margin-top: 20px;}
 .x-form-submit{padding: 3px 10px;margin-bottom: 20px;}
 
