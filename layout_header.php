@@ -138,14 +138,14 @@ function echoCUr($name)
             <a href="base.php" class="<?php echoCUr('base'); ?>">基础css</a>
             <a href="text.php" class="<?php echoCUr('text'); ?>">文字</a>
             <a href="button.php" class="<?php echoCUr('button') ?>">按钮</a>
-            <a href="tip.php" class="<?php echoCUr('tip') ?>">提示</a>
+            <a href="tip.php" class="<?php echoCUr('tip') ?>">贴士</a>
+            <a href="alert.php" class="<?php echoCUr('tip') ?>">提示</a>
             <a href="from.php" class="<?php echoCUr('from') ?>">表单元素</a>
             <a href="page.php" class="<?php echoCUr('page') ?>">分页</a>
             <a href="progress.php" class="<?php echoCUr('progress') ?>">进度条</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>结构</p>
         <div class="aside-body <?php echoCUr(array('header', 'asdie','nav','tab','panel','title')) ?>">
-            <a href="header.php" class="<?php echoCUr('header') ?>">header</a>
             <a href="asdie.php" class="<?php echoCUr('asdie') ?>">侧边栏</a>
             <a href="nav.php" class="<?php echoCUr('nav') ?>">导航</a>
             <a href="tab.php" class="<?php echoCUr('tab') ?>">标签页</a>
@@ -158,6 +158,7 @@ function echoCUr($name)
             <a href="imgview.php" class="<?php echoCUr('imgview') ?>" >图片</a>
             <a href="tree.php" class="<?php echoCUr('tree') ?>" >树</a>
             <a href="pop.php" class="<?php echoCUr('pop') ?>" >弹窗</a>
+            <a href="message.php" class="<?php echoCUr('pop') ?>" >消息</a>
             <a href="table.php" class="<?php echoCUr('table') ?>" >表格</a>
             <a href="upload.php" class="<?php echoCUr('upload') ?>" >文件上传</a>
         </div>
