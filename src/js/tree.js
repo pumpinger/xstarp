@@ -651,14 +651,12 @@
                 'vertical-align':'middle'
             });
             var obj=this;
-            $html.find('i').on('click',function(e){
-                //这里判断有没有数据的方法 感觉有点不靠谱
-                if(!$html.find('i')[1]){
+            $html.find('i').on('click', function (e) {
+                if ($(this).hasClass('icon-jia1')) {
                     obj._showLayer(item.id);
-                }else{
+                } else {
                     obj._removeLayer(item.id);
                 }
-                //e.stopPropagation();
             });
 
             return $html;
