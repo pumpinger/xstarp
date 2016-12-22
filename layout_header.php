@@ -91,6 +91,7 @@ function echoCUr($name)
         .aside-con{height: 100%; overflow: auto;overflow-x: hidden;}
         .aside-head{height:60px;line-height:60px;color:#fff;background:url(img/icon_menu_arrow.png) no-repeat 192px;border-bottom:1px solid #353b45;text-indent:55px;}
         .aside-head i{margin-right:10px;}
+        .aside-head a{display:block;}
         /*.aside span{display:block;text-indent:55px;}*/
 
         .aside-body{display:none;}
@@ -132,9 +133,9 @@ function echoCUr($name)
 
 <div class="aside">
     <div class="aside-con">
-        <p class="aside-head"><i class="iconfont icon-shouye"></i>首页</p>
+        <p class="aside-head"><a href="index.php"><i class="iconfont icon-shouye"></i>首页</a></p>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>样式</p>
-        <div class="aside-body <?php echoCUr(array('base', 'text','button','tip','from','progress')); ?>">
+        <div class="aside-body <?php echoCUr(array('base', 'text','button','tip','from','page','progress')); ?>">
             <a href="base.php" class="<?php echoCUr('base'); ?>">基础css</a>
             <a href="text.php" class="<?php echoCUr('text'); ?>">文字</a>
             <a href="button.php" class="<?php echoCUr('button') ?>">按钮</a>
