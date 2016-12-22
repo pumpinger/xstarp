@@ -35,7 +35,7 @@ function echoCUr($name)
     <meta name="renderer" content="webkit">
     <script type="text/javascript" src="dest/lib/jquery-2.1.4.js"></script>
 
-
+    <link rel="icon" href="http://www.xiaobuwq.com/images/favicon.ico">
     <link rel="stylesheet" href="dest/lib/iconfont/iconfont.css"/>
 
     <link rel="stylesheet" href="lib/prism/prism.css"/>
