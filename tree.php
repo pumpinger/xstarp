@@ -14,15 +14,24 @@ include "layout_header.php";
         min-width: 330px;
         min-height: 330px;
         padding: 5px;
-        border: 1px solid #e6e6e6;
+        border: 1px solid #06c;
         vertical-align: top;
     }
+
+    .x-tree-h3 {
+         color: #2e8596;
+     }
+
     .api-wrap {
         min-width: 300px;
         padding: 5px;
-        border-left: 10px solid #358ccb;
+        border-left: 1px solid #06c;
     }
-    .api-wrap li {list-style: disc inside none;}
+    .api-wrap li {
+        display: list-item;
+        list-style-type: disc;
+    }
+
 </style>
 
 <div class="x-panel">
@@ -31,11 +40,13 @@ include "layout_header.php";
         <p class="x-color-blue">示例：</p>
 
 <pre><code class="language-html"><textarea>
-    <p>方法一</p>
-    <div class="member_tree"></div>
-    <p>方法二</p>
-    <div>
-        <input class="member_tree2" placeholder="">
+    <div class="tree-wrap">
+        <p>方法一</p>
+        <div class="test_tree1"></div>
+    </div>
+    <div class="tree-wrap">
+        <p>方法二</p>
+        <input class="test_tree2" placeholder="">
     </div>
     <script>
         var testTree1 = xTree({
@@ -93,10 +104,9 @@ include "layout_header.php";
                 console.log(testTree._makeSearch);
             },
             onCheck: function (item, dom, childrenItem) {
-//            console.log(this);
-//            console.log(this.getId());
-//            console.log(testTree);
-//            应该是  this.getId()比较规范  还是 testTree.getId()比较规范   this可以做到 只暴漏该暴漏的方法
+                //console.log(this);
+                //console.log(this.getId());
+                //console.log(testTree);
             },
             onCancel: function (item, dom, childrenItem) {}
         });
@@ -114,46 +124,156 @@ include "layout_header.php";
         </div>
 
         <p class="x-color-blue">规则:</p>
+        <table class="x-table x-table-interval">
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>类型</th>
+                <th>作用</th>
+                <th>默认值</th>
+                <th>示例</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>is_trigger</td>
+                <td>Bool</td>
+                <td>['./img/a1.png','./img/a2.png','./img/a3.png']</td>
+                <td>是否需要触发，否则直接显示</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>infoDom</td>
+                <td>html/string</td>
+                <td>&lt;p&gt;123&lt;/p&gt;</td>
+                <td>左边的图片简介</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>onSwitch</td>
+                <td>函数</td>
+                <td>function(index){}</td>
+                <td>点击图片时会触发</td>
+                <td></td>
+            </tr>
+            </tbody>
+
+
+        </table>
+        <table class="x-table x-table-interval">
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>类型</th>
+                <th>实例</th>
+                <th>作用</th>
+                <th>默认值</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>imgs</td>
+                <td>数组</td>
+                <td>['./img/a1.png','./img/a2.png','./img/a3.png']</td>
+                <td>要播放的图片</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>infoDom</td>
+                <td>html/string</td>
+                <td>&lt;p&gt;123&lt;/p&gt;</td>
+                <td>左边的图片简介</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>onSwitch</td>
+                <td>函数</td>
+                <td>function(index){}</td>
+                <td>点击图片时会触发</td>
+                <td></td>
+            </tr>
+            </tbody>
+
+
+        </table>
+        <table class="x-table x-table-interval">
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>类型</th>
+                <th>实例</th>
+                <th>作用</th>
+                <th>默认值</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>imgs</td>
+                <td>数组</td>
+                <td>['./img/a1.png','./img/a2.png','./img/a3.png']</td>
+                <td>要播放的图片</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>infoDom</td>
+                <td>html/string</td>
+                <td>&lt;p&gt;123&lt;/p&gt;</td>
+                <td>左边的图片简介</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>onSwitch</td>
+                <td>函数</td>
+                <td>function(index){}</td>
+                <td>点击图片时会触发</td>
+                <td></td>
+            </tr>
+            </tbody>
+
+
+        </table>
 
         <div class="api-wrap">
-            <p>属性</p>
-            <p>is_trigger:true, //是否需要触发? 否则直接显示</p>
-            <p>has_search:false,</p>
-            <p>only_child:true,//是否结果只要 child</p>
-            <p>node_merge:true,//是否需要合并结果</p>
-            <p>zIndex:1,</p>
-            <p>choose:false, //哪些是选中的？优先级高于data</p>
-            <p>is_node_first:false,//是否需要节点排在前面 否则按照data的顺序</p>
-            <p>is_multi:true,//是否多选</p>
-            <p>expand:false, //是否展开 todo</p>
-            <p>rootId:0,</p>
-            <p>width:null,</p>
-            <p>maxHeight:null,</p>
-            <p>data:[],</p>
+            <p class="x-tree-h3">属性</p>
+            <li>is_trigger:true, //是否需要触发? 否则直接显示</li>
+            <li>has_search:false,</li>
+            <li>only_child:true,//是否结果只要 child</li>
+            <li>node_merge:true,//是否需要合并结果</li>
+            <li>zIndex:1,</li>
+            <li>choose:false, //哪些是选中的？优先级高于data</li>
+            <li>is_node_first:false,//是否需要节点排在前面 否则按照data的顺序</li>
+            <li>is_multi:true,//是否多选</li>
+            <li>expand:false, //是否展开 todo</li>
+            <li>rootId:0,</li>
+            <li>width:null,</li>
+            <li>maxHeight:null,</li>
+            <li>data:[],</li>
         </div>
 
         <div class="api-wrap">
-            <p>事件</p>
-            <p>onInit: function () {},</p>
-            <p>onOpen: function () {}, //触发时</p>
-            <p>onBeforeOpen: function () {},</p>
-            <p>onClose: function (has_chg) {
+            <p class="x-tree-h3">事件</p>
+            <li>onInit: function () {},</li>
+            <li>onOpen: function () {}, //触发时</li>
+            <li>onBeforeOpen: function () {},</li>
+            <li>onClose: function (has_chg) {
                 console.log('是否产生变化：'+has_chg);
-                },</p>
-            <p>onCheck: function (item,dom,childItem) {}</p>
-            <p>onCancel: function (item,dom,childItem) {}</p>
+                },</li>
+            <li>onCheck: function (item,dom,childItem) {}</li>
+            <li>onCancel: function (item,dom,childItem) {}</li>
         </div>
 
         <div class="api-wrap">
-            <p>方法</p>
-            <p>start:function(){},</p>
-            <p>end:function(){},</p>
-            <p>getName:function(){},</p>
-            <p>getId:function(){},</p>
-            <p>cancelItem:function(){},</p>
-            <p>checkItem:function(){},</p>
-            <p>getItem:function(){},</p>
-            <p>search:function(){},</p>
+            <li class="x-tree-h3">方法</li>
+            <li>start:function(){},</li>
+            <li>end:function(){},</li>
+            <li>getName:function(){},</li>
+            <li>getId:function(){},</li>
+            <li>cancelItem:function(){},</li>
+            <li>checkItem:function(){},</li>
+            <li>getItem:function(){},</li>
+            <li>search:function(){},</li>
         </div>
     </div>
 </div>
