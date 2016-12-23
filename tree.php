@@ -357,7 +357,7 @@ include "layout_header.php";
             </tr>
             <tr>
                 <td>cancelItem(id, type)</td>
-                <td>取消节点</td>
+                <td>取消节点,id是节点的id,type是节点的类型(true是节点,false是叶子)</td>
                 <td>Number, Boolean</td>
                 <td>无</td>
                 <td></td>
