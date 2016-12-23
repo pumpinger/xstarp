@@ -143,7 +143,7 @@ include "layout_header.php";
             <tr>
                 <td>only_child</td>
                 <td>Boolean</td>
-                <td>搜索结果是否只要child</td>
+                <td>搜索结果是否只要叶子</td>
                 <td>true</td>
                 <td></td>
             </tr>
@@ -162,13 +162,6 @@ include "layout_header.php";
                 <td></td>
             </tr>
             <tr>
-                <td>node_merge</td>
-                <td>Boolean</td>
-                <td>是否需要合并结果</td>
-                <td>false</td>
-                <td></td>
-            </tr>
-            <tr>
                 <td>choose</td>
                 <td>Boolean或Object</td>
                 <td>哪些是选中的？优先级高于data</td>
@@ -178,7 +171,7 @@ include "layout_header.php";
             <tr>
                 <td>is_node_first</td>
                 <td>Boolean</td>
-                <td>是否需要节点排在前面 否则按照data的顺序</td>
+                <td>是否需要Node排在前面 否则按照data的顺序</td>
                 <td>false</td>
                 <td></td>
             </tr>
@@ -220,21 +213,21 @@ include "layout_header.php";
             <tr>
                 <td>data[0].id</td>
                 <td>Number</td>
-                <td>节点的ID</td>
+                <td>item的ID</td>
                 <td>无</td>
                 <td></td>
             </tr>
             <tr>
                 <td>data[0].name</td>
                 <td>String</td>
-                <td>节点的名字</td>
+                <td>item的名字</td>
                 <td>无</td>
                 <td></td>
             </tr>
             <tr>
                 <td>data[0].nodeId</td>
                 <td>Number</td>
-                <td>节点的父节点ID</td>
+                <td>item的父节点ID</td>
                 <td>无</td>
                 <td></td>
             </tr>
@@ -248,7 +241,7 @@ include "layout_header.php";
             <tr>
                 <td>data[0].is_check</td>
                 <td>Boolean</td>
-                <td>表示节点是否被选中</td>
+                <td>表示item是否被选中</td>
                 <td>无</td>
                 <td></td>
             </tr>
@@ -290,13 +283,13 @@ include "layout_header.php";
             </tr>
             <tr>
                 <td>onCheck</td>
-                <td>选中节点时触发</td>
+                <td>选中item时触发</td>
                 <td>function () {}</td>
                 <td></td>
             </tr>
             <tr>
                 <td>onCancel</td>
-                <td>取消选中节点时触发</td>
+                <td>取消选中item时触发</td>
                 <td>function () {}</td>
                 <td></td>
             </tr>
@@ -329,56 +322,56 @@ include "layout_header.php";
             </tr>
             <tr>
                 <td>getItem()</td>
-                <td>获取被选中的（checked）的节点</td>
+                <td>获取被选中的(checked)的item</td>
                 <td>无</td>
                 <td>无</td>
                 <td></td>
             </tr>
             <tr>
                 <td>getId()</td>
-                <td>获取被选中的（checked）节点的ID</td>
+                <td>获取被选中的(checked)item的ID</td>
                 <td>无</td>
                 <td>返回Object,Obj.id为叶子的id数组,Obj.nodeId为节点id数组</td>
                 <td></td>
             </tr>
             <tr>
                 <td>getName()</td>
-                <td>获取被选中的（checked）节点的Name</td>
+                <td>获取被选中的(checked)item的Name</td>
                 <td>无</td>
                 <td>返回Array,元素为String</td>
                 <td></td>
             </tr>
             <tr>
                 <td>cancelAll()</td>
-                <td>取消所有节点</td>
+                <td>取消所有item</td>
                 <td>无</td>
                 <td>无</td>
                 <td></td>
             </tr>
             <tr>
                 <td>cancelItem(id, type)</td>
-                <td>取消节点,id是节点的id,type是节点的类型(true是节点,false是叶子)</td>
+                <td>取消item,id是item的id,type是item的类型(true是节点,false是叶子)</td>
                 <td>Number, Boolean</td>
                 <td>无</td>
                 <td></td>
             </tr>
             <tr>
                 <td>checkAll()</td>
-                <td>选中所有节点</td>
+                <td>选中所有item</td>
                 <td>无</td>
                 <td>无</td>
                 <td></td>
             </tr>
             <tr>
                 <td>checkItem(id, type)</td>
-                <td>选中节点,id是节点的id,type是节点的类型(true是节点,false是叶子)</td>
+                <td>选中item,id是item的id,type是item的类型(true是节点,false是叶子)</td>
                 <td>Number, Boolean</td>
                 <td>无</td>
                 <td></td>
             </tr>
             <tr>
                 <td>search(value)</td>
-                <td>在tree中搜索包含value的节点</td>
+                <td>在tree中搜索包含value的item</td>
                 <td>String</td>
                 <td>无</td>
                 <td></td>
