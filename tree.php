@@ -14,15 +14,13 @@ include "layout_header.php";
         min-width: 330px;
         min-height: 330px;
         padding: 5px;
-        border: 1px solid #358ccb;
+        border: 1px solid #e6e6e6;
         vertical-align: top;
     }
     .api-wrap {
-        display: inline-block;
         min-width: 300px;
         padding: 5px;
-        border: 1px solid #06c;
-        vertical-align: top;
+        border-left: 10px solid #358ccb;
     }
     .api-wrap li {list-style: disc inside none;}
 </style>
@@ -116,8 +114,9 @@ include "layout_header.php";
         </div>
 
         <p class="x-color-blue">规则:</p>
-        <p>属性</p>
-        <div class="">
+
+        <div class="api-wrap">
+            <p>属性</p>
             <p>is_trigger:true, //是否需要触发? 否则直接显示</p>
             <p>has_search:false,</p>
             <p>only_child:true,//是否结果只要 child</p>
@@ -133,8 +132,8 @@ include "layout_header.php";
             <p>data:[],</p>
         </div>
 
-        <p>事件</p>
-        <div class="">
+        <div class="api-wrap">
+            <p>事件</p>
             <p>onInit: function () {},</p>
             <p>onOpen: function () {}, //触发时</p>
             <p>onBeforeOpen: function () {},</p>
@@ -145,8 +144,8 @@ include "layout_header.php";
             <p>onCancel: function (item,dom,childItem) {}</p>
         </div>
 
-        <p>方法</p>
-        <div class="">
+        <div class="api-wrap">
+            <p>方法</p>
             <p>start:function(){},</p>
             <p>end:function(){},</p>
             <p>getName:function(){},</p>
