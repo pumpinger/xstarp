@@ -11,10 +11,10 @@ include "layout_header.php";
 <style>
     .tree-wrap {
         display: inline-block;
-        width: 300px;
-        height: 300px;
+        min-width: 330px;
+        min-height: 330px;
         padding: 5px;
-        border: 1px solid #06c;
+        border: 1px solid #358ccb;
         vertical-align: top;
     }
     .api-wrap {
@@ -66,7 +66,6 @@ include "layout_header.php";
             onCancel: function (item, dom, childrenItem) {}
         });
 
-
         var testTree2 = xTree({
             dom: $('.test_tree2'),
             only_child: false,
@@ -88,12 +87,9 @@ include "layout_header.php";
             //            nodeId:[1],
             //            id:[1]
             //        },
-            onInit: function () {
-            },
-            onOpen: function () {
-            },
-            onBeforeOpen: function () {
-            },
+            onInit: function () {},
+            onOpen: function () {},
+            onBeforeOpen: function () {},
             onClose: function (hasChange) {
                 console.log(testTree.getId());
                 console.log(testTree._makeSearch);
@@ -104,8 +100,7 @@ include "layout_header.php";
 //            console.log(testTree);
 //            应该是  this.getId()比较规范  还是 testTree.getId()比较规范   this可以做到 只暴漏该暴漏的方法
             },
-            onCancel: function (item, dom, childrenItem) {
-            }
+            onCancel: function (item, dom, childrenItem) {}
         });
     </script>
 </textarea></code></pre>
@@ -115,47 +110,52 @@ include "layout_header.php";
             <p>方法一</p>
             <div class="test_tree1"></div>
         </div>
-
         <div class="tree-wrap">
             <p>方法二</p>
             <input class="test_tree2" placeholder="">
         </div>
 
-
         <p class="x-color-blue">规则:</p>
-<pre><code class="language-html"><textarea>
-属性
-is_trigger:true, //是否需要触发? 否则直接显示
-has_search:false,
-only_child:true,//是否结果只要 child
-node_merge:true,//是否需要合并结果
-zIndex:1,
-choose:false, //哪些是选中的？优先级高于data
-is_node_first:false,//是否需要节点排在前面 否则按照data的顺序
-is_multi:true,//是否多选
-expand:false, //是否展开 todo
-rootId:0,
-width:null,
-maxHeight:null,
-data:[],
-事件
-onInit: function () {},
-onOpen: function () {}, //触发时
-onBeforeOpen: function () {},
-onClose: function (has_chg) {console.log('是否产生变化：'+has_chg);},
-onCheck: function (item,dom,childItem) {}
-onCancel: function (item,dom,childItem) {}
+        <p>属性</p>
+        <div class="">
+            <p>is_trigger:true, //是否需要触发? 否则直接显示</p>
+            <p>has_search:false,</p>
+            <p>only_child:true,//是否结果只要 child</p>
+            <p>node_merge:true,//是否需要合并结果</p>
+            <p>zIndex:1,</p>
+            <p>choose:false, //哪些是选中的？优先级高于data</p>
+            <p>is_node_first:false,//是否需要节点排在前面 否则按照data的顺序</p>
+            <p>is_multi:true,//是否多选</p>
+            <p>expand:false, //是否展开 todo</p>
+            <p>rootId:0,</p>
+            <p>width:null,</p>
+            <p>maxHeight:null,</p>
+            <p>data:[],</p>
+        </div>
 
-方法
-start:function(){},
-end:function(){},
-getName:function(){},
-getId:function(){},
-cancelItem:function(){},
-checkItem:function(){},
-getItem:function(){},
-search:function(){},
-</textarea></code></pre>
+        <p>事件</p>
+        <div class="">
+            <p>onInit: function () {},</p>
+            <p>onOpen: function () {}, //触发时</p>
+            <p>onBeforeOpen: function () {},</p>
+            <p>onClose: function (has_chg) {
+                console.log('是否产生变化：'+has_chg);
+                },</p>
+            <p>onCheck: function (item,dom,childItem) {}</p>
+            <p>onCancel: function (item,dom,childItem) {}</p>
+        </div>
+
+        <p>方法</p>
+        <div class="">
+            <p>start:function(){},</p>
+            <p>end:function(){},</p>
+            <p>getName:function(){},</p>
+            <p>getId:function(){},</p>
+            <p>cancelItem:function(){},</p>
+            <p>checkItem:function(){},</p>
+            <p>getItem:function(){},</p>
+            <p>search:function(){},</p>
+        </div>
     </div>
 </div>
 
