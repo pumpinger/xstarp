@@ -32,13 +32,13 @@
 
     var defOpt = {
         dom: '',  //jqueryDom
-        is_trigger: true,  //是否需要触发? 否则直接显示
+        is_trigger: false,  //是否需要触发? 否则直接显示
         has_search: false,
         only_child: true,//是否结果只要 child
         node_merge: true,//结果只显示最上层  比如   中国被选中  四川,成都则不会显示  否则 每个被勾选的节点都显示
         zIndex: 1,
         choose: false,  //哪些是选中的？优先级高于data  {nodeId:[1,2,3],id:[1,2,3]}
-        //node_first:false,//是否需要节点排在前面  否则按照data的顺序
+        // node_first:false,//是否需要节点排在前面  否则按照data的顺序
         is_multi: true,//是否多选
         expand: false, //是否展开，false、true、num  //todo expand
         width: null,
