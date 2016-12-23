@@ -324,7 +324,7 @@ include "layout_header.php";
                 <td>getItem()</td>
                 <td>获取被选中的(checked)的item</td>
                 <td>无</td>
-                <td>无</td>
+                <td>返回Array,数组元素为Object</td>
                 <td></td>
             </tr>
             <tr>
@@ -338,7 +338,7 @@ include "layout_header.php";
                 <td>getName()</td>
                 <td>获取被选中的(checked)item的Name</td>
                 <td>无</td>
-                <td>返回Array,元素为String</td>
+                <td>返回Array,数组元素为String</td>
                 <td></td>
             </tr>
             <tr>
