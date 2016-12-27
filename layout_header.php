@@ -167,6 +167,7 @@ function echoCUr($name)
         <div class="aside-body <?php echoCUr(array('format', 'console')); ?>">
             <a href="format.php" class="<?php echoCUr('format') ?>" >格式化</a>
             <a href="console.php" class="<?php echoCUr('console') ?>" >页面控制台</a>
+            <a href="fun.php" class="<?php echoCUr('console') ?>" >函数封装</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>封装</p>
         <div class="aside-body <?php echoCUr(array('map', 'icon','ajax','chart','time')) ?>">
