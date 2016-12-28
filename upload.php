@@ -12,7 +12,7 @@ include "layout_header.php";
 <style>
 
     ol, ul { list-style: none; }
-    #x-uploader .x-queueList { margin: 20px; display: inline-block; }
+    #x-uploader .x-queueList { display: inline-block; }
 
     .element-invisible { position: absolute !important; clip: rect(1px 1px 1px 1px); /* IE6, IE7 */ clip: rect(1px,1px,1px,1px); }
 
@@ -33,7 +33,7 @@ include "layout_header.php";
 
     #x-uploader .x-filelist:after { content: ''; display: block; width: 0; height: 0; overflow: hidden; clear: both; }
 
-    #x-uploader .x-filelist li { width: 110px; height: 110px; background: url(./bg.png) no-repeat; text-align: center; margin: 0 8px 20px 0; position: relative; display: inline; float: left; overflow: hidden; font-size: 12px; }
+    #x-uploader .x-filelist li { width: 110px; height: 110px; background: url(./img/bg.png) no-repeat; text-align: center; margin: 0 8px 20px 0; position: relative; display: inline; float: left; overflow: hidden; font-size: 12px; }
 
     #x-uploader .x-filelist li p.log { position: relative; top: -45px; }
 
@@ -41,7 +41,7 @@ include "layout_header.php";
     #x-uploader .x-imgFile{display: inline-block;}
 
     #x-uploader .x-filelist li p.x-progress { position: absolute; width: 100%; bottom: 0; left: 0; height: 8px; overflow: hidden; z-index: 50; }
-    #x-uploader .x-filelist li p.x-progress span { display: none; overflow: hidden; width: 0; height: 100%; background: #1483d8 url(./progress.png) repeat-x; -webit-transition: width 200ms linear; -moz-transition: width 200ms linear; -o-transition: width 200ms linear; -ms-transition: width 200ms linear; transition: width 200ms linear; -webkit-animation: progressmove 2s linear infinite; -moz-animation: progressmove 2s linear infinite; -o-animation: progressmove 2s linear infinite; -ms-animation: progressmove 2s linear infinite; animation: progressmove 2s linear infinite; -webkit-transform: translateZ(0); }
+    #x-uploader .x-filelist li p.x-progress span { display: none; overflow: hidden; width: 0; height: 100%; background: #1483d8 url(./img/progress.png) repeat-x; -webit-transition: width 200ms linear; -moz-transition: width 200ms linear; -o-transition: width 200ms linear; -ms-transition: width 200ms linear; transition: width 200ms linear; -webkit-animation: progressmove 2s linear infinite; -moz-animation: progressmove 2s linear infinite; -o-animation: progressmove 2s linear infinite; -ms-animation: progressmove 2s linear infinite; animation: progressmove 2s linear infinite; -webkit-transform: translateZ(0); }
 
     @-webkit-keyframes progressmove {
         0% {
@@ -74,11 +74,11 @@ include "layout_header.php";
 
     #x-uploader .x-filelist li p.error { background: #f43838; color: #fff; position: absolute; bottom: 0; left: 0; height: 28px; line-height: 28px; width: 100%; z-index: 100; }
 
-    #x-uploader .x-filelist li .success { display: block; position: absolute; left: 0; bottom: 0; height: 40px; width: 100%; z-index: 200; background: url(./success.png) no-repeat right bottom; }
+    #x-uploader .x-filelist li .success { display: block; position: absolute; left: 0; bottom: 0; height: 40px; width: 100%; z-index: 200; background: url(./img/success.png) no-repeat right bottom; }
 
     #x-uploader .x-filelist div.file-panel { position: absolute; height: 0; filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#80000000', endColorstr='#80000000')\0; background: rgba( 0, 0, 0, 0.5 ); width: 100%; top: 0; left: 0; overflow: hidden; z-index: 300; }
 
-    #x-uploader .x-filelist div.file-panel span { width: 24px; height: 24px; display: inline; float: right; text-indent: -9999px; overflow: hidden;background: url(./icons.png) no-repeat; margin: 5px 1px 1px; cursor: pointer; }
+    #x-uploader .x-filelist div.file-panel span { width: 24px; height: 24px; display: inline; float: right; text-indent: -9999px; overflow: hidden;background: url(./img/icons.png) no-repeat; margin: 5px 1px 1px; cursor: pointer; }
 
     #x-uploader .x-filelist div.file-panel span.rotateLeft { background-position: 0 -24px; }
     #x-uploader .x-filelist div.file-panel span.rotateLeft:hover { background-position: 0 0; }
@@ -89,10 +89,10 @@ include "layout_header.php";
     #x-uploader .x-filelist div.file-panel span.cancel { background-position: -48px -24px; }
     #x-uploader .x-filelist div.file-panel span.cancel:hover { background-position: -48px 0; }
 
-    #x-uploader .x-statusBar .x-progress { border: 1px solid #1483d8; width: 198px; background: #fff; height: 18px; position: relative; display: inline-block; text-align: center; line-height: 20px; color: #6dbfff; margin-right: 10px; }
+    #x-uploader .x-statusBar .x-progress { border: 1px solid #1483d8; width: 198px; background: #fff;  position: relative; display: inline-block; text-align: center;  color: #6dbfff; margin-right: 10px; }
     #x-uploader .x-statusBar .x-progress span.percentage { width: 0; height: 100%; left: 0; top: 0; background: #1483d8; position: absolute; }
     #x-uploader .x-statusBar .x-progress span.text { position: relative; z-index: 10; }
-    #x-uploader .x-statusBar div{display: inline-block;}
+    #x-uploader .x-statusBar div{display: inline-block;vertical-align: middle;}
     #x-uploader #x-filePicker2{display: inline-block;}
     #x-uploader .x-uploadBtn{ margin-left: 10px; position: relative; display: inline-block; cursor: pointer; background: #00b7ee; padding: 10px 15px; color: #fff; text-align: center; border-radius: 3px; overflow: hidden; }
 
@@ -132,7 +132,7 @@ include "layout_header.php";
 
         <p>示例：</p>
         <pre><code class="language-html"><textarea>
-                     <div id="x-uploader" data-type="1">
+                     <div id="x-uploader" >
                          <div class="x-queueList">
                              <div id="x-dndArea" class="x-placeholder">
                                  <div id="x-filePicker"></div>
@@ -171,7 +171,7 @@ include "layout_header.php";
         </div>
 
         <p>规则:</p>
-        <p>data-type:1   //是上传头像还是批量上传文件  1、头像  2、文件上传(可以批量)</p>
+        <p>fileType:1   //是上传头像还是批量上传文件  1、头像  2、文件上传(可以批量)</p>
 
     </div>
 
@@ -186,23 +186,23 @@ include "layout_header.php";
 
     <script >
         $("#x-uploader").upload({
-            fileType :1,//
-            fileNumLimit: 300,
-            fileSizeLimit: 200 * 1024 * 1024,    // 200 M
-            fileSingleSizeLimit: 50 * 1024 *1024,    // 50 M
+            fileType :2,//   1 头像     2 文件
+            fileNumLimit: 300,                       //总共能上传多少个文件
+            fileSizeLimit: 200 * 1024 * 1024,        //   多个文件大小
+            fileSingleSizeLimit: 50 * 1024 *1024,    //   单个文件大小
             formData: {
                 uid: 123
-            },
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            },
+            },                                //传给后台的数据
+            fileVal:'x-file',                 //input框 name
+//            accept: {
+//                title: 'Images',
+//                extensions: 'gif,jpg,jpeg,bmp,png',
+//                mimeTypes: 'image/*'
+//            },                              //允许上传的类型
             pick: {
-                id: '#x-filePicker',
-                label: '头像上传'
-            },                                  //按钮名字和id
-            server: 'uploadFileServer',//服务器地址
+                label: '批量上传'       //按钮名字和id
+            },
+            server: 'uploadFileServer.php',//服务器地址
         });
 
     </script>
