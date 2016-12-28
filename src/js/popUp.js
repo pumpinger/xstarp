@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/12/27.
  */
-window.pop = function(type,option,time) {
+window.xPopUp = function(type,option,time) {
     var layerDom; //底部遮罩层
     var mainDom; //主体内容
     var closeDom; //关闭按钮

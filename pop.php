@@ -10,8 +10,11 @@ include "layout_header.php";
 
 ?>
 
-
 <script type="text/javascript" src="./src/js/popUp.js"></script>
+
+<style>
+    .pop-button span{display:inline-block;height:36px;line-height:36px;width:60px;text-align:center;border-radius:4px;color:#fff;background:#358ccb;cursor:pointer;}
+</style>
 
 <div class="x-panel">
     <div class="x-panel-title">弹窗：</div>
@@ -20,18 +23,17 @@ include "layout_header.php";
         <p>示例：</p>
 
         <pre><code class="language-html"><textarea>
-     <div class="x-pop">
-           <div class="x-pop-btn">
-               <span class="x-button x-button-small x-pop-prompt1">提示1</span>
-               <span class="x-button x-button-small x-pop-prompt2">提示2</span>
-               <span class="x-button x-button-small x-pop-confirm">确定</span>
-               <span class="x-button x-button-small x-pop-define">自定义</span>
-           </div>
-        </div>
+    <div class="pop-button">
+           <span class="pop-button-prompt1">提示1</span>
+           <span class="pop-button-prompt2">提示2</span>
+           <span class="pop-button-confirm">确定</span>
+           <span class="pop-button-define">自定义</span>
+       </div>
+
 
         <script>
-            $('.x-pop-prompt1').click(function(){
-                pop('prompt',{
+            $('.pop-button-prompt1').click(function(){
+                xPopUp('prompt',{
                     p_width:200,
                     content:'操作成功',
                     btn:[{
@@ -39,19 +41,19 @@ include "layout_header.php";
                     }]
                 });
             });
-            $('.x-pop-prompt2').click(function(){
-                pop('prompt',{
+            $('.pop-button-prompt2').click(function(){
+                xPopUp('prompt',{
                     p_width:200,
                     content:'操作成功'
                 },2000);
             });
 
-            $('.x-pop-confirm').click(function(){
-                pop('confirm', {
+            $('.pop-button-confirm').click(function(){
+                xPopUp('confirm', {
                     content:'确定删除吗',
                     isClose:false,
                     confirmfn:function(){
-                        pop('prompt',{
+                        xPopUp('prompt',{
                             p_width:'200',
                             content:'操作成功'
                         },2000);
@@ -59,9 +61,9 @@ include "layout_header.php";
                 });
             });
 
-            $(".x-pop-define").click(function(){
+            $(".pop-button-define").click(function(){
                 var edit_con = $('<input type="text">');
-                pop('define',{
+                xPopUp('define',{
                     p_width:300,
                     title:'用户信息',
                     content:edit_con,
@@ -70,7 +72,7 @@ include "layout_header.php";
                         classStr:'confirm',
                         isClose:true,
                         opra:function(){
-                            pop('prompt',{
+                            xPopUp('prompt',{
                                 p_width:200,
                                 content:'保存成功'
                             },2000);
@@ -98,18 +100,17 @@ include "layout_header.php";
 
 
         <p>效果:</p>
-        <div class="x-pop">
-           <div class="x-pop-btn">
-               <span class="x-button x-button-small x-pop-prompt1">提示1</span>
-               <span class="x-button x-button-small x-pop-prompt2">提示2</span>
-               <span class="x-button x-button-small x-pop-confirm">确定</span>
-               <span class="x-button x-button-small x-pop-define">自定义</span>
-           </div>
-        </div>
+       <div class="pop-button">
+           <span class="pop-button-prompt1">提示1</span>
+           <span class="pop-button-prompt2">提示2</span>
+           <span class="pop-button-confirm">确定</span>
+           <span class="pop-button-define">自定义</span>
+       </div>
+
 
         <script>
-            $('.x-pop-prompt1').click(function(){
-                pop('prompt',{
+            $('.pop-button-prompt1').click(function(){
+                xPopUp('prompt',{
                     p_width:200,
                     content:'操作成功',
                     btn:[{
@@ -117,19 +118,19 @@ include "layout_header.php";
                     }]
                 });
             });
-            $('.x-pop-prompt2').click(function(){
-                pop('prompt',{
+            $('.pop-button-prompt2').click(function(){
+                xPopUp('prompt',{
                     p_width:200,
                     content:'操作成功'
                 },2000);
             });
 
-            $('.x-pop-confirm').click(function(){
-                pop('confirm', {
+            $('.pop-button-confirm').click(function(){
+                xPopUp('confirm', {
                     content:'确定删除吗',
                     isClose:false,
                     confirmfn:function(){
-                        pop('prompt',{
+                        xPopUp('prompt',{
                             p_width:'200',
                             content:'操作成功'
                         },2000);
@@ -137,9 +138,9 @@ include "layout_header.php";
                 });
             });
 
-            $(".x-pop-define").click(function(){
+            $(".pop-button-define").click(function(){
                 var edit_con = $('<input type="text">');
-                pop('define',{
+                xPopUp('define',{
                     p_width:300,
                     title:'用户信息',
                     content:edit_con,
@@ -148,7 +149,7 @@ include "layout_header.php";
                         classStr:'confirm',
                         isClose:true,
                         opra:function(){
-                            pop('prompt',{
+                            xPopUp('prompt',{
                                 p_width:200,
                                 content:'保存成功'
                             },2000);
@@ -227,7 +228,7 @@ include "layout_header.php";
                 <td>btn</td>
                 <td>Array</td>
                 <td>弹窗按钮</td>
-                <td>[确认] [取消]</td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
@@ -279,32 +280,35 @@ include "layout_header.php";
             </thead>
             <tbody>
             <tr>
-                <td>pop()</td>
+                <td>xPopUp()</td>
                 <td>弹窗函数</td>
                 <td>共有三个参数type,option,time</td>
             </tr>
+            </tbody>
+            <thead>
             <tr>
-                <td>onClose()</td>
-                <td>关闭弹窗</td>
+                <th>参数</th>
+                <th>说明</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td>弹窗类型</td>
+                <td>'prompt','confirm','define'</td>
+            </tr>
+            <tr>
+                <td>option</td>
+                <td>弹窗属性</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>time</td>
+                <td>弹窗自动关闭时间</td>
                 <td></td>
             </tr>
 
-            <tr>
-                <td>promptPop</td>
-                <td>提示弹窗</td>
-                <td>type为'prompt'时调用</td>
-
-            </tr>
-            <tr>
-                <td>confirmPop</td>
-                <td>确认弹窗</td>
-                <td>type为'confirm'时调用</td>
-            </tr>
-            <tr>
-                <td>userDefined</td>
-                <td>自定义弹窗</td>
-                <td>type为'define'时调用</td>
-            </tr>
 
             </tbody>
         </table>
