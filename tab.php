@@ -19,12 +19,12 @@ include "layout_header.php";
 <pre><code class="language-html"><textarea>
         <div class="x-tab">
             <ul class="x-tab-nav">
-                <li class="x-tab-li  active"><a href="#">Section 1</a></li>
+                <li class="x-tab-li  x-active"><a href="#">Section 1</a></li>
                 <li class=""><a href="#">Section 2</a></li>
                 <li class=""><a href="#">Section 3</a></li>
             </ul>
             <div class="x-tab-contents">
-                <div class="x-tab-content active">
+                <div class="x-tab-content x-active">
                     <p>I'm in Section 1.</p>
                 </div>
                 <div class="x-tab-content">
@@ -48,7 +48,7 @@ include "layout_header.php";
                 <li class=""><a href="#">Section 3</a></li>
             </ul>
             <div class="x-tab-contents">
-                <div class="x-tab-content active">
+                <div class="x-tab-content x-active">
                     <p>I'm in Section 1.</p>
                 </div>
                 <div class="x-tab-content">
@@ -59,6 +59,8 @@ include "layout_header.php";
                 </div>
             </div>
         </div>
+
+
 
 
         <p>规则:</p>
