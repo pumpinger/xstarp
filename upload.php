@@ -96,6 +96,9 @@ include "layout_header.php";
     #x-uploader #x-filePicker2{display: inline-block;}
     #x-uploader .x-uploadBtn{ margin-left: 10px; position: relative; display: inline-block; cursor: pointer; background: #00b7ee; padding: 10px 15px; color: #fff; text-align: center; border-radius: 3px; overflow: hidden; }
 
+    #x-uploader .retry{color: red;}
+    #x-uploader .ignore{color: red;}
+
     .webuploader-container {
         position: relative;
     }
@@ -149,6 +152,20 @@ include "layout_header.php";
                              </div>
                          </div>
                      </div>
+                    <script >
+                        $("#x-uploader").upload({
+                            fileType :2,
+                            formData: {
+                                uid: 123
+                            },
+                            pick: {
+                                id :'#x-filePicker',
+                                label: '批量上传'
+                            },
+                            server: 'uploadFileServer1.php',
+                        });
+
+                    </script>
                 </textarea></code></pre>
         <p>效果:</p>
 
@@ -171,8 +188,10 @@ include "layout_header.php";
         </div>
 
         <p>规则:</p>
-        <p>fileType:1   //是上传头像还是批量上传文件  1、头像  2、文件上传(可以批量)</p>
-
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileType : 1          //是上传头像还是批量上传文件  1、头像  2、文件上传(批量)</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileVal : 'x-file',   //上传文件的input框name</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;formData: {uid: 123},     //传给后台的数据</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server: 'uploadFileServer.php', //后台处理上传事件的地址</p>
     </div>
 
 
@@ -186,23 +205,26 @@ include "layout_header.php";
 
     <script >
         $("#x-uploader").upload({
-            fileType :2,//   1 头像     2 文件
+            fileType :1,                             //   1 头像     2 文件
             fileNumLimit: 300,                       //总共能上传多少个文件
             fileSizeLimit: 200 * 1024 * 1024,        //   多个文件大小
-            fileSingleSizeLimit: 50 * 1024 *1024,    //   单个文件大小
+            fileSingleSizeLimit: 50 * 1024 * 1024,   //   单个文件大小
             formData: {
                 uid: 123
-            },                                //传给后台的数据
-            fileVal:'x-file',                 //input框 name
+            },                                       //传给后台的数据
+            fileVal:'x-file',                        //input框 name
+            chunked: false,                           //是否分片传送
+            chunkSize: 512 ,                         //分片大小  字节
 //            accept: {
 //                title: 'Images',
 //                extensions: 'gif,jpg,jpeg,bmp,png',
 //                mimeTypes: 'image/*'
-//            },                              //允许上传的类型
+//            },                                     //允许上传的类型
             pick: {
-                label: '批量上传'       //按钮名字和id
+                id :'#x-filePicker',
+                label: '批量上传'                     //按钮名字和id   可以点击的按钮的id和name
             },
-            server: 'uploadFileServer.php',//服务器地址
+            server: 'uploadFileServer1.php',          //服务器地址
         });
 
     </script>

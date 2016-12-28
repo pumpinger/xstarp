@@ -14,7 +14,7 @@ function saveFile($file_name){
 
     $target_pathfile = dirname(__FILE__).DIRECTORY_SEPARATOR.'file';//目的绝对路劲 包括文件名
     if(_makeDir($target_pathfile)){
-        $target_pathfile .= DIRECTORY_SEPARATOR.$_FILES[$file_name]['name'];
+        $target_pathfile .= DIRECTORY_SEPARATOR.$_FILES[$file_name]['name'].$i;
         if (isset($_FILES[$file_name])) {
             $status = move_uploaded_file($_FILES[$file_name]['tmp_name'],$target_pathfile);
             var_dump($status);

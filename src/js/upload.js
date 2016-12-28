@@ -154,7 +154,6 @@
         chunkSize: 512 * 1024,
         server: '?m=Admin&c=Upload&a=upload',
         // runtimeOrder: 'flash',
-
         accept: {
             title: 'Images',
             extensions: 'gif,jpg,jpeg,bmp,png',
@@ -182,20 +181,14 @@
         chunkSize: 512 * 1024,
         server: '?m=Admin&c=Upload&a=upload',
         compress:false,
-        // runtimeOrder: 'flash',
-
-        //accept: {
-        //    title: 'Images',
-        //    extensions: 'gif,jpg,jpeg,bmp,png',
-        //    mimeTypes: 'image/*'
-        //},
-
         // 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
         disableGlobalDnd: true,
         fileNumLimit: 300,
         fileSizeLimit: 200 * 1024 * 1024,    // 200 M
         fileSingleSizeLimit: 50 * 1024 * 1024    // 50 M
     };
+
+
     // 实例化
     $.fn.extend({
         upload:function(opt){
@@ -212,6 +205,13 @@
     upload.prototype ={
         init:function(opt){
             var fileType = opt.fileType;
+            if(fileType == 1){
+                opt['accept'] = {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+                };
+            }
             uploader = WebUploader.create(opt);
             // 添加“添加文件”的按钮，
             uploader.addButton({
@@ -219,23 +219,10 @@
                 label: '继续添加'
             });
 
+
             uploader.on('ready', function() {
                 window.uploader = uploader;
             });
-
-
-
-            uploader.beforeFileQueued = function(file){
-                console.log("222222");
-                if(fileType == 1){
-                    //图片上传
-                    //$(".x-statusBar").remove();
-                    //$wrap.append($progress);
-                }else if(fileType ==2){
-                    //多文件上传  包含多图片
-                }
-            };
-
 
             uploader.onUploadProgress = function( file, percentage ) {
                 //进度条回调
@@ -296,7 +283,6 @@
             uploader.onUploadError = function(file,reason){
                 if(reason =='http'){
                     console.log("服务器错误");
-
                 }
                 return;
             };
@@ -331,7 +317,17 @@
 
             uploader.onError = function( code ) {
                 //错误信息
-                alert( 'Eroor: ' + code );
+                switch (code) {
+                    case 'Q_TYPE_DENIED' :
+                        alert('不符合的文件类型');
+                        break;
+                    case 'Q_EXCEED_SIZE_LIMIT':
+                        alert('文件总大小超出，请重新设置');
+                        break;
+                    case 'Q_EXCEED_NUM_LIMIT':
+                        alert('文件数量过多，请分批上传');
+                        break;
+                }
             };
 
 
@@ -541,13 +537,13 @@
                 var text = '', stats;
 
                 if ( state === 'ready' ) {
-                    text = '选中' + fileCount + '张图片，共' +
+                    text = '选中' + fileCount + '个文件，共' +
                         WebUploader.formatSize( fileSize ) + '。';
                 } else if ( state === 'confirm' ) {
                     stats = uploader.getStats();
                     if ( stats.uploadFailNum ) {
-                        text = '已成功上传' + stats.successNum+ '张照片至XX相册，'+
-                            stats.uploadFailNum + '张照片上传失败，<a class="retry" href="#">重新上传</a>失败图片或<a class="ignore" href="#">忽略</a>'
+                        text = '已成功上传' + stats.successNum+ '个文件，'+
+                            stats.uploadFailNum + '个文件上传失败，<a class="retry" href="#">重新上传</a>失败文件或<a class="ignore" href="#">忽略</a>'
                     }
 
                 } else {
