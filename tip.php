@@ -7,5 +7,6 @@
  */
 
 include "layout_header.php";
+echo  '1234'
 
 ?>
