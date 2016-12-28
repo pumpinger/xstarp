@@ -6,9 +6,6 @@
     // 图片容器   多文件的时候
         $queue = $( '<ul class="x-filelist"></ul>' )
             .appendTo( $wrap.find( '.x-queueList' ) ),
-
-        $wrapImg = $(".x-imgFile"),
-
     // 状态栏，包括进度和控制按钮
         $statusBar = $wrap.find( '.x-statusBar' ),
 
@@ -21,7 +18,7 @@
     // 没选择文件之前的内容。
         $placeHolder = $wrap.find( '.x-placeholder' ),
 
-        $progress = $statusBar.find( '.x-progress' ).hide(),
+        $progress = $statusBar.find( '.progress' ).hide(),
 
     // 添加的文件数量
         fileCount = 0,
@@ -139,34 +136,8 @@
         return;
     }
     //图片上传和文件上传区分 参数
-    var opt_img={
-        pick: {
-            id: '#x-filePicker',
-            label: '头像上传'
-        },
-        formData: {
-            uid: 123
-        },
-        dnd: '#x-dndArea',
-        paste: '#x-uploader',
-        swf: '../../dist/Uploader.swf',
-        chunked: false,
-        chunkSize: 512 * 1024,
-        server: '?m=Admin&c=Upload&a=upload',
-        // runtimeOrder: 'flash',
-        accept: {
-            title: 'Images',
-            extensions: 'gif,jpg,jpeg,bmp,png',
-            mimeTypes: 'image/*'
-        },
-        compress:false,
-        // 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
-        disableGlobalDnd: true,
-        fileNumLimit: 300,
-        fileSizeLimit: 200 * 1024 * 1024,    // 200 M
-        fileSingleSizeLimit: 50 * 1024 * 1024    // 50 M
-    };
     var opt_file = {
+        dom:'',
         pick: {
             id: '#x-filePicker',
             label: '批量上传'
@@ -190,11 +161,10 @@
 
 
     // 实例化
-    $.fn.extend({
-        upload:function(opt){
-            return new upload(opt,$(this));
-        }
-    });
+    window.xUpload = function (opt) {
+        return new upload(opt);
+    };
+
     var defaultOption = opt_file;
     var upload=function(opt,dom){
         this.opt = $.extend(true,{},defaultOption,opt);
@@ -202,20 +172,28 @@
         console.log(this.opt);
         return this;
     };
+
     upload.prototype ={
         init:function(opt){
             var fileType = opt.fileType;
+
+
+            console.log(opt.dom);
+
+
+
+
             if(fileType == 1){
                 opt['accept'] = {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/*'
                 };
             }
             uploader = WebUploader.create(opt);
             // 添加“添加文件”的按钮，
             uploader.addButton({
-                id: '#x-filePicker2',
+                id: '#x-filePicker-add',
                 label: '继续添加'
             });
 
@@ -228,20 +206,22 @@
                 //进度条回调
                 if(fileType==2) {
                     var $li = $('#' + file.id),
-                        $percent = $li.find('.x-progress span');
+                        $percent = $li.find('.progress span');
 
                     $percent.css('width', percentage * 100 + '%');
                     percentages[file.id][1] = percentage;
                     updateTotalProgress();
                 }else if(fileType == 1){
-                    $percent = $('.x-progress span');
+                    $percent = $('.progress span');
                     $statusBar.show();
-                    $(".x-progress").show();
+                    $(".progress").show();
                     $percent.css('width', percentage * 100 + '%');
                     var spans = $progress.children();
                     spans.eq( 0 ).text( Math.round( percentage * 100 ) + '%' );
                     spans.eq( 1 ).css( 'width', Math.round( percentage * 100 ) + '%' );
+                    this.options.progress(Math.round( percentage * 100 ) + '%');
                 }
+
             };
 
             uploader.onUploadSuccess = function(file){
@@ -249,6 +229,11 @@
                 if(fileType ==1){
                     $wrap.find('.x-info').text('头像上传成功，总大小：'+getSize(file.size));
                 }
+                //this.options.success(file);
+            };
+
+            uploader.onUploadAccept = function(object,ret){
+                this.options.success(object,ret);
             };
 
             uploader.onFileQueued = function( file ) {
@@ -312,6 +297,7 @@
 
             };
             uploader.onStopUpload = function(){
+                console.log("暂停");
                 setState( 'paused' );
             };
 
@@ -347,19 +333,13 @@
                     uploader.stop();
                 }
             });
-            $upload.change(function(){
-                console.log("1111");
-
-            });
 
             $wrap.on( 'click', '.retry', function() {
                 console.log("111");
                 uploader.retry();
             } );
 
-            $info.on( 'click', '.ignore', function() {
-                alert( 'todo' );
-            } );
+
 
             $upload.addClass( 'state-' + state );
             function addFile( file ) {
@@ -375,7 +355,7 @@
                         '<span class="cancel">删除</span>' +
                         '<span class="rotateRight">向右旋转</span>' +
                         '<span class="rotateLeft">向左旋转</span></div>').appendTo( $li ),
-                    $prgress = $li.find('p.x-progress span'),
+                    $prgress = $li.find('p.progress span'),
                     $wrap = $li.find( 'p.imgWrap' ),
                     $info = $('<p class="error"></p>'),
                     text = '',
@@ -524,7 +504,7 @@
 
                 percent = total ? loaded / total : 0;
 
-
+                opt.progress(Math.round( percent * 100 ) + '%');
                 spans.eq( 0 ).text( Math.round( percent * 100 ) + '%' );
                 spans.eq( 1 ).css( 'width', Math.round( percent * 100 ) + '%' );
                 if(fileType == 2){
@@ -543,7 +523,7 @@
                     stats = uploader.getStats();
                     if ( stats.uploadFailNum ) {
                         text = '已成功上传' + stats.successNum+ '个文件，'+
-                            stats.uploadFailNum + '个文件上传失败，<a class="retry" href="#">重新上传</a>失败文件或<a class="ignore" href="#">忽略</a>'
+                            stats.uploadFailNum + '个文件上传失败，<a class="retry" href="#">重新上传</a>失败文件';
                     }
 
                 } else {
@@ -581,14 +561,14 @@
 
                     case 'ready':
                         $placeHolder.addClass( 'element-invisible' );
-                        $( '#x-filePicker2' ).removeClass( 'element-invisible');
+                        $( '#x-filePicker-add' ).removeClass( 'element-invisible');
                         $queue.show();
                         $statusBar.removeClass('element-invisible');
                         uploader.refresh();
                         break;
 
                     case 'uploading':
-                        $( '#x-filePicker2' ).addClass( 'element-invisible' );
+                        $( '#x-filePicker-add' ).addClass( 'element-invisible' );
                         $progress.show();
                         $upload.text( '暂停上传' );
                         break;
@@ -599,8 +579,8 @@
                         break;
 
                     case 'confirm':
-                        //$progress.hide();
-                        $( '#x-filePicker2' ).removeClass( 'element-invisible' );
+                        $progress.hide();
+                        $( '#x-filePicker-add' ).removeClass( 'element-invisible' );
                         $upload.text( '开始上传' );
 
                         stats = uploader.getStats();
@@ -650,7 +630,7 @@
                     '</div>';
                 var img;
                 var   $info = $('<p class="error"></p>');
-                var       text = '';
+                var   text = '';
                 var  showError = function( code ) {
                     switch( code ) {
                         case 'exceed_size':
@@ -715,7 +695,7 @@
 
                 setState( 'ready' );
                 console.log( $('.x-info'));
-                $(".x-statusBar .x-btns").remove();
+                $(".x-statusBar .x-upload-btns").remove();
                 //$wrap.append($progress);
                 //$(".x-queueList").remove();
             }
