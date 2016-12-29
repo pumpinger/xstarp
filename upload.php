@@ -65,7 +65,7 @@ include "layout_header.php";
                                 id: '#x-filePicker-add',
                                 label: '继续添加'
                             },
-                            server: 'uploadFile_Server.php',
+                            server: '_uploadFileServer.php',
                             success:function(file,data){
                                 //成功后做的事情
                             },
@@ -229,7 +229,7 @@ include "layout_header.php";
                 id: '#x-filePicker-add',
                 label: '继续添加'
             },
-            server: 'uploadFile_Server.php',          //服务器地址
+            server: '_uploadFileServer.php',          //服务器地址
             success:function(file,data){
             console.log(data);
             console.log(file);
