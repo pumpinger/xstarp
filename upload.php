@@ -104,7 +104,7 @@ include "layout_header.php";
             <tr>
                 <td>fileType</td>
                 <td>Number</td>
-                <td>区分文件上传和头像上传，1、头像上传(单张)，2、文件上传（批量）</td>
+                <td>区分文件上传和头像上传，1、头像上传(单张)，2、文件上传（批量）,优先级高于accept属性，如果为1的话默认支持gif,jpg,jpeg,bmp,png等格式</td>
                 <td>2</td>
             </tr>
             <tr>
