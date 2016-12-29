@@ -58,7 +58,8 @@ include "layout_header.php";
                             fileVal:'x-file',
                             fileButton: {
                                 id :'#x-filePicker',
-                                label: '批量上传'
+                                label: '批量上传',
+                                multiple:false
                             },
                             addButton:{
                                 id: '#x-filePicker-add',
@@ -147,17 +148,18 @@ include "layout_header.php";
             <tr>
                 <td>fileButton</td>
                 <td>Array</td>
-                <td>文件上传按钮属性 ，包括id 、label</td>
+                <td>文件上传按钮属性 ，1、id:dom //按钮ID/DOM 2、label:String //按钮文本内容,3、multiple:Boolean //是否开起同时选择多个文件能力</td>
                 <td> {
                      id: '#x-filePicker',
                      label: '批量上传'
+                     multiple:true,
                      }
                 </td>
             </tr>
             <tr>
                 <td>addButton</td>
                 <td>Array</td>
-                <td>添加文件按钮属性 ，包括id 、label</td>
+                <td>添加文件按钮属性 ，1、id:dom：//按钮ID/DOM 、label:String //按钮文本内容</td>
                 <td> {
                      id: '#x-filePicker-add',
                      label: '继续添加'
@@ -220,7 +222,8 @@ include "layout_header.php";
             fileVal:'x-file',                        //input框 name
             fileButton: {
                 id :'#x-filePicker',
-                label: '批量上传'                     //按钮名字和id   可以点击的按钮的id和name
+                label: '批量上传',                     //按钮名字和id   可以点击的按钮的id和name
+                multiple:false
             },
             addButton:{
                 id: '#x-filePicker-add',

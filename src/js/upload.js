@@ -187,7 +187,6 @@
                     extensions: 'gif,jpg,jpeg,bmp,png',
                     mimeTypes: 'image/*'
                 };
-                WebUploader.Lib.Filepicker.options.multiple = false;//修改multiple 的值
             }
             uploader = WebUploader.create(opt);
             // 添加“添加文件”的按钮，
