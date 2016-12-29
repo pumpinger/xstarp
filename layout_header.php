@@ -147,7 +147,7 @@ function echoCUr($name)
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>结构</p>
         <div class="aside-body <?php echoCUr(array('header', 'asdie','nav','tab','panel','title')) ?>">
-            <a href="grids.php" class="<?php echoCUr('nav') ?>">栅栏</a>
+            <a href="grids.php" class="<?php echoCUr('grids') ?>">栅栏</a>
             <a href="nav.php" class="<?php echoCUr('nav') ?>">导航</a>
             <a href="tab.php" class="<?php echoCUr('tab') ?>">标签页</a>
             <a href="panel.php" class="<?php echoCUr('panel') ?>">面板</a>
