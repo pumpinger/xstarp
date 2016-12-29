@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/12/20.
  */
 
-
+//格式化
 window.xFormat={
     /**
      *     2016/06/06
@@ -111,6 +111,9 @@ window.xFormat={
 };
 
 
+//提示层
+
+
 
 $(document).ready(function(){
 
@@ -119,7 +122,6 @@ $(document).ready(function(){
 
         $(this).addClass('x-active').siblings().removeClass('x-active');
         $('.x-tab-content').eq(i).addClass('x-active').siblings().removeClass('x-active');
-    })
-
+    });
 
 });
