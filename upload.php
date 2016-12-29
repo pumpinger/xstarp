@@ -65,7 +65,7 @@ include "layout_header.php";
                                 id: '#x-filePicker-add',
                                 label: '继续添加'
                             },
-                            server: '?m=Admin&c=User&a=uploadPhoto',
+                            server: 'uploadFile_Server.php',
                             success:function(file,data){
                                 //成功后做的事情
                             },
@@ -140,7 +140,7 @@ include "layout_header.php";
             <tr>
                 <td>accept</td>
                 <td>Array</td>
-                <td>1、title： 文字描述
+                <td>允许上传的文件类型，1、title： 文字描述
                     2、extensions： 允许的文件后缀，不带点，多个用逗号分割。
                 </td>
                 <td>无（所有类型）</td>
@@ -191,7 +191,7 @@ include "layout_header.php";
             <tr>
                 <td>progress</td>
                 <td>无</td>
-                <td>1、schedu:当前上传进度   多文件时表示总共进度</td>
+                <td>1、schedu:当前上传进度 ,  多文件时表示当前总进度</td>
                 <td>文件上传时进度的实时返回</td>
             </tr>
 
@@ -212,7 +212,7 @@ include "layout_header.php";
     <script >
         var upload = xUpload({
             dom: $("#x-uploader"),
-            fileType :1,                             //   1 头像     2 文件
+            fileType :2,                             //   1 头像     2 文件
             fileNumLimit: 300,                       //总共能上传多少个文件
             fileSizeLimit: 200 * 1024 * 1024,        //   多个文件大小
             fileSingleSizeLimit: 100 * 1024 * 1024,   //   单个文件大小
@@ -229,7 +229,7 @@ include "layout_header.php";
                 id: '#x-filePicker-add',
                 label: '继续添加'
             },
-            server: '?m=Admin&c=User&a=uploadPhoto',          //服务器地址
+            server: 'uploadFile_Server.php',          //服务器地址
             success:function(file,data){
             console.log(data);
             console.log(file);
