@@ -138,12 +138,13 @@
     //图片上传和文件上传区分 参数
     var opt_file = {
         dom:'',
-        pick: {
+        fileButton: {
             id: '#x-filePicker',
             label: '批量上传'
         },
-        formData: {
-            uid: 123
+        addButton:{
+            id: '#x-filePicker-add',
+            label: '继续添加'
         },
         dnd: '#x-dndArea',
         paste: '#x-uploader',
@@ -169,19 +170,16 @@
     var upload=function(opt,dom){
         this.opt = $.extend(true,{},defaultOption,opt);
         this.init(this.opt);
-        console.log(this.opt);
+
         return this;
     };
 
     upload.prototype ={
         init:function(opt){
             var fileType = opt.fileType;
+            var addButton = opt.addButton;
 
-
-            console.log(opt.dom);
-
-
-
+            opt.pick = opt.fileButton;
 
             if(fileType == 1){
                 opt['accept'] = {
@@ -189,13 +187,11 @@
                     extensions: 'gif,jpg,jpeg,bmp,png',
                     mimeTypes: 'image/*'
                 };
+                WebUploader.Lib.Filepicker.options.multiple = false;//修改multiple 的值
             }
             uploader = WebUploader.create(opt);
             // 添加“添加文件”的按钮，
-            uploader.addButton({
-                id: '#x-filePicker-add',
-                label: '继续添加'
-            });
+            uploader.addButton(addButton);
 
 
             uploader.on('ready', function() {
@@ -229,7 +225,6 @@
                 if(fileType ==1){
                     $wrap.find('.x-info').text('头像上传成功，总大小：'+getSize(file.size));
                 }
-                //this.options.success(file);
             };
 
             uploader.onUploadAccept = function(object,ret){
@@ -252,12 +247,12 @@
                     updateTotalProgress();
                 }else if(fileType ==1){
                     //单张图片
-                    console.log("2222");
+
                     addFileImg(file);
                     if ( state === 'ready' ) {
 
                         uploader.upload(file);
-                        console.log( file);
+
                     } else if ( state === 'paused' ) {
                         uploader.upload(file);
                     } else if ( state === 'uploading' ) {
@@ -335,7 +330,7 @@
             });
 
             $wrap.on( 'click', '.retry', function() {
-                console.log("111");
+
                 uploader.retry();
             } );
 
@@ -386,8 +381,6 @@
                     $wrap.text( '预览中' );
                     uploader.makeThumb( file, function( error, src ) {
                         var img;
-                        console.log(src);
-                        console.log(error);
                         if ( error ) {
                             $wrap.text( '不能预览' );
                             return;
@@ -561,14 +554,14 @@
 
                     case 'ready':
                         $placeHolder.addClass( 'element-invisible' );
-                        $( '#x-filePicker-add' ).removeClass( 'element-invisible');
+                        $( addButton.id ).removeClass( 'element-invisible');
                         $queue.show();
                         $statusBar.removeClass('element-invisible');
                         uploader.refresh();
                         break;
 
                     case 'uploading':
-                        $( '#x-filePicker-add' ).addClass( 'element-invisible' );
+                        $( addButton.id ).addClass( 'element-invisible' );
                         $progress.show();
                         $upload.text( '暂停上传' );
                         break;
@@ -580,7 +573,7 @@
 
                     case 'confirm':
                         $progress.hide();
-                        $( '#x-filePicker-add' ).removeClass( 'element-invisible' );
+                        $( addButton.id ).removeClass( 'element-invisible' );
                         $upload.text( '开始上传' );
 
                         stats = uploader.getStats();
@@ -647,7 +640,8 @@
                             break;
                     }
 
-                    console.log(text);
+
+
                     $info.html( text ).appendTo( $wrap );
 
                 };
@@ -656,8 +650,7 @@
                     showError( file.statusText );
                 } else {
                     uploader.makeThumb(file, function (error, src) {
-                        console.log(src);
-                        console.log(error);
+
                         if (error) {
                             //$wrap.text( '不能预览' );
                             //return;
@@ -694,7 +687,7 @@
 
 
                 setState( 'ready' );
-                console.log( $('.x-info'));
+
                 $(".x-statusBar .x-upload-btns").remove();
                 //$wrap.append($progress);
                 //$(".x-queueList").remove();
