@@ -223,7 +223,7 @@ include "layout_header.php";
             fileButton: {
                 id :'#x-filePicker',
                 label: '批量上传',                     //按钮名字和id   可以点击的按钮的id和name
-                multiple:false
+                multiple:true
             },
             addButton:{
                 id: '#x-filePicker-add',
