@@ -7,15 +7,16 @@
  */
 include "layout_header.php";
 ?>
+<script type="text/javascript" src="src/js/progress.js"></script>
 
 
-<div class="x-progress-time-driven">
+<div id="x-progress-time-driven">
     <span class=""></span>
 </div>
 
-<div class="x-progress-data-driven">
-    <span class=""></span>
-</div>
+<!--<div id="x-progress-data-driven">-->
+<!--    <span class=""></span>-->
+<!--</div>-->
 
 
 
