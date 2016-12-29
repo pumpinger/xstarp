@@ -1,7 +1,7 @@
 
 // 当domReady的时候开始初始化
 (function($) {
-    var $wrap = $('#x-uploader'),
+    var $wrap = $('.x-uploader'),
 
     // 图片容器   多文件的时候
         $queue = $( '<ul class="x-filelist"></ul>' )
@@ -139,15 +139,15 @@
     var opt_file = {
         dom:'',
         fileButton: {
-            id: '#x-filePicker',
+            id: '.x-filePicker',
             label: '批量上传'
         },
         addButton:{
-            id: '#x-filePicker-add',
+            id: '.x-filePicker-add',
             label: '继续添加'
         },
-        dnd: '#x-dndArea',
-        paste: '#x-uploader',
+        dnd: '.x-dndArea',
+        paste: '.x-uploader',
         swf: '../../dist/Uploader.swf',
         chunked: false,
         chunkSize: 512 * 1024,
