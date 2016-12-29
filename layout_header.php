@@ -155,12 +155,12 @@ function echoCUr($name)
             <a href="title.php" class="<?php echoCUr('title') ?>">标题</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>插件</p>
-        <div class="aside-body <?php echoCUr(array('loading', 'imgview','tree','pop','table','upload')) ?>">
+        <div class="aside-body <?php echoCUr(array('loading', 'imgview','tree','pop','message','table','upload')) ?>">
             <a href="loading.php" class="<?php echoCUr('loading') ?>">载入、等待</a>
             <a href="imgview.php" class="<?php echoCUr('imgview') ?>" >图片</a>
             <a href="tree.php" class="<?php echoCUr('tree') ?>" >树</a>
             <a href="pop.php" class="<?php echoCUr('pop') ?>" >弹窗</a>
-            <a href="message.php" class="<?php echoCUr('pop') ?>" >消息</a>
+            <a href="message.php" class="<?php echoCUr('message') ?>" >消息</a>
             <a href="table.php" class="<?php echoCUr('table') ?>" >表格</a>
             <a href="upload.php" class="<?php echoCUr('upload') ?>" >文件上传</a>
         </div>

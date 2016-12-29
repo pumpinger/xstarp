@@ -116,8 +116,10 @@ $(document).ready(function(){
 
     $('.x-tab-nav li').click(function(){
         var i = $(this).index();
-        $(this).addClass('active').siblings().removeClass('active');
-        $('.x-tab-content').eq(i).addClass('active').siblings().removeClass('active');
-    });
+
+        $(this).addClass('x-active').siblings().removeClass('x-active');
+        $('.x-tab-content').eq(i).addClass('x-active').siblings().removeClass('x-active');
+    })
+
 
 });

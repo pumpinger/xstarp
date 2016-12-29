@@ -96,14 +96,18 @@ $fontSizeUnit: px;
 .x-style-floatLeft {float: left;}
 
 //样式-按钮
-.x-button {display: inline-block;background-color: $baseColorMain;border: 2px solid $borderColorDeep;color:set-notification-text-color($baseColorMain);border-radius: 5px;cursor: pointer;}
+.x-button {display: inline-block;background-color: $baseColorMain;color:set-notification-text-color($baseColorMain);border-radius: 5px;cursor: pointer;}
 .x-button:hover{background-color:darken($baseColorMain,10%)}
 .x-button-large {padding: 10px 20px;}
 .x-button-middle {padding: 5px 10px;}
 .x-button-small {padding: 2px 4px;}
 @each $key, $value in $colors {
-  .x-button-#{$key} {background-color:$value;border: 2px solid darken($value,10%);color:set-notification-text-color($value);}
-  .x-button-#{$key}:hover{background-color:darken($value,20%);border: 2px solid darken($value,20%);}
+  .x-button-#{$key} {background-color:$value;color:set-notification-text-color($value);}
+  .x-button-#{$key}:hover{background-color:darken($value,20%);}
+}
+
+%border{
+  border:2px solid $borderColorDeep;
 }
 
 .x-button i{margin-right:10px;}
@@ -178,6 +182,20 @@ $fontSizeUnit: px;
 .x-table th,.x-table td{height:36px;border:1px solid $borderColorLight;font-size:#{$baseFontSize}$fontSizeUnit;}
 .x-table-interval tr:nth-child(even) > td{background:$bgColorLight;}
 .x-table-hover tr:hover{background: $bgColorLight;}
+
+//插件-弹窗
+.x-pop-main{position:absolute;width:600px;box-sizing:border-box;padding:15px;background:#fff;top:0;border-radius:4px;z-index:30}
+
+.x-pop-layer{position:fixed;width:100%;height:100%;top:0;background:rgba(0,0,0,0.2);z-index:20}
+.x-pop-close{position:absolute;right:15px;top:15px;cursor:pointer}
+.x-pop-close i{font-size:20px;}
+.x-pop-title{ height:30px;line-height:30px;padding-left:10px;border-bottom:1px solid #eee;font-size:16px;font-weight:bold;color:#666;}
+.x-pop-content{padding:10px;border-bottom:1px solid #eee;max-height:600px;overflow:auto;}
+.x-pop-button{text-align: right;font-size:14px;}
+.x-pop-button button{display:inline-block; width:40px;height:24px;line-height:24px; text-align:center; margin-left:10px; margin-top:15px;border:none; color:#fff;outline:none; cursor:pointer}
+.x-pop-button button:hover{background:#33aacb}
+
+
 
 
 //封装-图标
