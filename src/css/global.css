@@ -893,13 +893,13 @@ ol, ul {
   pointer-events: none; }
 
 
-#x-progress-time-driven, #x-progress-data-driven{
+#x-progress-time-driven{
   display: block;
   width: 100px;
   height: 100px;
   background-color: #0000FF;
-  -webkit-transition:width 3s;
-  transition: width 3s;
+  -webkit-transition:width 2s;
+  transition: width 2s;
 }
 
 .x-progress-active {
