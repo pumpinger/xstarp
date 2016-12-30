@@ -11,6 +11,7 @@
 }
 
 
+
 //函数
 @function set-notification-text-color($color) {
   @if (lightness($color) < 70) {
@@ -212,11 +213,8 @@ $fontSizeUnit: px;
 
 
 //插件-文件上传
-ol, ul { list-style: none; }
 .x-uploader .x-queueList { display: inline-block; }
-
 .x-uploader .element-invisible { position: absolute !important; clip: rect(1px 1px 1px 1px); /* IE6, IE7 */ clip: rect(1px,1px,1px,1px); }
-
 .x-uploader .x-placeholder .webuploader-pick { font-size: 18px; background: #00b7ee; border-radius: 3px; line-height: 44px; padding: 0 30px; color: #fff; display: inline-block; margin: 20px auto; cursor: pointer; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }
 .x-uploader .x-placeholder .webuploader-pick-hover { background: #00a2d4; }
 .x-uploader .x-placeholder .flashTip { color: #666666; font-size: 12px; position: absolute; width: 100%; text-align: center; bottom: 20px; }
@@ -266,42 +264,16 @@ ol, ul { list-style: none; }
 .x-uploader .x-filelist div.file-panel span.rotateRight:hover { background-position: -24px 0; }
 .x-uploader .x-filelist div.file-panel span.cancel { background-position: -48px -24px; }
 .x-uploader .x-filelist div.file-panel span.cancel:hover { background-position: -48px 0; }
-
 .x-uploader .x-statusBar div{display: inline-block;vertical-align: middle;}
 .x-uploader #x-filePicker-add{display: inline-block;}
 .x-uploader .x-uploadBtn{ margin-left: 10px; position: relative; display: inline-block; cursor: pointer; background: #00b7ee; padding: 10px 15px; color: #fff; text-align: center; border-radius: 3px; overflow: hidden; }
-
 .x-uploader .retry{color: red;}
 .x-uploader .ignore{color: red;}
-
-
-.x-uploader .webuploader-container {
-  position: relative;
-}
-.x-uploader .webuploader-element-invisible {
-  position: absolute !important;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px,1px,1px,1px);
-}
-.x-uploader .webuploader-pick {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  background: #00b7ee;
-  padding: 10px 15px;
-  color: #fff;
-  text-align: center;
-  border-radius: 3px;
-  overflow: hidden;
-}
-.x-uploader  .webuploader-pick-hover {
-  background: #00a2d4;
-}
-
-.x-uploader .webuploader-pick-disable {
-  opacity: 0.6;
-  pointer-events:none;
-}
+.x-uploader .webuploader-container {position: relative;}
+.x-uploader .webuploader-element-invisible {position: absolute !important;clip: rect(1px 1px 1px 1px);}
+.x-uploader .webuploader-pick {position: relative;display: inline-block;cursor: pointer;background: #00b7ee;padding: 10px 15px;color: #fff;text-align: center;border-radius: 3px;overflow: hidden;}
+.x-uploader  .webuploader-pick-hover {background: #00a2d4;}
+.x-uploader .webuploader-pick-disable {  opacity: 0.6; pointer-events:none;}
 
 
 
