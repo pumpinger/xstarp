@@ -892,7 +892,6 @@ ol, ul {
   opacity: 0.6;
   pointer-events: none; }
 
-
 #x-progress-time-driven{
   display: block;
   width: 100px;
@@ -902,7 +901,7 @@ ol, ul {
   transition: width 2s;
 }
 
-.x-progress-active {
+#x-progress-time-driven .active {
   width: 100%;
 }
 
