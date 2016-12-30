@@ -892,18 +892,12 @@ ol, ul {
   opacity: 0.6;
   pointer-events: none; }
 
-#x-progress-time-driven, #x-progress-data-driven{
+.x-progress{
   display: block;
   width: 1%;
   height: 100px;
   background-color: #0000FF;
-  -webkit-transition:width 2s;
-  transition: width 2s;
 }
-
-/*#x-progress-time-driven [class='active'] {*/
-  /*width: 100%;*/
-/*}*/
 
 .x-hidden {
   visibility: hidden;

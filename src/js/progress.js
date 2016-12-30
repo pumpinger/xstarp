@@ -15,7 +15,7 @@
             console.log('this.option.dom不是"string"', this.option.dom);
             return false;
         }
-        this.dom = $(this.option.dom);
+        this.root = $(this.option.dom);
 
         this._init();
 
@@ -24,8 +24,34 @@
 
     xProgress.prototype = {
         _init: function () {
-            this.dom.css(this.option.style.end);
+            var _html = $('<div class="x-progress" ></div>');
+            this.root.append(_html);
+            this.p = this.root.find('.x-progress');
+            if(this.option.type == 2){
+                this.p2();
+            }else{
+                this.p1();
+            }
+        },
+        p1: function () {
+            var that = this;
+            $({property: 0}).animate({property: 100}, {
+                duration: 3000,
+                step: function() {
+                    var percentage = Math.round(this.property);
+
+                    that.p.css({'width': percentage+"%"});
+                    console.log(that);
+                    if(percentage == 100 && that.option.hidden) {
+                        that.p.hide();
+                    }
+                }
+            });
+        },
+        p2: function () {
+            
         }
+
     };
 
     window.xProgress = function(option){

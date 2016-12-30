@@ -14,21 +14,24 @@ include "layout_header.php";
     <div class="x-panel-content">
         <p class="x-color-blue">示例：</p>
         <pre><code class="language-html"><textarea>
+            <div class="x-progress-time-driven" >
+                1、时间驱动型
+            </div>
+            <div class="x-progress-data-driven" >
+                2、数据驱动型
+            </div>
             <script type="text/javascript" src="src/js/progress.js"></script>
         </textarea></code></pre>
 
         <p class="x-color-blue">效果:</p>
-        <div class="">1、时间驱动型</div>
-        <div id="x-progress-time-driven" >
+        <div class="x-progress-time-driven" >
+            1、时间驱动型
         </div>
 
-        <div class="">2、数据驱动型</div>
-        <div id="x-progress-data-driven" >
+        <div class="x-progress-data-driven" >
+            2、数据驱动型
         </div>
 
-        <!--<div id="x-progress-data-driven">-->
-        <!--    <span class=""></span>-->
-        <!--</div>-->
         <p class="x-color-blue">规则:</p>
     </div>
 </div>
@@ -38,26 +41,20 @@ include "layout_header.php";
 
 <script>
     var opt1 = {
-        dom: '#x-progress-time-driven',
+        dom: '.x-progress-time-driven',
+        pid: 1,
         type: 1,
-        style: {
-            begin:'30%',
-            b:'60%',
-            c:'90%',
-            end:'100%'
-        }
+        step: ['30%','60%','90%','100%'],
+        hidden: false
     };
     var xP1 = xProgress(opt1);
 
     var opt2 = {
-        dom: '#x-progress-data-driven',
+        dom: '.x-progress-data-driven',
+        pid: 2,
         type: 2,
-        style: {
-            begin:'30%',
-            b:'60%',
-            c:'90%',
-            end:'100%'
-        }
+        step: ['30%','60%','90%','100%'],
+        hidden: true
     };
     var xP2 = xProgress(opt2);
 
