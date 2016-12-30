@@ -33,7 +33,15 @@ include "layout_header.php";
 
     <section>
         <p class="x-title">待解决问题:</p>
-        基础方法方便开发  数据视图绑定   如何模块化  如何更新项目   解决静态文件缓存
+        <ul>
+            <li>底层css驱动整体样式</li>
+            <li>基础方法方便开发</li>
+            <li>数据视图绑定</li>
+            <li>模块化</li>
+            <li>更新项目</li>
+            <li>静态文件缓存</li>
+        </ul>
+
     </section>
 </article>
 
