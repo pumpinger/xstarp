@@ -39,13 +39,7 @@
         }
         this.dom = $(this.opt.wrap.toString());
 
-
-        switch (this.opt.type){
-            case 1:this.p1();break;
-            case 2:this.p2();break;
-            case 3:this.p3();break;
-            default:this.p1();
-        }
+        this.p1();
 
         return this;
     };
@@ -54,20 +48,6 @@
         p1: function () {
             this._init();
             this._observer(this.opt,'width');
-        },
-        p2: function () {
-            this._init();
-            this._start();
-            this._progress();
-            this._end();
-            console.log('p2');
-        },
-
-        p3: function () {
-            this._init();
-            this._start();
-            this._progress();
-            this._end();
         },
 
         _init: function () {
@@ -98,7 +78,7 @@
                 },
                 set: function (next) {
                     if (next !== old) {
-                        that._progress(value, old);
+                        that._progress(next, old);
                     }
                     old = next;
                 }

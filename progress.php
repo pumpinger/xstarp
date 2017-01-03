@@ -52,10 +52,13 @@ include "layout_header.php";
     var step = 10;
     function pp() {
         temp = temp + step;
-        xP1.opt.width = temp;
+        xP1.opt.width = temp + '%';
         console.log(xP1.opt.width);
     }
-    setInterval(pp,1000);
+    var ss = setInterval(pp,1000);
+    if(temp > 100){
+        clearInterval(ss);
+    }
 
 //    var opt2 = {
 //        wrap: '.x-progress-time-driven',

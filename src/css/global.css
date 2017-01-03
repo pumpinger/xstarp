@@ -895,8 +895,13 @@ ol, ul {
 .x-progress-wrap div{
   display: block;
   width: 1%;
-  height: 100px;
+  height: 20px;
+  border-radius: 5px;
   background-color: #0000FF;
+}
+
+.x-progress-a {
+
 }
 
 .x-hidden {
