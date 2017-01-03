@@ -72,7 +72,7 @@
                 enumerable: true,
                 configurable: true,
                 get: function () {
-                    return temp;
+                    return next;
                 },
                 set: function (next) {
                     if (next !== old) {

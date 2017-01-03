@@ -895,10 +895,23 @@ ol, ul {
 
 .x-progress-wrap div{
   display: block;
-  width: 1%;
+  width: 1%;s
   height: 20px;
   border-radius: 5px;
   background-color: #0000FF;
+}
+
+.x-progress {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-align: center;
+  background-color: #eceeef;
+  border-radius: 0.25rem;
 }
 
 .x-progress-bar {
@@ -914,6 +927,40 @@ ol, ul {
   -webkit-background-size: 1rem 1rem;
   background-size: 1rem 1rem;
 }
+
+.progress-bar-animated {
+  -webkit-animation: progress-bar-stripes 1s linear infinite;
+  -o-animation: progress-bar-stripes 1s linear infinite;
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@-o-keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
 
 .x-hidden {
   visibility: hidden;
