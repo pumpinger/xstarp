@@ -14,9 +14,8 @@ include "layout_header.php";
 <script src="src/js/timepicker.js"></script>
 
 <script>
-    var a = $('#timePicker').timePicker({startDate: 'new day'});
-    console.log(a);
-//    a.init()
+    var datePicker = $('#timePicker').timePicker({startDate: 'new day'});
+    console.log(datePicker);
 </script>
 
 

@@ -27,7 +27,12 @@
         onShow: '',
         afterShow: '',
 
+        beforeHide: '',
+        onHide: '',
+        afterHide: '',
 
+        onChange: '',
+        onApply: ''
     };
 
     template = '';
