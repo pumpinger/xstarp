@@ -458,8 +458,8 @@ include "layout_header.php";
         onBeforeOpen: function () {
         },
         onClose: function (hasChange) {
-            console.log(testTree.getId());
-            console.log(testTree._makeSearch);
+            console.log(testTree2.getId());
+            console.log(testTree2._makeSearch);
         },
         onCheck: function (item, dom, childrenItem) {
 //            console.log(this);
