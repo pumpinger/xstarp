@@ -523,7 +523,7 @@ include "layout_header.php";
             <tr>
                 <td>mouseTool(type,function(obj){},opt)</td>
                 <td>mouseTool对象</td>
-                <td>1、String:区分线，点，多边形(polyLine,marker,polygon) 2、function(obj):进行完本次操作后的回调，其中obj为对象 3、option:圆或多边形或点标记的配置属性</td>
+                <td>1、String:区分线，点，多边形(polyLine,marker,polygon,circle) 2、function(obj):进行完本次操作后的回调，其中obj为对象 3、option:圆或多边形或点标记的配置属性</td>
                 <td>开始用鼠标在地图上画线或点或多边形</td>
                 <td>XMapSdk</td>
                 <td>myMap.mouseTool('polyLine',function(obj){},polyLineOpt);</td>

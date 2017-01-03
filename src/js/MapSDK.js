@@ -224,6 +224,9 @@
                     case 'marker':
                         mouseTool.marker(opt);
                         break;
+                    case 'circle':
+                        mouseTool.circle(opt);
+                        break;
                     default :
                         console.log("参数不正确");
                         break;
