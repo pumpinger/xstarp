@@ -142,7 +142,7 @@ $fontSizeUnit: px;
 .x-tab-content.x-active{display:block;}
 
 
-//结构-导航
+//结构-导航k
 .x-nav{width:180px;color:$fontColorLight}
 .x-nav-head{display:block;height:45px;line-height:45px;padding-left:10px;font-size:16px;background:#444d58;}
 .x-nav-body{display:none;}
@@ -156,12 +156,15 @@ $fontSizeUnit: px;
 .x-form-submit{padding: 3px 10px;margin-bottom: 20px;}
 
 //样式-提示
-.x-alert{padding:10px;margin:10px 0;border:1px solid $borderColorDeep;border-radius:4px;}
+.x-alert-base{@extend %x-alert;border:1px solid $borderColorDeep;border-radius:4px;}
+
+%x-alert{padding:10px;margin:10px 0;}
 
 @each $key, $value in $colors {
-  .x-alert-#{$key} {background-color:lighten($value,15%);border-color:$value;color:set-notification-text-color($value);}
+  .x-alert-#{$key} {background-color:lighten($value,15%);border:1px solid $value;border-radius:4px;color:set-notification-text-color($value);@extend %x-alert;}
 }
 
+.x-alert-quote{border-left:8px solid $borderColorDeep;background-color:$bgColorLight;@extend %x-alert;}
 
 //样式-分页器
 .x-page {line-height: 28px;}
