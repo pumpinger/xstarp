@@ -1,44 +1,452 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
-    <meta charset="UTF-8">
-    <title>title</title>
-    <link rel="stylesheet" href="dest/css/init.css"/>
-    <script type="text/javascript" src="dest/lib/jquery-2.1.4.js"></script>
-    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值&plugin=AMap.Driving"></script>
-    <style>
-        #container {width: 100%;height: 500px;}
+<?php
+/**
+ * Created by PhpStorm.
+ * User: @van
+ * Date: 2016/1/20
+ * Time: 15:49
+ */
 
-    </style>
-</head>
-<body>
-<header>
-    Xstarp
-</header>
-<article>
-    <section>
-        <div id="container"></div>
-        <div id="panel"></div>
-    </section>
-</article>
-<script type="text/javascript">
-    //基本地图加载
-    var map = new AMap.Map("container", {
-        resizeEnable: true,
-        center: [116.397428, 39.90923],//地图中心点
-        zoom: 13 //地图显示的缩放级别
+include "layout_header.php";
+
+?>
+
+<div class="x-panel">
+    <div class="x-panel-title">标签</div>
+    <div class="x-panel-content">
+
+        <p>示例：</p>
+
+<pre><code class="language-html"><textarea>
+            <div id="x-container"></div>
+            <span class="finishEdit" style="padding: 5px 10px; background: #eee;color: #000;cursor: pointer">结束编辑</span>
+            <script>
+                var lngLat = [104.056435,30.671192];
+                $("#x-container").css({'width':'100%', 'height':'500px'});
+                var myMap = XMapSdk({
+                    dom:'x-container',
+                    resizeEnable:true,
+                    center:lngLat,
+                    zoom:13
+                },{
+                    strokeColor: "#2e90df",
+                    strokeOpacity: 1,
+                    strokeWeight: 3,
+                    strokeStyle:'solid',
+                    fillColor: "#d2e8f5",
+                    fillOpacity: 0.5,
+                    extData:null
+                });
+
+                var marker =  myMap.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+                    content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+                });
+                marker.on('click',function(){
+                    infoWindow.open(myMap.mapObj, marker.getPosition());
+                });
+
+                var content ='这是一个信息窗口';
+                var infoWindow = myMap.infoWindow(content);
+
+                var polygonArr = new Array();
+                polygonArr.push([104.003322, 30.620255]);
+                polygonArr.push([104.010703, 30.697555]);
+                polygonArr.push([104.032292, 30.692353]);
+                polygonArr.push([104.089846, 30.691365]);
+                var polyPolygonOpt = {
+                    strokeColor: "#FF33FF",
+                    strokeOpacity: 1,
+                    strokeWeight: 3,
+                    fillColor: "#1791fc",
+                    fillOpacity: 0.35
+                };
+                var polygon = myMap.polygon(polygonArr,polyPolygonOpt);
+                var polyLineArr = new Array();
+                polyLineArr.push([104.003322, 30.620255]);
+                polyLineArr.push([104.023322, 30.620255]);
+                polyLineArr.push([104.013322, 30.590255]);
+                var polyLineOpt =  {
+                    strokeColor: 'red', //线颜色
+                    strokeOpacity: 1, //线透明度
+                    strokeWeight: 3,    //线宽
+                };
+                var polyLine= myMap.polyLine(polyLineArr,polyLineOpt);
+                var circleOpt =  {
+                    strokeColor: "#5F33FF", //线颜色
+                    strokeWeight: 3,    //线宽
+                    fillColor: "red", //填充色
+                    fillOpacity: 0.35//填充透明度
+                };
+                var circle = myMap.circle([104.032292, 30.692353],3000,circleOpt);//单位  米
+
+                myMap.placeSearch('北京市',function(poiList){
+                    console.log(poiList);
+                });
+                myMap.districtSearch('成都市','boundaries',function(isOk,data){
+                    console.log(data);
+                    var opt = {
+                        strokeColor: "red", //线颜色
+                        strokeOpacity: 0.8, //线透明度
+                        strokeWeight: 3,    //线宽
+                    };
+                    var polygon = myMap.polygon(data['boundaries'],opt);
+                });
+
+                var circleEdit =   myMap.circleEditor(circle,function(){
+                    console.log("circle ------ endCb");//结束的时候触发   close 函数
+                },function(){
+                    console.log("circle ------ adjust");//编辑圆的过程中触发
+                },function(){
+                    console.log("circle ------ moveCb");//拖拽圆心调整圆形位置时触发此事件
+                });
+
+
+                var polygonEdit =    myMap.polygonEdit(polygon,function(){
+                    console.log('polygon ------ endCb');//编辑结束的时候触发  close 函数
+                });
+
+                $(".finishEdit").click(function(){
+                    polygonEdit.close();
+                    circleEdit.close();
+                    console.log("结束编辑");
+                });
+                $(".polyLine").click(function(){
+                    myMap.mouseTool('polyLine',function(obj){
+                        console.log(obj);
+                    },polyLineOpt);
+                })
+
+            </script>
+</textarea></code></pre>
+
+
+        <p>效果:</p>
+
+        <div id="x-container"></div>
+        <span class="finishEdit x-button x-button-small x-button-cadetblue" style="padding: 5px 10px; background: #eee;color: #000;cursor: pointer">结束编辑</span>
+        <span class="polyLine x-button x-button-small x-button-cadetblue" style="padding: 5px 10px; background: #eee;color: #000;cursor: pointer">开始划线</span>
+
+        <p>规则:</p>
+        地图初始化配置属性
+        <table class="x-table x-table-interval">
+            <thead>
+            <tr><th>属性</th><th>类型</th><th>说明</th><th>所属对象</th><th>默认值</th></tr></thead>
+            <tbody>
+            <tr>
+                <td>dom</td>
+                <td>String</td>
+                <td>地图容器DIV的ID值或者DIV对象</td>
+                <td>XMapSdk</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>resizeEnable</td>
+                <td>Boolean</td>
+                <td>是否监控地图容器尺寸变化</td>
+                <td>XMapSdk</td>
+                <td>false</td>
+            </tr>
+
+            <tr>
+                <td>center</td>
+                <td>LngLat</td>
+                <td>地图中心点坐标值</td>
+                <td>XMapSdk</td>
+                <td>无</td>
+            </tr>
+            <tr>
+                <td>zoom</td>
+                <td>Number</td>
+                <td>地图显示的缩放级别</td>
+                <td>XMapSdk</td>
+                <td>默认显示用户所在城市范围</td>
+            </tr>
+            <tr>
+                <td>strokeColor</td>
+                <td>String</td>
+                <td>线条的颜色,使用16进制颜色代码赋值</td>
+                <td>点标记、圆、多边形</td>
+                <td>#2e90df</td>
+            </tr>
+            <tr>
+                <td>strokeOpacity</td>
+                <td>Number</td>
+                <td>用于画圆和多边形的线的透明度</td>
+                <td>点标记、圆、多边形</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>strokeWeight</td>
+                <td>Number</td>
+                <td>用于画圆和多边形的线的宽度</td>
+                <td>点标记、圆、多边形</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>strokeStyle</td>
+                <td>String</td>
+                <td>用于画圆和多边形的线样式</td>
+                <td>点标记、圆、多边形</td>
+                <td>solid (solid,dashed)</td>
+            </tr>
+            <tr>
+                <td>fillColor</td>
+                <td>String</td>
+                <td>用于填充圆和多边形的颜色，使用16进制颜色代码赋值</td>
+                <td>点标记、圆、多边形</td>
+                <td>#d2e8f5</td>
+            </tr>
+            <tr>
+                <td>fillOpacity</td>
+                <td>float</td>
+                <td>填充色的透明度</td>
+                <td>点标记、圆、多边形</td>
+                <td>0.5 （0-1）</td>
+            </tr>
+            <tr>
+                <td>extData</td>
+                <td>Any</td>
+                <td>用户自定义属性，支持JavaScript API任意数据类型</td>
+                <td></td>
+                <td>无</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="x-table x-table-interval">
+            <thead>
+            <tr><th>方法</th><th>返回值</th><th>参数</th><th>说明</th><th>所属对象</th><th>示例</th></tr></thead>
+            <tbody>
+            <tr>
+                <td>on(type,function(){})</td>
+                <td>无</td>
+                <td>1、String:事件类型(如：click等),2、function:触发该事件后的操作函数</td>
+                <td>为地图上的点标记或多边形或圆绑定事件</td>
+                <td>点标记、圆、多边形</td>
+                <td>marker.on('click',function(){})</td>
+
+            </tr>
+            <tr>
+                <td>off(type)</td>
+                <td>无</td>
+                <td>1、String:事件类型(如：click等)</td>
+                <td>移除地图上的点标记或多边形或圆的指定事件</td>
+                <td>点标记、圆、多边形</td>
+                <td>marker.off('click',function(){})</td>
+            </tr>
+
+            <tr>
+                <td>polygon(Point,opt)</td>
+                <td>多边形对象</td>
+                <td>1、Array:二维数组,多边形的顶点坐标,2、Array:多边形各项属性配置</td>
+                <td>初始化polygon多边形的方法</td>
+                <td>XMapSdk</td>
+                <td>myMap.polygon(polygonArr,polyOpt)</td>
+            </tr>
+            <tr>
+                <td>marker(lngLat,url,x,y)</td>
+                <td>点标记对象</td>
+                <td>1、lngLat:点标记坐标,2、String:自定义图标的URL，3、pixelX：点标记显示位置偏移量X，4、pixelY：点标记显示位置偏移量X,5、String:自定义点标记的内容</td>
+                <td>初始化marker点标记的方法</td>
+                <td>XMapSdk</td>
+                <td> myMap.marker(lngLat,'img',-15,-22,{content:''})</td>
+            </tr>
+            <tr>
+                <td>circle(lngLat,radius,opt)</td>
+                <td>圆对象</td>
+                <td>1、lngLat:圆心坐标,2、String:圆半径 单位：米，3、Array：圆属性配置</td>
+                <td>初始化圆的方法</td>
+                <td>XMapSdk</td>
+                <td>myMap.circle([104.032292, 30.692353],1000,circleOpt);</td>
+            </tr>
+            <tr>
+                <td>circleEditor(circle,function(){},function(){},function(){})</td>
+                <td>圆编辑对象</td>
+
+                <td>1、Circle:圆对象,2、function:结束编辑后的回调函数，3、function：结束过程中触发的函数，4、圆心移动过程中触发的函数</td>
+                <td>对圆进行编辑</td>
+                <td>XMapSdk</td>
+                <td>myMap.circleEditor(circle,function(){},function(){},function(){});</td>
+            </tr>
+
+            <tr>
+                <td>polygonEdit(polygon,function(){})</td>
+                <td>多边形编辑对象</td>
+
+                <td>1、Polygon:多边形对象,2、function:结束编辑后的回调函数</td>
+                <td>对多边形进行编辑</td>
+                <td>XMapSdk</td>
+                <td>myMap.circleEditor(polygon,function(){})</td>
+            </tr>
+            <tr>
+                <td>close()</td>
+                <td></td>
+                <td>无</td>
+                <td>关闭编辑</td>
+                <td>编辑对象(多边形和圆)</td>
+                <td>polygonEdit.close();</td>
+            </tr>
+            <tr>
+                <td>placeSearch(str,function(poiList){})</td>
+                <td></td>
+                <td>1、String:搜索的关键字，2、function(poiList):搜索完成后的回调 poiList：搜索结果</td>
+                <td>搜索</td>
+                <td>XMapSdk</td>
+                <td>myMap.placeSearch('成都市',function(poiList){})</td>
+            </tr>
+            <tr>
+                <td>districtSearch(str,type,function(isOk,data){})</td>
+                <td></td>
+                <td>1、String:地名，2、String:搜索的类型(boundaries:返回所有数据,district：行政区域)，3、function(isOk,data):搜索完成后的回调 isOk:是否搜索成功 data：搜索结果</td>
+                <td>行政区域搜索</td>
+                <td>XMapSdk</td>
+                <td>myMap.districtSearch('成都市','boundaries',function(isOk,data){});</td>
+            </tr>
+
+            <tr>
+                <td>infoWindow(content)</td>
+                <td>信息窗体对象</td>
+                <td>1、String:信息窗体内容</td>
+                <td>初始化信息窗体</td>
+                <td>XMapSdk</td>
+                <td>myMap.infoWindow(content);</td>
+            </tr>
+            <tr>
+                <td>open(mapObj,lngLat)</td>
+                <td></td>
+                <td>1、Map:地图对象 2、lngLat:窗体中心坐标点</td>
+                <td>打开信息窗体</td>
+                <td>infoWindow</td>
+                <td>infoWindow.open(myMap.mapObj, marker.getPosition());</td>
+            </tr>
+            <tr>
+                <td>mouseTool(type,function(obj){},opt)</td>
+                <td>mouseTool对象</td>
+                <td>1、String:区分线，点，多边形(polyLine,marker,polygon) 2、function(obj):进行完本次操作后的回调，其中obj为对象 3、option:圆或多边形或点标记的配置属性</td>
+                <td>开始用鼠标在地图上画线或点或多边形</td>
+                <td>XMapSdk</td>
+                <td>myMap.mouseTool('polyLine',function(obj){},polyLineOpt);</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<?php
+
+include "layout_footer.php";
+?>
+
+<script  src="src/js/MapSDK.js"></script>
+<!--<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>-->
+<script>
+    var lngLat = [104.056435,30.671192];
+    $("#x-container").css({'width':'100%', 'height':'500px'});
+    var myMap = XMapSdk({
+        dom:'x-container',
+        resizeEnable:true,
+        center:lngLat,
+        zoom:13
+    },{
+        strokeColor: "#2e90df",
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        strokeStyle:'solid',
+        fillColor: "#d2e8f5",
+        fillOpacity: 0.5,
+        extData:null
     });
-    //构造路线导航类
-    AMap.service(["AMap.Driving"], function() {
-        var driving = new AMap.Driving({
-            policy: AMap.DrivingPolicy.REAL_TRAFFIC,
-            map: map,
-            panel: "panel"
-        });
-        // 根据起终点经纬度规划驾车导航路线
-        driving.search(new AMap.LngLat(104.065955, 30.656409), new AMap.LngLat(104.088593, 30.679775));
+
+
+
+    var marker =  myMap.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+        content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
     });
+    marker.on('click',function(){
+        infoWindow.open(myMap.mapObj, marker.getPosition());
+    });
+
+    var content ='这是一个信息窗口';
+    var infoWindow = myMap.infoWindow(content);//窗口
+
+    var polygonArr = new Array();//多边形覆盖物节点坐标数组
+    polygonArr.push([104.003322, 30.620255]);
+    polygonArr.push([104.010703, 30.697555]);
+    polygonArr.push([104.032292, 30.692353]);
+    polygonArr.push([104.089846, 30.691365]);
+    var polyPolygonOpt = {
+        strokeColor: "#FF33FF", //线颜色
+        strokeOpacity: 1, //线透明度
+        strokeWeight: 3,    //线宽
+        fillColor: "#1791fc", //填充色
+        fillOpacity: 0.35//填充透明度
+    };
+    var polygon = myMap.polygon(polygonArr,polyPolygonOpt);
+
+    var polyLineArr = new Array();
+    polyLineArr.push([104.003322, 30.620255]);
+    polyLineArr.push([104.023322, 30.620255]);
+    polyLineArr.push([104.013322, 30.590255]);
+    var polyLineOpt =  {
+        strokeColor: 'red', //线颜色
+        strokeOpacity: 1, //线透明度
+        strokeWeight: 3,    //线宽
+    };
+    var polyLine= myMap.polyLine(polyLineArr,polyLineOpt);
+
+
+    var circleOpt =  {
+        strokeColor: "#5F33FF", //线颜色
+        strokeWeight: 3,    //线宽
+        fillColor: "red", //填充色
+        fillOpacity: 0.35//填充透明度
+    };
+
+    var circle = myMap.circle([104.032292, 30.692353],3000,circleOpt);//单位  米
+    //搜索    返回搜索结果  按地点搜索
+    myMap.placeSearch('北京市',function(poiList){
+        console.log(poiList);
+    });
+
+    //搜索  搜行政区名称  返回行政区矩形数组
+    myMap.districtSearch('成都市','boundaries',function(isOk,data){
+        console.log(data);
+        var opt = {
+            strokeColor: "red", //线颜色
+            strokeOpacity: 0.8, //线透明度
+            strokeWeight: 3,    //线宽
+        };
+        var polygon = myMap.polygon(data['boundaries'],opt);
+    });
+
+    //编辑多边形
+    var circleEdit =   myMap.circleEditor(circle,function(){
+        console.log("circle ------ endCb");//结束的时候触发   close 函数
+    },function(){
+        console.log("circle ------ adjust");//编辑圆的过程中触发
+    },function(){
+        console.log("circle ------ moveCb");//拖拽圆心调整圆形位置时触发此事件
+    });
+
+
+    var polygonEdit =    myMap.polygonEdit(polygon,function(){
+        console.log('polygon ------ endCb');//编辑结束的时候触发  close 函数
+    });
+
+    $(".finishEdit").click(function(){
+        polygonEdit.close();
+        circleEdit.close();
+        console.log("结束编辑");
+    });
+    $(".finishEdit").click();
+    //划线
+    $(".polyLine").click(function(){
+        myMap.mouseTool('polyLine',function(obj){
+            console.log(obj);
+        },polyLineOpt);
+    })
+
+
 </script>
-</body>
-</html>
+

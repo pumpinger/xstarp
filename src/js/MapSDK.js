@@ -5,11 +5,15 @@
  *
  *  使用高德地图 命名方式与高德地图api呼应 简化了层次 方便调用
  *  依赖jq
-**/
+ **/
 
 ;document.write('<script src="http://webapi.amap.com/maps?v=1.3&key=a3b3d16e95cfd8d858300d093f839c5f"></script>');
 (function(){
-    window.mapSdk=function (dom,opt,theme){
+    window.XMapSdk=function (opt,theme){
+        return new mapSdk(opt,theme);
+    };
+
+    var mapSdk=function(opt,theme){
         var defaultTheme={
             strokeColor: "#2e90df",
             strokeOpacity: 1,
@@ -18,19 +22,22 @@
             fillColor: "#d2e8f5",
             fillOpacity: 0.5
         };
+
+        var latLng = [104.056435,30.671192];//默认
         var defaultOpt={
             zoom:13,
-            pulgin:[]
+            pulgin:[],
+            center:latLng
         };
-        //strokeColor: "#2e90df", //线颜色
-        //fillColor: "#d2e8f5", //填充颜色
+
         this.opt= $.extend(true,{},defaultOpt,opt);
         this.theme= $.extend(true,{},defaultTheme,theme);
 
 
 
-        this.mapObj=new AMap.Map(dom,this.opt);
+        this.mapObj=new AMap.Map(opt['dom'],this.opt);
         var mapObj= this.mapObj;
+        console.log(this);
 
         for (var x in this.opt.pulgin)
         {
@@ -54,11 +61,7 @@
             }
         }
 
-
-        $('.amap-logo').hide();
-        $('.amap-copyright').hide();
-
-
+        return this;
     };
     mapSdk.prototype={
         clearMap:function (){
@@ -75,7 +78,7 @@
             el.setMap(this.mapObj);
         },
         lngLat:function (lng,lat){
-          return new AMap.LngLat(lng,lat);
+            return new AMap.LngLat(lng,lat);
         },
         icon:function (img){
             if(img){
@@ -92,19 +95,19 @@
         size:function (w,h){
             return new AMap.Size(w,h);
         },
-        marker:function (lnglatXY,img,x,y){
-            var opt={
+        marker:function (lnglatXY,img,x,y,opt){
+            var defaultOpt={
                 map:this.mapObj,
                 position: lnglatXY,
                 zIndex:9999
             };
             if(img){
-                opt.icon=this.icon(img);
+                opt.icon=this.icon(img)
             }
             if(x  &&  y){
                 opt.offset=this.pixel(x,y);
             }
-            return new AMap.Marker(opt);
+            return new AMap.Marker(this._handlerOpt(defaultOpt,opt));
         },
         infoWindow:function (content){
             return new AMap.InfoWindow({
@@ -130,6 +133,7 @@
 
             });
         },
+        //地理编码和反地理编码
         geocoder:function(lnglatXY,completeCb) {
             //var that=this;
 
@@ -145,6 +149,7 @@
                 });
             });
         },
+        //搜索   keyword：关键字  type:类型   cb:回调函数
         districtSearch:function (keyword,type,cb){
             AMap.service(["AMap.DistrictSearch"], function() {
                 if(type== 'boundaries'){
@@ -191,19 +196,32 @@
             mapObj.plugin(["AMap.MouseTool"], function() {
                 mouseTool= new AMap.MouseTool(mapObj);
                 //todo  别的类型的绘制
-                if(opt){
-                    mouseTool.polygon(opt);
-                }else{
-                    mouseTool.polygon(this.opt);
+
+                switch(type){
+                    case 'polyLine':
+                        mouseTool.polyline(opt);
+                        break;
+                    case 'polygon':
+                        mouseTool.polygon(opt);
+                        break;
+                    case 'marker':
+                        mouseTool.marker(opt);
+                        break;
+                    default :
+                        console.log("参数不正确");
+                        break;
                 }
 
+
                 that.addListener(mouseTool, "draw", function (e){
+                    console.log("2222221112");
                     drawCb(e,mouseTool);
                 });
             });
             return mouseTool;
 
         },
+        //编辑多边形    polygon:多边形对象    endCb：编辑结束后的回调
         polygonEdit:function (polygon,endCb){
             var mapObj=this.mapObj;
             var polyEditor;
@@ -221,6 +239,7 @@
             return polyEditor;
 
         },
+        //编辑圆   圆对象  endCb：编辑结束后的callBack  adjustCb:鼠标调整圆半径的时候触发   moveCB：移动的时候触发
         circleEditor:function(circle,endCb,adjustCb,moveCb){
             var mapObj=this.mapObj;
             var that=this;
@@ -247,12 +266,19 @@
             });
             return  circleEditor;
         },
+        polyLine:function(points,opt){
+            return new AMap.Polyline(this._handlerOpt({
+                map:this.mapObj,
+                path:points
+            },opt));
+        },
         polygon:function (points,opt){
             return new AMap.Polygon(this._handlerOpt({
                 map: this.mapObj,
                 path: points
             },opt));
         },
+        //画圆
         circle:function (lnglatXY,rauids,opt){
             var el=new AMap.Circle(this._handlerOpt({
                 center: lnglatXY,// 圆心位置
@@ -262,6 +288,7 @@
             return el;
         },
         on:function (){
+
             this.addListener(arguments);
         },
         off:function (){
@@ -279,7 +306,12 @@
             AMap.event.removeListener(listener);
         },
         _handlerOpt:function (opt,theme){
-            return $.extend(true,{},this.theme,theme,opt);
+            if(opt){
+                return $.extend(true,{},this.theme,theme,opt);
+            }else{
+                return $.extend(true,{},this.theme,theme);
+
+            }
         }
 
     };
