@@ -44,7 +44,6 @@ include "layout_header.php";
         wrap: '.x-progress-time-driven',
         pid: 1,
         type: 1,
-        step: ['30%','60%','90%','100%'],
         hidden: false
     };
     var xP1 = xProgress(opt1);
@@ -53,7 +52,6 @@ include "layout_header.php";
         wrap: '.x-progress-data-driven',
         pid: 2,
         type: 2,
-        step: ['30%','60%','90%','100%'],
         hidden: true
     };
     var xP2 = xProgress(opt2);

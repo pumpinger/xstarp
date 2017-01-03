@@ -37,14 +37,11 @@
         this.dom = $(this.opt.wrap);
 
 
-        if(this.opt.type == 2){
-            this.p3();
-        }else{
-            if(this.opt.type == 2){
-                this.p2();
-            }else{
-                this.p1();
-            }
+        switch (this.opt.type){
+            case 1:this.p1();break;
+            case 2:this.p2();break;
+            case 3:this.p3();break;
+            default:this.p1();
         }
 
         return this;
@@ -72,9 +69,10 @@
         },
 
         _init: function () {
-            var _html = $('<div class="x-progress" ></div>');
+            var pidstr = 'x-progress' + this.opt.pid;
+            var _html = $('<div class="' + pidstr +'" ></div>');
             this.dom.append(_html);
-            this.p = this.dom.find('.x-progress');
+            this.p = this.dom.find('.' + pidstr);
             this.opt.oninit();
         },
         _start:function () {
@@ -86,10 +84,8 @@
                 duration: 3000,
                 step: function() {
                     var percentage = Math.round(this.property);
-
                     that.p.css({'width': percentage+"%"});
-                    console.log(that);
-                    if(percentage == 100 && that.option.hidden) {
+                    if(percentage == 100 && that.opt.hidden) {
                         that.p.hide();
                     }
                 }
