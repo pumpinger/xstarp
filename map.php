@@ -65,16 +65,16 @@ include "layout_header.php";
                 polyLineArr.push([104.023322, 30.620255]);
                 polyLineArr.push([104.013322, 30.590255]);
                 var polyLineOpt =  {
-                    strokeColor: 'red', //线颜色
-                    strokeOpacity: 1, //线透明度
-                    strokeWeight: 3,    //线宽
+                    strokeColor: 'red',
+                    strokeOpacity: 1,
+                    strokeWeight: 3,
                 };
                 var polyLine= myMap.polyLine(polyLineArr,polyLineOpt);
                 var circleOpt =  {
-                    strokeColor: "#5F33FF", //线颜色
-                    strokeWeight: 3,    //线宽
-                    fillColor: "red", //填充色
-                    fillOpacity: 0.35//填充透明度
+                    strokeColor: "#5F33FF",
+                    strokeWeight: 3,
+                    fillColor: "red",
+                    fillOpacity: 0.35
                 };
                 var circle = myMap.circle([104.032292, 30.692353],3000,circleOpt);//单位  米
 
@@ -84,9 +84,9 @@ include "layout_header.php";
                 myMap.districtSearch('成都市','boundaries',function(isOk,data){
                     console.log(data);
                     var opt = {
-                        strokeColor: "red", //线颜色
-                        strokeOpacity: 0.8, //线透明度
-                        strokeWeight: 3,    //线宽
+                        strokeColor: "red",
+                        strokeOpacity: 0.8,
+                        strokeWeight: 3,
                     };
                     var polygon = myMap.polygon(data['boundaries'],opt);
                 });
