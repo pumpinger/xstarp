@@ -10,37 +10,32 @@
 
     var xProgress = function (option) {
         var defOpt = {
-            wrap: '.x-progress',
-            pstyle: 'x-progress-bar x-progress-bar-min-width',
+            wrap: '.x-progress-wrap',
+            pclass: 'x-progress-bar',
             width:'',
             duration:''
         };
 
         this.opt = $.extend(true, {}, defOpt, option);
 
-        this.dom = $(this.opt.wrap.toString());
+        this.wrap = $(this.opt.wrap);
 
-        this.p1();
+        this.start();
 
         return this;
     };
 
     xProgress.prototype = {
-        p1: function () {
+        start: function () {
             this._init();
             this._observer(this.opt,'width');
         },
 
         _init: function () {
-            this.p = $('<div class="' + this.opt.pstyle + '" ></div>');
-            this.dom.append(this.p);
-            // this._makebar(this);
+            this.p = $('<div class="' + this.opt.pclass + '" ></div>');
+            this.wrap.append(this.p);
+            this._progress(this.opt.width);
         },
-
-        // _makebar:function () {
-        //     this.p = $('<div class="' + this.opt.pstyle + '" ></div>');
-        //     this.dom.append(this.p);
-        // },
 
         _observer: function (obj, k) {
             var that = this;
