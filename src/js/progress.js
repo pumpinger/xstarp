@@ -10,8 +10,8 @@
 
     var xProgress = function (option) {
         var defOpt = {
-            wrap: '',
-            pstyle: '',
+            wrap: '.x-progress',
+            pstyle: 'x-progress-bar x-progress-bar-min-width',
             width:'',
             duration:''
         };
@@ -22,10 +22,6 @@
         }
         this.opt = $.extend(true, {}, defOpt, option);
 
-        if (!this.opt.wrap) {
-            console.log('opt.wrap不能为空', this.opt.wrap);
-            return false;
-        }
         this.dom = $(this.opt.wrap.toString());
 
         this.p1();
@@ -42,7 +38,13 @@
         _init: function () {
             this.p = $('<div class="' + this.opt.pstyle + '" ></div>');
             this.dom.append(this.p);
+            // this._makebar(this);
         },
+
+        // _makebar:function () {
+        //     this.p = $('<div class="' + this.opt.pstyle + '" ></div>');
+        //     this.dom.append(this.p);
+        // },
 
         _observer: function (obj, k) {
             var that = this;
@@ -62,9 +64,7 @@
             })
         },
         _progress: function (next, old) {
-            this.p.animate({width: old}, 100);
-            this.p.animate({width: next}, this.opt.duration);
-            this.opt.onprogress();
+            this.p.css({width: next});
         }
 
     };
