@@ -11,12 +11,9 @@
     var xProgress = function (option) {
         var defOpt = {
             wrap: '',//调用progress的地方
-            pselector: '.x-progress',
-            type: 1,//
+            pstyle: '',
             width:'',
             duration:'',
-            style: [{width: '10%'}, {width: '100%'}, {visibility: 'visible'}],
-            animate:[],
             oninit: function () {
             },
             onstart: function () {
@@ -48,10 +45,11 @@
         p1: function () {
             this._init();
             this._observer(this.opt,'width');
+            this._start();
         },
 
         _init: function () {
-            this.p = $('<div class="' + 'x-progress-' + this.opt.pid + '" ></div>');
+            this.p = $('<div class="' + this.opt.pstyle + '" ></div>');
             this.dom.append(this.p);
             this.opt.oninit();
         },

@@ -42,32 +42,33 @@ include "layout_header.php";
 <script>
     var opt1 = {
         wrap: '.x-progress-data-driven',
-        pid: 1,
-        type:1,
-        width:'10%',
-        duration:2000
+        pstyle: ['x-progress-bar-striped'],
+        width:'50%',
+        duration:1000
     };
     var xP1 = xProgress(opt1);
-    var temp = 10;
-    var step = 10;
-    function pp() {
-        temp = temp + step;
-        xP1.opt.width = temp + '%';
-        console.log(xP1.opt.width);
-    }
-    var ss = setInterval(pp,1000);
-    if(temp > 100){
-        clearInterval(ss);
-    }
+//    var temp = 10;
+//    var step = 10;
+//    function pp() {
+//        temp = temp + step;
+//        xP1.opt.width = temp + '%';
+//        console.log('xP1.opt.width',xP1.opt.width);
+//        console.log('temp',temp);
+//
+//    }
+//    var ss = setInterval(pp,500);
+//    if(temp >= 100){
+//        console.log(temp);
+//        clearInterval(ss);
+//    }
 
-//    var opt2 = {
-//        wrap: '.x-progress-time-driven',
-//        pid: 2,
-//        type:2,
-//        style:[{width:'10%'},{width:'100%'},{visibility:'hidden'}],
-//        duration:['5000']
-//    };
-//    var xP2 = xProgress(opt2);
+    var opt2 = {
+        wrap: '.x-progress-time-driven',
+        pstyle: 'x-progress-bar-striped',
+        width:'50%',
+        duration:1000
+    };
+    var xP2 = xProgress(opt2);
 
 </script>
 
