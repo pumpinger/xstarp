@@ -10,7 +10,7 @@
 
     var xProgress = function (option) {
         var defOpt = {
-            dom:'',
+            wrap:'',
             pid:1,
             type:1,
             style:'',
@@ -30,11 +30,11 @@
         }
         this.opt = $.extend(true, {}, defOpt, option);
 
-        if(typeof this.opt.dom !== "string"){
-            console.log('this.opt.dom不是"string"', this.opt.dom);
+        if(typeof this.opt.wrap !== "string"){
+            console.log('this.opt.wrap不是"string"', this.opt.wrap);
             return false;
         }
-        this.dom = $(this.opt.dom);
+        this.dom = $(this.opt.wrap);
 
 
         if(this.opt.type == 2){

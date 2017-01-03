@@ -41,7 +41,7 @@ include "layout_header.php";
 
 <script>
     var opt1 = {
-        dom: '.x-progress-time-driven',
+        wrap: '.x-progress-time-driven',
         pid: 1,
         type: 1,
         step: ['30%','60%','90%','100%'],
@@ -50,7 +50,7 @@ include "layout_header.php";
     var xP1 = xProgress(opt1);
 
     var opt2 = {
-        dom: '.x-progress-data-driven',
+        wrap: '.x-progress-data-driven',
         pid: 2,
         type: 2,
         step: ['30%','60%','90%','100%'],
