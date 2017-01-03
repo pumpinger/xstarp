@@ -16,10 +16,6 @@
             duration:''
         };
 
-        if (typeof option !== "object") {
-            console.log('option不是"object"', option);
-            return false;
-        }
         this.opt = $.extend(true, {}, defOpt, option);
 
         this.dom = $(this.opt.wrap.toString());

@@ -43,23 +43,23 @@ include "layout_header.php";
 
         <p class="x-color-blue">效果:</p>
         <p>1、默认样式</p>
-        <div class="x-progress x-progress-1" >
+        <div class="x-progress-wrap x-progress-1" >
             <div class="x-progress-bar"></div>
         </div>
         <p>2、带提示标签</p>
-        <div class="x-progress" >
+        <div class="x-progress-wrap" >
             <div class="x-progress-bar"></div>
         </div>
         <p>3、带条纹效果</p>
-        <div class="x-progress" >
+        <div class="x-progress-wrap" >
             <div class="x-progress-bar"></div>
         </div>
         <p>4、条纹效果带动画</p>
-        <div class="x-progress" >
+        <div class="x-progress-wrap" >
             <div class="x-progress-bar"></div>
         </div>
         <p>4、多个进度条堆叠</p>
-        <div class="x-progress" >
+        <div class="x-progress-wrap" >
             <div class="x-progress-bar"></div>
             <div class="x-progress-bar"></div>
             <div class="x-progress-bar"></div>
