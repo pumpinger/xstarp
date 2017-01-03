@@ -37,8 +37,6 @@
 
         this.mapObj=new AMap.Map(opt['dom'],this.opt);
         var mapObj= this.mapObj;
-        console.log(this);
-
         for (var x in this.opt.pulgin)
         {
             opt= this.opt.pulgin[x];
@@ -117,16 +115,17 @@
                 offset:this.pixel(0,-30)
             });
         },
-        placeSearch:function (keyword,cb){
+        placeSearch:function (keyword,size,cb){
             AMap.service(["AMap.PlaceSearch"], function() {
                 var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
                     //map: mapObj,
-                    pageSize:5,
+                    pageSize:size,
                     pageIndex:1
                 });
                 placeSearch.search(keyword,function (status,res){
                     if(status == 'complete'  && res.poiList.pois.length){
                         //todo  处理是信息不全导致的没有结果  res.cityList有结果
+
                         cb(res.poiList.pois);
                     }
                 });
@@ -134,7 +133,7 @@
             });
         },
         //地理编码和反地理编码
-        geocoder:function(lnglatXY,completeCb) {
+        unGeoCoder:function(lnglatXY,completeCb) {
             //var that=this;
 
             this.mapObj.plugin(["AMap.Geocoder"], function() {
@@ -149,6 +148,24 @@
                 });
             });
         },
+        geoCoder:function(address,completeCb) {
+            //var that=this;
+
+            this.mapObj.plugin(["AMap.Geocoder"], function() {
+                var geocoder = new AMap.Geocoder({
+                    radius: 1000,
+                    extensions: "base"
+                });
+                geocoder.getLocation(address,function(e,res){
+                    console.log(res);
+                    if(e == 'complete' && res.info ==='OK'){
+
+                        completeCb(res.geocodes);
+                    }
+                });
+            });
+        },
+
         //搜索   keyword：关键字  type:类型   cb:回调函数
         districtSearch:function (keyword,type,cb){
             AMap.service(["AMap.DistrictSearch"], function() {
@@ -214,7 +231,6 @@
 
 
                 that.addListener(mouseTool, "draw", function (e){
-                    console.log("2222221112");
                     drawCb(e,mouseTool);
                 });
             });

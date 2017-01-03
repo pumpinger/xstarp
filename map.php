@@ -10,6 +10,12 @@ include "layout_header.php";
 
 ?>
 
+<style >
+    .search{position: absolute;top: 10px;}
+    .search input{height: 20px;margin-right: 10px;padding-left: 5px;vertical-align: bottom}
+    .result {position: absolute;top: 10px;background: #eee;}
+</style>
+
 <div class="x-panel">
     <div class="x-panel-title">标签</div>
     <div class="x-panel-content">
@@ -17,116 +23,296 @@ include "layout_header.php";
         <p>示例：</p>
 
 <pre><code class="language-html"><textarea>
-            <div id="x-container"></div>
-            <span class="finishEdit" style="padding: 5px 10px; background: #eee;color: #000;cursor: pointer">结束编辑</span>
-            <script>
-                var lngLat = [104.056435,30.671192];
-                $("#x-container").css({'width':'100%', 'height':'500px'});
-                var myMap = XMapSdk({
-                    dom:'x-container',
-                    resizeEnable:true,
-                    center:lngLat,
-                    zoom:13
-                },{
-                    strokeColor: "#2e90df",
-                    strokeOpacity: 1,
-                    strokeWeight: 3,
-                    strokeStyle:'solid',
-                    fillColor: "#d2e8f5",
-                    fillOpacity: 0.5,
-                    extData:null
-                });
-
-                var marker =  myMap.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
-                    content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
-                });
-                marker.on('click',function(){
-                    infoWindow.open(myMap.mapObj, marker.getPosition());
-                });
-
-                var content ='这是一个信息窗口';
-                var infoWindow = myMap.infoWindow(content);
-
-                var polygonArr = new Array();
-                polygonArr.push([104.003322, 30.620255]);
-                polygonArr.push([104.010703, 30.697555]);
-                polygonArr.push([104.032292, 30.692353]);
-                polygonArr.push([104.089846, 30.691365]);
-                var polyPolygonOpt = {
-                    strokeColor: "#FF33FF",
-                    strokeOpacity: 1,
-                    strokeWeight: 3,
-                    fillColor: "#1791fc",
-                    fillOpacity: 0.35
-                };
-                var polygon = myMap.polygon(polygonArr,polyPolygonOpt);
-                var polyLineArr = new Array();
-                polyLineArr.push([104.003322, 30.620255]);
-                polyLineArr.push([104.023322, 30.620255]);
-                polyLineArr.push([104.013322, 30.590255]);
-                var polyLineOpt =  {
-                    strokeColor: 'red',
-                    strokeOpacity: 1,
-                    strokeWeight: 3,
-                };
-                var polyLine= myMap.polyLine(polyLineArr,polyLineOpt);
-                var circleOpt =  {
-                    strokeColor: "#5F33FF",
-                    strokeWeight: 3,
-                    fillColor: "red",
-                    fillOpacity: 0.35
-                };
-                var circle = myMap.circle([104.032292, 30.692353],3000,circleOpt);//单位  米
-
-                myMap.placeSearch('北京市',function(poiList){
-                    console.log(poiList);
-                });
-                myMap.districtSearch('成都市','boundaries',function(isOk,data){
-                    console.log(data);
-                    var opt = {
-                        strokeColor: "red",
-                        strokeOpacity: 0.8,
-                        strokeWeight: 3,
-                    };
-                    var polygon = myMap.polygon(data['boundaries'],opt);
-                });
-
-                var circleEdit =   myMap.circleEditor(circle,function(){
-                    console.log("circle ------ endCb");//结束的时候触发   close 函数
-                },function(){
-                    console.log("circle ------ adjust");//编辑圆的过程中触发
-                },function(){
-                    console.log("circle ------ moveCb");//拖拽圆心调整圆形位置时触发此事件
-                });
+           <div class="x-tab">
+               <ul class="x-tab-nav">
+                   <li class="x-tab-li "><a href="#">鼠标编辑</a></li>
+                   <li class=""><a href="#">绘制圆，点，多边形</a></li>
+                   <li class="  x-active"><a href="#">地理编码</a></li>
+               </ul>
+               <div class="x-tab-contents">
+                   <div class="x-tab-content">
+                       <div id="container"></div>
+                       <span class="finishEdit x-button x-button-small x-button-cadetblue">结束编辑</span>
+                       <span class="mouseTool x-button x-button-small x-button-cadetblue">开始画面</span>
+                       <script>
+                           var lngLat = [104.056435,30.671192];
+                           $("#container").css({'width':'100%', 'height':'500px'});
+                           var myMap = XMapSdk({
+                               dom:'container',
+                               resizeEnable:true,
+                               center:lngLat,
+                               zoom:13
+                           },{
+                               strokeColor: "#2e90df",
+                               strokeOpacity: 1,
+                               strokeWeight: 3,
+                               strokeStyle:'solid',
+                               fillColor: "#d2e8f5",
+                               fillOpacity: 0.5,
+                               extData:null
+                           });
 
 
-                var polygonEdit =    myMap.polygonEdit(polygon,function(){
-                    console.log('polygon ------ endCb');//编辑结束的时候触发  close 函数
-                });
+                           var circleOpt =  {
+                               strokeColor: "#5F33FF",
+                               strokeWeight: 3,
+                               fillColor: "red",
+                               fillOpacity: 0.35
+                           };
 
-                $(".finishEdit").click(function(){
-                    polygonEdit.close();
-                    circleEdit.close();
-                    console.log("结束编辑");
-                });
-                $(".polyLine").click(function(){
-                    myMap.mouseTool('polyLine',function(obj){
-                        console.log(obj);
-                    },polyLineOpt);
-                })
+                           var circle = myMap.circle([104.032292, 30.692353],3000,circleOpt);//单位  米
 
-            </script>
+
+                           var polygonArr = new Array();//多边形覆盖物节点坐标数组
+                           polygonArr.push([104.003322, 30.620255]);
+                           polygonArr.push([104.010703, 30.697555]);
+                           polygonArr.push([104.032292, 30.692353]);
+                           polygonArr.push([104.089846, 30.691365]);
+                           var polyPolygonOpt = {
+                               strokeColor: "#FF33FF",
+                               strokeOpacity: 1,
+                               strokeWeight: 3,
+                               fillColor: "#1791fc",
+                               fillOpacity: 0.35
+                           };
+                           var polygon = myMap.polygon(polygonArr,polyPolygonOpt);
+
+                           var circleEdit =   myMap.circleEditor(circle,function(){
+                               console.log("circle ------ endCb");
+                           },function(){
+                               console.log("circle ------ adjust");
+                           },function(){
+                               console.log("circle ------ moveCb");
+                           });
+
+
+                           var polygonEdit =    myMap.polygonEdit(polygon,function(){
+                               console.log('polygon ------ endCb');
+                           });
+
+
+                           $(".finishEdit").click(function(){
+                               polygonEdit.close();
+                               circleEdit.close();
+                           });
+
+
+                           $(".mouseTool").click(function(){
+                               myMap.mouseTool('polygon',function(obj){
+                                   console.log(obj);
+                               },polyPolygonOpt);
+                           });
+
+                       </script>
+                   </div>
+                   <div class="x-tab-content" style="position: relative">
+                       <div id="container1"></div>
+                       <span class="polyCircle x-button x-button-small x-button-cadetblue">画圆</span>
+                       <span class="drawMarker x-button x-button-small x-button-cadetblue">画点</span>
+                       <span class="polyLine x-button x-button-small x-button-cadetblue">画线</span>
+                       <span class="polygon x-button x-button-small x-button-cadetblue">画多边形</span>
+                       <div class="search"><input type="text" class="searchTxt"  placeholder="请输入关键字"><span class="searchBtn x-button x-button-small x-button-cadetblue">搜索</span></div>
+                       <div class="searchResult"></div>
+                       <script>
+
+                           $("#container1").css({'width':'100%', 'height':'500px'});
+                           var myMap1 = XMapSdk({
+                               dom:'container1',
+                               resizeEnable:true,
+                               center:lngLat,
+                               zoom:13
+                           },{
+                               strokeColor: "#2e90df",
+                               strokeOpacity: 1,
+                               strokeWeight: 3,
+                               strokeStyle:'solid',
+                               fillColor: "#d2e8f5",
+                               fillOpacity: 0.5,
+                               extData:null
+                           });
+
+                           $(".drawMarker").click(function(){
+                               var marker =  myMap1.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+                                   content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+                               });
+                               marker.on('click',function(){
+                                   infoWindow.open(myMap1.mapObj, marker.getPosition());
+                               });
+
+                               var content ='这是一个信息窗口';
+                               var infoWindow = myMap1.infoWindow(content);//窗口
+
+                           });
+                           $(".polyLine").click(function(){
+                               var polyLineArr = new Array();
+                               polyLineArr.push([104.003322, 30.620255]);
+                               polyLineArr.push([104.023322, 30.620255]);
+                               polyLineArr.push([104.013322, 30.590255]);
+                               var polyLineOpt =  {
+                                   strokeColor: 'red', //线颜色
+                                   strokeOpacity: 1, //线透明度
+                                   strokeWeight: 3,    //线宽
+                               };
+                               var polyLine= myMap1.polyLine(polyLineArr,polyLineOpt);
+                           });
+                           $(".polyCircle").click(function(){
+                               var circleOpt =  {
+                                   strokeColor: "#5F33FF",
+                                   strokeWeight: 3,
+                                   fillColor: "red",
+                                   fillOpacity: 0.35
+                               };
+
+                               var circle = myMap1.circle([104.032292, 30.692353],3000,circleOpt);//单位  米
+                           });
+
+                           $(".polygon").click(function(){
+                               var polygonArr = new Array();//多边形覆盖物节点坐标数组
+                               polygonArr.push([104.003322, 30.620255]);
+                               polygonArr.push([104.010703, 30.697555]);
+                               polygonArr.push([104.032292, 30.692353]);
+                               polygonArr.push([104.089846, 30.691365]);
+                               var polyPolygonOpt = {
+                                   strokeColor: "#FF33FF",
+                                   strokeOpacity: 1,
+                                   strokeWeight: 3,
+                                   fillColor: "#1791fc",
+                                   fillOpacity: 0.35
+                               };
+                               var polygon = myMap1.polygon(polygonArr,polyPolygonOpt);
+                           });
+
+                           $(".searchBtn").click(function(){
+                               var str = $('.searchTxt').val();
+                               console.log(str);
+                               myMap1.placeSearch(str,10,function(poiList){
+                                   var html = '';
+                                   for (var item in poiList){
+                                       html +='<li>'+poiList[item].name+'</li>';
+                                   }
+                                   $(".searchResult").html(html);
+                               });
+                           });
+
+
+                           myMap1.districtSearch('成都市','boundaries',function(isOk,data){
+                               var opt = {
+                                   strokeColor: "red",
+                                   strokeOpacity: 0.8,
+                                   strokeWeight: 3,
+                               };
+                               var polygon = myMap1.polygon(data['boundaries'],opt);
+                           });
+
+                       </script>
+                   </div>
+                   <div class="x-tab-content  x-active" style="position: relative">
+                       <div id="container2"></div>
+                       <span class="geoCoder x-button x-button-small x-button-cadetblue">地理编码</span>
+                       <span class="unGeoCoder x-button x-button-small x-button-cadetblue">反地理编码</span>
+                       <div class="result" >
+                           <div class="geoCoderDesc"></div>
+                           <div class="unGeoCoderDesc"></div>
+                       </div>
+                       <script>
+                           $("#container2").css({'width':'100%', 'height':'500px'});
+                           var myMap2 = XMapSdk({
+                               dom:'container2',
+                               resizeEnable:true,
+                               center:lngLat,
+                               zoom:13
+                           },{
+                               strokeColor: "#2e90df",
+                               strokeOpacity: 1,
+                               strokeWeight: 3,
+                               strokeStyle:'solid',
+                               fillColor: "#d2e8f5",
+                               fillOpacity: 0.5,
+                               extData:null
+                           });
+
+
+                           console.log(myMap2);
+
+                           $(".unGeoCoder").click(function(){
+                               var marker =  myMap2.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+                                   content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+                               });
+                               console.log(marker.getPosition());
+                               myMap2.unGeoCoder(marker.getPosition(),function(data){
+                                   console.log(data);
+                                   var html = '当前点坐标:'+marker.getPosition()+'&nbsp &nbsp&nbsp&nbsp&nbsp当前点的地址是：'+data;
+                                   $(".unGeoCoderDesc").html(html)
+                               });
+                           });
+
+                           $(".geoCoder").click(function(){
+
+                               myMap2.geoCoder('成都市武侯区西部智谷D区',function(data){
+                                   var html= '';
+                                   for (var i = 0; i < data.length; i++) {
+                                       //拼接输出html
+                                       html += "<span style=\"font-size: 12px;padding:0px 0 4px 2px; border-bottom:1px solid #C1FFC1;\">" +
+                                           "<b>地址</b>：" + data[i].formattedAddress + "" + "&nbsp;&nbsp;<b>的地理编码结果是:</b><b>&nbsp;&nbsp;&nbsp;&nbsp;坐标</b>：" +
+                                           data[i].location.lng + data[i].location.lat + ", " ;
+                                       var marker =  myMap2.marker([data[i].location.lng,data[i].location.lat],'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+                                           content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+                                       });
+                                   }
+
+                                   $(".geoCoderDesc").html(html);
+
+                                   console.log(data);
+                               });
+                           });
+
+                       </script>
+                   </div>
+
+               </div>
+           </div>
 </textarea></code></pre>
 
 
         <p>效果:</p>
+        <div class="x-tab">
+            <ul class="x-tab-nav">
+                <li class="x-tab-li "><a href="#">鼠标编辑</a></li>
+                <li class=""><a href="#">绘制圆，点，多边形</a></li>
+                <li class="  x-active"><a href="#">地理编码</a></li>
+            </ul>
+            <div class="x-tab-contents">
+                <div class="x-tab-content">
+                    <div id="container"></div>
+                    <span class="finishEdit x-button x-button-small x-button-cadetblue">结束编辑</span>
+                    <span class="mouseTool x-button x-button-small x-button-cadetblue">开始画面</span>
 
-        <div id="x-container"></div>
-        <span class="finishEdit x-button x-button-small x-button-cadetblue" style="padding: 5px 10px; background: #eee;color: #000;cursor: pointer">结束编辑</span>
-        <span class="polyLine x-button x-button-small x-button-cadetblue" style="padding: 5px 10px; background: #eee;color: #000;cursor: pointer">开始划线</span>
+                </div>
+                <div class="x-tab-content" style="position: relative">
+                    <div id="container1"></div>
+                    <span class="polyCircle x-button x-button-small x-button-cadetblue">画圆</span>
+                    <span class="drawMarker x-button x-button-small x-button-cadetblue">画点</span>
+                    <span class="polyLine x-button x-button-small x-button-cadetblue">画线</span>
+                    <span class="polygon x-button x-button-small x-button-cadetblue">画多边形</span>
+                    <div class="search"><input type="text" class="searchTxt"  placeholder="请输入关键字"><span class="searchBtn x-button x-button-small x-button-cadetblue">搜索</span></div>
+                    <div class="searchResult"></div>
+
+                </div>
+                <div class="x-tab-content  x-active" style="position: relative">
+                    <div id="container2"></div>
+                    <span class="geoCoder x-button x-button-small x-button-cadetblue">地理编码</span>
+                    <span class="unGeoCoder x-button x-button-small x-button-cadetblue">反地理编码</span>
+                    <div class="result" >
+                        <div class="geoCoderDesc"></div>
+                        <div class="unGeoCoderDesc"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
         <p>规则:</p>
-        地图初始化配置属性
+
         <table class="x-table x-table-interval">
             <thead>
             <tr><th>属性</th><th>类型</th><th>说明</th><th>所属对象</th><th>默认值</th></tr></thead>
@@ -233,6 +419,22 @@ include "layout_header.php";
                 <td>点标记、圆、多边形</td>
                 <td>marker.off('click',function(){})</td>
             </tr>
+            <tr>
+                <td>getPosition()</td>
+                <td>lngLat(坐标)</td>
+                <td></td>
+                <td>获取标记点的坐标</td>
+                <td>点标记</td>
+                <td>marker.getPosition()</td>
+            </tr>
+            <tr>
+                <td>off(type)</td>
+                <td>无</td>
+                <td>1、String:事件类型(如：click等)</td>
+                <td>移除地图上的点标记或多边形或圆的指定事件</td>
+                <td>点标记、圆、多边形</td>
+                <td>marker.off('click',function(){})</td>
+            </tr>
 
             <tr>
                 <td>polygon(Point,opt)</td>
@@ -326,6 +528,22 @@ include "layout_header.php";
                 <td>XMapSdk</td>
                 <td>myMap.mouseTool('polyLine',function(obj){},polyLineOpt);</td>
             </tr>
+            <tr>
+                <td>geoCoder(address,function(data){})</td>
+                <td>无</td>
+                <td>1、String:地址 2、function(data):地理编码后调用的函数，data 返回的数据</td>
+                <td>传入地址进行地理编码</td>
+                <td>XMapSdk</td>
+                <td> myMap2.geoCoder('成都市武侯区西部智谷D区',function(data){})</td>
+            </tr>
+            <tr>
+                <td>unGeoCoder(lngLat,function(data){})</td>
+                <td>无</td>
+                <td>1、String:点坐标 2、function(data):反地理编码后返回的数据，data 返回的数据 </td>
+                <td>传入点坐标进行反地理编码</td>
+                <td>XMapSdk</td>
+                <td>myMap2.unGeoCoder(marker.getPosition(),function(data){ </td>
+            </tr>
 
             </tbody>
         </table>
@@ -342,9 +560,9 @@ include "layout_footer.php";
 <!--<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>-->
 <script>
     var lngLat = [104.056435,30.671192];
-    $("#x-container").css({'width':'100%', 'height':'500px'});
+    $("#container").css({'width':'100%', 'height':'500px'});
     var myMap = XMapSdk({
-        dom:'x-container',
+        dom:'container',
         resizeEnable:true,
         center:lngLat,
         zoom:13
@@ -359,16 +577,15 @@ include "layout_footer.php";
     });
 
 
+    var circleOpt =  {
+        strokeColor: "#5F33FF", //线颜色
+        strokeWeight: 3,    //线宽
+        fillColor: "red", //填充色
+        fillOpacity: 0.35//填充透明度
+    };
 
-    var marker =  myMap.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
-        content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
-    });
-    marker.on('click',function(){
-        infoWindow.open(myMap.mapObj, marker.getPosition());
-    });
+    var circle = myMap.circle([104.032292, 30.692353],3000,circleOpt);//单位  米
 
-    var content ='这是一个信息窗口';
-    var infoWindow = myMap.infoWindow(content);//窗口
 
     var polygonArr = new Array();//多边形覆盖物节点坐标数组
     polygonArr.push([104.003322, 30.620255]);
@@ -384,42 +601,6 @@ include "layout_footer.php";
     };
     var polygon = myMap.polygon(polygonArr,polyPolygonOpt);
 
-    var polyLineArr = new Array();
-    polyLineArr.push([104.003322, 30.620255]);
-    polyLineArr.push([104.023322, 30.620255]);
-    polyLineArr.push([104.013322, 30.590255]);
-    var polyLineOpt =  {
-        strokeColor: 'red', //线颜色
-        strokeOpacity: 1, //线透明度
-        strokeWeight: 3,    //线宽
-    };
-    var polyLine= myMap.polyLine(polyLineArr,polyLineOpt);
-
-
-    var circleOpt =  {
-        strokeColor: "#5F33FF", //线颜色
-        strokeWeight: 3,    //线宽
-        fillColor: "red", //填充色
-        fillOpacity: 0.35//填充透明度
-    };
-
-    var circle = myMap.circle([104.032292, 30.692353],3000,circleOpt);//单位  米
-    //搜索    返回搜索结果  按地点搜索
-    myMap.placeSearch('北京市',function(poiList){
-        console.log(poiList);
-    });
-
-    //搜索  搜行政区名称  返回行政区矩形数组
-    myMap.districtSearch('成都市','boundaries',function(isOk,data){
-        console.log(data);
-        var opt = {
-            strokeColor: "red", //线颜色
-            strokeOpacity: 0.8, //线透明度
-            strokeWeight: 3,    //线宽
-        };
-        var polygon = myMap.polygon(data['boundaries'],opt);
-    });
-
     //编辑多边形
     var circleEdit =   myMap.circleEditor(circle,function(){
         console.log("circle ------ endCb");//结束的时候触发   close 函数
@@ -434,18 +615,183 @@ include "layout_footer.php";
         console.log('polygon ------ endCb');//编辑结束的时候触发  close 函数
     });
 
+
     $(".finishEdit").click(function(){
         polygonEdit.close();
         circleEdit.close();
-        console.log("结束编辑");
     });
-    $(".finishEdit").click();
+
     //划线
-    $(".polyLine").click(function(){
-        myMap.mouseTool('polyLine',function(obj){
+    $(".mouseTool").click(function(){
+        myMap.mouseTool('polygon',function(obj){
             console.log(obj);
-        },polyLineOpt);
-    })
+        },polyPolygonOpt);
+    });
+
+
+
+
+
+
+
+
+
+
+    $("#container1").css({'width':'100%', 'height':'500px'});
+    var myMap1 = XMapSdk({
+        dom:'container1',
+        resizeEnable:true,
+        center:lngLat,
+        zoom:13
+    },{
+        strokeColor: "#2e90df",
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        strokeStyle:'solid',
+        fillColor: "#d2e8f5",
+        fillOpacity: 0.5,
+        extData:null
+    });
+
+    $(".drawMarker").click(function(){
+        var marker =  myMap1.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+            content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+        });
+        marker.on('click',function(){
+            infoWindow.open(myMap1.mapObj, marker.getPosition());
+        });
+
+        var content ='这是一个信息窗口';
+        var infoWindow = myMap1.infoWindow(content);//窗口
+
+    });
+    $(".polyLine").click(function(){
+        var polyLineArr = new Array();
+        polyLineArr.push([104.003322, 30.620255]);
+        polyLineArr.push([104.023322, 30.620255]);
+        polyLineArr.push([104.013322, 30.590255]);
+        var polyLineOpt =  {
+            strokeColor: 'red', //线颜色
+            strokeOpacity: 1, //线透明度
+            strokeWeight: 3,    //线宽
+        };
+        var polyLine= myMap1.polyLine(polyLineArr,polyLineOpt);
+    });
+    $(".polyCircle").click(function(){
+        var circleOpt =  {
+            strokeColor: "#5F33FF", //线颜色
+            strokeWeight: 3,    //线宽
+            fillColor: "red", //填充色
+            fillOpacity: 0.35//填充透明度
+        };
+
+        var circle = myMap1.circle([104.032292, 30.692353],3000,circleOpt);//单位  米
+    });
+
+    $(".polygon").click(function(){
+        var polygonArr = new Array();//多边形覆盖物节点坐标数组
+        polygonArr.push([104.003322, 30.620255]);
+        polygonArr.push([104.010703, 30.697555]);
+        polygonArr.push([104.032292, 30.692353]);
+        polygonArr.push([104.089846, 30.691365]);
+        var polyPolygonOpt = {
+            strokeColor: "#FF33FF", //线颜色
+            strokeOpacity: 1, //线透明度
+            strokeWeight: 3,    //线宽
+            fillColor: "#1791fc", //填充色
+            fillOpacity: 0.35//填充透明度
+        };
+        var polygon = myMap1.polygon(polygonArr,polyPolygonOpt);
+    });
+
+    $(".searchBtn").click(function(){
+        var str = $('.searchTxt').val();
+        console.log(str);
+        myMap1.placeSearch(str,10,function(poiList){
+            var html = '';
+            for (var item in poiList){
+                html +='<li>'+poiList[item].name+'</li>';
+            }
+            $(".searchResult").html(html);
+        });
+    });
+
+
+    //搜索    返回搜索结果  按地点搜索
+
+
+    //搜索  搜行政区名称  返回行政区矩形数组
+    myMap1.districtSearch('成都市','boundaries',function(isOk,data){
+        var opt = {
+            strokeColor: "red", //线颜色
+            strokeOpacity: 0.8, //线透明度
+            strokeWeight: 3,    //线宽
+        };
+        var polygon = myMap1.polygon(data['boundaries'],opt);
+    });
+
+
+
+
+
+
+
+
+
+
+    $("#container2").css({'width':'100%', 'height':'500px'});
+    var myMap2 = XMapSdk({
+        dom:'container2',
+        resizeEnable:true,
+        center:lngLat,
+        zoom:13
+    },{
+        strokeColor: "#2e90df",
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        strokeStyle:'solid',
+        fillColor: "#d2e8f5",
+        fillOpacity: 0.5,
+        extData:null
+    });
+
+
+    console.log(myMap2);
+
+    $(".unGeoCoder").click(function(){
+        var marker =  myMap2.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+            content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+        });
+        console.log(marker.getPosition());
+        myMap2.unGeoCoder(marker.getPosition(),function(data){
+            console.log(data);
+            var html = '当前点坐标:'+marker.getPosition()+'&nbsp &nbsp&nbsp&nbsp&nbsp当前点的地址是：'+data;
+            $(".unGeoCoderDesc").html(html)
+        });
+    });
+
+    $(".geoCoder").click(function(){
+
+        myMap2.geoCoder('成都市武侯区西部智谷D区',function(data){
+            var html= '';
+            for (var i = 0; i < data.length; i++) {
+                //拼接输出html
+                html += "<span style=\"font-size: 12px;padding:0px 0 4px 2px; border-bottom:1px solid #C1FFC1;\">" +
+                    "<b>地址</b>：" + data[i].formattedAddress + "" + "&nbsp;&nbsp;<b>的地理编码结果是:</b><b>&nbsp;&nbsp;&nbsp;&nbsp;坐标</b>：" +
+                    data[i].location.lng + data[i].location.lat + ", " ;
+                var marker =  myMap2.marker([data[i].location.lng,data[i].location.lat],'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+                    content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+                });
+            }
+
+            $(".geoCoderDesc").html(html);
+
+           console.log(data);
+        });
+    });
+
+
+
 
 
 </script>
