@@ -892,7 +892,7 @@ ol, ul {
   opacity: 0.6;
   pointer-events: none; }
 
-.x-progress{
+.x-progress-wrap div{
   display: block;
   width: 1%;
   height: 100px;

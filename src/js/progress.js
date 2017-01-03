@@ -4,37 +4,40 @@
 
 ;(function (global, $) {
 
-    global.xProgress = function(option){
+    global.xProgress = function (option) {
         return new xProgress(option);
     };
 
     var xProgress = function (option) {
         var defOpt = {
-            wrap:'',
-            pid:1,
-            type:1,
-            style:'',
-            start:'',
-            progress:'',
-            end:'',
-            hidden:false,
-            oninit:function () {},
-            onstart:function () {},
-            onprogress:function () {},
-            onend:function () {}
+            wrap: '',//调用progress的地方
+            pselector: '.x-progress',
+            type: 1,//
+            width:'',
+            duration:'',
+            style: [{width: '10%'}, {width: '100%'}, {visibility: 'visible'}],
+            animate:[],
+            oninit: function () {
+            },
+            onstart: function () {
+            },
+            onprogress: function () {
+            },
+            onend: function () {
+            }
         };
 
-        if(typeof option !== "object"){
+        if (typeof option !== "object") {
             console.log('option不是"object"', option);
             return false;
         }
         this.opt = $.extend(true, {}, defOpt, option);
 
-        if(typeof this.opt.wrap !== "string"){
-            console.log('this.opt.wrap不是"string"', this.opt.wrap);
+        if (!this.opt.wrap) {
+            console.log('opt.wrap不能为空', this.opt.wrap);
             return false;
         }
-        this.dom = $(this.opt.wrap);
+        this.dom = $(this.opt.wrap.toString());
 
 
         switch (this.opt.type){
@@ -50,15 +53,14 @@
     xProgress.prototype = {
         p1: function () {
             this._init();
-            this._start();
-            this._progress();
-            this._end();
+            this._observer(this.opt,'width');
         },
         p2: function () {
             this._init();
             this._start();
             this._progress();
             this._end();
+            console.log('p2');
         },
 
         p3: function () {
@@ -69,32 +71,39 @@
         },
 
         _init: function () {
-            var pidstr = 'x-progress' + this.opt.pid;
-            var _html = $('<div class="' + pidstr +'" ></div>');
-            this.dom.append(_html);
-            this.p = this.dom.find('.' + pidstr);
+            this.p = $('<div class="' + 'x-progress-' + this.opt.pid + '" ></div>');
+            this.dom.append(this.p);
             this.opt.oninit();
         },
-        _start:function () {
+        _start: function () {
             this.opt.onstart();
         },
-        _progress:function () {
-            var that = this;
-            $({property: 0}).animate({property: 100}, {
-                duration: 3000,
-                step: function() {
-                    var percentage = Math.round(this.property);
-                    that.p.css({'width': percentage+"%"});
-                    if(percentage == 100 && that.opt.hidden) {
-                        that.p.hide();
-                    }
-                }
-            });
+        _progress: function (next, old) {
+            this.p.animate({width: old}, 100);
+            this.p.animate({width: next}, this.opt.duration);
             this.opt.onprogress();
         },
-        _end:function () {
+        _end: function () {
             this.opt.onend();
-        }
-    };
+        },
 
+        _observer: function (obj, k) {
+            var that = this;
+            var old = obj[k];
+            Object.defineProperty(obj, k, {
+                enumerable: true,
+                configurable: true,
+                get: function () {
+                    return temp;
+                },
+                set: function (next) {
+                    if (next !== old) {
+                        that._progress(value, old);
+                    }
+                    old = next;
+                }
+            })
+        }
+
+    };
 })(window, jQuery);

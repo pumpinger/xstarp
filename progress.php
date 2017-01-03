@@ -14,21 +14,21 @@ include "layout_header.php";
     <div class="x-panel-content">
         <p class="x-color-blue">示例：</p>
         <pre><code class="language-html"><textarea>
-            <div class="x-progress-time-driven" >
+            <div class="x-progress-wrap x-progress-time-driven" >
                 1、时间驱动型
             </div>
-            <div class="x-progress-data-driven" >
+            <div class="x-progress-wrap x-progress-data-driven" >
                 2、数据驱动型
             </div>
             <script type="text/javascript" src="src/js/progress.js"></script>
         </textarea></code></pre>
 
         <p class="x-color-blue">效果:</p>
-        <div class="x-progress-time-driven" >
+        <div class="x-progress-wrap x-progress-time-driven" >
             1、时间驱动型
         </div>
 
-        <div class="x-progress-data-driven" >
+        <div class="x-progress-wrap x-progress-data-driven" >
             2、数据驱动型
         </div>
 
@@ -41,20 +41,30 @@ include "layout_header.php";
 
 <script>
     var opt1 = {
-        wrap: '.x-progress-time-driven',
+        wrap: '.x-progress-data-driven',
         pid: 1,
-        type: 1,
-        hidden: false
+        type:1,
+        width:'10%',
+        duration:2000
     };
     var xP1 = xProgress(opt1);
+    var temp = 10;
+    var step = 10;
+    function pp() {
+        temp = temp + step;
+        xP1.opt.width = temp;
+        console.log(xP1.opt.width);
+    }
+    setInterval(pp,1000);
 
-    var opt2 = {
-        wrap: '.x-progress-data-driven',
-        pid: 2,
-        type: 2,
-        hidden: true
-    };
-    var xP2 = xProgress(opt2);
+//    var opt2 = {
+//        wrap: '.x-progress-time-driven',
+//        pid: 2,
+//        type:2,
+//        style:[{width:'10%'},{width:'100%'},{visibility:'hidden'}],
+//        duration:['5000']
+//    };
+//    var xP2 = xProgress(opt2);
 
 </script>
 
