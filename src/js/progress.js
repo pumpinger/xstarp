@@ -2,9 +2,9 @@
  * Created by Administrator on 2016/12/29.
  */
 
-;(function (window, $) {
+;(function (global, $) {
 
-    window.xProgress = function(option){
+    global.xProgress = function(option){
         return new xProgress(option);
     };
 
@@ -13,6 +13,10 @@
             dom:'',
             pid:1,
             type:1,
+            style:'',
+            start:'',
+            progress:'',
+            end:'',
             hidden:false,
             oninit:function () {},
             onstart:function () {},
@@ -47,6 +51,26 @@
     };
 
     xProgress.prototype = {
+        p1: function () {
+            this._init();
+            this._start();
+            this._progress();
+            this._end();
+        },
+        p2: function () {
+            this._init();
+            this._start();
+            this._progress();
+            this._end();
+        },
+
+        p3: function () {
+            this._init();
+            this._start();
+            this._progress();
+            this._end();
+        },
+
         _init: function () {
             var _html = $('<div class="x-progress" ></div>');
             this.dom.append(_html);
@@ -74,27 +98,7 @@
         },
         _end:function () {
             this.opt.onend();
-        },
-        p1: function () {
-            this._init();
-            this._start();
-            this._progress();
-            this._end();
-        },
-        p2: function () {
-            this._init();
-            this._start();
-            this._progress();
-            this._end();
-        },
-
-        p3: function () {
-            this._init();
-            this._start();
-            this._progress();
-            this._end();
         }
-
     };
 
 })(window, jQuery);
