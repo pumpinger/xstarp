@@ -10,18 +10,10 @@
 
     var xProgress = function (option) {
         var defOpt = {
-            wrap: '',//调用progress的地方
+            wrap: '',
             pstyle: '',
             width:'',
-            duration:'',
-            oninit: function () {
-            },
-            onstart: function () {
-            },
-            onprogress: function () {
-            },
-            onend: function () {
-            }
+            duration:''
         };
 
         if (typeof option !== "object") {
@@ -45,24 +37,11 @@
         p1: function () {
             this._init();
             this._observer(this.opt,'width');
-            this._start();
         },
 
         _init: function () {
             this.p = $('<div class="' + this.opt.pstyle + '" ></div>');
             this.dom.append(this.p);
-            this.opt.oninit();
-        },
-        _start: function () {
-            this.opt.onstart();
-        },
-        _progress: function (next, old) {
-            this.p.animate({width: old}, 100);
-            this.p.animate({width: next}, this.opt.duration);
-            this.opt.onprogress();
-        },
-        _end: function () {
-            this.opt.onend();
         },
 
         _observer: function (obj, k) {
@@ -72,7 +51,7 @@
                 enumerable: true,
                 configurable: true,
                 get: function () {
-                    return next;
+                    return old;
                 },
                 set: function (next) {
                     if (next !== old) {
@@ -81,6 +60,11 @@
                     old = next;
                 }
             })
+        },
+        _progress: function (next, old) {
+            this.p.animate({width: old}, 100);
+            this.p.animate({width: next}, this.opt.duration);
+            this.opt.onprogress();
         }
 
     };

@@ -14,11 +14,28 @@ include "layout_header.php";
     <div class="x-panel-content">
         <p class="x-color-blue">示例：</p>
         <pre><code class="language-html"><textarea>
-            <div class="x-progress-wrap x-progress-time-driven" >
-                1、时间驱动型
+            <p>1、默认样式</p>
+            <div class="x-progress" >
+                <div class="x-progress-bar"></div>
             </div>
-            <div class="x-progress-wrap x-progress-data-driven" >
-                2、数据驱动型
+            <p>2、带提示标签</p>
+            <div class="x-progress" >
+                <div class="x-progress-bar"></div>
+            </div>
+            <p>3、带条纹效果</p>
+            <div class="x-progress" >
+                <div class="x-progress-bar"></div>
+            </div>
+            <p>4、条纹效果带动画</p>
+            <div class="x-progress" >
+                <div class="x-progress-bar"></div>
+            </div>
+            <p>4、多个进度条堆叠</p>
+            <div class="x-progress" >
+                <div class="x-progress-bar"></div>
+                <div class="x-progress-bar"></div>
+                <div class="x-progress-bar"></div>
+                <div class="x-progress-bar"></div>
             </div>
             <script type="text/javascript" src="dest/lib/jquery-2.1.4.js"></script>
             <script type="text/javascript" src="src/js/progress.js"></script>
@@ -41,6 +58,13 @@ include "layout_header.php";
         </div>
         <p>4、条纹效果带动画</p>
         <div class="x-progress" >
+            <div class="x-progress-bar"></div>
+        </div>
+        <p>4、多个进度条堆叠</p>
+        <div class="x-progress" >
+            <div class="x-progress-bar"></div>
+            <div class="x-progress-bar"></div>
+            <div class="x-progress-bar"></div>
             <div class="x-progress-bar"></div>
         </div>
 
