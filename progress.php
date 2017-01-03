@@ -69,8 +69,7 @@ include "layout_header.php";
     var opt1 = {
         wrap: '.x-progress-1',
         pclass: 'x-progress-bar x-progress-bar-striped x-progress-bar-animated',
-        width:'1%',
-        duration:1000
+        width:'1%'
     };
     var xP1 = xProgress(opt1);
     //    var temp = 10;

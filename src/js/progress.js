@@ -12,8 +12,7 @@
         var defOpt = {
             wrap: '.x-progress-wrap',
             pclass: 'x-progress-bar',
-            width:'',
-            duration:''
+            width:''
         };
 
         this.opt = $.extend(true, {}, defOpt, option);
