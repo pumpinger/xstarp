@@ -431,6 +431,7 @@ include "layout_header.php";
         dom: $('.test_tree2'),
         only_child: false,
         is_multi: true,
+        is_trigger: true,
         node_merge: false,
         has_search: true,
         expand: 3,
@@ -455,8 +456,8 @@ include "layout_header.php";
         onBeforeOpen: function () {
         },
         onClose: function (hasChange) {
-            console.log(testTree.getId());
-            console.log(testTree._makeSearch);
+            console.log(testTree2.getId());
+            console.log(testTree2._makeSearch);
         },
         onCheck: function (item, dom, childrenItem) {
 //            console.log(this);
