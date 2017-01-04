@@ -159,7 +159,7 @@ include "layout_header.php";
                 <td>onchange</td>
                 <td>进度发生变化之后的回调函数</td>
                 <td>Function</td>
-                <td>function () {}</td>
+                <td>function () {console.log('onchange')}</td>
                 <td>onchange:function (hahaha) {console.log('hahaha',hahaha,'xP8',xP8.percentage);}</td>
             </tr>
             </tbody>
@@ -350,6 +350,16 @@ include "layout_header.php";
         percentage:'10%',
         onchange:function (hahaha) {console.log('hahaha',hahaha,'xP8',xP8.percentage);}
     });
+
+    var t = parseInt(xP8.percentage);
+    var step = 1;
+    setInterval(function () {
+        if(t<=0||t>=50){
+            step = -step;
+        }
+        t = t + step;
+        xP8.percentage = t + '%';
+    }, 200)
 </script>
 
 <?php
