@@ -43,7 +43,7 @@
         },
 
         _makeprogress: function () {
-            console.log('makeprogress');
+
             this.p = $('<div class="' + this.option.pclass + '" ></div>');
             this.t = $('<span class="' + this.option.tclass + '" ></span>');
             this.p.append(this.t);

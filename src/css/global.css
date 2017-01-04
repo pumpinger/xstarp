@@ -971,6 +971,9 @@ ol, ul {
   min-width: 2%;
 }
 
+.x-progress-bar-red {
+  background-color: #d9534f;
+}
 .x-progress-bar-green {
   background-color: #5cb85c;
 }
@@ -979,9 +982,6 @@ ol, ul {
 }
 .x-progress-bar-yellow {
   background-color: #f0ad4e;
-}
-.x-progress-bar-red {
-  background-color: #d9534f;
 }
 
 .x-progress-hidden {
