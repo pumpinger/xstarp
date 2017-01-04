@@ -277,12 +277,12 @@ include "layout_header.php";
         <p>效果:</p>
         <div class="x-tab">
             <ul class="x-tab-nav">
-                <li class="x-tab-li "><a href="#">鼠标编辑</a></li>
+                <li class="x-tab-li x-active"><a href="#">鼠标编辑</a></li>
                 <li class=""><a href="#">绘制圆，点，多边形</a></li>
-                <li class="  x-active"><a href="#">地理编码</a></li>
+                <li class="  "><a href="#">地理编码</a></li>
             </ul>
             <div class="x-tab-contents">
-                <div class="x-tab-content">
+                <div class="x-tab-content  x-active">
                     <div id="container"></div>
                     <span class="finishEdit x-button x-button-small x-button-cadetblue">结束编辑</span>
                     <span class="mouseTool x-button x-button-small x-button-cadetblue">开始画面</span>
@@ -298,7 +298,7 @@ include "layout_header.php";
                     <div class="searchResult"></div>
 
                 </div>
-                <div class="x-tab-content  x-active" style="position: relative">
+                <div class="x-tab-content  " style="position: relative">
                     <div id="container2"></div>
                     <span class="geoCoder x-button x-button-small x-button-cadetblue">地理编码</span>
                     <span class="unGeoCoder x-button x-button-small x-button-cadetblue">反地理编码</span>
@@ -389,9 +389,16 @@ include "layout_header.php";
                 <td>0.5 （0-1）</td>
             </tr>
             <tr>
+                <td>zIndex</td>
+                <td>Number</td>
+                <td>用户自定义属性，支持JavaScript API任意数据类型</td>
+                <td></td>
+                <td>无</td>
+            </tr>
+            <tr>
                 <td>extData</td>
                 <td>Any</td>
-                <td>用户自定义属性，支持JavaScript API任意数据类型</td>
+                <td>地图上对象的叠加顺序，默认后添加的在上面</td>
                 <td></td>
                 <td>无</td>
             </tr>
@@ -428,18 +435,18 @@ include "layout_header.php";
                 <td>marker.getPosition()</td>
             </tr>
             <tr>
-                <td>off(type)</td>
-                <td>无</td>
-                <td>1、String:事件类型(如：click等)</td>
-                <td>移除地图上的点标记或多边形或圆的指定事件</td>
-                <td>点标记、圆、多边形</td>
-                <td>marker.off('click',function(){})</td>
+                <td>setPosition(lngLat)</td>
+                <td></td>
+                <td>1、lngLat:点坐标</td>
+                <td>重新设置点的坐标位置</td>
+                <td>点标记</td>
+                <td>marker.setPosition(lngLat)</td>
             </tr>
 
             <tr>
                 <td>polygon(Point,opt)</td>
                 <td>多边形对象</td>
-                <td>1、Array:二维数组,多边形的顶点坐标,2、Array:多边形各项属性配置</td>
+                <td>1、Array:二维数组,多边形的顶点坐标,2、object:多边形各项属性配置</td>
                 <td>初始化polygon多边形的方法</td>
                 <td>XMapSdk</td>
                 <td>myMap.polygon(polygonArr,polyOpt)</td>
@@ -455,7 +462,7 @@ include "layout_header.php";
             <tr>
                 <td>circle(lngLat,radius,opt)</td>
                 <td>圆对象</td>
-                <td>1、lngLat:圆心坐标,2、String:圆半径 单位：米，3、Array：圆属性配置</td>
+                <td>1、lngLat:圆心坐标,2、String:圆半径 单位：米，3、object：圆属性配置</td>
                 <td>初始化圆的方法</td>
                 <td>XMapSdk</td>
                 <td>myMap.circle([104.032292, 30.692353],1000,circleOpt);</td>
@@ -532,7 +539,7 @@ include "layout_header.php";
                 <td>geoCoder(address,function(data){})</td>
                 <td>无</td>
                 <td>1、String:地址 2、function(data):地理编码后调用的函数，data 返回的数据</td>
-                <td>传入地址进行地理编码</td>
+                <td>传入地址进行地理编码(详细地址)</td>
                 <td>XMapSdk</td>
                 <td> myMap2.geoCoder('成都市武侯区西部智谷D区',function(data){})</td>
             </tr>
@@ -544,6 +551,31 @@ include "layout_header.php";
                 <td>XMapSdk</td>
                 <td>myMap2.unGeoCoder(marker.getPosition(),function(data){ </td>
             </tr>
+            <tr>
+                <td>setOption(opt)</td>
+                <td>无</td>
+                <td>1、object:样式属性 </td>
+                <td>设置多边形，圆，线的样式</td>
+                <td>圆，线，多边形</td>
+                <td>marker.setOption(opt)</td>
+            </tr>
+            <tr>
+                <td>show()</td>
+                <td>无</td>
+                <td></td>
+                <td>显示对象</td>
+                <td>圆，线，多边形，点</td>
+                <td>marker.show()</td>
+            </tr>
+            <tr>
+                <td>hide()</td>
+                <td>无</td>
+                <td></td>
+                <td>隐藏对象</td>
+                <td>圆，线，多边形，点</td>
+                <td>marker.hide()</td>
+            </tr>
+
 
             </tbody>
         </table>
