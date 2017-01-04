@@ -9,34 +9,50 @@
     };
 
     var xProgress = function (option) {
-        var defOpt = {
-            wrap: '.x-progress-wrap',
-            pclass: 'x-progress-bar',
-            tclass: 'x-progress-bar-only',
-            percentage:'2%',
-            onchange:function () {console.log('onchange')}
-        };
 
-        this.opt = $.extend(true, {}, defOpt, option);
-
-        this._init();
+        this._init(option);
 
         return this;
     };
 
     xProgress.prototype = {
-        _init: function () {
-            this.wrap = $(this.opt.wrap);
-            this.percentage = this.opt.percentage;
+        defaultOpt: {
+            wrap: '.x-progress-wrap',
+            pclass: 'x-progress-bar',
+            tclass: 'x-progress-bar-only',
+            percentage: '2%',
+            onchange: function () {console.log('onchange')}
+        },
+        _init: function (option) {
+            this.option = $.extend(true, {}, this.defaultOpt, option);
 
-            this.p = $('<div class="' + this.opt.pclass + '" ></div>');
-            this.t = $('<span class="' + this.opt.tclass + '" ></span>');
+            if(typeof this.option.wrap === "string"){
+                this.wrap = $(this.option.wrap);
+            }else{
+                this.wrap = this.option.wrap;
+            }
 
+            if(typeof this.option.percentage === 'string'){
+                this._makeprogress();
+            }else{
+                // var that = this;
+                // $.each(this.percentage,function (index,item) {
+                //     that._makeprogress();
+                // });
+            }
+        },
+
+        _makeprogress: function () {
+            console.log('makeprogress');
+            this.p = $('<div class="' + this.option.pclass + '" ></div>');
+            this.t = $('<span class="' + this.option.tclass + '" ></span>');
             this.p.append(this.t);
+            this.percentage = this.option.percentage;
+
             this.wrap.append(this.p);
 
-            this._progress(this.percentage);
             this._observer(this,'percentage');
+            this._progress(this.percentage);
         },
 
         _observer: function (obj, k) {
@@ -51,7 +67,7 @@
                 set: function (next) {
                     if (next !== old) {
                         that._progress(next, old);
-                        this.opt.onchange();
+                        this.option.onchange();
                     }
                     old = next;
                 }
@@ -61,6 +77,5 @@
             this.p.css({width: next});
             this.t.text(next);
         }
-
     };
 })(window, jQuery);
