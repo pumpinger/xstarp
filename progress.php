@@ -42,7 +42,7 @@ include "layout_header.php";
                 //带进度提示
                 var xP2 = xProgress({
                     wrap: '.x-progress-2',
-                    pclass: 'x-progress-bar x-progress-bar-green',
+                    pclass: 'x-progress-bar x-progress-green',
                     tclass: 'x-progress-text',
                     percentage:'20%',
                     onchange:function () {console.log('xP2',xP2.percentage);}
@@ -51,7 +51,7 @@ include "layout_header.php";
                 //带条纹效果
                 var xP3 = xProgress({
                     wrap: '.x-progress-3',
-                    pclass: 'x-progress-bar x-progress-bar-red x-progress-bar-striped',
+                    pclass: 'x-progress-bar x-progress-red x-progress-striped',
                     percentage:'30%',
                     onchange:function () {console.log('xP3',xP3.percentage);}
                 });
@@ -59,7 +59,7 @@ include "layout_header.php";
                 //条纹效果带动画
                 var xP4 = xProgress({
                     wrap: '.x-progress-4',
-                    pclass: 'x-progress-bar x-progress-bar-yellow x-progress-bar-striped x-progress-bar-animated',
+                    pclass: 'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated',
                     percentage:'40%',
                     onchange:function () {console.log('xP4',xP4.percentage);}
                 });
@@ -67,14 +67,14 @@ include "layout_header.php";
                 //多个进度条堆叠
                 var xP5 = xProgress({
                     wrap: '.x-progress-5',
-                    pclass: 'x-progress-bar x-progress-bar-red',
+                    pclass: 'x-progress-bar x-progress-red',
                     percentage:'10%',
                     onchange:function () {console.log('xP5',xP5.percentage);}
                 });
 
                 var xP6 = xProgress({
                     wrap: '.x-progress-5',
-                    pclass: 'x-progress-bar x-progress-bar-green',
+                    pclass: 'x-progress-bar x-progress-green',
                     tclass: 'x-progress-text',
                     percentage:'20%',
                     onchange:function () {console.log('xP6',xP6.percentage);}
@@ -82,7 +82,7 @@ include "layout_header.php";
 
                 var xP7 = xProgress({
                     wrap: '.x-progress-5',
-                    pclass: 'x-progress-bar x-progress-bar-blue x-progress-bar-striped',
+                    pclass: 'x-progress-bar x-progress-blue x-progress-striped',
                     tclass: 'x-progress-text',
                     percentage:'20%',
                     onchange:function () {console.log('xP7',xP7.percentage);}
@@ -90,7 +90,7 @@ include "layout_header.php";
 
                 var xP8 = xProgress({
                     wrap: '.x-progress-5',
-                    pclass: 'x-progress-bar x-progress-bar-yellow x-progress-bar-striped x-progress-bar-animated',
+                    pclass: 'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated',
                     tclass: 'x-progress-text',
                     percentage:'10%',
                     onchange:function () {console.log('xP8',xP8.percentage);}
@@ -139,13 +139,13 @@ include "layout_header.php";
                 <td>进度条的类名</td>
                 <td>String</td>
                 <td>'x-progress-bar'</td>
-                <td>pclass:'x-progress-bar x-progress-bar-yellow x-progress-bar-striped x-progress-bar-animated'</td>
+                <td>pclass:'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated'</td>
             </tr>
             <tr>
                 <td>tclass</td>
                 <td>进度提示内容的类名</td>
                 <td>String</td>
-                <td>'x-progress-bar-only'</td>
+                <td>'x-progress-only'</td>
                 <td>tclass:'x-progress-text'</td>
             </tr>
             <tr>
@@ -188,46 +188,46 @@ include "layout_header.php";
                 <td>pclass:'x-progress-bar'</td>
             </tr>
             <tr>
-                <td>x-progress-bar-red</td>
+                <td>x-progress-red</td>
                 <td>进度条</td>
                 <td>red背景(添加)</td>
-                <td>pclass:'x-progress-bar x-progress-bar-red'</td>
+                <td>pclass:'x-progress-bar x-progress-red'</td>
             </tr>
             <tr>
-                <td>x-progress-bar-green</td>
+                <td>x-progress-green</td>
                 <td>进度条</td>
                 <td>green背景(添加)</td>
-                <td>pclass:'x-progress-bar x-progress-bar-green'</td>
+                <td>pclass:'x-progress-bar x-progress-green'</td>
             </tr>
             <tr>
-                <td>x-progress-bar-blue</td>
+                <td>x-progress-blue</td>
                 <td>进度条</td>
                 <td>blue背景(添加)</td>
-                <td>pclass:'x-progress-bar x-progress-bar-blue'</td>
+                <td>pclass:'x-progress-bar x-progress-blue'</td>
             </tr>
             <tr>
-                <td>x-progress-bar-yellow</td>
+                <td>x-progress-yellow</td>
                 <td>进度条</td>
                 <td>yellow背景(添加)</td>
-                <td>pclass:'x-progress-bar x-progress-bar-yellow'</td>
+                <td>pclass:'x-progress-bar x-progress-yellow'</td>
             </tr>
             <tr>
-                <td>x-progress-bar-striped</td>
+                <td>x-progress-striped</td>
                 <td>进度条</td>
                 <td>条纹样式(添加)</td>
-                <td>pclass:'x-progress-bar x-progress-bar-striped'</td>
+                <td>pclass:'x-progress-bar x-progress-striped'</td>
             </tr>
             <tr>
-                <td>x-progress-bar-animated</td>
+                <td>x-progress-animated</td>
                 <td>进度条</td>
                 <td>动画样式(添加)，背景向右移动</td>
-                <td>pclass:'x-progress-bar x-progress-bar-animated'</td>
+                <td>pclass:'x-progress-bar x-progress-animated'</td>
             </tr>
             <tr>
-                <td>x-progress-bar-only</td>
+                <td>x-progress-only</td>
                 <td>进度提示</td>
                 <td>隐藏进度提示(默认)</td>
-                <td>tclass:'x-progress-bar-only'</td>
+                <td>tclass:'x-progress-only'</td>
             </tr>
             <tr>
                 <td>x-progress-text</td>
@@ -297,7 +297,7 @@ include "layout_header.php";
     //带进度提示
     var xP2 = xProgress({
         wrap: '.x-progress-2',
-        pclass: 'x-progress-bar x-progress-bar-green',
+        pclass: 'x-progress-bar x-progress-green',
         tclass: 'x-progress-text',
         percentage:'20%',
         onchange:function () {console.log('xP2',xP2.percentage);}
@@ -306,7 +306,7 @@ include "layout_header.php";
     //带条纹效果
     var xP3 = xProgress({
         wrap: '.x-progress-3',
-        pclass: 'x-progress-bar x-progress-bar-red x-progress-bar-striped',
+        pclass: 'x-progress-bar x-progress-red x-progress-striped',
         percentage:'30%',
         onchange:function () {console.log('xP3',xP3.percentage);}
     });
@@ -314,7 +314,7 @@ include "layout_header.php";
     //条纹效果带动画
     var xP4 = xProgress({
         wrap: '.x-progress-4',
-        pclass: 'x-progress-bar x-progress-bar-yellow x-progress-bar-striped x-progress-bar-animated',
+        pclass: 'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated',
         percentage:'40%',
         onchange:function () {console.log('xP4',xP4.percentage);}
     });
@@ -322,14 +322,14 @@ include "layout_header.php";
     //多个进度条堆叠
     var xP5 = xProgress({
         wrap: '.x-progress-5',
-        pclass: 'x-progress-bar x-progress-bar-red',
+        pclass: 'x-progress-bar x-progress-red',
         percentage:'10%',
         onchange:function () {console.log('xP5',xP5.percentage);}
     });
 
     var xP6 = xProgress({
         wrap: '.x-progress-5',
-        pclass: 'x-progress-bar x-progress-bar-green',
+        pclass: 'x-progress-bar x-progress-green',
         tclass: 'x-progress-text',
         percentage:'20%',
         onchange:function () {console.log('xP6',xP6.percentage);}
@@ -337,7 +337,7 @@ include "layout_header.php";
 
     var xP7 = xProgress({
         wrap: '.x-progress-5',
-        pclass: 'x-progress-bar x-progress-bar-blue x-progress-bar-striped',
+        pclass: 'x-progress-bar x-progress-blue x-progress-striped',
         tclass: 'x-progress-text',
         percentage:'20%',
         onchange:function () {console.log('xP7',xP7.percentage);}
@@ -345,7 +345,7 @@ include "layout_header.php";
 
     var xP8 = xProgress({
         wrap: '.x-progress-5',
-        pclass: 'x-progress-bar x-progress-bar-yellow x-progress-bar-striped x-progress-bar-animated',
+        pclass: 'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated',
         tclass: 'x-progress-text',
         percentage:'10%',
         onchange:function (hahaha) {console.log('hahaha',hahaha,'xP8',xP8.percentage);}

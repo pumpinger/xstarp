@@ -19,7 +19,7 @@
         defaultOpt: {
             wrap: '.x-progress-wrap',
             pclass: 'x-progress-bar',
-            tclass: 'x-progress-bar-only',
+            tclass: 'x-progress-only',
             percentage: '2%',
             onchange: function () {console.log('onchange')}
         },

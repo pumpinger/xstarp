@@ -916,7 +916,7 @@ ol, ul {
   transition: width .6s ease;
 }
 
-.x-progress-bar-striped {
+.x-progress-striped {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -924,13 +924,13 @@ ol, ul {
   background-size: 1rem 1rem;
 }
 
-.x-progress-bar-animated {
-  -webkit-animation: x-progress-bar-stripes 1s linear infinite;
-  -o-animation: x-progress-bar-stripes 1s linear infinite;
-  animation: x-progress-bar-stripes 1s linear infinite;
+.x-progress-animated {
+  -webkit-animation: x-progress-stripes 1s linear infinite;
+  -o-animation: x-progress-stripes 1s linear infinite;
+  animation: x-progress-stripes 1s linear infinite;
 }
 
-@-webkit-keyframes x-progress-bar-stripes {
+@-webkit-keyframes x-progress-stripes {
   from {
     background-position: 0 0;
   }
@@ -939,7 +939,7 @@ ol, ul {
   }
 }
 
-@-o-keyframes x-progress-bar-stripes {
+@-o-keyframes x-progress-stripes {
   from {
     background-position: 0 0;
   }
@@ -948,7 +948,7 @@ ol, ul {
   }
 }
 
-@keyframes x-progress-bar-stripes {
+@keyframes x-progress-stripes {
   from {
     background-position: 0 0;
   }
@@ -957,7 +957,7 @@ ol, ul {
   }
 }
 
-.x-progress-bar-only {
+.x-progress-only {
   visibility: hidden;
 }
 
@@ -967,20 +967,20 @@ ol, ul {
   line-height: 1.42;
 }
 
-.x-progress-bar-min-width {
+.x-progress-min-width {
   min-width: 2%;
 }
 
-.x-progress-bar-red {
+.x-progress-red {
   background-color: #d9534f;
 }
-.x-progress-bar-green {
+.x-progress-green {
   background-color: #5cb85c;
 }
-.x-progress-bar-blue {
+.x-progress-blue {
   background-color: #5bc0de;
 }
-.x-progress-bar-yellow {
+.x-progress-yellow {
   background-color: #f0ad4e;
 }
 
