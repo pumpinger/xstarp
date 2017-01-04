@@ -45,7 +45,7 @@ include "layout_header.php";
         <p>1、默认样式</p>
         <div class="x-progress-wrap x-progress-1" >
         </div>
-        <p>2、带提示标签</p>
+        <p>2、带进度提示标签</p>
         <div class="x-progress-wrap" >
         </div>
         <p>3、带条纹效果</p>
@@ -69,29 +69,12 @@ include "layout_header.php";
     var opt1 = {
         wrap: '.x-progress-1',
         pclass: 'x-progress-bar x-progress-bar-striped x-progress-bar-animated',
-        width:'1%'
+        percentage:'20%',
+        onchange:function () {
+            console.log('xP1',xP1);
+        }
     };
     var xP1 = xProgress(opt1);
-    //    var temp = 10;
-    //    var step = 10;
-    //    function pp() {
-    //        temp = temp + step;
-    //        xP1.opt.width = temp + '%';
-    //        console.log('xP1.opt.width',xP1.opt.width,xP1);
-    //    }
-    //    var ss = setInterval(pp,500);
-    //    if(temp >= 100){
-    //        console.log(temp,'clear');
-    //        clearInterval(ss);
-    //    }
-
-    //    var opt2 = {
-    //        wrap: '.x-progress-time-driven',
-    //        pstyle: 'x-progress-bar-striped',
-    //        width:'50%',
-    //        duration:1000
-    //    };
-    //    var xP2 = xProgress(opt2);
 </script>
 
 <?php

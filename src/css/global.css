@@ -958,6 +958,21 @@ ol, ul {
   }
 }
 
+.x-progress-bar-only {
+  visibility: hidden;
+}
+
+.x-progress-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .x-progress-bar-min-width {
   min-width: 2%;
 }
