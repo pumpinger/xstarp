@@ -14,6 +14,7 @@ include "layout_header.php";
     .search{position: absolute;top: 10px;}
     .search input{height: 20px;margin-right: 10px;padding-left: 5px;vertical-align: bottom}
     .result {position: absolute;top: 10px;background: #eee;}
+    .x-tab-nav a{cursor: pointer;}
 </style>
 
 <div class="x-panel">
@@ -277,9 +278,9 @@ include "layout_header.php";
         <p>效果:</p>
         <div class="x-tab">
             <ul class="x-tab-nav">
-                <li class="x-tab-li x-active"><a href="#">鼠标编辑</a></li>
-                <li class=""><a href="#">绘制圆，点，多边形</a></li>
-                <li class="  "><a href="#">地理编码</a></li>
+                <li class="x-tab-li x-active"><a >鼠标编辑</a></li>
+                <li class=""><a >绘制圆，点，多边形</a></li>
+                <li class="  "><a >地理编码</a></li>
             </ul>
             <div class="x-tab-contents">
                 <div class="x-tab-content  x-active">
