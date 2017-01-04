@@ -396,12 +396,20 @@ include "layout_header.php";
                 <td>无</td>
             </tr>
             <tr>
+                <td>zoomEnable</td>
+                <td>Boolean</td>
+                <td>地图是否可缩放</td>
+                <td>XMapSdk</td>
+                <td>true</td>
+            </tr>
+            <tr>
                 <td>extData</td>
                 <td>Any</td>
                 <td>地图上对象的叠加顺序，默认后添加的在上面</td>
                 <td></td>
                 <td>无</td>
             </tr>
+
             </tbody>
         </table>
 
@@ -526,6 +534,14 @@ include "layout_header.php";
                 <td>打开信息窗体</td>
                 <td>infoWindow</td>
                 <td>infoWindow.open(myMap.mapObj, marker.getPosition());</td>
+            </tr>
+            <tr>
+                <td>close()</td>
+                <td></td>
+                <td></td>
+                <td>关闭信息窗体，一个地图上只能同时展示一个窗体</td>
+                <td>infoWindow</td>
+                <td>infoWindow.close();</td>
             </tr>
             <tr>
                 <td>mouseTool(type,function(obj){},opt)</td>
