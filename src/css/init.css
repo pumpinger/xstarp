@@ -6,3 +6,4 @@ img{border: 0;}
 table{border-collapse:collapse;border-spacing:0;}
 label {cursor:pointer;}
 input, button, textarea, select {font-size: inherit;width: auto;padding:0;}
+ol, ul { list-style: none; }
