@@ -77,6 +77,9 @@
             this.p.css({width: next});
             this.t.text(next);
         },
+        _p:function () {
+
+        },
         _pp:function(obj, next, old){
             if(typeof obj.option.percentage === 'string'){
                 obj._p(obj, next, old);
