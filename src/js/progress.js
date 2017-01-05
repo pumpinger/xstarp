@@ -76,6 +76,9 @@
         _progress: function (next, old) {
             this.p.css({width: next});
             this.t.text(next);
+        },
+        _p:function () {
+            
         }
     };
 })(window, jQuery);
