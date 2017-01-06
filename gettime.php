@@ -30,7 +30,18 @@ include "layout_header.php";
     <script type="text/javascript" src="src/js/gettime.js"></script>
 
     <script>
+        var xttt = xTime();
+        toDate('',xttt);
 
+        function toDate(key,time) {
+            if(typeof time === 'object'){
+                $.each(time,function (index,item) {
+                    toDate(key+index,item);
+                })
+            }else{
+                console.log(key,(new Date(time)));
+            }
+        }
     </script>
 
 
