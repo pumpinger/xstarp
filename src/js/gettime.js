@@ -2,38 +2,47 @@
  * Created by Administrator on 2017/1/5.
  */
 
-;(function (window,$) {
-    window.xTime = function (option) {
-        return new Time(option);
-    };
-    function Time(option) {
-        this._init(option);
-        return this;
-    }
-    Time.prototype = {
-        defaultOpt: {
-            wrap: '.x-progress-wrap',
-            pclass: 'x-progress-bar',
-            tclass: 'x-progress-only',
-            percentage: '2%',
-            onchange: function () {console.log('onchange')}
-        },
-        _init: function (option) {
+;(function () {
 
-        },
+    window.xTime = gettime;
 
-        _makeprogress: function () {
+    function gettime(date) {
+        var psecond = 1000,
+            pminute = 60*psecond,
+            phour = 60*pminute,
+            pday = 24*phour,
+            pweek = 7*pday,
+            pmonth = 30*pday,
+            pyear = 365*pday;
 
-        },
+        console.log('pday',pday,'pweek',pweek,'pmonth',pmonth,'pyear',pyear);
 
-        _observer: function (obj, k) {
-
-        },
-        _progress: function (next, old) {
-
+        var nowDate = new Date();
+        if(date){
+            nowDate = date;
         }
-    };
 
-    return Time;
+        var now = nowDate.getTime(),
+            ms = nowDate.getMilliseconds(),
+            second = nowDate.getSeconds(),
+            minute = nowDate.getMinutes(),
+            hour = nowDate.getHours(),
+            dw = nowDate.getDay(),
+            dm = nowDate.getDate(),
+            month = nowDate.getMonth(),
+            year = nowDate.getFullYear();
 
-})(window,jQuery);
+        var dayP = hour*phour + minute*pminute+ second,
+            dayL = pday - dayP,
+            dayS = now - dayP,
+            dayE = now + dayL;
+
+
+        return {
+            dayStart: function () {
+                return dayS;
+            }
+        }
+    }
+
+})();
