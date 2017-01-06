@@ -4,7 +4,7 @@
 
 ;(function () {
 
-    window.xTime = gettime;
+    window.xTime = gettime();
 
     function gettime(date) {
         var psecond = 1000,
