@@ -8,7 +8,7 @@
 include 'layout_header.php';
 ?>
 
-
+<script type="text/javascript" src="./lib/jquery.validate.js"></script>
 
 
 

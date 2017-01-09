@@ -4,6 +4,6 @@
 ;(function () {
     window.xVerify = verify;
     function verify() {
-        
+
     }
 })();
