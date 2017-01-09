@@ -7,11 +7,18 @@
  */
 include 'layout_header.php';
 ?>
+<script type="text/javascript" src="//cdn.bootcss.com/parsley.js/2.6.1/parsley.js"></script>
+<script type="text/javascript" src="./lib/zh_cn.js"></script>
 
-<script type="text/javascript" src="./lib/jquery.validate.js"></script>
-<script type="text/javascript" src="./lib/parsley.js"></script>
+<form action="" class="x-form" data-parsley-validate>
+    <input type="text">
+    <input type="text">
+    <input type="text">
+</form>
 
-
+<script>
+    $('.x-form').parsley();
+</script>
 
 
 <?php
