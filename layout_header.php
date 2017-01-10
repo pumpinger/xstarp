@@ -155,7 +155,7 @@ function echoCUr($name)
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>插件</p>
         <div class="aside-body <?php echoCUr(array('loading', 'imgview','tree','pop','message','table','upload')) ?>">
-            <a href="loading.php" class="<?php echoCUr('loading') ?>">载入、等待</a>
+            <a href="loading.php" class="<?php echoCUr('loading') ?>">等待</a>
             <a href="imgview.php" class="<?php echoCUr('imgview') ?>" >图片</a>
             <a href="tree.php" class="<?php echoCUr('tree') ?>" >树</a>
             <a href="pop.php" class="<?php echoCUr('pop') ?>" >弹窗</a>
@@ -166,14 +166,14 @@ function echoCUr($name)
         <div class="aside-body <?php echoCUr(array('format', 'console')); ?>">
             <a href="format.php" class="<?php echoCUr('format') ?>" >格式化</a>
             <a href="console.php" class="<?php echoCUr('console') ?>" >页面控制台</a>
-            <a href="fun.php" class="<?php echoCUr('console') ?>" >获取时间</a>
-            <a href="fun.php" class="<?php echoCUr('console') ?>" >表单验证</a>
+            <a href="gettime.php" class="<?php echoCUr('console') ?>" >获取时间</a>
+            <a href="verify.php" class="<?php echoCUr('console') ?>" >表单验证</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>封装</p>
         <div class="aside-body <?php echoCUr(array('map', 'icon','ajax','chart','time')) ?>">
             <a href="map.php" class="<?php echoCUr('map') ?>" >地图</a>
             <a href="icon.php" class="<?php echoCUr('icon') ?>" >图标</a>
-            <a href="ajax.php" class="<?php echoCUr('ajax') ?>" >Ajax</a>
+            <a href="ajax.php" class="<?php echoCUr('ajax') ?>" >Ajax操作</a>
             <a href="chart.php" class="<?php echoCUr('chart') ?>" >图表</a>
             <a href="time.php" class="<?php echoCUr('time') ?>" >时间选择器</a>
         </div>

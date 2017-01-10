@@ -29,7 +29,7 @@ include "layout_header.php";
         <pre><code class="language-html"><textarea>
                     <div class="x-uploader">
                         <div class="x-queueList">
-                            <div  class="x-placeholder  x-dndArea">
+                            <div  class="x-dndArea x-placeholder">
                                 <div class="x-filePicker"></div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ include "layout_header.php";
                     </div>
                     <script >
                         var upload = xUpload({
-                            dom: $("#x-uploader"),
+                            dom: $(".x-uploader"),
                             fileType :1,
                             fileNumLimit: 300,
                             fileSizeLimit: 200 * 1024 * 1024,
@@ -147,7 +147,7 @@ include "layout_header.php";
             <tr>
                 <td>fileButton</td>
                 <td>Array</td>
-                <td>文件上传按钮属性 ，1、id:dom //按钮ID/DOM 2、label:String //按钮文本内容,3、multiple:Boolean //是否开起同时选择多个文件能力</td>
+                <td>文件上传按钮属性 ，1、id:dom //按钮ID/DOM容器 2、label:String //按钮文本内容,3、multiple:Boolean //是否开起同时选择多个文件能力</td>
                 <td> {
                      id: '.x-filePicker',
                      label: '批量上传'
@@ -158,7 +158,7 @@ include "layout_header.php";
             <tr>
                 <td>addButton</td>
                 <td>Array</td>
-                <td>添加文件按钮属性 ，1、id:dom：//按钮ID/DOM 、label:String //按钮文本内容</td>
+                <td>添加文件按钮属性 ，1、id:dom：//按钮ID/DOM容器 、label:String //按钮文本内容</td>
                 <td> {
                      id: '.x-filePicker-add',
                      label: '继续添加'
@@ -210,8 +210,8 @@ include "layout_header.php";
 
     <script >
         var upload = xUpload({
-            dom: $("#x-uploader"),
-            fileType :2,                             //   1 头像     2 文件
+            dom: $(".x-uploader"),
+            fileType :1,                             //   1 头像     2 文件
             fileNumLimit: 300,                       //总共能上传多少个文件
             fileSizeLimit: 200 * 1024 * 1024,        //   多个文件大小
             fileSingleSizeLimit: 100 * 1024 * 1024,   //   单个文件大小

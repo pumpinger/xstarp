@@ -11,6 +11,7 @@
 }
 
 
+
 //函数
 @function set-notification-text-color($color) {
   @if (lightness($color) < 70) {
@@ -263,6 +264,7 @@ $fontSizeUnit: px;
 
 
 //插件-文件上传
+
 /* ----------------Reset Css--------------------- */
 
 .x-uploader  ol, ul { list-style: none; }
@@ -284,6 +286,31 @@ $fontSizeUnit: px;
 .x-uploader .x-filelist li p.title { position: absolute; left: 0; width: 100%; overflow: hidden; white-space: nowrap; text-overflow : ellipsis; top: 5px; color: #000; font-size: 16px; text-indent: 5px; text-align: center; }
 .x-uploader .x-imgFile{display: inline-block;}
 
+@-webkit-keyframes progressmove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 17px 0;
+  }
+}
+@-moz-keyframes progressmove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 17px 0;
+  }
+}
+@keyframes progressmove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 17px 0;
+  }
+}
+
 .x-uploader .x-filelist li p.imgWrap { position: relative; z-index: 2; line-height: 110px; vertical-align: middle; overflow: hidden; width: 110px; height: 110px; -webkit-transform-origin: 50% 50%; -moz-transform-origin: 50% 50%; -o-transform-origin: 50% 50%; -ms-transform-origin: 50% 50%; transform-origin: 50% 50%; -webit-transition: 200ms ease-out; -moz-transition: 200ms ease-out; -o-transition: 200ms ease-out; -ms-transition: 200ms ease-out; transition: 200ms ease-out; }
 .x-uploader .x-filelist li img { width: 100%; }
 .x-uploader .x-filelist li p.error { background: #f43838; color: #fff; position: absolute; bottom: 0; left: 0; height: 28px; line-height: 28px; width: 100%; z-index: 100; }
@@ -297,41 +324,18 @@ $fontSizeUnit: px;
 .x-uploader .x-filelist div.file-panel span.cancel { background-position: -48px -24px; }
 .x-uploader .x-filelist div.file-panel span.cancel:hover { background-position: -48px 0; }
 
+
 .x-uploader .x-statusBar div{display: inline-block;vertical-align: middle;}
 .x-uploader #x-filePicker-add{display: inline-block;}
 .x-uploader .x-uploadBtn{ margin-left: 10px; position: relative; display: inline-block; cursor: pointer; background: #00b7ee; padding: 10px 15px; color: #fff; text-align: center; border-radius: 3px; overflow: hidden; }
-
 .x-uploader .retry{color: red;}
 .x-uploader .ignore{color: red;}
+.x-uploader .webuploader-container {position: relative;}
+.x-uploader .webuploader-element-invisible {position: absolute !important;clip: rect(1px 1px 1px 1px);}
+.x-uploader .webuploader-pick {position: relative;display: inline-block;cursor: pointer;background: #00b7ee;padding: 10px 15px;color: #fff;text-align: center;border-radius: 3px;overflow: hidden;}
+.x-uploader  .webuploader-pick-hover {background: #00a2d4;}
+.x-uploader .webuploader-pick-disable {  opacity: 0.6; pointer-events:none;}
 
-
-.x-uploader .webuploader-container {
-  position: relative;
-}
-.x-uploader .webuploader-element-invisible {
-  position: absolute !important;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px,1px,1px,1px);
-}
-.x-uploader .webuploader-pick {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  background: #00b7ee;
-  padding: 10px 15px;
-  color: #fff;
-  text-align: center;
-  border-radius: 3px;
-  overflow: hidden;
-}
-.x-uploader  .webuploader-pick-hover {
-  background: #00a2d4;
-}
-
-.x-uploader .webuploader-pick-disable {
-  opacity: 0.6;
-  pointer-events:none;
-}
 
 
 
