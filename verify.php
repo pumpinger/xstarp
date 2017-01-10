@@ -27,8 +27,11 @@ include 'layout_header.php';
         max-width: 200px;
         line-height: 25px;
     }
+    .x-form-v .error, .x-form-error {
+        color: orangered;
+    }
 
-    #xsubmit, #xsignup {
+    .x-submit {
         display: inline-block;
         margin: 2px 0 0 175px;
         width: 100px;
@@ -37,67 +40,83 @@ include 'layout_header.php';
 </style>
 <script type="text/javascript" src="./lib/jquery.validate.js"></script>
 <script type="text/javascript" src="./lib/jquery.validate.zh-cn.js"></script>
-
-<form class="cmxform" id="commentForm" method="get" action="">
-    <fieldset>
-        <legend>示例一：提交评论(校验规则写在标签里)</legend>
-        <p>
-            <label for="cname">姓名</label>
-            <input id="cname" name="name" minlength="2" type="text" required>
-        </p>
-        <p>
-            <label for="cemail">E-Mail</label>
-            <input id="cemail" type="email" name="email" required>
-        </p>
-        <p>
-            <label for="curl">个人网址</label>
-            <input id="curl" type="url" name="url">
-        </p>
-        <p>
-            <label for="ccomment">评论内容</label>
-            <textarea id="ccomment" name="comment" required></textarea>
-        </p>
-        <p>
-            <input class="submit" type="submit" value="Submit">
-        </p>
-    </fieldset>
-</form>
-<script>
-    $("#commentForm").validate();
-</script>
-
-
-
-<form action="" class="x-form-v" id="xcommentForm">
-    <fieldset>
-        <legend>示例二：提交评论（校验规则写在js中）</legend>
-        <p>
-            <label class="x-form-label" for="xname">name</label>
-            <input type="text" id="xname" name="name">
-        </p>
-        <p>
-            <label class="x-form-label" for="xemail">email</label>
-            <input type="email" id="xemail" name="email">
-        </p>
-        <p>
-            <label class="x-form-label" for="xurl">url</label>
-            <input type="url" id="xurl" name="url">
-        </p>
-        <p>
-            <label class="x-form-label" for="xcomment">comment</label>
-            <textarea id="xcomment" name="comment"></textarea>
-        </p>
-        <p>
-            <input id='xsubmit' type="submit" value="Comment">
-        </p>
-    </fieldset>
-</form>
 <script>
     $.validator.setDefaults({
         submitHandler: function () {
             alert("验证通过，提交成功!");
         }
     });
+</script>
+
+<form action="" class="x-form-v" id="commentForm">
+    <fieldset>
+        <legend>示例一：提交评论(校验规则写在标签里)</legend>
+        <p>
+            <label class="x-form-label" for="cname">姓名(*)</label>
+            <input id="cname" name="name" minlength="2" maxlength="6" type="text" required>
+        </p>
+        <p>
+            <label class="x-form-label" for="cemail">E-Mail(*)</label>
+            <input id="cemail" type="email" name="email" required>
+        </p>
+        <p>
+            <label class="x-form-label" for="curl">个人网址</label>
+            <input id="curl" type="url" name="url">
+        </p>
+        <p>
+            <label class="x-form-label" for="ccomment">评论内容(*)</label>
+            <textarea id="ccomment" name="comment" minlength="6" maxlength="6" required></textarea>
+        </p>
+        <p>
+            <input class="x-submit" type="submit" value="提交">
+            <label class="x-form-error"></label>
+        </p>
+    </fieldset>
+</form>
+<script>
+    $(document).ready(
+        $("#commentForm").validate({
+            invalidHandler: function(event, validator) {
+                // 'this' refers to the form
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    var message = errors == 1
+                        ? 'You missed 1 field. It has been highlighted'
+                        : 'You missed ' + errors + ' fields. They have been highlighted';
+                    $(".x-form-error").html(message).show();
+                } else {
+                    $(".x-form-error").hide();
+                }
+            }
+        })
+    );
+</script>
+
+<form action="" class="x-form-v" id="xcommentForm">
+    <fieldset>
+        <legend>示例二：提交评论（校验规则写在js中）</legend>
+        <p>
+            <label class="x-form-label" for="xname">姓名</label>
+            <input type="text" id="xname" name="name">
+        </p>
+        <p>
+            <label class="x-form-label" for="xemail">邮箱</label>
+            <input type="email" id="xemail" name="email">
+        </p>
+        <p>
+            <label class="x-form-label" for="xurl">网址</label>
+            <input type="url" id="xurl" name="url">
+        </p>
+        <p>
+            <label class="x-form-label" for="xcomment">评论</label>
+            <textarea id="xcomment" name="comment"></textarea>
+        </p>
+        <p>
+            <input class="x-submit" type="submit" value="Comment">
+        </p>
+    </fieldset>
+</form>
+<script>
     $(document).ready(function () {
         $("#xcommentForm").validate({
             rules:{
@@ -111,11 +130,12 @@ include 'layout_header.php';
                     email: true
                 },
                 url: {
-                    required: true,
                     url:true
                 },
                 comment: {
-                    required: true
+                    required: true,
+                    minlength: 6,
+                    maxlength: 6
                 }
             },
             messages:{
@@ -140,8 +160,8 @@ include 'layout_header.php';
             <input type="text" id="xlastname" name="lastname">
         </p>
         <p>
-            <label class="x-form-label" for="xusername">username</label>
-            <input type="text" id="xusername" name="username">
+            <label class="x-form-label" for="xage">username</label>
+            <input type="text" id="xage" name="age">
         </p>
         <p>
             <label class="x-form-label" for="xpassword">password</label>
@@ -172,7 +192,7 @@ include 'layout_header.php';
             <input type="checkbox" id="xcheckbox3" name="checkbox">
         </p>
         <p>
-            <input id="xsignup" type="submit" name="signup" value="Signup">
+            <input class="x-submit" type="submit" name="signup" value="Signup">
         </p>
     </fieldset>
 
