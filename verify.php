@@ -40,21 +40,21 @@ include 'layout_header.php';
 
 <form class="cmxform" id="commentForm" method="get" action="">
     <fieldset>
-        <legend>示例一：</legend>
+        <legend>示例一：提交评论(校验规则写在标签里)</legend>
         <p>
-            <label for="cname">Name (required, at least 2 characters)</label>
+            <label for="cname">姓名</label>
             <input id="cname" name="name" minlength="2" type="text" required>
         </p>
         <p>
-            <label for="cemail">E-Mail (required)</label>
+            <label for="cemail">E-Mail</label>
             <input id="cemail" type="email" name="email" required>
         </p>
         <p>
-            <label for="curl">URL (optional)</label>
+            <label for="curl">个人网址</label>
             <input id="curl" type="url" name="url">
         </p>
         <p>
-            <label for="ccomment">Your comment (required)</label>
+            <label for="ccomment">评论内容</label>
             <textarea id="ccomment" name="comment" required></textarea>
         </p>
         <p>
@@ -70,7 +70,7 @@ include 'layout_header.php';
 
 <form action="" class="x-form-v" id="xcommentForm">
     <fieldset>
-        <legend>提交评论</legend>
+        <legend>示例二：提交评论（校验规则写在js中）</legend>
         <p>
             <label class="x-form-label" for="xname">name</label>
             <input type="text" id="xname" name="name">
