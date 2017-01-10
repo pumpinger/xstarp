@@ -20,6 +20,7 @@
 
         $progress = $statusBar.find( '.progress' ).hide(),
 
+
     // 添加的文件数量
         fileCount = 0,
 
