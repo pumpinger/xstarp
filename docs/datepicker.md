@@ -301,7 +301,7 @@ If true and if time is enabled, on choosing first enddate and than startdate, en
 
 #### getWeekNumber
 
-
+获取周数。
 - type: Function(Date object)
 - default: 
 ```js
