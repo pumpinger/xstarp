@@ -39,9 +39,11 @@ include 'layout_header.php';
     }
 </style>
 <script type="text/javascript" src="./lib/jquery.validate.js"></script>
+<script type="text/javascript" src="./lib/additional-methods.js"></script>
 <script type="text/javascript" src="./lib/jquery.validate.zh-cn.js"></script>
 <script>
     $.validator.setDefaults({
+        debug: true,
         submitHandler: function () {
             alert("验证通过，提交成功!");
         }
@@ -68,6 +70,10 @@ include 'layout_header.php';
             <textarea id="ccomment" name="comment" minlength="6" maxlength="6" required></textarea>
         </p>
         <p>
+            <label class="x-form-label" for="xxname">姓名(*)</label>
+            <input id="xxname" name="xxname" type="text" required>
+        </p>
+        <p>
             <input class="x-submit" type="submit" value="提交">
             <label class="x-form-error"></label>
         </p>
@@ -86,6 +92,11 @@ include 'layout_header.php';
                     $(".x-form-error").html(message).show();
                 } else {
                     $(".x-form-error").hide();
+                }
+            },
+            rules:{
+                xxname:{
+                    xname:true
                 }
             }
         })
