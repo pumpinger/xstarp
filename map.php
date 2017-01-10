@@ -35,6 +35,7 @@ include "layout_header.php";
                        <div id="container"></div>
                        <span class="finishEdit x-button x-button-small x-button-cadetblue">结束编辑</span>
                        <span class="mouseTool x-button x-button-small x-button-cadetblue">开始画面</span>
+                       <script src="http://webapi.amap.com/maps?v=1.3&key=高德地图中申请的key"></script>
                        <script>
                            var lngLat = [104.056435,30.671192];
                            $("#container").css({'width':'100%', 'height':'500px'});
@@ -596,6 +597,7 @@ include "layout_header.php";
 
             </tbody>
         </table>
+        注：需要调用高德地图js api 去高德开放平台注册并领取自己的key值然后引入高德api
     </div>
 
 </div>
@@ -604,7 +606,7 @@ include "layout_header.php";
 
 include "layout_footer.php";
 ?>
-
+<script src="http://webapi.amap.com/maps?v=1.3&key=a3b3d16e95cfd8d858300d093f839c5f"></script>
 <script  src="src/js/MapSDK.js"></script>
 <!--<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>-->
 <script>
@@ -835,7 +837,7 @@ include "layout_footer.php";
 
             $(".geoCoderDesc").html(html);
 
-           console.log(data);
+            console.log(data);
         });
     });
 

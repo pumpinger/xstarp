@@ -7,7 +7,7 @@
  *  依赖jq
  **/
 
-;document.write('<script src="http://webapi.amap.com/maps?v=1.3&key=a3b3d16e95cfd8d858300d093f839c5f"></script>');
+//;document.write('<script src="http://webapi.amap.com/maps?v=1.3&key=a3b3d16e95cfd8d858300d093f839c5f"></script>');
 (function(){
     window.XMapSdk=function (opt,theme){
         return new mapSdk(opt,theme);
