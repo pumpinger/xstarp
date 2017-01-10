@@ -135,7 +135,7 @@ $(document).ready(function(){
         }else{
             $(this).removeClass('x-checked')
         }
-    })
+    });
 
     //贴士
     $('.x-tip-btn').mouseenter(function(){
