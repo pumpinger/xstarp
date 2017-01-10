@@ -17,7 +17,7 @@ include 'layout_header.php';
         display: inline-block;
         width: 160px;
         padding: 5px;
-        line-height: 1.8;
+        line-height: 25px;
         text-align: right;
         vertical-align: top;
         font-weight: bold;
@@ -28,11 +28,11 @@ include 'layout_header.php';
     }
     .x-form-v input, .x-form-v textarea {
         display: inline-block;
-        width: 200px;
-        line-height: 1.8;
+        max-width: 200px;
+        line-height: 25px;
     }
 
-    #xsubmit {
+    #xsubmit, #xsignup {
         display: inline-block;
         margin: 2px 0 0 175px;
         width: 100px;
@@ -104,7 +104,7 @@ include 'layout_header.php';
 
 <form action="" class="x-form-v" id="xsignupForm">
     <fieldset>
-        <legend>注册</legend>
+        <legend>用户注册</legend>
         <p>
             <label class="x-form-label" for="xfirstname">firstname</label>
             <input type="text" id="xfirstname" name="firstname">
@@ -146,7 +146,6 @@ include 'layout_header.php';
             <input type="checkbox" id="xcheckbox3" name="checkbox">
         </p>
         <p>
-            <label class="x-form-label" for="xfirstname">firstname</label>
             <input id="xsignup" type="submit" name="signup" value="Signup">
         </p>
     </fieldset>
