@@ -41,14 +41,7 @@ include 'layout_header.php';
 <script type="text/javascript" src="./lib/jquery.validate.js"></script>
 <script type="text/javascript" src="./lib/additional-methods.js"></script>
 <script type="text/javascript" src="./lib/jquery.validate.zh-cn.js"></script>
-<script>
-    $.validator.setDefaults({
-        debug: true,
-        submitHandler: function () {
-            alert("验证通过，提交成功!");
-        }
-    });
-</script>
+<script type="text/javascript" src="./src/js/verify.js"></script>
 
 <form action="" class="x-form-v" id="commentForm">
     <fieldset>
@@ -70,10 +63,6 @@ include 'layout_header.php';
             <textarea id="ccomment" name="comment" minlength="6" maxlength="6" required></textarea>
         </p>
         <p>
-            <label class="x-form-label" for="xxname">姓名(*)</label>
-            <input id="xxname" name="xxname" type="text" required>
-        </p>
-        <p>
             <input class="x-submit" type="submit" value="提交">
             <label class="x-form-error"></label>
         </p>
@@ -92,11 +81,6 @@ include 'layout_header.php';
                     $(".x-form-error").html(message).show();
                 } else {
                     $(".x-form-error").hide();
-                }
-            },
-            rules:{
-                xxname:{
-                    xname:true
                 }
             }
         })
@@ -123,7 +107,7 @@ include 'layout_header.php';
             <textarea id="xcomment" name="comment"></textarea>
         </p>
         <p>
-            <input class="x-submit" type="submit" value="Comment">
+            <input class="x-submit" type="submit" value="提交">
         </p>
     </fieldset>
 </form>
@@ -134,11 +118,12 @@ include 'layout_header.php';
                 name: {
                     required: true,
                     minlength: 2,
-                    maxlength: 6
+                    maxlength: 6,
+                    xuser:true
                 },
                 email: {
                     required: true,
-                    email: true
+                    xemail: true
                 },
                 url: {
                     url:true
@@ -161,18 +146,10 @@ include 'layout_header.php';
 
 <form action="" class="x-form-v" id="xsignupForm">
     <fieldset>
-        <legend>用户注册</legend>
+        <legend>示例三：用户注册（校验规则写在js中）</legend>
         <p>
-            <label class="x-form-label" for="xfirstname">firstname</label>
-            <input type="text" id="xfirstname" name="firstname">
-        </p>
-        <p>
-            <label class="x-form-label" for="xlastname">lastname</label>
-            <input type="text" id="xlastname" name="lastname">
-        </p>
-        <p>
-            <label class="x-form-label" for="xage">username</label>
-            <input type="text" id="xage" name="age">
+            <label class="x-form-label" for="xusername">用户名</label>
+            <input type="text" id="xusername" name="user">
         </p>
         <p>
             <label class="x-form-label" for="xpassword">password</label>
@@ -183,25 +160,35 @@ include 'layout_header.php';
             <input type="password" id="xconfirm_password" name="confirm_password">
         </p>
         <p>
+            <label class="x-form-label" for="xlastname">姓</label>
+            <input type="text" id="xlastname" name="lastname">
+        </p>
+        <p>
+            <label class="x-form-label" for="xfirstname">名</label>
+            <input type="text" id="xfirstname" name="firstname">
+        </p>
+        <p>
+            <label class="x-form-label" for="xage">年龄</label>
+            <input type="text" id="xage" name="age">
+        </p>
+        <p>
+            <label class="x-form-label" for="">性别</label>
+            <label for=""><input type="radio" id="female" name="sex">男</label>
+            <label for=""><input type="radio" id="male" name="sex">女</label>
+        </p>
+        <p>
             <label class="x-form-label" for="xuseremail">useremail</label>
-            <input type="email" id="xuseremail" name="useremail">
+            <input type="email" id="xuseremail" name="email">
         </p>
         <p>
-            <label class="x-form-label" for="xcheckbox">checkbox</label>
-            <input type="checkbox" id="xcheckbox" name="checkbox">
-        </p>
-        <p>
-            <label class="x-form-label" for="xmessage">message</label>
-            <textarea id="xmessage" name="xmessage"></textarea>
-        </p>
-        <p>
-            <label class="x-form-label" for="xcheckbox2">xcheckbox2</label>
+            <label class="x-form-label" for="xcheckbox2"></label>
             <input type="checkbox" id="xcheckbox2" name="checkbox">
         </p>
         <p>
-            <label class="x-form-label" for="xcheckbox3">xcheckbox3</label>
-            <input type="checkbox" id="xcheckbox3" name="checkbox">
+            <label class="x-form-label" for="xmessage">附加信息</label>
+            <textarea id="xmessage" name="message"></textarea>
         </p>
+
         <p>
             <input class="x-submit" type="submit" name="signup" value="Signup">
         </p>
@@ -209,22 +196,18 @@ include 'layout_header.php';
 
 </form>
 <script>
-    $.validator.setDefaults({
-        submitHandler: function () {
-            alert("验证通过，提交成功!");
-        }
-    });
-
     $(document).ready(function () {
         $("#xsignupForm").validate({
             rules:{
                 name: {
                     required: true,
-                    minlength: 6
+                    minlength: 6,
+                    maxlength: 12,
+                    xname:true
                 },
                 email: {
                     required: true,
-                    email: true
+                    xemail: true
                 },
                 url: {
                     required: true
