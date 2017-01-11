@@ -173,8 +173,9 @@ include 'layout_header.php';
         </p>
         <p>
             <label class="x-form-label" for="">性别</label>
-            <label for=""><input type="radio" id="female" name="sex">男</label>
-            <label for=""><input type="radio" id="male" name="sex">女</label>
+            <label for="female"><input type="radio" id="female" name="gender">男</label>
+            <label for="male"><input type="radio" id="male" name="gender">女</label>
+            <label for="other"><input type="radio" id="other" name="gender">未知</label>
         </p>
         <p>
             <label class="x-form-label" for="xuseremail">useremail</label>
