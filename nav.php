@@ -8,7 +8,15 @@
 
 include "layout_header.php";
 
+
+
+
+
+//todo   再做一个 横向的 导航栏
 ?>
+
+
+
 
 <div class="x-panel">
     <div class="x-panel-title">导航</div>
