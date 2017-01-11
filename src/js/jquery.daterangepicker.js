@@ -19,7 +19,7 @@
     'use strict';
 	$.dateRangePickerLanguages =
 	{
-		'default':  //default language: English
+		'default':   //default language: English
 		{
 			'selected': 'Selected:',
 			'day':'Day',
