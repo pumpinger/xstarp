@@ -152,11 +152,15 @@ include 'layout_header.php';
             <input type="text" id="xusername" name="user">
         </p>
         <p>
-            <label class="x-form-label" for="xpassword">password</label>
+            <label class="x-form-label" for="xuseremail">邮箱</label>
+            <input type="email" id="xuseremail" name="email">
+        </p>
+        <p>
+            <label class="x-form-label" for="xpassword">密码</label>
             <input type="password" id="xpassword" name="password">
         </p>
         <p>
-            <label class="x-form-label" for="xconfirm_password">confirm_password</label>
+            <label class="x-form-label" for="xconfirm_password">确认密码</label>
             <input type="password" id="xconfirm_password" name="confirm_password">
         </p>
         <p>
@@ -172,24 +176,67 @@ include 'layout_header.php';
             <input type="text" id="xage" name="age">
         </p>
         <p>
-            <label class="x-form-label" for="">性别</label>
-            <label for="female"><input type="radio" id="female" name="gender">男</label>
-            <label for="male"><input type="radio" id="male" name="gender">女</label>
-            <label for="other"><input type="radio" id="other" name="gender">未知</label>
+            <label class="x-form-label">性别</label>
+            <label for="xfemale"><input type="radio" id="xfemale" name="gender">男</label>
+            <label for="xmale"><input type="radio" id="xmale" name="gender">女</label>
+            <label for="xother"><input type="radio" id="xother" name="gender">未知</label>
         </p>
         <p>
-            <label class="x-form-label" for="xuseremail">useremail</label>
-            <input type="email" id="xuseremail" name="email">
+            <label class="x-form-label">特点一</label>
+            <input type="checkbox" id="xspeciality1" name="checkbox1">
+            <label for="xspeciality1">php</label>
+
         </p>
         <p>
-            <label class="x-form-label" for="xcheckbox2"></label>
-            <input type="checkbox" id="xcheckbox2" name="checkbox">
+            <label class="x-form-label">特点二</label>
+            <input type="checkbox" id="speciality21" name="checkbox2">
+            <label for="iality21">手抓羊肉</label>
+            <input type="checkbox" id="speciality22" name="checkbox2">
+            <label for="speciality22">老酸奶</label>
+            <input type="checkbox" id="speciality23" name="checkbox2">
+            <label for="speciality23">霸王肥肠</label>
+            <input type="checkbox" id="speciality24" name="checkbox2">
+            <label for="speciality24">土豆丝</label>
+        </p>
+        <p>
+            <label class="x-form-label" for="xselect3">特点三</label>
+            <select id="xselect3" name="select3" >
+                <option value =""></option>
+                <option value ="正则">正则</option>
+                <option value ="表达式">表达式</option>
+                <option value ="Reg">Reg</option>
+                <option value ="Exp">Exp</option>
+            </select>
+        </p>
+        <p>
+            <label class="x-form-label" for="xselect4">特点四</label>
+            <select id="xselect4" multiple="multiple" name="select4" >
+                <option value ="JavaScript">JavaScript</option>
+                <option value ="Java">Java</option>
+                <option value="PHP">PHP</option>
+                <option value="Python">Python</option>
+                <option value="C#">C#</option>
+                <option value="C++">C++</option>
+                <option value="Ruby">Ruby</option>
+                <option value="CSS">CSS</option>
+                <option value="C">C</option>
+                <option value="Objective-C">Objective-C</option>
+                <option value="Shell">Shell</option>
+                <option value="R">R</option>
+                <option value="Perl">Perl</option>
+                <option value="Scala">Scala</option>
+                <option value="Go">Go</option>
+                <option value="Haskell">Haskell</option>
+                <option value="Swift">Swift</option>
+                <option value="Matlab">Matlab</option>
+                <option value="Visual Basic">Visual Basic</option>
+                <option value="Groovy">Groovy</option>
+            </select>
         </p>
         <p>
             <label class="x-form-label" for="xmessage">附加信息</label>
             <textarea id="xmessage" name="message"></textarea>
         </p>
-
         <p>
             <input class="x-submit" type="submit" name="signup" value="Signup">
         </p>
