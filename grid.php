@@ -16,7 +16,8 @@ include "layout_header.php";
     }
 </style>
 
-<a href="" style="color:lightcoral">查看文档</a>
+<a href="https://github.com/xbcx/xstarp/blob/fizz/docs/grid.md" style="color:lightcoral">查看文档</a>
+
 <pre><code class="language-html">
 <p>示例：</p>
 <textarea>
