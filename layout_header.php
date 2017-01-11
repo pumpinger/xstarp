@@ -35,6 +35,7 @@ function echoCUr($name)
     <meta name="renderer" content="webkit">
     <script type="text/javascript" src="dest/lib/jquery-2.1.4.js"></script>
 
+    <link rel="icon" href="http://www.xiaobuwq.com/images/favicon.ico">
     <link rel="stylesheet" href="dest/lib/iconfont/iconfont.css"/>
 
     <link rel="stylesheet" href="lib/prism/prism.css"/>
@@ -43,6 +44,7 @@ function echoCUr($name)
     <link rel="stylesheet" href="src/css/init.css"/>
     <link rel="stylesheet" href="src/css/global.css"/>
     <script type="text/javascript" src="src/js/global.js"></script>
+    <script type="text/javascript" src="dest/lib/webuploader.min.js"></script>
 
     
 <!--    <link rel="stylesheet" href="dest/css/xstarp.css"/>-->
@@ -88,7 +90,7 @@ function echoCUr($name)
 
         .aside{width:220px;position:fixed;height:100%;top:60px;bottom:0;left:0;background:#444d58;border-right:1px solid #e6e6e6;z-index: 102;overflow-x: hidden;}
         .aside-con{height: 100%; overflow: auto;overflow-x: hidden;}
-        .aside-head{height:60px;line-height:60px;color:#fff;background:url(img/icon_menu_arrow.png) no-repeat 192px;border-bottom:1px solid #353b45;text-indent:55px;cursor: pointer}
+        .aside-head{height:60px;line-height:60px;color:#fff;background:url(img/icon_menu_arrow.png) no-repeat 192px;border-bottom:1px solid #353b45;text-indent:55px;}
         .aside-head i{margin-right:10px;}
         .aside-head a{display:block;}
         /*.aside span{display:block;text-indent:55px;}*/
@@ -134,19 +136,18 @@ function echoCUr($name)
     <div class="aside-con">
         <p class="aside-head"><a href="index.php"><i class="iconfont icon-shouye"></i>首页</a></p>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>样式</p>
-        <div class="aside-body <?php echoCUr(array('base', 'text','button','tip','from','page','progress')); ?>">
+        <div class="aside-body <?php echoCUr(array('base', 'text','button','tip','alert','from','page','progress')); ?>">
             <a href="base.php" class="<?php echoCUr('base'); ?>">基础css</a>
-            <a href="text.php" class="<?php echoCUr('text'); ?>">文字</a>
             <a href="button.php" class="<?php echoCUr('button') ?>">按钮</a>
             <a href="tip.php" class="<?php echoCUr('tip') ?>">贴士</a>
-            <a href="alert.php" class="<?php echoCUr('tip') ?>">提示</a>
+            <a href="alert.php" class="<?php echoCUr('alert') ?>">提示</a>
             <a href="from.php" class="<?php echoCUr('from') ?>">表单元素</a>
             <a href="page.php" class="<?php echoCUr('page') ?>">分页</a>
             <a href="progress.php" class="<?php echoCUr('progress') ?>">进度条</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>结构</p>
         <div class="aside-body <?php echoCUr(array('header', 'asdie','nav','tab','panel','title')) ?>">
-            <a href="asdie.php" class="<?php echoCUr('asdie') ?>">侧边栏</a>
+            <a href="grids.php" class="<?php echoCUr('grids') ?>">栅栏</a>
             <a href="nav.php" class="<?php echoCUr('nav') ?>">导航</a>
             <a href="tab.php" class="<?php echoCUr('tab') ?>">标签页</a>
             <a href="panel.php" class="<?php echoCUr('panel') ?>">面板</a>
@@ -154,11 +155,10 @@ function echoCUr($name)
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>插件</p>
         <div class="aside-body <?php echoCUr(array('loading', 'imgview','tree','pop','message','table','upload')) ?>">
-            <a href="loading.php" class="<?php echoCUr('loading') ?>">载入、等待</a>
+            <a href="loading.php" class="<?php echoCUr('loading') ?>">等待</a>
             <a href="imgview.php" class="<?php echoCUr('imgview') ?>" >图片</a>
             <a href="tree.php" class="<?php echoCUr('tree') ?>" >树</a>
             <a href="pop.php" class="<?php echoCUr('pop') ?>" >弹窗</a>
-            <a href="message.php" class="<?php echoCUr('message') ?>" >消息</a>
             <a href="table.php" class="<?php echoCUr('table') ?>" >表格</a>
             <a href="upload.php" class="<?php echoCUr('upload') ?>" >文件上传</a>
         </div>
@@ -166,12 +166,14 @@ function echoCUr($name)
         <div class="aside-body <?php echoCUr(array('format', 'console')); ?>">
             <a href="format.php" class="<?php echoCUr('format') ?>" >格式化</a>
             <a href="console.php" class="<?php echoCUr('console') ?>" >页面控制台</a>
+            <a href="gettime.php" class="<?php echoCUr('console') ?>" >获取时间</a>
+            <a href="verify.php" class="<?php echoCUr('console') ?>" >表单验证</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>封装</p>
         <div class="aside-body <?php echoCUr(array('map', 'icon','ajax','chart','time')) ?>">
             <a href="map.php" class="<?php echoCUr('map') ?>" >地图</a>
             <a href="icon.php" class="<?php echoCUr('icon') ?>" >图标</a>
-            <a href="ajax.php" class="<?php echoCUr('ajax') ?>" >Ajax</a>
+            <a href="ajax.php" class="<?php echoCUr('ajax') ?>" >Ajax操作</a>
             <a href="chart.php" class="<?php echoCUr('chart') ?>" >图表</a>
             <a href="time.php" class="<?php echoCUr('time') ?>" >时间选择器</a>
         </div>
