@@ -152,24 +152,24 @@ include 'layout_header.php';
             <input type="text" id="xusername" name="user">
         </p>
         <p>
-            <label class="x-form-label" for="xuseremail">邮箱</label>
-            <input type="email" id="xuseremail" name="email">
-        </p>
-        <p>
             <label class="x-form-label" for="xpassword">密码</label>
             <input type="password" id="xpassword" name="password">
         </p>
         <p>
             <label class="x-form-label" for="xconfirm_password">确认密码</label>
-            <input type="password" id="xconfirm_password" name="confirm_password">
+            <input type="password" id="xconfirm_password" name="password">
         </p>
         <p>
             <label class="x-form-label" for="xlastname">姓</label>
-            <input type="text" id="xlastname" name="lastname">
+            <input type="text" id="xlastname" name="name">
         </p>
         <p>
             <label class="x-form-label" for="xfirstname">名</label>
-            <input type="text" id="xfirstname" name="firstname">
+            <input type="text" id="xfirstname" name="name">
+        </p>
+        <p>
+            <label class="x-form-label" for="xid">身份证号</label>
+            <input type="text" id="xid" name="idcn">
         </p>
         <p>
             <label class="x-form-label" for="xage">年龄</label>
@@ -180,6 +180,26 @@ include 'layout_header.php';
             <label for="xfemale"><input type="radio" id="xfemale" name="gender">男</label>
             <label for="xmale"><input type="radio" id="xmale" name="gender">女</label>
             <label for="xother"><input type="radio" id="xother" name="gender">未知</label>
+        </p>
+        <p>
+            <label class="x-form-label" for="xuseremail">邮箱</label>
+            <input type="email" id="xuseremail" name="email">
+        </p>
+        <p>
+            <label class="x-form-label" for="xuserphone">手机</label>
+            <input type="text" id="xuserphone" name="phone">
+        </p>
+        <p>
+            <label class="x-form-label" for="xusertel">固定电话</label>
+            <input type="text" id="xusertel" name="tel">
+        </p>
+        <p>
+            <label class="x-form-label" for="xusertel">地址</label>
+            <input type="text" id="xuseraddr" name="address">
+        </p>
+        <p>
+            <label class="x-form-label" for="xpostid">邮编</label>
+            <input type="text" id="xpostid" name="postid">
         </p>
         <p>
             <label class="x-form-label">特点一</label>
@@ -247,27 +267,28 @@ include 'layout_header.php';
     $(document).ready(function () {
         $("#xsignupForm").validate({
             rules:{
+                user:{
+                    required: true,
+                    xuser: true
+                },
+                email: {
+                    required: true,
+                    xemail: true
+                },
+                password: {
+                    required: true,
+                    xpwd: true
+                },
                 name: {
                     required: true,
                     minlength: 6,
                     maxlength: 12,
                     xname:true
                 },
-                email: {
-                    required: true,
-                    xemail: true
-                },
+
                 url: {
-                    required: true
+                    xurl: true
                 },
-                comment: {
-                    required: true
-                }
-            },
-            messages:{
-                name:{
-                    minlength:'你名字太短了'
-                }
             }
         });
     });
