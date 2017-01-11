@@ -10,7 +10,7 @@ function barChart(options) {
         legendAligny:'top', //图例的Y轴显示位置
         legendArray:[],
         xArray:[], //X轴
-        yName:[], //Y轴
+        yName:[],  //Y轴
         colorArray:[], //颜色
         dataArray:[], //series数据
         barwidth:'30px', //柱子的宽度
