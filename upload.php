@@ -95,7 +95,6 @@ include "layout_header.php";
                 </div>
             </div>
         </div>
-
         <p>规则:</p>
         <table class="x-table x-table-interval">
             <thead>
@@ -104,7 +103,7 @@ include "layout_header.php";
             <tr>
                 <td>fileType</td>
                 <td>Number</td>
-                <td>区分文件上传和头像上传，1、头像上传(单张)，2、文件上传（批量）</td>
+                <td>区分文件上传和头像上传，1、头像上传(单张)，2、文件上传（批量）,优先级高于accept属性，如果为1的话默认支持gif,jpg,jpeg,bmp,png等格式</td>
                 <td>2</td>
             </tr>
             <tr>
@@ -150,7 +149,7 @@ include "layout_header.php";
                 <td>Array</td>
                 <td>文件上传按钮属性 ，1、id:dom //按钮ID/DOM容器 2、label:String //按钮文本内容,3、multiple:Boolean //是否开起同时选择多个文件能力</td>
                 <td> {
-                     id: '#x-filePicker',
+                     id: '.x-filePicker',
                      label: '批量上传'
                      multiple:true,
                      }
@@ -161,7 +160,7 @@ include "layout_header.php";
                 <td>Array</td>
                 <td>添加文件按钮属性 ，1、id:dom：//按钮ID/DOM容器 、label:String //按钮文本内容</td>
                 <td> {
-                     id: '#x-filePicker-add',
+                     id: '.x-filePicker-add',
                      label: '继续添加'
                      }
                 </td>

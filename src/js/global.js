@@ -111,8 +111,6 @@ window.xFormat={
 };
 
 
-//提示层
-
 
 
 $(document).ready(function(){
@@ -122,6 +120,31 @@ $(document).ready(function(){
 
         $(this).addClass('x-active').siblings().removeClass('x-active');
         $('.x-tab-content').eq(i).addClass('x-active').siblings().removeClass('x-active');
+    });
+
+
+
+    //表单
+    $('.x-form-radio').click(function(){
+        $(this).addClass('x-checked').siblings().removeClass('x-checked');
+    });
+
+
+    $('.x-form-checkbox').click(function(){
+        if($(this).find("input").is(':checked')){
+            $(this).addClass('x-checked');
+        }else{
+            $(this).removeClass('x-checked')
+        }
+    });
+
+    //贴士
+    $('.x-tip-btn').mouseenter(function(){
+        $(this).parent().find('.x-tip-content').text($(this).data("title"));
+        $(this).parent().find('.x-tip-dialog').show();
+    });
+    $('.x-tip-btn').mouseleave(function(){
+        $(this).parent().find('.x-tip-dialog').hide();
     });
 
 
