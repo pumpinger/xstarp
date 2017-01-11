@@ -76,7 +76,7 @@ include "layout_header.php";
         <div class="x-tab">
             <ul class="x-tab-nav">
                 <li class="x-tab-li  x-active"><a>水平导航</a></li>
-                <li class=""><a>侧边导航</a></li>
+                <li class="x-tab-li"><a>侧边导航</a></li>
             </ul>
             <div class="x-tab-contents">
                 <div class="x-tab-content x-active">
