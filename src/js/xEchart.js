@@ -1,5 +1,5 @@
 //柱状图
-function barChart(option) {
+function barChart(options) {
     var defaultOption={
         conId:'', //内容id
         title:'', //标题

@@ -35,7 +35,6 @@ function echoCUr($name)
     <meta name="renderer" content="webkit">
     <script type="text/javascript" src="dest/lib/jquery-2.1.4.js"></script>
 
-
     <link rel="stylesheet" href="dest/lib/iconfont/iconfont.css"/>
 
     <link rel="stylesheet" href="lib/prism/prism.css"/>
@@ -89,7 +88,7 @@ function echoCUr($name)
 
         .aside{width:220px;position:fixed;height:100%;top:60px;bottom:0;left:0;background:#444d58;border-right:1px solid #e6e6e6;z-index: 102;overflow-x: hidden;}
         .aside-con{height: 100%; overflow: auto;overflow-x: hidden;}
-        .aside-head{height:60px;line-height:60px;color:#fff;background:url(img/icon_menu_arrow.png) no-repeat 192px;border-bottom:1px solid #353b45;text-indent:55px;}
+        .aside-head{height:60px;line-height:60px;color:#fff;background:url(img/icon_menu_arrow.png) no-repeat 192px;border-bottom:1px solid #353b45;text-indent:55px;cursor: pointer}
         .aside-head i{margin-right:10px;}
         .aside-head a{display:block;}
         /*.aside span{display:block;text-indent:55px;}*/
@@ -154,12 +153,12 @@ function echoCUr($name)
             <a href="title.php" class="<?php echoCUr('title') ?>">标题</a>
         </div>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>插件</p>
-        <div class="aside-body <?php echoCUr(array('loading', 'imgview','tree','pop','table','upload')) ?>">
+        <div class="aside-body <?php echoCUr(array('loading', 'imgview','tree','pop','message','table','upload')) ?>">
             <a href="loading.php" class="<?php echoCUr('loading') ?>">载入、等待</a>
             <a href="imgview.php" class="<?php echoCUr('imgview') ?>" >图片</a>
             <a href="tree.php" class="<?php echoCUr('tree') ?>" >树</a>
             <a href="pop.php" class="<?php echoCUr('pop') ?>" >弹窗</a>
-            <a href="message.php" class="<?php echoCUr('pop') ?>" >消息</a>
+            <a href="message.php" class="<?php echoCUr('message') ?>" >消息</a>
             <a href="table.php" class="<?php echoCUr('table') ?>" >表格</a>
             <a href="upload.php" class="<?php echoCUr('upload') ?>" >文件上传</a>
         </div>

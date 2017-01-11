@@ -11,7 +11,7 @@ include "layout_header.php";
 ?>
 
     <script type="text/javascript" src="src/js/echarts.js"></script>
-    <script type="text/javascript" src="src/js/xEchart.js?1"></script>
+    <script type="text/javascript" src="src/js/xEchart.js"></script>
 
     <div id="box" style="width:49%;height: 400px;display: inline-block"></div>
     <div id="box2" style="width:49%;height: 400px;display: inline-block"></div>
