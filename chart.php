@@ -341,7 +341,7 @@ include "layout_header.php";
                 <tr>
                     <td>dataArray</td>
                     <td></td>
-                    <td>数据</td>
+                    <td>数据数组</td>
                     <td>dataArray:[
                         {value:335},
                         {value:310},
