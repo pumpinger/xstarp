@@ -186,6 +186,10 @@ include 'layout_header.php';
             <input type="email" id="xuseremail" name="email">
         </p>
         <p>
+            <label class="x-form-label" for="xuserurl">网址</label>
+            <input type="url" id="xuserurl" name="url">
+        </p>
+        <p>
             <label class="x-form-label" for="xuserphone">手机</label>
             <input type="text" id="xuserphone" name="phone">
         </p>
@@ -269,26 +273,79 @@ include 'layout_header.php';
             rules:{
                 user:{
                     required: true,
+                    minlength: 2,
+                    maxlength: 12,
                     xuser: true
+                },
+                password: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 12,
+                    xpwd: true
+                },
+                name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 8,
+                    xname:true
+                },
+                idcn: {
+                    required: true,
+                    xidcn: true
+                },
+                age: {
+                    required: true,
+                    range:[0,99]
+                },
+                gender: {
+                    required: true
                 },
                 email: {
                     required: true,
                     xemail: true
                 },
-                password: {
-                    required: true,
-                    xpwd: true
-                },
-                name: {
-                    required: true,
-                    minlength: 6,
-                    maxlength: 12,
-                    xname:true
-                },
-
                 url: {
+                    required: true,
                     xurl: true
                 },
+                phone: {
+                    required: true,
+                    xphone: true
+                },
+                tel: {
+                    required: true,
+                    xtel: true
+                },
+                address: {
+                    required: true,
+                    xname: true
+                },
+                postid: {
+                    required: true,
+                    xpostid: true
+                },
+
+                checkbox1: {
+                    required: true,
+                },
+                checkbox2: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 3
+                },
+                select3: {
+                    required: true,
+                    minlength: 2
+                },
+                select4: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 3
+                },
+                message: {
+                    minlength: 6,
+                    maxlength: 8
+                }
             }
         });
     });
