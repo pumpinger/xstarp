@@ -20,6 +20,7 @@
 
         $progress = $statusBar.find( '.progress' ).hide(),
 
+
     // 添加的文件数量
         fileCount = 0,
 
@@ -187,6 +188,7 @@
                     extensions: 'gif,jpg,jpeg,bmp,png',
                     mimeTypes: 'image/*'
                 };
+                opt['fileButton']['multiple'] = false;
             }
             uploader = WebUploader.create(opt);
             // 添加“添加文件”的按钮，

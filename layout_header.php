@@ -90,7 +90,7 @@ function echoCUr($name)
 
         .aside{width:220px;position:fixed;height:100%;top:60px;bottom:0;left:0;background:#444d58;border-right:1px solid #e6e6e6;z-index: 102;overflow-x: hidden;}
         .aside-con{height: 100%; overflow: auto;overflow-x: hidden;}
-        .aside-head{height:60px;line-height:60px;color:#fff;background:url(img/icon_menu_arrow.png) no-repeat 192px;border-bottom:1px solid #353b45;text-indent:55px;}
+        .aside-head{height:60px;line-height:60px;color:#fff;background:url(img/icon_menu_arrow.png) no-repeat 192px;border-bottom:1px solid #353b45;text-indent:55px;cursor:pointer;}
         .aside-head i{margin-right:10px;}
         .aside-head a{display:block;}
         /*.aside span{display:block;text-indent:55px;}*/
@@ -136,12 +136,12 @@ function echoCUr($name)
     <div class="aside-con">
         <p class="aside-head"><a href="index.php"><i class="iconfont icon-shouye"></i>首页</a></p>
         <p class="aside-head"><i class="iconfont icon-shouye"></i>样式</p>
-        <div class="aside-body <?php echoCUr(array('base', 'text','button','tip','alert','from','page','progress')); ?>">
+        <div class="aside-body <?php echoCUr(array('base', 'text','button','tip','alert','form','page','progress')); ?>">
             <a href="base.php" class="<?php echoCUr('base'); ?>">基础css</a>
             <a href="button.php" class="<?php echoCUr('button') ?>">按钮</a>
             <a href="tip.php" class="<?php echoCUr('tip') ?>">贴士</a>
             <a href="alert.php" class="<?php echoCUr('alert') ?>">提示</a>
-            <a href="from.php" class="<?php echoCUr('from') ?>">表单元素</a>
+            <a href="form.php" class="<?php echoCUr('form') ?>">表单元素</a>
             <a href="page.php" class="<?php echoCUr('page') ?>">分页</a>
             <a href="progress.php" class="<?php echoCUr('progress') ?>">进度条</a>
         </div>

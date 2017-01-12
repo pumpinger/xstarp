@@ -111,8 +111,6 @@ window.xFormat={
 };
 
 
-//提示层
-
 
 
 $(document).ready(function(){
@@ -123,5 +121,114 @@ $(document).ready(function(){
         $(this).addClass('x-active').siblings().removeClass('x-active');
         $('.x-tab-content').eq(i).addClass('x-active').siblings().removeClass('x-active');
     });
+
+
+
+    //表单
+    $('.x-form-radio').click(function(){
+        $(this).addClass('x-checked').siblings().removeClass('x-checked');
+    });
+
+
+    $('.x-form-checkbox').click(function(){
+        console.log(111);
+        if($(this).find("input").is(':checked')){
+            $(this).addClass('x-checked');
+        }else{
+            $(this).removeClass('x-checked')
+        }
+    });
+
+    //贴士
+    $('.x-tip-btn').mouseenter(function(){
+        $(this).parent().find('.x-tip-content').text($(this).data("title"));
+        $(this).parent().find('.x-tip-dialog').show();
+    });
+    $('.x-tip-btn').mouseleave(function(){
+        $(this).parent().find('.x-tip-dialog').hide();
+    });
+
+
+    //导航-侧边栏
+    $(".x-nav-head").click(function() {
+        $(this).next('ul').slideToggle(300).parent().siblings('li').find('ul').slideUp();
+
+
+        $(this).toggleClass('x-cur').parent().siblings('li').find('a.x-nav-head').removeClass('x-cur');
+
+        if($(this).hasClass('x-cur')){
+            $(this).find('i').removeClass('icon-xiangxia1').addClass('icon-xiangshang2');
+            $(this).parent().siblings('li').find('i').addClass('icon-xiangxia1').removeClass('icon-xiangshang2');
+        }else{
+            $(this).find('i').addClass('icon-xiangxia1').removeClass('icon-xiangshang2');
+        }
+    });
+
+    //导航-水平
+    $('.x-nav-item').click(function(){
+        $(this).addClass('x-active').siblings('li').removeClass('x-active');
+    });
+
+
+
+    $('body').on('click','.x-ajax-del',function(){
+        $(".x-ajax-del").attr("disabled","disabled");
+        var url = $(this).data('url');
+        $.ajax({
+            url: url,
+            success: function(data){
+                $(".x-ajax-del").removeAttr("disabled");
+
+
+                if(data === 'ok'){//操作成功
+                    xPopUp('prompt',{content:'操作成功'},2000);
+
+                    var refreshDomStr;
+                    if($(this).data('refresh')){
+                        refreshDomStr =$(this).data('refresh');
+                    }else{
+                        refreshDomStr ='.x-table';
+                    }
+                    var refreshUrl = location.href;
+                    $.get(refreshUrl,function(data){
+                        $(refreshDomStr).html($(data).find(refreshDomStr).html());
+
+                    });
+                }else{
+                    xPopUp('prompt',{content:'操作失败'},2000);
+
+                }
+            },
+            error: function (data){
+                $(".x-ajax-del").removeAttr("disabled");
+                xPopUp('prompt',{content:'操作失败'},2000);
+
+            }
+        });
+    });
+
+    $('body').on('click','.x-ajax-op',function(){
+        $(".x-ajax-del").attr("disabled","disabled");
+        var url = $(this).data('url');
+        $.ajax({
+            url: url,
+            success: function(data){
+                $(".x-ajax-del").removeAttr("disabled");
+
+                if(data === 'ok'){
+                    xPopUp('prompt',{content:'操作成功'},2000);
+                }else{
+                    $(".x-ajax-del").removeAttr("disabled");
+                    xPopUp('prompt',{content:'操作失败'},2000);
+                }
+            },
+            error: function (){
+                $(".x-ajax-del").removeAttr("disabled");
+                xPopUp('prompt',{content:'操作失败'},2000);
+            }
+        });
+    });
+
+
 
 });

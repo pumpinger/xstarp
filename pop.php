@@ -105,6 +105,7 @@ include "layout_header.php";
            <span class="pop-button-prompt2">提示2</span>
            <span class="pop-button-confirm">确定</span>
            <span class="pop-button-define">自定义</span>
+           <span class="pop-button-define2">msg</span>
        </div>
 
 
@@ -123,6 +124,7 @@ include "layout_header.php";
                     p_width:200,
                     content:'操作成功'
                 },2000);
+
             });
 
             $('.pop-button-confirm').click(function(){
@@ -170,6 +172,16 @@ include "layout_header.php";
 
                 });
             });
+
+            $('.pop-button-define2').click(function(){
+                var content = $('<p>Happy new year</p>');
+                xPopUp('define',{
+                    p_width:200,
+                    title:'消息框',
+                    content:content,
+                    offset:0
+                })
+            })
 
         </script>
 
