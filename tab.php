@@ -19,7 +19,7 @@ include "layout_header.php";
 <pre><code class="language-html"><textarea>
         <div class="x-tab">
             <ul class="x-tab-nav">
-                <li class="x-tab-li  x-active"><a href="#">Section 1</a></li>
+                <li class="x-active"><a href="#">Section 1</a></li>
                 <li class=""><a href="#">Section 2</a></li>
                 <li class=""><a href="#">Section 3</a></li>
             </ul>
@@ -43,7 +43,7 @@ include "layout_header.php";
 
         <div class="x-tab">
             <ul class="x-tab-nav">
-                <li class="x-tab-li  x-active"><a href="#">Section 1</a></li>
+                <li class="x-active"><a href="#">Section 1</a></li>
                 <li class=""><a href="#">Section 2</a></li>
                 <li class=""><a href="#">Section 3</a></li>
             </ul>
