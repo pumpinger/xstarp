@@ -59,9 +59,18 @@
             }
         }
 
+        this.init();
+
         return this;
     };
     mapSdk.prototype={
+        init:function(){
+            //初始化   注册点击事件
+            var body = $('body');
+            body.on('click','.x-mapPopButton',function(){
+                $('.x-popMap').fadeIn('slow');
+            });
+        },
         clearMap:function (){
             this.mapObj.clearMap();
         },
@@ -166,9 +175,52 @@
             });
         },
 
-        popMap:function(data,cb){
-            //点击某个marker后返回  marker的数据给他
-            console.log(data);
+        popMap:function(data,markerCb,mouseCb){
+            var that = this;
+            var markerData = Array();
+            var mouseData = Array();
+            var markerArray = Array();
+
+            $(".x-popMap").fadeIn('slow');
+            //注册事件
+            $("body").on('click','.x-popMap-cancel',function(){
+                that.closePopMap();
+            });
+
+            $("body").on('click','.x-popMap-ok',function(){
+                that.closePopMap();
+                markerCb(markerData);//当前选中marker点的数据
+            });
+
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i];
+                var marker = this.marker([obj.lng,obj.lat],'img/marker_icon1.png',-20,-40,{
+                    content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+                });
+                marker['extData'] = obj['extData'];
+                markerArray.push(marker);
+                console.log(marker.getIcon());
+                marker.on('click',function(e){
+                    $.each(markerArray,function(i,value){
+                        value.setContent('<div class="marker"><img src="img/marker_icon1.png"></div>');
+                    });
+                    this.setContent('<div class="marker"><img src="img/marker_select.png"></div>');
+                    markerData = e.target.extData;
+                });
+            }
+            //注册鼠标右击事件    右击获取地址和坐标
+            this.mapObj.on('click',function(e){
+                console.log("222");
+                that.unGeoCoder(e.lnglat,function(data){
+                    mouseCb( {lngLat:e.lnglat,address:data});//返回坐标和地址
+                    that.closePopMap();
+                });
+            });
+            
+            console.log(markerArray);
+        },
+        closePopMap:function(){
+            $(".x-popMap").fadeOut('slow');
         },
 
         //搜索   keyword：关键字  type:类型   cb:回调函数
