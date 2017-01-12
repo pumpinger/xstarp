@@ -580,7 +580,7 @@ include 'layout_header.php';
                     <textarea id="xmessage" name="message"></textarea>
                 </p>
                 <p>
-                    <input class="x-submit" type="submit" name="signup" value="Signup">
+                    <input class="x-submit" type="submit" name="signup" value="提交">
                 </p>
             </fieldset>
 
@@ -681,8 +681,8 @@ include 'layout_header.php';
             <thead>
             <tr>
                 <th width="10%">校验规则</th>
-                <th width="50%">说明</th>
-                <th width="10%">正则表达式</th>
+                <th width="30%">规则说明</th>
+                <th width="30%">正则表达式</th>
                 <th width="30%">错误提示</th>
             </tr>
             </thead>
