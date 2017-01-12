@@ -38,8 +38,6 @@ include 'layout_header.php';
     }
 </style>
 <script type="text/javascript" src="./lib/jquery.validate.js"></script>
-<script type="text/javascript" src="./lib/additional-methods.js"></script>
-<script type="text/javascript" src="./lib/jquery.validate.zh-cn.js"></script>
 <script type="text/javascript" src="./src/js/verify.js"></script>
 
 
