@@ -2,15 +2,16 @@
  * Created by Administrator on 2017/1/9.
  */
 
-//自定义validator
+//自定义validator --begin
 $.validator.setDefaults({
     debug: true,
     submitHandler: function () {
         alert("验证通过，提交成功!");
     }
 });
+//自定义validator --end
 
-//自定义messages
+//自定义messages --begin
 $.extend($.validator.messages, {
     required: "这里不能为空",
     remote: "请修正此字段",
@@ -30,8 +31,10 @@ $.extend($.validator.messages, {
     max: $.validator.format("请输入不大于 {0} 的数值"),
     min: $.validator.format("请输入不小于 {0} 的数值")
 });
+//自定义messages --end
 
-//自定义校验规则
+
+//自定义校验规则 --begin
 $.validator.addMethod( "xname", function( value, element ) {
     return /^(\w+|[\u4e00-\u9fa5]+)$/.test( value );
 }, "姓名可以包含汉字、字母、数字" );
@@ -71,3 +74,7 @@ $.validator.addMethod( "xtel", function( value, element ) {
 $.validator.addMethod( "xidcn", function( value, element ) {
     return /^\d{17}([0-9]|X|x)$/.test( value );
 }, "请输入正确的身份证" );
+//自定义校验规则 --end
+
+
+
