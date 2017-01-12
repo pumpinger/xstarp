@@ -35,6 +35,40 @@ $.extend($.validator.messages, {
 
 
 //自定义校验规则 --begin
+$.validator.addMethod( "xlower", function( value, element ) {
+    return /[a-z]/.test( value );
+}, "请包含小写字母" );
+
+$.validator.addMethod( "xcapital", function( value, element ) {
+    return /[A-Z]/.test( value );
+}, "请包含大写字母" );
+
+$.validator.addMethod( "xdigit", function( value, element ) {
+    return /\d/.test( value );
+}, "请包含数字" );
+
+$.validator.addMethod( "xspecial", function( value, element ) {
+    return /\W/.test( value );
+}, "请包含特殊字符" );
+
+$.validator.addMethod( "xchars2", function( value, element ) {
+    var val=0;
+    if(/[a-z]/.test( value )){
+        val++;
+    }
+    if(/[A-Z]/.test( value )){
+        val++;
+    }
+    if(/\d/.test( value )){
+        val++;
+    }
+    if(/\W/.test( value )){
+        val++;
+    }
+    return val>=2;
+}, "请至少包含2种字符" );
+
+
 $.validator.addMethod( "xname", function( value, element ) {
     return /^(\w+|[\u4e00-\u9fa5]+)$/.test( value );
 }, "姓名可以包含汉字、字母、数字" );
@@ -45,7 +79,7 @@ $.validator.addMethod( "xuser", function( value, element ) {
 
 $.validator.addMethod( "xpwd", function( value, element ) {
     return /^\S+$/.test( value );
-}, "密码最少6位，可以包含小写字母、大写字母、数字和特殊字符" );
+}, "密码最少6位，可以包含非空白字符" );
 
 $.validator.addMethod( "xphone", function( value, element ) {
     return /^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$/.test( value );
