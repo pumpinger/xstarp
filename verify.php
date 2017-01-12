@@ -47,36 +47,33 @@ include 'layout_header.php';
         <p class="x-color-blue">示例：</p>
         <pre><code class="language-html"><textarea>
             <script type="text/javascript" src="./lib/jquery.validate.js"></script>
-            <script type="text/javascript" src="./lib/additional-methods.js"></script>
-            <script type="text/javascript" src="./lib/jquery.validate.zh-cn.js"></script>
             <script type="text/javascript" src="./src/js/verify.js"></script>
 
             <form action="" class="x-form-v" id="commentForm">
-                <fieldset>
-                    <legend>示例一：提交评论(校验规则写在标签里)</legend>
-                    <p>
-                        <label class="x-form-label" for="cname">姓名(*)</label>
-                        <input id="cname" name="name" minlength="2" maxlength="6" type="text" required>
-                    </p>
-                    <p>
-                        <label class="x-form-label" for="cemail">E-Mail(*)</label>
-                        <input id="cemail" type="email" name="email" required>
-                    </p>
-                    <p>
-                        <label class="x-form-label" for="curl">个人网址</label>
-                        <input id="curl" type="url" name="url">
-                    </p>
-                    <p>
-                        <label class="x-form-label" for="ccomment">评论内容(*)</label>
-                        &lt;textarea id="ccomment" name="comment" minlength="6" maxlength="6" required>&lt;/textarea>
-                    </p>
-                    <p>
-                        <input class="x-submit" type="submit" value="提交">
-                        <label class="x-form-error"></label>
-                    </p>
-                </fieldset>
-            </form>
-
+            <fieldset>
+                <legend>示例一：提交评论(校验规则写在标签里)</legend>
+                <p>
+                    <label class="x-form-label" for="cname">姓名(*)</label>
+                    <input id="cname" name="name" minlength="2" maxlength="6" type="text" required>
+                </p>
+                <p>
+                    <label class="x-form-label" for="cemail">E-Mail(*)</label>
+                    <input id="cemail" type="email" name="email" required>
+                </p>
+                <p>
+                    <label class="x-form-label" for="curl">个人网址</label>
+                    <input id="curl" type="url" name="url">
+                </p>
+                <p>
+                    <label class="x-form-label" for="ccomment">评论内容(*)</label>
+                    <textarea id="ccomment" name="comment" minlength="6" maxlength="6" required></textarea>
+                </p>
+                <p>
+                    <input class="x-submit" type="submit" value="提交">
+                    <label class="x-form-error"></label>
+                </p>
+            </fieldset>
+        </form>
             <script>
                 $(document).ready(
                     $("#commentForm").validate({
@@ -113,7 +110,7 @@ include 'layout_header.php';
                     </p>
                     <p>
                         <label class="x-form-label" for="xcomment">评论</label>
-                        &lt;textarea id="xcomment" name="comment">&lt;/textarea>
+                        <textarea id="xcomment" name="comment"></textarea>
                     </p>
                     <p>
                         <input class="x-submit" type="submit" value="提交">
@@ -166,7 +163,7 @@ include 'layout_header.php';
                     </p>
                     <p>
                         <label class="x-form-label" for="xconfirm_password">确认密码</label>
-                        <input type="password" id="xconfirm_password" name="password">
+                        <input type="password" id="xconfirm_password" name="confirm_password">
                     </p>
                     <p>
                         <label class="x-form-label" for="xlastname">姓</label>
@@ -189,6 +186,7 @@ include 'layout_header.php';
                         <label for="xfemale"><input type="radio" id="xfemale" name="gender">男</label>
                         <label for="xmale"><input type="radio" id="xmale" name="gender">女</label>
                         <label for="xother"><input type="radio" id="xother" name="gender">未知</label>
+                        <label for="gender" class="error"></label>
                     </p>
                     <p>
                         <label class="x-form-label" for="xuseremail">邮箱</label>
@@ -218,18 +216,16 @@ include 'layout_header.php';
                         <label class="x-form-label">特点一</label>
                         <input type="checkbox" id="xspeciality1" name="checkbox1">
                         <label for="xspeciality1">php</label>
+                        <label for="checkbox1" class="error"></label>
 
                     </p>
                     <p>
                         <label class="x-form-label">特点二</label>
-                        <input type="checkbox" id="speciality21" name="checkbox2">
-                        <label for="iality21">手抓羊肉</label>
-                        <input type="checkbox" id="speciality22" name="checkbox2">
-                        <label for="speciality22">老酸奶</label>
-                        <input type="checkbox" id="speciality23" name="checkbox2">
-                        <label for="speciality23">霸王肥肠</label>
-                        <input type="checkbox" id="speciality24" name="checkbox2">
-                        <label for="speciality24">土豆丝</label>
+                        <label for="iality21"><input type="checkbox" id="speciality21" name="checkbox2">手抓羊肉</label>
+                        <label for="speciality22"><input type="checkbox" id="speciality22" name="checkbox2">老酸奶</label>
+                        <label for="speciality23"><input type="checkbox" id="speciality23" name="checkbox2">霸王肥肠</label>
+                        <label for="speciality24"><input type="checkbox" id="speciality24" name="checkbox2">土豆丝</label>
+                        <label for="checkbox2" class="error"></label>
                     </p>
                     <p>
                         <label class="x-form-label" for="xselect3">特点三</label>
@@ -268,10 +264,10 @@ include 'layout_header.php';
                     </p>
                     <p>
                         <label class="x-form-label" for="xmessage">附加信息</label>
-                        &lt;textarea id="xmessage" name="message">&lt;/textarea>
+                        <textarea id="xmessage" name="message"></textarea>
                     </p>
                     <p>
-                        <input class="x-submit" type="submit" name="signup" value="Signup">
+                        <input class="x-submit" type="submit" name="signup" value="提交">
                     </p>
                 </fieldset>
 
@@ -291,6 +287,13 @@ include 'layout_header.php';
                                 minlength: 8,
                                 maxlength: 12,
                                 xpwd: true
+                            },
+                            confirm_password: {
+                                required: true,
+                                minlength: 8,
+                                maxlength: 12,
+                                xpwd: true,
+                                equalTo:'#xpassword'
                             },
                             name: {
                                 required: true,
