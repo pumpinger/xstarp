@@ -18,13 +18,7 @@ include "layout_header.php";
 
 
     .address{cursor: pointer;display: inline-block;}
-    .x-popMap{
-        display: none;
-        position: absolute;top:50%;left: 50%;z-index:8888; margin-left: -400px;margin-top: -250px;}
-    .x-popMap-option{width: 100%;position: relative;height: 40px;background: #eee;}
-    .x-popMap-option span{cursor: pointer; position: absolute;margin-top: 8px;}
-    .x-popMap-option .x-popMap-ok{cursor: pointer; right:100px;}
-    .x-popMap-option .x-popMap-cancel{right:30px;}
+
 
 </style>
 
