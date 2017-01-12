@@ -166,6 +166,11 @@
             });
         },
 
+        popMap:function(data,cb){
+            //点击某个marker后返回  marker的数据给他
+            console.log(data);
+        },
+
         //搜索   keyword：关键字  type:类型   cb:回调函数
         districtSearch:function (keyword,type,cb){
             AMap.service(["AMap.DistrictSearch"], function() {

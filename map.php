@@ -309,6 +309,15 @@ include "layout_header.php";
                         <div class="unGeoCoderDesc"></div>
                     </div>
                 </div>
+                <div class="x-tab-content  " style="position: relative">
+                    <div class="点击弹出地图窗口"></div>
+                    <div class="x-popMap" style="">
+                        <div class="x-popMap-title"><span class="x-popMap-close"><img src="__ROOT__/xstarp/xstarp/src/img/popup-close.png"></span></div>
+                        <div id="popMap" class=""></div>
+                        <div class="x-popMap-option"><span class="x-popMap-ok x-button">确定</span><span class="x-button x-popMap-cancel">关闭</span></div>
+                    </div>
+                </div>
+
 
             </div>
         </div>
