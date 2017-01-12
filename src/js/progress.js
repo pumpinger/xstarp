@@ -76,6 +76,19 @@
         _progress: function (next, old) {
             this.p.css({width: next});
             this.t.text(next);
+        },
+        _p:function () {
+        },
+        _pp:function(obj, next, old){
+            if(typeof obj.option.percentage === 'string'){
+                obj._p(obj, next, old);
+            }else{
+                if(typeof obj.option.percentage === 'object'){
+                    for (var i = 0, len = this.option.percentage; i < len; i++) {
+                        obj._p(this.option, next, old);
+                    }
+                }
+            }
         }
     };
 })(window, jQuery);
