@@ -737,14 +737,14 @@ include 'layout_header.php';
                 <td>只能输入整数数字</td>
             </tr>
             <tr>
-                <td>creditcard:</td>
+                <td>creditcard:true</td>
                 <td>必须输入合法的信用卡号。</td>
                 <td>内置校验</td>
                 <td>必须输入合法的信用卡号。</td>
             </tr>
             <tr>
                 <td>equalTo:"#field"</td>
-                <td>输入值必须和 #field 相同。</td>
+                <td>输入值必须和 #field 相同, "#field"为CSS选择器。</td>
                 <td>内置校验</td>
                 <td>两次输入不相同</td>
             </tr>
@@ -851,6 +851,59 @@ include 'layout_header.php';
                 <td>请输入正确的身份证</td>
             </tr>
             </tbody></table>
+        <table class="x-table x-table-interval">
+            <thead>
+            <tr>
+                <th>.validate([options])</th>
+                <th>Type</th>
+                <th>说明</th>
+                <th>Example</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>[options]</td>
+                <td>Object</td>
+                <td>可选项</td>
+                <td>{rules:{name:{required:true,xname:true}},message:{name:{require:'填',xname:'xia名字'}}</td>
+            </tr>
+            <tr>
+                <td>debug(default: false)</td>
+                <td>Boolean</td>
+                <td></td>
+                <td>$(".selector").validate({debug: true});</td>
+            </tr>
+
+            <tr>
+                <td>submitHandler (default: native form submit)</td>
+                <td>Function()</td>
+                <td></td>
+                <td>$(".selector").validate({
+                    submitHandler: function(form) {
+                    $(form).ajaxSubmit();
+                    }
+                    });</td>
+            </tr>
+            <tr>
+                <td>invalidHandler</td>
+                <td>Function()</td>
+                <td></td>
+                <td>$(".selector").validate({invalidHandler: function(){}});</td>
+            </tr>
+            <tr>
+                <td>rules (default: rules are read from markup (classes, attributes, data))</td>
+                <td>Object</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>messages (default: the default message for the method used)</td>
+                <td>Object</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
