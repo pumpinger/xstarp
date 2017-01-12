@@ -478,7 +478,7 @@ include 'layout_header.php';
                 </p>
                 <p>
                     <label class="x-form-label" for="xconfirm_password">确认密码</label>
-                    <input type="password" id="xconfirm_password" name="password">
+                    <input type="password" id="xconfirm_password" name="confirm_password">
                 </p>
                 <p>
                     <label class="x-form-label" for="xlastname">姓</label>
@@ -501,6 +501,7 @@ include 'layout_header.php';
                     <label for="xfemale"><input type="radio" id="xfemale" name="gender">男</label>
                     <label for="xmale"><input type="radio" id="xmale" name="gender">女</label>
                     <label for="xother"><input type="radio" id="xother" name="gender">未知</label>
+                    <label for="gender" class="error"></label>
                 </p>
                 <p>
                     <label class="x-form-label" for="xuseremail">邮箱</label>
@@ -530,18 +531,16 @@ include 'layout_header.php';
                     <label class="x-form-label">特点一</label>
                     <input type="checkbox" id="xspeciality1" name="checkbox1">
                     <label for="xspeciality1">php</label>
+                    <label for="checkbox1" class="error"></label>
 
                 </p>
                 <p>
                     <label class="x-form-label">特点二</label>
-                    <input type="checkbox" id="speciality21" name="checkbox2">
-                    <label for="iality21">手抓羊肉</label>
-                    <input type="checkbox" id="speciality22" name="checkbox2">
-                    <label for="speciality22">老酸奶</label>
-                    <input type="checkbox" id="speciality23" name="checkbox2">
-                    <label for="speciality23">霸王肥肠</label>
-                    <input type="checkbox" id="speciality24" name="checkbox2">
-                    <label for="speciality24">土豆丝</label>
+                    <label for="iality21"><input type="checkbox" id="speciality21" name="checkbox2">手抓羊肉</label>
+                    <label for="speciality22"><input type="checkbox" id="speciality22" name="checkbox2">老酸奶</label>
+                    <label for="speciality23"><input type="checkbox" id="speciality23" name="checkbox2">霸王肥肠</label>
+                    <label for="speciality24"><input type="checkbox" id="speciality24" name="checkbox2">土豆丝</label>
+                    <label for="checkbox2" class="error"></label>
                 </p>
                 <p>
                     <label class="x-form-label" for="xselect3">特点三</label>
@@ -603,6 +602,13 @@ include 'layout_header.php';
                             minlength: 8,
                             maxlength: 12,
                             xpwd: true
+                        },
+                        confirm_password: {
+                            required: true,
+                            minlength: 8,
+                            maxlength: 12,
+                            xpwd: true,
+                            equalTo:'#xpassword'
                         },
                         name: {
                             required: true,
@@ -675,12 +681,14 @@ include 'layout_header.php';
         <p class="x-color-blue">规则:</p>
         <table class="x-table x-table-interval">
             <tbody><tr>
-                <th width="10%">序号</th>
-                <th width="30%">规则</th>
-                <th width="60%">描述</th>
+                <th width="10%">校验类型</th>
+                <th width="20%">说明</th>
+                <th width="30%">校验规则</th>
+                <th width="40%"></th>
             </tr>
             <tr>
-                <td>1</td>
+                <td>xname</td>
+                <td>值</td>
                 <td>required:true</td>
                 <td>必须输入的字段。</td>
             </tr>
