@@ -42,7 +42,7 @@ include 'layout_header.php';
 
 
 <div class="x-panel">
-    <div class="x-panel-title">进度条</div>
+    <div class="x-panel-title">表单验证</div>
     <div class="x-panel-content">
         <p class="x-color-blue">示例：</p>
         <pre><code class="language-html"><textarea>
