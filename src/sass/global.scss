@@ -135,7 +135,7 @@ $fontSizeUnit: px;
 
 //结构-标签
 .x-tab-nav{border-bottom:1px solid #ddd;}
-.x-tab-nav li{display:inline-block;margin-bottom:-1px;}
+.x-tab-nav li{display:inline-block;margin-bottom:-1px;cursor:pointer;}
 .x-tab-nav li a{display:block;padding:5px 10px;color:#333;}
 .x-tab-nav li.x-active a{color:#026b9c;background:#fff;border-radius:5px 5px 0 0;border:1px solid $borderColorLight;border-bottom-color:transparent;}
 .x-tab-contents{padding:10px;border-bottom:1px solid $borderColorLight;}
@@ -162,8 +162,7 @@ $fontSizeUnit: px;
 //样式-表单元素
 .x-form{margin:15px 0;}
 
-.x-form-title{padding:5px 0;border-bottom:1px solid $bgColorDeep}5
-
+.x-form-title{padding:5px 0;border-bottom:1px solid $bgColorDeep}
 .x-form-item{margin-top: 20px;}
 .x-form-key{@include inlineBlock;width:100px;text-align:right;}
 .x-form-value{@include inlineBlock;margin-left:15px;}
@@ -251,7 +250,7 @@ $fontSizeUnit: px;
 .x-pop-title{ height:30px;line-height:30px;padding-left:10px;border-bottom:1px solid #eee;font-size:16px;font-weight:bold;color:#666;}
 .x-pop-content{padding:10px;border-bottom:1px solid #eee;max-height:600px;overflow:auto;}
 .x-pop-button{text-align: right;font-size:14px;}
-.x-pop-button button{display:inline-block; width:40px;height:24px;line-height:24px; text-align:center; margin-left:10px; margin-top:15px;border:none; color:#fff;outline:none; cursor:pointer}
+.x-pop-button button{display:inline-block;text-align:center; margin-left:10px; margin-top:15px;border:none; color:#fff;outline:none; cursor:pointer}
 .x-pop-button button:hover{background:#33aacb}
 
 

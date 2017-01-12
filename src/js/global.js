@@ -131,6 +131,7 @@ $(document).ready(function(){
 
 
     $('.x-form-checkbox').click(function(){
+        console.log(111);
         if($(this).find("input").is(':checked')){
             $(this).addClass('x-checked');
         }else{

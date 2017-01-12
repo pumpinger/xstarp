@@ -132,8 +132,9 @@ include "layout_header.php";
 
 
         <p>规则:</p>
+        <p>1.水平导航条，点击li.x-nav-item后添加class：x-active </p>
+        <p>2.侧边栏导航条，点击a.x-nav-head后添加class：x-cur,子菜单随机下拉显示出来，其余的子菜单自动收回。 </p>
 
-        命名规则
     </div>
 
 
