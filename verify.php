@@ -678,97 +678,177 @@ include 'layout_header.php';
 
         <p class="x-color-blue">规则:</p>
         <table class="x-table x-table-interval">
-            <tbody><tr>
-                <th width="10%">校验类型</th>
-                <th width="20%">说明</th>
-                <th width="30%">校验规则</th>
-                <th width="40%"></th>
-            </tr>
+            <thead>
             <tr>
-                <td>xname</td>
-                <td>值</td>
+                <th width="10%">校验规则</th>
+                <th width="50%">说明</th>
+                <th width="10%">正则表达式</th>
+                <th width="30%">错误提示</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
                 <td>required:true</td>
-                <td>必须输入的字段。</td>
+                <td>必须输入的字段</td>
+                <td>内置校验</td>
+                <td>这里不能为空</td>
             </tr>
+
             <tr>
-                <td>2</td>
                 <td>remote:"check.php"</td>
                 <td>使用 ajax 方法调用 check.php 验证输入值。</td>
+                <td>内置校验</td>
+                <td>请修正此字段</td>
             </tr>
             <tr>
-                <td>3</td>
                 <td>email:true</td>
                 <td>必须输入正确格式的电子邮件。</td>
+                <td>内置校验</td>
+                <td>请提供有效的邮箱, 格式name@domain.com</td>
             </tr>
             <tr>
-                <td>4</td>
                 <td>url:true</td>
                 <td>必须输入正确格式的网址。</td>
+                <td>内置校验</td>
+                <td>请输入有效的网址</td>
             </tr>
             <tr>
-                <td>5</td>
                 <td>date:true</td>
                 <td>必须输入正确格式的日期。日期校验 ie6 出错，慎用。</td>
+                <td>内置校验</td>
+                <td>请输入有效的日期</td>
             </tr>
             <tr>
-                <td>6</td>
                 <td>dateISO:true</td>
                 <td>必须输入正确格式的日期（ISO），例如：2009-06-23，1998/01/22。只验证格式，不验证有效性。</td>
+                <td>内置校验</td>
+                <td>请输入有效的日期 (YYYY-MM-DD)</td>
             </tr>
             <tr>
-                <td>7</td>
                 <td>number:true</td>
                 <td>必须输入合法的数字（负数，小数）。</td>
+                <td>内置校验</td>
+                <td>请输入有效的信用卡号码</td>
             </tr>
             <tr>
-                <td>8</td>
                 <td>digits:true</td>
                 <td>必须输入整数。</td>
+                <td>内置校验</td>
+                <td>只能输入整数数字</td>
             </tr>
             <tr>
-                <td>9</td>
                 <td>creditcard:</td>
+                <td>必须输入合法的信用卡号。</td>
+                <td>内置校验</td>
                 <td>必须输入合法的信用卡号。</td>
             </tr>
             <tr>
-                <td>10</td>
                 <td>equalTo:"#field"</td>
                 <td>输入值必须和 #field 相同。</td>
+                <td>内置校验</td>
+                <td>两次输入不相同</td>
             </tr>
             <tr>
-                <td>11</td>
                 <td>accept:</td>
                 <td>输入拥有合法后缀名的字符串（上传文件的后缀）。</td>
+                <td>内置校验</td>
+                <td>请检查后缀</td>
             </tr>
             <tr>
-                <td>12</td>
                 <td>maxlength:5</td>
                 <td>输入长度最多是 5 的字符串（汉字算一个字符）。</td>
+                <td>内置校验</td>
+                <td>最多可以输入 {0} 个字符</td>
             </tr>
             <tr>
-                <td>13</td>
                 <td>minlength:10</td>
                 <td>输入长度最小是 10 的字符串（汉字算一个字符）。</td>
+                <td>内置校验</td>
+                <td>最少要输入 {0} 个字符</td>
             </tr>
             <tr>
-                <td>14</td>
                 <td>rangelength:[5,10]</td>
                 <td>输入长度必须介于 5 和 10 之间的字符串（汉字算一个字符）。</td>
+                <td>内置校验</td>
+                <td>请输入长度在 {0} 到 {1} 之间的字符串</td>
             </tr>
             <tr>
-                <td>15</td>
                 <td>range:[5,10]</td>
                 <td>输入值必须介于 5 和 10 之间。</td>
+                <td>内置校验</td>
+                <td>请输入范围在 {0} 到 {1} 之间的数值</td>
             </tr>
             <tr>
-                <td>16</td>
                 <td>max:5</td>
                 <td>输入值不能大于 5。</td>
+                <td>内置校验</td>
+                <td>请输入不大于 {0} 的数值</td>
             </tr>
             <tr>
-                <td>17</td>
                 <td>min:10</td>
                 <td>输入值不能小于 10。</td>
+                <td>内置校验</td>
+                <td>请输入不小于 {0} 的数值</td>
+            </tr>
+            <tr>
+                <td>xname:true</td>
+                <td>姓名可以包含字母、数字、下划线或汉字</td>
+                <td>/^(\w+|[\u4e00-\u9fa5]+)$/</td>
+                <td>姓名可以包含字母、数字、下划线或汉字</td>
+            </tr>
+            <tr>
+                <td>xuser:true</td>
+                <td>用户名可以包含字母、数字、'_'和汉字，不允许以数字或'_'开头</td>
+                <td>/^(?![\d_])[\w\u4e00-\u9fa5]+$/</td>
+                <td>用户名可以包含字母、数字、'_'和汉字，不允许以数字或'_'开头</td>
+            </tr>
+            <tr>
+                <td>xpwd:true</td>
+                <td>密码最少6位，可以包含任何非空白字符</td>
+                <td>/^\S+$/</td>
+                <td>密码最少6位，可以包含任何非空白字符</td>
+            </tr>
+            <tr>
+                <td>xphone:true</td>
+                <td>请输入正确的手机号码</td>
+                <td>/^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$/</td>
+                <td>请输入正确的手机号码</td>
+            </tr>
+            <tr>
+                <td>xemail:true</td>
+                <td>请输入正确的Email地址，格式: name@domain</td>
+                <td>/^[\w.]{1,64}@([a-z0-9-]{1,200}.){1,5}[a-z]{1,6}$/</td>
+                <td>请输入正确的Email地址，格式: name@domain</td>
+            </tr>
+            <tr>
+                <td>xurl:true</td>
+                <td>请输入正确的url地址</td>
+                <td>/^((http|ftp|https):\/\/)?[\w_.]+(\/[\w_]+)*\/?$/</td>
+                <td>请输入正确的url地址</td>
+            </tr>
+            <tr>
+                <td>xip:true</td>
+                <td>请输入正确的ip地址</td>
+                <td>/^([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])$/</td>
+                <td>请输入正确的ip地址</td>
+            </tr>
+            <tr>
+                <td>xpostid:true</td>
+                <td>请输入正确的邮政编码</td>
+                <td>/^[1-9]\d{5}(?!\d)$/</td>
+                <td>请输入正确的邮政编码</td>
+            </tr>
+            <tr>
+                <td>xtel:true</td>
+                <td>请输入正确的固定电话</td>
+                <td>/^(\w+|[\u4e00-\u9fa5]+)$/</td>
+                <td>请输入正确的固定电话</td>
+            </tr>
+            <tr>
+                <td>xidcn:true</td>
+                <td>请输入正确的身份证</td>
+                <td>/^\d{17}([0-9]|X|x)$/</td>
+                <td>请输入正确的身份证</td>
             </tr>
             </tbody></table>
     </div>
