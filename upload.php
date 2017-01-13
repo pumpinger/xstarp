@@ -10,11 +10,11 @@ include "layout_header.php";
 
 ?>
 <style>
-    #x-uploader .x-filelist li p.progress { position: absolute; width: 100%; bottom: 0; left: 0; height: 8px; overflow: hidden; z-index: 50; }
-    #x-uploader .x-filelist li p.progress span { display: none; overflow: hidden; width: 0; height: 100%; background: #1483d8 url(./img/progress.png) repeat-x; -webit-transition: width 200ms linear; -moz-transition: width 200ms linear; -o-transition: width 200ms linear; -ms-transition: width 200ms linear; transition: width 200ms linear; -webkit-animation: progressmove 2s linear infinite; -moz-animation: progressmove 2s linear infinite; -o-animation: progressmove 2s linear infinite; -ms-animation: progressmove 2s linear infinite; animation: progressmove 2s linear infinite; -webkit-transform: translateZ(0); }
-    #x-uploader .x-statusBar .progress { border: 1px solid #1483d8; width: 198px; background: #fff;  position: relative; display: inline-block; text-align: center;  color: #6dbfff; margin-right: 10px; }
-    #x-uploader .x-statusBar .progress span.percentage { width: 0; height: 100%; left: 0; top: 0; background: #1483d8; position: absolute; }
-    #x-uploader .x-statusBar .progress span.text { position: relative; z-index: 10; }
+    .x-uploader .x-filelist li p.progress { position: absolute; width: 100%; bottom: 0; left: 0; height: 8px; overflow: hidden; z-index: 50; }
+    .x-uploader .x-filelist li p.progress span { display: none; overflow: hidden; width: 0; height: 100%; background: #1483d8 url(./img/progress.png) repeat-x; -webit-transition: width 200ms linear; -moz-transition: width 200ms linear; -o-transition: width 200ms linear; -ms-transition: width 200ms linear; transition: width 200ms linear; -webkit-animation: progressmove 2s linear infinite; -moz-animation: progressmove 2s linear infinite; -o-animation: progressmove 2s linear infinite; -ms-animation: progressmove 2s linear infinite; animation: progressmove 2s linear infinite; -webkit-transform: translateZ(0); }
+    .x-uploader .x-statusBar .progress { border: 1px solid #1483d8; width: 198px; background: #fff;  position: relative; display: inline-block; text-align: center;  color: #6dbfff; margin-right: 10px; }
+    .x-uploader .x-statusBar .progress span.percentage { width: 0; height: 100%; left: 0; top: 0; background: #1483d8; position: absolute; }
+    .x-uploader .x-statusBar .progress span.text { position: relative; z-index: 10; }
 
 
 
@@ -27,10 +27,10 @@ include "layout_header.php";
 
         <p>示例：</p>
         <pre><code class="language-html"><textarea>
-                    <div id="x-uploader">
+                    <div class="x-uploader">
                         <div class="x-queueList">
-                            <div id="x-dndArea" class="x-placeholder">
-                                <div id="x-filePicker"></div>
+                            <div  class="x-dndArea x-placeholder">
+                                <div class="x-filePicker"></div>
                             </div>
                         </div>
                         <div class="x-imgFile"></div>
@@ -40,13 +40,13 @@ include "layout_header.php";
                                 <span class="percentage"></span>
                             </div><div class="x-info"></div>
                             <div class="x-upload-btns">
-                                <div id="x-filePicker-add"></div><div class="x-uploadBtn">开始上传</div>
+                                <div class="x-filePicker-add"></div><div class="x-uploadBtn">开始上传</div>
                             </div>
                         </div>
                     </div>
                     <script >
                         var upload = xUpload({
-                            dom: $("#x-uploader"),
+                            dom: $(".x-uploader"),
                             fileType :1,
                             fileNumLimit: 300,
                             fileSizeLimit: 200 * 1024 * 1024,
@@ -57,15 +57,15 @@ include "layout_header.php";
                             accept:{}
                             fileVal:'x-file',
                             fileButton: {
-                                id :'#x-filePicker',
+                                id :'.x-filePicker',
                                 label: '批量上传',
                                 multiple:false
                             },
                             addButton:{
-                                id: '#x-filePicker-add',
+                                id: '.x-filePicker-add',
                                 label: '继续添加'
                             },
-                            server: 'uploadFile_Server.php',
+                            server: '_uploadFileServer.php',
                             success:function(file,data){
                                 //成功后做的事情
                             },
@@ -78,10 +78,10 @@ include "layout_header.php";
                 </textarea></code></pre>
         <p>效果:</p>
 
-        <div id="x-uploader">
+        <div class="x-uploader">
             <div class="x-queueList">
-                <div id="x-dndArea" class="x-placeholder">
-                    <div id="x-filePicker"></div>
+                <div  class="x-placeholder  x-dndArea">
+                    <div class="x-filePicker"></div>
                 </div>
             </div>
             <div class="x-imgFile"></div>
@@ -91,11 +91,10 @@ include "layout_header.php";
                     <span class="percentage"></span>
                 </div><div class="x-info"></div>
                 <div class="x-upload-btns">
-                    <div id="x-filePicker-add"></div><div class="x-uploadBtn">开始上传</div>
+                    <div class="x-filePicker-add"></div><div class="x-uploadBtn">开始上传</div>
                 </div>
             </div>
         </div>
-
         <p>规则:</p>
         <table class="x-table x-table-interval">
             <thead>
@@ -104,7 +103,7 @@ include "layout_header.php";
             <tr>
                 <td>fileType</td>
                 <td>Number</td>
-                <td>区分文件上传和头像上传，1、头像上传(单张)，2、文件上传（批量）</td>
+                <td>区分文件上传和头像上传，1、头像上传(单张)，2、文件上传（批量）,优先级高于accept属性，如果为1的话默认支持gif,jpg,jpeg,bmp,png等格式</td>
                 <td>2</td>
             </tr>
             <tr>
@@ -148,9 +147,9 @@ include "layout_header.php";
             <tr>
                 <td>fileButton</td>
                 <td>Array</td>
-                <td>文件上传按钮属性 ，1、id:dom //按钮ID/DOM 2、label:String //按钮文本内容,3、multiple:Boolean //是否开起同时选择多个文件能力</td>
+                <td>文件上传按钮属性 ，1、id:dom //按钮ID/DOM容器 2、label:String //按钮文本内容,3、multiple:Boolean //是否开起同时选择多个文件能力</td>
                 <td> {
-                     id: '#x-filePicker',
+                     id: '.x-filePicker',
                      label: '批量上传'
                      multiple:true,
                      }
@@ -159,9 +158,9 @@ include "layout_header.php";
             <tr>
                 <td>addButton</td>
                 <td>Array</td>
-                <td>添加文件按钮属性 ，1、id:dom：//按钮ID/DOM 、label:String //按钮文本内容</td>
+                <td>添加文件按钮属性 ，1、id:dom：//按钮ID/DOM容器 、label:String //按钮文本内容</td>
                 <td> {
-                     id: '#x-filePicker-add',
+                     id: '.x-filePicker-add',
                      label: '继续添加'
                      }
                 </td>
@@ -211,8 +210,8 @@ include "layout_header.php";
 
     <script >
         var upload = xUpload({
-            dom: $("#x-uploader"),
-            fileType :2,                             //   1 头像     2 文件
+            dom: $(".x-uploader"),
+            fileType :1,                             //   1 头像     2 文件
             fileNumLimit: 300,                       //总共能上传多少个文件
             fileSizeLimit: 200 * 1024 * 1024,        //   多个文件大小
             fileSingleSizeLimit: 100 * 1024 * 1024,   //   单个文件大小
@@ -221,15 +220,15 @@ include "layout_header.php";
             },                                       //传给后台的数据
             fileVal:'x-file',                        //input框 name
             fileButton: {
-                id :'#x-filePicker',
+                id :'.x-filePicker',
                 label: '批量上传',                     //按钮名字和id   可以点击的按钮的id和name
-                multiple:false
+                multiple:true
             },
             addButton:{
-                id: '#x-filePicker-add',
+                id: '.x-filePicker-add',
                 label: '继续添加'
             },
-            server: 'uploadFile_Server.php',          //服务器地址
+            server: '_uploadFileServer.php',          //服务器地址
             success:function(file,data){
             console.log(data);
             console.log(file);

@@ -58,7 +58,7 @@ include "layout_header.php";
 
 
 
-
+    <br>
     <div class="x-panel">
         <div class="x-panel-title">文字：</div>
         <div class="x-panel-content">
@@ -71,6 +71,8 @@ include "layout_header.php";
     <p class ='x-font-16'>这是16px的文字</p>
     <p class ='x-font-18'>这是18px的文字</p>
     <p class ='x-font-36'>这是36px的文字</p>
+    <p class ='x-font-small'>比基础小一号</p>
+    <p class ='x-font-large'>比基础大一号</p>
 </textarea></code></pre>
 
 
@@ -80,6 +82,8 @@ include "layout_header.php";
             <p class ='x-font-16'>这是16px的文字</p>
             <p class ='x-font-18'>这是18px的文字</p>
             <p class ='x-font-36'>这是36px的文字</p>
+            <p class ='x-font-small'>比基础小一号</p>
+            <p class ='x-font-large'>比基础大一号</p>
 
 
             <p>规则:</p>
@@ -89,7 +93,6 @@ include "layout_header.php";
 
 
 </div>
-
 
 
 
