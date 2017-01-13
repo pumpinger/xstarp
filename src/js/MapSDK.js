@@ -59,18 +59,9 @@
             }
         }
 
-        this.init();
-
         return this;
     };
     mapSdk.prototype={
-        init:function(){
-            //初始化   注册点击事件
-            var body = $('body');
-            body.on('click','.x-mapPopButton',function(){
-                $('.x-popMap').fadeIn('slow');
-            });
-        },
         clearMap:function (){
             this.mapObj.clearMap();
         },
