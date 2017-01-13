@@ -907,6 +907,59 @@ include 'layout_header.php';
             </tr>
             </tbody>
         </table>
+        <table class="x-table x-table-interval">
+            <thead>
+            <tr>
+                <th>.validate([options])</th>
+                <th>Type</th>
+                <th>说明</th>
+                <th>Example</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>[options]</td>
+                <td>Object</td>
+                <td>可选项</td>
+                <td>{rules:{name:{required:true,xname:true}},message:{name:{require:'填',xname:'xia名字'}}</td>
+            </tr>
+            <tr>
+                <td>debug(default: false)</td>
+                <td>Boolean</td>
+                <td></td>
+                <td>$(".selector").validate({debug: true});</td>
+            </tr>
+
+            <tr>
+                <td>submitHandler (default: native form submit)</td>
+                <td>Function()</td>
+                <td></td>
+                <td>$(".selector").validate({
+                    submitHandler: function(form) {
+                    $(form).ajaxSubmit();
+                    }
+                    });</td>
+            </tr>
+            <tr>
+                <td>invalidHandler</td>
+                <td>Function()</td>
+                <td></td>
+                <td>$(".selector").validate({invalidHandler: function(){}});</td>
+            </tr>
+            <tr>
+                <td>rules (default: rules are read from markup (classes, attributes, data))</td>
+                <td>Object</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>messages (default: the default message for the method used)</td>
+                <td>Object</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
