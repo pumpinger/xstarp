@@ -126,12 +126,18 @@ $(document).ready(function(){
 
     //表单
     $('.x-form-radio').click(function(){
+        // if($(this).find("input").is(':checked')){
+        //     $(this).addClass('x-checked').siblings().removeClass('x-checked');
+        // }
+
         $(this).addClass('x-checked').siblings().removeClass('x-checked');
+        
+        var val = $(this).find('input').val();
+        console.log(val);
     });
 
 
     $('.x-form-checkbox').click(function(){
-        console.log(111);
         if($(this).find("input").is(':checked')){
             $(this).addClass('x-checked');
         }else{
@@ -152,8 +158,6 @@ $(document).ready(function(){
     //导航-侧边栏
     $(".x-nav-head").click(function() {
         $(this).next('ul').slideToggle(300).parent().siblings('li').find('ul').slideUp();
-
-
         $(this).toggleClass('x-cur').parent().siblings('li').find('a.x-nav-head').removeClass('x-cur');
 
         if($(this).hasClass('x-cur')){

@@ -80,7 +80,7 @@ include "layout_header.php";
             </ul>
             <div class="x-tab-contents">
                 <div class="x-tab-content x-active">
-                    <ul class="x-nav">
+                    <ul class="x-nav x-nav-cross">
                         <li class="x-nav-item x-active"><a href="javascript:void(0)">最新活动</a></li>
                         <li class="x-nav-item"><a href="javascript:void(0)">最新活动</a></li>
                         <li class="x-nav-item"><a href="javascript:void(0)">最新活动</a></li>
