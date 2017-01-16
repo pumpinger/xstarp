@@ -66,7 +66,7 @@ include 'layout_header.php';
                 </p>
                 <p>
                     <label class="x-form-label" for="ccomment">评论内容(*)</label>
-                    <textarea id="ccomment" name="comment" minlength="6" maxlength="6" required></textarea>
+                    &lt;textarea id="ccomment" name="comment" minlength="6" maxlength="6" required>&lt;/textarea>
                 </p>
                 <p>
                     <input class="x-submit" type="submit" value="提交">
@@ -110,7 +110,7 @@ include 'layout_header.php';
                     </p>
                     <p>
                         <label class="x-form-label" for="xcomment">评论</label>
-                        <textarea id="xcomment" name="comment"></textarea>
+                        &lt;textarea id="xcomment" name="comment">&lt;/textarea>
                     </p>
                     <p>
                         <input class="x-submit" type="submit" value="提交">
@@ -264,7 +264,7 @@ include 'layout_header.php';
                     </p>
                     <p>
                         <label class="x-form-label" for="xmessage">附加信息</label>
-                        <textarea id="xmessage" name="message"></textarea>
+                        &lt;<textarea id="xmessage" name="message">&lt;/textarea>
                     </p>
                     <p>
                         <input class="x-submit" type="submit" name="signup" value="提交">
