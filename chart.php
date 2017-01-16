@@ -20,14 +20,14 @@ include "layout_header.php";
             <p>示例：</p>
 
             <pre><code class="language-html"><textarea>
-    <div id="box" style="width:49%;height: 400px;display: inline-block"></div>
-    <div id="box2" style="width:49%;height: 400px;display: inline-block"></div>
-    <div id="box3" style="width:49%;height: 400px;display: inline-block"></div>
-    <div id="box4" style="width:49%;height: 400px;display: inline-block"></div>
+    <div id="x-chart1" style="width:49%;height: 400px;display: inline-block"></div>
+    <div id="x-chart2" style="width:49%;height: 400px;display: inline-block"></div>
+    <div id="x-chart3" style="width:49%;height: 400px;display: inline-block"></div>
+    <div id="x-chart4" style="width:49%;height: 400px;display: inline-block"></div>
     <script>
 
     barChart({
-        conId:'box',
+        conId:'x-chart1',
         title:'标题',
         xArray:['星期一星期', '星期二星期', '星期三星星期', '星期四星星期'],
         colorArray:['#3398DB','#61a0a8'],
@@ -51,7 +51,7 @@ include "layout_header.php";
     });
 
     cirChart({
-        conId:'box3',
+        conId:'x-chart3',
         title:'饼图',
         seriesType:'pie',
         radius: ['50%', '70%'],
@@ -66,7 +66,7 @@ include "layout_header.php";
     });
 
     cirChart({
-        conId:'box2',
+        conId:'x-chart2',
         title:'饼图',
         seriesType:'pie',
         legendArray:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎'],
@@ -80,7 +80,7 @@ include "layout_header.php";
     });
 
     linesChart({
-        conId:'box4',
+        conId:'x-chart4',
         title:'折线图',
         legendArray:['最高气温','最低气温'],
         xArray:['周一','周二','周三','周四','周五','周六','周日'],
@@ -94,15 +94,15 @@ include "layout_header.php";
 
 
             <p>效果:</p>
-            <div id="box" style="width:49%;height: 400px;display: inline-block"></div>
-            <div id="box2" style="width:49%;height: 400px;display: inline-block"></div>
-            <div id="box3" style="width:49%;height: 400px;display: inline-block"></div>
-            <div id="box4" style="width:49%;height: 400px;display: inline-block"></div>
+            <div id="x-chart1" style="width:49%;height: 400px;display: inline-block"></div>
+            <div id="x-chart2" style="width:49%;height: 400px;display: inline-block"></div>
+            <div id="x-chart3" style="width:49%;height: 400px;display: inline-block"></div>
+            <div id="x-chart4" style="width:49%;height: 400px;display: inline-block"></div>
 
 
             <script>
                 barChart({
-                    conId:'box', //divid
+                    conId:'x-chart1', //divid
                     title:'标题', //标题
                     xArray:['星期一星期', '星期二星期', '星期三星星期', '星期四星星期'],  //X轴
                     colorArray:['#3398DB','#61a0a8'], //颜色
@@ -127,7 +127,7 @@ include "layout_header.php";
                 });
 
                 cirChart({
-                    conId:'box3',
+                    conId:'x-chart3',
                     title:'饼图',
                     seriesType:'pie',
                     radius: ['50%', '70%'], //环形图
@@ -142,7 +142,7 @@ include "layout_header.php";
                 });
 
                 cirChart({
-                    conId:'box2',
+                    conId:'x-chart2',
                     title:'饼图',
                     seriesType:'pie',
                     legendArray:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎'],
@@ -156,7 +156,7 @@ include "layout_header.php";
                 });
 
                 linesChart({
-                    conId:'box4',
+                    conId:'x-chart4',
                     title:'折线图',
                     legendArray:['最高气温','最低气温'],
                     xArray:['周一','周二','周三','周四','周五','周六','周日'],
