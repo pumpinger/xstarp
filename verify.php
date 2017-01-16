@@ -66,7 +66,7 @@ include 'layout_header.php';
                 </p>
                 <p>
                     <label class="x-form-label" for="ccomment">评论内容(*)</label>
-                    <textarea id="ccomment" name="comment" minlength="6" maxlength="6" required></textarea>
+                    &lt;textarea id="ccomment" name="comment" minlength="6" maxlength="6" required>&lt;/textarea>
                 </p>
                 <p>
                     <input class="x-submit" type="submit" value="提交">
@@ -110,7 +110,7 @@ include 'layout_header.php';
                     </p>
                     <p>
                         <label class="x-form-label" for="xcomment">评论</label>
-                        <textarea id="xcomment" name="comment"></textarea>
+                        &lt;textarea id="xcomment" name="comment">&lt;/textarea>
                     </p>
                     <p>
                         <input class="x-submit" type="submit" value="提交">
@@ -264,7 +264,7 @@ include 'layout_header.php';
                     </p>
                     <p>
                         <label class="x-form-label" for="xmessage">附加信息</label>
-                        <textarea id="xmessage" name="message"></textarea>
+                        &lt;<textarea id="xmessage" name="message">&lt;/textarea>
                     </p>
                     <p>
                         <input class="x-submit" type="submit" name="signup" value="提交">
@@ -854,6 +854,59 @@ include 'layout_header.php';
                 <td>请输入正确的身份证</td>
             </tr>
             </tbody></table>
+        <table class="x-table x-table-interval">
+            <thead>
+            <tr>
+                <th>.validate([options])</th>
+                <th>Type</th>
+                <th>说明</th>
+                <th>Example</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>[options]</td>
+                <td>Object</td>
+                <td>可选项</td>
+                <td>{rules:{name:{required:true,xname:true}},message:{name:{require:'填',xname:'xia名字'}}</td>
+            </tr>
+            <tr>
+                <td>debug(default: false)</td>
+                <td>Boolean</td>
+                <td></td>
+                <td>$(".selector").validate({debug: true});</td>
+            </tr>
+
+            <tr>
+                <td>submitHandler (default: native form submit)</td>
+                <td>Function()</td>
+                <td></td>
+                <td>$(".selector").validate({
+                    submitHandler: function(form) {
+                    $(form).ajaxSubmit();
+                    }
+                    });</td>
+            </tr>
+            <tr>
+                <td>invalidHandler</td>
+                <td>Function()</td>
+                <td></td>
+                <td>$(".selector").validate({invalidHandler: function(){}});</td>
+            </tr>
+            <tr>
+                <td>rules (default: rules are read from markup (classes, attributes, data))</td>
+                <td>Object</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>messages (default: the default message for the method used)</td>
+                <td>Object</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
         <table class="x-table x-table-interval">
             <thead>
             <tr>
