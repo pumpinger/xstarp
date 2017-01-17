@@ -126,14 +126,7 @@ $(document).ready(function(){
 
     //表单
     $('.x-form-radio').click(function(){
-        // if($(this).find("input").is(':checked')){
-        //     $(this).addClass('x-checked').siblings().removeClass('x-checked');
-        // }
-
         $(this).addClass('x-checked').siblings().removeClass('x-checked');
-        
-        var val = $(this).find('input').val();
-        console.log(val);
     });
 
 
@@ -146,13 +139,19 @@ $(document).ready(function(){
     });
 
     //贴士
-    $('.x-tip-btn').mouseenter(function(){
-        $(this).parent().find('.x-tip-content').text($(this).data("title"));
-        $(this).parent().find('.x-tip-dialog').show();
+    $('.x-tip').mouseenter(function(){
+        $('.x-tip-dialog').text($(this).data("title")).show();
+        $('.x-tip').mousemove(function(e){
+            var mx = e.clientX+20;
+            var my = e.clientY+20;
+            $('.x-tip-dialog').css({display:'block',top:my,left:mx});
+        });
     });
-    $('.x-tip-btn').mouseleave(function(){
-        $(this).parent().find('.x-tip-dialog').hide();
+    $('.x-tip').mouseleave(function(){
+        $('.x-tip-dialog').hide();
     });
+
+
 
 
     //导航-侧边栏
