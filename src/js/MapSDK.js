@@ -169,7 +169,6 @@
         popMap:function(data,markerCb,mouseCb){
             var that = this;
             var markerData = Array();
-            var mouseData = Array();
             var markerArray = Array();
 
             $(".x-popMap").fadeIn('slow');
@@ -185,17 +184,18 @@
 
             for (var i = 0; i < data.length; i++) {
                 var obj = data[i];
-                var marker = this.marker([obj.lng,obj.lat],'img/marker_icon1.png',-20,-40,{
-                    content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+                var defImg = obj.defImg?obj.defImg:'img/marker_icon1.png';
+                var selectImg = obj.selectImg?obj.selectImg:'img/marker_select.png';
+                var marker = this.marker([obj.lng,obj.lat],defImg,-20,-40,{
+                    content:'<div class="marker"><img src="'+defImg+'"></div>'
                 });
                 marker['extData'] = obj['extData'];
                 markerArray.push(marker);
-                console.log(marker.getIcon());
                 marker.on('click',function(e){
                     $.each(markerArray,function(i,value){
-                        value.setContent('<div class="marker"><img src="img/marker_icon1.png"></div>');
+                        value.setContent('<div class="marker"><img src="'+defImg+'"></div>');
                     });
-                    this.setContent('<div class="marker"><img src="img/marker_select.png"></div>');
+                    this.setContent('<div class="marker"><img src="'+selectImg+'"></div>');
                     markerData = e.target.extData;
                 });
             }
