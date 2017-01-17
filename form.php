@@ -154,7 +154,7 @@ include "layout_header.php";
                     <span class="x-form-key">品牌类型: </span>
                     <div class="x-form-value">
                         <lable class="x-form-radio x-checked">
-                            <input type="radio" name="radio1" value="选项1" checked="checked">选项1
+                            <input type="radio" name="radio1" value="选项1">选项1
                         </lable>
                         <lable class="x-form-radio">
                             <input type="radio" name="radio1" value="选项2">选项2
@@ -165,13 +165,13 @@ include "layout_header.php";
                     <span class="x-form-key">价格范围: </span>
                     <div class="x-form-value">
                         <label class="x-form-checkbox x-checked">
-                            <input type="checkbox" name="checkbox1" value="选项1" checked="checked">选项1
+                            <input type="checkbox" name="checkbox1" value="选项1">选项1
                         </label>
                         <label class="x-form-checkbox">
                             <input type="checkbox" name="checkbox1" value="选项2">选项2
                         </label>
                         <label class="x-form-checkbox x-checked">
-                            <input type="checkbox" name="checkbox1" value="选项3" checked="checked">选项3
+                            <input type="checkbox" name="checkbox1" value="选项3">选项3
                         </label>
 
                     </div>
@@ -187,9 +187,6 @@ include "layout_header.php";
             </form>
         </div>
 
-        <script>
-
-        </script>
 
 
 

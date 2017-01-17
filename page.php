@@ -53,11 +53,11 @@ include "layout_header.php";
                                 <option value="">50行</option>
                                 <option value="">100行</option>
                             </select>
-                            <li><a>&lt;&lt;首页</a></li>
-                            <li class="x-active"><a>1</a></li>
-                            <li><a>2</a></li>
-                            <li><a>3</a></li>
-                            <li><a>尾页>></a></li>
+                            <li>&lt;&lt;首页</li>
+                            <li class="x-active">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>尾页>></li>
                         </ul>
                     </div>
                 </div>

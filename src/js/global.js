@@ -131,6 +131,7 @@ $(document).ready(function(){
 
 
     $('.x-form-checkbox').click(function(){
+        console.log(111);
         if($(this).find("input").is(':checked')){
             $(this).addClass('x-checked');
         }else{
@@ -139,24 +140,20 @@ $(document).ready(function(){
     });
 
     //贴士
-    $('.x-tip').mouseenter(function(){
-        $('.x-tip-dialog').text($(this).data("title")).show();
-        $('.x-tip').mousemove(function(e){
-            var mx = e.clientX+20;
-            var my = e.clientY+20;
-            $('.x-tip-dialog').css({display:'block',top:my,left:mx});
-        });
+    $('.x-tip-btn').mouseenter(function(){
+        $(this).parent().find('.x-tip-content').text($(this).data("title"));
+        $(this).parent().find('.x-tip-dialog').show();
     });
-    $('.x-tip').mouseleave(function(){
-        $('.x-tip-dialog').hide();
+    $('.x-tip-btn').mouseleave(function(){
+        $(this).parent().find('.x-tip-dialog').hide();
     });
-
-
 
 
     //导航-侧边栏
     $(".x-nav-head").click(function() {
         $(this).next('ul').slideToggle(300).parent().siblings('li').find('ul').slideUp();
+
+
         $(this).toggleClass('x-cur').parent().siblings('li').find('a.x-nav-head').removeClass('x-cur');
 
         if($(this).hasClass('x-cur')){
