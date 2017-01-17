@@ -145,19 +145,18 @@ $fontSizeUnit: px;
 
 //结构-导航k
 
-.x-nav{background:#393D49;color:$bgColorDeep;overflow:hidden;}
-.x-nav-item{float:left;line-height:60px;margin-left:-3px;}
+.x-nav{background:#393D49;color:$bgColorDeep;}
+.x-nav-item{@include inlineBlock;line-height:60px;margin-left:-3px;}
 .x-nav-item a{display:block;padding:0 20px;}
-.x-nav-item a:hover{background:lighten(#393D49,5%);}
-.x-nav-cross .x-nav-item.x-active{background:lighten(#393D49,5%);color:#fff;}
+.x-nav-item a:hover{color:#fff;background:lighten(#393D49,5%)}
+.x-nav-item.x-active{background:lighten(#393D49,5%);color:#fff;}
 
 .x-nav-sidebar{width:200px;}
 .x-nav-sidebar .x-nav-item{display:block;position:relative;width:100%;line-height:45px;margin-left:0;}
 .x-nav-sidebar .x-nav-item i{float:right;}
-.x-nav-sidebar .x-nav-child{width:100%;background:darken(#393D49,5%)}
+.x-nav-sidebar .x-nav-child{width:100%;background:#393D49}
 .x-nav-sidebar .x-nav-child a{height:40px;line-height:40px;}
-.x-nav-sidebar .x-nav-child a:hover{color:#fff;background:#575961;}
-.x-nav-sidebar .x-nav-item a.x-cur{background:lighten(#393D49,3%)}
+.x-nav-sidebar .x-nav-item a.x-cur{background:lighten(#393D49,5%)}
 
 
 //样式-表单元素
@@ -207,10 +206,11 @@ $fontSizeUnit: px;
 
 
 //样式-贴士
-
-.x-tip{display:block;padding:10px;margin:10px 0;background:$bgColorDeep;cursor:pointer;white-space: nowrap;overflow:hidden;text-overflow:ellipsis;}
-.x-tip-dialog{position:fixed;display:none;width:200px;padding:10px;top:0;left:0;background:rgba(0,0,0,0.5);border-radius:4px;color:$fontColorLight}
-//.x-tip-cor{position:absolute;border-width:10px;border-style:solid;border-color:rgba(0,0,0,0.5) transparent transparent;left:50%;margin-left:-10px;bottom:-20px;}
+.x-tip{position:relative;margin:10px 0;}
+.x-tip-btn{display:block;padding:10px;background:$bgColorDeep;cursor:pointer;}
+.x-tip-dialog{position:absolute;display:none;bottom:51px;left:0;background:rgba(0,0,0,0.5);border-radius:4px;color:$fontColorLight}
+.x-tip-content{padding:10px;}
+.x-tip-cor{position:absolute;border-width:10px;border-style:solid;border-color:rgba(0,0,0,0.5) transparent transparent;left:50%;margin-left:-10px;bottom:-20px;}
 
 
 
@@ -218,8 +218,7 @@ $fontSizeUnit: px;
 .x-page {line-height: 28px;}
 .x-page-total {@include inlineBlock;}
 .x-page-pages {@include inlineBlock;float: right;border-right: 1px solid $borderColorDeep;color: $baseColorMain;}
-.x-page-pages li,.x-page-pages select{float: left;border: 1px solid $borderColorDeep;border-right: none;cursor: pointer;}
-.x-page-pages li a,.x-page-pages select{padding:0 15px;}
+.x-page-pages li,.x-page-pages select{float: left;padding:0 15px;border: 1px solid $borderColorDeep;border-right: none;cursor: pointer;}
 .x-page-pages select{height: 30px;}
 .x-page-pages .x-active,.x-page-pages li:hover{color:set-notification-text-color($baseColorMain);background: $baseColorMain;}
 
@@ -435,14 +434,6 @@ $fontSizeUnit: px;
   visibility: visible;
 }
 
-//地图
-.x-popMap{ display: none; position: fixed;top:50%;left: 50%;z-index:8888; margin-left: -400px;margin-top: -250px;}
-.x-popMap-close{margin-top:-15px;margin-right:-15px;right:0;width: 30px;height: 30px;position: absolute;z-index: 10;}
-.x-popMap-close img{width: 30px;height: 30px;}
-.x-popMap-option{width: 100%;position: relative;height: 40px;background: #eee;}
-.x-popMap-option span{cursor: pointer; position: absolute;margin-top: 8px;}
-.x-popMap-option .x-popMap-ok{cursor: pointer; right:100px;}
-.x-popMap-option .x-popMap-cancel{right:30px;}
 
 //todo 结构写好几个   code插件套进来   主题变化的实现(圆角 颜色)
 
