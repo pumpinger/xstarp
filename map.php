@@ -15,6 +15,11 @@ include "layout_header.php";
     .search input{height: 20px;margin-right: 10px;padding-left: 5px;vertical-align: bottom}
     .result {position: absolute;top: 10px;background: #eee;}
     .x-tab-nav a{cursor: pointer;}
+
+
+    .address{cursor: pointer;display: inline-block;}
+
+
 </style>
 
 <div class="x-panel">
@@ -35,6 +40,7 @@ include "layout_header.php";
                        <div id="container"></div>
                        <span class="finishEdit x-button x-button-small x-button-cadetblue">结束编辑</span>
                        <span class="mouseTool x-button x-button-small x-button-cadetblue">开始画面</span>
+                       <script src="http://webapi.amap.com/maps?v=1.3&key=高德地图中申请的key"></script>
                        <script>
                            var lngLat = [104.056435,30.671192];
                            $("#container").css({'width':'100%', 'height':'500px'});
@@ -269,6 +275,59 @@ include "layout_header.php";
 
                        </script>
                    </div>
+                   <div class="x-tab-content  x-active" style="position: relative">
+                       <div class="address x-mapPopButton x-button  x-button-cadetblue">点击弹出地图窗口</div>
+                       <div class="x-popMap" style="">
+                           <div id="popMap" class=""></div>
+                           <div class="x-popMap-option"><span class="x-popMap-ok x-button ">确定</span><span class="x-button   x-popMap-cancel">关闭</span></div>
+                       </div>
+                       <script>
+                           var lngLat = [104.056435,30.671192];
+                           $("#popMap").css({'width':'800px', 'height':'500px'});
+                           var myMap3 = XMapSdk(
+                               {
+                                   dom:'popMap',
+                                   resizeEnable:true,
+                                   center:lngLat,
+                                   zoom:13
+                               },{
+                                   strokeColor: "#2e90df",
+                                   strokeOpacity: 1,
+                                   strokeWeight: 3,
+                                   strokeStyle:'solid',
+                                   fillColor: "#d2e8f5",
+                                   fillOpacity: 0.5,
+                                   extData:null
+                               }
+                           );
+                           $(".address").click(function(){
+                               var data = Array();
+                               for (var i = 0; i < 4; i++) {
+                                   var lng = 104.056435 + i*0.01;
+                                   var lat = 30.671192-i*0.02;
+                                   var item ={
+                                       lng:lng,
+                                       lat:lat,
+                                       extData:{
+                                           address:'成都市武侯区西部智谷',
+                                           name:'烧烤店',
+                                           id:i
+                                       },
+                                       defImg:'img/marker_icon1.png',//marker点图标url  不传有默认
+                                       selectImg:'img/marker_select.png',//marker选中后的图标
+                                   };
+                                   data.push(item);
+                               }
+                               myMap3.popMap(data,function(data){
+                                   console.log("当前选中点的的数据");
+                                   console.log(data);
+                               },function(data1){
+                                   console.log("你所点击的位置");
+                                   console.log(data1);
+                               });
+                           });
+                       </script>
+                   </div>
 
                </div>
            </div>
@@ -278,12 +337,13 @@ include "layout_header.php";
         <p>效果:</p>
         <div class="x-tab">
             <ul class="x-tab-nav">
-                <li class="x-tab-li x-active"><a >鼠标编辑</a></li>
+                <li class="x-tab-li "><a >鼠标编辑</a></li>
                 <li class=""><a >绘制圆，点，多边形</a></li>
                 <li class="  "><a >地理编码</a></li>
+                <li class="  x-active"><a >地图弹窗</a></li>
             </ul>
             <div class="x-tab-contents">
-                <div class="x-tab-content  x-active">
+                <div class="x-tab-content  ">
                     <div id="container"></div>
                     <span class="finishEdit x-button x-button-small x-button-cadetblue">结束编辑</span>
                     <span class="mouseTool x-button x-button-small x-button-cadetblue">开始画面</span>
@@ -308,6 +368,14 @@ include "layout_header.php";
                         <div class="unGeoCoderDesc"></div>
                     </div>
                 </div>
+                <div class="x-tab-content  x-active" style="position: relative">
+                    <div class="address x-mapPopButton x-button  x-button-cadetblue">点击弹出地图窗口</div>
+                    <div class="x-popMap" style="">
+                        <div id="popMap" class=""></div>
+                        <div class="x-popMap-option"><span class="x-popMap-ok x-button ">确定</span><span class="x-button   x-popMap-cancel">关闭</span></div>
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -592,10 +660,29 @@ include "layout_header.php";
                 <td>圆，线，多边形，点</td>
                 <td>marker.hide()</td>
             </tr>
-
+            <tr>
+                <td>popMap()</td>
+                <td>无</td>
+                <td>
+                    1、data 传入需要渲染在地图上的点数据数组,  其中defImg 和selectImg分别是默认点标记图标和选中后点标记图标(可选，有默认)，
+                    2、function(data){} data:选中点的数据，返回选中点的数据的函数，
+                    3、function(data){} data:鼠标左键点击的位置的坐标和地址，鼠标左点击后中回调函数</td>
+                <td>弹出快捷地图，注：这里传入的data中的属性extData是自定义需要传递的数据</td>
+                <td>XMapSdk</td>
+                <td>myMap3.popMap(data,function(data){},function(data){})</td>
+            </tr>
+            <tr>
+                <td>closePopMap()</td>
+                <td>无</td>
+                <td></td>
+                <td>关闭快捷地图弹窗</td>
+                <td>XMapSdk</td>
+                <td>myMap3.closePopMap();</td>
+            </tr>
 
             </tbody>
         </table>
+        注：需要调用高德地图js api 去高德开放平台注册并领取自己的key值然后引入高德api
     </div>
 
 </div>
@@ -604,9 +691,68 @@ include "layout_header.php";
 
 include "layout_footer.php";
 ?>
-
+<script src="http://webapi.amap.com/maps?v=1.3&key=a3b3d16e95cfd8d858300d093f839c5f"></script>
 <script  src="src/js/MapSDK.js"></script>
 <!--<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>-->
+
+
+<script>
+    var lngLat = [104.056435,30.671192];
+    $("#popMap").css({'width':'800px', 'height':'500px'});
+    var myMap3 = XMapSdk(
+        {
+            dom:'popMap',
+            resizeEnable:true,
+            center:lngLat,
+            zoom:13
+        },{
+            strokeColor: "#2e90df",
+            strokeOpacity: 1,
+            strokeWeight: 3,
+            strokeStyle:'solid',
+            fillColor: "#d2e8f5",
+            fillOpacity: 0.5,
+            extData:null
+        }
+    );
+
+
+
+    $(".address").click(function(){
+//        alert('弹出地图');
+        var data = Array();
+        //data  传入data数据    数组    包含多少个点    点数据
+        for (var i = 0; i < 4; i++) {
+            var lng = 104.056435 + i*0.01;
+            var lat = 30.671192-i*0.02;
+            var item ={
+                lng:lng,
+                lat:lat,
+                extData:{
+                    address:'成都市武侯区西部智谷',
+                    name:'烧烤店',
+                    id:i
+                },
+                defImg:'img/marker_icon1.png',//图片url  不传有默认\
+                selectImg:'img/marker_select.png',//marker选中后的图标
+
+            };
+            data.push(item);
+        }
+
+        myMap3.popMap(data,function(data){
+            console.log("当前选中点的的数据");
+            console.log(data);
+        },function(data1){
+            console.log("你所点击的位置");
+            console.log(data1);
+        });
+    });
+
+
+
+</script>
+
 <script>
     var lngLat = [104.056435,30.671192];
     $("#container").css({'width':'100%', 'height':'500px'});
@@ -835,7 +981,7 @@ include "layout_footer.php";
 
             $(".geoCoderDesc").html(html);
 
-           console.log(data);
+            console.log(data);
         });
     });
 
