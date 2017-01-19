@@ -220,7 +220,7 @@ include "layout_header.php";
 
         var upload = xUpload({
             dom: $(".x-uploader"),
-            fileType :2,                             //   1 头像     2 文件
+            fileType :1,                             //   1 头像     2 文件
             fileNumLimit: 300,                       //总共能上传多少个文件
             fileSizeLimit: 200 * 1024 * 1024,        //   多个文件大小
             fileSingleSizeLimit: 100 * 1024 * 1024,   //   单个文件大小
