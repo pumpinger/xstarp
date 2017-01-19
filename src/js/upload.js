@@ -209,13 +209,8 @@
                     percentages[file.id][1] = percentage;
                     updateTotalProgress();
                 }else if(fileType == 1){
-                    $percent = $('.progress span');
+
                     $statusBar.show();
-                    $(".progress").show();
-                    $percent.css('width', percentage * 100 + '%');
-                    var spans = $progress.children();
-                    spans.eq( 0 ).text( Math.round( percentage * 100 ) + '%' );
-                    spans.eq( 1 ).css( 'width', Math.round( percentage * 100 ) + '%' );
                     this.options.progress(Math.round( percentage * 100 ) + '%');
                 }
 
