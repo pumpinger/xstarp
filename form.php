@@ -128,12 +128,6 @@ include "layout_header.php";
                         <label class="x-form-input"><input name="checkbox" type="checkbox" value="3">3</label>
                     </div>
                 </div>
-<!--                <div  class="x-form-item">-->
-<!--                    <span class="x-form-key">开关:</span>-->
-<!--                    <div class="x-form-value">-->
-<!--                        <label class="x-form-switch"><input type="checkbox" checked="checked"></label>-->
-<!--                    </div>-->
-<!--                </div>-->
 
                 <div class="x-form-item">
                     <span class="x-form-key">开关:</span>
