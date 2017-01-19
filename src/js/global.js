@@ -138,6 +138,25 @@ $(document).ready(function(){
         }
     });
 
+
+    // $('.x-form-switch').click(function(){
+    //     if($(this).find("input").is(':checked')){
+    //         $(this).find('input').val('on');
+    //     }else{
+    //         $(this).find('input').val('off');
+    //     }
+    // });
+
+    $('.x-form-switch').click(function(){
+        $(this).toggleClass('x-form-onswitch');
+        if($(this).hasClass('x-form-onswitch')){
+            $(this).parent().find('input').val('on');
+        }else{
+            $(this).parent().find('input').val('off');
+        }
+    });
+
+
     //贴士
     $('.x-tip').mouseenter(function(){
         $('.x-tip-dialog').text($(this).data("title")).show();

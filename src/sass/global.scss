@@ -145,7 +145,7 @@ $fontSizeUnit: px;
 
 //结构-导航k
 
-.x-nav{background:#393D49;color:$bgColorDeep;overflow:hidden;}
+.x-nav{position:relative;background:#393D49;color:$bgColorDeep;overflow:hidden;}
 .x-nav-item{float:left;line-height:60px;margin-left:-3px;}
 .x-nav-item a{display:block;padding:0 20px;}
 .x-nav-item a:hover{background:lighten(#393D49,5%);}
@@ -184,13 +184,19 @@ $fontSizeUnit: px;
 
 .x-form-radio.x-checked,.x-form-checkbox.x-checked{color:$fontColorLight;background:$baseColorMain;}
 
-.x-form-switch{position: relative;font-size: 16px;width: 40px;height:20px;line-height: 20px;cursor:pointer;}
-.x-form-switch input[type="checkbox"]{position: absolute; width: 40px;height:20px;padding:0;top: 0;left: 0; z-index: 2;border: 0;background: 0 0;-webkit-appearance: none;outline: 0}
-.x-form-switch input:before { content: ''; width: 40px; height:20px; border: 1px solid #dfdfdf; background-color: #fdfdfd; border-radius: 20px; cursor: pointer; display: inline-block; position: relative; vertical-align: middle; -webkit-box-sizing: content-box; box-sizing: content-box; -webkit-box-shadow: $borderColorLight 0 0 0 0 inset; box-shadow: $borderColorLight 0 0 0 0 inset; -webkit-transition: border .4s,-webkit-box-shadow .4s; transition: border .4s,box-shadow .4s; -webkit-background-clip: content-box;background-clip: content-box }
+//.x-form-switch{position: relative;font-size: 16px;width: 40px;height:20px;line-height: 20px;cursor:pointer;}
+//.x-form-switch input[type="checkbox"]{position: absolute; width: 40px;height:20px;padding:0;top: 0;left: 0; z-index: 2;border: 0;background: 0 0;-webkit-appearance: none;outline: 0}
+//.x-form-switch input:before { content: ''; width: 40px; height:20px; border: 1px solid #dfdfdf; background-color: #fdfdfd; border-radius: 20px; cursor: pointer; display: inline-block; position: relative; vertical-align: middle; -webkit-box-sizing: content-box; box-sizing: content-box; -webkit-box-shadow: $borderColorLight 0 0 0 0 inset; box-shadow: $borderColorLight 0 0 0 0 inset; -webkit-transition: border .4s,-webkit-box-shadow .4s; transition: border .4s,box-shadow .4s; -webkit-background-clip: content-box;background-clip: content-box }
+//
+//.x-form-switch input:checked:before { content: 'on';color:#fff;border-color: $baseColorMain; -webkit-box-shadow: $baseColorMain 0 0 0 16px inset; box-shadow: $baseColorMain 0 0 0 16px inset; background-color: $baseColorMain; transition: border .4s,box-shadow .4s,background-color 1.2s; -webkit-transition: border .4s,-webkit-box-shadow .4s,background-color 1.2s; }
+//.x-form-switch input:checked:after { content: '';left:21px; }
+//.x-form-switch input:after { content: ''; width: 20px; height:20px; position: absolute; top: 54%; left: 0; -webkit-transform:translateY(-50%); border-radius: 100%; background-color: $fontColorLight; -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.4); box-shadow:  0 1px 3px rgba(0,0,0,.4); -webkit-transition: left .2s; transition: left .2s }
 
-.x-form-switch input:checked:before { border-color: $baseColorMain; -webkit-box-shadow: $baseColorMain 0 0 0 16px inset; box-shadow: $baseColorMain 0 0 0 16px inset; background-color: $baseColorMain; transition: border .4s,box-shadow .4s,background-color 1.2s; -webkit-transition: border .4s,-webkit-box-shadow .4s,background-color 1.2s; }
-.x-form-switch input:checked:after { left:21px; }
-.x-form-switch input:after { content: ''; width: 20px; height:20px; position: absolute; top: 54%; left: 0; -webkit-transform:translateY(-50%); border-radius: 100%; background-color: $fontColorLight; -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.4); box-shadow:  0 1px 3px rgba(0,0,0,.4); -webkit-transition: left .2s; transition: left .2s }
+.x-form-switch{position: relative;height: 22px;line-height: 22px;width: 40px;padding: 0 5px;border: 1px solid #d2d2d2;border-radius: 20px;background-color: #fff;transition: .1s linear;  }
+.x-form-onswitch{  border-color: $baseColorMain;  background-color:$baseColorMain;  }
+.x-form-onswitch:before{  content:'ON';  color:#fff;  font-size:14px;  }
+.x-form-switch i{position: absolute;left: 5px;top: 3px;width: 16px;height: 16px;border-radius: 20px;background-color: #d2d2d2;  -webkit-transition: .1s linear;  transition: .1s linear;  }
+.x-form-onswitch i{left:30px;background-color:#fff;}
 
 
 
