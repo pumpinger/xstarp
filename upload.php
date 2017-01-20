@@ -139,8 +139,7 @@ include "layout_header.php";
                 <td>accept</td>
                 <td>Array</td>
                 <td>允许上传的文件类型，1、title： 文字描述
-                    2、extensions：限制文件的描述
-                    3、mimeTypes： 允许的文件后缀，不带点，多个用逗号分割。
+                    2、extensions：允许的文件后缀，不带点，多个用逗号分割。
                 </td>
                 <td>无（所有类型）</td>
             </tr>
