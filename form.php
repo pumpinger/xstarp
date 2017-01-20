@@ -128,18 +128,14 @@ include "layout_header.php";
                         <label class="x-form-input"><input name="checkbox" type="checkbox" value="3">3</label>
                     </div>
                 </div>
-<!--                <div  class="x-form-item">-->
-<!--                    <span class="x-form-key">开关:</span>-->
-<!--                    <div class="x-form-value">-->
-<!--                        <label class="x-form-switch"><input type="checkbox" checked="checked"></label>-->
-<!--                    </div>-->
-<!--                </div>-->
 
                 <div class="x-form-item">
                     <span class="x-form-key">开关:</span>
                     <div class="x-form-value">
-                        <input type="checkbox" name="switch" value="on" style="display:none">
-                        <div class="x-form-switch"><i></i></div>
+                        <label class="x-form-switch x-form-onswitch">
+                            <input type="checkbox" name="switch" value="on" checked="checked">
+                            <i></i>
+                        </label>
                     </div>
                 </div>
 
@@ -199,7 +195,10 @@ include "layout_header.php";
         </div>
 
         <script>
-
+            $('.x-form-submit').click(function(){
+                var val = $('.x-form-content').serialize();
+                console.log(val);
+            })
         </script>
 
 
