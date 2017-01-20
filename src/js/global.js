@@ -139,20 +139,11 @@ $(document).ready(function(){
     });
 
 
-    // $('.x-form-switch').click(function(){
-    //     if($(this).find("input").is(':checked')){
-    //         $(this).find('input').val('on');
-    //     }else{
-    //         $(this).find('input').val('off');
-    //     }
-    // });
-
     $('.x-form-switch').click(function(){
-        $(this).toggleClass('x-form-onswitch');
-        if($(this).hasClass('x-form-onswitch')){
-            $(this).parent().find('input').val('on');
+        if($(this).find("input").is(':checked')){
+            $(this).addClass('x-form-onswitch');
         }else{
-            $(this).parent().find('input').val('off');
+            $(this).removeClass('x-form-onswitch')
         }
     });
 

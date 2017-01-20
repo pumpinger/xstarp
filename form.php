@@ -132,8 +132,10 @@ include "layout_header.php";
                 <div class="x-form-item">
                     <span class="x-form-key">开关:</span>
                     <div class="x-form-value">
-                        <input type="checkbox" name="switch" value="on" style="display:none">
-                        <div class="x-form-switch"><i></i></div>
+                        <label class="x-form-switch x-form-onswitch">
+                            <input type="checkbox" name="switch" value="on" checked="checked">
+                            <i></i>
+                        </label>
                     </div>
                 </div>
 
@@ -191,12 +193,6 @@ include "layout_header.php";
                 </div>
             </form>
         </div>
-
-        <script>
-
-        </script>
-
-
 
         <p class="x-color-cadetblue">规则:</p>
         <p>1.命名形式 x-form- </p>
