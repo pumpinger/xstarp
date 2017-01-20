@@ -312,7 +312,9 @@ include "layout_header.php";
                                            address:'成都市武侯区西部智谷',
                                            name:'烧烤店',
                                            id:i
-                                       }
+                                       },
+                                       defImg:'img/marker_icon1.png',//marker点图标url  不传有默认
+                                       selectImg:'img/marker_select.png',//marker选中后的图标
                                    };
                                    data.push(item);
                                }
@@ -662,7 +664,7 @@ include "layout_header.php";
                 <td>popMap()</td>
                 <td>无</td>
                 <td>
-                    1、data 传入需要渲染在地图上的点数据数组，
+                    1、data 传入需要渲染在地图上的点数据数组,  其中defImg 和selectImg分别是默认点标记图标和选中后点标记图标(可选，有默认)，
                     2、function(data){} data:选中点的数据，返回选中点的数据的函数，
                     3、function(data){} data:鼠标左键点击的位置的坐标和地址，鼠标左点击后中回调函数</td>
                 <td>弹出快捷地图，注：这里传入的data中的属性extData是自定义需要传递的数据</td>
@@ -730,7 +732,9 @@ include "layout_footer.php";
                     address:'成都市武侯区西部智谷',
                     name:'烧烤店',
                     id:i
-                }
+                },
+                defImg:'img/marker_icon1.png',//图片url  不传有默认\
+                selectImg:'img/marker_select.png',//marker选中后的图标
 
             };
             data.push(item);

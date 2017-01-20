@@ -93,15 +93,18 @@ include "layout_header.php";
                     onOpen: function () {},
                     onBeforeOpen: function () {},
                     onClose: function (hasChange) {
-                        console.log(testTree.getId());
-                        console.log(testTree._makeSearch);
+                        console.log(testTree2.getId());
+                        console.log(testTree2._makeSearch);
                     },
                     onCheck: function (item, dom, childrenItem) {
                         //console.log(this);
                         //console.log(this.getId());
                         //console.log(testTree);
                     },
-                    onCancel: function (item, dom, childrenItem) {}
+                    onCancel: function (item, dom, childrenItem) {},
+                    onChange: function () {
+                        testTree2.dom.val(testTree2.getName());
+                    }
                 });
             </script>
         </textarea></code></pre>
@@ -470,6 +473,9 @@ include "layout_header.php";
 //            应该是  this.getId()比较规范  还是 testTree.getId()比较规范   this可以做到 只暴漏该暴漏的方法
         },
         onCancel: function (item, dom, childrenItem) {
+        },
+        onChange: function () {
+            testTree2.dom.val(testTree2.getName());
         }
     });
 </script>
