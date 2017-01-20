@@ -59,6 +59,8 @@
             //childrenItem  所有影响的子节点
         },
         onCancel: function (item, dom, childrenItem) {
+        },
+        onChange: function (item, dom, childrenItem) {
         }
     };
 
@@ -165,7 +167,6 @@
         end: function () {
             if (this._is_open) {
                 this.html.hide();
-                this.dom.val(this.getName());
                 var ids = this.getId();
 
                 this._is_open = false;
@@ -506,10 +507,10 @@
 
             if (!item.is_check) {
                 this.opt.onCancel(item, dom, childItem);
-
             } else {
                 this.opt.onCheck(item, dom, childItem);
             }
+            this.opt.onChange();
 
 
         },
@@ -723,8 +724,7 @@
         var html = '<i class="iconfont icon-jia1"></i>';
 
         return $(html).css({
-            'font-size': '14px',
-            'font-weight': 'bold',
+            'font-size': '12px',
             'vertical-align': 'base-line',
             'padding-right': '0px',
             'cursor': 'pointer'
