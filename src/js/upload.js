@@ -185,8 +185,8 @@
             if(fileType == 1){
                 opt['accept'] = {
                     title: 'Images',
-                    extensions: 'gif,jpg,jpeg,bmp,png',
-                    mimeTypes: 'image/*'
+                    extensions: 'images',
+                    mimeTypes: 'image/gif,image/jpg,image/jpeg,image/bmp,image/png'
                 };
                 opt['fileButton']['multiple'] = false;
             }
