@@ -194,15 +194,6 @@ include "layout_header.php";
             </form>
         </div>
 
-        <script>
-            $('.x-form-submit').click(function(){
-                var val = $('.x-form-content').serialize();
-                console.log(val);
-            })
-        </script>
-
-
-
         <p class="x-color-cadetblue">规则:</p>
         <p>1.命名形式 x-form- </p>
 
