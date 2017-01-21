@@ -347,21 +347,17 @@ include "layout_header.php";
         wrap: '.x-progress-5',
         pclass: 'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated',
         tclass: 'x-progress-text',
-        percentage:'10%',
+        percentage:'0%',
         onchange:function (hahaha) {console.log('hahaha',hahaha,'xP8',xP8.percentage);}
     });
 
-    var t = parseInt(xP8.percentage);
-    var step = 0;
-    setInterval(function () {
-        if(t<=0){
-            step = 1;
-        }else if(t>=50){
-            step = -1
+    $({property: 0}).animate({property: 500}, {
+        duration: 10000,
+        step: function() {
+            var percentage = Math.round(this.property/10);
+            xP8.percentage = percentage+"%";
         }
-        t = t + step;
-        xP8.percentage = t + '%';
-    }, 200)
+    });
 </script>
 
 <?php

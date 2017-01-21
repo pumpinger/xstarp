@@ -20,7 +20,7 @@
             wrap: '.x-progress-wrap',
             pclass: 'x-progress-bar',
             tclass: 'x-progress-only',
-            percentage: '2%',
+            percentage: '0%',
             onchange: function () {console.log('onchange')}
         },
         _init: function (option) {
@@ -67,15 +67,15 @@
                 set: function (next) {
                     if (next !== old) {
                         that._progress(next, old);
-                        this.option.onchange();
                     }
                     old = next;
+                    this.option.onchange();
                 }
             })
         },
         _progress: function (next, old) {
             this.p.stop(true,true);
-            this.p.animate({width: next},300);
+            this.p.animate({width: next}, 100);
             this.t.text(next);
         },
         _p:function () {
