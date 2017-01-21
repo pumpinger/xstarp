@@ -44,6 +44,7 @@
         width: null,
         maxHeight: null,
         data: [],//{id:1,name:'xx',nodeId:'0',is_node:true,is_check:false},
+        sel_ids: '',
         onInit: function () {
         },
         onOpen: function () {
@@ -96,7 +97,7 @@
         _init: function (opt) {
             this.opt = $.extend(true, {}, defOpt, opt);
             this.dom = this.opt.dom;
-            this.data = this.opt.data;
+            this.data = _selData(this.opt.data, this.opt.sel_ids);
             this.html = this._makePanel();
             this.rootId = 1314;
 
@@ -747,6 +748,18 @@
             return typeof data[i] == 'object';
         }
         return false;
+    }
+
+    function _selData(data, selected){
+        var sel_ids_string_array = selected.split(',');
+        $.each(sel_ids_string_array, function(index,id){
+            $.each(data,function (index2,d) {
+                if(d.id == parseInt(id)){
+                    d.is_check = true;
+                }
+            });
+        });
+        return data;
     }
 
     function _initNode(_data) {
