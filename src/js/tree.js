@@ -97,7 +97,7 @@
         _init: function (opt) {
             this.opt = $.extend(true, {}, defOpt, opt);
             this.dom = this.opt.dom;
-            this.data = _selData(this.opt.data, this.opt.sel_ids);
+            this.data = this.opt.sel_ids ? _selData(this.opt.data, this.opt.sel_ids) : this.opt.data;
             this.html = this._makePanel();
             this.rootId = 1314;
 
@@ -750,17 +750,29 @@
         return false;
     }
 
-    function _selData(data, selected){
-        var sel_ids_string_array = selected.split(',');
-        $.each(sel_ids_string_array, function(index,id){
-            $.each(data,function (index2,d) {
-                if(d.id == parseInt(id)){
-                    d.is_check = true;
+    function _selData(data, selected_ids){
+        var sel_ids = selected_ids.split(',');
+
+        $.each(sel_ids, function(i,id){
+            if(typeof id === "string"){
+                data[i].is_check = true;
+                _checkChildren(parseInt(id));
+            }
+        });
+
+        function _checkChildren(id){
+            $.each(data, function (i2, item) {
+                if(item.nodeId === id){
+                    data[i2].is_check = true;
+                    if(item.is_node){
+                        _checkChildren(item.id)
+                    }
                 }
             });
-        });
+        }
         return data;
     }
+
 
     function _initNode(_data) {
         var rootId = [];
@@ -805,7 +817,6 @@
         //     return r;
         // }
         // rootId = unique(rootId);
-        // console.log(rootId);
 
         return rootId[0];
     }
