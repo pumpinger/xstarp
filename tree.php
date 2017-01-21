@@ -33,12 +33,15 @@ include "layout_header.php";
         <pre><code class="language-html"><textarea>
             <p>方法一</p>
             <div class="tree-wrap">
-                <div class="test_tree1"></div>
+                <div class="test_tree1">
+                </div>
             </div>
 
             <p>方法二</p>
             <div class="tree-wrap">
-                <input class="test_tree2" placeholder="">
+                <div class="test_tree2">
+                    <input  placeholder="">
+                </div>
             </div>
             <script>
                 var testTree1 = xTree({
@@ -113,12 +116,15 @@ include "layout_header.php";
 
         <p>方法一</p>
         <div class="tree-wrap">
-            <div class="test_tree1"></div>
+            <div class="test_tree1">
+            </div>
         </div>
 
         <p>方法二</p>
         <div class="tree-wrap">
-            <input class="test_tree2" placeholder="">
+            <div class="test_tree2">
+                <input  placeholder="">
+            </div>
         </div>
 
         <p class="x-color-blue">规则:</p>
