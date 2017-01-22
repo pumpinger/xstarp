@@ -140,6 +140,7 @@
             if (this.opt.is_trigger) {
                 this.dom.off('click.xTree');
                 this.dom.on('click.xTree', function (e) {
+                    $('.xTreePanel').hide();
                     that.start();
                     e.stopPropagation();
                 });
@@ -171,7 +172,7 @@
                 this.html.hide();
                 var ids = this.getId();
 
-                this._is_open = false;
+                // this._is_open = false;
                 this.opt.onClose(JSON.stringify(ids) !== JSON.stringify(this._originId));
                 this._originId = ids;
             }
@@ -390,6 +391,8 @@
                     left: 0,
                     minWidth: this.opt.width ? this.opt.width : this.dom.outerWidth()
                 });
+
+                this.html.addClass('xTreePanel');
 
                 this.html.on('click', function (e) {
                     e.stopPropagation();
@@ -749,24 +752,15 @@
 
     function _selData(data, selected_ids){
         var sel_ids = selected_ids.split(',');
+        console.log('sel', sel_ids);
 
         $.each(sel_ids, function(i,id){
             if(typeof id === "string"){
                 data[i].is_check = true;
-                _checkChildren(parseInt(id));
+                console.log('check-ids', id);
             }
         });
 
-        function _checkChildren(id){
-            $.each(data, function (i2, item) {
-                if(item.nodeId === id){
-                    data[i2].is_check = true;
-                    if(item.is_node){
-                        _checkChildren(item.id)
-                    }
-                }
-            });
-        }
         return data;
     }
 
@@ -814,6 +808,7 @@
         //     return r;
         // }
         // rootId = unique(rootId);
+        // console.log(rootId);
 
         return rootId[0];
     }
