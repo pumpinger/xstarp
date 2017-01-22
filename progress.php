@@ -115,6 +115,10 @@ include "layout_header.php";
         <div class="x-progress-wrap x-progress-5" >
         </div>
 
+        <p>6、66666</p>
+        <div class="x-progress-wrap x-progress-6" >
+        </div>
+
         <p class="x-color-blue">规则:</p>
         <table class="x-table x-table-interval">
             <thead>
@@ -283,19 +287,19 @@ include "layout_header.php";
     </div>
 </div>
 
-<script type="text/javascript" src="dest/lib/jquery-2.1.4.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="src/js/progress.js"></script>
 
 <script>
     //基础样式
-    var xP1 = xProgress({
+    var xP1 = xProgress2({
         wrap: '.x-progress-1',
         percentage:'10%',
         onchange:function () {console.log('xP1',xP1.percentage);}
     });
 
     //带进度提示
-    var xP2 = xProgress({
+    var xP2 = xProgress2({
         wrap: '.x-progress-2',
         pclass: 'x-progress-bar x-progress-green',
         tclass: 'x-progress-text',
@@ -304,7 +308,7 @@ include "layout_header.php";
     });
 
     //带条纹效果
-    var xP3 = xProgress({
+    var xP3 = xProgress2({
         wrap: '.x-progress-3',
         pclass: 'x-progress-bar x-progress-red x-progress-striped',
         percentage:'30%',
@@ -312,7 +316,7 @@ include "layout_header.php";
     });
 
     //条纹效果带动画
-    var xP4 = xProgress({
+    var xP4 = xProgress2({
         wrap: '.x-progress-4',
         pclass: 'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated',
         percentage:'40%',
@@ -320,14 +324,14 @@ include "layout_header.php";
     });
 
     //多个进度条堆叠
-    var xP5 = xProgress({
+    var xP5 = xProgress2({
         wrap: '.x-progress-5',
         pclass: 'x-progress-bar x-progress-red',
         percentage:'10%',
         onchange:function () {console.log('xP5',xP5.percentage);}
     });
 
-    var xP6 = xProgress({
+    var xP6 = xProgress2({
         wrap: '.x-progress-5',
         pclass: 'x-progress-bar x-progress-green',
         tclass: 'x-progress-text',
@@ -335,7 +339,7 @@ include "layout_header.php";
         onchange:function () {console.log('xP6',xP6.percentage);}
     });
 
-    var xP7 = xProgress({
+    var xP7 = xProgress2({
         wrap: '.x-progress-5',
         pclass: 'x-progress-bar x-progress-blue x-progress-striped',
         tclass: 'x-progress-text',
@@ -343,9 +347,9 @@ include "layout_header.php";
         onchange:function () {console.log('xP7',xP7.percentage);}
     });
 
-    var xP8 = xProgress({
-        wrap: '.x-progress-5',
-        pclass: 'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated',
+    var xP8 = xProgress2({
+        wrap: '.x-progress-6',
+        pclass: 'x-progress-bar x-progress-yellow x-progress-striped',
         tclass: 'x-progress-text',
         percentage:'0%',
         onchange:function (hahaha) {console.log('hahaha',hahaha,'xP8',xP8.percentage);}

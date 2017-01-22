@@ -4,7 +4,7 @@
 
 ;(function (window, $) {
 
-    window.xProgress = function (option) {
+    window.xProgress2 = function (option) {
         return new xProgress(option);
     };
 
@@ -75,7 +75,7 @@
         },
         _progress: function (next, old) {
             this.p.stop(true,true);
-            this.p.animate({width: next}, 100);
+            this.p.width(next);
             this.t.text(next);
         },
         _p:function () {
