@@ -505,6 +505,7 @@ include "layout_header.php";
     </div>
 </div>
 
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="src/js/tree.js"></script>
 
 <script>
