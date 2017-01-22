@@ -75,7 +75,13 @@
         },
         _progress: function (next, old) {
             this.p.stop(true,true);
-            this.p.width(next);
+            if(next==='0%'){
+                this.p.css({width: next});
+            }else{
+                this.p.animate({width: next},1000);
+            }
+            // this.p.css({width: next});
+            // this.p.width(next);
             this.t.text(next);
         },
         _p:function () {

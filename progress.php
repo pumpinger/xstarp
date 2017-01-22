@@ -348,7 +348,7 @@ include "layout_header.php";
     });
 
     var xP8 = xProgress2({
-        wrap: '.x-progress-6',
+        wrap: '.x-progress-5',
         pclass: 'x-progress-bar x-progress-yellow x-progress-striped',
         tclass: 'x-progress-text',
         percentage:'0%',
