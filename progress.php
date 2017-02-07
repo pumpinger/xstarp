@@ -352,10 +352,12 @@ include "layout_header.php";
     });
 
     var t = parseInt(xP8.percentage);
-    var step = 1;
+    var step = 0;
     setInterval(function () {
-        if(t<=0||t>=50){
-            step = -step;
+        if(t<=0){
+            step = 1;
+        }else if(t>=50){
+            step = -1
         }
         t = t + step;
         xP8.percentage = t + '%';

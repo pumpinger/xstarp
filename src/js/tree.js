@@ -44,6 +44,7 @@
         width: null,
         maxHeight: null,
         data: [],//{id:1,name:'xx',nodeId:'0',is_node:true,is_check:false},
+        sel_ids: '',
         onInit: function () {
         },
         onOpen: function () {
@@ -59,6 +60,8 @@
             //childrenItem  所有影响的子节点
         },
         onCancel: function (item, dom, childrenItem) {
+        },
+        onChange: function (item, dom, childrenItem) {
         }
     };
 
@@ -94,7 +97,7 @@
         _init: function (opt) {
             this.opt = $.extend(true, {}, defOpt, opt);
             this.dom = this.opt.dom;
-            this.data = this.opt.data;
+            this.data = _selData(this.opt.data, this.opt.sel_ids);
             this.html = this._makePanel();
             this.rootId = 1314;
 
@@ -165,7 +168,6 @@
         end: function () {
             if (this._is_open) {
                 this.html.hide();
-                this.dom.val(this.getName());
                 var ids = this.getId();
 
                 this._is_open = false;
@@ -506,10 +508,10 @@
 
             if (!item.is_check) {
                 this.opt.onCancel(item, dom, childItem);
-
             } else {
                 this.opt.onCheck(item, dom, childItem);
             }
+            this.opt.onChange();
 
 
         },
@@ -723,8 +725,7 @@
         var html = '<i class="iconfont icon-jia1"></i>';
 
         return $(html).css({
-            'font-size': '14px',
-            'font-weight': 'bold',
+            'font-size': '12px',
             'vertical-align': 'base-line',
             'padding-right': '0px',
             'cursor': 'pointer'
@@ -747,6 +748,18 @@
             return typeof data[i] == 'object';
         }
         return false;
+    }
+
+    function _selData(data, selected){
+        var sel_ids_string_array = selected.split(',');
+        $.each(sel_ids_string_array, function(index,id){
+            $.each(data,function (index2,d) {
+                if(d.id == parseInt(id)){
+                    d.is_check = true;
+                }
+            });
+        });
+        return data;
     }
 
     function _initNode(_data) {

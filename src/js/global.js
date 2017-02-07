@@ -139,6 +139,16 @@ $(document).ready(function(){
         }
     });
 
+
+    $('.x-form-switch').click(function(){
+        if($(this).find("input").is(':checked')){
+            $(this).addClass('x-form-onswitch');
+        }else{
+            $(this).removeClass('x-form-onswitch')
+        }
+    });
+
+
     //贴士
     $('.x-tip-btn').mouseenter(function(){
         $(this).parent().find('.x-tip-content').text($(this).data("title"));

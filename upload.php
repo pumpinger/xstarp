@@ -18,6 +18,8 @@ include "layout_header.php";
 
 
 
+    .x-progress-upload {width: 200px;}
+
 
 </style>
 
@@ -35,10 +37,8 @@ include "layout_header.php";
                         </div>
                         <div class="x-imgFile"></div>
                         <div class="x-statusBar" style="display:none;">
-                            <div class="progress">
-                                <span class="text">0%</span>
-                                <span class="percentage"></span>
-                            </div><div class="x-info"></div>
+                            <div class="x-progress-wrap x-progress-upload" ></div>
+                            <div class="x-info"></div>
                             <div class="x-upload-btns">
                                 <div class="x-filePicker-add"></div><div class="x-uploadBtn">开始上传</div>
                             </div>
@@ -86,15 +86,14 @@ include "layout_header.php";
             </div>
             <div class="x-imgFile"></div>
             <div class="x-statusBar" style="display:none;">
-                <div class="progress">
-                    <span class="text">0%</span>
-                    <span class="percentage"></span>
-                </div><div class="x-info"></div>
+                <div class="x-progress-wrap x-progress-upload" ></div>
+                <div class="x-info"></div>
                 <div class="x-upload-btns">
                     <div class="x-filePicker-add"></div><div class="x-uploadBtn">开始上传</div>
                 </div>
             </div>
         </div>
+
         <p>规则:</p>
         <table class="x-table x-table-interval">
             <thead>
@@ -140,7 +139,7 @@ include "layout_header.php";
                 <td>accept</td>
                 <td>Array</td>
                 <td>允许上传的文件类型，1、title： 文字描述
-                    2、extensions： 允许的文件后缀，不带点，多个用逗号分割。
+                    2、extensions：允许的文件后缀，不带点，多个用逗号分割。
                 </td>
                 <td>无（所有类型）</td>
             </tr>
@@ -207,8 +206,18 @@ include "layout_header.php";
     include "layout_footer.php";
     ?>
     <script type="text/javascript" src="src/js/upload.js"></script>
-
+    <script type="text/javascript" src="src/js/progress.js"></script>
     <script >
+
+        var xP8 = xProgress({
+            wrap: '.x-progress-upload',
+            pclass: 'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated',
+            tclass: 'x-progress-text',
+            percentage:'0%',
+            onchange:function () {console.log('xP8',xP8.percentage);}
+        });
+
+
         var upload = xUpload({
             dom: $(".x-uploader"),
             fileType :1,                             //   1 头像     2 文件
@@ -230,12 +239,13 @@ include "layout_header.php";
             },
             server: '_uploadFileServer.php',          //服务器地址
             success:function(file,data){
-            console.log(data);
-            console.log(file);
+                console.log(data);
+                console.log(file);
 //            alert('上传成功');
             },
             progress:function(schedu){
                 console.log('当前进度：',schedu);
+                xP8.percentage = schedu;
             }
         })
     </script>

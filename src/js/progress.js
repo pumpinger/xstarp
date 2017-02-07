@@ -74,7 +74,8 @@
             })
         },
         _progress: function (next, old) {
-            this.p.css({width: next});
+            this.p.stop(true,true);
+            this.p.animate({width: next},300);
             this.t.text(next);
         },
         _p:function () {
