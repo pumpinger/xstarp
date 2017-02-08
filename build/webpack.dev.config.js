@@ -23,6 +23,14 @@ module.exports = {
 		filename: 'xstarp.js'
 	},
 	module: {
+    // preLoaders: [
+    //   {
+    //     test: /\.js$/,
+    //     loader: "eslint-loader",
+    //     include: path.resolve(__dirname, '../'),
+    //     exclude: /node_modules/
+    //   }
+    // ],
 		loaders: [
 			{
 				test: /\.scss$/,
@@ -38,6 +46,12 @@ module.exports = {
 				test: /\.(png|jpg)$/,
 				loader: 'url?limit=40000'
 			}
+      ,{
+        test: /\.js$/,
+        loader: "eslint-loader",
+        include: path.resolve(__dirname, '../'),
+        exclude: /node_modules/
+      }
 		]
 	},
 	devtool: 'eval-source-map',
@@ -46,7 +60,9 @@ module.exports = {
 		$: 'window.$', // 暴露全局jQuery变量
 		moment: 'window.moment'
 	},
-
+	// eslint: {
+	// 	// formatter: require('eslint-friendly-formatter')
+	// },
 	plugins: [
 		new webpack.ProgressPlugin(function handler(percentage, msg) {
 			if (percentage==0) {

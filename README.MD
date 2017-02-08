@@ -4,6 +4,7 @@ xstrap webpack 模块化版本
 ## 安装
 ```bash
 $ npm install 
+$ npm i webpack -g
 
 // 如果node-sass没有安装成功则运行下面这个命令
 $ cnpm install --save-dev node-sass
@@ -18,8 +19,9 @@ $ npm run dev
 ```
 > 项目根目录为开发服务器根目录。可静态访问所有资源。默认打开examples文件夹下面的index.html
 
-- **构建**最终目标
-将会把
+- **构建**
+
+输出生产环境文件到dist文件夹
 ```bash
 $ npm run build
 ```
@@ -55,11 +57,12 @@ $ npm run docs
 ### 目录结构 
 ```bash
 |---- root
-  |---- build
+  |---- build webpack配置文件构建相关
   |---- dest 压缩源（src）文件，生成压缩包到（dest）
   |---- dist 是编译后的文件，压缩版
   |---- src 源文件
     |---- asset 静态资源
+    |---- commont 公用js文件
     |---- components 组件
     |---- util 工具js
     |---- vendor 有些东西不得不放在外面，没有这样的文件的时候这个文件夹是空的
@@ -71,7 +74,6 @@ $ npm run docs
       |---- index.scss 样式入口文件，负责将所有styles里面的样式都打包到这里面
   |---- test 单元测试目录
   |---- examples 项目示例专用存放目录
-  |---- desktop 这个目录是一个electron 项目的文件夹。用来视觉化生成需要的文件
 ```
 dist是编译后的文件，压缩版； 
 src是源码文件；
@@ -121,12 +123,15 @@ $ browser-sync start --server --files "**/*.css, **/*.html, **/*.js"
 ## 组件化思路
 ```bash
 |---- components_name 组件件/模块名
+	|---- images 如果有，则建这个文件夹。文件夹名字无所谓。本组件需要的放在这里。公用的放在asset。
   |---- components_name.js js文件
   |---- components_name.scss 组件强依赖文件 
   |---- components_name.pug 组件模板，也可以html，handlebar什么的
+  |---- index.js 组件入口，供出口文件调用。统一index.js名，容易调用
 ```
 - 每一个组件都在自己的目录进行维护，保持结构清晰；
-- 如果多个模块都引用了同一个模块，打包的时候webpack会把这个模块提取出来，只用一份
+- 如果多个模块都引用了同一个模块，打包的时候webpack会把这个模块提取出来，只用一份；
+[地址](http://www.zcfy.cc/article/getting-started-with-webpack-2-thinking-in-code-2110.html)
 
 ## 文档规范
 [docsify](https://docsify.js.org/)
@@ -153,9 +158,10 @@ $ browser-sync start --server --files "**/*.css, **/*.html, **/*.js"
 [webpack多页应用架构系列（四）：老式jQuery插件还不能丢，怎么兼容？ - 实用至上 SegmentFault  ](https://segmentfault.com/a/1190000006887523#articleHeader8)
 [webpack进阶教程（二）——webpack引入jquery多种方法探究](https://segmentfault.com/a/1190000007249293)
 [webpack在多页面中路径输出问题 - SegmentFault](https://segmentfault.com/q/1010000002607794)
-[webpack使用优化 | Web前端 腾讯AlloyTeam Blog | 愿景: 成为地球卓越的Web团队！  ](http://www.alloyteam.com/2016/01/webpack-use-optimization/)
+[webpack使用优化 | Web前端 腾讯AlloyTeam Blog | 愿景: 成为地球卓越的Web团队！](http://www.alloyteam.com/2016/01/webpack-use-optimization/)
 
 ## 用到的东西
 [webpack css 输出独立文件-插件](https://github.com/webpack/extract-text-webpack-plugin)
+[Webpack-前端资源模块化加载打包工具 - IT笔录](https://itbilu.com/nodejs/npm/Vy6BnJkY-.html)
 
 

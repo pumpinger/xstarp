@@ -18,8 +18,7 @@ var compiler = webpack(webpackConfig);
 
 var devMiddleware = webpackDevMiddleware(compiler, {
 	publicPath: webpackConfig.output.publicPath,
-	quiet: true,
-	noInfo: true,
+	// noInfo:,
 	stats: {
 		colors: true
 	}
