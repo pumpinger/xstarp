@@ -72,6 +72,8 @@ $ npm run docs
       |---- mixins 公用的scss
       |---- themes UI 主题
       |---- index.scss 样式入口文件，负责将所有styles里面的样式都打包到这里面
+    |---- develop.js
+    |---- xstarp.js
   |---- test 单元测试目录
   |---- examples 项目示例专用存放目录
 ```

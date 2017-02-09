@@ -46,12 +46,12 @@ module.exports = {
 				test: /\.(png|jpg)$/,
 				loader: 'url?limit=40000'
 			}
-      ,{
-        test: /\.js$/,
-        loader: "eslint-loader",
-        include: path.resolve(__dirname, '../'),
-        exclude: /node_modules/
-      }
+      // ,{
+      //   test: /\.js$/,
+      //   loader: "eslint-loader",
+      //   include: path.resolve(__dirname, '../'),
+      //   exclude: /node_modules/
+      // }
 		]
 	},
 	devtool: 'eval-source-map',
