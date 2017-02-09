@@ -128,12 +128,19 @@ include "layout_header.php";
                         <label class="x-form-input"><input name="checkbox" type="checkbox" value="3">3</label>
                     </div>
                 </div>
-                <div  class="x-form-item">
+
+                <div class="x-form-item">
                     <span class="x-form-key">开关:</span>
                     <div class="x-form-value">
-                        <label class="x-form-switch"><input type="checkbox"></label>
+                        <label class="x-form-switch x-form-onswitch">
+                            <input type="checkbox" name="switch" value="on" checked="checked">
+                            <i></i>
+                        </label>
                     </div>
                 </div>
+
+
+
                 <div class="x-form-item">
                     <span class="x-form-key">选择框:</span>
                     <div class="x-form-value">
@@ -186,12 +193,6 @@ include "layout_header.php";
                 </div>
             </form>
         </div>
-
-        <script>
-
-        </script>
-
-
 
         <p class="x-color-cadetblue">规则:</p>
         <p>1.命名形式 x-form- </p>
