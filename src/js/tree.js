@@ -97,7 +97,8 @@
         _init: function (opt) {
             this.opt = $.extend(true, {}, defOpt, opt);
             this.dom = this.opt.dom;
-            this.data = _selData(this.opt.data, this.opt.sel_ids);
+            this.dom.css({'position':'relative'});
+            this.data = this.opt.sel_ids ? _selData(this.opt.data, this.opt.sel_ids) : this.opt.data;
             this.html = this._makePanel();
             this.rootId = 1314;
 
@@ -110,28 +111,7 @@
 
             var that = this;
 
-            this.rootId = _initNode(that.data);
-
-            if (this.opt.choose) {
-                var choose = this.opt.choose;
-                $.each(choose.nodeId, function (i, n) {
-                    var item = {};
-                    $.each(that.data, function (i2, n2) {
-                        if (n2.id == n && n2.is_node == 1) {
-                            item = n2;
-                            item.is_check = true;
-                        }
-                    });
-                    that._chgAllChildren(item.id, item.is_check);
-                });
-                $.each(choose.id, function (i, n) {
-                    $.each(that.data, function (i2, n2) {
-                        if (n2.id == n && n2.is_node == false) {
-                            n2.is_check = true;
-                        }
-                    });
-                });
-            }
+            this.rootId = _getRootId(that.data);
 
             this._originId = this.getId();
 
@@ -139,6 +119,7 @@
             if (this.opt.is_trigger) {
                 this.dom.off('click.xTree');
                 this.dom.on('click.xTree', function (e) {
+                    $('.xTreePanel').hide();
                     that.start();
                     e.stopPropagation();
                 });
@@ -226,7 +207,7 @@
             if (this.opt.only_child) {
                 $.each(data, function (i, n) {
                     if (n.is_check && !n.is_node) {
-                        id.push(data[i].id);
+                        id.push(n.id);
                     }
                 });
 
@@ -252,9 +233,9 @@
                     $.each(clone, function (i, n) {
                         if (n) {
                             if (n.is_node) {
-                                nodeId.push(data[i].id);
+                                nodeId.push(n.id);
                             } else {
-                                id.push(data[i].id);
+                                id.push(n.id);
                             }
                         }
                     });
@@ -262,9 +243,9 @@
                     $.each(data, function (i, n) {
                         if (n.is_check) {
                             if (n.is_node) {
-                                nodeId.push(data[i].id);
+                                nodeId.push(n.id);
                             } else {
-                                id.push(data[i].id);
+                                id.push(n.id);
                             }
                         }
                     });
@@ -385,20 +366,18 @@
         _showPanel: function () {
             if (this.opt.is_trigger) {
                 this.html.css({
-                    top: this.dom.position().top + this.dom.outerHeight(),
-                    left: this.dom.position().left,
+                    top: this.dom.outerHeight(),
+                    left: 0,
                     minWidth: this.opt.width ? this.opt.width : this.dom.outerWidth()
                 });
+
+                this.html.addClass('xTreePanel');
 
                 this.html.on('click', function (e) {
                     e.stopPropagation();
                 });
-
-                this.dom.after(this.html);
-
-            } else {
-                this.dom.append(this.html);
             }
+            this.dom.append(this.html);
 
         },
         _showData: function () {
@@ -750,19 +729,62 @@
         return false;
     }
 
-    function _selData(data, selected){
-        var sel_ids_string_array = selected.split(',');
-        $.each(sel_ids_string_array, function(index,id){
-            $.each(data,function (index2,d) {
-                if(d.id == parseInt(id)){
-                    d.is_check = true;
+    function _selData(data, selected_ids){
+        var sel_ids = selected_ids.split(',');
+        $.each(sel_ids, function (i,id) {
+            $.each(data, function (i2, item) {
+                if(item.id === parseInt(id)){
+                    item.is_check = true;
+                    _selParent(item.nodeId);
+                    if(item.is_node){
+                        _selChildren(item.id);
+                    }
                 }
             });
         });
+
+        function _selParent(nid) {
+            if(!nid){
+                return false;
+            }
+            var selParent = true;
+            var sel_p = {};
+            $.each(data, function (index, item) {
+                if(item.id == nid){
+                    sel_p = item;
+                }
+                if(item.nodeId == nid && !item.is_check){
+                    selParent = false;
+                    return false;
+                }
+            });
+
+            if(selParent){
+                sel_p.is_check = true;
+                if(sel_p.nodeId){
+                    _selParent(sel_p.nodeId);
+                }
+            }
+        }
+
+        function _selChildren(id) {
+            if(!id){
+                return false;
+            }
+            $.each(data, function (i, item) {
+                if(item.nodeId === id){
+                    item.is_check = true;
+                    if(item.is_node){
+                        _selChildren(item.id);
+                    }
+                }
+            });
+        }
         return data;
     }
 
-    function _initNode(_data) {
+
+    function _getRootId(_data) {
         var rootId = [];
         var clone = $.extend(true, [], _data);
         for (var i = 0, len = _data.length; i < len; i++) {
@@ -805,7 +827,6 @@
         //     return r;
         // }
         // rootId = unique(rootId);
-        // console.log(rootId);
 
         return rootId[0];
     }
