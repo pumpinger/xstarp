@@ -12,3 +12,5 @@ require('./components/demo/demo');
 require('./components/datepicker/jquery.daterangepicker');
 
 require('./components/popup/popup');
+
+// require('./components/map/map')

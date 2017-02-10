@@ -6,36 +6,67 @@ var _ = require('lodash');
 var util = require('./util');
 var gMap = require('./gmapAPI');
 var aMap = require('./amapAPI');
+var latLng = require('./lib/lngLat');
+const util = require('util');
 
-window.iMap = function (mapType, opt, theme) {
+
+var iMap, Map, map;
+
+iMap = {};
+var mapType;
+iMap.setMapType = function (type) {
+  mapType = type;
+};
+iMap.Map = function (id,option) {
+  return iMap.creator(mapType,id,option);
+};
+iMap.Map = function (mapType, opt, theme) {
   return new map(mapType, opt, theme);
 };
-var map = function (mapType, opt, themes) {
-  if(mapType === 'AMap') {
-    this._type = 'AMap';
-  } else if (mapType === 'GMap') {
-    this._type = 'GMap';
-  } else {
-    console.log("请选择正确的地图API类型哦，可选值：['AMap','GMap']");
+
+iMap.latLng = function () {};
+
+window.iMap = iMap;
+
+iMap.creator = function (type,id) {
+  if(mapType == 'g'){
+    return new gMap(id);
+  }else{
+    return new aMap(id);
   }
+};
+map = function (container) {
+
+  this.map = null;
+  this.init();
 };
 
 map.prototype = {
-  Map: function (container, opt) {
-    this._type === 'AMap' ?
-      gMap.map(container, opt):
-      aMap.map(container, opt);
-  },
+  init: function (container, opt) {
 
-  _isAMap: function () {
-    return this._type === 'AMap';
   },
-  _isGMap: function () {
-    return this._type === 'GMap';
+  setCenter:function () {
+    this.map.setCenter(new this.LatLng());
   }
 };
+var aMap = function () {
+
+};
+aMap.exected(map);
+var gMap = function () {
+
+};
+
+gMap.exected(map);
+gMap.prototype.init = function () {
+    //parent:init()
+    this.map = new GMap('ss');
+};
+var mapClass = iMap.creator('g','#map');
+
 
 
 
 
 module.exports = map;
+
