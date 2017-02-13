@@ -4,7 +4,11 @@
 
 var GMap = require('./gmap/index.js');
 
-var SMap = GMap;
+var SMap = {};
+
+window.GMap = GMap;
+window.SMap = SMap;
+window.mapCreate = mapCreate;
 
 function mapCreate(type) {
   if (type == 'a') {
@@ -27,11 +31,5 @@ mapCreate.setType = function(type) {
     console.log('new SMap is',SMap);
   }
 };
-
-
-window.mapCreate = mapCreate;
-
-window.SMap = SMap;
-
 
 module.exports = SMap;

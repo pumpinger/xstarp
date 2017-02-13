@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/xstrap-webpack.iml" filepath="$PROJECT_DIR$/.idea/xstrap-webpack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/xstarp.iml" filepath="$PROJECT_DIR$/.idea/xstarp.iml" />
     </modules>
   </component>
 </project>

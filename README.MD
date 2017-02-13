@@ -5,6 +5,7 @@ xstrap webpack 模块化版本
 ```bash
 $ npm install 
 $ npm i webpack -g
+$ npm i docify-cli -g
 
 // 如果node-sass没有安装成功则运行下面这个命令
 $ cnpm install --save-dev node-sass
@@ -28,13 +29,9 @@ $ npm run build
 
 - **查看文档**
 ```bash
-// 第一次使用需要先安装这个命令行工具
-$ npm i docsify-cli -g
-
-// 然后运行这个服务
 $ npm run docs
 ```
-线上访问：http://localhost:5678/modeleName
+线上访问：http://localhost:6000/modeleName [端口号不定，运行命令后控制台将显示]
 对应的实际上访问的是：modeleName.md这个文件
 
 - **写文档**
@@ -60,6 +57,8 @@ $ npm run docs
   |---- build webpack配置文件构建相关
   |---- dest 压缩源（src）文件，生成压缩包到（dest）
   |---- dist 是编译后的文件，压缩版
+  |---- docs 存放使用文档
+  |---- mock 存放mock数据和json
   |---- src 源文件
     |---- asset 静态资源
     |---- commont 公用js文件
@@ -76,11 +75,13 @@ $ npm run docs
     |---- xstarp.js
   |---- test 单元测试目录
   |---- examples 项目示例专用存放目录
+  |---- server.js 开发服务器入口文件
 ```
-dist是编译后的文件，压缩版； 
-src是源码文件；
+- dist是编译后的文件，压缩版； 
+- src是源码文件；
+- 压缩源（src）文件，生成压缩包到（dest），dest一般和src配对出现。
 
-压缩源（src）文件，生成压缩包到（dest），dest一般和src配对出现。
+#### src目录详细
 
 ### 构建工具
 - 使用webpack 对代码进行编译构建、模块打包
