@@ -3,20 +3,17 @@
  */
 
 /**
- * @constructor lngLat
- * @lng {Number} lng
- * @lat {Number} lat
+ *
  * */
-var LngLat = function(lng, lat) {
-  this.lat = lat;
-  this.lng = lng;
+var Marker = function(opts) {
+  
 };
 
-Map.prototype = {
+Marker.prototype = {
 
 };
 
-module.exports = Map;
+module.exports = Marker;
 
 
 

@@ -13,4 +13,6 @@ require('./components/datepicker/jquery.daterangepicker');
 
 require('./components/popup/popup');
 
-// require('./components/map/map')
+var SMap = require('./components/map/index.js');
+
+console.log(SMap);

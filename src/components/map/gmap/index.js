@@ -3,25 +3,14 @@
  */
 
 var LngLat = require('./lnglat');
+var Map = require('./map');
 
 var GMap = {};
 
 GMap.LngLat = LngLat;
+GMap.Map = Map;
 
-GMap.Map = function(id,opts) {
-  var elem, newOpts;
 
-  elem = document.getElementById(id);
-  newOpts = formatOpts(opts);
-
-  return new google.maps.Map(elem, newOpts);
-};
-
-function formatOpts(opts) {
-  if(opts.center) {
-    opts.center = new GMap.LngLat(opts.center);
-  }
-}
 
 
 

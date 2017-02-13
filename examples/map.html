@@ -25,57 +25,81 @@
 <script src="../dist/vendor/jquery.js"></script>
 
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=319766fcdf57589d1da6e0dfc89770d2"></script>
-<script src="http://localhost:9000/xstarp.js"></script>
+
 <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjPUco3l_6-f8ZexAesZrYFzpGtRQHvSo">
 </script>
+
+<script src="http://localhost:9000/xstarp.js"></script>
 <script type="text/javascript">
-  var sMap = AMap,GMap = {};
-  GMap.Map = function (id,options) {
-     return   map = new google.maps.Map(document.getElementById(id), {
-       center: {lat: options.center[1], lng: options.center[0]},
-       zoom: options.zoom
-     });
-  };
-  GMap.LngLat = function () {
+//  var sMap = AMap,GMap = {};
+//  GMap.Map = function (id,options) {
+//     return   map = new google.maps.Map(document.getElementById(id), {
+//       center: {lat: options.center[1], lng: options.center[0]},
+//       zoom: options.zoom
+//     });
+//  };
+//  GMap.LngLat = function () {
+//
+//  };
+//  function mapCreate(type)
+//  {
+//    if(type == 'a'){
+//      return AMap;
+//    }else{
+//      return GMap;
+//    }
+//  }
+//  mapCreate.setType = function (type) {
+//    if(type == 'a'){
+//      sMap = AMap;
+//    }else{
+//      sMap = GMap;
+//    }
+//  };
+//
+//
+//  //new sMap.Map('');
+//
+////  var map = mapCreate('g');
+////  new map.Map();
+////  new map.LngLat();
+//  mapCreate.setType('g');
+//
+//  var map = new sMap.Map('container', {
+//    resizeEnable: true,
+//    zoom:11,
+//    center: [116.397428, 39.90923]
+//
+//  });
+//
+//  console.log(sMap);
+//
+//
+//
 
-  };
-  function mapCreate(type)
-  {
-    if(type == 'a'){
-      return AMap;
-    }else{
-      return GMap;
-    }
-  }
-  mapCreate.setType = function (type) {
-    if(type == 'a'){
-      sMap = AMap;
-    }else{
-      sMap = GMap;
-    }
-  };
+</script>
 
+<script>
+//  var map = new GMap.Map('container', {
+//    resizeEnable: true,
+//    zoom:11,
+//    center: [116.397428, 39.90923]
+//  });
+//
+//  console.log(map);
 
-  //new sMap.Map('');
+  console.log(SMap);
 
-//  var map = mapCreate('g');
-//  new map.Map();
-//  new map.LngLat();
+  console.log(mapCreate.setType);
   mapCreate.setType('g');
-
-  var map = new sMap.Map('container', {
+  var map = new SMap.Map('container', {
     resizeEnable: true,
     zoom:11,
     center: [116.397428, 39.90923]
 
   });
-
-
-</script>
-
-<script>
-  // 在这里写你的代码
+  SMap.Map();
 </script>
 
 

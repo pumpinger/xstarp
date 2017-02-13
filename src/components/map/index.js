@@ -4,7 +4,7 @@
 
 var GMap = require('./gmap/index.js');
 
-var SMap = {};
+var SMap = GMap;
 
 function mapCreate(type) {
   if (type == 'a') {
@@ -13,17 +13,25 @@ function mapCreate(type) {
     return GMap;
   }
 }
+
 mapCreate.setType = function(type) {
+  console.log("type is:", type);
   if( type == 'a') {
+    console.log('AMap');
     SMap = AMap;
   } else {
+    console.log('123');
+    console.log(GMap);
+    console.log('old SMap is',SMap);
     SMap = GMap;
+    console.log('new SMap is',SMap);
   }
 };
 
-SMap = AMap;
+
+window.mapCreate = mapCreate;
+
+window.SMap = SMap;
 
 
-
-
-module.exports = window.SMap = SMap;
+module.exports = SMap;
