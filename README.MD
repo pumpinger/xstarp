@@ -32,9 +32,11 @@ $ npm run build
 $ npm run docs
 ```
 线上访问：http://localhost:6000/modeleName [端口号不定，运行命令后控制台将显示]
+
 对应的实际上访问的是：modeleName.md这个文件
 
 - **写文档**
+
 在dosc里面写相应组件的文档，文件名为<code>[moduleName].md</code>
 
 ## 工程化思路
