@@ -8,8 +8,23 @@
  * @lat {Number} lat
  * */
 var LngLat = function(lng, lat) {
-  this.lat = lat;
-  this.lng = lng;
+  if(arguments.length < 2) {
+
+    if(Object.prototype.toString.call(lng) == '[object Array]'){
+      console.log("array lnglat");
+      this.lng = lng[0];
+      this.lat = lng[1];
+    } else {
+      this.lng = lng.lng;
+      this.lat = lng.lat;
+    }
+
+  } else {
+    this.lng = lng;
+    this.lat = lat;
+  }
+
+  this._inner = new google.maps.LatLng({lng:this.lng, lat:this.lat});
 };
 
 LngLat.prototype = {
@@ -27,19 +42,19 @@ LngLat.prototype = {
   },
 
   getLng: function() {
-
+    return this.lng;
   },
 
   getLat: function() {
-
+    return this.lat;
   },
 
-  equals: function() {
+  equals: function(lngLat) {
 
   },
 
   toString: function() {
-
+    return this._inner.toString();
   }
 };
 

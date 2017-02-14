@@ -6,24 +6,27 @@
 
 /**
  * @constructor Map
+ * @elem {Object}
+ * @opts {Object}
  * */
 var Map = function(id,opts) {
-  console.log("Map running");
-  var elem, newOpts;
 
+  var elem, newOpts;
   elem = document.getElementById(id);
   newOpts = formatOpts(opts);
 
-  console.log(google.maps.Map);
-  return map = new google.maps.Map(elem, newOpts);
+  return new google.maps.Map(elem, newOpts);
 };
 
 function formatOpts(opts) {
   if(opts.center) {
-    // opts.center = new GMap.LngLat(opts.center);
-    opts.center = {lat: opts.center[1], lng: opts.center[0]};
+    if(Object.prototype.toString.call(opts.center) == '[object Array]') {
+      opts.center = {lng: opts.center[0], lat: opts.center[1]};
+    }
+    opts.center = new GMap.LngLat(opts.center.lng, opts.center.lat);
   }
-  console.log(opts);
+  console.log(opts.center);
+  return opts;
 }
 
 module.exports = Map;
