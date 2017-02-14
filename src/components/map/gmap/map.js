@@ -30,6 +30,3 @@ function formatOpts(opts) {
 }
 
 module.exports = Map;
-
-
-
