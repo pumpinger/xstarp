@@ -33,12 +33,12 @@ module.exports = {
     // ],
 		loaders: [
 			{
-				test: /\.scss$/,
+				test: /\.css$/,
 				// loader: extractCSS.extract(['css','sass'])
 				loaders: ['style', 'css']
 			},
 			{
-				test: /\.css$/,
+				test: /\.scss$/,
 				// loader: extractCSS.extract(['css'])
 				loaders: ['style', 'css', 'sass']
 			},
