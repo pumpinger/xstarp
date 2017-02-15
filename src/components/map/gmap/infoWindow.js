@@ -1,14 +1,15 @@
 /**
  * Created by fizz on 2017/2/14.
  */
-var onOff = require('./event');
+var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
 
 /**
- * @constructor InfoWindow
+ * @constructor
  * @opts {Object} opts
  * */
-var InfoWindow = function(opts) {
+function InfoWindow(opts) {
+  console.log(formatOpts);
   var fmOpts = formatOpts.infoWindow(opts);
   this._inner = new google.maps.InfoWindow(fmOpts);
 };

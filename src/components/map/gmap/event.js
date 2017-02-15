@@ -3,8 +3,8 @@
  */
 var event = {};
 
-event.on = function(eventName, handler, context) {};
-event.off = function(eventName, handler, context) {};
+// event.on = function(eventName, handler, context) {};
+// event.off = function(eventName, handler, context) {};
 
 event.addDomListener = function(instance, eventName, handler, context) {
   var listener = {};
