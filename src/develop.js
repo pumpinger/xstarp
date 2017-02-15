@@ -14,3 +14,6 @@ require('./components/datepicker/jquery.daterangepicker');
 require('./components/popup/popup');
 
 require('./components/map/index.js');
+
+// require('./styles/index.scss');
+
