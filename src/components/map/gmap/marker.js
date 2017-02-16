@@ -2,30 +2,40 @@
  * Created by fizz on 2017/2/13.
  */
 
-var event = require('./event');
 var onOff = require('./onOff');
-
+var formatOpts = require('./formatOpt');
 /**
- * @constructor Marker
- * @opts {Object} opts
+ * @constructor
+ * @param {Object} opts
  * @return an object, inner is prime google map Marker instance.
  * */
-var Marker = function(opts) {
-  var newOpts = formatOpts(opts);
+function Marker(opts) {
+  var newOpts = formatOpts.marker(opts);
   this._inner = new google.maps.Marker(newOpts);
   return this;
-};
+}
 
-Marker.prototype = {
+var MarkerPrototype = {
+  wrap: function(marker) {
+    var tempMarker = {};
+    tempMarker._inner = marker;
+    tempMarker.prototype = MarkerPrototype;
+    return tempMarker;
+  },
   on: onOff.on,
   off: onOff.off
 };
 
-function formatOpts(opts) {
-  // opts.position = new GMap.LngLat(opts.position);
-  opts.position = {lat: opts.position[1], lng: opts.position[0]};
-  return opts;
-}
+Marker.prototype = {
+  wrap: function(marker) {
+    var tempMarker = {};
+    tempMarker._inner = marker;
+    tempMarker.prototype = Marker.prototype;
+    return tempMarker;
+  },
+  on: onOff.on,
+  off: onOff.off
+};
 
 module.exports = Marker;
 
