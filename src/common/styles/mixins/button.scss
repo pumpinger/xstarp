@@ -1,0 +1,13 @@
+$color: #ff111d;
+@import "../variable";
+
+.x-button {display: inline-block;background-color: $baseColorMain;color:set-notification-text-color($baseColorMain);border-radius: 5px;cursor: pointer;padding: 5px 10px;font-size:$baseFontSize;}
+.x-button:hover{background-color:darken($baseColorMain,10%)}
+.x-button-large {padding: 8px 16px;font-size:16px;}
+.x-button-small {padding: 2px 4px;font-size:$baseFontSize;}
+
+
+@each $key, $value in $colors {
+  .x-button-#{$key} {background-color:$value;color:set-notification-text-color($value);}
+  .x-button-#{$key}:hover{background-color:darken($value,20%);background: url("../../../asset/")}
+}
