@@ -1,14 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <title>xstrap-webpack-xstrap webpack</title>
   <meta name="description" content="xstrap webpack">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="vendor/themes/style.css">
   <link rel="stylesheet" href="/vendor/themes/vue.css">
   <link rel="stylesheet" href="dist/xstarp.css">
+
 </head>
 <body>
+
+<nav class="navBar">
+  <ul>
+    <li><a href="#/">首页</a></li>
+    <li>
+      <a>样式</a>
+      <ul>
+        <li><a href="#/doc/common/button">按钮</a></li>
+        <li><a href="">贴士</a></li>
+        <li><a href="">提示</a></li>
+        <li><a href="">表单元素</a></li>
+        <li><a href="">分页</a></li>
+        <li><a href="">进度条</a></li>
+      </ul>
+    </li>
+    <li>
+      <a>结构</a>
+      <ul>
+        <li><a href="">栅栏</a></li>
+        <li><a href="">导航</a></li>
+        <li><a href="">标签页</a></li>
+        <li><a href="">面板</a></li>
+      </ul>
+    </li>
+    <li>
+      <a>插件</a>
+      <ul>
+        <li><a href="">图片</a></li>
+        <li><a href="">树</a></li>
+        <li><a href="">弹窗</a></li>
+        <li><a href="">表格</a></li>
+        <li><a href="">文件上传</a></li>
+      </ul>
+    </li>
+    <li>
+      <a>函数</a>
+      <ul>
+        <li><a href="">格式化</a></li>
+        <li><a href="">获取时间</a></li>
+        <li><a href="">表单验证</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a>封装</a>
+      <ul class="navBar-second">
+        <li><a href="">地图</a></li>
+        <li><a href="">图标</a></li>
+        <li><a href="">Ajax操作</a></li>
+        <li><a href="">图表</a></li>
+        <li><a href="">时间选择器</a></li>
+      </ul>
+    </li>
+  </ul>
+
+</nav>
   <div id="app"></div>
   <script src="dist/vendor/moment.js"></script>
   <script src="dist/vendor/jquery.js"></script>
@@ -18,7 +76,7 @@
 <script src="vendor/markrun.min.js"></script>
 <script>
 	window.$docsify = {
-		markdown: function (marked) {
+      markdown: function (marked) {
 			markrun.setOptions({
 				template: '',
 				markdownParser: marked,
@@ -43,17 +101,21 @@
 							code: ''
 						}
 					}
-				}
-			})
+				},
+
+
+			});
 			return markrun
-		}
-	}
+		},
+//		loadNavbar:true
+	};
+
+
 </script>
-<script
-  src="/vendor/docsify.js"
-  data-router
-  data-load-sidebar="_sidebar.md"
-  ata-repo=""
-  data-name="xstrap-webpack">
-</script>
+
+
+
+<script src="/vendor/docsify.js" data-router ata-repo="" data-name="xstrap-webpack"></script>
+
+
 </html>
