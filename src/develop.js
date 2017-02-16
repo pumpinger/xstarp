@@ -7,11 +7,11 @@ if(module.hot) {
   module.hot.accept();
 }
 
-require('./components/demo/demo');
-
+// require('./components/demo/demo');
+//
 require('./components/datepicker/jquery.daterangepicker');
-
-require('./components/popup/popup');
+//
+// require('./components/popup/popup');
 
 // require('./components/map/index.js');
 
