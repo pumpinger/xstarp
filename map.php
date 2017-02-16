@@ -115,7 +115,7 @@ include "layout_header.php";
                    <div class="x-tab-content" style="position: relative">
                        <div id="container1"></div>
                        <span class="polyCircle x-button x-button-small x-button-cadetblue">画圆</span>
-                       <span class="drawMarker x-button x-button-small x-button-cadetblue">画点</span>
+                       <span class="drawMarker x-button x-button-small x-button-cadetblue">画点和点聚合</span>
                        <span class="polyLine x-button x-button-small x-button-cadetblue">画线</span>
                        <span class="polygon x-button x-button-small x-button-cadetblue">画多边形</span>
                        <div class="search"><input type="text" class="searchTxt"  placeholder="请输入关键字"><span class="searchBtn x-button x-button-small x-button-cadetblue">搜索</span></div>
@@ -148,6 +148,24 @@ include "layout_header.php";
 
                                var content ='这是一个信息窗口';
                                var infoWindow = myMap1.infoWindow(content);//窗口
+
+                               var marker1 =  myMap1.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+                                   content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+                               });
+                               var markers = [marker,marker1];
+                               //添加点聚合
+                               var stsUser = [{
+                                   url: 'http://a.amap.com/lbs/static/img/2.png',
+                                   size: new AMap.Size(32, 32),
+                                   offset: new AMap.Pixel(-16, -30),
+                                   imageOffset: new AMap.Pixel(0, 0),
+                                   textColor: "#fff",
+                                   textSize: 18
+                               }];
+                               console.log(myMap1);
+                               var cluster = myMap1.cluster(stsUser,markers);
+
+
 
                            });
                            $(".polyLine").click(function(){
@@ -537,6 +555,14 @@ include "layout_header.php";
                 <td> myMap.marker(lngLat,'img',-15,-22,{content:''})</td>
             </tr>
             <tr>
+                <td>cluster(sts,markers)</td>
+                <td>点标记聚合对象</td>
+                <td>1、sts:配置属性,2、markers:marker点对象数组</td>
+                <td>初始化marker点聚合的方法</td>
+                <td>XMapSdk</td>
+                <td> myMap.cluster(sts,markers)</td>
+            </tr>
+            <tr>
                 <td>circle(lngLat,radius,opt)</td>
                 <td>圆对象</td>
                 <td>1、lngLat:圆心坐标,2、String:圆半径 单位：米，3、object：圆属性配置</td>
@@ -858,6 +884,24 @@ include "layout_footer.php";
 
         var content ='这是一个信息窗口';
         var infoWindow = myMap1.infoWindow(content);//窗口
+
+        var marker1 =  myMap1.marker(lngLat,'__PUBLIC__/images/marker_icon1.png',-15,-22,{
+            content:'<div class="marker"><img src="img/marker_icon1.png"></div>'
+        });
+        var markers = [marker,marker1];
+        //添加点聚合
+        var stsUser = [{
+            url: 'http://a.amap.com/lbs/static/img/2.png',
+            size: new AMap.Size(32, 32),
+            offset: new AMap.Pixel(-16, -30),
+            imageOffset: new AMap.Pixel(0, 0),
+            textColor: "#fff",
+            textSize: 18
+        }];
+        console.log(myMap1);
+        var cluster = myMap1.cluster(stsUser,markers);
+
+
 
     });
     $(".polyLine").click(function(){
