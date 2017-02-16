@@ -13,10 +13,14 @@ var formatOpts = require('./formatOpt');
  * @return an object, inner is prime google map Circle instance.
  * */
 function Circle(opts) {
+
   var newOpts = formatOpts.circle(opts);
   this._inner = new google.maps.Circle(newOpts);
+
+  this._type = 'Circle';
+
   return this;
-};
+}
 
 Circle.prototype = {
 

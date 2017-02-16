@@ -9,8 +9,8 @@ var formatOpts = require('./formatOpt');
  * @opts {Object} opts
  * */
 function InfoWindow(opts) {
-  console.log(formatOpts);
   var fmOpts = formatOpts.infoWindow(opts);
+  this._type = 'InfoWindow';
   this._inner = new google.maps.InfoWindow(fmOpts);
 };
 
@@ -24,7 +24,7 @@ InfoWindow.prototype = {
     if(pos) {
       this._inner.setPosition(pos);
     }
-    this._inner.open(map);
+    this._inner.open(map._inner);
     this._isOpen = true;
   },
 

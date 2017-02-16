@@ -29,22 +29,7 @@ module.exports = {
     return formatOptsUni(opts);
   },
 
-  markerClusterer: function(map, markers, opts) {
-    var newOpts = {};
-
-    if(map._inner) {
-      newOpts.map = map._inner;
-    } else {
-      newOpts.map = map;
-    }
-
-    newOpts.markers = markers.map( function(item) {
-      return item._inner;
-    });
-    newOpts.opts = opts;
-
-    return newOpts;
-  }
+  markerClusterer: formatMarkerClusterer
 };
 
 function formatOptsUni(opts) {
@@ -74,6 +59,50 @@ function transfromPathToPaths(path) {
 
 function arrCreateLngLat(arr) {
   return new google.maps.LatLng({lng: arr[0], lat: arr[1]});
+}
+
+
+/**************************************************
+ * markerClusterer
+ * ***********************************************/
+function formatMarkerClusterer(map, markers, opts) {
+  var newOpts = {};
+
+  if(map._inner) {
+    newOpts.map = map._inner;
+  } else {
+    newOpts.map = map;
+  }
+
+  newOpts.markers = markers.map( function(item) {
+    return item._inner;
+  });
+
+  newOpts.opts = formatMarkerClustererOpts(opts);
+
+  return newOpts;
+}
+
+/**
+ * @param {Object} opts
+ * @diff : minClusterSize : minimumClusterSize
+ * */
+function formatMarkerClustererOpts(opts) {
+  if(opts.minClusterSize) {
+    opts.minimumClusterSize = opts.minClusterSize;
+  }
+
+  if(opts.styles) {
+
+    if(opts.styles) {
+      var styles = opts.styles;
+      if(styles.size) {
+        styles.width = styles.getWidth();
+        styles.height = styles.getHeight();
+      }
+    }
+
+  }
 }
 
 

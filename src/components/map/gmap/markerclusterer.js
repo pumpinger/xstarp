@@ -10,17 +10,18 @@ var formatOpts = require('./formatOpt');
  * @marker {Marker}
  * @opts {MarkerClustererOptions}
  * */
-function MarkerClusterer(map, markers, opts) {
+function Clusterer(map, markers, opts) {
+  if(markers.length < 1) return;
 
-  console.log("map is:", map);
   var newOpts = formatOpts.markerClusterer(map, markers, opts);
 
   this._inner = new MarkerClusterer(newOpts.map, newOpts.markers, newOpts.opts);
 
+  this._type = 'MarkerClusterer';
   return this;
 }
 
-MarkerClusterer.prototype = {
+Clusterer.prototype = {
   getSize: function() {},
 
   setMap: function(map) {
@@ -29,18 +30,17 @@ MarkerClusterer.prototype = {
 
   getMap: function() {
     return this._inner.getMap();
+  },
+
+  addMarker: function() {},
+  removeMarker: function() {},
+
+  /**
+   * @param {Array} styles
+   * */
+  setStyles: function(styles) {
+
   }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-module.exports = MarkerClusterer;
+module.exports = Clusterer;

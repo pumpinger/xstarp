@@ -15,8 +15,9 @@ var formatOpts = require('./formatOpt');
 function Polygon(opts) {
   var newOpts = formatOpts.polygon(opts);
   this._inner = new google.maps.Polygon(newOpts);
+  this._type = 'Polygon';
   return this;
-};
+}
 
 Polygon.prototype = {
 

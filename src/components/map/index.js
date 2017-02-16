@@ -27,6 +27,7 @@ mapCreate.setType = function(type) {
 };
 
 SMap = AMap;
+
 window.SMap = SMap;
 
 module.exports = SMap;

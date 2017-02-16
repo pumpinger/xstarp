@@ -33,8 +33,7 @@ Map.prototype = {
   },
 
   getBounds: function() {
-    console.log(this._inner.getBounds());
-    return this._inner.getBounds()
+    return new Bounds('','',this._inner.getBounds());
   }
 };
 
@@ -45,7 +44,6 @@ function formatOpts(opts) {
     }
     opts.center = new GMap.LngLat(opts.center.lng, opts.center.lat);
   }
-  console.log(opts.center);
   return opts;
 }
 

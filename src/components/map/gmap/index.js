@@ -18,6 +18,7 @@ var MarkerClusterer = require('./markerclusterer');
 var GMap = {};
 
 GMap.event = event;
+
 GMap.LngLat = LngLat;
 GMap.Bounds = Bounds;
 GMap.Pixel = Pixel;

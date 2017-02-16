@@ -12,6 +12,8 @@ var formatOpts = require('./formatOpt');
 function Marker(opts) {
   var newOpts = formatOpts.marker(opts);
   this._inner = new google.maps.Marker(newOpts);
+
+  this._type = 'Marker';
   return this;
 }
 

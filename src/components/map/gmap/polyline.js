@@ -15,6 +15,7 @@ var formatOpts = require('./formatOpt');
 function Polyline(opts) {
   var newOpts = formatOpts.polyline(opts);
   this._inner = new google.maps.Polyline(newOpts);
+  this._type = 'Polyline';
   return this;
 };
 
