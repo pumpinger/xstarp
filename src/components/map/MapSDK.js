@@ -354,6 +354,42 @@
             this.setMap(el);
             return el;
         },
+        cluster:function(sts,markers){
+            var cluster;
+            var mapObj = this.mapObj;
+            mapObj.plugin(["AMap.MarkerClusterer"], function () {
+                cluster = new AMap.MarkerClusterer(mapObj, markers, {
+                    styles: sts,
+                    zoomOnClick: false
+                });
+            });
+        },
+        calculateCenter:function (lnglatarr) {
+            //获取多边形中间位置
+            var total = lnglatarr.length;
+            var X = 0, Y = 0, Z = 0;
+            $.each(lnglatarr, function (index, lnglat) {
+                //            console.log(lnglat);
+                var lng = lnglat[0] * Math.PI / 180;
+                var lat = lnglat[1] * Math.PI / 180;
+                var x, y, z;
+                x = Math.cos(lat) * Math.cos(lng);
+                y = Math.cos(lat) * Math.sin(lng);
+                z = Math.sin(lat);
+                X += x;
+                Y += y;
+                Z += z;
+            });
+            X = X / total;
+            Y = Y / total;
+            Z = Z / total;
+
+            var Lng = Math.atan2(Y, X);
+            var Hyp = Math.sqrt(X * X + Y * Y);
+            var Lat = Math.atan2(Z, Hyp);
+
+            return new AMap.LngLat(Lng * 180 / Math.PI, Lat * 180 / Math.PI);
+        },
         on:function (){
 
             this.addListener(arguments);

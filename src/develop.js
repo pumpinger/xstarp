@@ -15,5 +15,5 @@ require('./components/datepicker/jquery.daterangepicker');
 
 // require('./components/map/index.js');
 
-require('./styles/index.scss');
+require('./common/styles/index.scss');
 
