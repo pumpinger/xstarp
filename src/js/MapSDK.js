@@ -66,7 +66,6 @@
             this.mapObj.clearMap();
         },
         destroy:function (){
-
             this.mapObj.destroy();
         },
         setFitView:function (){
@@ -94,6 +93,7 @@
             return new AMap.Size(w,h);
         },
         marker:function (lnglatXY,img,x,y,opt){
+            console.log('00000sssfdsf');
             var defaultOpt={
                 map:this.mapObj,
                 position: lnglatXY,
@@ -354,6 +354,18 @@
             this.setMap(el);
             return el;
         },
+        //聚合   传入样式和需要聚合的markers点数组
+        cluster:function(sts,markers){
+            var   cluster;
+            var mapObj  = this.mapObj;
+            this.mapObj.plugin(["AMap.MarkerClusterer"], function() {
+                cluster = new AMap.MarkerClusterer(mapObj, markers, {
+                    styles: sts
+                });
+            });
+            return cluster;
+        },
+       
         on:function (){
 
             this.addListener(arguments);
