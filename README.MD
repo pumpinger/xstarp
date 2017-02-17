@@ -5,7 +5,7 @@ xstrap webpack 模块化版本
 ```bash
 $ npm install 
 $ npm i webpack -g
-$ npm i docify-cli -g
+$ npm i docsify-cli -g
 
 // 如果node-sass没有安装成功则运行下面这个命令
 $ cnpm install --save-dev node-sass
