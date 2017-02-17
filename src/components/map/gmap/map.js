@@ -6,6 +6,8 @@
 
 var config = require('../config');
 var Bounds = require('./Bounds');
+var onOff = require('./onOff');
+var formatOpts = require('./formatOpt');
 
 /**
  * @constructor
@@ -16,12 +18,12 @@ function Map(id,opts) {
   var elem, newOpts;
 
   elem = document.getElementById(id);
-  newOpts = formatOpts(opts);
+  newOpts = formatOpts.map(opts);
 
   this._inner = new google.maps.Map(elem, newOpts);
 
   return this;
-};
+}
 
 Map.prototype = {
   plugin : function (name, fn) {
@@ -32,19 +34,16 @@ Map.prototype = {
     }
   },
 
+  clearMap: function() {
+    this._inner.clearMap();
+  },
+
   getBounds: function() {
     return new Bounds('','',this._inner.getBounds());
-  }
-};
+  },
 
-function formatOpts(opts) {
-  if(opts.center) {
-    if(Object.prototype.toString.call(opts.center) == '[object Array]') {
-      opts.center = {lng: opts.center[0], lat: opts.center[1]};
-    }
-    opts.center = new GMap.LngLat(opts.center.lng, opts.center.lat);
-  }
-  return opts;
-}
+  on: onOff.on,
+  off: onOff.off
+};
 
 module.exports = Map;

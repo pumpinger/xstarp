@@ -42,6 +42,10 @@ function formatOptsUni(opts) {
     opts.path = transfromPathToPaths(opts.path);
   }
 
+  if(opts.center) {
+    opts.center = new LngLat(opts.center);
+  }
+
   if(opts.map) {
     opts.map = opts.map._inner;
   }

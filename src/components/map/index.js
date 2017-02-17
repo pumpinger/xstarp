@@ -3,6 +3,7 @@
  */
 
 var GMap = require('./gmap/index.js');
+var util = require('../../common/js/util.js');
 
 var SMap = {};
 
@@ -25,7 +26,11 @@ mapCreate.setType = function(type) {
   }
 };
 
-SMap = AMap;
+if(util.isExitsVariable(AMap)) {
+  SMap = AMap;
+} else {
+  SMap = window.GMap;
+}
 
 window.SMap = SMap;
 

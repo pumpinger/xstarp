@@ -9,5 +9,17 @@ module.exports = {
 
   isString: function(item) {
     return typeof item === 'string';
+  },
+
+  isExitsVariable: function(variable) {
+    try {
+      if(typeof(variable) === 'undefined') {
+        return false;
+      } else {
+        return true;
+      }
+    } catch(err) {
+      console.log(err);
+    }
   }
 };
