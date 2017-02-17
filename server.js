@@ -69,10 +69,10 @@ app.get('/custom', function(req, res){
 	res.redirect('./server/custom.html');
 });
 
-app.get('/ejs', function(req, res){
-    res.render('index', {
+app.get('/ejs/:html', function(req, res){
+    res.render(req.params.html, {
         // PLACEHOLDER
-        pageTitle: 'EJS Demo'
+        pageTitle: req.params.html
     });
 });
 
