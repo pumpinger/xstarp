@@ -5,4 +5,4 @@
  */
 
 
-
+require('./common/styles/index.scss');
