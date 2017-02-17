@@ -116,15 +116,15 @@
   circle.setMap(map);
 
   var sts = [{
-    url: "http://a.amap.com/lbs/static/img/1102-1.png",
+    url: "http://localhost://test/map/images/m2.png",
     size: new SMap.Size(32, 32),
     offset: new SMap.Pixel(-16, -30)
   }, {
-    url: "http://a.amap.com/lbs/static/img/2.png",
+    url: "http://localhost://test/map/images/m2.png",
     size: new SMap.Size(32, 32),
     offset: new SMap.Pixel(-16, -30)
   }, {
-    url: "http://lbs.amap.com/wp-content/uploads/2014/06/3.png",
+    url: 'http://localhost://test/map/images/m2.png',
     size: new SMap.Size(48, 48),
     offset: new SMap.Pixel(-24, -45),
     textColor: '#CC0066'
@@ -153,7 +153,7 @@
     console.log("hello");
 
     cluster = new SMap.MarkerClusterer(map, markers, {
-      imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+//      imagePath: 'http://localhost://test/map/images/m',
       styles: sts
     });
 

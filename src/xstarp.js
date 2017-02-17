@@ -4,5 +4,6 @@
  * @output prod entry.
  */
 
+require('');
 
 
