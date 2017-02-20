@@ -4,6 +4,7 @@
 var event = {};
 
 event.map = require('./eventMap');
+event.getSMapEvent = require('./SMapEvent');
 
 event.addDomListener = function(instance, eventName, handler, context) {
   var listener = {};
@@ -26,10 +27,12 @@ event.addListener = function(instance, eventName, handler, context) {
 
   if(context) {
     listener = google.maps.event.addListener(realInstance, relevantEvent, function(e) {
-      handler.call(context, e);
+      handler.call(context, event.getSMapEvent(e));
     });
   } else {
-    listener = google.maps.event.addListener(realInstance, relevantEvent, handler);
+    listener = google.maps.event.addListener(realInstance, relevantEvent, function(e) {
+      handler(event.getSMapEvent(e));
+    });
   }
   return listener;
 };
@@ -71,6 +74,9 @@ event.getRelevantEvent = function(instance, eventName) {
   } else {
     return eventName;
   }
+};
+
+event.getSMapEventObject = function(e) {
 
 };
 
