@@ -18,8 +18,6 @@ var onOff = {};
 onOff.on = function(eventName, handler, context) {
   var listener, eventListener;
 
-  console.log("this is: ---->", this);
-
   listener = event.addListener(this, eventName, handler, context);
 
   eventListener = {

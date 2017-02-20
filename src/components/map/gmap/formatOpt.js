@@ -5,29 +5,17 @@
 var LngLat = require('./lnglat');
 
 module.exports = {
-  map: function(opts) {
-    return formatOptsUni(opts);
-  },
+  map: formatOptsUni,
 
-  infoWindow: function (opts) {
-    return formatOptsUni(opts);
-  },
+  infoWindow: formatOptsUni,
 
-  marker: function (opts) {
-    return formatOptsUni(opts);
-  },
+  marker: formatOptsUni,
 
-  polyline: function (opts) {
-    return formatOptsUni(opts);
-  },
+  polyline: formatOptsUni,
 
-  polygon: function (opts) {
-    return formatOptsUni(opts);
-  },
+  polygon: formatOptsUni,
 
-  circle: function(opts) {
-    return formatOptsUni(opts);
-  },
+  circle: formatOptsUni,
 
   markerClusterer: formatMarkerClusterer
 };

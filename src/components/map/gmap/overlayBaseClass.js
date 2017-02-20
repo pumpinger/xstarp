@@ -18,11 +18,11 @@ module.exports = {
   },
 
   hide: function() {
-    this._inner.setVisiable(false);
+    this._inner.setVisible(false);
   },
 
   show: function() {
-    this._inner.setVisiable(true);
+    this._inner.setVisible(true);
   },
 
   addOverlay: function(opts, self) {

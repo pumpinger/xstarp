@@ -67,7 +67,7 @@ Map.prototype = {
 
 function mapPlugin(plugins, fn) {
   plugins.forEach( function(plugin) {
-    if(plugin === 'AMap.MarkerClusterer') {
+    if(plugin === SMap.plugin.MarkerClusterer) {
       $.getScript(config.GMap_MarkerClusterer, function() {
         fn();
       });

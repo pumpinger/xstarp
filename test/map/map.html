@@ -43,9 +43,28 @@
     center: [116.397428, 39.90923]
   });
 
-  map.on('mouseover', function(e) {
-  	console.log('鼠标进入');
-  });
+  map.on('mouseover', oh);
+  function oh(e) {
+  	console.log(e);
+  	console.log(e.latLng.lng());
+  	console.log(e.latLng.lat());
+    console.log('鼠标进入');
+  }
+
+//  amap = new AMap.Map('container', {
+//    resizeEnable: true,
+//    zoom:11,
+//    center: [116.397428, 39.90923]
+//  });
+//
+//  amap.on('mouseover', function(e) {
+//    console.log(e);
+//    console.log(e.lnglat.getLng());
+//    console.log(e.lnglat.getLat());
+//    console.log('鼠标进入');
+//  });
+
+//  map.off('mouseover',oh);
 
   var marker = new SMap.Marker({
   	map: map,

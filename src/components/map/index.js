@@ -24,6 +24,14 @@ mapCreate.setType = function(type) {
   } else {
     window.SMap = window.GMap;
   }
+  window.SMap.sPlugin = {
+    MouseTool: 'AMap.MouseTool',
+    CircleEditor: 'AMap.CircleEditor',
+    PolyEditor: 'AMap.PolyEditor',
+    Hotspot: 'AMap.Hotspot',
+    MarkerClusterer:'AMap.MarkerClusterer',
+    RangingTool: 'AMap.RangingTool'
+  };
 };
 
 if(typeof AMap === 'undefined') {
