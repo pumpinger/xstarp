@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A jQuery plugin that enables HTML5 placeholder behavior for browsers that aren’t trying hard enough
+        yet</title>
+    <style>
+        input, textarea {
+            display: block;
+            color: #EA4335;
+        }
+
+        .my-placeholder {
+            color: #4285F4;
+        }
+
+        a {
+            color: #FDDD81;
+        }
+
+        a {
+            color: #34A853;
+        }
+    </style>
+
+    <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+    <script src="./jquery.placeholder.js"></script>
+</head>
+<body>
+<div>
+    <a href="https://github.com/mathiasbynens/jquery-placeholder">github项目地址</a>
+</div>
+<div>
+    <span>color</span>
+    <span>#FDDD81</span>
+</div>
+<form action="">
+    <input type="text" placeholder="狼人杀12人局" value="这ie有毒">
+    <input type="text" placeholder="预言家" value="">
+    <input type="text" placeholder="女巫" value="">
+    <input type="text" placeholder="猎人" value="">
+    <input type="text" placeholder="守卫" value="">
+    <input type="text" placeholder="白狼王" value="">
+    <input type="text" placeholder="狼人x3" value="">
+    <input type="text" placeholder="村民x4" value="">
+</form>
+<script>
+    console.log('ppp');
+    $(document).ready(function () {
+        $('input, textarea').placeholder({customClass: 'my-placeholder'});
+    });
+</script>
+</body>
+</html>
