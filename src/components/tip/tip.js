@@ -16,8 +16,9 @@ $.fn.extend({
 
         self.on("mouseenter",function(){
             $("body").append( htmlDom );
+            var left = self.offset().left;
             var top = self.offset().top - htmlDom.outerHeight() - parseInt(htmlDom.find(".x-tip-cor").css("border-width"));
-            htmlDom.css({"left":0,"top":top - 10,"display":"block"});
+            htmlDom.css({"left":left,"top":top - 10,"display":"block"});
             htmlDom.stop().animate({ "top" : top ,"opacity" : 1},300);
         });
         $('body').on("mouseleave",'.x-tip-dialog',function(){
