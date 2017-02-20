@@ -17,6 +17,7 @@ var formatOpts = require('./formatOpt');
 function Map(id,opts) {
   var elem, newOpts;
 
+  this._type = 'Map';
   elem = document.getElementById(id);
   newOpts = formatOpts.map(opts);
 
@@ -34,13 +35,7 @@ function Map(id,opts) {
 
 Map.prototype = {
 
-  plugin : function (name, fn) {
-    if(name[0] === 'SMap.MarkerClusterer') {
-      $.getScript(config.GMap_MarkerClusterer, function() {
-        fn();
-      });
-    }
-  },
+  plugin : mapPlugin,
 
   clearMap: clearMap,
 
@@ -69,6 +64,20 @@ Map.prototype = {
   on: onOff.on,
   off: onOff.off
 };
+
+function mapPlugin(plugins, fn) {
+  plugins.forEach( function(plugin) {
+    if(plugin === 'AMap.MarkerClusterer') {
+      $.getScript(config.GMap_MarkerClusterer, function() {
+        fn();
+      });
+    }
+
+    if(plugin === 'AMap.') {
+
+    }
+  })
+}
 
 function clearMap() {
   var overLayers = this._overLayers;

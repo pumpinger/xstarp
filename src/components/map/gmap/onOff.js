@@ -2,12 +2,23 @@
  * Created by fizz on 2017/2/14.
  */
 
-var event = require('./event')
+var event = require('./event');
 
 var onOff = {};
 
+
+/**
+ *
+ * @param {String} eventName
+ * @param {Function} handler
+ * @param {Object} context
+ *
+ *
+ * */
 onOff.on = function(eventName, handler, context) {
   var listener, eventListener;
+
+  console.log("this is: ---->", this);
 
   listener = event.addListener(this, eventName, handler, context);
 

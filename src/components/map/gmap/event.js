@@ -62,13 +62,16 @@ event.triggerListener = function(instance, eventName, extArgs) {
 };
 
 event.getRelevantEvent = function(instance, eventName) {
-  console.log(instance);
-  var e =  event.map[instance._type][eventName];
-  if(e) {
-    return e;
+  if(instance._type in event.map) {
+    if(eventName in event.map[instance._type]) {
+      return event.map[instance._type][eventName];
+    } else {
+      return eventName;
+    }
   } else {
     return eventName;
   }
+
 };
 
 module.exports = event;

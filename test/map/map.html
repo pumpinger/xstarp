@@ -43,6 +43,10 @@
     center: [116.397428, 39.90923]
   });
 
+  map.on('mouseover', function(e) {
+  	console.log('鼠标进入');
+  });
+
   var marker = new SMap.Marker({
   	map: map,
     position: [116.397428, 39.90923],
@@ -150,7 +154,7 @@
     markers.push(t);
   });
 
-  map.plugin(["SMap.MarkerClusterer"], function() {
+  map.plugin(["AMap.MarkerClusterer"], function() {
     console.log("hello");
 
     cluster = new SMap.MarkerClusterer(map, markers, {
