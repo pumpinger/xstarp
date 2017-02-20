@@ -1,10 +1,10 @@
 # chart
 
-### 规则
+> 规则
 1. 柱状图调用barChart函数、饼图调用cirChart函数、折线图调用linesChart函数
 2. 函数的参数options
 
-### 共有参数
+#### 共有参数
 
 | 共有参数 | 说明  | 默认值 |
 |----|:---:| --:|
@@ -18,9 +18,9 @@
 | legendArray | 图例数据数组  |  |
 | colorArray | 颜色数组  |  ||
 
-### 柱状图示例
+#### 柱状图示例
 ````html
- <div id="x-chart1" style="width:100%;height: 400px"></div>
+    <div id="x-chart1" style="width:100%;height: 400px"></div>
 ````
 ````js
 barChart({
@@ -29,7 +29,7 @@ barChart({
         xArray:['星期一星期', '星期二星期', '星期三星星期', '星期四星星期'],
         colorArray:['#3398DB','#61a0a8'],
         legendOrient:'horizontal',
-        legendArray:['利润','支出','收入'],
+        legendArray:['利润','支出'],
         textrotate:30,
         xTextStyle:{color: function (val) {
             if (val == '星期一星期') {
@@ -62,30 +62,41 @@ barChart({
 | fn| 点击柱子的执行方法 | {color:'',fontSize:''} |
 
 
-### 饼图示例
+#### 饼图示例
+
 ````html
-<div id="x-chart2" style="width:100%;height: 400px;"></div>
+    <div id="x-chart2" style="width:100%;height: 400px;"></div>
  ````
+ 
  ````js
- cirChart({
-         conId:'x-chart2',
-         title:'饼图',
-         seriesType:'pie',
-         legendArray:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎'],
-         dataArray:[
-             {value:335},
-             {value:310},
-             {value:234},
-             {value:135},
-             {value:1548}
-         ]
-     });
+console.log('cirChart');
+cirChart({
+     conId:'x-chart2',
+     title:'饼图',
+     seriesType:'pie',
+     legendArray:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎'],
+     dataArray:[
+         {value:335},
+         {value:310},
+         {value:234},
+         {value:135},
+         {value:1548}
+     ]
+ });
  ````
- ### 环形图示例
+ | 饼图属性 | 说明  | 示例 |
+ |----|:---:| --:|
+ | seriesLabel | 文字标签是否显示 |  |
+ | radius | 饼图大小 | 默认值为60%, 环形图的设置方法：['50%', '70%'] |
+ | dataArray | 数据数组 | dataArray:[ {value:335}, {value:310}, {value:234}, {value:135}, {value:1548} ] |
+ 
+ #### 环形图示例 
  ````html
- <div id="x-chart3" style="width:100%;height: 400px;"></div>
+ <div id="x-chart3" style="width: 100%;height: 400px"></div>
  ````
+
  ````js
+ console.log(123);
  cirChart({
           conId:'x-chart3',
           title:'环形图',
@@ -101,7 +112,11 @@ barChart({
           ]
       });
  ````
- ### 折线图示例
+ ````js
+ console.log('aaaaaaa');
+ 
+ ````
+ #### 折线图示例
  ````html
  <div id="x-chart4" style="width:100%;height: 400px;"></div>
  ````
