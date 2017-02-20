@@ -6,9 +6,11 @@ module.exports = {
   setMap: function(map) {
     if(map !== null) {
       this._inner._smap = map;
-      map._inner._overLayers[this._type].push(this);
+      map._overLayers[this._type].push(this);
+      this._inner.setMap(map._inner);
+    } else {
+      this._inner.setMap(null);
     }
-    this._inner.setMap(map._inner);
   },
 
   getMap: function() {
@@ -21,5 +23,11 @@ module.exports = {
 
   show: function() {
     this._inner.setVisiable(true);
+  },
+
+  addOverlay: function(opts, self) {
+    if('map' in opts) {
+      opts.map._overLayers[self._type].push(self);
+    }
   }
 };

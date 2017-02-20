@@ -13,12 +13,13 @@ var formatOpts = require('./formatOpt');
  * @return an object, inner is prime google map Polyline instance.
  * */
 function Polyline(opts) {
+  this._type = 'Polyline';
+  obc.addOverlay(opts, this);
+
   var newOpts = formatOpts.polyline(opts);
   this._inner = new google.maps.Polyline(newOpts);
-  this._inner._self = this;
-  this._type = 'Polyline';
-  return this;
-};
+  // this._inner._self = this;
+}
 
 Polyline.prototype = {
   setPath: function() {},

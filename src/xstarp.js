@@ -4,6 +4,5 @@
  * @output prod entry.
  */
 
-require('');
 
 

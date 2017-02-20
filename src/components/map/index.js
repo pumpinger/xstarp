@@ -26,10 +26,10 @@ mapCreate.setType = function(type) {
   }
 };
 
-if(util.isExitsVariable(AMap)) {
-  SMap = AMap;
-} else {
+if(typeof AMap === 'undefined') {
   SMap = window.GMap;
+} else {
+  SMap = AMap;
 }
 
 window.SMap = SMap;

@@ -5,7 +5,6 @@
 var obc = require('./overlayBaseClass');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
-var Map = require('./map');
 
 /**
  * Represents a Marker
@@ -16,20 +15,22 @@ var Map = require('./map');
  * */
 function Marker(opts, inner) {
 
+  this._type = 'Marker';
+
   if(inner) {
     this._inner = inner;
   } else {
+    // 在opts转换之前就要判断添加overlay
+    obc.addOverlay(opts, this);
+
     var newOpts = formatOpts.marker(opts);
     this._inner = new google.maps.Marker(newOpts);
   }
-
-
-
-  this._type = 'Marker';
 }
 
 Marker.prototype = {
-  setMap: obc.setMap,
+  // setMap: obc.setMap,
+  setMap: function() {},
   getMap: obc.getMap,
   hide: obc.hide,
   show: obc.show,

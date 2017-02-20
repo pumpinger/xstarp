@@ -23,17 +23,14 @@ function Map(id,opts) {
   this._inner = new google.maps.Map(elem, newOpts);
   this._inner._smap = this;
   this._overLayers = {
-    marker: [],
-    infoWindow: [],
-    polygon: [],
-    polyline: [],
+    MarkerClusterer: [],
+    Marker: [],
+    InfoWindow: [],
+    Polygon: [],
+    Polyline: [],
     Circle: []
   };
-
-  return this;
 }
-var c = new Map();
-c.cc = 11;
 
 Map.prototype = {
 
@@ -77,12 +74,34 @@ function clearMap() {
   var overLayers = this._overLayers;
 
   for(var type in overLayers) {
-    overLayers[type].forEach( function(item) {
-      item._inner.setMap(null);
-      item._inner = null;
-      item = null;
-    });
-    overLayers.lenght = 0;
+
+    switch (type) {
+      case 'Marker':
+      case 'Circle':
+      case 'Polygon':
+      case 'Polyline':
+      case 'InfoWindow':
+        if(overLayers[type].length > 0) {
+          overLayers[type].forEach( function(item) {
+            item._inner.setMap(null);
+            item._inner = null;
+            item = null;
+          });
+          overLayers.lenght = 0;
+        }
+        break;
+      case 'MarkerClusterer':
+        if(overLayers.MarkerClusterer.length > 0) {
+          overLayers.MarkerClusterer.forEach( function(item) {
+            item._inner.clearMarkers();
+            item._inner = null;
+            item = null;
+          });
+          overLayers.MarkerClusterer.length = 0;
+        }
+        break;
+    }
+
   }
 }
 

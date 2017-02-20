@@ -3,6 +3,7 @@
  */
 
 var formatOpts = require('./formatOpt');
+var obc = require('./overlayBaseClass')
 
 /**
  * @constructor
@@ -13,20 +14,18 @@ var formatOpts = require('./formatOpt');
 function Clusterer(map, markers, opts) {
   if(markers.length < 1) return;
 
-  var newOpts = formatOpts.markerClusterer(map, markers, opts);
-
-  this._inner = new MarkerClusterer(newOpts.map, newOpts.markers, newOpts.opts);
-
   this._type = 'MarkerClusterer';
-  return this;
+  obc.addOverlay({map: map}, this);
+
+  var newOpts = formatOpts.markerClusterer(map, markers, opts);
+  this._inner = new MarkerClusterer(newOpts.map, newOpts.markers, newOpts.opts);
+  this._inner._smap = map;
 }
 
 Clusterer.prototype = {
   getSize: function() {},
 
-  setMap: function(map) {
-    this._inner.setMap(map._inner);
-  },
+  setMap: obc.setMap,
 
   getMap: function() {
     return this._inner.getMap();
