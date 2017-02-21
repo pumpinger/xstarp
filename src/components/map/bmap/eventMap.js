@@ -9,8 +9,6 @@ module.exports = {
   },
 
   InfoWindow: {
-    change: 'content_changed',
-    open: 'domready',
-    chose: 'choseClick'
+
   }
 };
