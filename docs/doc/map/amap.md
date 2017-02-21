@@ -4,7 +4,7 @@
 ## mapObj
 > 说明  map对象
 ````html
-<div id="map"></div>
+<div id="map"> </div>
 ````
 ````js
    var myMap = XMapSdk(
