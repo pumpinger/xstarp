@@ -21,7 +21,6 @@ mapCreate.setType = function(type) {
   if( type == 'a') {
     window.SMap = AMap;
   } else {
-
     window.SMap = window.GMap;
   }
 };
