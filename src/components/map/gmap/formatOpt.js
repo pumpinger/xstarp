@@ -5,56 +5,33 @@
 var LngLat = require('./lnglat');
 
 module.exports = {
-  map: function(opts) {
-    return formatOptsUni(opts);
-  },
+  map: formatOptsUni,
 
-  infoWindow: function (opts) {
-    return formatOptsUni(opts);
-  },
+  infoWindow: formatOptsUni,
 
-  marker: function (opts) {
-    return formatOptsUni(opts);
-  },
+  marker: formatOptsUni,
 
-  polyline: function (opts) {
-    return formatOptsUni(opts);
-  },
+  polyline: formatOptsUni,
 
-  polygon: function (opts) {
-    return formatOptsUni(opts);
-  },
+  polygon: formatOptsUni,
 
-  circle: function(opts) {
-    return formatOptsUni(opts);
-  },
+  circle: formatOptsUni,
 
-  markerClusterer: function(map, markers, opts) {
-    var newOpts = {};
-
-    if(map._inner) {
-      newOpts.map = map._inner;
-    } else {
-      newOpts.map = map;
-    }
-
-    newOpts.markers = markers.map( function(item) {
-      return item._inner;
-    });
-    newOpts.opts = opts;
-
-    return newOpts;
-  }
+  markerClusterer: formatMarkerClusterer
 };
 
 function formatOptsUni(opts) {
 
-  if(opts.position) {
+  if('position' in opts) {
     opts.position = new LngLat(opts.position);
   }
 
   if(opts.path) {
     opts.path = transfromPathToPaths(opts.path);
+  }
+
+  if(opts.center) {
+    opts.center = new LngLat(opts.center);
   }
 
   if(opts.map) {
@@ -74,6 +51,50 @@ function transfromPathToPaths(path) {
 
 function arrCreateLngLat(arr) {
   return new google.maps.LatLng({lng: arr[0], lat: arr[1]});
+}
+
+
+/**************************************************
+ * markerClusterer
+ * ***********************************************/
+function formatMarkerClusterer(map, markers, opts) {
+  var newOpts = {};
+
+  if(map._inner) {
+    newOpts.map = map._inner;
+  } else {
+    newOpts.map = map;
+  }
+
+  newOpts.markers = markers.map( function(item) {
+    return item._inner;
+  });
+
+  newOpts.opts = formatMarkerClustererOpts(opts);
+
+  return newOpts;
+}
+
+/**
+ * @param {Object} opts
+ * @diff : minClusterSize : minimumClusterSize
+ * */
+function formatMarkerClustererOpts(opts) {
+  if(opts.minClusterSize) {
+    opts.minimumClusterSize = opts.minClusterSize;
+  }
+
+  if(opts.styles) {
+
+    if(opts.styles) {
+      var styles = opts.styles;
+      if(styles.size) {
+        styles.width = styles.getWidth();
+        styles.height = styles.getHeight();
+      }
+    }
+
+  }
 }
 
 

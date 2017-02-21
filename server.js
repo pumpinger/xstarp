@@ -41,7 +41,7 @@ app.use(hotMiddleware); // enable hot-reload
 var baseUrl = 'http://localhost:' + config.port;
 
 app.get('/', function(req, res){
-	res.redirect('./examples/index.html');
+	res.redirect('./test/examples/index.html');
 });
 
 app.get('/custom', function(req, res){

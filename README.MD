@@ -39,19 +39,16 @@ $ npm run docs
 
 在dosc里面写相应组件的文档，文件名为<code>[moduleName].md</code>
 
-## 工程化思路
-**features**
-- 模块化开发。和写nodejs一样写js。
-- 性能要好。模块那么多，需要按需打包
-- 组件化开发，一个组件的js、css、模版最好都在一个目录维护
-- sass写css
-- 压缩图片
-- 图片小于8K，base64引入（base64 支持IE8）；css sprite
-- autoprefix自动添加前缀解决兼容样式，postcss对css进行后处理
-- js、css、图片压缩
-- 自刷新 
-- 本地服务器？这个可以用 express 整一个
-- 部署？hash版本号。
+
+### 开发环境和生成环境
+
+**开发环境：**
+- 开发使用<code>npm run dev</code>
+- 开发环境不会生成实体文件
+
+**生产环境：**
+- 生产使用<code>npm run build</code>
+
 
 ### 目录结构 
 ```bash
@@ -82,6 +79,37 @@ $ npm run docs
 - dist是编译后的文件，压缩版； 
 - src是源码文件；
 - 压缩源（src）文件，生成压缩包到（dest），dest一般和src配对出现。
+
+## 功能点：
+
+- 模块化开发。和写nodejs一样写js。
+- 组件化开发，一个组件的js、css、模版最好都在一个目录维护
+- sass写css
+- 性能要好。模块那么多，需要按需打包。
+- 压缩图片
+- 图片小于8K，base64引入（base64 支持IE8）；css sprite
+- autoprefix自动添加前缀解决兼容样式，postcss对css进行后处理
+- js、css、图片压缩
+- 自刷新 
+- 本地服务器？这个可以用 express 整一个
+- 部署？hash版本号。
+
+
+## 工程化思路
+**features**
+- 模块化开发。和写nodejs一样写js。
+- 性能要好。模块那么多，需要按需打包
+- 组件化开发，一个组件的js、css、模版最好都在一个目录维护
+- sass写css
+- 压缩图片
+- 图片小于8K，base64引入（base64 支持IE8）；css sprite
+- autoprefix自动添加前缀解决兼容样式，postcss对css进行后处理
+- js、css、图片压缩
+- 自刷新 
+- 本地服务器？这个可以用 express 整一个
+- 部署？hash版本号。
+
+
 
 #### src目录详细
 
@@ -154,19 +182,19 @@ $ browser-sync start --server --files "**/*.css, **/*.html, **/*.js"
 - 减少冗余代码
 
 ## 参考文章
-[基于webpack搭建前端工程解决方案探索](https://github.com/chemdemo/chemdemo.github.io/issues/10)
-[webpack自动雪碧图生成 - 推酷](http://www.tuicool.com/articles/YZfeeu7)
-资源集合[前端构建工具 - SegmentFault](https://segmentfault.com/bookmark/1230000007618309)
-[Scrat - webapp模块化开发体系](http://scrat.io/#!/index)
-[base64图片在各种浏览器的兼容性处理 - 小化·较瘦 - 博客园  ](http://www.cnblogs.com/murphyzhou/p/base64-image-compatible.html)
-[fouber/blog: 没事写写文章，喜欢的话请点star，想订阅点watch，千万别fork！](https://github.com/fouber/blog)
-[webpack多页应用架构系列（四）：老式jQuery插件还不能丢，怎么兼容？ - 实用至上 SegmentFault  ](https://segmentfault.com/a/1190000006887523#articleHeader8)
-[webpack进阶教程（二）——webpack引入jquery多种方法探究](https://segmentfault.com/a/1190000007249293)
-[webpack在多页面中路径输出问题 - SegmentFault](https://segmentfault.com/q/1010000002607794)
-[webpack使用优化 | Web前端 腾讯AlloyTeam Blog | 愿景: 成为地球卓越的Web团队！](http://www.alloyteam.com/2016/01/webpack-use-optimization/)
+- [基于webpack搭建前端工程解决方案探索](https://github.com/chemdemo/chemdemo.github.io/issues/10)
+- [webpack自动雪碧图生成 - 推酷](http://www.tuicool.com/articles/YZfeeu7)
+- 资源集合[前端构建工具 - SegmentFault](https://segmentfault.com/bookmark/1230000007618309)
+- [Scrat - webapp模块化开发体系](http://scrat.io/#!/index)
+- [base64图片在各种浏览器的兼容性处理 - 小化·较瘦 - 博客园  ](http://www.cnblogs.com/murphyzhou/p/base64-image-compatible.html)
+- [fouber/blog: 没事写写文章，喜欢的话请点star，想订阅点watch，千万别fork！](https://github.com/fouber/blog)
+- [webpack多页应用架构系列（四）：老式jQuery插件还不能丢，怎么兼容？ - 实用至上 SegmentFault  ](https://segmentfault.com/a/1190000006887523#articleHeader8)
+- [webpack进阶教程（二）——webpack引入jquery多种方法探究](https://segmentfault.com/a/1190000007249293)
+- [webpack在多页面中路径输出问题 - SegmentFault](https://segmentfault.com/q/1010000002607794)
+- [webpack使用优化 | Web前端 腾讯AlloyTeam Blog | 愿景: 成为地球卓越的Web团队！](http://www.alloyteam.com/2016/01/webpack-use-optimization/)
 
 ## 用到的东西
-[webpack css 输出独立文件-插件](https://github.com/webpack/extract-text-webpack-plugin)
-[Webpack-前端资源模块化加载打包工具 - IT笔录](https://itbilu.com/nodejs/npm/Vy6BnJkY-.html)
+- [webpack css 输出独立文件-插件](https://github.com/webpack/extract-text-webpack-plugin)
+- [Webpack-前端资源模块化加载打包工具 - IT笔录](https://itbilu.com/nodejs/npm/Vy6BnJkY-.html)
 
 

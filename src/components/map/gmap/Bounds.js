@@ -10,14 +10,22 @@
  * @sw {LngLat} southWest
  * @ne {LngLat} northEast
  * */
-function Bounds(sw, ne) {
-  this._inner = new google.maps.LatLngBounds(sw, ne);
+function Bounds(sw, ne, inner) {
+
+  if(inner) {
+    this._inner = inner;
+  } else {
+    this._inner = new google.maps.LatLngBounds(sw, ne);
+  }
+
+  this._type = 'Bounds';
+
   return this;
 }
 
 Bounds.prototype = {
   /**
-   * @point {LngLat}
+   * @param {LngLat} point
    * */
   contains: function(point) {
     return this._inner.contains(point._inner);
@@ -36,13 +44,7 @@ Bounds.prototype = {
   toString: function() {
     console.log("toString");
     return this._inner.toString();
-  },
-  wrap: function(inner) {
-    var tempMarker = {};
-    tempMarker._inner = inner;
-    tempMarker.prototype = Bounds.prototype;
-    return tempMarker;
-  },
+  }
 };
 
 module.exports = Bounds;

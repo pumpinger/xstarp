@@ -6,6 +6,7 @@
 // var event = require('./event');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
+var obc = require('./overlayBaseClass');
 
 /**
  * @constructor
@@ -13,12 +14,16 @@ var formatOpts = require('./formatOpt');
  * @return an object, inner is prime google map Circle instance.
  * */
 function Circle(opts) {
+  this._type = 'Circle';
+  obc.addOverlay(opts, this);
+
   var newOpts = formatOpts.circle(opts);
   this._inner = new google.maps.Circle(newOpts);
-  return this;
-};
+}
 
 Circle.prototype = {
+
+  setMap: obc.setMap,
 
   setCenter: function(lnglat) {
 
@@ -48,17 +53,9 @@ Circle.prototype = {
 
   getArea: function() {},
 
-  hide: function() {
-    this._inner.setVisible(false);
-  },
+  hide: obc.hide,
 
-  show: function() {
-    this._inner.setVisible(true);
-  },
-
-  setMap: function(map) {
-    this._inner.setMap(map._inner);
-  },
+  show: obc.show,
 
   /**
    * @ext {any} extData

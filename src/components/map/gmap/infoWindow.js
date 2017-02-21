@@ -3,16 +3,19 @@
  */
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
+var obc = require('./overlayBaseClass');
 
 /**
  * @constructor
  * @opts {Object} opts
  * */
 function InfoWindow(opts) {
-  console.log(formatOpts);
+  this._type = 'InfoWindow';
+  obc.addOverlay(opts, this);
+
   var fmOpts = formatOpts.infoWindow(opts);
   this._inner = new google.maps.InfoWindow(fmOpts);
-};
+}
 
 InfoWindow.prototype = {
   /**
@@ -24,13 +27,21 @@ InfoWindow.prototype = {
     if(pos) {
       this._inner.setPosition(pos);
     }
-    this._inner.open(map);
+    this._inner.open(map._inner);
+    this._inner._smap = map;
+    map._overLayers.InfoWindow.push(this);
     this._isOpen = true;
   },
 
   close: function() {
     this._inner.close();
     this._isOpen = false;
+    var infoWindows = this._inner._smap._overLayers.InfoWindow;
+    infoWindows.filter( function(item, index) {
+      if(item == this) {
+        infoWindows.splice(index, 1);
+      }
+    });
   },
 
   getIsOpen: function() {

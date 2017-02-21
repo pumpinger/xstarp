@@ -3,7 +3,7 @@
  * @constructor Polyline
  */
 
-// var event = require('./event');
+var obc = require('./overlayBaseClass');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
 
@@ -13,10 +13,13 @@ var formatOpts = require('./formatOpt');
  * @return an object, inner is prime google map Polyline instance.
  * */
 function Polyline(opts) {
+  this._type = 'Polyline';
+  obc.addOverlay(opts, this);
+
   var newOpts = formatOpts.polyline(opts);
   this._inner = new google.maps.Polyline(newOpts);
-  return this;
-};
+  // this._inner._self = this;
+}
 
 Polyline.prototype = {
   setPath: function() {},
@@ -24,13 +27,12 @@ Polyline.prototype = {
   setOptions: function() {},
   getOptions: function() {},
   getLength: function() {},
-  getBounds: function() {},
-  hide: function() {},
-  show: function() {},
 
-  setMap: function(map) {
-    this._inner.setMap(map._inner);
-  },
+  getBounds: function() {},
+
+  hide: obc.hide,
+  show: obc.show,
+  setMap: obc.setMap,
 
   /**
    * @ext {any} extData

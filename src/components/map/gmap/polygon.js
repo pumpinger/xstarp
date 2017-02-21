@@ -6,6 +6,7 @@
 // var event = require('./event');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
+var obc = require('./overlayBaseClass');
 
 /**
  * @constructor
@@ -13,12 +14,17 @@ var formatOpts = require('./formatOpt');
  * @return an object, inner is prime google map Polygon instance.
  * */
 function Polygon(opts) {
+  this._type = 'Polygon';
+  obc.addOverlay(opts, this);
+
   var newOpts = formatOpts.polygon(opts);
   this._inner = new google.maps.Polygon(newOpts);
-  return this;
-};
+
+}
 
 Polygon.prototype = {
+
+  setMap: obc.setMap,
 
   /**
    * @param {path:Array LngLat | Array lngLat} path
@@ -38,15 +44,11 @@ Polygon.prototype = {
 
   getArea: function() {},
 
-  hide: function() {
-    this._inner.setVisible(false);
-  },
-  show: function() {
-    this._inner.setVisible(true);
-  },
-  setMap: function(map) {
-    this._inner.setMap(map._inner);
-  },
+  hide: obc.hide,
+
+  show: obc.show,
+
+
 
   /**
    * @param {any} ext extData
@@ -69,10 +71,6 @@ Polygon.prototype = {
 
   on: onOff.on,
   off: onOff.off
-};
-
-var PolygonEventMap = {
-
 };
 
 module.exports = Polygon;

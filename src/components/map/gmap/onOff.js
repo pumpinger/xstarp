@@ -2,18 +2,23 @@
  * Created by fizz on 2017/2/14.
  */
 
-var event = require('./event')
+var event = require('./event');
 
 var onOff = {};
 
+
+/**
+ *
+ * @param {String} eventName
+ * @param {Function} handler
+ * @param {Object} context
+ *
+ *
+ * */
 onOff.on = function(eventName, handler, context) {
-  console.log('调用了On方法');
-
-  console.log(this);
-
   var listener, eventListener;
 
-  listener = event.addListener(this._inner, eventName, handler, context);
+  listener = event.addListener(this, eventName, handler, context);
 
   eventListener = {
     eventName: eventName,
@@ -45,6 +50,7 @@ onOff.off = function(eventName, handler, context) {
       }
     })
   }
+
 
 };
 

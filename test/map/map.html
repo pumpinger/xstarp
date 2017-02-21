@@ -14,6 +14,7 @@
 <div>asdflkjg</div>
 <!--在这里写你的html-->
 <div id="container" class="map_container"></div>
+<button id="button">点这里点这里</button>
 
 <!--IE8下，使用填补器-->
 <!--[if lt IE 9]>
@@ -34,13 +35,46 @@
 <script src="http://localhost:9000/xstarp.js"></script>
 
 <script>
+
+
+  console.log(SMap);
   mapCreate.setType('g');
+
+  var tMap = mapCreate()
 
   var map = new SMap.Map('container', {
     resizeEnable: true,
     zoom:11,
     center: [116.397428, 39.90923]
   });
+
+  var $button = document.querySelector('#button');
+  SMap.event.addDomListener($button, 'click', function(e) {
+  	console.log(e);
+  });
+
+  map.on('mouseover', oh);
+  function oh(e) {
+  	console.log(e);
+    console.log(e.lnglat.getLng());
+    console.log(e.lnglat.getLat());
+    console.log('鼠标进入');
+  }
+
+//  amap = new AMap.Map('container', {
+//    resizeEnable: true,
+//    zoom:11,
+//    center: [116.397428, 39.90923]
+//  });
+//
+//  amap.on('mouseover', function(e) {
+//    console.log(e);
+//    console.log(e.lnglat.getLng());
+//    console.log(e.lnglat.getLat());
+//    console.log('鼠标进入');
+//  });
+
+//  map.off('mouseover',oh);
 
   var marker = new SMap.Marker({
   	map: map,
@@ -59,8 +93,6 @@
   	content: 'Hello SMap',
     position: [116.397428, 39.90923],
   });
-
-  console.log(iw);
 
 //  iw.open(map);
 
@@ -118,40 +150,61 @@
   circle.setMap(map);
 
   var sts = [{
-    url: "http://a.amap.com/lbs/static/img/1102-1.png",
+    url: "http://localhost://test/map/images/m2.png",
     size: new SMap.Size(32, 32),
     offset: new SMap.Pixel(-16, -30)
   }, {
-    url: "http://a.amap.com/lbs/static/img/2.png",
+    url: "http://localhost://test/map/images/m2.png",
     size: new SMap.Size(32, 32),
     offset: new SMap.Pixel(-16, -30)
   }, {
-    url: "http://lbs.amap.com/wp-content/uploads/2014/06/3.png",
+    url: 'http://localhost://test/map/images/m2.png',
     size: new SMap.Size(48, 48),
     offset: new SMap.Pixel(-24, -45),
     textColor: '#CC0066'
   }];
   var markers = [];
   var cluster;
-  map.plugin(["SMap.MarkerClusterer"], function() {
-    cluster = new SMap.MarkerClusterer(map, markers, {
-      styles: sts
+
+  var markerArr = [
+    [116.403322, 39.920255],
+    [116.410703, 39.897555],
+    [116.402292, 39.892353],
+    [116.389846, 39.891365]
+  ];
+
+  markerArr.forEach( function(item) {
+    var t = new SMap.Marker({
+      map: map,
+      position: item,
+      title: 'hello world'
     });
-    console.log("hello");
+
+    markers.push(t);
   });
 
+  map.plugin([SMap.sPlugin.MarkerClusterer], function() {
+    console.log("hello");
 
-  var stsUser = [{
-    url: imgUrl.clusterUserImg,
-    size: new AMap.Size(65, 65),
-    offset: new AMap.Pixel(-16, -30),
-    imageOffset: new AMap.Pixel(0, 0),
-    textColor: "#fff",
-    textSize: 18
-  }];
+    cluster = new SMap.MarkerClusterer(map, markers, {
+//      imagePath: 'http://localhost://test/map/images/m',
+      styles: sts
+    });
+    console.log('cluster is: ', cluster)
 
+  });
 
-  console.log('runing');
+  var bounds = new SMap.Bounds({lng:116.397428, lat: 39.90923})
+
+  console.log(bounds);
+
+  var mapBounds = map.getBounds();
+
+  console.log(mapBounds);
+
+  console.log(new AMap.Pixel(-16, -30));
+
+  console.log('google Pixel is: ',new google.maps.Point(10,20));
 
 </script>
 
