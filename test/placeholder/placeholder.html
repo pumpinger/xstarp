@@ -10,7 +10,7 @@
             color: #EA4335;
         }
 
-        .my-placeholder {
+        .xstrap-placeholder-for-ie {
             color: #4285F4;
         }
 
@@ -24,7 +24,7 @@
     </style>
 
     <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
-    <script src="./jquery.placeholder.js"></script>
+    <script src="../../src/components/placeholder/jquery.placeholder.js"></script>
 </head>
 <body>
 <div>
@@ -35,19 +35,18 @@
     <span>#FDDD81</span>
 </div>
 <form action="">
-    <input type="text" placeholder="狼人杀12人局" value="这ie有毒">
-    <input type="text" placeholder="预言家" value="">
-    <input type="text" placeholder="女巫" value="">
-    <input type="text" placeholder="猎人" value="">
-    <input type="text" placeholder="守卫" value="">
-    <input type="text" placeholder="白狼王" value="">
-    <input type="text" placeholder="狼人x3" value="">
-    <input type="text" placeholder="村民x4" value="">
+    <input type="text" class="a" placeholder="狼人杀12人局" value="这ie有毒">
+    <input type="text" class="b" placeholder="预言家" value="">
+    <input type="text" class="c" placeholder="女巫" value="">
+    <input type="text" class="d" placeholder="猎人" value="">
+    <input type="text" class="e" placeholder="守卫" value="">
+    <input type="text" class="f" placeholder="白狼王" value="">
+    <input type="text" class="g" placeholder="狼人x3" value="">
+    <input type="text" class="h" placeholder="村民x4" value="">
 </form>
 <script>
-    console.log('ppp');
     $(document).ready(function () {
-        $('input, textarea').placeholder({customClass: 'my-placeholder'});
+        $('input, textarea').placeholder({customClass: 'xstrap-placeholder-for-ie'});
     });
 </script>
 </body>
