@@ -1,10 +1,16 @@
 /**
  * Created by fizz on 2017/2/14.
  */
+
+var SMapEvent = require('./SMapEvent');
+
 var event = {};
 
 event.map = require('./eventMap');
-event.getSMapEvent = require('./SMapEvent');
+
+event.getSMapEvent = function(e) {
+  return new SMapEvent(e);
+};
 
 event.addDomListener = function(instance, eventName, handler, context) {
   var listener = {};
@@ -46,10 +52,12 @@ event.addListenerOnce = function(instance, eventName, handler, context) {
 
   if(context) {
     listener = google.maps.event.addListenerOnce(realInstance, relevantEvent, function (e) {
-      handler.call(context, e);
+      handler.call(context, event.getSMapEvent(e));
     });
   } else {
-    listener = google.maps.event.addListenerOnce(realInstance, relevantEvent, handler);
+    listener = google.maps.event.addListenerOnce(realInstance, relevantEvent, function(e) {
+      handler(event.getSMapEvent(e));
+    });
   }
   return listener;
 };

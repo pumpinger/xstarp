@@ -66,16 +66,17 @@ Map.prototype = {
 };
 
 function mapPlugin(plugins, fn) {
+  if(plugins.length < 1) return;
+
   plugins.forEach( function(plugin) {
-    if(plugin === SMap.plugin.MarkerClusterer) {
+
+    console.log(plugin);
+    if(plugin === 'GMap.MarkerClusterer') {
       $.getScript(config.GMap_MarkerClusterer, function() {
         fn();
       });
     }
 
-    if(plugin === 'AMap.') {
-
-    }
   })
 }
 
