@@ -16,6 +16,15 @@ var webpackHotMiddleware = require("webpack-hot-middleware");
 var app = express();
 var compiler = webpack(webpackConfig);
 
+// Using the .html extension instead of having to name the views as *.ejs
+app.engine('.html', require('ejs').__express);
+
+// This avoids having to provide the extension to res.render()
+app.set('view engine', 'html');
+
+// Set the folder where the pages are kept
+app.set('views', __dirname + '/test/_layout');
+
 var devMiddleware = webpackDevMiddleware(compiler, {
 	publicPath: webpackConfig.output.publicPath,
 	// noInfo:,
@@ -40,6 +49,18 @@ app.use(hotMiddleware); // enable hot-reload
 
 var baseUrl = 'http://localhost:' + config.port;
 
+var ejsRouter = express.Router();
+
+ejsRouter.get('/:html', function(req, res){
+    res.render(req.params.html, {
+        // PLACEHOLDER
+        pageTitle: req.params.html
+    });
+});
+
+app.use('/ejs/', ejsRouter);
+
+
 app.get('/', function(req, res){
 	res.redirect('./test/examples/index.html');
 });
@@ -47,6 +68,7 @@ app.get('/', function(req, res){
 app.get('/custom', function(req, res){
 	res.redirect('./server/custom.html');
 });
+
 
 // var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(express.static('./'));

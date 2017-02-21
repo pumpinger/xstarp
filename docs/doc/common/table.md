@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>表格</title>
-</head>
-<body>
-<div id="table">
-    <table class="x-table x-table-interval">
+# 表格
+
+
+
+````html
+<table class="x-table x-table-interval">
         <thead align="center">
         <tr>
             <th>ID</th>
@@ -25,8 +22,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <a class="x-button x-button-small x-button-cadetblue">Edit</a>
-                <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
+                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
+                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
             </td>
         </tr>
         <tr>
@@ -36,8 +33,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <a class="x-button x-button-small x-button-cadetblue">Edit</a>
-                <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
+                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
+                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
             </td>
         </tr>
         <tr>
@@ -47,8 +44,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <a class="x-button x-button-small x-button-cadetblue">Edit</a>
-                <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
+                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
+                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
             </td>
         </tr>
         </tbody>
@@ -74,8 +71,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <a class="x-button x-button-small x-button-cadetblue">Edit</a>
-                <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
+                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
+                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
             </td>
         </tr>
         <tr>
@@ -85,8 +82,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <a class="x-button x-button-small x-button-cadetblue">Edit</a>
-                <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
+                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
+                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
             </td>
         </tr>
         <tr>
@@ -96,27 +93,11 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <a class="x-button x-button-small x-button-cadetblue">Edit</a>
-                <a class="x-button x-button-small x-button-cadetblue">Cancel</a>
+                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
+                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
             </td>
         </tr>
         </tbody>
     </table>
-</div>
 
-
-<!--IE8下，使用填补器-->
-<!--[if lt IE 9]>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
-<![endif]-->
-<!--如果你用到了datepicker插件，则使用moment.js-->
-<script src="../../dist/vendor/moment.js"></script>
-<script src="../../dist/vendor/jquery.js"></script>
-<script src="http://localhost:9000/xstarp.js"></script>
-
-<script>
-    // 在这里写你的代码
-</script>
-</body>
-</html>
+````

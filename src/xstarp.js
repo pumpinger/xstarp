@@ -4,5 +4,9 @@
  * @output prod entry.
  */
 
+require('./common/styles/index.scss');
+require('./components/tip/tip.js');
+require('./components/tab/tab.js');
+require('./components/nav/nav.js');
 
 require('./common/styles/index.scss');
