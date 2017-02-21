@@ -3,7 +3,6 @@
  */
 //柱状图
 function barChart(options) {
-    console.log('barchart');
     var defaultOption={
         conId:'', //内容id
         title:'', //标题
@@ -93,7 +92,6 @@ function barChart(options) {
 
 //饼图
 function cirChart(options) {
-    console.log('cirChart');
     var defaultOption={
         conId:'', //内容id
         title:'', //标题
@@ -193,6 +191,7 @@ function linesChart(options) {
     for(var i=0;i<options.dataArray.length;i++){
         lineData.push({
             type:'line',
+            symbol:options.symbol,
             name:options.legendArray[i],
             data:options.dataArray[i].data
         })

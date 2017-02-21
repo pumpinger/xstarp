@@ -4,7 +4,7 @@
 1. 柱状图调用barChart函数、饼图调用cirChart函数、折线图调用linesChart函数
 2. 函数的参数options
 
-#### 共有参数
+### 共有参数
 
 | 共有参数 | 说明  | 默认值 |
 |----|:---:| --:|
@@ -18,7 +18,7 @@
 | legendArray | 图例数据数组  |  |
 | colorArray | 颜色数组  |  ||
 
-#### 柱状图示例
+### 柱状图示例
 ````html
     <div id="x-chart1" style="width:100%;height: 400px"></div>
 ````
@@ -61,15 +61,12 @@ barChart({
 | serTextPos| 柱子文本标签的显示位置 | 值分别有：top，left，right，bottom，inside，insideTop等等，默认insideTop |
 | fn| 点击柱子的执行方法 | {color:'',fontSize:''} |
 
-
-#### 饼图示例
+### 饼图示例
 
 ````html
     <div id="x-chart2" style="width:100%;height: 400px;"></div>
  ````
- 
- ````js
-console.log('cirChart');
+````js
 cirChart({
      conId:'x-chart2',
      title:'饼图',
@@ -84,19 +81,20 @@ cirChart({
      ]
  });
  ````
+ 
  | 饼图属性 | 说明  | 示例 |
  |----|:---:| --:|
  | seriesLabel | 文字标签是否显示 |  |
  | radius | 饼图大小 | 默认值为60%, 环形图的设置方法：['50%', '70%'] |
  | dataArray | 数据数组 | dataArray:[ {value:335}, {value:310}, {value:234}, {value:135}, {value:1548} ] |
  
- #### 环形图示例 
- ````html
+ ### 环形图示例 
+ 
+````html
  <div id="x-chart3" style="width: 100%;height: 400px"></div>
- ````
+````
 
- ````js
- console.log(123);
+````js
  cirChart({
           conId:'x-chart3',
           title:'环形图',
@@ -111,16 +109,14 @@ cirChart({
               {value:1548}
           ]
       });
- ````
- ````js
- console.log('aaaaaaa');
+````
+
+ ### 折线图示例
  
- ````
- #### 折线图示例
- ````html
+````html
  <div id="x-chart4" style="width:100%;height: 400px;"></div>
- ````
- ````js
+````
+````js
  linesChart({
          conId:'x-chart4',
          title:'折线图',
@@ -131,4 +127,8 @@ cirChart({
              {data:[1, -2, 2, 5, 3, 2, 0]}
          ]
      })
- ````
+````
+
+ |折线图属性 | 说明  | 示例 |
+ |----|:---:| --:|
+ | symbol | 标志图形类型 | 默认'circle'，不显示可设为'none',值分别有'emptyCircle' 'emptyRectangle''heart'（心形）、'droplet'（水滴）、'pin'（标注）、'arrow'（箭头）和'star'（五角星）等 |
