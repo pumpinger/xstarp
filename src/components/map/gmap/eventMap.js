@@ -12,11 +12,5 @@ module.exports = {
     change: 'content_changed',
     open: 'domready',
     chose: 'choseClick'
-  },
-
-
-
-
-
-
+  }
 };

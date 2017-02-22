@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config ./build/webpack.prod.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "docsify serve docs -p 6000",
+    "docs": "docsify serve docs -p 9100",
     "dev": "node server"
   },
   "repository": {

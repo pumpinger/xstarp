@@ -2,7 +2,7 @@
  * Created by fizz on 2017/2/13.
  */
 
-var util = require('../util')
+var util = require('../../../common/js/util');
 
 /**
  * @constructor

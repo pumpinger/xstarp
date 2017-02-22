@@ -10,10 +10,10 @@
  * @sw {LngLat} southWest
  * @ne {LngLat} northEast
  * */
-function Bounds(sw, ne, _inner) {
+function Bounds(sw, ne, inner) {
 
-  if(_inner) {
-    this._inner = _inner;
+  if(inner) {
+    this._inner = inner;
   } else {
     this._inner = new google.maps.LatLngBounds(sw, ne);
   }
