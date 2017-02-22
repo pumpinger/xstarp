@@ -1,5 +1,7 @@
 /**
  * Created by fizz on 2017/2/13.
+ * @constructor LngLat
+ * @attention 百度地图没有LngLat这个基础类，而是叫Point类。
  */
 
 var util = require('../../../common/js/util');
@@ -56,12 +58,11 @@ function LngLat(lng, lat, inner) {
       }
     }
 
-    this._inner = new google.maps.LatLng({lng:this.lng, lat:this.lat});
+    this._inner = new BMap.Point(this.lng, this.lat);
   }
 
   this._type = 'LngLat';
 
-  return this;
 }
 
 LngLat.prototype = {
@@ -86,8 +87,8 @@ LngLat.prototype = {
     return this.lat;
   },
 
-  equals: function(lngLat) {
-
+  equals: function(point) {
+    return this._inner.equals(point._inner);
   },
 
   toString: function() {

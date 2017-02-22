@@ -21,7 +21,7 @@ function Map(id,opts) {
   elem = document.getElementById(id);
   newOpts = formatOpts.map(opts);
 
-  this._inner = new google.maps.Map(elem, newOpts);
+  this._inner = new BMap.Map(elem, newOpts);
   this._inner._smap = this;
   this._overLayers = {
     MarkerClusterer: [],
@@ -46,9 +46,6 @@ Map.prototype = {
     this._inner.panTo(position._inner);
   },
 
-  destroy: function() {
-
-  },
 
   /**
    * @param {Number} zoom

@@ -1,9 +1,13 @@
 /**
  * Created by fizz on 2017/2/14.
+ * @constructor InfoWindow
+ *
+ * 高德有 change 事件，百度没有
  */
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
 var obc = require('./overlayBaseClass');
+var LngLat = require('./LngLat');
 
 /**
  * @constructor
@@ -13,8 +17,8 @@ function InfoWindow(opts) {
   this._type = 'InfoWindow';
   obc.addOverlay(opts, this);
 
-  var fmOpts = formatOpts.infoWindow(opts);
-  this._inner = new google.maps.InfoWindow(fmOpts);
+  var newOpts = formatOpts.infoWindow(opts);
+  this._inner = new BMap.InfoWindow(newOpts.content, newOpts);
 }
 
 InfoWindow.prototype = {
@@ -60,12 +64,13 @@ InfoWindow.prototype = {
     return this._inner.getContent();
   },
 
-  setPosition: function(lngLat) {
-    this._inner.setPosition(lngLat);
-  },
+  // TODO: 百度没有setPosition
+  // setPosition: function(lngLat) {
+  //   this._inner.setPosition(lngLat);
+  // },
 
   getPosition: function() {
-    return this._inner.getPosition();
+    return new LngLat('', '', this._inner.getPosition());
   },
 
   // todo: google 不支持

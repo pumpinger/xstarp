@@ -24,7 +24,7 @@ function Marker(opts, inner) {
     obc.addOverlay(opts, this);
 
     var newOpts = formatOpts.marker(opts);
-    this._inner = new google.maps.Marker(newOpts);
+    this._inner = new BMap.Marker(newOpts);
   }
 }
 

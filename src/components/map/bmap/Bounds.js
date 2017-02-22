@@ -5,6 +5,8 @@
  * https://developers.google.com/maps/documentation/javascript/3.exp/reference#LatLngBounds
  */
 
+var LngLat = require('./LngLat');
+
 /**
  * @constructor
  * @sw {LngLat} southWest
@@ -15,7 +17,7 @@ function Bounds(sw, ne, inner) {
   if(inner) {
     this._inner = inner;
   } else {
-    this._inner = new google.maps.LatLngBounds(sw, ne);
+    this._inner = new BMap.Bounds(sw, ne);
   }
 
   this._type = 'Bounds';
@@ -32,14 +34,14 @@ Bounds.prototype = {
   },
 
   getCenter: function() {
-    return LngLat.wrap(this._inner.getCenter());
+    return new LngLat('', '', this._inner.getCenter());
   },
 
   getSouthWest: function() {
-    return this._inner.getSouthWest();
+    return new LngLat('', '', this._inner.getSouthWest());
   },
   getNorthEast: function() {
-    return this._inner.getNorthEast();
+    return new LngLat('', '', this._inner.getNorthEast());
   },
   toString: function() {
     console.log("toString");
