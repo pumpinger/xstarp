@@ -4,5 +4,4 @@
  * @output prod entry.
  */
 
-
-
+require('./components/map/index');

@@ -5,6 +5,7 @@ const exec = require('child_process').exec();
 
 // multiple extract instances
 var extractCSS = new ExtractTextPlugin('[name].css');
+
 var extractLESS = new ExtractTextPlugin('[name].less');
 
 module.exports = {
