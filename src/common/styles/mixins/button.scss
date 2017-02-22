@@ -8,6 +8,6 @@ $color: #ff111d;
 
 
 @each $key, $value in $colors {
-  .x-button-#{$key} {background-color:$value;color:set-notification-text-color($value);}
+  .x-button-#{$key} {background-color:$value;}
   .x-button-#{$key}:hover{background-color:darken($value,20%);}
 }
