@@ -1,7 +1,7 @@
 # 格式化
 
 
-## 代码
+## 示例
 console.log(     xFormat.str2time('2016-06-06 11:11:11')   );
 
 console.log(     xFormat.str2time('2016-06-06')   );

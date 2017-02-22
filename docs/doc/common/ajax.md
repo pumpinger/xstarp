@@ -1,10 +1,5 @@
 # ajax封装
 
-## 规则:
-- (1)有 x-ajax-del ,这个class 的 元素会绑定事件,点击之后发去请求 data-url,且成功后会刷新 data-refresh 的dom,默认值是 .x-table
-- (2)有 x-ajax-op ,这个class 的 元素会绑定事件,点击之后发去请求 data-url
-
-
 ## 示例
 
 ````html
@@ -65,3 +60,7 @@
         });
     });
 ````
+
+## API
+- (1)有 x-ajax-del ,这个class 的 元素会绑定事件,点击之后发去请求 data-url,且成功后会刷新 data-refresh 的dom,默认值是 .x-table
+- (2)有 x-ajax-op ,这个class 的 元素会绑定事件,点击之后发去请求 data-url

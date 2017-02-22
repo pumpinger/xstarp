@@ -107,6 +107,8 @@ $({property: 0}).animate({property: 500}, {
 });
 ````
 
+
+## API reference
 ````html
 <table class="x-table x-table-interval">
     <thead>
