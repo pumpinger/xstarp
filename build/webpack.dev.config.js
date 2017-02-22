@@ -18,7 +18,6 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname,'../dist'),
-		// publicPath: path.resolve(__dirname,'../dist/'),
 		publicPath: publicPath,
 		filename: 'xstarp.js'
 	},
