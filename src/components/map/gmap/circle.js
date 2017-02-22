@@ -7,7 +7,7 @@
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
 var obc = require('./overlayBaseClass');
-var LngLat = require('./lnglat');
+var LngLat = require('./LngLat');
 
 /**
  * @constructor
