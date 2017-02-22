@@ -35,7 +35,7 @@ ol, ul {
 .x-button {
   display: inline-block;
   margin: 0 5px;
-  background-color: #3399CC;
+  background-color: #1AB394;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
@@ -43,7 +43,7 @@ ol, ul {
   font-size: 14px; }
 
 .x-button:hover {
-  background-color: #297aa3; }
+  background-color: #14866f; }
 
 .x-button-large {
   padding: 8px 16px;
@@ -179,7 +179,7 @@ ol, ul {
   vertical-align: top;
   float: right;
   border-right: 1px solid #666;
-  color: #3399CC; }
+  color: #1AB394; }
 
 .x-page-pages li, .x-page-pages select {
   float: left;
@@ -195,7 +195,7 @@ ol, ul {
 
 .x-page-pages .x-active, .x-page-pages li:hover {
   color: #fff;
-  background: #3399CC; }
+  background: #1AB394; }
 
 .x-table {
   width: 100%;
@@ -370,108 +370,43 @@ ol, ul {
 
 .x-icon-list li i, .x-icon-list li span {
   display: block; }
-.x-tip {
-  display: block;
-  position: relative;
-  padding: 10px;
-  margin: 10px 0;
-  background: #ccc;
-  cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; }
 
-.x-tip-dialog {
+.x-popMap {
   display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 8888;
+  margin-left: -400px;
+  margin-top: -250px; }
+
+.x-popMap-close {
+  margin-top: -15px;
+  margin-right: -15px;
+  right: 0;
+  width: 30px;
+  height: 30px;
   position: absolute;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
-  color: #fff;
-  z-index: 999; }
+  z-index: 10; }
 
-.x-tip-cor {
-  position: absolute;
-  left: 10%;
-  bottom: -20px;
-  border-width: 10px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.5) transparent transparent; }
-.x-tab-nav {
-  border-bottom: 1px solid #ddd; }
+.x-popMap-close img {
+  width: 30px;
+  height: 30px; }
 
-.x-tab-nav li {
-  display: inline-block;
-  margin-bottom: -1px;
-  cursor: pointer; }
-
-.x-tab-nav li a {
-  display: block;
-  padding: 5px 10px;
-  color: #333; }
-
-.x-tab-nav li.x-active a {
-  color: #026b9c;
-  background: #fff;
-  border-radius: 5px 5px 0 0;
-  border: 1px solid #ddd;
-  border-bottom-color: transparent; }
-
-.x-tab-contents {
-  padding: 10px;
-  border-bottom: 1px solid #ddd; }
-
-.x-tab-content {
-  display: none; }
-
-.x-tab-content.x-active {
-  display: block; }
-.x-nav {
-  position: relative;
-  background: #393D49;
-  color: #ccc;
-  overflow: hidden; }
-
-.x-nav-item {
-  float: left;
-  line-height: 60px;
-  margin-left: -3px; }
-
-.x-nav-item a {
-  display: block;
-  padding: 0 20px; }
-
-.x-nav-item a:hover {
-  background: #444957; }
-
-.x-nav-cross .x-nav-item.x-active {
-  background: #444957;
-  color: #fff; }
-
-.x-nav-sidebar {
-  width: 200px; }
-
-.x-nav-sidebar .x-nav-item {
-  display: block;
-  position: relative;
+.x-popMap-option {
   width: 100%;
-  line-height: 45px;
-  margin-left: 0; }
-
-.x-nav-sidebar .x-nav-item i {
-  float: right; }
-
-.x-nav-sidebar .x-nav-child {
-  width: 100%;
-  background: #2e313b; }
-
-.x-nav-sidebar .x-nav-child a {
+  position: relative;
   height: 40px;
-  line-height: 40px; }
+  background: #eee; }
 
-.x-nav-sidebar .x-nav-child a:hover {
-  color: #fff;
-  background: #575961; }
+.x-popMap-option span {
+  cursor: pointer;
+  position: absolute;
+  margin-top: 8px; }
 
-.x-nav-sidebar .x-nav-item a.x-cur {
-  background: #404452; }
+.x-popMap-option .x-popMap-ok {
+  cursor: pointer;
+  right: 100px; }
+
+.x-popMap-option .x-popMap-cancel {
+  right: 30px; }

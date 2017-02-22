@@ -21,5 +21,8 @@ require('./components/tab/tab.js');
 require('./components/form/form.js');
 require('./components/nav/nav.js');
 
+require('./components/map/amap/MapSDK.js');
+
+console.log(XMapSdk);
 
 

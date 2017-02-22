@@ -4,9 +4,8 @@
  * @output prod entry.
  */
 
-require('./common/styles/index.scss');
-require('./components/tip/tip.js');
-require('./components/tab/tab.js');
-require('./components/nav/nav.js');
 
+require('./components/map/amap/MapSDK.js');
+require('./components/upload/webuploader.js');
+require('./components/upload/upload.js');
 require('./common/styles/index.scss');
