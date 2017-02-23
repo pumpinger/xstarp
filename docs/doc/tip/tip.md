@@ -1,12 +1,24 @@
 # 贴士
 
 ````html
-<a class="x-tip" data-tips="这是提示内容" style="margin-top:80px;">点击显示提示信息</a>
+<div class="x-tip" id="x-tip">
+    <a class="x-tip-container" data-tips="这是提示内容" style="margin-top:80px;">点击显示提示信息</a>
+</div>
 
 ````
 
 ````js
 
-$(".x-tip").hoverTips();
+$("#x-tip").hoverTips();
 
+````
+
+````js
+var i = 1234;
+console.log(i);
+
+````
+
+````js
+console.log(i);
 ````

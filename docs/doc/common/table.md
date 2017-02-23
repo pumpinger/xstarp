@@ -22,8 +22,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
-                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
+                <div class="x-button x-button-mini">Edit</div>
+                <div class="x-button x-button-mini">Cancel</div>
             </td>
         </tr>
         <tr>
@@ -33,8 +33,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
-                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
+                <div class="x-button x-button-mini">Edit</div>
+                <div class="x-button x-button-mini">Cancel</div>
             </td>
         </tr>
         <tr>
@@ -44,8 +44,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
-                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
+                <div class="x-button x-button-mini">Edit</div>
+                <div class="x-button x-button-mini">Cancel</div>
             </td>
         </tr>
         </tbody>
@@ -71,8 +71,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
-                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
+                <div class="x-button x-button-mini">Edit</div>
+                <div class="x-button x-button-mini">Cancel</div>
             </td>
         </tr>
         <tr>
@@ -82,8 +82,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
-                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
+                <div class="x-button x-button-mini">Edit</div>
+                <div class="x-button x-button-mini">Cancel</div>
             </td>
         </tr>
         <tr>
@@ -93,8 +93,8 @@
             <td>2016-1-1</td>
             <td>China</td>
             <td>
-                <div class="x-button x-button-small x-button-cadetblue">Edit</div>
-                <div class="x-button x-button-small x-button-cadetblue">Cancel</div>
+                <div class="x-button x-button-mini">Edit</div>
+                <div class="x-button x-button-mini">Cancel</div>
             </td>
         </tr>
         </tbody>
