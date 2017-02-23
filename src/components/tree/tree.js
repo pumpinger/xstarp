@@ -750,7 +750,7 @@
     }
 
     function _selData(data, selected) {
-        var sel_ids = seleced.split(',');
+        var sel_ids = selected.split(',');
         for (var i = 0; i < sel_ids.length; i++) {
             for (var j = 0; j < data.length; j++) {
                 if (data[j].id === parseInt(sel_ids[i])) {
