@@ -1,7 +1,9 @@
 .idea/
 
-/dist/*
-/docs/dist/*
+dist/
+dist/*
+docs/dist/
+docs/dist/*
 
 # Logs
 logs
