@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config ./build/webpack.prod.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "docsify serve docs -p 9100",
+    "docs": "webpack --config ./build/webpack.docs.config.js & docsify serve docs -p 9100 & console.log('12345')",
     "dev": "node server"
   },
   "repository": {
@@ -22,6 +22,7 @@
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "browser-sync": "^2.18.6",
+    "copy-dir": "^0.3.0",
     "css-loader": "^0.26.1",
     "eslint": "^3.15.0",
     "eslint-config-standard": "^6.2.1",

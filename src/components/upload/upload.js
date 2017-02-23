@@ -84,7 +84,8 @@
 
     // WebUploader实例
         uploader;
-
+    console.log('222');
+    console.log(WebUploader);
     if ( !WebUploader.Uploader.support('flash') && WebUploader.browser.ie ) {
 
         // flash 安装了但是版本过低。

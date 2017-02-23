@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "D:\\phpStudy\\WWW\\TP0011\\xstarp\\xstarp\\dist";
+/******/ 	__webpack_require__.p = "D:\\phpStudy\\WWW\\TP0011\\xstarp\\xstarp\\docs\\dist";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("/**\r\n * Created by fizz on 2017/1/19.\r\n * package all the components.\r\n * @output prod entry.\r\n */\r\n\r\n\r\n__webpack_require__(1);\r\n__webpack_require__(2);\r\n__webpack_require__(4);\r\n__webpack_require__(5);\r\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMveHN0YXJwLmpzPzk1NDIiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7O0FBR0E7QUFDQTtBQUNBO0FBQ0EiLCJmaWxlIjoiMC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiBDcmVhdGVkIGJ5IGZpenogb24gMjAxNy8xLzE5LlxyXG4gKiBwYWNrYWdlIGFsbCB0aGUgY29tcG9uZW50cy5cclxuICogQG91dHB1dCBwcm9kIGVudHJ5LlxyXG4gKi9cclxuXHJcblxyXG5yZXF1aXJlKCcuL2NvbXBvbmVudHMvbWFwL2FtYXAvTWFwU0RLLmpzJyk7XHJcbnJlcXVpcmUoJy4vY29tcG9uZW50cy91cGxvYWQvd2VidXBsb2FkZXIuanMnKTtcclxucmVxdWlyZSgnLi9jb21wb25lbnRzL3VwbG9hZC91cGxvYWQuanMnKTtcclxucmVxdWlyZSgnLi9jb21tb24vc3R5bGVzL2luZGV4LnNjc3MnKTtcclxuXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zcmMveHN0YXJwLmpzXG4vLyBtb2R1bGUgaWQgPSAwXG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJzb3VyY2VSb290IjoiIn0=");
+	eval("/**\r\n * Created by fizz on 2017/1/19.\r\n * package all the components.\r\n * @output prod entry.\r\n */\r\n\r\n\r\n__webpack_require__(1);\r\n\r\n__webpack_require__(7);\r\n__webpack_require__(5);\r\n\r\nconsole.log(\r\n    WebUploader);\r\n\r\n\r\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMveHN0YXJwLmpzPzk1NDIiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7O0FBR0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBIiwiZmlsZSI6IjAuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQ3JlYXRlZCBieSBmaXp6IG9uIDIwMTcvMS8xOS5cclxuICogcGFja2FnZSBhbGwgdGhlIGNvbXBvbmVudHMuXHJcbiAqIEBvdXRwdXQgcHJvZCBlbnRyeS5cclxuICovXHJcblxyXG5cclxucmVxdWlyZSgnLi9jb21wb25lbnRzL21hcC9hbWFwL01hcFNESy5qcycpO1xyXG5cclxucmVxdWlyZSgnLi9jb21wb25lbnRzL3VwbG9hZC9pbmRleC5qcycpO1xyXG5yZXF1aXJlKCcuL2NvbW1vbi9zdHlsZXMvaW5kZXguc2NzcycpO1xyXG5cclxuY29uc29sZS5sb2coXHJcbiAgICBXZWJVcGxvYWRlcik7XHJcblxyXG5cclxuXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zcmMveHN0YXJwLmpzXG4vLyBtb2R1bGUgaWQgPSAwXG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJzb3VyY2VSb290IjoiIn0=");
 
 /***/ },
 /* 1 */
@@ -75,6 +75,13 @@
 /***/ function(module, exports) {
 
 	eval("// removed by extract-text-webpack-plugin//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29tbW9uL3N0eWxlcy9pbmRleC5zY3NzP2I5NWEiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEiLCJmaWxlIjoiNS5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIHJlbW92ZWQgYnkgZXh0cmFjdC10ZXh0LXdlYnBhY2stcGx1Z2luXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zcmMvY29tbW9uL3N0eWxlcy9pbmRleC5zY3NzXG4vLyBtb2R1bGUgaWQgPSA1XG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJzb3VyY2VSb290IjoiIn0=");
+
+/***/ },
+/* 6 */,
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("/**\r\n * Created by jesse on 2017/2/22.\r\n */\r\n\r\n__webpack_require__(4);\r\n__webpack_require__(2);//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29tcG9uZW50cy91cGxvYWQvaW5kZXguanM/ZTVkZSJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7O0FBRUE7QUFDQSIsImZpbGUiOiI3LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXHJcbiAqIENyZWF0ZWQgYnkgamVzc2Ugb24gMjAxNy8yLzIyLlxyXG4gKi9cclxuXHJcbnJlcXVpcmUoJy4vdXBsb2FkLmpzJyk7XHJcbnJlcXVpcmUoJy4vd2VidXBsb2FkZXIuanMnKTtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL3NyYy9jb21wb25lbnRzL3VwbG9hZC9pbmRleC5qc1xuLy8gbW9kdWxlIGlkID0gN1xuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwic291cmNlUm9vdCI6IiJ9");
 
 /***/ }
 /******/ ]);
