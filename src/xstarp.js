@@ -17,5 +17,4 @@ require('./components/validate/jquery.validate.js');
 require('./components/validate/validate.js');
 require('./components/placeholder/jquery.placeholder.js');
 require('./components/datepicker/jquery.daterangepicker');
-console.log("xstrap.js");
 
