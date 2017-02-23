@@ -7,12 +7,13 @@ var extractCSS = new ExtractTextPlugin('[name].css');
 var extractLESS = new ExtractTextPlugin('[name].less');
 
 module.exports = {
+	watch: true,
 	entry: {
 		xstarp: path.resolve(__dirname, '../src/xstarp.js')
 	},
 	output: {
-		path: path.resolve(__dirname,'../doc/dist'),
-		publicPath: path.resolve(__dirname,'../doc/dist/'),
+		path: path.resolve(__dirname,'../docs/dist'),
+		publicPath: path.resolve(__dirname,'../docs/dist/'),
 		filename: 'xstarp.js'
 	},
 	module: {
