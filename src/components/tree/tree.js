@@ -150,6 +150,7 @@
         end: function () {
             if (this._is_open) {
                 this.html.hide();
+                this.dom.find('input').val(this.getName());
                 var ids = this.getId();
 
                 this._is_open = false;
