@@ -18,7 +18,7 @@ function Polygon(opts) {
   obc.addOverlay(opts, this);
 
   var newOpts = formatOpts.polygon(opts);
-  this._inner = new google.maps.Polygon(newOpts);
+  this._inner = new BMap.Polygon(newOpts.path, newOpts);
 
 }
 

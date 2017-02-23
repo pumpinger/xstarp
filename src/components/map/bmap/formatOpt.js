@@ -2,9 +2,10 @@
  * Created by fizz on 2017/2/14.
  */
 
-var LngLat = require('./lnglat');
+var LngLat = require('./LngLat');
 
 module.exports = {
+
   map: formatOptsUni,
 
   infoWindow: formatOptsUni,
@@ -17,13 +18,15 @@ module.exports = {
 
   circle: formatOptsUni,
 
-  markerClusterer: formatMarkerClusterer
+  markerClusterer: formatMarkerClusterer,
+
+  path: canvertPath
 };
 
 function formatOptsUni(opts) {
 
   if('position' in opts) {
-    opts.position = new LngLat(opts.position);
+    opts.position = (new LngLat(opts.position))._inner;
   }
 
   if(opts.path) {
@@ -31,7 +34,7 @@ function formatOptsUni(opts) {
   }
 
   if(opts.center) {
-    opts.center = new LngLat(opts.center);
+    opts.center = (new LngLat(opts.center))._inner;
   }
 
   if(opts.map) {
@@ -50,7 +53,7 @@ function transfromPathToPaths(path) {
 }
 
 function arrCreateLngLat(arr) {
-  return new google.maps.LatLng({lng: arr[0], lat: arr[1]});
+  return new BMap.Point( parseFloat(arr[0]), parseFloat(arr[1]) );
 }
 
 
@@ -95,6 +98,11 @@ function formatMarkerClustererOpts(opts) {
     }
 
   }
+}
+
+function canvertPath(path) {
+  // TODO: 如何处理这个path还未定
+  return path;
 }
 
 

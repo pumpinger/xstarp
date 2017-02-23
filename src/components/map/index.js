@@ -3,10 +3,15 @@
  */
 
 var util = require('../../common/js/util.js');
-window.GMap = require('./gmap/index.js');
-window.DMap = require('./bmap/index');
+var GMap = require('./gmap/index.js');
+var DMap = require('./bmap/index.js');
+
+window.GMap = GMap;
+window.DMap = DMap;
 
 var SMap = {};
+
+console.log(123);
 
 window.mapCreate = mapCreate;
 
