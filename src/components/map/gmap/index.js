@@ -2,18 +2,18 @@
  * Created by fizz on 2017/2/13.
  */
 
-var LngLat = require('./lnglat');
+var LngLat = require('./LngLat');
 var Bounds = require('./Bounds');
 var Pixel = require('./Pixel');
 var Size = require('./Size');
-var Map = require('./map');
+var Map = require('./Map');
 var Marker = require('./Marker');
 var event = require('./event');
-var InfoWindow = require('./infoWindow');
-var Polyline = require('./polyline');
-var Polygon = require('./polygon');
-var Circle = require('./circle');
-var MarkerClusterer = require('./markerclusterer');
+var InfoWindow = require('./InfoWindow');
+var Polyline = require('./Polyline');
+var Polygon = require('./Polygon');
+var Circle = require('./Circle');
+var MarkerClusterer = require('./MarkerClusterer');
 
 var GMap = {};
 

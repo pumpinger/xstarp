@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const exec = require('child_process').exec();
 
 // multiple extract instances
 var extractCSS = new ExtractTextPlugin('[name].css');
@@ -55,8 +54,3 @@ module.exports = {
 	]
 };
 
-function copyDistToDocs() {
-	// windows 复制文件夹命令 xcopy . - bobWu 的 学习日记 - 博客频道 - CSDN.NET  http://blog.csdn.net/bobwu/article/details/6605248
-	var copyCmd = 'xcopy ';
-	exec();
-}

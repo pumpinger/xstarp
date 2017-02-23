@@ -80,11 +80,11 @@ LngLat.prototype = {
   },
 
   getLng: function() {
-    return this.lng;
+    return this._inner.lng;
   },
 
   getLat: function() {
-    return this.lat;
+    return this._inner.lat;
   },
 
   equals: function(point) {

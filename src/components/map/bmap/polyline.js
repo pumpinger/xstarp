@@ -6,6 +6,7 @@
 var obc = require('./overlayBaseClass');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
+var Bounds = require('./Bounds');
 
 /**
  * @constructor
@@ -17,18 +18,31 @@ function Polyline(opts) {
   obc.addOverlay(opts, this);
 
   var newOpts = formatOpts.polyline(opts);
-  this._inner = new google.maps.Polyline(newOpts);
+  this._inner = new BMap.Polyline(newOpts.path, newOpts);
   // this._inner._self = this;
 }
 
 Polyline.prototype = {
-  setPath: function() {},
-  getPath: function() {},
+
+  /**
+   * @param {Array} path
+   * */
+  setPath: function(path) {
+    this._inner.setPath(formatOpts.path(path));
+  },
+
+  getPath: function() {
+    return this._inner.getPath();
+  },
+
+  // TODO： 百度没有setOptions
   setOptions: function() {},
   getOptions: function() {},
   getLength: function() {},
 
-  getBounds: function() {},
+  getBounds: function() {
+    return new Bounds('', '', this._inner.getBounds());
+  },
 
   hide: obc.hide,
   show: obc.show,
