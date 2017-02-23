@@ -11,7 +11,7 @@ if(module.hot) {
 //
 require('./components/datepicker/jquery.daterangepicker');
 //
-// require('./components/popup/popup.js');
+require('./components/popup/popup.js');
 
 // require('./components/map/index.js');
 
