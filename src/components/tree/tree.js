@@ -611,7 +611,8 @@
                 this.html.css({
                     top: this.dom.outerHeight(),
                     left: 0,
-                    minWidth: this.opt.width ? this.opt.width : this.dom.outerWidth() * 0.98
+                    minWidth: 200
+                    // minWidth: this.opt.width ? this.opt.width : this.dom.outerWidth() * 0.98
                 });
 
                 this.html.addClass('xTreePanel');
