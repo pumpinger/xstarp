@@ -14,7 +14,9 @@ config.watch = true;
 config.output.path = path.resolve(__dirname,'../docs/dist');
 config.output.publicPath = path.resolve(__dirname,'../docs/dist/');
 
-copyDir.sync(from, to);
+copyDir(from, to, (err, res)=>{
+  if(err) console.log(err);
+});
 
 opn('http://localhost:9100');
 

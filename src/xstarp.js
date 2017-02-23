@@ -5,6 +5,5 @@
  */
 
 require('./components/map/index');
-// console.log(123);
 
 require('./components/datepicker/jquery.daterangepicker');
