@@ -45,13 +45,6 @@
 
 <script>
 
-  var xP8 = xProgress({
-    wrap: '.x-progress-upload',
-    pclass: 'x-progress-bar x-progress-yellow x-progress-striped x-progress-animated',
-    tclass: 'x-progress-text',
-    percentage:'0%',
-    onchange:function () {console.log('xP8',xP8.percentage);}
-  });
 
 
   var upload = xUpload({
@@ -81,7 +74,7 @@
     },
     progress:function(schedu){
       console.log('当前进度：',schedu);
-      xP8.percentage = schedu;
+
     }
   })
 </script>

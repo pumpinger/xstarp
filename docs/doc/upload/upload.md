@@ -25,9 +25,10 @@
                 </div>
             </div>
         </div>
+
 ````
 
-```js
+````js
 
 
    var xP8 = xProgress({
@@ -38,6 +39,7 @@
             onchange:function () {console.log('xP8',xP8.percentage);}
         });
 
+console.log("222");
 
  var upload = xUpload({
             dom: $(".x-uploader"),
@@ -70,7 +72,7 @@
             }
         })
 
-```
+````
 
 
 ## 多文件上传
