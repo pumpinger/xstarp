@@ -32,19 +32,22 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjPUco3l_6-f8ZexAesZrYFzpGtRQHvSo">
 </script>
 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h733PD7WQgKZYRotiD19oK0w0y6sz0QC"></script>
+
 <script src="http://localhost:9000/xstarp.js"></script>
 
 <script>
 
+  console.log(BMap);
 
   console.log(SMap);
   mapCreate.setType('g');
 
-  var tMap = mapCreate()
+  var tMap = mapCreate();
 
   var map = new SMap.Map('container', {
     resizeEnable: true,
-    zoom:11,
+    zoom: 11,
     center: [116.397428, 39.90923]
   });
 

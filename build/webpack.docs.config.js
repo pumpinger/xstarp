@@ -14,11 +14,11 @@ config.watch = true;
 config.output.path = path.resolve(__dirname,'../docs/dist');
 config.output.publicPath = path.resolve(__dirname,'../docs/dist/');
 
-copyDir.sync(from, to);
+copyDir(from, to, (err, res)=>{
+  if(err) console.log(err);
+});
 
 opn('http://localhost:9100');
-
-console.log(1234546);
 
 // config其实是我们docs修改过后的webpack config文件。
 // 其实webpack.config.js 导出的就是一个对象。用这个对象很容易进行修改，就像上面这样。

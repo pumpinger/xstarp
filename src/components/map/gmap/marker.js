@@ -29,8 +29,7 @@ function Marker(opts, inner) {
 }
 
 Marker.prototype = {
-  // setMap: obc.setMap,
-  setMap: function() {},
+  setMap: obc.setMap,
   getMap: obc.getMap,
   hide: obc.hide,
   show: obc.show,
