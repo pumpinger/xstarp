@@ -2,44 +2,36 @@
  * Created by fizz on 2017/2/14.
  */
 
-var LngLat = require('./lnglat');
+var LngLat = require('./LngLat');
 
 module.exports = {
-  map: function(opts) {
-    return formatOptsUni(opts);
-  },
+  map: formatOptsUni,
 
-  infoWindow: function (opts) {
-    return formatOptsUni(opts);
-  },
+  infoWindow: formatOptsUni,
 
-  marker: function (opts) {
-    return formatOptsUni(opts);
-  },
+  marker: formatOptsUni,
 
-  polyline: function (opts) {
-    return formatOptsUni(opts);
-  },
+  polyline: formatOptsUni,
 
-  polygon: function (opts) {
-    return formatOptsUni(opts);
-  },
+  polygon: formatOptsUni,
 
-  circle: function(opts) {
-    return formatOptsUni(opts);
-  },
+  circle: formatOptsUni,
 
   markerClusterer: formatMarkerClusterer
 };
 
 function formatOptsUni(opts) {
 
-  if(opts.position) {
+  if('position' in opts) {
     opts.position = new LngLat(opts.position);
   }
 
   if(opts.path) {
     opts.path = transfromPathToPaths(opts.path);
+  }
+
+  if(opts.center) {
+    opts.center = new LngLat(opts.center);
   }
 
   if(opts.map) {
