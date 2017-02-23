@@ -18,3 +18,8 @@ require('./components/validate/validate.js');
 require('./components/placeholder/jquery.placeholder.js');
 require('./components/datepicker/jquery.daterangepicker');
 
+require('./components/progress/progress.js');
+require('./components/map/index.js');
+require('./components/upload/index.js');
+
+

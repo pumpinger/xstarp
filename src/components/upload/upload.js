@@ -1,4 +1,6 @@
 
+var WebUploader = require('./webuploader.js');
+
 // 当domReady的时候开始初始化
 (function($) {
     var $wrap = $('.x-uploader'),
@@ -84,8 +86,6 @@
 
     // WebUploader实例
         uploader;
-    console.log('222');
-    console.log(WebUploader);
     if ( !WebUploader.Uploader.support('flash') && WebUploader.browser.ie ) {
 
         // flash 安装了但是版本过低。

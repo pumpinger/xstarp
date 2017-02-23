@@ -20,6 +20,7 @@ require('./components/tip/tip.js');
 require('./components/tab/tab.js');
 require('./components/form/form.js');
 require('./components/nav/nav.js');
-
+require('./components/progress/progress.js');
+require('./components/upload/index.js');
 
 
