@@ -492,6 +492,7 @@ ol, ul {
   border-radius: 20px;
   background-color: #fff;
   transition: .1s linear;
+  box-sizing: content-box;
   cursor: pointer; }
 
 .x-form-switch input[type='checkbox'] {
