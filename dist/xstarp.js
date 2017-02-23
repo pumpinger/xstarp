@@ -34,6 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "E:\\xbcx-work\\xstarp\\xstarp\\dist";
 /******/ 	__webpack_require__.p = "D:\\jcc\\xstarp\\dist";
 
 /******/ 	// Load entry module and return exports
