@@ -5,7 +5,7 @@
     以x-button-* 的形式命名
 ```
 
-### 主题
+## 主题
 
 ````html
 
@@ -15,7 +15,7 @@
 
 ````
 
-### 尺寸
+## 尺寸
 
 ````html
 <div class="x-button x-button-large">大号按钮</div>
@@ -23,6 +23,7 @@
     <div class="x-button x-button-small">小号按钮</div>
     <div class="x-button x-button-mini">迷你按钮</div>
 ````
+## 图标
 
 ````html
  <div class="x-button"><i class="iconfont icon-baobei"></i>带符号</div>

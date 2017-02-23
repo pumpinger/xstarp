@@ -10,7 +10,7 @@
 ````
 
 ````css
-    .pop-button span{display:inline-block;height:36px;line-height:36px;width:60px;text-align:center;border-radius:4px;color:#fff;background:#358ccb;cursor:pointer;}
+    .pop-button span{display:inline-block;height:36px;line-height:36px;width:60px;text-align:center;border-radius:4px;color:#fff;background:#1AB394;cursor:pointer;}
 ````
 
 ````js
