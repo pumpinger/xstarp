@@ -47,22 +47,18 @@
         sel_ids: '',
         onInit: function () {
         },
-        onOpen: function () {
-        }, //触发时
         onBeforeOpen: function () {
         },
-        onClose: function (has_chg) {
-            //has_chg  是否发生变化
+        onOpen: function () {
         },
-        onCheck: function (item, dom, childrenItem) {
-            //item 点击的item
-            //dom 点击的dom
-            //childrenItem  所有影响的子节点
+        onCheck: function () {
         },
-        onCancel: function (item, dom, childrenItem) {
+        onCancel: function () {
         },
-        onChange: function (item, dom, childrenItem) {
-        }
+        onChange: function () {
+        },
+        onClose: function () {
+        },
     };
 
 
@@ -75,8 +71,6 @@
          *     'end':this.end
          * };  //todo  这样会导致 this 没有 别的方法 到底 还是不能正常使用
          */
-
-
     };
 
 
@@ -113,7 +107,7 @@
             this.dom.css({'position': 'relative'});
             this.html = this._makePanel();
 
-            this.opt.onInit();
+            this.opt.onInit.apply(this);
 
             var that = this;
 
@@ -137,25 +131,27 @@
          *
          */
         start: function () {
-            this.opt.onBeforeOpen();
+            this.opt.onBeforeOpen.apply(this);
+
             this._showPanel();
             this._showData();
             this._expand();
             this._is_open = true;
 
             this.html.find('.x-tree-search').focus();
-            this.opt.onOpen();
+
+            this.opt.onOpen.apply(this);
             return this;
         },
         end: function () {
             if (this._is_open) {
                 this.html.hide();
-                this.dom.find('input').val(this.getName());
-                var ids = this.getId();
+
+                this.opt.onClose.apply(this);
+
+                this._originId = this.getId();
 
                 this._is_open = false;
-                this.opt.onClose(JSON.stringify(ids) !== JSON.stringify(this._originId));
-                this._originId = ids;
             }
         },
 
@@ -275,7 +271,7 @@
                 item.is_check = false;
             });
             this.html.find('input').prop("checked", false);
-            this.opt.onCancel();
+            this.opt.onCancel.apply(this);
         },
         checkItem: function (id, type) {
             var item = {};
@@ -296,7 +292,7 @@
                     item.is_check = true;
                 });
                 this.html.find('input').prop("checked", true);
-                this.opt.onCheck();
+                this.opt.onCheck.apply(this);
             }
         },
         getItem: function () {
@@ -403,12 +399,11 @@
 
 
             if (!item.is_check) {
-                this.opt.onCancel(item, dom, childItem);
+                this.opt.onCancel.apply(this);
             } else {
-                this.opt.onCheck(item, dom, childItem);
+                this.opt.onCheck.apply(this);
             }
-            this.opt.onChange();
-
+            this.opt.onChange.apply(this);
 
         },
         _getChild: function (node, cont) {
@@ -423,7 +418,6 @@
                     }
                 })
             }
-
         },
         _cancelParentNode: function (id) {
             var obj = this;
@@ -720,7 +714,6 @@
         dom.removeClass('icon-jian1');
         dom.addClass('icon-jia1');
     }
-
 
     function checkData(data) {
         for (var i in data) {
