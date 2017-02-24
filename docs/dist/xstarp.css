@@ -35,9 +35,9 @@ ol, ul {
 .x-button {
   display: inline-block;
   margin: 0 5px;
-  height: 36px;
-  line-height: 36px;
-  padding: 0 15px;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 10px;
   background-color: #1AB394;
   color: #fff;
   border-radius: 5px;
@@ -51,18 +51,12 @@ ol, ul {
   margin-right: 5px; }
 
 .x-button-large {
-  height: 44px;
-  line-height: 44px;
-  padding: 0 25px;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 15px;
   font-size: 16px; }
 
 .x-button-small {
-  height: 30px;
-  line-height: 30px;
-  padding: 0 10px;
-  font-size: 12px; }
-
-.x-button-mini {
   height: 22px;
   line-height: 22px;
   padding: 0 5px;
