@@ -23,7 +23,7 @@ app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
 
 // Set the folder where the pages are kept
-app.set('views', __dirname + '/test/_layout');
+app.set('views', __dirname + '/test');
 
 var devMiddleware = webpackDevMiddleware(compiler, {
 	publicPath: webpackConfig.output.publicPath,
@@ -51,14 +51,15 @@ var baseUrl = 'http://localhost:' + config.port;
 
 var ejsRouter = express.Router();
 
-ejsRouter.get('/:html', function(req, res){
-    res.render(req.params.html, {
+ejsRouter.get('/:test(/:html)', function(req, res){
+	var url = req.params.test + '/' + req.params.html;
+    res.render(url, {
         // PLACEHOLDER
         pageTitle: req.params.html
     });
 });
 
-app.use('/ejs/', ejsRouter);
+app.use('/test/', ejsRouter);
 
 
 app.get('/', function(req, res){
