@@ -28,7 +28,7 @@ module.exports = window.xPopUp = function(type,option,time) {
             title:'提示',
             content:'',
             btn:'',
-            isClose:true,
+            isClose:true, //是否关闭
             confirmfn:function(){},
             closefn:function(){}
         };
@@ -134,7 +134,7 @@ module.exports = window.xPopUp = function(type,option,time) {
 
         contentDom = $('<div><div class="x-pop-title">提示</div>'+
             '<div class="x-pop-content"></div>'+
-            '<div class="x-pop-button"><button class="x-button confirm">确定</button><button class="x-button cancel">取消</button></div></div>');
+            '<div class="x-pop-button"><button class="x-button x-confirm">确定</button><button class="x-button cancel">取消</button></div></div>');
         contentDom.appendTo(mainDom);
 
 
@@ -146,7 +146,7 @@ module.exports = window.xPopUp = function(type,option,time) {
 
         initPosition(mainDom);
 
-        pop_btn.find('.confirm').click(function(){
+        pop_btn.find('.x-confirm').click(function(){
             if(!option.isClose){
                 if(typeof option.confirmfn == 'function'){
                     option.confirmfn();
@@ -163,6 +163,7 @@ module.exports = window.xPopUp = function(type,option,time) {
         pop_btn.find('.cancel').click(function(){
             if(!option.isClose){
                 if(typeof option.closefn == 'function'){
+
                     option.closefn();
                     onClose();
                 }else{
