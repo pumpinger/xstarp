@@ -7,6 +7,7 @@ if(module.hot) {
   module.hot.accept();
 }
 
+require('./common/styles/index.scss');
 require('./fizz.js');
 require('./jcc.js');
 require('./duansijia.js');
