@@ -106,11 +106,25 @@
 
 ### 用法说明
 
+1、xPopUp方法来调用
+2、xPopUp共有三个参数，type、option、time
+
 | 参数 | 书名 | Cool  |
 | ------------- |:-------------:| -----:|
-| type      | 弹窗类型 | 'prompt','confirm','define' |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| type | 弹窗类型 | 'prompt','confirm','define' |
+| option | 弹窗属性 |  |
+| time | 弹窗自动关闭时间 |   ||
+
+
+| option属性| 类型 | 说明 | 示例 |
+| ------------- |:-------------:| -----:|
+| p_width | Number | 弹窗宽度 | |
+| p_height | Number | 弹窗高度 | |
+| title | String | 弹窗标题 | '提示' |
+| content | String | 弹窗内容 |  |
+| btn | Array | 弹窗按钮 | '确认' '取消' |
+| confirmfn | Function | 点击确定按钮后进行的操作 |  |
+| closefn | Function | 点击取消按钮后进行的操作 |  | |
 
 ````html
 ````
