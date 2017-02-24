@@ -1,7 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title><%= pageTitle %></title>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .map_container {
+      height:600px;
+    }
+  </style>
 </head>
 <body>
+<!--IE8下，使用填补器-->
+<!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+<![endif]-->
+<!--如果你用到了datepicker插件，则使用moment.js-->
+<script src="../../dist/vendor/moment.js"></script>
+<script src="../../dist/vendor/jquery.js"></script>
