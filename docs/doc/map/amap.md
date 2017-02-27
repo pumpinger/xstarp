@@ -297,7 +297,6 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
 
 ## 上大屏模式
 
->上大屏 插件  FullScreen
 
 ```html
 
