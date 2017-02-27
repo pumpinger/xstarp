@@ -16,6 +16,12 @@ Super Map 简称SMap。像使用高德地图一样使用Google地图、百度地
 - 每个构造函数生成的对象内部有一个属性 <code>_inner</code> 为实际的 Google Map （百度地图） 对应的API生成的 实例对象。 
 - 当get 特定的对象时，SMap会对return的内容进行对应的包装，成为外部可用的SMap的各个实例对象，以实现外部的正常使用。
 
+## 关于百度地图的事件绑定相关的问题
+
+百度地图关于事件绑定的API非常的简单，简单到只有只有两个方法：addEventListener和removeEventListener  
+查阅相关资料，只有一个EventWrapper lib里面有对应的相关描述。
+要实现高德地图里面的事件API，必须自己实现相应的事件。
+
 ## 当SMap的API不够用，必须要使用地图原生API的时候怎么办？
 
 - 每个SMap的类实例化之后都有一个_inner的属性，这个属性对应的就是高德/Google/百度地图的类的实例。
