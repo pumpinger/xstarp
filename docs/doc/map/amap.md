@@ -752,6 +752,15 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
                 <td>XMapSdk</td>
                 <td>myMap3.closePopMap();</td>
             </tr>
+            <tr>
+                <td>calculateCenter(lnglatarr)</td>
+                <td>lnglat坐标点</td>
+                <td>lnglatArr:多边形坐标数组</td>
+                <td>返回多边形中心点</td>
+                <td>XMapSdk</td>
+                <td>myMap3.calculateCenter(lnglatarr);</td>
+            </tr>
+
             </tbody>
   </table>
 
