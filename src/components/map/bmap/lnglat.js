@@ -61,6 +61,7 @@ function LngLat(lng, lat, inner) {
     this._inner = new BMap.Point(this.lng, this.lat);
   }
 
+
   this._type = 'LngLat';
 
 }

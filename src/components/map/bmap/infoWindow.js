@@ -15,10 +15,16 @@ var LngLat = require('./LngLat');
  * */
 function InfoWindow(opts) {
   this._type = 'InfoWindow';
+  // 当实例被添加到Map对象的时候，会被设为true
+  this._isInMapOverlay = false;
+
   obc.addOverlay(opts, this);
 
   var newOpts = formatOpts.infoWindow(opts);
   this._inner = new BMap.InfoWindow(newOpts.content, newOpts);
+
+  // 保存一下opts，百度地图中InfoWindow没有getOpts这个函数，此处为自己模拟
+  this._opts = newOpts;
 }
 
 InfoWindow.prototype = {
@@ -29,27 +35,26 @@ InfoWindow.prototype = {
    * */
   open: function(map, pos) {
     if(pos) {
-      this._inner.setPosition(pos);
+      map._inner.openInfoWindow(this._inner, pos._inner);
+    } else {
+      map._inner.openInfoWindow(this._inner, new LngLat(this._opts.position)._inner);
     }
-    this._inner.open(map._inner);
+
     this._inner._smap = map;
-    map._overLayers.InfoWindow.push(this);
     this._isOpen = true;
+
+    if(!this._isInMapOverlay) {
+      map._overLayers.InfoWindow.push(this);
+    }
   },
 
   close: function() {
-    this._inner.close();
+    this._inner.hide();
     this._isOpen = false;
-    var infoWindows = this._inner._smap._overLayers.InfoWindow;
-    infoWindows.filter( function(item, index) {
-      if(item == this) {
-        infoWindows.splice(index, 1);
-      }
-    });
   },
 
   getIsOpen: function() {
-    return this._isOpen;
+    return this._inner.isOpen();
   },
 
   /**
@@ -64,23 +69,28 @@ InfoWindow.prototype = {
     return this._inner.getContent();
   },
 
-  // TODO: 百度没有setPosition
-  // setPosition: function(lngLat) {
-  //   this._inner.setPosition(lngLat);
-  // },
+  setPosition: function(lngLat) {
+    console.log('啊哦，百度暂不支持这个API哦，详情请查看这里:' +
+      'http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_' +
+      'reference.html#a3b7');
+  },
 
   getPosition: function() {
     return new LngLat('', '', this._inner.getPosition());
   },
 
-  // todo: google 不支持
+  // todo: 百度能支持setWidth 和 setHeight
   setSize: function(size) {
-
+    console.log('啊哦，百度暂不支持这个API哦，详情请查看这里:' +
+      'http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_' +
+      'reference.html#a3b7');
   },
 
-  // todo: google 不支持
+  // todo: 百度 不支持
   getSize: function() {
-
+    console.log('啊哦，百度暂不支持这个API哦，详情请查看这里:' +
+      'http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_' +
+      'reference.html#a3b7');
   },
 
   on: onOff.on,

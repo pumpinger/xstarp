@@ -24,8 +24,9 @@ module.exports = {
 };
 
 function formatOptsUni(opts) {
+  if(!opts) return;
 
-  if('position' in opts) {
+  if(typeof opts.position != 'undefined') {
     opts.position = (new LngLat(opts.position))._inner;
   }
 
@@ -38,6 +39,7 @@ function formatOptsUni(opts) {
   }
 
   if(opts.map) {
+    opts.smap = opts.map;
     opts.map = opts.map._inner;
   }
 

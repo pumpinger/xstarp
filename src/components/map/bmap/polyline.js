@@ -1,6 +1,9 @@
 /**
  * Created by fizz on 2017/2/13.
  * @constructor Polyline
+ *
+ * @diff:
+ * @zIndex 百度Polyline 没有zIndex这个属性，高德有
  */
 
 var obc = require('./overlayBaseClass');
@@ -15,14 +18,16 @@ var Bounds = require('./Bounds');
  * */
 function Polyline(opts) {
   this._type = 'Polyline';
+  this._isInMapOverlay = false;
   obc.addOverlay(opts, this);
 
   var newOpts = formatOpts.polyline(opts);
   this._inner = new BMap.Polyline(newOpts.path, newOpts);
-  // this._inner._self = this;
+  this._init(newOpts);
 }
 
 Polyline.prototype = {
+  _init: obc._init,
 
   /**
    * @param {Array} path
@@ -38,6 +43,7 @@ Polyline.prototype = {
   // TODO： 百度没有setOptions
   setOptions: function() {},
   getOptions: function() {},
+
   getLength: function() {},
 
   getBounds: function() {

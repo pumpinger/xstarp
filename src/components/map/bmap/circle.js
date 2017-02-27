@@ -16,13 +16,17 @@ var LngLat = require('./LngLat');
  * */
 function Circle(opts) {
   this._type = 'Circle';
+  this._isInMapOverlay = false;
   obc.addOverlay(opts, this);
 
   var newOpts = formatOpts.circle(opts);
-  this._inner = new google.maps.Circle(newOpts);
+  this._inner = new BMap.Circle(newOpts.center, newOpts.radius, newOpts);
+  this._opts = newOpts;
+  this._init(newOpts);
 }
 
 Circle.prototype = {
+  _init: obc._init,
 
   setMap: obc.setMap,
 
@@ -49,13 +53,18 @@ Circle.prototype = {
     return this._inner.getRadius();
   },
 
-  setOptions: function() {
+  /**
+   * @attention 百度地图没有直接的setOptions，此处为模拟
+   *
+   * @param {Object} opts
+   * */
+  setOptions: function(opts) {
     this._inner.setOptions( formatOpts.polygon(opts) );
   },
 
-  getOptions: function() {},
+  getOptions: function() {
 
-  getArea: function() {},
+  },
 
   hide: obc.hide,
 
@@ -73,6 +82,8 @@ Circle.prototype = {
   },
 
   /**
+   * @attention 百度没有这个API，可能需要自己模拟
+   *
    * @function judge whether a point in the polygon inner
    * @point {LngLat}
    * @return {Boolean} true or false

@@ -25,6 +25,7 @@ Size.prototype = {
   getHeight: function() {
     return this._inner.height;
   },
+  // TODO 百度没有这个toString
   toString: function() {
     return this._inner.toString();
   }

@@ -15,14 +15,20 @@ var formatOpts = require('./formatOpt');
  * @opts {Object}
  * */
 function Map(id,opts) {
-  var elem, newOpts;
+  var elem, newOpts = {};
 
   this._type = 'Map';
-  elem = document.getElementById(id);
-  newOpts = formatOpts.map(opts);
 
-  this._inner = new BMap.Map(elem, newOpts);
+  if(opts) {
+    newOpts = formatOpts.map(opts);
+  }
+
+  this._inner = new BMap.Map(id, newOpts);
+
+  this._init(newOpts);
+
   this._inner._smap = this;
+
   this._overLayers = {
     MarkerClusterer: [],
     Marker: [],
@@ -34,6 +40,18 @@ function Map(id,opts) {
 }
 
 Map.prototype = {
+  /**
+   * 百度Map方法调用之后需要
+   * 调用centerAndZoom来进行初始化
+   * @param {object} opts
+   */
+  _init: function(opts) {
+    if(opts.center) {
+      if(opts.zoom) {
+        this._inner.centerAndZoom(opts.center, opts.zoom);
+      }
+    }
+  },
 
   plugin : mapPlugin,
 

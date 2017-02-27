@@ -1,5 +1,8 @@
 /**
  * Created by fizz on 2017/2/14.
+ * @event
+ *
+ * @attention 百度的事件绑定非常简单，只有两个：addEventListener和removeEventListener
  */
 
 var SMapEvent = require('./SMapEvent');
@@ -12,15 +15,31 @@ event.getSMapEvent = function(e) {
   return new SMapEvent(e);
 };
 
+/**
+ * @function
+ *
+ * @param {} instance
+ * @param {} eventName
+ * @param {} handler
+ * @param {} context
+ *
+ * @return EventListener
+ * */
 event.addDomListener = function(instance, eventName, handler, context) {
   var listener = {};
 
   if(context) {
-    listener = google.maps.event.addDomListener(instance, eventName, function(e) {
+    // listener = google.maps.event.addDomListener(instance, eventName, function(e) {
+    //   handler.call(context, e);
+    // });
+
+    instance.addEventListener(eventName, function(e) {
       handler.call(context, e);
     });
+
   } else {
-    listener = google.maps.event.addDomListener(instance, eventName, handler);
+    // listener = google.maps.event.addDomListener(instance, eventName, handler);
+    instance.addEventListener(eventName, handler);
   }
   return listener;
 };
