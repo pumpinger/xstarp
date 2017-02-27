@@ -42,7 +42,13 @@ $ npm run docs
 |---- root
   |---- build webpack配置文件构建相关
   |---- dist 是编译后的文件，压缩版
+      |---- vendor 第三方大包，直接放在这里，不参与打包
   |---- docs 存放使用文档
+    |---- dist
+    |---- doc 组件文档都放在这里
+    |---- vendor docsify这个包自带的一些引用文件
+    |---- index.html docsify这个包入口页面
+    |---- README.md docsify这个包默认的首页
   |---- src 源文件
     |---- common 公用js文件
       |---- js 通用js文件
@@ -54,8 +60,8 @@ $ npm run docs
     |---- components 组件
     |---- util 工具js
     |---- vendor 有些东西不得不放在外面，没有这样的文件的时候这个文件夹是空的
-    |---- develop.js
-    |---- xstarp.js
+    |---- develop.js 开发用的出口，对应webpack.dev.config.js中的entry
+    |---- xstarp.js 构建用的出口，对应webpack.prod.config.js中的entry
   |---- test 测试文件、代码测试、测试数据目录
     |---- common 
   |---- server.js 开发服务器入口文件
