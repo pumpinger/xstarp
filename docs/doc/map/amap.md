@@ -21,7 +21,7 @@
 
 ````
 
-````js
+```js
 
   var lngLat = [104.056435,30.671192];
   var myMap = XMapSdk(
@@ -43,7 +43,7 @@
     console.log(myMap);
     
 
-````
+```
 
 ## 绘制点 线 圆 多边形
 
@@ -299,61 +299,101 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
 
 >上大屏 插件  FullScreen
 
-````js
+```html
+
+<div id="container" style="height: 600px;margin: 50px 0;width: 100%;box-sizing: border-box">
+    <div class="option_btn" style=" position: absolute;bottom: 10px;right: 20px;z-index: 10;">
+        <span class="fullScreen x-button" id="view-fullscreen">上大屏模式</span>
+        <span class="x-button cancel" id="cancel-fullscreen" >退出大屏模式</span>
+    </div>
+```
+
+```js
 
 //投影模式  上大屏  F11 全屏  按钮
+ var docElm = document.getElementById("container");
+    var lngLat = [104.056435,30.671192];
+    var myMap3 = XMapSdk(
+            {
+                dom:'container',
+                resizeEnable:true,
+                center:lngLat,
+                zoom:13
+            },{
+                strokeColor: "#2e90df",
+                strokeOpacity: 1,
+                strokeWeight: 3,
+                strokeStyle:'solid',
+                fillColor: "#d2e8f5",
+                fillOpacity: 0.5,
+                extData:null
+            }
+    );
 
-var viewFullScreen = document.getElementById("view-fullscreen");
-var cancelFullScreen = document.getElementById("cancel-fullscreen");
+    var viewFullScreen = document.getElementById("view-fullscreen");
+    var cancelFullScreen = document.getElementById("cancel-fullscreen");
 
 
-if (viewFullScreen) {
-    viewFullScreen.addEventListener("click", function () {
-        console.log("上大屏");
-    }, false);
-}
-
-
-if (cancelFullScreen) {
-    cancelFullScreen.addEventListener("click", function () {
-        console.log("退出上大屏");
-    }, false);
-    var de = document;
-    if (de.exitFullscreen) {
-        de.exitFullscreen();
-    } else if (de.mozCancelFullScreen) {
-        de.mozCancelFullScreen();
-    } else if (de.webkitCancelFullScreen) {
-        de.webkitCancelFullScreen();
+    if (viewFullScreen) {
+        viewFullScreen.addEventListener("click", function () {
+            console.log("上大屏");
+            launchFullScreen();
+        }, false);
     }
-}
+
+    var isFullScreen = false;
+
+    function setWidthAndHeight(width,height,margin){
+        if(!margin){
+            margin = 0;
+        }
+        $(docElm).css({'width':width,'height':height,'margin':margin});
+//        $(docElm).css({'width':width,'height':height,'margin':margin});
+    }
+    function  setHeight(){
+
+    }
+    if (cancelFullScreen) {
+        cancelFullScreen.addEventListener("click", function () {
+            console.log("退出上大屏");
+            exitFullScreen();
+        }, false);
+        var de = document;
+        if (de.exitFullscreen) {
+            de.exitFullscreen();
+        } else if (de.mozCancelFullScreen) {
+            de.mozCancelFullScreen();
+        } else if (de.webkitCancelFullScreen) {
+            de.webkitCancelFullScreen();
+        }
+    }
 
 
-document.addEventListener("fullscreenchange", function () {
-    isJudge_var.isFullScreen = (document.fullscreenElement) ? true : false;
+    document.addEventListener("fullscreenchange", function () {
+        isFullScreen = (document.fullscreenElement) ? true : false;
 
 
-}, false);
+    }, false);
 
-document.addEventListener("msfullscreenchange", function () {
-    isJudge_var.isFullScreen = (document.msFullscreenElement) ? true : false;
+    document.addEventListener("msfullscreenchange", function () {
+        isFullScreen = (document.msFullscreenElement) ? true : false;
 
-}, false);
+    }, false);
 
-document.addEventListener("mozfullscreenchange", function () {
-    isJudge_var.isFullScreen = (document.mozFullScreen) ? true : false;
+    document.addEventListener("mozfullscreenchange", function () {
+        isFullScreen = (document.mozFullScreen) ? true : false;
 
-}, false);
+    }, false);
 
-document.addEventListener("webkitfullscreenchange", function () {
-    isJudge_var.isFullScreen = (document.webkitIsFullScreen) ? true : false;
-    commandMethod.isFullSet(isJudge_var.isFullScreen);
+    document.addEventListener("webkitfullscreenchange", function () {
+       isFullScreen = (document.webkitIsFullScreen) ? true : false;
+//        commandMethod.isFullSet(isJudge_var.isFullScreen);
 
-}, false);
+    }, false);
 
 
-function launchFullScreen() {
-        var docElm = document.getElementById("contain");
+    function launchFullScreen() {
+
         //进入全屏 投影模式
         if (docElm.requestFullscreen) {
             docElm.requestFullscreen();
@@ -372,6 +412,7 @@ function launchFullScreen() {
             docElm.webkitRequestFullScreen();
 
         }
+        setWidthAndHeight('100%','100%');
     }
 
     function exitFullScreen() {
@@ -390,17 +431,27 @@ function launchFullScreen() {
         else if (docElm.webkitCancelFullScreen) {
             docElm.webkitCancelFullScreen();
         }
+        setWidthAndHeight('100%','600px','50px 0');
     }
 
+    var    $win = $(window);
+    //win的resize方法   会在执行上大屏和退出上大屏后执行
+    $win.bind('resize', function () {
+        console.log(isFullScreen);
+        if (!isFullScreen) {
+            $(".cancel").click();
+        }else {
+            $(".fullScreen").click();
+        }
+    });
 
-````
+```
 
 ## 说明
+
   注：需要调用高德地图js api 去高德开放平台注册并领取自己的key值然后引入高德api
 
-
-
-
+>属性：
 
   <table class="x-table x-table-interval">
             <thead>
@@ -500,7 +551,7 @@ function launchFullScreen() {
             </tbody>
   </table>
 
-
+>方法
 
   <table class="x-table x-table-interval">
             <thead>
