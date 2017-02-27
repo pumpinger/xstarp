@@ -80,7 +80,6 @@ console.log("222");
 
 ## 说明
 
-````html
 <table class="x-table x-table-interval">
             <thead>
             <tr><th>属性</th><th>类型</th><th>说明</th><th>默认值</th></tr></thead>
@@ -156,11 +155,7 @@ console.log("222");
                 <td>服务器地址</td>
                 <td> 无</td>
             </tr>
-
-
             </tbody>
-
-
         </table>
         <table class="x-table x-table-interval">
             <thead>
@@ -178,10 +173,6 @@ console.log("222");
                 <td>1、schedu:当前上传进度 ,  多文件时表示当前总进度</td>
                 <td>文件上传时进度的实时返回</td>
             </tr>
-
-
             </tbody>
         </table>
-
-````
 

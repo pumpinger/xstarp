@@ -297,12 +297,111 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
 
 ## 上大屏模式
 
+>上大屏 插件  FullScreen
+
+````js
+
+//投影模式  上大屏  F11 全屏  按钮
+
+var viewFullScreen = document.getElementById("view-fullscreen");
+var cancelFullScreen = document.getElementById("cancel-fullscreen");
+
+
+if (viewFullScreen) {
+    viewFullScreen.addEventListener("click", function () {
+        console.log("上大屏");
+    }, false);
+}
+
+
+if (cancelFullScreen) {
+    cancelFullScreen.addEventListener("click", function () {
+        console.log("退出上大屏");
+    }, false);
+    var de = document;
+    if (de.exitFullscreen) {
+        de.exitFullscreen();
+    } else if (de.mozCancelFullScreen) {
+        de.mozCancelFullScreen();
+    } else if (de.webkitCancelFullScreen) {
+        de.webkitCancelFullScreen();
+    }
+}
+
+
+document.addEventListener("fullscreenchange", function () {
+    isJudge_var.isFullScreen = (document.fullscreenElement) ? true : false;
+
+
+}, false);
+
+document.addEventListener("msfullscreenchange", function () {
+    isJudge_var.isFullScreen = (document.msFullscreenElement) ? true : false;
+
+}, false);
+
+document.addEventListener("mozfullscreenchange", function () {
+    isJudge_var.isFullScreen = (document.mozFullScreen) ? true : false;
+
+}, false);
+
+document.addEventListener("webkitfullscreenchange", function () {
+    isJudge_var.isFullScreen = (document.webkitIsFullScreen) ? true : false;
+    commandMethod.isFullSet(isJudge_var.isFullScreen);
+
+}, false);
+
+
+function launchFullScreen() {
+        var docElm = document.getElementById("contain");
+        //进入全屏 投影模式
+        if (docElm.requestFullscreen) {
+            docElm.requestFullscreen();
+
+        }
+        else if (docElm.msRequestFullscreen) {
+            docElm.msRequestFullscreen();
+            //                    alert('进入全屏');
+
+        }
+        else if (docElm.mozRequestFullScreen) {
+            docElm.mozRequestFullScreen();
+
+        }
+        else if (docElm.webkitRequestFullScreen) {
+            docElm.webkitRequestFullScreen();
+
+        }
+    }
+
+    function exitFullScreen() {
+        var docElm = document;
+
+        //退出全屏  投影模式
+        if (docElm.exitFullscreen) {
+            docElm.exitFullscreen();
+        }
+        else if (docElm.msExitFullscreen) {
+            docElm.msExitFullscreen();
+        }
+        else if (docElm.mozCancelFullScreen) {
+            docElm.mozCancelFullScreen();
+        }
+        else if (docElm.webkitCancelFullScreen) {
+            docElm.webkitCancelFullScreen();
+        }
+    }
+
+
+````
 
 ## 说明
-
-````html
-
   注：需要调用高德地图js api 去高德开放平台注册并领取自己的key值然后引入高德api
+
+
+
+
+
   <table class="x-table x-table-interval">
             <thead>
             <tr><th>属性</th><th>类型</th><th>说明</th><th>所属对象</th><th>默认值</th></tr></thead>
@@ -321,7 +420,6 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
                 <td>XMapSdk</td>
                 <td>false</td>
             </tr>
-
             <tr>
                 <td>center</td>
                 <td>LngLat</td>
@@ -399,13 +497,15 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
                 <td></td>
                 <td>无</td>
             </tr>
-
             </tbody>
-        </table>
+  </table>
 
-        <table class="x-table x-table-interval">
+
+
+  <table class="x-table x-table-interval">
             <thead>
-            <tr><th>方法</th><th>返回值</th><th>参数</th><th>说明</th><th>所属对象</th><th>示例</th></tr></thead>
+            <tr><th>方法</th><th>返回值</th><th>参数</th><th>说明</th><th>所属对象</th><th>示例</th></tr>
+            </thead>
             <tbody>
             <tr>
                 <td>on(type,function(){})</td>
@@ -414,7 +514,6 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
                 <td>为地图上的点标记或多边形或圆绑定事件</td>
                 <td>点标记、圆、多边形</td>
                 <td>marker.on('click',function(){})</td>
-
             </tr>
             <tr>
                 <td>off(type)</td>
@@ -440,7 +539,6 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
                 <td>点标记</td>
                 <td>marker.setPosition(lngLat)</td>
             </tr>
-
             <tr>
                 <td>polygon(Point,opt)</td>
                 <td>多边形对象</td>
@@ -476,17 +574,14 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
             <tr>
                 <td>circleEditor(circle,function(){},function(){},function(){})</td>
                 <td>圆编辑对象</td>
-
                 <td>1、Circle:圆对象,2、function:结束编辑后的回调函数，3、function：结束过程中触发的函数，4、圆心移动过程中触发的函数</td>
                 <td>对圆进行编辑</td>
                 <td>XMapSdk</td>
                 <td>myMap.circleEditor(circle,function(){},function(){},function(){});</td>
             </tr>
-
             <tr>
                 <td>polygonEdit(polygon,function(){})</td>
                 <td>多边形编辑对象</td>
-
                 <td>1、Polygon:多边形对象,2、function:结束编辑后的回调函数</td>
                 <td>对多边形进行编辑</td>
                 <td>XMapSdk</td>
@@ -516,7 +611,6 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
                 <td>XMapSdk</td>
                 <td>myMap.districtSearch('成都市','boundaries',function(isOk,data){});</td>
             </tr>
-
             <tr>
                 <td>infoWindow(content)</td>
                 <td>信息窗体对象</td>
@@ -608,9 +702,7 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
                 <td>XMapSdk</td>
                 <td>myMap3.closePopMap();</td>
             </tr>
-
             </tbody>
-        </table>
+  </table>
 
 
-````
