@@ -30,6 +30,17 @@ Super Map 简称SMap。像使用高德地图一样使用Google地图、百度地
 - removeListener
 - trigger
 
+## 如何定义不同的地图相应的属性？
+
+百度地图和高德地图的初始属性是不一样的，百度地图默认不能滚轮缩放，所以，要默认滚轮缩放怎么办~
+
+```js
+var map = new SMap.Map();
+if(typeof BMap !== 'undefined') {
+	map._inner.enableScrollWheelZoom();
+}
+```
+
 ## 当SMap的API不够用，必须要使用地图原生API的时候怎么办？
 
 - 每个SMap的类实例化之后都有一个_inner的属性，这个属性对应的就是高德/Google/百度地图的类的实例。
