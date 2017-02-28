@@ -419,6 +419,7 @@ ol, ul {
   display: inline-block;
   vertical-align: top;
   width: 100px;
+  height: 30px;
   text-align: right; }
 
 .x-form-value {
@@ -501,7 +502,7 @@ ol, ul {
   display: block;
   height: 22px;
   line-height: 22px;
-  width: 40px;
+  width: 42px;
   padding: 0 5px;
   border: 1px solid #d2d2d2;
   border-radius: 20px;
@@ -529,14 +530,18 @@ ol, ul {
   -webkit-transition: .1s linear;
   transition: .1s linear; }
 
+.x-form-switch span {
+  position: absolute;
+  right: 5px; }
+
 .x-form-onswitch {
   border-color: #5bc0de;
   background-color: #5bc0de; }
 
-.x-form-onswitch:before {
-  content: 'ON';
-  color: #fff;
-  font-size: 14px; }
+.x-form-onswitch span {
+  right: 25px;
+  text-align: center;
+  color: #fff; }
 
 .x-form-onswitch i {
   left: 30px;
