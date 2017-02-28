@@ -10,15 +10,19 @@ var obc = require('./overlayBaseClass')
  * @map {Map.Object}
  * @marker {Marker}
  * @opts {MarkerClustererOptions}
+ *
+ * @MarkerClustererOptions
+ *
+ * @BMap
  * */
 function Clusterer(map, markers, opts) {
   if(markers.length < 1) return;
-
+  this._isInMapOverlay = false;
   this._type = 'MarkerClusterer';
   obc.addOverlay({map: map}, this);
 
   var newOpts = formatOpts.markerClusterer(map, markers, opts);
-  this._inner = new MarkerClusterer(newOpts.map, newOpts.markers, newOpts.opts);
+  this._inner = new BMapLib.MarkerClusterer(newOpts.map, newOpts.opts);
   this._inner._smap = map;
 }
 

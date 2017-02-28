@@ -50,8 +50,6 @@ onOff.off = function(eventName, handler, context) {
       }
     })
   }
-
-
 };
 
 module.exports = onOff;

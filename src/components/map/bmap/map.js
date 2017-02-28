@@ -1,7 +1,9 @@
 /**
- * Created by fizz on 2017/2/13.
+ * Created by fizzstack@gmail.com on 2017/2/13.
  * @constructor of Map
  * @return our map object
+ *
+ * @attention 百度地图已经占掉了BMap这个顶级命名空间了，所以这里我们使用DMap来命名我们的顶级空间
  */
 
 var config = require('../config');
@@ -86,10 +88,14 @@ function mapPlugin(plugins, fn) {
   plugins.forEach( function(plugin) {
 
     console.log(plugin);
-    if(plugin === 'GMap.MarkerClusterer') {
-      $.getScript(config.GMap_MarkerClusterer, function() {
-        fn();
+    if(plugin === 'DMap.MarkerClusterer') {
+      console.log('url', config.DMap_MarkerClusterer);
+      $.getScript(config.DMap_TextIconOverlay, function() {
+        $.getScript(config.DMap_MarkerClusterer, function() {
+          fn();
+        });
       });
+
     }
 
   })

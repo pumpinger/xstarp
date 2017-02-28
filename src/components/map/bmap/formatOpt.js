@@ -59,9 +59,29 @@ function arrCreateLngLat(arr) {
 }
 
 
-/**************************************************
- * markerClusterer
- * ***********************************************/
+/**
+ * @transfer
+ * @param {MapObject} map
+ * @param {Array} markers
+ * @param {Object} opts
+ *
+ * @return {Object}
+ *
+ *   newOpts
+ *     .map map._inner
+ *     .opts{
+ *       markers:
+ *       styles:
+ *     }
+ *
+ *   *"<b>styles</b>":{Array<IconStyle>} 一组图标风格。单个图表风格包括以下几个属性：<br />
+ *   url	{String}	 图片的url地址。(必选)<br />
+ *   size {Size}	图片的大小。（必选）<br />
+ *   anchor {Size} 图标定位在地图上的位置相对于图标左上角的偏移值，默认偏移值为图标的中心位置。（可选）<br />
+ *   offset {Size} 图片相对于可视区域的偏移值，此功能的作用等同于CSS中的background-position属性。（可选）<br />
+ *   textSize {Number} 文字的大小。（可选，默认10）<br />
+ *   textColor {String} 文字的颜色。（可选，默认black）<br />
+ * */
 function formatMarkerClusterer(map, markers, opts) {
   var newOpts = {};
 
@@ -71,35 +91,36 @@ function formatMarkerClusterer(map, markers, opts) {
     newOpts.map = map;
   }
 
-  newOpts.markers = markers.map( function(item) {
-    return item._inner;
-  });
+  console.log(newOpts.opts);
 
   newOpts.opts = formatMarkerClustererOpts(opts);
+
+  console.log(newOpts.opts);
+
+  newOpts.opts.markers = markers.map( function(item) {
+    return item._inner;
+  });
 
   return newOpts;
 }
 
 /**
  * @param {Object} opts
- * @diff : minClusterSize : minimumClusterSize
+ * @diff : 百度 anchor 对应 imageOffset
  * */
 function formatMarkerClustererOpts(opts) {
-  if(opts.minClusterSize) {
-    opts.minimumClusterSize = opts.minClusterSize;
-  }
-
   if(opts.styles) {
-
-    if(opts.styles) {
-      var styles = opts.styles;
-      if(styles.size) {
-        styles.width = styles.getWidth();
-        styles.height = styles.getHeight();
+    var styles = opts.styles;
+    styles.forEach(function(item) {
+      if(item.imageOffset) {
+        item.anchor = item.imageOffset;
       }
-    }
-
+      if(item.size) {
+        item.size = item.size._inner;
+      }
+    })
   }
+  return opts;
 }
 
 function canvertPath(path) {

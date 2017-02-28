@@ -21,121 +21,156 @@ event.getSMapEvent = function(e) {
 
 /**
  * @function
- *
- * @param {Object} instance DOM object
- * @param {String} eventName
- * @param {Function} handler
- * @param {Object} context
- *
- * @return EventListener
+ * @param {Object} instance DOM对象
+ * @param {String} eventName 事件名
+ * @param {Function} handler 事件处理函数
+ * @param {Object} context 上下文
+ * @return 返回一个 EventListener 对象实例
  * */
 event.addDomListener = function(instance, eventName, handler, context) {
-  var callBack = function (e) {
-    handler.call(context, e);
-  };
+  var callback;
 
   if(context) {
-    instance.addEventListener(eventName, callBack);
+    callback = event._createCallback(handler, context);
   } else {
-    instance.addEventListener(eventName, handler);
+    callback = handler;
   }
 
-  var listener = {
-    eventName: eventName,
-    handler: handler,
-    context: context,
-    id: event.listeners.length,
-    eventType: 'domEvent' // domEvent, mapEvent
-  };
+  if(instance.addEventListener) {
+    instance.addEventListener(eventName, callback, false);
+  }
+  else if( instance.attachEvent ) {
+    instance.attachEvent('on' + eventName, callback);
+  }
+  else {
+    instance['on' + eventName] = callback;
+  }
 
-  event.listeners.push(listener);
+  return new MapsEventListener(instance, eventName, handler, context, MapsEventListener.DOM_EVENT, callback);
+};
 
-  return listener;
+event._createCallback = function(handler, context) {
+  if(context) {
+    return function (e) {
+      handler.call(context, e);
+    };
+  }
+  else {
+    return function (e) {
+      handler(e);
+    };
+  }
 };
 
 event.addListener = function(instance, eventName, handler, context) {
-  var listener = {}, relevantEvent, realInstance;
-
-  realInstance = instance._inner;
-  relevantEvent = event.getRelevantEvent(instance, eventName);
-
+  var realInstance = instance._inner,
+      relevantEvent = event.getRelevantEvent(instance, eventName),
+      callback;
 
   if(context) {
-    listener = google.maps.event.addListener(realInstance, relevantEvent, function(e) {
-      handler.call(context, event.getSMapEvent(e));
-    });
-  } else {
-    listener = google.maps.event.addListener(realInstance, relevantEvent, function(e) {
-      handler(event.getSMapEvent(e));
-    });
+    // 这个addEventListener是百度地图自己提供的那个绑定事件API
+    callback = event._createCallback(handler, context);
+    realInstance.addEventListener(relevantEvent, callback);
   }
-  return listener;
+  else {
+    callback = event._createCallback(handler);
+    realInstance.addEventListener(relevantEvent, callback);
+  }
+
+  return new MapsEventListener(instance, eventName, handler, context, MapsEventListener.MAP_EVENT, callback);
 };
 
 event.addListenerOnce = function(instance, eventName, handler, context) {
-  var listener = {}, relevantEvent, realInstance;
-
-  realInstance = instance._inner;
-
-  relevantEvent = event.getRelevantEvent(instance, eventName);
-
-  if(context) {
-    listener = google.maps.event.addListenerOnce(realInstance, relevantEvent, function (e) {
-      handler.call(context, event.getSMapEvent(e));
-    });
-  } else {
-    listener = google.maps.event.addListenerOnce(realInstance, relevantEvent, function(e) {
-      handler(event.getSMapEvent(e));
-    });
-  }
+  var listener = event.addListener(instance, eventName, function(){
+    event.removeListener(listener);
+    return handler.apply(this, arguments);
+  }, context);
   return listener;
 };
 
+/**
+ * @function 移除特定的事件监听函数
+ * @param {MapsEventListener} listener
+ * @return none
+ * */
 event.removeListener = function(listener) {
-  var listeners = event.listeners;
+  var instance = listener._instance,
+      eventName = listener._eventName,
+      handler = listener._handler,
+      context = listener._context,
+      callback = listener._callback,
+      listeners = instance._e_ || {};
 
-  if(listener.eventType === 'domEvent') {
-
-    if(listener.id) {
-      listeners.filter( function(item) {
-        if(item.id && item.id === listener.id) {
-          item.instance.removeEventListener(item.eventName, item.handler);
+  for( var i in listeners ) {
+    if( listeners[i]._guid == listener._guid) {
+      // DOM事件, instance 对应的是DOM对象
+      if(listener._eventType == MapsEventListener.DOM_EVENT) {
+        if(instance.removeEventListener) {
+          instance.removeEventListener(eventName, handler, false);
         }
-      })
-    }
-
-    else {
-      listeners.forEach( function(item) {
-        if(item.eventName === listener.eventName) {
-          if(item.handler === listener.handler &&
-            item.context === listener.context ) {
-            item.instance.removeEventListener(item.eventName, item.handler);
-          }
+        else if (instance.detachEvent) {
+          instance.detachEvent('on' + eventName, handler);
         }
-      });
-    }
-
-  }
-
-  else if( listener.eventType === 'mapEvent' ){
-    listeners.forEach( function(item) {
-      if(item.eventName === listener.eventName) {
-        if(item.handler === listener.handler &&
-          item.context === listener.context ) {
-
-          item.instance.removeEventListener(item.eventName, item.handler);
+        else {
+          instance['on' + eventName] = null;
         }
       }
-    });
+      else if (listener._eventType == MapsEventListener.MAP_EVENT) {
+        if(callback) {
+          instance._inner.removeEventListener(eventName, callback);
+        }
+        else {
+          instance._inner.removeEventListener(eventName, handler);
+        }
+      }
+
+      delete listeners[i];
+    }
   }
 };
 
-event.triggerListener = function(instance, eventName, extArgs) {
-  var relevantEvent = event.getRelevantEvent(instance, eventName);
-
-  google.maps.event.trigger(instance, relevantEvent, extArgs);
+event.trigger = function(instance, eventName, extArgs) {
+  var listeners = instance._e_ || {};
+  for(var i in listeners) {
+    if(listeners[i].eventName == eventName) {
+      var args = Array.prototype.slice.call(arguments, 2);
+      listeners[i]._handler.apply(instance, args);
+    }
+  }
 };
 
+/**
+ * @constructor
+ * @param {HTMLElement} instance DOM 元素
+ * @param {String} eventName
+ * @param {Function} handler
+ * @param {Object} context
+ * @param {String||Number} eventType
+ * @return mapsEventListener object
+ * */
+function MapsEventListener(instance, eventName, handler, context, eventType, callback) {
+  this._instance = instance;
+  this._eventName = eventName;
+  this._handler = handler;
+  this._context = context;
+  this._callback = callback;
+  this._eventType = eventType;
+  this._guid = MapsEventListener._guid++ ;
+  this._instance._e_ = this._instance._e_ || {};
+  this._instance._e_[this._guid] = this;
+}
+
+MapsEventListener._guid = 1;
+MapsEventListener.DOM_EVENT = 1;
+MapsEventListener.MAP_EVENT = 2;
+event._MapsEventListener = MapsEventListener;
+
+/**
+ * @function 输入高德事件名，返回对应的百度事件名
+ * @param {DomObject} instance
+ * @param {String} eventName
+ * @return eventName
+ * */
 event.getRelevantEvent = function(instance, eventName) {
   if(instance._type in event.map) {
     if(eventName in event.map[instance._type]) {
@@ -146,10 +181,6 @@ event.getRelevantEvent = function(instance, eventName) {
   } else {
     return eventName;
   }
-};
-
-event.getSMapEventObject = function(e) {
-
 };
 
 module.exports = event;

@@ -1,7 +1,7 @@
 /**
  * Created by fizz on 2017/2/20.
  * @constructor for google map event Object.
- * Wrap event and return our new event object just like gaode AMap event.
+ * 包装百度事件对象
  */
 
 var LngLat = require('./LngLat');

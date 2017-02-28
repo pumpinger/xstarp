@@ -5,6 +5,8 @@
 module.exports = {
   // google map marker cluster url
   // GMap_MarkerClusterer: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js',
-  GMap_MarkerClusterer: '../../src/components/map/google/markerclusterer.js',
+  // GMap_MarkerClusterer: '../../src/components/map/google/markerclusterer.js',
+  DMap_MarkerClusterer: '../../src/components/map/bmap/lib/markerclusterer.js',
+  DMap_TextIconOverlay: '../../src/components/map/bmap/lib/TextIconOverlay.js',
 
 };

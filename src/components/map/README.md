@@ -22,6 +22,14 @@ Super Map 简称SMap。像使用高德地图一样使用Google地图、百度地
 查阅相关资料，只有一个EventWrapper lib里面有对应的相关描述。
 要实现高德地图里面的事件API，必须自己实现相应的事件。
 
+因此，在DMap(百度地图的封装，BMap是百度地图自己的命名空间)中，event完全是自己模拟的事件API。
+和高德地图一样，具有以下方法：
+- addDomListener
+- addListener
+- addListenerOnce
+- removeListener
+- trigger
+
 ## 当SMap的API不够用，必须要使用地图原生API的时候怎么办？
 
 - 每个SMap的类实例化之后都有一个_inner的属性，这个属性对应的就是高德/Google/百度地图的类的实例。
