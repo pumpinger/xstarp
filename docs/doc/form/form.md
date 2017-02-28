@@ -37,6 +37,7 @@
             <div class="x-form-value">
                 <label class="x-form-switch x-form-onswitch">
                     <input type="checkbox" name="switch" value="on" checked="checked">
+                    <span>ON</span>
                     <i></i>
                 </label>
             </div>
@@ -114,8 +115,10 @@ $('.x-form-checkbox').click(function(){
 $('.x-form-switch').click(function(){
     if($(this).find("input").is(':checked')){
         $(this).addClass('x-form-onswitch');
+        $(this).find('span').text('ON');
     }else{
-        $(this).removeClass('x-form-onswitch')
+        $(this).removeClass('x-form-onswitch');
+        $(this).find('span').text('OFF');
     }
 });
 
