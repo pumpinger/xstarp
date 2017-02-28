@@ -760,8 +760,15 @@ myMap.geoCoder('成都市武侯区西部智谷D区',function(data){
                 <td>XMapSdk</td>
                 <td>myMap3.calculateCenter(lnglatarr);</td>
             </tr>
-
-            </tbody>
+            <tr>
+                 <td>contains(point)</td>
+                 <td>bool</td>
+                 <td>坐标点</td>
+                 <td>判断某个点是否在圆或者多边形里面</td>
+                 <td>圆，多边形</td>
+                 <td>polygon.contains(point);</td>
+            </tr>
+        </tbody>
   </table>
 
 
