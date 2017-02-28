@@ -4,6 +4,8 @@
  * @output prod entry.
  */
 
+
+require('./common/styles/index.scss');
 require('./fizz.js');
 require('./jcc.js');
 require('./duansijia.js');
