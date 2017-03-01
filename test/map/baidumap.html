@@ -44,15 +44,18 @@
 
   var marker = new BMap.Marker(new BMap.Point(116.404, 39.915)); // 创建点
   var e = marker.addEventListener("click",attribute);
-  console.log(e);
   map.addOverlay(marker);    //增加点
 
   function attribute(){
     var p = marker.getPosition();  //获取marker的位置
-    alert("marker的位置是" + p.lng + "," + p.lat);
+//    alert("marker的位置是" + p.lng + "," + p.lat);
+    console.log(event);
   }
 
 
+  $('#button').on('click', function(e){
+  	console.log(e);
+  })
 </script>
 
 

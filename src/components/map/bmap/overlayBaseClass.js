@@ -6,6 +6,7 @@
 module.exports = {
   setMap: function(map) {
     if(map !== null) {
+      // console.log(this);
       this._inner._smap = map;
 
       if(!this._isInMapOverlay) {

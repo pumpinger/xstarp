@@ -6,6 +6,7 @@
  */
 
 var LngLat = require('./LngLat');
+var util = require('../../../common/js/util');
 
 /**
  * @constructor
@@ -14,10 +15,22 @@ var LngLat = require('./LngLat');
  * */
 function Bounds(sw, ne, inner) {
 
+  console.log('BMap.Bounds------>', sw, ne);
+
+  if(util.isArray(sw)) {
+    sw = new LngLat(sw);
+    ne = new LngLat(ne);
+  }
+
   if(inner) {
     this._inner = inner;
   } else {
-    this._inner = new BMap.Bounds(sw, ne);
+    if(sw._type){
+      this._inner = new BMap.Bounds(sw._inner, ne._inner);
+    }
+    else {
+      this._inner = new BMap.Bounds(sw, ne);
+    }
   }
 
   this._type = 'Bounds';

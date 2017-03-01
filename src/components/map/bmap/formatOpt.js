@@ -91,8 +91,6 @@ function formatMarkerClusterer(map, markers, opts) {
     newOpts.map = map;
   }
 
-  console.log(newOpts.opts);
-
   newOpts.opts = formatMarkerClustererOpts(opts);
 
   console.log(newOpts.opts);

@@ -320,6 +320,10 @@ var BMapLib = window.BMapLib = BMapLib || {};
     this._markers = [];
   };
 
+  MarkerClusterer.prototype.addEventListener = function() {
+    console.log("TODO：这个方法百度内置...在new 聚合点的时候就已经绑定了click事件...");
+  }
+
   /**
    * 重新生成，比如改变了属性等
    * @return 无返回值

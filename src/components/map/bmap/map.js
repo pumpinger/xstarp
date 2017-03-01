@@ -53,11 +53,24 @@ Map.prototype = {
         this._inner.centerAndZoom(opts.center, opts.zoom);
       }
     }
+
+    this._inner.enableScrollWheelZoom();
   },
 
   plugin : mapPlugin,
 
+  setFitView: function() {
+
+  },
+
   clearMap: clearMap,
+
+  clearInfoWindow: function() {
+    var iws = this._overLayers.InfoWindow;
+    iws.forEach( function(item) {
+      item._inner.hide();
+    })
+  },
 
   /**
    * @param {LngLat} position
@@ -78,6 +91,18 @@ Map.prototype = {
     return new Bounds('','',this._inner.getBounds());
   },
 
+	/**
+   * @param {Bounds} bounds
+   * @
+   * */
+  setBounds: function(bounds) {
+    var self = this;
+    if(typeof BMapLib.AreaRestriction === 'undefined') {
+      console.warn('您还没有引入 BMapLib.AreaRestriction 哦~');
+    }
+    BMapLib.AreaRestriction.setBounds(self._inner, bounds._inner);
+  },
+
   on: onOff.on,
   off: onOff.off
 };
@@ -86,15 +111,16 @@ function mapPlugin(plugins, fn) {
   if(plugins.length < 1) return;
 
   plugins.forEach( function(plugin) {
+    if(plugin === 'SMap.MarkerClusterer') {
 
-    console.log(plugin);
-    if(plugin === 'DMap.MarkerClusterer') {
-      console.log('url', config.DMap_MarkerClusterer);
-      $.getScript(config.DMap_TextIconOverlay, function() {
-        $.getScript(config.DMap_MarkerClusterer, function() {
-          fn();
-        });
-      });
+      // $.getScript(config.DMap_TextIconOverlay, function() {
+      //   $.getScript(config.DMap_MarkerClusterer, function() {
+      //     console.log('url', config.DMap_MarkerClusterer);
+      //     fn();
+      //   });
+      // });
+      fn();
+
 
     }
 
@@ -102,6 +128,7 @@ function mapPlugin(plugins, fn) {
 }
 
 function clearMap() {
+  var self = this;
   var overLayers = this._overLayers;
 
   for(var type in overLayers) {
@@ -114,21 +141,21 @@ function clearMap() {
       case 'InfoWindow':
         if(overLayers[type].length > 0) {
           overLayers[type].forEach( function(item) {
-            item._inner.setMap(null);
-            item._inner = null;
-            item = null;
+            item._inner.hide();
+            // self._inner.removeOverlay(item._inner);
           });
-          overLayers.lenght = 0;
+          // overLayers.lenght = 0;
         }
         break;
       case 'MarkerClusterer':
         if(overLayers.MarkerClusterer.length > 0) {
           overLayers.MarkerClusterer.forEach( function(item) {
-            item._inner.clearMarkers();
-            item._inner = null;
-            item = null;
+            item._inner.hide();
+            // self._inner.removeOverlay(item._inner);
+            // item._inner = null;
+            // item = null;
           });
-          overLayers.MarkerClusterer.length = 0;
+          // overLayers.MarkerClusterer.length = 0;
         }
         break;
     }

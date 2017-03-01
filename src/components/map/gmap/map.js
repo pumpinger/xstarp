@@ -39,6 +39,11 @@ Map.prototype = {
 
   clearMap: clearMap,
 
+  // TODO: setFitView
+  setFitView: function() {
+
+  },
+
   /**
    * @param {LngLat} position
    * */
@@ -59,6 +64,11 @@ Map.prototype = {
 
   getBounds: function() {
     return new Bounds('','',this._inner.getBounds());
+  },
+
+  // todo:
+  setBounds: function() {
+
   },
 
   on: onOff.on,

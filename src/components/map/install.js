@@ -11,8 +11,6 @@ window.DMap = DMap;
 
 var SMap = {};
 
-console.log(123);
-
 window.mapCreate = mapCreate;
 
 if(typeof AMap === 'undefined') {

@@ -52,17 +52,21 @@ event.addDomListener = function(instance, eventName, handler, context) {
 event._createCallback = function(handler, context) {
   if(context) {
     return function (e) {
-      handler.call(context, e);
+      console.log('event Object', e);
+      handler.call(context, event.getSMapEvent(e));
     };
   }
   else {
     return function (e) {
-      handler(e);
+      // console.log(e);
+      handler(event.getSMapEvent(e));
     };
   }
 };
 
 event.addListener = function(instance, eventName, handler, context) {
+  if(!instance._inner) return;
+
   var realInstance = instance._inner,
       relevantEvent = event.getRelevantEvent(instance, eventName),
       callback;
@@ -70,6 +74,7 @@ event.addListener = function(instance, eventName, handler, context) {
   if(context) {
     // 这个addEventListener是百度地图自己提供的那个绑定事件API
     callback = event._createCallback(handler, context);
+    if(!realInstance.addEventListener) {return;}
     realInstance.addEventListener(relevantEvent, callback);
   }
   else {

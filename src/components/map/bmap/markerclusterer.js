@@ -16,14 +16,18 @@ var obc = require('./overlayBaseClass')
  * @BMap
  * */
 function Clusterer(map, markers, opts) {
-  if(markers.length < 1) return;
+  console.log(map, markers, opts);
+
   this._isInMapOverlay = false;
   this._type = 'MarkerClusterer';
   obc.addOverlay({map: map}, this);
 
+  if(markers.length < 1) return;
   var newOpts = formatOpts.markerClusterer(map, markers, opts);
   this._inner = new BMapLib.MarkerClusterer(newOpts.map, newOpts.opts);
+
   this._inner._smap = map;
+
 }
 
 Clusterer.prototype = {
@@ -36,7 +40,11 @@ Clusterer.prototype = {
   },
 
   addMarker: function() {},
-  removeMarker: function() {},
+  removeMarker: function(test) {},
+
+  clearMarkers: function() {
+    this._inner.clearMarkers();
+  },
 
   /**
    * @param {Array} styles

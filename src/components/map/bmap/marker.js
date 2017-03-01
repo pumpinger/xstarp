@@ -4,11 +4,15 @@
  * @options
  * @高德： http://lbs.amap.com/api/javascript-api/reference/overlay#MarkerOptions
  * @百度： http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b3
+ *
+ * @label 高德
+ *
  */
 
 var obc = require('./overlayBaseClass');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
+var LngLat = require('./lnglat')
 
 /**
  * Represents a Marker
@@ -29,10 +33,13 @@ function Marker(opts, inner) {
     obc.addOverlay(opts, this);
 
     var newOpts = formatOpts.marker(opts);
+
     this._inner = new BMap.Marker(newOpts.position, newOpts);
-    console.log(this._isInMapOverlay);
-    this._init(newOpts);
+
+    // this._init(newOpts);
   }
+
+  // console.log(this);
 }
 
 Marker.prototype = {
@@ -41,6 +48,11 @@ Marker.prototype = {
   getMap: obc.getMap,
   hide: obc.hide,
   show: obc.show,
+
+  getPosition: function() {
+    return new LngLat('', '', this._inner.getPosition());
+  },
+
   on: onOff.on,
   off: onOff.off
 };

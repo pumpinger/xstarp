@@ -49,6 +49,10 @@
 
   map._inner.enableScrollWheelZoom();
 
+  map._inner.addEventListener('mousemove', function(e) {
+  	console.log(e);
+  })
+
 //var map = new BMap.Map("container");          // 创建地图实例
 //var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
 //map.centerAndZoom(point, 15);
@@ -59,7 +63,8 @@
     title: 'hello world'
   });
 
-  function mh() {
+  function mh(e) {
+  	console.log(e);
   	console.log("你点击了我！");
   }
 //  marker.on('click', mh);
