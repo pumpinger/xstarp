@@ -1,0 +1,30 @@
+
+@import '../../common/styles/themes/variable';
+
+.x-table{width:100%;border-collapse: collapse;margin:20px 0;}
+.x-table thead {background:$bgColorLight;}
+.x-table th,.x-table td{position:relative;height:36px;border:1px solid $borderColorLight;font-size:$baseFontSize;}
+.x-table th{cursor:pointer;}
+.x-table tr:hover{background: $bgColorLight;}
+
+.x-table-arrowDown{
+  position:absolute;
+  top:16px;
+  right:10px;
+  width:0;
+  height:0;
+  border-left:6px solid transparent;
+  border-right:6px solid transparent;
+  border-top:6px solid #333;
+}
+
+.x-table-arrowUp{
+  position:absolute;
+  top:16px;
+  right:10px;
+  width:0;
+  height:0;
+  border-left:6px solid transparent;
+  border-right:6px solid transparent;
+  border-bottom:6px solid #333;
+}
