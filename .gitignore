@@ -1,10 +1,9 @@
 .idea/
-<<<<<<< HEAD
+
 node_modules/
 *npm-debug.log
 npm-debug.log.1168878448
 npm.debug*
-=======
 
 # Logs
 logs
@@ -26,5 +25,5 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
->>>>>>> ca3e50e313d1a5aa9dbc9a7768dd2c0821fa8b38
+
 dist/xstarp.js
