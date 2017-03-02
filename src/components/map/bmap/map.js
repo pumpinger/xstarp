@@ -116,12 +116,12 @@ function mapPlugin(plugins, fn) {
   if(plugins.length < 1) return;
 
   plugins.forEach( function(plugin) {
-    if(plugin === 'SMap.MarkerClusterer') {
+    if(plugin === 'DMap.MarkerClusterer') {
       // 这里改为在使用百度地图之前加载插件代码
       // 因为原来的业务代码中有同步代码，如果使用getScript异步加载，会导致错误发生
       fn();
     }
-    if(plugin === 'SMap.MarkerClusterer') {}
+    if(plugin === 'DMap.MarkerClusterer') {}
   })
 }
 

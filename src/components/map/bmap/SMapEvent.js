@@ -1,6 +1,6 @@
 /**
  * Created by fizz on 2017/2/20.
- * @constructor for BMap map event Object.
+ * @Class for BMap map event Object.
  * 包装百度事件对象
  */
 
@@ -31,10 +31,11 @@ function SMapEvent(e) {
   if(e.overlay) {
 
   }
+  // TODO: 百度event对象的zoom也没什么用吧
   if(e.zoom) {
 
   }
-	// TODO:
+	// TODO: 百度event对象的spots也没什么用吧
   if(e.spots) {
 
   }

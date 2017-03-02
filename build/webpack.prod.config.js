@@ -31,7 +31,8 @@ module.exports = {
 			}
 		]
 	},
-	devtool: 'eval-source-map',
+
+	//
 	externals: {
 		jquery: 'window.$', // 暴露全局jQuery变量
 		$: 'window.$', // 暴露全局jQuery变量

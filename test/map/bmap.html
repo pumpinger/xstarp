@@ -34,13 +34,15 @@
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h733PD7WQgKZYRotiD19oK0w0y6sz0QC"></script>
 
+<script src="http://192.168.60.206:9000/src/components/map/bmap/lib/markerclusterer.js"></script>
+<script src="http://192.168.60.206:9000/src/components/map/bmap/lib/TextIconOverlay.js"></script>
+<script src="http://192.168.60.206:9000/src/components/map/bmap/lib/AreaRestriction.js"></script>
 <script src="http://localhost:9000/xstarp.js"></script>
 
 <script>
 
   mapCreate.setType('b');
 
-  console.log(SMap);
   var map = new SMap.Map('container', {
     resizeEnable: true,
     zoom: 14,
@@ -50,7 +52,7 @@
   map._inner.enableScrollWheelZoom();
 
   map._inner.addEventListener('mousemove', function(e) {
-  	console.log(e);
+//  	console.log(e);
   })
 
 //var map = new BMap.Map("container");          // 创建地图实例
@@ -179,6 +181,7 @@
   });
 
   console.log(SMap.sPlugin.MarkerClusterer);
+
   map.plugin([SMap.sPlugin.MarkerClusterer], function() {
     console.log("hello");
 
@@ -190,9 +193,6 @@
 
   });
 
-
 </script>
-
-
 </body>
 </html>

@@ -12,7 +12,7 @@
 var obc = require('./overlayBaseClass');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
-var LngLat = require('./lnglat');
+var LngLat = require('./LngLat');
 
 /**
  * Represents a Marker
@@ -35,11 +35,7 @@ function Marker(opts, inner) {
     var newOpts = formatOpts.marker(opts);
 
     this._inner = new BMap.Marker(newOpts.position, newOpts);
-
-    // this._init(newOpts);
   }
-
-  // console.log(this);
 }
 
 Marker.prototype = {
