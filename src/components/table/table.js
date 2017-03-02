@@ -5,6 +5,5 @@
 require('./table.scss');
 
 $('.x-table th').click(function(){
-    $(this).find('i').toggleClass('x-table-arrowUp');
-    $(this).find('i').toggleClass('x-table-arrowDown');
+    $(this).find('i').removeClass('x-table-arrow').addClass('x-table-arrowUp');
 });

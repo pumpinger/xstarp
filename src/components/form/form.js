@@ -21,9 +21,9 @@ $('.x-form-checkbox').click(function(){
 $('.x-form-switch').click(function(){
     if($(this).find("input").is(':checked')){
         $(this).addClass('x-form-onswitch');
-        $(this).find('span').text('ON');
+        $(this).find('span').text('开启');
     }else{
         $(this).removeClass('x-form-onswitch');
-        $(this).find('span').text('OFF');
+        $(this).find('span').text('关闭');
     }
 });
