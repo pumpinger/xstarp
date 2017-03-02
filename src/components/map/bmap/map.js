@@ -13,8 +13,8 @@ var formatOpts = require('./formatOpt');
 
 /**
  * @constructor
- * @elem {Object}
- * @opts {Object}
+ * @param {HTMLElement} id
+ * @param {Object} opts
  * */
 function Map(id,opts) {
   var elem, newOpts = {};
@@ -93,7 +93,6 @@ Map.prototype = {
 
 	/**
    * @param {Bounds} bounds
-   * @
    * */
   setBounds: function(bounds) {
     var self = this;
@@ -107,23 +106,22 @@ Map.prototype = {
   off: onOff.off
 };
 
+/**
+ * @public
+ *
+ * @param {Array} plugins
+ * @param {Function} fn callback function
+ * */
 function mapPlugin(plugins, fn) {
   if(plugins.length < 1) return;
 
   plugins.forEach( function(plugin) {
     if(plugin === 'SMap.MarkerClusterer') {
-
-      // $.getScript(config.DMap_TextIconOverlay, function() {
-      //   $.getScript(config.DMap_MarkerClusterer, function() {
-      //     console.log('url', config.DMap_MarkerClusterer);
-      //     fn();
-      //   });
-      // });
+      // 这里改为在使用百度地图之前加载插件代码
+      // 因为原来的业务代码中有同步代码，如果使用getScript异步加载，会导致错误发生
       fn();
-
-
     }
-
+    if(plugin === 'SMap.MarkerClusterer') {}
   })
 }
 
@@ -150,7 +148,7 @@ function clearMap() {
       case 'MarkerClusterer':
         if(overLayers.MarkerClusterer.length > 0) {
           overLayers.MarkerClusterer.forEach( function(item) {
-            item._inner.hide();
+            item._inner.clearMarkers();
             // self._inner.removeOverlay(item._inner);
             // item._inner = null;
             // item = null;

@@ -1,6 +1,6 @@
 /**
  * Created by fizz on 2017/2/13.
- * @constructor Circle
+ * @Class Circle
  */
 
 // var event = require('./event');
@@ -11,7 +11,7 @@ var LngLat = require('./LngLat');
 
 /**
  * @constructor
- * @opts {Object} opts
+ * @param {Object} opts
  * @return an object, inner is prime google map Circle instance.
  * */
 function Circle(opts) {
@@ -43,6 +43,7 @@ Circle.prototype = {
   },
 
   /**
+   * @function 设置圆半径
    * @param {Number} radius
    * */
   setRadius: function(radius) {
@@ -55,7 +56,6 @@ Circle.prototype = {
 
   /**
    * @attention 百度地图没有直接的setOptions，此处为模拟
-   *
    * @param {Object} opts
    * */
   setOptions: function(opts) {
@@ -82,6 +82,7 @@ Circle.prototype = {
   },
 
   /**
+   * @TODO:
    * @attention 百度没有这个API，可能需要自己模拟
    *
    * @function judge whether a point in the polygon inner
@@ -94,10 +95,6 @@ Circle.prototype = {
 
   on: onOff.on,
   off: onOff.off
-};
-
-var CircleEventMap = {
-
 };
 
 module.exports = Circle;

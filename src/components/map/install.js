@@ -15,10 +15,19 @@ window.mapCreate = mapCreate;
 
 if(typeof AMap === 'undefined') {
   SMap = mapCreate('g');
-} else {
+}
+else {
   SMap = mapCreate('a');
 }
 
+/**
+ * @function 设置地图类型
+ * @param {String} type
+ * **地图类型**
+ * * 'a' 代表高德地图
+ * * 'g' 代表谷歌地图
+ * * 'b' 代表百度地图
+ * */
 function mapCreate(type) {
   if (type == 'a') {
     initPlugin('AMap', 'AMap');
@@ -32,6 +41,14 @@ function mapCreate(type) {
   }
 }
 
+/**
+ * @function 设置地图类型
+ * @param {String} type
+ * **地图类型**
+ * * 'a' 代表高德地图
+ * * 'g' 代表谷歌地图
+ * * 'b' 代表百度地图
+ * */
 mapCreate.setType = function(type) {
   var mapType = '';
   if( type == 'a' ) {
@@ -57,5 +74,9 @@ function initPlugin(mapType, Map) {
     RangingTool: mapType + '.RangingTool'
   };
 }
+
+function _installMapAPI() {
+
+};
 
 module.exports = window.SMap = SMap;

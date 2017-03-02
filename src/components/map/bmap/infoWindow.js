@@ -11,7 +11,7 @@ var LngLat = require('./LngLat');
 
 /**
  * @constructor
- * @opts {Object} opts
+ * @param {Object} opts
  * */
 function InfoWindow(opts) {
   this._type = 'InfoWindow';
@@ -30,8 +30,8 @@ function InfoWindow(opts) {
 InfoWindow.prototype = {
   /**
    * @function open a infoWindow in the position
-   * @map {Map} map required
-   * @pos {LngLat} position lngLat
+   * @param {Map} map required
+   * @param {LngLat} pos lngLat
    * */
   open: function(map, pos) {
     if(pos) {
@@ -70,7 +70,7 @@ InfoWindow.prototype = {
   },
 
   setPosition: function(lngLat) {
-    console.log('啊哦，百度暂不支持这个API哦，详情请查看这里:' +
+    console.warn('啊哦，百度暂不支持这个API哦，详情请查看这里:' +
       'http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_' +
       'reference.html#a3b7');
   },
@@ -81,14 +81,14 @@ InfoWindow.prototype = {
 
   // todo: 百度能支持setWidth 和 setHeight
   setSize: function(size) {
-    console.log('啊哦，百度暂不支持这个API哦，详情请查看这里:' +
+    console.warn('啊哦，百度暂不支持这个API哦，详情请查看这里:' +
       'http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_' +
       'reference.html#a3b7');
   },
 
   // todo: 百度 不支持
   getSize: function() {
-    console.log('啊哦，百度暂不支持这个API哦，详情请查看这里:' +
+    console.warn('啊哦，百度暂不支持这个API哦，详情请查看这里:' +
       'http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_' +
       'reference.html#a3b7');
   },

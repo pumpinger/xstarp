@@ -5,14 +5,14 @@
  * @高德： http://lbs.amap.com/api/javascript-api/reference/overlay#MarkerOptions
  * @百度： http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b3
  *
- * @label 高德
+ * @Marker的Options.label 高德有，百度没有。
  *
  */
 
 var obc = require('./overlayBaseClass');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
-var LngLat = require('./lnglat')
+var LngLat = require('./lnglat');
 
 /**
  * Represents a Marker

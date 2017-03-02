@@ -1,9 +1,10 @@
 /**
  * Created by fizz on 2017/2/15.
+ * @Class MarkerClusterer
  */
 
 var formatOpts = require('./formatOpt');
-var obc = require('./overlayBaseClass')
+var obc = require('./overlayBaseClass');
 
 /**
  * @constructor
@@ -12,8 +13,6 @@ var obc = require('./overlayBaseClass')
  * @opts {MarkerClustererOptions}
  *
  * @MarkerClustererOptions
- *
- * @BMap
  * */
 function Clusterer(map, markers, opts) {
   console.log(map, markers, opts);
@@ -25,9 +24,7 @@ function Clusterer(map, markers, opts) {
   if(markers.length < 1) return;
   var newOpts = formatOpts.markerClusterer(map, markers, opts);
   this._inner = new BMapLib.MarkerClusterer(newOpts.map, newOpts.opts);
-
   this._inner._smap = map;
-
 }
 
 Clusterer.prototype = {
@@ -40,6 +37,7 @@ Clusterer.prototype = {
   },
 
   addMarker: function() {},
+
   removeMarker: function(test) {},
 
   clearMarkers: function() {
