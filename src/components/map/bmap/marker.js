@@ -35,6 +35,8 @@ function Marker(opts, inner) {
     var newOpts = formatOpts.marker(opts);
 
     this._inner = new BMap.Marker(newOpts.position, newOpts);
+
+    this._init(newOpts);
   }
 }
 

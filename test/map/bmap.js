@@ -16,11 +16,17 @@ var map = new SMap.Map('container', {
     title: 'hello world'
   });
 
+  var marker1 = new SMap.Marker({
+    map: map,
+    position: [116.398428, 39.91923],
+    title: 'hello world'
+  });
+
   function mh(e) {
     console.log(e);
     console.log("你点击了我！");
   }
-// //  marker.on('click', mh);
+ marker.on('click', mh);
 //   SMap.event.addListener(marker, 'click', mh);
 // //  marker.off('click', mh);
 

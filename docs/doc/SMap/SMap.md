@@ -4,13 +4,21 @@
 
 ## 安装
 
-**同步版**
+引入
 
-**异步版**
 
 ## 快速上手
+````js
+  var SMapConfig = {
+    SMap_target_type: 'b',
+    // GMap_key: ''
+    // callback: initMap
+  }
+````
 
 ## API
+
+
 
 ## 快速链接
 

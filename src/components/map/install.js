@@ -1,6 +1,10 @@
 /**
  * Created by fizz on 2017/2/13.
- * @Function 将SMap注册到页面中去
+ * @Function
+ * @主要功能：
+ * @first  将SMap注册到页面中去
+ * @second 自动引入对应地图的API
+ * @third  自动引入对应地图的插件
  */
 var _ = require('lodash');
 
