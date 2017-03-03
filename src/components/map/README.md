@@ -34,6 +34,8 @@ Super Map 简称SMap。像使用高德地图一样使用Google地图、百度地
 
 百度地图和高德地图的初始属性是不一样的，百度地图默认不能滚轮缩放，所以，要默认滚轮缩放怎么办~
 
+当然，SMap已经在DMap的这套代码中做了这件事儿。
+
 ```js
 var map = new SMap.Map();
 if(typeof BMap !== 'undefined') {
@@ -47,10 +49,9 @@ if(typeof BMap !== 'undefined') {
 - 调用 marker._inner 即可使用所有的该API提供的方法。
 - 利用每个SMap的构造类的实例的_inner属性和SMap的代码进行混合编程，完成特殊需求
 
-> attention: 每个地图API不一致，注意地图之间的差别。
+> attention: 每个地图API不一致，注意地图自有API之间的差别。
 
-
-- 示例：
+示例：
 
 ```js
 var map = new SMap.Map('container', {
@@ -69,11 +70,9 @@ var marker = new SMap.Marker({
 marker._inner.setMap( map._inner );
 ```
 
-
 ## 百度地图
 
 ### 覆盖物类
-
 
 ## Other
 

@@ -18,8 +18,11 @@ module.exports = {
   DMap_key: 'h733PD7WQgKZYRotiD19oK0w0y6sz0QC',
   DMap_url: 'http://api.map.baidu.com/api?v=2.0&ak=',
 
-  /**********************************百度插件地址***********************************/
 
+  /**********************************地图插件地址域名url****************************/
+  SMap_plugin_url: 'http://192.168.60.206:9000/src/components/map/',
+
+  /**********************************百度插件地址***********************************/
   DMap_MarkerClusterer: 'http://192.168.60.206:9000/src/components/map/bmap/lib/markerclusterer.js',
   DMap_TextIconOverlay: 'http://192.168.60.206:9000/src/components/map/bmap/lib/TextIconOverlay.js',
   DMap_AreaRestriction: 'http://192.168.60.206:9000/src/components/map/bmap/lib/AreaRestriction.js'

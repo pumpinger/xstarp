@@ -1,11 +1,14 @@
 /**
  * Created by fizz on 2017/2/13.
+ * @Function 将SMap注册到页面中去
  */
+var _ = require('lodash');
 
 var util = require('../../common/js/util.js');
 var GMap = require('./gmap/index.js');
 var DMap = require('./bmap/index.js');
 var loader = require('./loader');
+var config = require('./config');
 
 window.GMap = GMap;
 window.DMap = DMap;
@@ -14,16 +17,19 @@ var SMap = {};
 
 window.mapCreate = mapCreate;
 
-if(typeof AMap === 'undefined') {
-
-  SMap = mapCreate('g');
-}
-else {
-  SMap = mapCreate('a');
-}
+/**
+ * 默认设置地图类型为高德地图
+ * */
+// if(typeof AMap === 'undefined') {
+//   SMap = mapCreate('g');
+// }
+// else {
+//   SMap = mapCreate('a');
+// }
 
 /**
- * @function 设置地图类型
+ * @function 返回一个地图顶级命名空间变量，适用于单页面多地图
+ * 在页面中声明类似SMap这个变量来接收一个顶级命名空间
  * @param {String} type
  * **地图类型**
  * * 'a' 代表高德地图
@@ -32,13 +38,13 @@ else {
  * */
 function mapCreate(type) {
   if (type == 'a') {
-    initPlugin('AMap', 'AMap');
+    initMap('AMap', 'AMap');
     return window.AMap;
   } else if (type == 'g') {
-    initPlugin('GMap', 'GMap');
+    initMap('GMap', 'GMap');
     return window.GMap;
   } else if (type == 'b') {
-    initPlugin('DMap', 'DMap');
+    initMap('DMap', 'DMap');
     return window.DMap;
   }
 }
@@ -52,6 +58,8 @@ function mapCreate(type) {
  * * 'b' 代表百度地图
  * */
 mapCreate.setType = function(type) {
+
+  console.log(type);
   var mapType = '';
   if( type == 'a' ) {
     window.SMap = AMap;
@@ -60,14 +68,15 @@ mapCreate.setType = function(type) {
     window.SMap = window.GMap;
     mapType = 'GMap';
   } else if ( type == 'b') {
+    console.log(type);
     window.SMap = window.DMap;
     mapType = 'DMap';
   }
-  initPlugin(mapType, 'SMap');
+  initMap(mapType, 'SMap');
 };
 
 /**
- * @function
+ * @function 初始化地图
  * @param {String} mapType
  *   ** 有三种取值：
  *     ** 'AMap'
@@ -75,7 +84,12 @@ mapCreate.setType = function(type) {
  *     ** 'DMap'
  * @param {String} Map
  * */
-function initPlugin(mapType, Map) {
+function initMap(mapType, Map) {
+
+  console.log(mapType,Map);
+	// 设置各地图的文件插件名字
+	// 这里主要为了兼容AMap只能使用它自己内置的字符串。
+	// 栗子：'AMap.MarkerClusterer',高德只认得AMap开头的。
   window[Map].sPlugin = {
     MouseTool: mapType + '.MouseTool',
     CircleEditor: mapType + '.CircleEditor',
@@ -84,21 +98,47 @@ function initPlugin(mapType, Map) {
     MarkerClusterer: mapType + '.MarkerClusterer',
     RangingTool: mapType + '.RangingTool'
   };
+  console.log(window[Map].sPlugin);
 }
 
+if(typeof window.SMapConfig !== 'undefined') {
+  installMap(window.SMapConfig);
+} else {
+  console.warn("[你收到一条来自SMap的警告]：请在使用地图之前声明 SMap_target_type 这个变量！");
+}
 
+function installMap(SMapConfig) {
+  var type, mapType, url, key;
 
-// loading
-var jquery = 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js',
-    your   = 'http://localhost:9000/src/components/map/bmap/lib/markerclusterer.js',
-    my     = 'http://localhost:9000/src/components/map/bmap/lib/texticonoverlay.js';
+  // 未设置则此处自动设置为高德地图
+  if(!SMapConfig.SMap_target_type) {
+    SMapConfig.SMap_target_type = 'a';
+  }
 
-// Loader.load(jquery, your).load(my);
-loader.load(jquery, your)
-  .wait(function(){console.log("yeah, jquery and your.js were loaded")})
-  .load(my)
-  .wait(function(){console.log("yeah, my.js was loaded")})
-  .wait(function(){console.log('yeadlkjskfjldjglkgajdsgjlasdgj');})
+  type = SMapConfig.SMap_target_type;
 
+  if(type === 'a') {
+    mapType = 'AMap';
+  }
+  else if(type === 'g') {
+    mapType = 'GMap';
+  }
+  else if(type === 'b') {
+    mapType = 'DMap';
+  }
 
-module.exports = window.SMap = SMap;
+  key = SMapConfig[ mapType +'_key'] || config[ mapType +'_key'];
+  url = SMapConfig[ mapType +'_url'] || config[ mapType +'_url'];
+
+  // loader
+  //   .load(url+key)
+  //   .wait(function(){
+  //     console.log('加载成功！',url+key);
+  //     mapCreate.setType(type);
+  //   });
+
+  document.write('<script src="'+url+key+'"><\/script>');
+  window.SMap = window.mapCreate(type);
+}
+
+module.exports = window.SMap;

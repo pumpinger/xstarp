@@ -15,21 +15,21 @@ var Polygon = require('./Polygon');
 var Circle = require('./Circle');
 var MarkerClusterer = require('./MarkerClusterer');
 
-var GMap = {};
+var DMap = {};
 
-GMap.event = event;
+DMap.event = event;
 
-GMap.LngLat = LngLat;
-GMap.Bounds = Bounds;
-GMap.Pixel = Pixel;
-GMap.Size = Size;
+DMap.LngLat = LngLat;
+DMap.Bounds = Bounds;
+DMap.Pixel = Pixel;
+DMap.Size = Size;
 
-GMap.Map = Map;
-GMap.Marker = Marker;
-GMap.InfoWindow = InfoWindow;
-GMap.Polyline = Polyline;
-GMap.Polygon = Polygon;
-GMap.Circle = Circle;
-GMap.MarkerClusterer = MarkerClusterer;
+DMap.Map = Map;
+DMap.Marker = Marker;
+DMap.InfoWindow = InfoWindow;
+DMap.Polyline = Polyline;
+DMap.Polygon = Polygon;
+DMap.Circle = Circle;
+DMap.MarkerClusterer = MarkerClusterer;
 
-module.exports = window.GMap = GMap;
+module.exports = window.DMap = DMap;

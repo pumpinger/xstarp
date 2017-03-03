@@ -1,4 +1,7 @@
-// Loader
+/**
+ * @Module 动态文件加载器
+ * @core 一个类promise状态机
+ * */
 
 
 module.exports = (function() {
@@ -7,7 +10,6 @@ module.exports = (function() {
 
   //// url_item = {url:str, start: false, finished：false}
 
-  // 用于调试
   var log = function(msg) {
     return;
     console.log(msg);
@@ -130,7 +132,8 @@ module.exports = (function() {
 
     script.onerror = loadError;
 
-    script.src = url+'?'+'time='+Date.parse(new Date());
+    // script.src = url+'?'+'time='+Date.parse(new Date());
+    script.src = url;
     document.body.appendChild(script);
   };
 
@@ -164,11 +167,17 @@ module.exports = (function() {
   };
 
   var instanceAPI = {
+    /**
+     * @public 加载文件的方法
+     * */
     load : function() {
       addGroup([].slice.call(arguments));
       return instanceAPI;
     },
 
+    /**
+     * @public 加载文件完成，执行回调函数
+     * */
     wait : function(callback) {
       addFunc(callback);
       return instanceAPI;
@@ -177,5 +186,5 @@ module.exports = (function() {
 
   return instanceAPI;
 
-})();  // end Loader，这尼玛就是一个状态机
+})();
 

@@ -51,5 +51,6 @@
 ### 可参考的资源
 
 - [webpack 构建性能优化策略小结](https://segmentfault.com/a/1190000007891318#articleHeader7)
+- [webpack2 终极优化](http://imweb.io/topic/5868e1abb3ce6d8e3f9f99bb)
 
 
