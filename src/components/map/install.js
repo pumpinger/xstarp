@@ -58,8 +58,6 @@ function mapCreate(type) {
  * * 'b' 代表百度地图
  * */
 mapCreate.setType = function(type) {
-
-  console.log(type);
   var mapType = '';
   if( type == 'a' ) {
     window.SMap = AMap;
@@ -85,8 +83,6 @@ mapCreate.setType = function(type) {
  * @param {String} Map
  * */
 function initMap(mapType, Map) {
-
-  console.log(mapType,Map);
 	// 设置各地图的文件插件名字
 	// 这里主要为了兼容AMap只能使用它自己内置的字符串。
 	// 栗子：'AMap.MarkerClusterer',高德只认得AMap开头的。
@@ -98,9 +94,11 @@ function initMap(mapType, Map) {
     MarkerClusterer: mapType + '.MarkerClusterer',
     RangingTool: mapType + '.RangingTool'
   };
-  console.log(window[Map].sPlugin);
 }
 
+/**
+ * @entry 接收页面设置的地图属性
+ * */
 if(typeof window.SMapConfig !== 'undefined') {
   installMap(window.SMapConfig);
 } else {
@@ -130,15 +128,31 @@ function installMap(SMapConfig) {
   key = SMapConfig[ mapType +'_key'] || config[ mapType +'_key'];
   url = SMapConfig[ mapType +'_url'] || config[ mapType +'_url'];
 
-  // loader
-  //   .load(url+key)
-  //   .wait(function(){
-  //     console.log('加载成功！',url+key);
-  //     mapCreate.setType(type);
-  //   });
-
   document.write('<script src="'+url+key+'"><\/script>');
   window.SMap = window.mapCreate(type);
+  getPluginScript(type);
+}
+
+/**
+ * @function 加载百度地图和谷歌的插件
+ *
+ * @param {String} type
+ *   ** 取值： 'a', 'g', 'b'
+ *
+ * 因为高德地图是直接将地图插件和主API JS文件在一起的
+ * 因此百度地图和谷歌地图也需要用插件的话，需要加载它们
+ * 所以这个函数将引入我们config中的插件
+ * */
+function getPluginScript(type){
+  if(type === 'a') {}
+  else if (type === 'b') {
+    document.write('<script src="'+ config.DMap_MarkerClusterer +'"><\/script>');
+    document.write('<script src="'+ config.DMap_TextIconOverlay +'"><\/script>');
+    document.write('<script src="'+ config.DMap_AreaRestriction +'"><\/script>');
+  }
+  else if (type === 'g') {
+    document.write('<script src="'+ config.GMap_MarkerClusterer +'"><\/script>');
+  }
 }
 
 module.exports = window.SMap;

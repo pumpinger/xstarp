@@ -1,31 +1,10 @@
-
-console.log('------------->');
-
-var map;
-
-initMap();
-
-function initMap() {
-  console.log('-------', SMap);
-  map = new SMap.Map('container', {
+var map = new SMap.Map('container', {
     resizeEnable: true,
     zoom: 14,
     center: [116.397428, 39.90923]
   });
 
-  console.log(SMap);
-
-  console.log(map);
-
-  next();
-}
-
-function next() {
   map._inner.enableScrollWheelZoom();
-
-  map._inner.addEventListener('mousemove', function(e) {
-//  	console.log(e);
-  })
 
 //var map = new BMap.Map("container");          // 创建地图实例
 //var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
@@ -41,9 +20,9 @@ function next() {
     console.log(e);
     console.log("你点击了我！");
   }
-//  marker.on('click', mh);
-  SMap.event.addListener(marker, 'click', mh);
-//  marker.off('click', mh);
+// //  marker.on('click', mh);
+//   SMap.event.addListener(marker, 'click', mh);
+// //  marker.off('click', mh);
 
   var iw = new SMap.InfoWindow({
     content: 'Hello SMap',
@@ -128,10 +107,6 @@ function next() {
 //    textSize: 20
 //  }];
 
-  console.log(new SMap.Size(55, 56));
-
-  console.log(new BMap.Size(55, 56));
-
   var markers = [];
   var cluster;
 
@@ -152,17 +127,12 @@ function next() {
     markers.push(t);
   });
 
-  console.log(SMap.sPlugin.MarkerClusterer);
-
   map.plugin([SMap.sPlugin.MarkerClusterer], function() {
-    console.log("hello");
 
     cluster = new SMap.MarkerClusterer(map, markers, {
 //      imagePath: 'http://localhost://test/map/images/m',
       styles: sts
     });
-    console.log('cluster is: ', cluster)
-
   });
-}
+
 

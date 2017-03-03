@@ -25,8 +25,9 @@ module.exports = {
   /**********************************百度插件地址***********************************/
   DMap_MarkerClusterer: 'http://192.168.60.206:9000/src/components/map/bmap/lib/markerclusterer.js',
   DMap_TextIconOverlay: 'http://192.168.60.206:9000/src/components/map/bmap/lib/TextIconOverlay.js',
-  DMap_AreaRestriction: 'http://192.168.60.206:9000/src/components/map/bmap/lib/AreaRestriction.js'
+  DMap_AreaRestriction: 'http://192.168.60.206:9000/src/components/map/bmap/lib/AreaRestriction.js',
 
   /**********************************谷歌插件地址***********************************/
+  GMap_MarkerClusterer: 'http://192.168.60.206:9000/src/components/map/google/markerclusterer.js'
 
 };
