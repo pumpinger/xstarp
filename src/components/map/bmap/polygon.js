@@ -15,14 +15,16 @@ var obc = require('./overlayBaseClass');
  * */
 function Polygon(opts) {
   this._type = 'Polygon';
+  this._isInMapOverlay = false;
   obc.addOverlay(opts, this);
 
   var newOpts = formatOpts.polygon(opts);
   this._inner = new BMap.Polygon(newOpts.path, newOpts);
-
+  this._init(newOpts);
 }
 
 Polygon.prototype = {
+  _init: obc._init,
 
   setMap: obc.setMap,
 

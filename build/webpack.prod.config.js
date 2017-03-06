@@ -7,7 +7,6 @@ var extractCSS = new ExtractTextPlugin('[name].css');
 var extractLESS = new ExtractTextPlugin('[name].less');
 
 module.exports = {
-	watch: true,
 	entry: {
 		xstarp: path.resolve(__dirname, '../src/xstarp.js')
 	},
@@ -32,7 +31,8 @@ module.exports = {
 			}
 		]
 	},
-	devtool: 'eval-source-map',
+
+	//
 	externals: {
 		jquery: 'window.$', // 暴露全局jQuery变量
 		$: 'window.$', // 暴露全局jQuery变量

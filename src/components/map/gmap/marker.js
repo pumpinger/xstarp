@@ -22,9 +22,11 @@ function Marker(opts, inner) {
   } else {
     // 在opts转换之前就要判断添加overlay
     obc.addOverlay(opts, this);
-
     var newOpts = formatOpts.marker(opts);
     this._inner = new google.maps.Marker(newOpts);
+    if(opts.map) {
+      this._inner._smap = opts.map;
+    }
   }
 }
 

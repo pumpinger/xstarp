@@ -1,19 +1,17 @@
 /**
  * Created by fizz on 2017/2/14.
+ * @onOff 基类，覆盖物的实例都具有on和off方法，都直接来自于此
  */
 
 var event = require('./event');
-
 var onOff = {};
 
-
 /**
+ * @function addEventListener 的简便方法
  *
- * @param {String} eventName
- * @param {Function} handler
- * @param {Object} context
- *
- *
+ * @param {String} eventName 事件名称
+ * @param {Function} handler 回调函数
+ * @param {Object} context 上下文
  * */
 onOff.on = function(eventName, handler, context) {
   var listener, eventListener;
@@ -33,6 +31,14 @@ onOff.on = function(eventName, handler, context) {
   return listener;
 };
 
+/**
+ * @function
+ * @param {String} eventName 事件名称
+ * @param {Function} handler 回调函数
+ * @param {Object} context 上下文
+ *
+ * @attention 要想移除对应的事件，必须保证eventName，handler，context一致。
+ * */
 onOff.off = function(eventName, handler, context) {
   if(!this._eventListener) return;
 
@@ -42,15 +48,13 @@ onOff.off = function(eventName, handler, context) {
   });
 
   if(filterResult && filterResult.length > 0) {
-    filterResult.forEach( function(item, index) {
+    filterResult.forEach( function(item) {
       if( item.handler === handler &&
         item.context === context ) {
-        console.log('here am I');
         event.removeListener(item.listener);
       }
     })
   }
-
 
 };
 
