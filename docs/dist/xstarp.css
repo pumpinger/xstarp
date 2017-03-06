@@ -428,6 +428,7 @@ ol, ul {
   margin-left: 15px; }
 
 .x-form-value input {
+  display: inline-block;
   padding: 0 5px;
   width: 150px;
   height: 30px;
@@ -532,7 +533,11 @@ ol, ul {
 
 .x-form-switch span {
   position: absolute;
-  right: 5px; }
+  width: 25px;
+  padding: 0;
+  text-align: center;
+  right: 5px;
+  font-size: 12px; }
 
 .x-form-onswitch {
   border-color: #5bc0de;
@@ -627,9 +632,9 @@ ol, ul {
   right: 10px;
   width: 0;
   height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid #333; }
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #333; }
 
 .x-table-arrowUp {
   position: absolute;
@@ -637,6 +642,30 @@ ol, ul {
   right: 10px;
   width: 0;
   height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #333; }
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 5px solid #333; }
+
+.x-table-arrow {
+  position: absolute;
+  display: inline-block;
+  padding: 1px 2px;
+  top: 18px;
+  right: 15px; }
+
+.x-table-arrow:before {
+  position: absolute;
+  display: block;
+  content: "";
+  top: -5px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 5px solid #333; }
+
+.x-table-arrow:after {
+  position: absolute;
+  display: block;
+  content: "";
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #333; }

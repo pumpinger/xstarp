@@ -7,15 +7,17 @@
 .x-table th{cursor:pointer;}
 .x-table tr:hover{background: $bgColorLight;}
 
+
+
 .x-table-arrowDown{
   position:absolute;
   top:16px;
   right:10px;
   width:0;
   height:0;
-  border-left:6px solid transparent;
-  border-right:6px solid transparent;
-  border-top:6px solid #333;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:5px solid #333;
 }
 
 .x-table-arrowUp{
@@ -24,7 +26,38 @@
   right:10px;
   width:0;
   height:0;
-  border-left:6px solid transparent;
-  border-right:6px solid transparent;
-  border-bottom:6px solid #333;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-bottom:5px solid #333;
 }
+
+.x-table-arrow{
+  position:absolute;
+  display:inline-block;
+  padding:1px 2px;
+  top:18px;
+  right:15px;
+}
+
+
+
+.x-table-arrow:before{
+  position:absolute;
+  display:block;
+  content:"";
+  top:-5px;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-bottom:5px solid #333;
+}
+
+.x-table-arrow:after{
+  position:absolute;
+  display:block;
+  content:"";
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:5px solid #333;
+}
+
+
