@@ -15,7 +15,7 @@ body { font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif; }
 .top_border { border-bottom: 8px solid rgb(77, 85, 106); }
 .top_left { display: inline-block; float: left; width: 220px; }
 .top_logo { padding: 13px 15px 8px 5px; width: 170px; }
-.top_middle { position:fixed;display: inline-block;width: 553px; top:9px;left:45%;margin-left:-226px;background: transparent url('../images/bg.png') no-repeat scroll 0% 0%; z-index:999}
+.top_middle { position:fixed;display: inline-block;width: 553px; top:9px;left:45%;margin-left:-226px;background: transparent url('../images/bg.png') no-repeat scroll 0% 0%; z-index:999;text-align: center;}
 @media (max-width:1000px) {
     .top_middle{left:268px;margin-left:0;}
 }
