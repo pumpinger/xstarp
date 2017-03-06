@@ -1,5 +1,5 @@
 /**
- * Created by fizz on 2017/2/23.
+ * Created by jesse on 2017/2/23.
  */
 require('./components/tip/tip.js');
 require('./components/tab/tab.js');
