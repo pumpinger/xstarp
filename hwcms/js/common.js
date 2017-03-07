@@ -15,7 +15,6 @@ $('.top_user').mouseleave(function(){
 });
 
 //侧边栏
-
 $('.aside_item').mousedown(function(){
     $('.aside_item').removeClass('aside_item_active');
     $(this).addClass('aside_item_active');

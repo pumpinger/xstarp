@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "D:\\jcc\\xstarp\\dist";
+/******/ 	__webpack_require__.p = "E:\\xbcx-work\\xstarp\\xstarp\\dist";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -20487,7 +20487,6 @@
 
 	        self.on("mouseenter",function(){
 	            self.append( htmlDom );
-	            // var left = self.offset().left;
 	            var top = htmlDom.outerHeight() + parseInt(htmlDom.find(".x-tip-cor").css("border-width"));
 	            htmlDom.css({"left":0,"top":-top,"display":"block"});
 	            htmlDom.stop().animate({ "top" : -top ,"opacity" : 1},300);
@@ -20496,7 +20495,7 @@
 	        self.on("mouseleave",function(){
 	             iTime = setTimeout(function(){
 	                htmlDom.remove();
-	            },2000);
+	            },500);
 	        });
 
 	        $('body').on("mouseenter",'.x-tip-dialog',function(){
@@ -20600,10 +20599,10 @@
 	$('.x-form-switch').click(function(){
 	    if($(this).find("input").is(':checked')){
 	        $(this).addClass('x-form-onswitch');
-	        $(this).find('span').text('ON');
+	        $(this).find('span').text('开启');
 	    }else{
 	        $(this).removeClass('x-form-onswitch');
-	        $(this).find('span').text('OFF');
+	        $(this).find('span').text('关闭');
 	    }
 	});
 
@@ -20881,10 +20880,23 @@
 
 	__webpack_require__(60);
 
+	var count = 0;
+
 	$('.x-table th').click(function(){
-	    $(this).find('i').toggleClass('x-table-arrowUp');
-	    $(this).find('i').toggleClass('x-table-arrowDown');
+	    var iconDom = $(this).find('i');
+	    if(count % 3 == 0){
+	        console.log(111);
+	        iconDom.removeClass('x-table-arrow').addClass('x-table-arrowUp')
+	    }else if(count % 3 == 1){
+	        console.log(222);
+	        iconDom.removeClass('x-table-arrowUp').addClass('x-table-arrowDown');
+	    }else{
+	        iconDom.removeClass('x-table-arrowDown').addClass('x-table-arrow')
+	    }
+	    count++;
+
 	});
+
 
 /***/ },
 /* 60 */
