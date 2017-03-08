@@ -9,12 +9,13 @@ var extractLESS = new ExtractTextPlugin('[name].less');
 module.exports = {
 	watch: true,
 	entry: {
-		xstarp: path.resolve(__dirname, '../src/xstarp.js')
+		SMap: path.resolve(__dirname, '../src/zq.js')
+
 	},
 	output: {
 		path: path.resolve(__dirname,'../dist'),
 		publicPath: path.resolve(__dirname,'../dist/'),
-		filename: 'xstarp.js'
+		filename: 'SMap.js'
 	},
 	module: {
 		loaders: [

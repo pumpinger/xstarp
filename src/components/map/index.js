@@ -5,7 +5,7 @@
 var util = require('../../common/js/util.js');
 var GMap = require('./gmap/index.js');
 var DMap = require('./bmap/index.js');
-require('./MapSDK.js');
+//require('./MapSDK.js');
 
 window.GMap = GMap;
 window.DMap = DMap;

@@ -40,7 +40,6 @@ function formatOptsUni(opts) {
   if(opts.map) {
     opts.map = opts.map._inner;
   }
-
   return opts;
 }
 

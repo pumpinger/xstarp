@@ -15,10 +15,11 @@ function Point(x, y, inner) {
   if(inner) {
     this._inner = inner;
   } else {
-    this._inner = new google.maps.Point(x,y);
+    this._inner = new BMap.Point(x,y);
   }
 
   this._type = 'Pixel';
+
 
   return this;
 }

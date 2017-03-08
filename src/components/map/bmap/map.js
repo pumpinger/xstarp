@@ -23,6 +23,18 @@ function Map(id,opts) {
 
   this._inner = new BMap.Map(elem, newOpts);
   this._inner._smap = this;
+  this.mapObj = this._inner;
+
+  if(opts.navigation){
+    //鼠标滚轮支持
+    this._inner.addControl(new BMap.NavigationControl());
+
+  }
+  if(opts.enableScroll){
+    this._inner.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    this._inner.disableContinuousZoom();     //开启鼠标滚轮缩放
+  }
+  this._inner.centerAndZoom(opts.center, opts.zoom);
   this._overLayers = {
     MarkerClusterer: [],
     Marker: [],
@@ -47,11 +59,27 @@ Map.prototype = {
   },
 
 
+  search: function(str,callback){
+    var local = new BMap.LocalSearch(this._inner, { //智能搜索
+      onSearchComplete: callback
+    });
+    if(str){
+      local.search(str);
+    }
+    return local;
+  },
   /**
    * @param {Number} zoom
    * */
   setZoom: function(zoom) {
     this._inner.setZoom(zoom);
+  },
+  setCenter: function(center){
+    this._inner.setCenter(new BMap.Point(center.lng,center.lat));
+  },
+
+  removeOverly: function(){
+
   },
 
   getBounds: function() {

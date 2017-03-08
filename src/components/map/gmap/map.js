@@ -23,6 +23,7 @@ function Map(id,opts) {
 
   this._inner = new google.maps.Map(elem, newOpts);
   this._inner._smap = this;
+  this.mapObj = this._inner;
   this._overLayers = {
     MarkerClusterer: [],
     Marker: [],
@@ -55,6 +56,10 @@ Map.prototype = {
    * */
   setZoom: function(zoom) {
     this._inner.setZoom(zoom);
+  },
+
+  removeOverly : function(){
+
   },
 
   getBounds: function() {

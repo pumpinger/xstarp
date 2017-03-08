@@ -3,5 +3,4 @@
  */
 
 
-require('./components/upload/index.js');
-require('./common/styles/index.scss');
+require('./components/map/index');
