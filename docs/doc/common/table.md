@@ -9,9 +9,9 @@
             <th>ID</th>
             <th>姓名</th>
             <th>类型</th>
-            <th>日期</th>
-            <th>部门<i class="x-table-arrowDown"></i></th>
-            <th>操作<i class="x-table-arrowDown"></i></th>
+            <th>日期<i class="x-table-arrow"></i></th>
+            <th>部门<i class="x-table-arrow"></i></th>
+            <th>操作<i class="x-table-arrow"></i></th>
         </tr>
         </thead>
         <tbody align="center">

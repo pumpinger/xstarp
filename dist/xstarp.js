@@ -20885,16 +20885,14 @@
 	$('.x-table th').click(function(){
 	    var iconDom = $(this).find('i');
 	    if(count % 3 == 0){
-	        console.log(111);
+	        console.log(3333);
 	        iconDom.removeClass('x-table-arrow').addClass('x-table-arrowUp')
 	    }else if(count % 3 == 1){
-	        console.log(222);
 	        iconDom.removeClass('x-table-arrowUp').addClass('x-table-arrowDown');
 	    }else{
 	        iconDom.removeClass('x-table-arrowDown').addClass('x-table-arrow')
 	    }
 	    count++;
-
 	});
 
 
