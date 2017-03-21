@@ -20,14 +20,14 @@ module.exports = {
 
 
   /**********************************地图插件地址域名url****************************/
-  SMap_plugin_url: 'http://192.168.60.206:9000/src/components/map/',
+  SMap_plugin_url: './',
 
   /**********************************百度插件地址***********************************/
-  DMap_MarkerClusterer: 'http://192.168.60.206:9000/src/components/map/bmap/lib/markerclusterer.js',
-  DMap_TextIconOverlay: 'http://192.168.60.206:9000/src/components/map/bmap/lib/TextIconOverlay.js',
-  DMap_AreaRestriction: 'http://192.168.60.206:9000/src/components/map/bmap/lib/AreaRestriction.js',
+  DMap_MarkerClusterer: "http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js",
+  DMap_TextIconOverlay: "http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js",
+  DMap_AreaRestriction: "http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js",
 
   /**********************************谷歌插件地址***********************************/
-  GMap_MarkerClusterer: 'http://192.168.60.206:9000/src/components/map/google/markerclusterer.js'
+  GMap_MarkerClusterer: './google/markerclusterer.js'
 
 };
