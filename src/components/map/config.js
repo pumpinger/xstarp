@@ -28,6 +28,6 @@ module.exports = {
   DMap_AreaRestriction: "http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js",
 
   /**********************************谷歌插件地址***********************************/
-  GMap_MarkerClusterer: './google/markerclusterer.js'
+  GMap_MarkerClusterer: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js'
 
 };
