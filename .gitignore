@@ -1,6 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 
-
+/.idea/
 
 ### Node template
 # Logs
@@ -64,4 +64,3 @@ typings/
 
 /dist/
 /docs/dist/
-/.idea/
