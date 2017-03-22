@@ -134,9 +134,9 @@ function installMap(SMapConfig) {
     key = SMapConfig[mapType + '_key'] || config[mapType + '_key'];
     url = SMapConfig[mapType + '_url'] || config[mapType + '_url'];
 
-    document.write('<script src="' + url + key + '"><\/script>');
+    // document.write('<script src="' + url + key + '"><\/script>');
     window.SMap = window.mapCreate(type);
-    getPluginScript(type);
+    // getPluginScript(type);
 }
 
 /**
