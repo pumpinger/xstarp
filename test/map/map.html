@@ -24,8 +24,6 @@
 <script src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
 <script src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
 <script src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjPUco3l_6-f8ZexAesZrYFzpGtRQHvSo"></script>
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
 
 <script>
@@ -36,184 +34,336 @@
 <script src="../../dist/temp.js"></script>
 
 <script>
+    var bmapmap = new BMap.Map("container");
+    bmapmap.centerAndZoom(new BMap.Point(104.070955, 30.487575), 15);
+    bmapmap.enableScrollWheelZoom();
+        function Maker(opt) {
+            opt.icon = new BMap.Icon(opt.icon, new BMap.Size(36, 36));
+            this.content = opt.content;
 
-    var map = new SMap.Map('container', {
-        resizeEnable: true,
-        zoom: 11,
-        center: [116.397428, 39.90923]
-    });
+            BMap.Marker.call(this, opt.position, opt);
 
-    var $button = document.querySelector('#button');
-    SMap.event.addDomListener($button, 'click', function (e) {
-        console.log(e);
-    });
-    //  map.on('mouseover', oh);
-    function oh(e) {
-        console.log(e);
-        console.log(e.lnglat.getLng());
-        console.log(e.lnglat.getLat());
-        console.log('鼠标进入');
-    }
+            init = this.initialize;
+//            console.log('this',this);
+            this.initialize = function (map) {
+                console.log('init',init);
+                console.log('that',this);
+                console.log();
+                var d = init.call(this,map);
+                console.log(d);
+                return d;
+            }
 
-    //  amap = new AMap.Map('container', {
-    //    resizeEnable: true,
-    //    zoom:11,
-    //    center: [116.397428, 39.90923]
-    //  });
+        }
+//        Maker.prototype = new BMap.Marker();
+
+    Maker.prototype = Object.create(BMap.Marker.prototype);
+
+//    function iii(map) {
+//        console.log(this.init);
+//        console.log(this.aa);
+//        var d = this.init.call(this, map)
+//        console.log(d);
+//        return d;
+//    }
+//        Maker.prototype.initialize = iii;
+
+//        Maker.prototype.initialize = function (map) {
+//            console.log(this.init);
+//            console.log(this.aa);
+//            var d = init.call(this, map)
+//            console.log(d);
+//            return d;
+//        }
+
+//    function jkl() {
+//        p = 'pppp'
+//        return function () {
+//            console.log('p', p);
+//            return p;
+//        }
+//    }
+//
+//    function Maa() {
+//        this.p = 'pp'
+//    }
+//    Maa.prototype.aa = jkl();
+//
+//
+//    function Mbb() {
+//
+//        console.log('mmmbb');
+//        var aa = this.aa;
+//        this.aa = function () {
+//            var pp =aa();
+//            console.log('bb');
+//            console.log('pp',pp);
+//            return pp;
+//        }
+//    }
+//    Mbb.prototype = Object.create(Maa.prototype);
+//
+//    var mbbb = new Mbb();
+//    console.log(mbbb);
+//    mbbb.aa();
+
+
+
+    //    Maker.prototype.initialize = function(map){
+    //        this._map = map;
+    //        var div = this._div = document.createElement("div");
+    //        div.style.position = "absolute";
+    //        div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
+    //        div.style.backgroundColor = "#EE5D5B";
+    //        div.style.border = "1px solid #BC3B3A";
+    //        div.style.color = "white";
+    //        div.style.height = "18px";
+    //        div.style.padding = "2px";
+    //        div.style.lineHeight = "18px";
+    //        div.style.whiteSpace = "nowrap";
+    //        div.style.MozUserSelect = "none";
+    //        div.style.fontSize = "12px";
+    //        var span = this._span = document.createElement("span");
+    //        div.appendChild(span);
+    //        span.appendChild(document.createTextNode(this._text));
+    //        var that = this;
     //
-    //  amap.on('mouseover', function(e) {
-    //    console.log(e);
-    //    console.log(e.lnglat.getLng());
-    //    console.log(e.lnglat.getLat());
-    //    console.log('鼠标进入');
-    //  });
+    //        var arrow = this._arrow = document.createElement("div");
+    //        arrow.style.background = "url(http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
+    //        arrow.style.position = "absolute";
+    //        arrow.style.width = "11px";
+    //        arrow.style.height = "10px";
+    //        arrow.style.top = "22px";
+    //        arrow.style.left = "10px";
+    //        arrow.style.overflow = "hidden";
+    //        div.appendChild(arrow);
     //
-    //  map.off('mouseover',oh);
+    //        div.onmouseover = function(){
+    //            this.style.backgroundColor = "#6BADCA";
+    //            this.style.borderColor = "#0000ff";
+    //            this.getElementsByTagName("span")[0].innerHTML = that._overText;
+    //            arrow.style.backgroundPosition = "0px -20px";
+    //        };
     //
-    //  var marker = new SMap.Marker({
-    //    position: [116.397428, 39.90923],
-    //    title: 'hello world111111111111'
-    //  });
+    //        div.onmouseout = function(){
+    //            this.style.backgroundColor = "#EE5D5B";
+    //            this.style.borderColor = "#BC3B3A";
+    //            this.getElementsByTagName("span")[0].innerHTML = that._text;
+    //            arrow.style.backgroundPosition = "0px 0px";
+    //        };
+    //
+    //        bmapmap.getPanes().labelPane.appendChild(div);
+    //
+    //        return div;
+    //    };
 
-    var offset =  new SMap.Pixel(-15,-34);
+    //    Maker.prototype.draw = function(){
+    //        var map = this._map;
+    //        var pixel = map.pointToOverlayPixel(this._point);
+    //        this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
+    //        this._div.style.top  = pixel.y - 30 + "px";
+    //    };
     var icon = 'http://fhj.xbwq.com.cn/fhj/public/common/widget/module/location/track/images/track/track_map2_start.png';
-
-    var marker = new SMap.Marker({
+    var txt = "银湖海岸城", mouseoverTxt = txt + " " + parseInt(Math.random() * 1000, 10) + "套";
+    //    var offset =  new BMap.Pixel(-15,-34);
+    var c = {
         icon: icon,
-        offset: offset,
-        position: new SMap.LngLat(116.360526,39.930656),
+//    offset: offset,
+        position: new BMap.Point(104.070955, 30.487575),
         extData: {iconval: 11, iconval_s: 22},
         visible: true,
         title: 'hello world111111111111',
         zIndex: 10,
         content: 'ssss'   //自定义点标记覆盖物内容
-    });
-    console.log("marker",marker);
+    };
 
-    marker.setMap(map);
-    var lis = marker.on('click', markerHandler);
+    var bmaker = new Maker(c);
 
-    function markerHandler() {
-        console.log("you click me!");
-        iw.open(map);
-    }
-
-    var iw = new SMap.InfoWindow({
-        content: 'Hello SMap',
-        position: [116.360526,39.930656],
-    });
-
-    //  iw.open(map);
-
-    iw.on('closeclick', function (e) {
-        console.log("你点击了关闭");
-    });
-    //  iw.close();
-
-    //  marker.off('click', markerHandler);
-
-    //  SMap.event.removeListener(lis);
+    bmapmap.addOverlay(bmaker);
+    console.log(bmaker);
 
 
-    var lineArr = [
-        [116.368904, 39.913423],
-        [116.382122, 39.901176],
-        [116.387271, 39.912501],
-        [116.398258, 39.904600]
-    ];
-    var polyline = new SMap.Polyline({
-        map: map,
-        path: lineArr,          //设置线覆盖物路径
-        strokeColor: "#3366FF", //线颜色
-        strokeOpacity: 1,       //线透明度
-        strokeWeight: 5,        //线宽
-        strokeStyle: "solid",   //线样式
-        strokeDasharray: [10, 5] //补充线样式
-    });
+</script>
 
-    var polygonArr = [];//多边形覆盖物节点坐标数组
-    polygonArr.push([116.403322, 39.920255]);
-    polygonArr.push([116.410703, 39.897555]);
-    polygonArr.push([116.402292, 39.892353]);
-    polygonArr.push([116.389846, 39.891365]);
-    var polygon = new SMap.Polygon({
-        path: polygonArr,//设置多边形边界路径
-        strokeColor: "#FF33FF", //线颜色
-        strokeOpacity: 0.2, //线透明度
-        strokeWeight: 3,    //线宽
-        fillColor: "#1791fc", //填充色
-        fillOpacity: 0.35//填充透明度
-    });
-    polygon.setMap(map);
+<script>
 
-
-    var circle = new SMap.Circle({
-        center: new SMap.LngLat("116.403322", "39.920255"),// 圆心位置
-        radius: 1000, //半径
-        strokeColor: "#F33", //线颜色
-        strokeOpacity: 1, //线透明度
-        strokeWeight: 3, //线粗细度
-        fillColor: "#ee2200", //填充颜色
-        fillOpacity: 0.35//填充透明度
-    });
-    circle.setMap(map);
-
-    var sts = [{
-        url: "http://localhost://test/map/images/m2.png",
-        size: new SMap.Size(32, 32),
-        offset: new SMap.Pixel(-16, -30)
-    }, {
-        url: "http://localhost://test/map/images/m2.png",
-        size: new SMap.Size(32, 32),
-        offset: new SMap.Pixel(-16, -30)
-    }, {
-        url: 'http://localhost://test/map/images/m2.png',
-        size: new SMap.Size(48, 48),
-        offset: new SMap.Pixel(-24, -45),
-        textColor: '#CC0066'
-    }];
-    var markers = [];
-    var cluster;
-
-    var markerArr = [
-        [116.403322, 39.920255],
-        [116.410703, 39.897555],
-        [116.402292, 39.892353],
-        [116.389846, 39.891365]
-    ];
-
-    markerArr.forEach(function (item) {
-        var t = new SMap.Marker({
-            map: map,
-            position: item,
-            title: 'hello world'
-        });
-
-        markers.push(t);
-    });
-
-    map.plugin([SMap.sPlugin.MarkerClusterer], function () {
-        console.log("hello");
-
-        cluster = new SMap.MarkerClusterer(map, markers, {
-//      imagePath: 'http://localhost://test/map/images/m',
-            styles: sts
-        });
-        console.log('cluster is: ', cluster)
-
-    });
-
-    var bounds = new SMap.Bounds({lng: 116.397428, lat: 39.90923})
-
-    console.log(bounds);
-
-    var mapBounds = map.getBounds();
-
-    console.log(mapBounds);
-
-    console.log(new AMap.Pixel(-16, -30));
-
-    console.log('google Pixel is: ', new google.maps.Point(10, 20));
+    //    var map = new SMap.Map('container', {
+    //        resizeEnable: true,
+    //        zoom: 11,
+    //        center: [116.397428, 39.90923]
+    //    });
+    //
+    //    var $button = document.querySelector('#button');
+    //    SMap.event.addDomListener($button, 'click', function (e) {
+    //        console.log(e);
+    //    });
+    //    //  map.on('mouseover', oh);
+    //    function oh(e) {
+    //        console.log(e);
+    //        console.log(e.lnglat.getLng());
+    //        console.log(e.lnglat.getLat());
+    //        console.log('鼠标进入');
+    //    }
+    //
+    //    //  amap = new AMap.Map('container', {
+    //    //    resizeEnable: true,
+    //    //    zoom:11,
+    //    //    center: [116.397428, 39.90923]
+    //    //  });
+    //    //
+    //    //  amap.on('mouseover', function(e) {
+    //    //    console.log(e);
+    //    //    console.log(e.lnglat.getLng());
+    //    //    console.log(e.lnglat.getLat());
+    //    //    console.log('鼠标进入');
+    //    //  });
+    //    //
+    //    //  map.off('mouseover',oh);
+    //    //
+    //    //  var marker = new SMap.Marker({
+    //    //    position: [116.397428, 39.90923],
+    //    //    title: 'hello world111111111111'
+    //    //  });
+    //
+    //    var offset =  new SMap.Pixel(-15,-34);
+    //    var icon = 'http://fhj.xbwq.com.cn/fhj/public/common/widget/module/location/track/images/track/track_map2_start.png';
+    //
+    //    var marker = new Marker({
+    //        icon: icon,
+    //        offset: offset,
+    //        position: new SMap.LngLat(116.360526,39.930656),
+    //        extData: {iconval: 11, iconval_s: 22},
+    //        visible: true,
+    //        title: 'hello world111111111111',
+    //        zIndex: 10,
+    //        content: 'ssss'   //自定义点标记覆盖物内容
+    //    });
+    //    console.log("marker",marker);
+    //
+    //    marker.setMap(map);
+    //    var lis = marker.on('click', markerHandler);
+    //
+    //    function markerHandler() {
+    //        console.log("you click me!");
+    //        iw.open(map);
+    //    }
+    //
+    //    var iw = new SMap.InfoWindow({
+    //        content: 'Hello SMap',
+    //        position: [116.360526,39.930656],
+    //    });
+    //
+    //    //  iw.open(map);
+    //
+    //    iw.on('closeclick', function (e) {
+    //        console.log("你点击了关闭");
+    //    });
+    //    //  iw.close();
+    //
+    //    //  marker.off('click', markerHandler);
+    //
+    //    //  SMap.event.removeListener(lis);
+    //
+    //
+    //    var lineArr = [
+    //        [116.368904, 39.913423],
+    //        [116.382122, 39.901176],
+    //        [116.387271, 39.912501],
+    //        [116.398258, 39.904600]
+    //    ];
+    //    var polyline = new SMap.Polyline({
+    //        map: map,
+    //        path: lineArr,          //设置线覆盖物路径
+    //        strokeColor: "#3366FF", //线颜色
+    //        strokeOpacity: 1,       //线透明度
+    //        strokeWeight: 5,        //线宽
+    //        strokeStyle: "solid",   //线样式
+    //        strokeDasharray: [10, 5] //补充线样式
+    //    });
+    //
+    //    var polygonArr = [];//多边形覆盖物节点坐标数组
+    //    polygonArr.push([116.403322, 39.920255]);
+    //    polygonArr.push([116.410703, 39.897555]);
+    //    polygonArr.push([116.402292, 39.892353]);
+    //    polygonArr.push([116.389846, 39.891365]);
+    //    var polygon = new SMap.Polygon({
+    //        path: polygonArr,//设置多边形边界路径
+    //        strokeColor: "#FF33FF", //线颜色
+    //        strokeOpacity: 0.2, //线透明度
+    //        strokeWeight: 3,    //线宽
+    //        fillColor: "#1791fc", //填充色
+    //        fillOpacity: 0.35//填充透明度
+    //    });
+    //    polygon.setMap(map);
+    //
+    //
+    //    var circle = new SMap.Circle({
+    //        center: new SMap.LngLat("116.403322", "39.920255"),// 圆心位置
+    //        radius: 1000, //半径
+    //        strokeColor: "#F33", //线颜色
+    //        strokeOpacity: 1, //线透明度
+    //        strokeWeight: 3, //线粗细度
+    //        fillColor: "#ee2200", //填充颜色
+    //        fillOpacity: 0.35//填充透明度
+    //    });
+    //    circle.setMap(map);
+    //
+    //    var sts = [{
+    //        url: "http://localhost:/test/map/img/m2.png",
+    //        size: new SMap.Size(32, 32),
+    //        offset: new SMap.Pixel(-16, -30)
+    //    }, {
+    //        url: "http://localhost:/test/map/img/m2.png",
+    //        size: new SMap.Size(32, 32),
+    //        offset: new SMap.Pixel(-16, -30)
+    //    }, {
+    //        url: 'http://localhost:/test/map/img/m2.png',
+    //        size: new SMap.Size(48, 48),
+    //        offset: new SMap.Pixel(-24, -45),
+    //        textColor: '#CC0066'
+    //    }];
+    //    var markers = [];
+    //    var cluster;
+    //
+    //    var markerArr = [
+    //        [116.403322, 39.920255],
+    //        [116.410703, 39.897555],
+    //        [116.402292, 39.892353],
+    //        [116.389846, 39.891365]
+    //    ];
+    //
+    //    markerArr.forEach(function (item) {
+    //        var t = new SMap.Marker({
+    //            position: item,
+    //            title: 'hello world'
+    //        });
+    //        t.setMap(map);
+    //        console.log(t);
+    //        markers.push(t);
+    //    });
+    //
+    //    map.plugin([SMap.sPlugin.MarkerClusterer], function () {
+    //        console.log("hello");
+    //
+    //        cluster = new SMap.MarkerClusterer(map, markers, {
+    ////      imagePath: 'http://localhost://test/map/images/m',
+    //            styles: sts
+    //        });
+    //        console.log('cluster is: ', cluster)
+    //
+    //    });
+    //
+    //    var bounds = new SMap.Bounds({lng: 116.397428, lat: 39.90923})
+    //
+    //    console.log(bounds);
+    //
+    //    var mapBounds = map.getBounds();
+    //
+    //    console.log(mapBounds);
+    //
+    //    console.log(new AMap.Pixel(-16, -30));
+    //
+    //    console.log('google Pixel is: ', new google.maps.Point(10, 20));
 
 </script>
 

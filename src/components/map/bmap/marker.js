@@ -23,36 +23,50 @@ var LngLat = require('./LngLat');
  * */
 function Marker(opts, inner) {
 
-  this._type = 'Marker';
-  this._isInMapOverlay = false;
+    this._type = 'Marker';
+    this._isInMapOverlay = false;
 
-  if(inner) {
-    this._inner = inner;
-  } else {
-    // 在opts转换之前就要判断添加overlay
-    obc.addOverlay(opts, this);
+    if (inner) {
+        this._inner = inner;
+    } else {
+        // 在opts转换之前就要判断添加overlay
+        obc.addOverlay(opts, this);
 
-    var newOpts = formatOpts.marker(opts);
+        var newOpts = formatOpts.marker(opts);
 
-    this._inner = new BMap.Marker(newOpts.position, newOpts);
+        this._inner = new BMap.Marker(newOpts.position, newOpts);
 
-    this._init(newOpts);
-  }
+        this._init(newOpts);
+
+        if (!newOpts.visible) {
+            this.hide();
+        }
+        if(newOpts.extData){
+            this.extData = newOpts.extData;
+        }
+    }
 }
 
 Marker.prototype = {
-  _init: obc._init,
-  setMap: obc.setMap,
-  getMap: obc.getMap,
-  hide: obc.hide,
-  show: obc.show,
+    _init: obc._init,
+    setMap: obc.setMap,
+    getMap: obc.getMap,
+    hide: obc.hide,
+    show: obc.show,
 
-  getPosition: function() {
-    return new LngLat('', '', this._inner.getPosition());
-  },
+    setExtData: function (ext) {
+        this.extData = ext;
+    },
+    getExtData: function () {
+        return this.extData;
+    },
 
-  on: onOff.on,
-  off: onOff.off
+    getPosition: function () {
+        return new LngLat('', '', this._inner.getPosition());
+    },
+
+    on: onOff.on,
+    off: onOff.off
 };
 
 module.exports = Marker;

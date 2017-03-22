@@ -41,3 +41,6 @@ http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b14
 
 - 手册：
 http://lbsyun.baidu.com/index.php?title=jspopular
+
+
+QA:百度地图已经占掉了BMap这个顶级命名空间了，所以这里我们使用DMap来命名我们的顶级空间
