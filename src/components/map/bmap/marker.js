@@ -34,6 +34,22 @@ function Marker(opts, inner) {
 
         var newOpts = formatOpts.marker(opts);
 
+        BMap.Marker.call(this, newOpts.position, newOpts);//继承BMap.Marker属性
+
+        this.setMap = function (map) {
+            console.log(map);
+            map._inner.addOverlay(this);
+            if (newOpts.content) {
+                var that = this;
+                setTimeout(function () {
+                    $(that.xc).css({'z-index': newOpts.zIndex});
+                    var div = $(that.xc).find('>div');
+                    div.html(newOpts.content);
+                    div.css({'background': '#178', 'font-size': '12px'});
+                }, 0)
+            }
+        };
+
         this._inner = new BMap.Marker(newOpts.position, newOpts);
 
         this._init(newOpts);
@@ -41,33 +57,32 @@ function Marker(opts, inner) {
         if (!newOpts.visible) {
             this.hide();
         }
-        if(newOpts.extData){
+        if (newOpts.extData) {
             this.extData = newOpts.extData;
         }
     }
 }
 
-Marker.prototype = {
-    _init: obc._init,
-    setMap: obc.setMap,
-    getMap: obc.getMap,
-    hide: obc.hide,
-    show: obc.show,
+Marker.prototype = new BMap.Marker();//继承BMap.Marker方法
 
-    setExtData: function (ext) {
-        this.extData = ext;
-    },
-    getExtData: function () {
-        return this.extData;
-    },
 
-    getPosition: function () {
-        return new LngLat('', '', this._inner.getPosition());
-    },
+Marker.prototype._init = obc._init;
+Marker.prototype.setMap = obc.setMap;
+Marker.prototype.getMap = obc.getMap;
 
-    on: onOff.on,
-    off: onOff.off
+Marker.prototype.setExtData = function (ext) {
+    this.extData = ext;
 };
+Marker.prototype.getExtData = function () {
+    return this.extData;
+};
+
+Marker.prototype.getPosition = function () {
+    return new LngLat('', '', this._inner.getPosition());
+};
+
+Marker.prototype.on = onOff.on;
+Marker.prototype.off = onOff.off;
 
 module.exports = Marker;
 

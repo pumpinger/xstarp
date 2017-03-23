@@ -12,6 +12,7 @@ function Bmarker(opt) {
         map.addOverlay(this);
         if (opt.content) {
             setTimeout(function () {
+                $(that.xc).css({'z-index':opt.zIndex});
                 var div = $(that.xc).find('>div');
                 div.html(opt.content);
                 div.css({'background': '#178', 'font-size': '12px'});

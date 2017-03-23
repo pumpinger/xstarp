@@ -65,7 +65,7 @@ event._createCallback = function(handler, context) {
 };
 
 event.addListener = function(instance, eventName, handler, context) {
-  if(!instance._inner) return;
+  if(!instance || !instance._inner) return;
 
   var realInstance = instance._inner,
       relevantEvent = event.getRelevantEvent(instance, eventName),
