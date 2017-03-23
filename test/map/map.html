@@ -37,76 +37,182 @@
     var bmapmap = new BMap.Map("container");
     bmapmap.centerAndZoom(new BMap.Point(104.070955, 30.487575), 15);
     bmapmap.enableScrollWheelZoom();
-        function Maker(opt) {
-            opt.icon = new BMap.Icon(opt.icon, new BMap.Size(36, 36));
-            this.content = opt.content;
+    function T(opt) {
+        opt.icon = new BMap.Icon(opt.icon, new BMap.Size(33, 33));
+        this.content = opt.content;
 
-            BMap.Marker.call(this, opt.position, opt);
-
-            init = this.initialize;
-//            console.log('this',this);
-            this.initialize = function (map) {
-                console.log('init',init);
-                console.log('that',this);
-                console.log();
-                var d = init.call(this,map);
-                console.log(d);
-                return d;
+        BMap.Marker.call(this, opt.position, opt);
+        console.log('this', this);
+        this.div = null;
+        var that = this;
+        this.setMap = function (map) {
+            map.addOverlay(this);
+//            map.addEventListener('onaddoverlay',function (e) {
+//                $(that.xc).find('>div').html(opt.content);
+//            });
+            if(opt.content){
+                setTimeout(function () {
+                    var div = $(that.xc).find('>div');
+                    div.html(opt.content);
+                    div.css({'background':'#178'});
+                },0)
             }
-
         }
-//        Maker.prototype = new BMap.Marker();
-
-    Maker.prototype = Object.create(BMap.Marker.prototype);
-
-//    function iii(map) {
-//        console.log(this.init);
-//        console.log(this.aa);
-//        var d = this.init.call(this, map)
-//        console.log(d);
-//        return d;
-//    }
-//        Maker.prototype.initialize = iii;
-
-//        Maker.prototype.initialize = function (map) {
-//            console.log(this.init);
-//            console.log(this.aa);
-//            var d = init.call(this, map)
-//            console.log(d);
-//            return d;
-//        }
-
-//    function jkl() {
-//        p = 'pppp'
-//        return function () {
-//            console.log('p', p);
-//            return p;
-//        }
-//    }
+//    console.log(this.map.getPanes().markerPane);
+//        this.init = this.initialize;
+//        this.initialize = function (map) {
+//            this._map = map;
+//            var div = this._div = document.createElement("span");
+//            div.style.position = "absolute";
+//            div.style.zIndex = BMap.Overlay.getZIndex(this.point.lat);
+//            div.style.backgroundColor = "#EE5D5B";
+//            div.style.border = "1px solid #BC3B3A";
+//            div.style.color = "white";
+//            div.style.height = "18px";
+//            div.style.padding = "2px";
+//            div.style.lineHeight = "18px";
+//            div.style.whiteSpace = "nowrap";
+//            div.style.MozUserSelect = "none";
+//            div.style.fontSize = "12px"
+//            var pixel = map.pointToOverlayPixel(this._point);
+//            div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
+//            div.style.top  = pixel.y - 30 + "px";
 //
-//    function Maa() {
-//        this.p = 'pp'
-//    }
-//    Maa.prototype.aa = jkl();
+//            var span = this._span = document.createElement("span");
+//            div.appendChild(span);
+//            span.appendChild(document.createTextNode(this._text));
+//            var that = this;
 //
+//            var arrow = this._arrow = document.createElement("div");
+//            arrow.style.background = "url(http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
+//            arrow.style.position = "absolute";
+//            arrow.style.width = "11px";
+//            arrow.style.height = "10px";
+//            arrow.style.top = "22px";
+//            arrow.style.left = "10px";
+//            arrow.style.overflow = "hidden";
+//            div.appendChild(arrow);
 //
-//    function Mbb() {
+//            div.onmouseover = function(){
+//                this.style.backgroundColor = "#6BADCA";
+//                this.style.borderColor = "#0000ff";
+//                this.getElementsByTagName("span")[0].innerHTML = that._overText;
+//                arrow.style.backgroundPosition = "0px -20px";
+//            }
 //
-//        console.log('mmmbb');
-//        var aa = this.aa;
-//        this.aa = function () {
-//            var pp =aa();
-//            console.log('bb');
-//            console.log('pp',pp);
-//            return pp;
-//        }
-//    }
-//    Mbb.prototype = Object.create(Maa.prototype);
+//            div.onmouseout = function(){
+//                this.style.backgroundColor = "#EE5D5B";
+//                this.style.borderColor = "#BC3B3A";
+//                this.getElementsByTagName("span")[0].innerHTML = that._text;
+//                arrow.style.backgroundPosition = "0px 0px";
+//            }
 //
-//    var mbbb = new Mbb();
-//    console.log(mbbb);
-//    mbbb.aa();
+//            map.getPanes().markerPane.appendChild(div);
+//
+//            return div;
+//            }
 
+//            this.initialize = function (map) {
+//
+//                this._map = map;
+//                var div = this._div = document.createElement("div");
+//                div.style.position = "absolute";
+//                div.style.zIndex = BMap.Overlay.getZIndex(this.point.lat);
+//                div.style.backgroundColor = "#EE5D5B";
+//                div.style.border = "1px solid #BC3B3A";
+//                div.style.color = "white";
+//                div.style.height = "18px";
+//                div.style.padding = "2px";
+//                div.style.lineHeight = "18px";
+//                div.style.whiteSpace = "nowrap";
+//                div.style.MozUserSelect = "none";
+//                div.style.fontSize = "12px"
+//                var span = this._span = document.createElement("span");
+//                div.appendChild(span);
+//                span.appendChild(document.createTextNode(this._text));
+//                var that = this;
+//
+//                var arrow = this._arrow = document.createElement("div");
+//                arrow.style.background = "url(http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
+//                arrow.style.position = "absolute";
+//                arrow.style.width = "11px";
+//                arrow.style.height = "10px";
+//                arrow.style.top = "22px";
+//                arrow.style.left = "10px";
+//                arrow.style.overflow = "hidden";
+//                div.appendChild(arrow);
+//
+//                div.onmouseover = function(){
+//                    this.style.backgroundColor = "#6BADCA";
+//                    this.style.borderColor = "#0000ff";
+//                    this.getElementsByTagName("span")[0].innerHTML = that._overText;
+//                    arrow.style.backgroundPosition = "0px -20px";
+//                }
+//
+//                div.onmouseout = function(){
+//                    this.style.backgroundColor = "#EE5D5B";
+//                    this.style.borderColor = "#BC3B3A";
+//                    this.getElementsByTagName("span")[0].innerHTML = that._text;
+//                    arrow.style.backgroundPosition = "0px 0px";
+//                }
+//
+//                map.getPanes().labelPane.appendChild(div);
+//
+//                return div;
+//            }
+
+    }
+//            T.prototype = new BMap.Marker();
+
+    T.prototype = Object.create(BMap.Marker.prototype);
+
+    //    function iii(map) {
+    //        console.log(this.init);
+    //        console.log(this.aa);
+    //        var d = this.init.call(this, map)
+    //        console.log(d);
+    //        return d;
+    //    }
+    //        Maker.prototype.initialize = iii;
+
+    //        Maker.prototype.initialize = function (map) {
+    //            console.log(this.init);
+    //            console.log(this.aa);
+    //            var d = init.call(this, map)
+    //            console.log(d);
+    //            return d;
+    //        }
+
+    //    function jkl() {
+    //        p = 'pppp'
+    //        return function () {
+    //            console.log('p', p);
+    //            return p;
+    //        }
+    //    }
+    //
+    //    function Maa() {
+    //        this.p = 'pp'
+    //    }
+    //    Maa.prototype.aa = jkl();
+    //
+    //
+    //    function Mbb() {
+    //
+    //        console.log('mmmbb');
+    //        var aa = this.aa;
+    //        this.aa = function () {
+    //            var pp =aa();
+    //            console.log('bb');
+    //            console.log('pp',pp);
+    //            return pp;
+    //        }
+    //    }
+    //    Mbb.prototype = Object.create(Maa.prototype);
+    //
+    //    var mbbb = new Mbb();
+    //    console.log(mbbb);
+    //    mbbb.aa();
 
 
     //    Maker.prototype.initialize = function(map){
@@ -177,10 +283,29 @@
         content: 'ssss'   //自定义点标记覆盖物内容
     };
 
-    var bmaker = new Maker(c);
 
-    bmapmap.addOverlay(bmaker);
-    console.log(bmaker);
+
+    var bmarker = new T(c);
+    bmarker.setMap(bmapmap);
+    console.log('自定义marker',bmarker);
+    bmarker.addEventListener('click',function () {
+        alert('xx');
+    })
+
+    var c2 = {
+        icon: new BMap.Icon(icon, new BMap.Size(36, 36)),
+//    offset: offset,
+        position: new BMap.Point(104.070955, 30.490575),
+        extData: {iconval: 11, iconval_s: 22},
+        visible: true,
+        title: 'hello world111111111111',
+        zIndex: 10,
+        content: 'ssss'   //自定义点标记覆盖物内容
+    };
+    var bmmk = new BMap.Marker(c2.position,c2);
+    bmapmap.addOverlay(bmmk);
+    console.log('BMap原生Marker',bmmk);
+
 
 
 </script>
