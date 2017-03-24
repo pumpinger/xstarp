@@ -96,7 +96,8 @@ function initMap(mapType, Map) {
         PolyEditor: mapType + '.PolyEditor',
         Hotspot: mapType + '.Hotspot',
         MarkerClusterer: mapType + '.MarkerClusterer',
-        RangingTool: mapType + '.RangingTool'
+        RangingTool: mapType + '.RangingTool',
+        PlaceSearch: mapType + '.PlaceSearch'
     };
 }
 
