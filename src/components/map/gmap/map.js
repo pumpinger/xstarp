@@ -37,6 +37,10 @@ Map.prototype = {
 
     plugin: mapPlugin,
 
+    service: function (pluginName, callback) {
+
+    },
+
     setStatus: function () {
         return
     },
