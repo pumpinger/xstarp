@@ -27,12 +27,16 @@ function Marker(opts, inner) {
     if(opts.map) {
       this._inner._smap = opts.map;
     }
+    this.position = this._inner.position
   }
 }
 
 Marker.prototype = {
   setMap: obc.setMap,
   getMap: obc.getMap,
+  getPosition : function () {
+    return this.position;
+  },
   hide: obc.hide,
   show: obc.show,
   on: onOff.on,
