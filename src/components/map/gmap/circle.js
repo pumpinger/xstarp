@@ -17,6 +17,7 @@ var LngLat = require('./LngLat');
 function Circle(opts) {
   this._type = 'Circle';
   obc.addOverlay(opts, this);
+  this.opts = opts;
 
   var newOpts = formatOpts.circle(opts);
   this._inner = new google.maps.Circle(newOpts);
@@ -51,7 +52,7 @@ Circle.prototype = {
   },
 
   setOptions: function() {
-    this._inner.setOptions( formatOpts.polygon(opts) );
+    this._inner.setOptions( formatOpts.polygon(this.opts) );
   },
 
   getOptions: function() {},
