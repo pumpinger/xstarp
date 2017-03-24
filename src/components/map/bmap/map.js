@@ -68,7 +68,7 @@ Map.prototype = {
   clearInfoWindow: function() {
     var iws = this._overLayers.InfoWindow;
     iws.forEach( function(item) {
-      item._inner.hide();
+      item.close();
     })
   },
 

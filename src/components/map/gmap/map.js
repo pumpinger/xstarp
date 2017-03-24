@@ -41,7 +41,7 @@ Map.prototype = {
     clearInfoWindow: function () {
         var iws = this._overLayers.InfoWindow;
         iws.forEach(function (item) {
-            item._inner.hide();
+            item.close();
         })
     },
 
@@ -110,8 +110,6 @@ function clearMap() {
                 if (overLayers[type].length > 0) {
                     overLayers[type].forEach(function (item) {
                         item._inner.setMap(null);
-                        item._inner = null;
-                        item = null;
                     });
                     overLayers.lenght = 0;
                 }
@@ -120,8 +118,6 @@ function clearMap() {
                 if (overLayers.MarkerClusterer.length > 0) {
                     overLayers.MarkerClusterer.forEach(function (item) {
                         item._inner.clearMarkers();
-                        item._inner = null;
-                        item = null;
                     });
                     overLayers.MarkerClusterer.length = 0;
                 }
