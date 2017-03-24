@@ -21,8 +21,8 @@ function SMapEvent(e) {
   this.lnglat.L = e.latLng.lat();
 
   this.pixel = {
-    x: e.pixel.x,
-    y: e.pixel.y
+    x: e.pixel ? e.pixel.x : null,
+    y: e.pixel ? e.pixel.y : null
   };
 }
 
