@@ -20,6 +20,7 @@ function Circle(opts) {
 
   var newOpts = formatOpts.circle(opts);
   this._inner = new google.maps.Circle(newOpts);
+  this.extData = newOpts.extData;
 }
 
 Circle.prototype = {
@@ -65,11 +66,11 @@ Circle.prototype = {
    * @ext {any} extData
    * */
   setExtData: function(ext) {
-    this._inner.extDate = ext;
+    this.extData = ext;
   },
 
   getExtData: function() {
-    return this._inner.extDate;
+    return this.extData;
   },
 
   /**
@@ -78,7 +79,7 @@ Circle.prototype = {
    * @return {Boolean} true or false
    * */
   contains: function(point) {
-
+      return this._inner.getBounds().contains(point);
   },
 
   on: onOff.on,
