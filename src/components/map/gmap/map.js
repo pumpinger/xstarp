@@ -37,6 +37,9 @@ Map.prototype = {
 
     plugin: mapPlugin,
 
+    setStatus: function () {
+        return
+    },
     clearMap: clearMap,
     clearInfoWindow: function () {
         var iws = this._overLayers.InfoWindow;
