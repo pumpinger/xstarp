@@ -1,6 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 
-/.idea/
+/.idea
+/dist/
+/docs/dist/
 
 ### Node template
 # Logs
@@ -61,6 +63,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
-/dist/
-/docs/dist/

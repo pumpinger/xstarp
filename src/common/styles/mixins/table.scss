@@ -1,8 +1,0 @@
-
-@import "../themes/variable";
-
-.x-table{width:100%;border-collapse: collapse;margin:20px 0;}
-.x-table thead {background:$bgColorLight;}
-.x-table th,.x-table td{height:36px;border:1px solid $borderColorLight;font-size:$baseFontSize;}
-.x-table-interval tr:nth-child(even) > td{background:$bgColorLight;}
-.x-table-hover tr:hover{background: $bgColorLight;}

@@ -5,7 +5,13 @@
     <title>贴士</title>
 </head>
 <body>
-    <a class="x-tip" data-tips="这是提示内容" style="margin-top:80px;">点击显示提示信息</a>
+<div class="x-tip" id="x-tip">
+    <a class="x-tip-container" data-tips="这是提示内容" style="margin-top:80px;">点击显示提示信息</a>
+</div>
+
+<div class="x-tip" id="x-tip2">
+    <a class="x-tip-container" data-tips="ddgdghdh" style="margin-top:80px;">dgdh</a>
+</div>
 
 
 
@@ -23,7 +29,8 @@
 <script src="http://localhost:9000/xstarp.js"></script>
 
 <script>
-    // 在这里写你的代码
+    $("#x-tip").hoverTips();
+    $("#x-tip2").hoverTips();
 </script>
 </body>
 </html>

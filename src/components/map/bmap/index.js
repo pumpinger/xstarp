@@ -8,6 +8,7 @@ var Pixel = require('./Pixel');
 var Size = require('./Size');
 var Map = require('./Map');
 var Marker = require('./Marker');
+var Icon = require('./Icon');
 var event = require('./event');
 var InfoWindow = require('./InfoWindow');
 var Polyline = require('./Polyline');
@@ -15,21 +16,22 @@ var Polygon = require('./Polygon');
 var Circle = require('./Circle');
 var MarkerClusterer = require('./MarkerClusterer');
 
-var GMap = {};
+var DMap = {};
 
-GMap.event = event;
+DMap.event = event;
 
-GMap.LngLat = LngLat;
-GMap.Bounds = Bounds;
-GMap.Pixel = Pixel;
-GMap.Size = Size;
+DMap.LngLat = LngLat;
+DMap.Bounds = Bounds;
+DMap.Pixel = Pixel;
+DMap.Size = Size;
 
-GMap.Map = Map;
-GMap.Marker = Marker;
-GMap.InfoWindow = InfoWindow;
-GMap.Polyline = Polyline;
-GMap.Polygon = Polygon;
-GMap.Circle = Circle;
-GMap.MarkerClusterer = MarkerClusterer;
+DMap.Map = Map;
+DMap.Marker = Marker;
+DMap.Icon = Icon;
+DMap.InfoWindow = InfoWindow;
+DMap.Polyline = Polyline;
+DMap.Polygon = Polygon;
+DMap.Circle = Circle;
+DMap.MarkerClusterer = MarkerClusterer;
 
-module.exports = window.GMap = GMap;
+module.exports = window.DMap = DMap;

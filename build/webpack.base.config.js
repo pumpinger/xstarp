@@ -10,12 +10,13 @@ var extractLESS = new ExtractTextPlugin('[name].less');
 module.exports = {
 	watch: true,
 	entry: {
-		xstarp: path.resolve(__dirname, '../src/xstarp.js')
+		xstarp: path.resolve(__dirname, '../src/xstarp.js'),
+    demo: path.resolve(__dirname, '../src/xstarp.js')
 	},
 	output: {
 		path: path.resolve(__dirname,'../dist'),
 		publicPath: path.resolve(__dirname,'../dist/'),
-		filename: 'xstarp.js'
+		filename: '[name].js'
 	},
 	module: {
 		loaders: [

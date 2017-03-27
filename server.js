@@ -23,7 +23,7 @@ app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
 
 // Set the folder where the pages are kept
-app.set('views', __dirname + '/test');
+app.set('views', __dirname + '/test/');
 
 var devMiddleware = webpackDevMiddleware(compiler, {
 	publicPath: webpackConfig.output.publicPath,
@@ -51,25 +51,30 @@ var baseUrl = 'http://localhost:' + config.port;
 
 var ejsRouter = express.Router();
 
-ejsRouter.get('/:test(/:html)', function(req, res){
-	var url = req.params.test + '/' + req.params.html;
-    res.render(url, {
-        // PLACEHOLDER
-        pageTitle: req.params.html
-    });
+ejsRouter.get('/:first', function(req, res){
+  var url = req.params.first;
+  console.log("url is:==================",url);
+  res.render(url, {});
 });
 
-app.use('/test/', ejsRouter);
+ejsRouter.get('/:first/:sub', function(req, res){
+  console.log(req.params.sub, req.params.first);
+  var url = req.params.first + '/' + req.params.sub;
+  console.log("url is:==================",url);
+  res.render(url, {
+    // pageTitle: req.params.html
+  });
+});
 
+app.use('/ejs/', ejsRouter);
 
 app.get('/', function(req, res){
-	res.redirect('./test/examples/index.html');
+	res.redirect('./test/common/index.html');
 });
 
 app.get('/custom', function(req, res){
 	res.redirect('./server/custom.html');
 });
-
 
 // var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(express.static('./'));

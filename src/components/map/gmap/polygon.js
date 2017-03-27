@@ -66,7 +66,8 @@ Polygon.prototype = {
    * @param {LngLat} point
    * */
   contains: function(point) {
-
+    //TODO 多边形没实现contains
+      // return this._inner.getBounds().contains(point);
   },
 
   on: onOff.on,
