@@ -5,6 +5,7 @@
 var obc = require('./overlayBaseClass');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
+var LMarker = require('./lMarker');
 
 /**
  * Represents a Marker
@@ -21,28 +22,34 @@ function Marker(opts, inner) {
         this._inner = inner;
     } else {
         // 在opts转换之前就要判断添加overlay
-        obc.addOverlay(opts, this);
-        var fOpts = formatOpts.marker(opts);//格式化opts
-        google.maps.Marker.apply(this, fOpts);
-        this._inner = this;
-        if(opts.map) {
-            this._inner._smap = fOpts.map;
+        // obc.addOverlay(opts, this);
+        var newOpts = formatOpts.marker(opts);
+        if(newOpts.content){
+            this._inner = new LMarker(newOpts);
+        }else{
+            this._inner = new google.maps.Marker(newOpts);
         }
-        this.position = this._inner.position
+
+        this._inner._smap = opts.map;
+
+        google.maps.Marker.apply(this, opts);
+        console.log('this',this);
+        console.log('_inner',this._inner);
     }
 }
 
-Marker.prototype = {
-    setMap: obc.setMap,
-    getMap: obc.getMap,
-    getPosition : function () {
-        return this.position;
-    },
-    hide: obc.hide,
-    show: obc.show,
-    on: onOff.on,
-    off: onOff.off
+Marker.prototype = new google.maps.Marker(new google.maps.LatLng(0, 0));
+
+Marker.prototype.setMap = obc.setMap;
+Marker.prototype.getMap = obc.getMap;
+Marker.prototype.getPosition = function () {
+    return {lat:this.position.lat(),lng:this.position.lng()};
 };
+
+Marker.prototype.hide = obc.hide;
+Marker.prototype.show = obc.show;
+Marker.prototype.on = onOff.on;
+Marker.prototype.off = onOff.off;
 
 module.exports = Marker;
 
@@ -50,13 +57,13 @@ module.exports = Marker;
 // function Marker(opts) {
 //     this._type = 'Marker';
 //     obc.addOverlay(opts, this);
-//     var formatOpts = formatOpts.marker(opts);//转换opts
+//     var fOpts = formatOpts.marker(opts);//转换opts
 //     this.latlng = opts.latlng;
 //     this.labelText = opts.labelText || '';
 //     this.labelClass = opts.labelClass || 'writeb';
 //     this.labelOffset = opts.labelOffset || new google.maps.Size(8, -33);
 //     opts.icon = opts.icon || getTextIcon();
-//     google.maps.Marker.apply(this, formatOpts);
+//     google.maps.Marker.apply(this, fOpts);
 //
 //     this._inner = this;
 // }
@@ -101,6 +108,3 @@ module.exports = Marker;
 // Marker.prototype.off = onOff.off;
 //
 // module.exports = Marker;
-
-
-
