@@ -21,7 +21,11 @@ LMarker.prototype.onAdd = function() {
     div.style.borderWidth = '0px';
     div.style.position = 'absolute';
     div.style.cursor = 'pointer';
-    div.appendChild(this.options.content);
+    if(this.options.content.nodeType === 1){
+        div.appendChild(this.options.content);
+    }else{
+        div.innerHTML = this.options.content;
+    }
     // Create the img element and attach it to the div.
     var img = document.createElement('div');
     // img.src = this.image_;
