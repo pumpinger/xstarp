@@ -64,6 +64,7 @@
     function createInfoWindow(title, content, info_bottom, info_className, dataId) {
         var info_pop = document.createElement('div');
         info_pop.className = 'info-pop';
+
         var info = document.createElement('div');
         info.className = info_className;
 
@@ -96,7 +97,6 @@
         info.setAttribute('data-id', dataId);
         info_pop.appendChild(info);
 
-
         return info_pop;
     }
     function closeInfoWindow() {
@@ -105,11 +105,14 @@
     }
 
     var info = createInfoWindow('title','content','info_bottom','info_className','dataId');
+    console.log(info);
+
 
     var iw = new SMap.InfoWindow({
         content: info,
         position: [104.077955, 30.477575],
     });
+    console.log('iw',iw);
 
     iw.on('closeclick', function (e) {
         console.log("你点击了关闭");
