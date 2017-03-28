@@ -53,6 +53,5 @@
     "webpack-hot-middleware": "^2.16.1"
   },
   "dependencies": {
-    "concurrently": "^3.3.0"
   }
 }
