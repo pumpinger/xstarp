@@ -60083,7 +60083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    var MarkerModel = __webpack_require__(1).extendComponentModel({
 
-	        type: 'marker',
+	        type: 'Marker',
 
 	        dependencies: ['series', 'grid', 'polar', 'geo'],
 	        /**
@@ -60092,7 +60092,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        init: function (option, parentModel, ecModel, extraOpt) {
 
 	            if (true) {
-	                if (this.type === 'marker') {
+	                if (this.type === 'Marker') {
 	                    throw new Error('Marker component is abstract component. Use markLine, markPoint, markArea instead.');
 	                }
 	            }
@@ -60572,7 +60572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    module.exports = __webpack_require__(1).extendComponentView({
 
-	        type: 'marker',
+	        type: 'Marker',
 
 	        init: function () {
 	            /**

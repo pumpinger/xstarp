@@ -2,8 +2,8 @@
  * Created by fizz on 2017/2/15.
  */
 
-var formatOpts = require('./formatOpt');
-var obc = require('./overlayBaseClass');
+var formatOpts = require('./util/formatOpt');
+var obc = require('./util/overlayBaseClass');
 
 /**
  * @constructor

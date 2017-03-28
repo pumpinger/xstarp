@@ -780,7 +780,7 @@ var BMapLib = window.BMapLib = BMapLib || {};
 
     this._bind();
 
-    this._map.getPanes().markerMouseTarget.appendChild(this._domElement);
+    this._map.getPanes().markerMouseTarget.append(this._domElement);
     return this._domElement;
   };
 

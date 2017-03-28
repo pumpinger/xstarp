@@ -4,7 +4,7 @@
  * Wrap event and return our new event object just like gaode AMap event.
  */
 
-var LngLat = require('./LngLat');
+var LngLat = require('./Lnglat');
 
 /**
  * 包装Google的事件触发时的event对象

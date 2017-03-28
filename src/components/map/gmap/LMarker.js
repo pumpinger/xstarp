@@ -2,7 +2,7 @@
  * Created by Administrator on 2017/3/27.
  */
 
-LMarker = function(options) {
+LMarker = function (options) {
     this.options = options;
     // this.latlng = options.latlng;
     // this.labelText = options.labelText || '';
@@ -14,18 +14,15 @@ LMarker = function(options) {
 
 LMarker.prototype = new google.maps.OverlayView();
 
-LMarker.prototype.onAdd = function() {
+LMarker.prototype.onAdd = function () {
 
     var div = document.createElement('div');
     div.style.borderStyle = 'none';
     div.style.borderWidth = '0px';
     div.style.position = 'absolute';
     div.style.cursor = 'pointer';
-    if(this.options.content.nodeType === 1){
-        div.appendChild(this.options.content);
-    }else{
-        div.innerHTML = this.options.content;
-    }
+    div.append(this.options.content);
+
     // Create the img element and attach it to the div.
     var img = document.createElement('div');
     // img.src = this.image_;
@@ -33,19 +30,19 @@ LMarker.prototype.onAdd = function() {
     // img.style.height = '100%';
     // img.style.position = 'absolute';
 
-    div.appendChild(img);
+    div.append(img);
     var that = this;
     div.onclick = function (e) {
-        google.maps.event.trigger(that,'click',e);
+        google.maps.event.trigger(that, 'click', e);
     };
     this.div_ = div;
 
     // Add the element to the "overlayLayer" pane.
     var panes = this.getPanes();
     // this.getPanes().markerLayer.innerHTML = 'sss'
-    panes.overlayMouseTarget.appendChild(div);
+    panes.overlayMouseTarget.append(div);
 };
-LMarker.prototype.draw = function() {
+LMarker.prototype.draw = function () {
 
     // We use the south-west and north-east
     // coordinates of the overlay to peg it to the correct position and size.
@@ -62,20 +59,20 @@ LMarker.prototype.draw = function() {
     div.style.left = position.x + 'px';
     div.style.top = position.y + 'px';
 };
-LMarker.prototype.onRemove = function() {
+LMarker.prototype.onRemove = function () {
     this.div_.parentNode.removeChild(this.div_);
     this.div_ = null;
 };
 
 // Set the visibility to 'hidden' or 'visible'.
-LMarker.prototype.hide = function() {
+LMarker.prototype.hide = function () {
     if (this.div_) {
         // The visibility property must be a string enclosed in quotes.
         this.div_.style.visibility = 'hidden';
     }
 };
 
-LMarker.prototype.show = function() {
+LMarker.prototype.show = function () {
     if (this.div_) {
         this.div_.style.visibility = 'visible';
     }

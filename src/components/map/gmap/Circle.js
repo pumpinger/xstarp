@@ -4,10 +4,10 @@
  */
 
 // var event = require('./event');
-var onOff = require('./onOff');
-var formatOpts = require('./formatOpt');
-var obc = require('./overlayBaseClass');
-var LngLat = require('./LngLat');
+var onOff = require('./util/onOff');
+var formatOpts = require('./util/formatOpt');
+var obc = require('./util/overlayBaseClass');
+var LngLat = require('./Lnglat');
 
 /**
  * @constructor

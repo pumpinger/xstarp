@@ -2,9 +2,9 @@
  * Created by fizz on 2017/2/13.
  * @Class Marker
  */
-var obc = require('./overlayBaseClass');
-var onOff = require('./onOff');
-var formatOpts = require('./formatOpt');
+var obc = require('./util/overlayBaseClass');
+var onOff = require('./util/onOff');
+var formatOpts = require('./util/formatOpt');
 var LMarker = require('./LMarker');
 
 /**
