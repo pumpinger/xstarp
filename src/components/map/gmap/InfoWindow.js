@@ -9,92 +9,76 @@ var obc = require('./util/overlayBaseClass');
  * @constructor
  * @opts {Object} opts
  * */
-function InfoWindow(opts) {
+function InfoWindow(options) {
     this._type = 'InfoWindow';
-    obc.addOverlay(opts, this);
+    obc.addOverlay(options, this);
 
-    var fmOpts = formatOpts.infoWindow(opts);
+    var IWOpts = formatOpts.infoWindow(options);
 
-    console.log('infowww',fmOpts.content.style.width);
+    google.maps.OverlayView.apply(this, arguments);
 
-    if (fmOpts.content.style) {
-        fmOpts.content.style.position = 'absolute';
-        fmOpts.content.style.bottom = '-9px';
-        fmOpts.content.style.left = '-136px';
-        fmOpts.content.style.width = '300px';
-        fmOpts.content.style.height = '200px';
-        fmOpts.content.style.overflow = 'auto';
-        fmOpts.content.style.zIndex = '999999';
-    }
-
-    this._inner = new google.maps.InfoWindow(fmOpts);
+    this._inner = new google.maps.InfoWindow(IWOpts);
 }
 
-InfoWindow.prototype = {
-    /**
-     * @function open a infoWindow in the position
-     * @map {Map} map required
-     * @pos {LngLat} position lngLat
-     * */
-    open: function (map, pos) {
-        if (pos) {
-            this._inner.setPosition(pos);
-        }
-        this._inner.open(map._inner);
-        this._inner._smap = map;
-        map._overLayers.InfoWindow.push(this);
-        this._isOpen = true;
-    },
+InfoWindow.prototype = new google.maps.OverlayView();
 
-    close: function () {
-        this._inner.close();
-        this._isOpen = false;
-        var infoWindows = this._inner._smap._overLayers.InfoWindow;
-        infoWindows.filter(function (item, index) {
-            if (item == this) {
-                infoWindows.splice(index, 1);
-            }
-        });
-    },
-
-    getIsOpen: function () {
-        return this._isOpen;
-    },
-
-    /**
-     * @function setContent
-     * @content {String|htmlDOM} content
-     * */
-    setContent: function (content) {
-        this._inner.setContent(content);
-    },
-
-    getContent: function () {
-        return this._inner.getContent();
-    },
-
-    setPosition: function (lngLat) {
-        this._inner.setPosition(lngLat);
-    },
-
-    getPosition: function () {
-        return this._inner.getPosition();
-    },
-
-    // todo: google 不支持
-    setSize: function (size) {
-
-    },
-
-    // todo: google 不支持
-    getSize: function () {
-
-    },
-
-    on: onOff.on,
-    off: onOff.off
+InfoWindow.prototype.open = function (map, pos) {
+    if (pos) {
+        this._inner.setPosition(pos);
+    }
+    this._inner.open(map._inner);
+    this._inner._smap = map;
+    map._overLayers.InfoWindow.push(this);
+    this._isOpen = true;
 };
 
+InfoWindow.prototype.close = function () {
+    this._inner.close();
+    this._isOpen = false;
+    var infoWindows = this._inner._smap._overLayers.InfoWindow;
+    infoWindows.filter(function (item, index) {
+        if (item == this) {
+            infoWindows.splice(index, 1);
+        }
+    });
+};
+
+InfoWindow.prototype.getIsOpen = function () {
+    return this._isOpen;
+};
+
+/**
+ * @function setContent
+ * @content {String|htmlDOM} content
+ * */
+InfoWindow.prototype.setContent = function (content) {
+    this._inner.setContent(content);
+};
+
+InfoWindow.prototype.getContent = function () {
+    return this._inner.getContent();
+};
+
+InfoWindow.prototype.setPosition = function (lngLat) {
+    this._inner.setPosition(lngLat);
+};
+
+InfoWindow.prototype.getPosition = function () {
+    return this._inner.getPosition();
+};
+
+// todo: google 不支持
+InfoWindow.prototype.setSize = function (size) {
+
+};
+
+// todo: google 不支持
+InfoWindow.prototype.getSize = function () {
+
+};
+
+InfoWindow.prototype.on = onOff.on;
+InfoWindow.prototype.off = onOff.off;
 
 module.exports = InfoWindow;
 
