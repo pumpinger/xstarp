@@ -11,9 +11,7 @@
 </head>
 <body>
 
-<div>asdflkjg</div>
-<!--在这里写你的html-->
-<button id="button">点这里点这里</button>
+<div>marker test</div>
 
 <div id="container" class="map_container"></div>
 
@@ -41,11 +39,6 @@
         center: [104.077955, 30.444575]
     });
 
-    var $button = document.querySelector('#button');
-    SMap.event.addDomListener($button, 'click', function (e) {
-        console.log(e);
-    });
-
     var offset = new SMap.Pixel(-15, -34);
     var icon = 'http://fhj.xbwq.com.cn/fhj/public/common/widget/module/location/track/images/track/track_map2_start.png';
 
@@ -59,13 +52,7 @@
         zIndex: 10,
         content: 'ssss'   //自定义点标记覆盖物内容
     });
-    console.log("marker", marker);
-    console.log("smap", smap);
-//    console.log(smap._inner.center.lat(),smap._inner.center.lng());
-
-
     marker.setMap(smap);
-
 
 
     var marker2 = new SMap.Marker({
@@ -88,17 +75,13 @@
         visible: true,
         title: 'hello world 22',
         zIndex: 10,
-        content: 'ssss'   //自定义点标记覆盖物内容
+        content: 'ddd'   //自定义点标记覆盖物内容
     });
     marker3.setMap(smap);
 
 
 
-
-
-
-
-    var lis = marker.on('click', markerHandler);
+    marker.on('click', markerHandler);
 
     function markerHandler() {
         console.log("you click me!");
@@ -109,8 +92,6 @@
         content: 'Hello SMap',
         position: [104.077955, 30.477575],
     });
-
-
     iw.on('closeclick', function (e) {
         console.log("你点击了关闭");
     });

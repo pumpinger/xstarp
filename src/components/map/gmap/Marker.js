@@ -5,7 +5,7 @@
 var obc = require('./overlayBaseClass');
 var onOff = require('./onOff');
 var formatOpts = require('./formatOpt');
-var LMarker = require('./lMarker');
+var LMarker = require('./LMarker');
 
 /**
  * Represents a Marker
@@ -24,7 +24,10 @@ function Marker(opts, inner) {
         // 在opts转换之前就要判断添加overlay
         // obc.addOverlay(opts, this);
         var newOpts = formatOpts.marker(opts);
+
         if(newOpts.content){
+            // newOpts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
+            newOpts.label = newOpts.content;
             this._inner = new LMarker(newOpts);
         }else{
             this._inner = new google.maps.Marker(newOpts);

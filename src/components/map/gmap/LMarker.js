@@ -11,7 +11,7 @@ LMarker = function(options) {
     google.maps.Marker.apply(this, arguments);
 };
 
-LMarker.prototype = new google.maps.Marker(new google.maps.LatLng(0, 0));
+LMarker.prototype = new google.maps.Marker();
 // LMarker.prototype.setMap = function(map) {
 //     console.log('setMapsetMap');
 //     google.maps.Marker.prototype.setMap.call(this, map);
