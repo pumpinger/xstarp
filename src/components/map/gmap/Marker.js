@@ -18,96 +18,66 @@ function Marker(opts, inner) {
 
     this._type = 'Marker';
 
-    if(inner) {
+    if (inner) {
         this._inner = inner;
     } else {
         // 在opts转换之前就要判断添加overlay
         // obc.addOverlay(opts, this);
         var newOpts = formatOpts.marker(opts);
 
-        if(newOpts.content){
+        if (newOpts.content) {
+            newOpts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
             // newOpts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
             newOpts.label = newOpts.content;
             this._inner = new LMarker(newOpts);
-        }else{
+        } else {
             this._inner = new google.maps.Marker(newOpts);
         }
 
-        this._inner._smap = opts.map;
+        this._inner._smap = newOpts.map;
+        this.position = newOpts.position;
 
         google.maps.Marker.apply(this, opts);
-        console.log('this',this);
-        console.log('_inner',this._inner);
+        console.log('this', this);
+        console.log('_inner', this._inner);
+        //marker2._inner.__gm.Eb.map.b.O.style.opacity = 1
     }
 }
 
 Marker.prototype = new google.maps.Marker(new google.maps.LatLng(0, 0));
 
-Marker.prototype.setMap = obc.setMap;
+Marker.prototype.setMap = function (map) {
+    if (map !== null) {
+        this._inner._smap = map;
+        map._overLayers[this._type].push(this);
+        this._inner.setMap(map._inner);
+        var that = this;
+        console.log('inner',that._inner.__gm);
+        setTimeout(
+            function () {
+                if (that._inner.content && that._inner.__gm.Eb.map) {
+                    that._inner.__gm.Eb.map.b.O.style.opacity = 1;
+                    that._inner.__gm.Eb.map.b.O.innerHTML = that._inner.content;
+                }
+            }, 1000
+        );
+
+    } else {
+        this._inner.setMap(null);
+    }
+};
 Marker.prototype.getMap = obc.getMap;
 Marker.prototype.getPosition = function () {
-    return {lat:this.position.lat(),lng:this.position.lng()};
+    return this.position;
 };
 
-Marker.prototype.hide = obc.hide;
-Marker.prototype.show = obc.show;
+Marker.prototype.hide = function () {
+    this._inner.hide()
+};
+Marker.prototype.show = function () {
+    this._inner.show()
+};
 Marker.prototype.on = onOff.on;
 Marker.prototype.off = onOff.off;
 
 module.exports = Marker;
-
-
-// function Marker(opts) {
-//     this._type = 'Marker';
-//     obc.addOverlay(opts, this);
-//     var fOpts = formatOpts.marker(opts);//转换opts
-//     this.latlng = opts.latlng;
-//     this.labelText = opts.labelText || '';
-//     this.labelClass = opts.labelClass || 'writeb';
-//     this.labelOffset = opts.labelOffset || new google.maps.Size(8, -33);
-//     opts.icon = opts.icon || getTextIcon();
-//     google.maps.Marker.apply(this, fOpts);
-//
-//     this._inner = this;
-// }
-//
-// Marker.prototype = new google.maps.Marker(new google.maps.LatLng(0, 0));
-// Marker.prototype.initialize = function (map) {
-//     google.maps.Marker.prototype.initialize.call(this, map);
-//     var label = document.createElement('div');
-//     label.className = this.labelClass;
-//     label.innerHTML = this.labelText;
-//     label.style.position = 'absolute';
-//     label.style.width = '48px';
-//     map.getPane(G_MAP_MARKER_PANE).appendChild(label);
-//
-//     this.smap = map;
-//     this.label = label;
-// };
-// Marker.prototype.redraw = function (force) {
-//     google.maps.Marker.prototype.redraw.call(this, map);
-//     if (!force) {
-//         return;
-//     }
-//     var point = this.map.fromLatLngToDivPixel(this.latlng);
-//     var z = google.maps.Overlay.getZIndex(this.latlng.lat());
-//
-//     this.label.style.left = (point.x + this.labelOffset.width) + 'px';
-//     this.label.style.top = (point.y + this.labelOffset.height) + 'px';
-//     this.label.style.zIndex = z + 1;
-// };
-// Marker.prototype.remove = function () {
-//     this.label.parentNode.removeChild(this.label);
-//     this.label = null;
-//     google.maps.Marker.prototype.remove.call(this);
-// };
-//
-// Marker.prototype.setMap = obc.setMap;
-// Marker.prototype.getMap = obc.getMap;
-//
-// Marker.prototype.hide = obc.hide;
-// Marker.prototype.show = obc.show;
-// Marker.prototype.on = onOff.on;
-// Marker.prototype.off = onOff.off;
-//
-// module.exports = Marker;

@@ -3,68 +3,78 @@
  */
 
 LMarker = function(options) {
+    this.options = options;
     // this.latlng = options.latlng;
     // this.labelText = options.labelText || '';
     // this.labelClass = options.labelClass || 'writeb';
     // this.labelOffset = options.labelOffset || new google.maps.Size(8, -33);
     // options.icon = options.icon || getTextIcon();
-    google.maps.Marker.apply(this, arguments);
+    // google.maps.OverlayView.apply(this, arguments);
 };
 
-LMarker.prototype = new google.maps.Marker();
-// LMarker.prototype.setMap = function(map) {
-//     console.log('setMapsetMap');
-//     google.maps.Marker.prototype.setMap.call(this, map);
-//
-// }
-// LMarker.prototype.onAdd = function(map){
-//     console.log('xxx');
-//     google.maps.OverlayView.prototype.onAdd.call(this, this.map);
-//
-//     var label = document.createElement('div');
-//     label.className = this.labelClass;
-//     label.innerHTML = this.labelText;
-//     label.style.position = 'absolute';
-//     label.style.width = '48px';
-//     map.getPane(G_MAP_MARKER_PANE).appendChild(label);
-//     console.log('label',this);
-//     console.log('label',label);
-//     console.log('pane',map.getPane(G_MAP_MARKER_PANE));
-//
-//     this.map = map;
-//     this.label = label;
-// }
+LMarker.prototype = new google.maps.OverlayView();
 
-// LMarker.prototype.redraw = function(force){
-//     google.maps.Marker.prototype.redraw.call(this, map);
-//
-//     if(!force)
-//     {
-//         return;
-//     }
-//
-//     var point = this.map.fromLatLngToDivPixel(this.latlng);
-//     var z = google.maps.Overlay.getZIndex(this.latlng.lat());
-//
-//     this.label.style.left = (point.x + this.labelOffset.width) + 'px';
-//     this.label.style.top = (point.y + this.labelOffset.height) + 'px';
-//     this.label.style.zIndex = z + 1;
-// }
-//
-// LMarker.prototype.remove = function(){
-//     this.label.parentNode.removeChild(this.label);
-//     this.label = null;
-//     google.maps.Marker.prototype.remove.call(this);
-// }
-//
-// function getTextIcon()
-// {
-//     var icon = new google.maps.Icon();
-//     icon.image = "/js/map/img/mapts.gif";
-//     icon.iconSize = new GSize(48, 40);
-//     icon.iconAnchor = new GPoint(0, 40);
-//     icon.infoWindowAnchor = new GPoint(5, 1);
-//     return icon;
-// }
+LMarker.prototype.onAdd = function() {
+
+    var div = document.createElement('div');
+    div.style.borderStyle = 'none';
+    div.style.borderWidth = '0px';
+    div.style.position = 'absolute';
+    div.style.cursor = 'pointer';
+    div.appendChild(this.options.content);
+    // Create the img element and attach it to the div.
+    var img = document.createElement('div');
+    // img.src = this.image_;
+    // img.style.width = '100%';
+    // img.style.height = '100%';
+    // img.style.position = 'absolute';
+
+    div.appendChild(img);
+    var that = this;
+    div.onclick = function (e) {
+        google.maps.event.trigger(that,'click',e);
+    };
+    this.div_ = div;
+
+    // Add the element to the "overlayLayer" pane.
+    var panes = this.getPanes();
+    // this.getPanes().markerLayer.innerHTML = 'sss'
+    panes.overlayMouseTarget.appendChild(div);
+};
+LMarker.prototype.draw = function() {
+
+    // We use the south-west and north-east
+    // coordinates of the overlay to peg it to the correct position and size.
+    // To do this, we need to retrieve the projection from the overlay.
+    var overlayProjection = this.getProjection();
+
+    // Retrieve the south-west and north-east coordinates of this overlay
+    // in LatLngs and convert them to pixel coordinates.
+    // We'll use these coordinates to resize the div.
+    var position = overlayProjection.fromLatLngToDivPixel(this.options.position._inner);
+
+    // Resize the image's div to fit the indicated dimensions.
+    var div = this.div_;
+    div.style.left = position.x + 'px';
+    div.style.top = position.y + 'px';
+};
+LMarker.prototype.onRemove = function() {
+    this.div_.parentNode.removeChild(this.div_);
+    this.div_ = null;
+};
+
+// Set the visibility to 'hidden' or 'visible'.
+LMarker.prototype.hide = function() {
+    if (this.div_) {
+        // The visibility property must be a string enclosed in quotes.
+        this.div_.style.visibility = 'hidden';
+    }
+};
+
+LMarker.prototype.show = function() {
+    if (this.div_) {
+        this.div_.style.visibility = 'visible';
+    }
+};
 
 module.exports = LMarker;

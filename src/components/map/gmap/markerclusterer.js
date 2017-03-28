@@ -3,7 +3,7 @@
  */
 
 var formatOpts = require('./formatOpt');
-var obc = require('./overlayBaseClass')
+var obc = require('./overlayBaseClass');
 
 /**
  * @constructor
