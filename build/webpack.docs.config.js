@@ -11,10 +11,10 @@ var from = path.resolve(__dirname, '../dist');
 var to   = path.resolve(__dirname, '../docs/dist');
 
 config.watch = true;
-config.output.path = path.resolve(__dirname,'../docs/dist');
-config.output.publicPath = path.resolve(__dirname,'../docs/dist/');
+config.output.path = path.resolve(__dirname,'../dist');
+config.output.publicPath = path.resolve(__dirname,'../dist/');
 
-copyDir(from, to, (err, res)=>{
+copyDir(from, to, function (err, res){
   if(err) console.log(err);
 });
 

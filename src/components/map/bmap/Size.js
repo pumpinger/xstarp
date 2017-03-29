@@ -11,7 +11,12 @@ function Size(width, height, inner) {
   if(inner) {
     this._inner = inner;
   } else {
-    this._inner = new BMap.Size();
+    // 百度的Size 没有getWidth和getHeight两个方法
+    // 这里自己加上
+    this._width = width;
+    this._height = height;
+
+    this._inner = new BMap.Size(width, height);
   }
 
   this._type = 'Size';
@@ -20,17 +25,15 @@ function Size(width, height, inner) {
 
 Size.prototype = {
   getWidth: function() {
-    return this._inner.width;
+    return this._width;
   },
   getHeight: function() {
-    return this._inner.height;
+    return this._height;
   },
+  // TODO 百度没有这个toString
   toString: function() {
     return this._inner.toString();
   }
 };
-
-
-
 
 module.exports = Size;

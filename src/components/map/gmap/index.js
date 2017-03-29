@@ -2,13 +2,14 @@
  * Created by fizz on 2017/2/13.
  */
 
-var LngLat = require('./LngLat');
+var LngLat = require('./Lnglat');
 var Bounds = require('./Bounds');
 var Pixel = require('./Pixel');
 var Size = require('./Size');
 var Map = require('./Map');
 var Marker = require('./Marker');
-var event = require('./event');
+var LMarker = require('./LMarker');
+var event = require('./Event');
 var InfoWindow = require('./InfoWindow');
 var Polyline = require('./Polyline');
 var Polygon = require('./Polygon');
@@ -26,6 +27,7 @@ GMap.Size = Size;
 
 GMap.Map = Map;
 GMap.Marker = Marker;
+GMap.LMarker = LMarker;
 GMap.InfoWindow = InfoWindow;
 GMap.Polyline = Polyline;
 GMap.Polygon = Polygon;

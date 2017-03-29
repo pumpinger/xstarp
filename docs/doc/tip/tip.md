@@ -20,5 +20,6 @@ console.log(i);
 ````
 
 ````js
+var i = 123456;
 console.log(i);
 ````

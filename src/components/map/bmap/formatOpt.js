@@ -3,106 +3,138 @@
  */
 
 var LngLat = require('./LngLat');
+var Icon = require('./Icon');
+var Size = require('./Size');
 
 module.exports = {
 
-  map: formatOptsUni,
+    map: formatOptsUni,
 
-  infoWindow: formatOptsUni,
+    infoWindow: formatOptsUni,
 
-  marker: formatOptsUni,
+    marker: formatOptsUni,
 
-  polyline: formatOptsUni,
+    polyline: formatOptsUni,
 
-  polygon: formatOptsUni,
+    polygon: formatOptsUni,
 
-  circle: formatOptsUni,
+    circle: formatOptsUni,
 
-  markerClusterer: formatMarkerClusterer,
+    markerClusterer: formatMarkerClusterer,
 
-  path: canvertPath
+    path: canvertPath
 };
 
 function formatOptsUni(opts) {
+    if (!opts) return;
 
-  if('position' in opts) {
-    opts.position = (new LngLat(opts.position))._inner;
-  }
+    if (typeof opts.position != 'undefined') {
+        opts.position = (new LngLat(opts.position))._inner;
+    }
 
-  if(opts.path) {
-    opts.path = transfromPathToPaths(opts.path);
-  }
+    if (opts.path) {
+        opts.path = transfromPathToPaths(opts.path);
+    }
 
-  if(opts.center) {
-    opts.center = (new LngLat(opts.center))._inner;
-  }
+    if (opts.center) {
+        opts.center = (new LngLat(opts.center))._inner;
+    }
 
-  if(opts.map) {
-    opts.map = opts.map._inner;
-  }
+    if (opts.map) {
+        opts.smap = opts.map;
+        opts.map = opts.map._inner;
+    }
+    if (opts.icon) {
+        opts.icon = (new Icon(opts.icon))._inner;
+    }
+    if (opts.size) {
+        opts.size = (new Size(opts.size._width,opts.size._height))._inner;
+    }
+    if (opts.offset) {
+        opts.offset = (new Size(opts.offset.getX(),opts.offset.getY()))._inner;
+    }
 
-  return opts;
+    return opts;
 }
 
 function transfromPathToPaths(path) {
-  var paths = [];
-  path.forEach( function(item, index) {
-    paths.push(arrCreateLngLat(item));
-  });
-  return paths;
+    var paths = [];
+    path.forEach(function (item, index) {
+        paths.push(arrCreateLngLat(item));
+    });
+    return paths;
 }
 
 function arrCreateLngLat(arr) {
-  return new BMap.Point( parseFloat(arr[0]), parseFloat(arr[1]) );
+    return new BMap.Point(parseFloat(arr[0]), parseFloat(arr[1]));
 }
 
 
-/**************************************************
- * markerClusterer
- * ***********************************************/
+/**
+ * @transfer
+ * @param {MapObject} map
+ * @param {Array} markers
+ * @param {Object} opts
+ *
+ * @return {Object}
+ *
+ *   newOpts
+ *     .map map._inner
+ *     .opts{
+ *       markers:
+ *       styles:
+ *     }
+ *
+ *   *"<b>styles</b>":{Array<IconStyle>} 一组图标风格。单个图表风格包括以下几个属性：<br />
+ *   url    {String}     图片的url地址。(必选)<br />
+ *   size {Size}    图片的大小。（必选）<br />
+ *   anchor {Size} 图标定位在地图上的位置相对于图标左上角的偏移值，默认偏移值为图标的中心位置。（可选）<br />
+ *   offset {Size} 图片相对于可视区域的偏移值，此功能的作用等同于CSS中的background-position属性。（可选）<br />
+ *   textSize {Number} 文字的大小。（可选，默认10）<br />
+ *   textColor {String} 文字的颜色。（可选，默认black）<br />
+ * */
 function formatMarkerClusterer(map, markers, opts) {
-  var newOpts = {};
+    var newOpts = {};
 
-  if(map._inner) {
-    newOpts.map = map._inner;
-  } else {
-    newOpts.map = map;
-  }
+    if (map._inner) {
+        newOpts.map = map._inner;
+    } else {
+        newOpts.map = map;
+    }
 
-  newOpts.markers = markers.map( function(item) {
-    return item._inner;
-  });
+    newOpts.opts = formatMarkerClustererOpts(opts);
 
-  newOpts.opts = formatMarkerClustererOpts(opts);
+    console.log(newOpts.opts);
 
-  return newOpts;
+    newOpts.opts.markers = markers.map(function (item) {
+        return item._inner;
+    });
+
+    return newOpts;
 }
 
 /**
  * @param {Object} opts
- * @diff : minClusterSize : minimumClusterSize
+ * @diff : 百度 anchor 对应 imageOffset
  * */
 function formatMarkerClustererOpts(opts) {
-  if(opts.minClusterSize) {
-    opts.minimumClusterSize = opts.minClusterSize;
-  }
-
-  if(opts.styles) {
-
-    if(opts.styles) {
-      var styles = opts.styles;
-      if(styles.size) {
-        styles.width = styles.getWidth();
-        styles.height = styles.getHeight();
-      }
+    if (opts.styles) {
+        var styles = opts.styles;
+        styles.forEach(function (item) {
+            if (item.imageOffset) {
+                item.anchor = item.imageOffset;
+            }
+            if (item.size) {
+                item.size = item.size._inner;
+            }
+        })
     }
-
-  }
+    return opts;
 }
 
 function canvertPath(path) {
-  // TODO: 如何处理这个path还未定
-  return path;
+    // TODO: 如何处理这个path还未定
+    return path;
 }
 
 

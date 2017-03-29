@@ -130,7 +130,8 @@
 | ------------- |:-------------:| -----:|
 | name | String | 按钮名称 | '保存' '重置' |
 | classStr | String | 按钮的class类名 | ‘save |
-| time | 弹窗自动关闭时间 |   ||
+| isClose | Boolean | 点击按钮是否关闭弹窗 |默认值为true|
+| opra | Function |点击按钮后进行的操作 ||
 
 
 

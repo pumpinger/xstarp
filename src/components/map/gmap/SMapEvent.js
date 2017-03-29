@@ -4,7 +4,7 @@
  * Wrap event and return our new event object just like gaode AMap event.
  */
 
-var LngLat = require('./LngLat');
+var LngLat = require('./Lnglat');
 
 /**
  * 包装Google的事件触发时的event对象
@@ -13,17 +13,24 @@ var LngLat = require('./LngLat');
  * @param {Object} e event object
  * */
 function SMapEvent(e) {
-  this._inner = e;
-  this._type = 'Event';
+    if (!e) {
+        return
+    }
+    this._inner = e;
+    this._type = 'Event';
 
-  this.lnglat = new LngLat(e.latLng.lng(), e.latLng.lat());
-  this.lnglat.I = e.latLng.lng();
-  this.lnglat.L = e.latLng.lat();
+    this.lnglat = null;
+    if (e.latLng) {
+        this.lnglat = new LngLat(e.latLng.lng(), e.latLng.lat());
+        this.lnglat.I = e.latLng.lng();
+        this.lnglat.L = e.latLng.lat();
+    }
 
-  this.pixel = {
-    x: e.pixel.x,
-    y: e.pixel.y
-  };
+
+    this.pixel = {
+        x: e.pixel ? e.pixel.x : null,
+        y: e.pixel ? e.pixel.y : null
+    };
 }
 
 module.exports = SMapEvent;

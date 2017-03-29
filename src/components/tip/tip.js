@@ -17,7 +17,6 @@ $.fn.extend({
 
         self.on("mouseenter",function(){
             self.append( htmlDom );
-            // var left = self.offset().left;
             var top = htmlDom.outerHeight() + parseInt(htmlDom.find(".x-tip-cor").css("border-width"));
             htmlDom.css({"left":0,"top":-top,"display":"block"});
             htmlDom.stop().animate({ "top" : -top ,"opacity" : 1},300);
@@ -26,7 +25,7 @@ $.fn.extend({
         self.on("mouseleave",function(){
              iTime = setTimeout(function(){
                 htmlDom.remove();
-            },2000);
+            },500);
         });
 
         $('body').on("mouseenter",'.x-tip-dialog',function(){
