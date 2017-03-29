@@ -749,6 +749,7 @@
         return clone;
     }
 
+    //选中的数据
     function _selData(data, selected) {
         var sel_ids = selected.split(',');
         for (var i = 0; i < sel_ids.length; i++) {

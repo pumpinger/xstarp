@@ -5,11 +5,9 @@
 require('./table.scss');
 
 var count = 0;
-
 $('.x-table th').click(function(){
     var iconDom = $(this).find('i');
     if(count % 3 == 0){
-        console.log(3333);
         iconDom.removeClass('x-table-arrow').addClass('x-table-arrowUp')
     }else if(count % 3 == 1){
         iconDom.removeClass('x-table-arrowUp').addClass('x-table-arrowDown');
@@ -18,3 +16,5 @@ $('.x-table th').click(function(){
     }
     count++;
 });
+
+

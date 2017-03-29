@@ -51,36 +51,42 @@
 	 */
 
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./common/styles/index.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	__webpack_require__(2);
-	__webpack_require__(46);
-	__webpack_require__(48);
-	__webpack_require__(61);
-	__webpack_require__(64);
+	__webpack_require__(1);
+	__webpack_require__(3);
+	__webpack_require__(47);
+	__webpack_require__(52);
+	__webpack_require__(65);
+	__webpack_require__(68);
 
 
 
 /***/ },
-/* 1 */,
-/* 2 */
+/* 1 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 2 */,
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by jesse on 2017/2/23.
 	 */
 
-	__webpack_require__(3)
-
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(4);
+	__webpack_require__(4)
 
 
 /***/ },
 /* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(5);
+
+
+/***/ },
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -91,13 +97,13 @@
 	 * @second 自动引入对应地图的API
 	 * @third  自动引入对应地图的插件
 	 */
-	var _ = __webpack_require__(5);
+	var _ = __webpack_require__(6);
 
-	var util = __webpack_require__(7);
-	var GMap = __webpack_require__(8);
-	var DMap = __webpack_require__(27);
-	var loader = __webpack_require__(45);
-	var config = __webpack_require__(14);
+	var util = __webpack_require__(8);
+	var GMap = __webpack_require__(9);
+	var DMap = __webpack_require__(28);
+	var loader = __webpack_require__(46);
+	var config = __webpack_require__(15);
 
 	window.GMap = GMap;
 	window.DMap = DMap;
@@ -248,7 +254,7 @@
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -17336,10 +17342,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(6)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(7)(module)))
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -17355,7 +17361,7 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	/**
@@ -17386,25 +17392,25 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 */
 
-	var LngLat = __webpack_require__(9);
-	var Bounds = __webpack_require__(10);
-	var Pixel = __webpack_require__(11);
-	var Size = __webpack_require__(12);
-	var Map = __webpack_require__(13);
-	var Marker = __webpack_require__(20);
-	var event = __webpack_require__(16);
-	var InfoWindow = __webpack_require__(22);
-	var Polyline = __webpack_require__(23);
-	var Polygon = __webpack_require__(24);
-	var Circle = __webpack_require__(25);
-	var MarkerClusterer = __webpack_require__(26);
+	var LngLat = __webpack_require__(10);
+	var Bounds = __webpack_require__(11);
+	var Pixel = __webpack_require__(12);
+	var Size = __webpack_require__(13);
+	var Map = __webpack_require__(14);
+	var Marker = __webpack_require__(21);
+	var event = __webpack_require__(17);
+	var InfoWindow = __webpack_require__(23);
+	var Polyline = __webpack_require__(24);
+	var Polygon = __webpack_require__(25);
+	var Circle = __webpack_require__(26);
+	var MarkerClusterer = __webpack_require__(27);
 
 	var GMap = {};
 
@@ -17427,14 +17433,14 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 */
 
-	var util = __webpack_require__(7);
+	var util = __webpack_require__(8);
 
 	/**
 	 * @constructor
@@ -17534,7 +17540,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	/**
@@ -17590,7 +17596,7 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	/**
@@ -17644,7 +17650,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	/**
@@ -17687,7 +17693,7 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17696,10 +17702,10 @@
 	 * @return our map object
 	 */
 
-	var config = __webpack_require__(14);
-	var Bounds = __webpack_require__(10);
-	var onOff = __webpack_require__(15);
-	var formatOpts = __webpack_require__(19);
+	var config = __webpack_require__(15);
+	var Bounds = __webpack_require__(11);
+	var onOff = __webpack_require__(16);
+	var formatOpts = __webpack_require__(20);
 
 	/**
 	 * @constructor
@@ -17821,7 +17827,7 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	/**
@@ -17860,7 +17866,7 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17868,7 +17874,7 @@
 	 * @onOff 基类，覆盖物的实例都具有on和off方法，都直接来自于此
 	 */
 
-	var event = __webpack_require__(16);
+	var event = __webpack_require__(17);
 	var onOff = {};
 
 	/**
@@ -17927,18 +17933,18 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
 
-	var SMapEvent = __webpack_require__(17);
+	var SMapEvent = __webpack_require__(18);
 
 	var event = {};
 
-	event.map = __webpack_require__(18);
+	event.map = __webpack_require__(19);
 
 	event.getSMapEvent = function(e) {
 	  return new SMapEvent(e);
@@ -18024,7 +18030,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18033,7 +18039,7 @@
 	 * Wrap event and return our new event object just like gaode AMap event.
 	 */
 
-	var LngLat = __webpack_require__(9);
+	var LngLat = __webpack_require__(10);
 
 	/**
 	 * 包装Google的事件触发时的event对象
@@ -18059,7 +18065,7 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	/**
@@ -18082,14 +18088,14 @@
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
 
-	var LngLat = __webpack_require__(9);
+	var LngLat = __webpack_require__(10);
 
 	module.exports = {
 	  map: formatOptsUni,
@@ -18201,16 +18207,16 @@
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 * @Class Marker
 	 */
-	var obc = __webpack_require__(21);
-	var onOff = __webpack_require__(15);
-	var formatOpts = __webpack_require__(19);
+	var obc = __webpack_require__(22);
+	var onOff = __webpack_require__(16);
+	var formatOpts = __webpack_require__(20);
 
 	/**
 	 * Represents a Marker
@@ -18252,7 +18258,7 @@
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	/**
@@ -18291,15 +18297,15 @@
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
-	var onOff = __webpack_require__(15);
-	var formatOpts = __webpack_require__(19);
-	var obc = __webpack_require__(21);
+	var onOff = __webpack_require__(16);
+	var formatOpts = __webpack_require__(20);
+	var obc = __webpack_require__(22);
 
 	/**
 	 * @constructor
@@ -18387,7 +18393,7 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18395,9 +18401,9 @@
 	 * @constructor Polyline
 	 */
 
-	var obc = __webpack_require__(21);
-	var onOff = __webpack_require__(15);
-	var formatOpts = __webpack_require__(19);
+	var obc = __webpack_require__(22);
+	var onOff = __webpack_require__(16);
+	var formatOpts = __webpack_require__(20);
 
 	/**
 	 * @constructor
@@ -18452,7 +18458,7 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18461,9 +18467,9 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(15);
-	var formatOpts = __webpack_require__(19);
-	var obc = __webpack_require__(21);
+	var onOff = __webpack_require__(16);
+	var formatOpts = __webpack_require__(20);
+	var obc = __webpack_require__(22);
 
 	/**
 	 * @constructor
@@ -18537,7 +18543,7 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18546,10 +18552,10 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(15);
-	var formatOpts = __webpack_require__(19);
-	var obc = __webpack_require__(21);
-	var LngLat = __webpack_require__(9);
+	var onOff = __webpack_require__(16);
+	var formatOpts = __webpack_require__(20);
+	var obc = __webpack_require__(22);
+	var LngLat = __webpack_require__(10);
 
 	/**
 	 * @constructor
@@ -18638,15 +18644,15 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/15.
 	 */
 
-	var formatOpts = __webpack_require__(19);
-	var obc = __webpack_require__(21)
+	var formatOpts = __webpack_require__(20);
+	var obc = __webpack_require__(22)
 
 	/**
 	 * @constructor
@@ -18689,25 +18695,25 @@
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 */
 
-	var LngLat = __webpack_require__(28);
-	var Bounds = __webpack_require__(29);
-	var Pixel = __webpack_require__(30);
-	var Size = __webpack_require__(31);
-	var Map = __webpack_require__(32);
-	var Marker = __webpack_require__(38);
-	var event = __webpack_require__(34);
-	var InfoWindow = __webpack_require__(40);
-	var Polyline = __webpack_require__(41);
-	var Polygon = __webpack_require__(42);
-	var Circle = __webpack_require__(43);
-	var MarkerClusterer = __webpack_require__(44);
+	var LngLat = __webpack_require__(29);
+	var Bounds = __webpack_require__(30);
+	var Pixel = __webpack_require__(31);
+	var Size = __webpack_require__(32);
+	var Map = __webpack_require__(33);
+	var Marker = __webpack_require__(39);
+	var event = __webpack_require__(35);
+	var InfoWindow = __webpack_require__(41);
+	var Polyline = __webpack_require__(42);
+	var Polygon = __webpack_require__(43);
+	var Circle = __webpack_require__(44);
+	var MarkerClusterer = __webpack_require__(45);
 
 	var DMap = {};
 
@@ -18730,7 +18736,7 @@
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18739,7 +18745,7 @@
 	 * @attention 百度地图没有LngLat这个基础类，而是叫Point类。
 	 */
 
-	var util = __webpack_require__(7);
+	var util = __webpack_require__(8);
 
 	/**
 	 * @constructor
@@ -18843,7 +18849,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18853,8 +18859,8 @@
 	 * https://developers.google.com/maps/documentation/javascript/3.exp/reference#LatLngBounds
 	 */
 
-	var LngLat = __webpack_require__(28);
-	var util = __webpack_require__(7);
+	var LngLat = __webpack_require__(29);
+	var util = __webpack_require__(8);
 
 	/**
 	 * @constructor
@@ -18912,7 +18918,7 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	/**
@@ -18965,7 +18971,7 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	/**
@@ -19010,7 +19016,7 @@
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19021,10 +19027,10 @@
 	 * @attention 百度地图已经占掉了BMap这个顶级命名空间了，所以这里我们使用DMap来命名我们的顶级空间
 	 */
 
-	var config = __webpack_require__(14);
-	var Bounds = __webpack_require__(29);
-	var onOff = __webpack_require__(33);
-	var formatOpts = __webpack_require__(37);
+	var config = __webpack_require__(15);
+	var Bounds = __webpack_require__(30);
+	var onOff = __webpack_require__(34);
+	var formatOpts = __webpack_require__(38);
 
 	/**
 	 * @constructor
@@ -19180,7 +19186,7 @@
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19188,7 +19194,7 @@
 	 * @onOff 基类，覆盖物的实例都具有on和off方法，都直接来自于此
 	 */
 
-	var event = __webpack_require__(34);
+	var event = __webpack_require__(35);
 	var onOff = {};
 
 	/**
@@ -19247,7 +19253,7 @@
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19259,11 +19265,11 @@
 	 * @url: http://api.map.baidu.com/library/EventWrapper/1.2/docs/symbols/BMapLib.EventWrapper.html
 	 */
 
-	var SMapEvent = __webpack_require__(35);
+	var SMapEvent = __webpack_require__(36);
 
 	var event = {};
 
-	event.map = __webpack_require__(36);
+	event.map = __webpack_require__(37);
 
 	event.listeners = [];
 
@@ -19444,7 +19450,7 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19453,8 +19459,8 @@
 	 * 包装百度事件对象
 	 */
 
-	var LngLat = __webpack_require__(28);
-	var Pixel = __webpack_require__(30);
+	var LngLat = __webpack_require__(29);
+	var Pixel = __webpack_require__(31);
 
 	/**
 	 * 包装Google的事件触发时的event对象
@@ -19494,7 +19500,7 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 	/**
@@ -19516,14 +19522,14 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
 
-	var LngLat = __webpack_require__(28);
+	var LngLat = __webpack_require__(29);
 
 	module.exports = {
 
@@ -19664,7 +19670,7 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19678,10 +19684,10 @@
 	 *
 	 */
 
-	var obc = __webpack_require__(39);
-	var onOff = __webpack_require__(33);
-	var formatOpts = __webpack_require__(37);
-	var LngLat = __webpack_require__(28);
+	var obc = __webpack_require__(40);
+	var onOff = __webpack_require__(34);
+	var formatOpts = __webpack_require__(38);
+	var LngLat = __webpack_require__(29);
 
 	/**
 	 * Represents a Marker
@@ -19731,7 +19737,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	/**
@@ -19787,7 +19793,7 @@
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19796,10 +19802,10 @@
 	 *
 	 * 高德有 change 事件，百度没有
 	 */
-	var onOff = __webpack_require__(33);
-	var formatOpts = __webpack_require__(37);
-	var obc = __webpack_require__(39);
-	var LngLat = __webpack_require__(28);
+	var onOff = __webpack_require__(34);
+	var formatOpts = __webpack_require__(38);
+	var obc = __webpack_require__(40);
+	var LngLat = __webpack_require__(29);
 
 	/**
 	 * @constructor
@@ -19898,7 +19904,7 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19909,10 +19915,10 @@
 	 * @zIndex 百度Polyline 没有zIndex这个属性，高德有
 	 */
 
-	var obc = __webpack_require__(39);
-	var onOff = __webpack_require__(33);
-	var formatOpts = __webpack_require__(37);
-	var Bounds = __webpack_require__(29);
+	var obc = __webpack_require__(40);
+	var onOff = __webpack_require__(34);
+	var formatOpts = __webpack_require__(38);
+	var Bounds = __webpack_require__(30);
 
 	/**
 	 * @constructor
@@ -19983,7 +19989,7 @@
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19992,9 +19998,9 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(33);
-	var formatOpts = __webpack_require__(37);
-	var obc = __webpack_require__(39);
+	var onOff = __webpack_require__(34);
+	var formatOpts = __webpack_require__(38);
+	var obc = __webpack_require__(40);
 
 	/**
 	 * @constructor
@@ -20070,7 +20076,7 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20079,10 +20085,10 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(33);
-	var formatOpts = __webpack_require__(37);
-	var obc = __webpack_require__(39);
-	var LngLat = __webpack_require__(28);
+	var onOff = __webpack_require__(34);
+	var formatOpts = __webpack_require__(38);
+	var obc = __webpack_require__(40);
+	var LngLat = __webpack_require__(29);
 
 	/**
 	 * @constructor
@@ -20179,7 +20185,7 @@
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20187,8 +20193,8 @@
 	 * @Class MarkerClusterer
 	 */
 
-	var formatOpts = __webpack_require__(37);
-	var obc = __webpack_require__(39);
+	var formatOpts = __webpack_require__(38);
+	var obc = __webpack_require__(40);
 
 	/**
 	 * @constructor
@@ -20240,7 +20246,7 @@
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	/**
@@ -20436,16 +20442,17 @@
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by jesse on 2017/2/23.
 	 */
-	__webpack_require__(47);
+	__webpack_require__(48);
+	__webpack_require__(49);
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	/**
@@ -21199,6 +21206,7 @@
 	        return clone;
 	    }
 
+	    //选中的数据
 	    function _selData(data, selected) {
 	        var sel_ids = selected.split(',');
 	        for (var i = 0; i < sel_ids.length; i++) {
@@ -21309,22 +21317,511 @@
 
 
 /***/ },
-/* 48 */
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+	 * Created by Administrator on 2016/11/4.
+	 */
+
+
+	;(function (factory) {
+	    if ("function" === 'function' && __webpack_require__(50)['amd']) {
+	        // AMD. Register as an anonymous module.
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(51)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else {
+	        // Browser globals
+	        factory(jQuery);
+	    }
+	})(function ($) {
+	    var global, dialog, view, view_ctrl, ctrl_right, ctrl_left, ctrl_close, detail;
+	    var ctrl_magnify, ctrl_shrink, ctrl_rotate, ctrl_recover;   //放大缩小旋转回复 按钮
+
+	    var loading;   //等待图片
+	    var imgDom;   //imgDom
+	    var showWidth, showHeight;   //图像在view 中显示的宽高
+	    var imgs = [];   //要显示的图像们
+	    var infoDom;  //要显示的信息
+	    var imageObj = new Image(); //用来加载图片的对象
+	    var index = 1;   //展示第几个图片
+	    var maxWeight; //图片最大放大系数  //由于图片可能一show 就被缩小了  而我们的放大系数是针对原图大小
+	    var weight = 1;  //图片放大缩小系数
+	    var rotate = 0;  //图片旋转度数
+	    var isNotMove = true;   //拖拽图片时 不响应点击事件 的开关
+	    var dragTime;   //拖拽图片时 定时器
+	    var startX, startY;  //拖拽图片
+
+	    var zIndex;  //还未投入使用
+	    var onSwitch = function () {
+	    };  //切换图片的函数
+
+
+	    function calcuImgTop() {
+	        var offset = view.height() - imgDom.height();
+	        return offset / 2;
+	    }
+
+	    function calcuImgWH() {
+	//            //计算在view中的  图像的宽高  （可能是原图大小  可能是被max-height max-width 处理过的）
+	//            if(image.width>view.width()){
+	//                showWidth=view.width();
+	//                showHeight=image.height*view.width()/image.width;
+	//            }else if(image.height>view.height()){
+	//                showHeight=view.height();
+	//                showWidth=image.width*view.height()/image.height;
+	//            }else{
+	//                showHeight=image.height;
+	//                showWidth=image.width;
+	//            }
+	        showHeight = imgDom.height();
+	        showWidth = imgDom.width();
+	    }
+
+	    function dragImg(e) {
+	        var offsetY = startY - e.pageY;
+	        var offsetX = startX - e.pageX;
+
+	        imgDom.css('margin-top', -offsetY);
+	        imgDom.css('margin-left', -offsetX);
+	    }
+
+	    function bindEVent() {
+	        //图片读取
+	        imageObj.onload = function () {
+	            imgDom.show();
+	            loading.hide();
+	            imgDom.prop('src', imageObj.src);
+	            imgDom.css({
+	                'margin-top': calcuImgTop()
+	            });
+	            maxWeight = (imageObj.width / imgDom.width()) * 1.5;
+	            calcuImgWH();
+	        };
+
+	        //隐藏imgview
+	        global.click(function (e) {
+	            if (isNotMove) {
+	                if (this === e.target) {
+	                    $(this).hide();
+	                    imageObj.src = "";
+
+	                }
+	            }
+	        });
+	        ctrl_close.click(function (e) {
+	            if (isNotMove) {
+	                if (this === e.target) {
+	                    global.hide();
+	                    imageObj.src = "";
+
+	                }
+	            }
+	        });
+
+	        //拖拽
+	        imgDom.bind('mousedown', function (e) {
+	            e.preventDefault();
+	            startX = e.pageX - parseInt(imgDom.css('margin-left'));
+	            startY = e.pageY - parseInt(imgDom.css('margin-top'));
+	            $(document).bind('mousemove', function (e) {
+	                e.preventDefault();
+	                $('body').css('cursor', 'move');
+	                isNotMove = false;
+	                dragImg(e);
+	            });
+	            $(document).bind('mouseup', function (e) {
+	                $(document).unbind('mousemove');
+	                $('body').css('cursor', 'initial');
+	                clearTimeout(dragTime);
+	                dragTime = setTimeout(function () {
+	                    isNotMove = true;
+	                }, 100);
+	            });
+	        });
+
+
+	        //切换
+	        imgDom.click(function (e) {
+	            if (isNotMove) {
+	                if (!showImg(++index)) {
+	                    index--;
+	                }
+	            }
+	        });
+
+
+	        ctrl_right.click(function (e) {
+	            if (!showImg(++index)) {
+	                index--;
+	            }
+	            e.stopPropagation();
+
+	        });
+
+
+	        ctrl_left.click(function (e) {
+	            if (!showImg(--index)) {
+	                index++;
+	            }
+	            e.stopPropagation();
+	        });
+
+
+	        imgDom.bind('mousewheel', function (event) {
+	            event.preventDefault();
+	            var direction = event.originalEvent.wheelDelta;
+
+	            if (direction == 120) {
+	                if (weight < maxWeight) {
+	                    weight += 0.1;
+	                }
+	            } else if (direction == -120) {
+	                if (weight > 0.5) {
+	                    weight -= 0.1;
+	                }
+	            }
+
+	            handlerImgScale();
+
+
+	//                console.log(event.deltaY, event.deltaFactor, event.originalEvent.deltaMode, event.originalEvent.wheelDelta);
+	        });
+
+
+	        ctrl_recover.click(function () {
+	            handerImgRecover();
+	        });
+
+	        ctrl_magnify.click(function () {
+	            if (weight < maxWeight) {
+	                weight += 0.1;
+	            }
+	            handlerImgScale();
+	        });
+
+	        ctrl_shrink.click(function () {
+	            if (weight > 0.5) {
+	                weight -= 0.1;
+	            }
+	            handlerImgScale();
+	        });
+
+	        ctrl_rotate.click(function () {
+	            fnRotateScale(imgDom[0], rotate += 90);
+	        });
+
+
+	    }
+
+	    function handlerImgScale() {
+	        imgDom.css('width', showWidth * weight);
+	        imgDom.css('height', showHeight * weight);
+	        imgDom.css('max-width', 'none');
+	        imgDom.css('max-height', 'none');
+	        imgDom.css('margin-top', calcuImgTop());
+	    }
+
+
+	    function buildHtml() {
+	        global = $('<div>').appendTo("body");
+	        global.css({
+	            'background': 'rgba(0,0,0,0.5)',
+	            'position': 'fixed',
+	            'top': '0',
+	            'bottom': '0',
+	            'left': '0',
+	            'right': '0',
+	            'z-index': '9999',
+	            'display': 'none'
+	        });
+
+	        dialog = $('<div>').appendTo(global);
+	        dialog.css({
+	            'width': '70%',
+	            'position': 'relative',
+	            'min-width': '500px',
+	            'margin': '0% auto',
+	            'padding': '10px 0',
+	            'height': '100%'
+	        });
+
+
+	        detail = $('<div>').appendTo(dialog);
+	        detail.css({
+	            'width': '30%',
+	            'background': '#ddd',
+	            'display': 'none',
+	//                'overflow':'hidden',
+	            'height': '100%',
+	            'float': 'left',
+	            'box-sizing': 'border-box',
+	            'padding': '1%'
+	        });
+
+	        view = $('<div>').appendTo(dialog);
+	        view.css({
+	            'background': '#000',
+	            'width': '100%',
+	            'padding': '1% 1% 50px 1%',
+	            'box-sizing': 'border-box',
+	            'overflow': 'hidden',
+	            'height': '100%',
+	            'user-select': 'none',
+	            'text-align': 'center',
+	            'position': 'relative',
+	            'line-height': '100%'
+	        });
+
+
+	        imgDom = $('<img>').appendTo(view);
+	        imgDom.css({
+	            'transition': 'transform 0.5s',
+	            'cursor': 'pointer'
+	        });
+
+	        view_ctrl = $('<div>').appendTo(view);
+	        view_ctrl.css({
+	            'position': 'absolute',
+	            'bottom': '5px',
+	            'background': '#000',
+	            'width': '98%'
+	        });
+
+
+	        ctrl_recover = $('<span class="x-imgView-recover">').appendTo(view_ctrl);
+	        ctrl_recover.css({
+	            'display': 'inline-block',
+	            'width': '22px',
+	            'height': '19px',
+	            'margin': '10px',
+	            'cursor': 'pointer'
+	        });
+
+	        ctrl_magnify = $('<span class="x-imgView-magnify">').appendTo(view_ctrl);
+	        ctrl_magnify.css({
+	            'display': 'inline-block',
+	            'width': '22px',
+	            'height': '20px',
+	            'margin': '10px',
+	            'cursor': 'pointer'
+	        });
+
+	        ctrl_shrink = $('<span class="x-imgView-shrink">').appendTo(view_ctrl);
+	        ctrl_shrink.css({
+	            'display': 'inline-block',
+	            'width': '21px',
+	            'height': '20px',
+	            'margin': '10px',
+	            'cursor': 'pointer'
+	        });
+
+	        ctrl_rotate = $('<span class="x-imgView-rotate">').appendTo(view_ctrl);
+	        ctrl_rotate.css({
+	            'display': 'inline-block',
+	            'width': '20px',
+	            'height': '20px',
+	            'margin': '10px',
+	            'cursor': 'pointer'
+	        });
+
+
+	        ctrl_left = $('<span class="x-imgView-left">').appendTo(view);
+	        ctrl_left.css({
+	            'display': 'inline-block',
+	            'position': 'absolute',
+	            'width': '25px',
+	            'height': '43px',
+	            'left': '1%',
+	            'top': '48%',
+	            'cursor': 'pointer'
+	        });
+
+	        ctrl_right = $('<span class="x-imgView-right">').appendTo(view);
+	        ctrl_right.css({
+	            'display': 'inline-block',
+	            'position': 'absolute',
+	            'width': '25px',
+	            'height': '43px',
+	            'cursor': 'pointer',
+	            'right': '1%',
+	            'top': '48%'
+	        });
+
+	        ctrl_close = $('<span class="x-imgView-close">').appendTo(dialog);
+	        ctrl_close.css({
+	            'display': 'inline-block',
+	            'position': 'absolute',
+	            'width': '30px',
+	            'height': '30px',
+	            'cursor': 'pointer',
+	            'right': '-14px',
+	            'top': '0'
+	        });
+
+
+	        loading = $('<span class="x-imgView-loading">').appendTo(view);
+	        loading.css({
+	            'position': 'absolute',
+	            'top': '48%',
+	            'left': '50%',
+	            'width': '40px',
+	            'height': '40px',
+	            'margin-left': '-30px',
+	            'display': 'none'
+	        });
+
+
+	    }
+
+	    function handerImgRecover() {
+	        //重新调整到初始位置
+	        imgDom.css({
+	            'max-height': '100%',
+	            'max-width': '100%',
+	            'margin-left': '0',
+	            'width': 'initial',
+	            'height': 'initial'
+	        });
+	        //改变宽高之后才能算出正确的 margin-top
+	        imgDom.css({
+	            'margin-top': calcuImgTop()
+	        });
+	        weight = 1;
+	        fnRotateScale(imgDom[0], rotate = 0);
+	    }
+
+	    var _is_init = false;
+
+	    function init() {
+	        if (!_is_init) {
+	            buildHtml();
+	            bindEVent();
+	            _is_init = true;
+	        }
+	    }
+
+
+	    //应该是load img   load完了应该才是 showimg
+	    function showImg(index) {
+	        if (!imgs[index]) {
+	            return false;
+	        }
+
+	        handerImgRecover();
+	        //判断左右两个按钮
+	        if (imgs.length == 0) {
+	            ctrl_right.hide();
+	            ctrl_left.hide();
+
+	        } else if (imgs.length == 1) {
+	            ctrl_right.hide();
+	            ctrl_left.hide();
+	        } else if (index == 0) {
+	            ctrl_left.hide();
+	            ctrl_right.show();
+	        } else if (index == imgs.length - 1) {
+	            ctrl_right.hide();
+	            ctrl_left.show();
+	        } else {
+	            ctrl_left.show();
+	            ctrl_right.show();
+	        }
+
+	        global.show();
+	        if (imgs.length) {
+	            loading.show();
+	        }
+	        imgDom.hide();
+	        onSwitch(index);
+	        imageObj.src = imgs[index];
+	        return true;
+
+	    }
+
+
+	    function fnRotateScale(dom, angle, scale) {
+	        if (dom && dom.nodeType === 1) {
+	            angle = parseFloat(angle) || 0;
+	            scale = parseFloat(scale) || 1;
+	            if (typeof(angle) === "number") {
+	                //IE
+	                var rad = angle * (Math.PI / 180);
+	                var m11 = Math.cos(rad) * scale, m12 = -1 * Math.sin(rad) * scale, m21 = Math.sin(rad) * scale;
+	                dom.style.filter = "progid:DXImageTransform.Microsoft.Matrix(M11=" + m11 + ",M12=" + m12 + ",M21=" + m21 + ",M22=" + m11 + ",SizingMethod='auto expand')";
+	                //Modern
+	                dom.style.MozTransform = "rotate(" + angle + "deg) scale(" + scale + ")";
+	                dom.style.WebkitTransform = "rotate(" + angle + "deg) scale(" + scale + ")";
+	                dom.style.OTransform = "rotate(" + angle + "deg) scale(" + scale + ")";
+	                dom.style.Transform = "rotate(" + angle + "deg) scale(" + scale + ")";
+	            }
+	        }
+	    }
+
+
+	    window.xImgView = function (option) {
+	        init();
+	        imgs = option.imgs;
+	        zIndex = option.zIndex || 2000;
+	        infoDom = option.infoDom;
+	        if (infoDom) {
+	            detail.show();
+	            detail.html(infoDom);
+	            $(infoDom).show();
+	            view.css('width', '70%');
+	        }
+	        onSwitch = option.onSwitch || function () {
+	            };
+	        showImg(index = 0);
+	    };
+
+
+	    $(document).ready(function () {
+	        //自动定义
+	        $('body').on('click', '.x-imgView .x-imgView-item', function () {
+	            init();
+	            imgs = [];
+	            $.each($(this).parent().children(), function (i) {
+	                imgs[i] = $(this).attr('x-imgView-src');
+	            });
+	            showImg(index = $(this).index());
+	        });
+
+
+	    });
+
+
+	});
+
+/***/ },
+/* 50 */
+/***/ function(module, exports) {
+
+	module.exports = function() { throw new Error("define cannot be used indirect"); };
+
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+	module.exports = window.$;
+
+/***/ },
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by jesse on 2017/2/23.
 	 */
-	__webpack_require__(49);
-	__webpack_require__(51);
 	__webpack_require__(53);
 	__webpack_require__(55);
 	__webpack_require__(57);
 	__webpack_require__(59);
+	__webpack_require__(61);
+	__webpack_require__(63);
 
 
 /***/ },
-/* 49 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21332,7 +21829,7 @@
 	 */
 
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./tip.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(54);
 
 	$.fn.extend({
 	    hoverTips : function (){
@@ -21367,15 +21864,20 @@
 
 
 /***/ },
-/* 50 */,
-/* 51 */
+/* 54 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2017/2/17.
 	 */
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./tab.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(56);
 
 	$('.x-tab-nav li').click(function(){
 	    var i = $(this).index();
@@ -21387,15 +21889,20 @@
 
 
 /***/ },
-/* 52 */,
-/* 53 */
+/* 56 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2017/2/17.
 	 */
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./nav.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(58);
 
 	//导航-侧边栏
 	$(".x-nav-head").click(function() {
@@ -21416,15 +21923,20 @@
 	});
 
 /***/ },
-/* 54 */,
-/* 55 */
+/* 58 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2017/2/17.
 	 */
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./form.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(60);
 
 	$('.x-form-radio').click(function(){
 	    $(this).addClass('x-checked').siblings().removeClass('x-checked');
@@ -21451,15 +21963,20 @@
 	});
 
 /***/ },
-/* 56 */,
-/* 57 */
+/* 60 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2016/12/27.
 	 */
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./popup.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(62);
 
 	module.exports = window.xPopUp = function(type,option,time) {
 	    var layerDom; //底部遮罩层
@@ -21704,22 +22221,25 @@
 	};
 
 /***/ },
-/* 58 */,
-/* 59 */
+/* 62 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2017/2/28.
 	 */
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./table.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(64);
 
 	var count = 0;
-
 	$('.x-table th').click(function(){
 	    var iconDom = $(this).find('i');
 	    if(count % 3 == 0){
-	        console.log(3333);
 	        iconDom.removeClass('x-table-arrow').addClass('x-table-arrowUp')
 	    }else if(count % 3 == 1){
 	        iconDom.removeClass('x-table-arrowUp').addClass('x-table-arrowDown');
@@ -21730,19 +22250,26 @@
 	});
 
 
+
+
 /***/ },
-/* 60 */,
-/* 61 */
+/* 64 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by jesse on 2017/2/23.
 	 */
-	__webpack_require__(62);
-	__webpack_require__(63)
+	__webpack_require__(66);
+	__webpack_require__(67)
 
 /***/ },
-/* 62 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -87589,7 +88116,7 @@
 	;
 
 /***/ },
-/* 63 */
+/* 67 */
 /***/ function(module, exports) {
 
 	/**
@@ -87826,7 +88353,7 @@
 
 
 /***/ },
-/* 64 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -87834,26 +88361,26 @@
 	 */
 
 
-	__webpack_require__(65);
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./common/styles/index.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(69);
+	__webpack_require__(1);
 
 /***/ },
-/* 65 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by jesse on 2017/2/22.
 	 */
 
-	__webpack_require__(66);
+	__webpack_require__(70);
 
 
 /***/ },
-/* 66 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	var WebUploader = __webpack_require__(67);
+	var WebUploader = __webpack_require__(71);
 
 	// 当domReady的时候开始初始化
 	(function($) {
@@ -88561,7 +89088,7 @@
 
 
 /***/ },
-/* 67 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! WebUploader 0.1.6 */
@@ -88681,7 +89208,7 @@
 	        // in another project. That other project will only
 	        // see this AMD call, not the internal modules in
 	        // the closure below.
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(68) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (makeExport), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(51) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (makeExport), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else {
 
 	        // Browser globals case. Just assign the
@@ -96705,12 +97232,6 @@
 	    return require('webuploader');
 	});
 
-
-/***/ },
-/* 68 */
-/***/ function(module, exports) {
-
-	module.exports = window.$;
 
 /***/ }
 /******/ ]);
