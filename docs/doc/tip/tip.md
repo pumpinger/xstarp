@@ -13,12 +13,3 @@ $("#x-tip").hoverTips();
 
 ````
 
-````js
-var i = 1234;
-console.log(i);
-
-````
-
-````js
-console.log(i);
-````

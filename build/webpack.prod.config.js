@@ -8,7 +8,7 @@ var extractLESS = new ExtractTextPlugin('[name].less');
 
 module.exports = {
 	entry: {
-		xstarp: path.resolve(__dirname, '../src/xstarp.js')
+		xstarp: path.resolve(__dirname, '../src/xstarp.js'),
 	},
 	output: {
 		path: path.resolve(__dirname,'../dist'),
