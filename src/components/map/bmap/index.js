@@ -8,6 +8,7 @@ var Pixel = require('./Pixel');
 var Size = require('./Size');
 var Map = require('./Map');
 var Marker = require('./Marker');
+var Icon = require('./Icon');
 var event = require('./event');
 var InfoWindow = require('./InfoWindow');
 var Polyline = require('./Polyline');
@@ -26,6 +27,7 @@ DMap.Size = Size;
 
 DMap.Map = Map;
 DMap.Marker = Marker;
+DMap.Icon = Icon;
 DMap.InfoWindow = InfoWindow;
 DMap.Polyline = Polyline;
 DMap.Polygon = Polygon;

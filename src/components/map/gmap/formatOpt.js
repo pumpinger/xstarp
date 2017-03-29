@@ -22,7 +22,7 @@ module.exports = {
 
 function formatOptsUni(opts) {
 
-  if('position' in opts) {
+  if(opts.position) {
     opts.position = new LngLat(opts.position);
   }
 

@@ -95,7 +95,7 @@ var xP8 = xProgress2({
     pclass: 'x-progress-bar x-progress-yellow x-progress-striped',
     tclass: 'x-progress-text',
     percentage:'0%',
-    onchange:function (hahaha) {console.log('hahaha',hahaha,'xP8',xP8.percentage);}
+    onchange:function () {}
 });
 
 $({property: 0}).animate({property: 500}, {

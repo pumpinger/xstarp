@@ -83,13 +83,13 @@ var map = new SMap.Map('container', {
   polygon.setMap(map);
 
   var sts = [{
-    url: "http://localhost:9000/test/map/bmap_img/m0.png",
+    url: "http://localhost:9000/test/map/img/m0.png",
     size: new SMap.Size(53, 52)
   }, {
-    url: "http://localhost:9000/test/map/bmap_img/m1.png",
+    url: "http://localhost:9000/test/map/img/m1.png",
     size: new SMap.Size(56, 56)
   }, {
-    url: "http://localhost:9000/test/map/bmap_img/m2.png",
+    url: "http://localhost:9000/test/map/img/m2.png",
     size: new SMap.Size(56, 56),
     offset: new SMap.Pixel(0, 0),
     textColor: '#CC0066'

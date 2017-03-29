@@ -23,37 +23,66 @@ var LngLat = require('./LngLat');
  * */
 function Marker(opts, inner) {
 
-  this._type = 'Marker';
-  this._isInMapOverlay = false;
+    this._type = 'Marker';
+    this._isInMapOverlay = false;
 
-  if(inner) {
-    this._inner = inner;
-  } else {
-    // 在opts转换之前就要判断添加overlay
-    obc.addOverlay(opts, this);
+    if (inner) {
+        this._inner = inner;
+    } else {
+        // 在opts转换之前就要判断添加overlay
+        obc.addOverlay(opts, this);
 
-    var newOpts = formatOpts.marker(opts);
+        var newOpts = formatOpts.marker(opts);
 
-    this._inner = new BMap.Marker(newOpts.position, newOpts);
+        BMap.Marker.call(this, newOpts.position, newOpts);//继承BMap.Marker属性
 
-    this._init(newOpts);
-  }
+        this.setMap = function (map) {
+            console.log(map);
+            map._inner.addOverlay(this);
+            if (newOpts.content) {
+                var that = this;
+                setTimeout(function () {
+                    $(that.xc).css({'z-index': newOpts.zIndex});
+                    var div = $(that.xc).find('>div');
+                    div.html(newOpts.content);
+                    div.css({'background': '#178', 'font-size': '12px'});
+                }, 0)
+            }
+        };
+
+        this._inner = new BMap.Marker(newOpts.position, newOpts);
+
+        this._init(newOpts);
+
+        if (!newOpts.visible) {
+            this.hide();
+        }
+        if (newOpts.extData) {
+            this.extData = newOpts.extData;
+        }
+    }
 }
 
-Marker.prototype = {
-  _init: obc._init,
-  setMap: obc.setMap,
-  getMap: obc.getMap,
-  hide: obc.hide,
-  show: obc.show,
+Marker.prototype = new BMap.Marker();//继承BMap.Marker方法
 
-  getPosition: function() {
-    return new LngLat('', '', this._inner.getPosition());
-  },
 
-  on: onOff.on,
-  off: onOff.off
+Marker.prototype._init = obc._init;
+Marker.prototype.setMap = obc.setMap;
+Marker.prototype.getMap = obc.getMap;
+
+Marker.prototype.setExtData = function (ext) {
+    this.extData = ext;
 };
+Marker.prototype.getExtData = function () {
+    return this.extData;
+};
+
+Marker.prototype.getPosition = function () {
+    return new LngLat('', '', this._inner.getPosition());
+};
+
+Marker.prototype.on = onOff.on;
+Marker.prototype.off = onOff.off;
 
 module.exports = Marker;
 
