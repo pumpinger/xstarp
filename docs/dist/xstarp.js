@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "E:\\xbcx-work\\xstarp\\xstarp\\dist";
+/******/ 	__webpack_require__.p = "D:\\jcc\\xstarp\\dist";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -51,42 +51,36 @@
 	 */
 
 
-	__webpack_require__(1);
-	__webpack_require__(3);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./common/styles/index.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(2);
 	__webpack_require__(47);
-	__webpack_require__(48);
-	__webpack_require__(61);
-	__webpack_require__(64);
+	__webpack_require__(57);
+	__webpack_require__(70);
+	__webpack_require__(73);
 
 
 
 /***/ },
-/* 1 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 2 */,
-/* 3 */
+/* 1 */,
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by jesse on 2017/2/23.
 	 */
 
-	__webpack_require__(4)
+	__webpack_require__(3)
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(4);
 
 
 /***/ },
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(5);
-
-
-/***/ },
-/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -97,13 +91,13 @@
 	 * @second 自动引入对应地图的API
 	 * @third  自动引入对应地图的插件
 	 */
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(5);
 
-	var util = __webpack_require__(8);
-	var GMap = __webpack_require__(9);
-	var DMap = __webpack_require__(28);
+	var util = __webpack_require__(7);
+	var GMap = __webpack_require__(8);
+	var DMap = __webpack_require__(27);
 	var loader = __webpack_require__(46);
-	var config = __webpack_require__(15);
+	var config = __webpack_require__(14);
 
 	window.GMap = GMap;
 	window.DMap = DMap;
@@ -132,16 +126,16 @@
 	 * * 'b' 代表百度地图
 	 * */
 	function mapCreate(type) {
-	  if (type == 'a') {
-	    initMap('AMap', 'AMap');
-	    return window.AMap;
-	  } else if (type == 'g') {
-	    initMap('GMap', 'GMap');
-	    return window.GMap;
-	  } else if (type == 'b') {
-	    initMap('DMap', 'DMap');
-	    return window.DMap;
-	  }
+	    if (type == 'a') {
+	        initMap('AMap', 'AMap');
+	        return window.AMap;
+	    } else if (type == 'g') {
+	        initMap('GMap', 'GMap');
+	        return window.GMap;
+	    } else if (type == 'b') {
+	        initMap('DMap', 'DMap');
+	        return window.DMap;
+	    }
 	}
 
 	/**
@@ -152,20 +146,20 @@
 	 * * 'g' 代表谷歌地图
 	 * * 'b' 代表百度地图
 	 * */
-	mapCreate.setType = function(type) {
-	  var mapType = '';
-	  if( type == 'a' ) {
-	    window.SMap = AMap;
-	    mapType = 'AMap';
-	  } else if ( type == 'g' ) {
-	    window.SMap = window.GMap;
-	    mapType = 'GMap';
-	  } else if ( type == 'b') {
-	    console.log(type);
-	    window.SMap = window.DMap;
-	    mapType = 'DMap';
-	  }
-	  initMap(mapType, 'SMap');
+	mapCreate.setType = function (type) {
+	    var mapType = '';
+	    if (type == 'a') {
+	        window.SMap = AMap;
+	        mapType = 'AMap';
+	    } else if (type == 'g') {
+	        window.SMap = window.GMap;
+	        mapType = 'GMap';
+	    } else if (type == 'b') {
+	        console.log(type);
+	        window.SMap = window.DMap;
+	        mapType = 'DMap';
+	    }
+	    initMap(mapType, 'SMap');
 	};
 
 	/**
@@ -178,54 +172,57 @@
 	 * @param {String} Map
 	 * */
 	function initMap(mapType, Map) {
-		// 设置各地图的文件插件名字
-		// 这里主要为了兼容AMap只能使用它自己内置的字符串。
-		// 栗子：'AMap.MarkerClusterer',高德只认得AMap开头的。
-	  window[Map].sPlugin = {
-	    MouseTool: mapType + '.MouseTool',
-	    CircleEditor: mapType + '.CircleEditor',
-	    PolyEditor: mapType + '.PolyEditor',
-	    Hotspot: mapType + '.Hotspot',
-	    MarkerClusterer: mapType + '.MarkerClusterer',
-	    RangingTool: mapType + '.RangingTool'
-	  };
+	    // 设置各地图的文件插件名字
+	    // 这里主要为了兼容AMap只能使用它自己内置的字符串。
+	    // 栗子：'AMap.MarkerClusterer',高德只认得AMap开头的。
+	    window[Map].sPlugin = {
+	        MouseTool: mapType + '.MouseTool',
+	        CircleEditor: mapType + '.CircleEditor',
+	        PolyEditor: mapType + '.PolyEditor',
+	        Hotspot: mapType + '.Hotspot',
+	        MarkerClusterer: mapType + '.MarkerClusterer',
+	        RangingTool: mapType + '.RangingTool',
+	        PlaceSearch: mapType + '.PlaceSearch'
+	    };
 	}
+
 
 	/**
 	 * @entry 接收页面设置的地图属性
 	 * */
-	if(typeof window.SMapConfig !== 'undefined') {
-	  installMap(window.SMapConfig);
+	if (typeof window.SMapConfig !== 'undefined') {
+	    installMap(window.SMapConfig);
 	} else {
-	  console.warn("[你收到一条来自SMap的警告]：请在使用地图之前声明 SMap_target_type 这个变量！");
+	    installMap({});
+	    console.warn("[你收到一条来自SMap的警告]：请在使用地图之前声明 SMap_target_type 这个变量！");
 	}
 
 	function installMap(SMapConfig) {
-	  var type, mapType, url, key;
+	    var type, mapType, url, key;
 
-	  // 未设置则此处自动设置为高德地图
-	  if(!SMapConfig.SMap_target_type) {
-	    SMapConfig.SMap_target_type = 'a';
-	  }
+	    // 未设置则此处自动设置为高德地图
+	    if (!SMapConfig.SMap_target_type) {
+	        SMapConfig.SMap_target_type = 'a';
+	    }
 
-	  type = SMapConfig.SMap_target_type;
+	    type = SMapConfig.SMap_target_type;
 
-	  if(type === 'a') {
-	    mapType = 'AMap';
-	  }
-	  else if(type === 'g') {
-	    mapType = 'GMap';
-	  }
-	  else if(type === 'b') {
-	    mapType = 'DMap';
-	  }
+	    if (type === 'a') {
+	        mapType = 'AMap';
+	    }
+	    else if (type === 'g') {
+	        mapType = 'GMap';
+	    }
+	    else if (type === 'b') {
+	        mapType = 'DMap';
+	    }
 
-	  key = SMapConfig[ mapType +'_key'] || config[ mapType +'_key'];
-	  url = SMapConfig[ mapType +'_url'] || config[ mapType +'_url'];
+	    key = SMapConfig[mapType + '_key'] || config[mapType + '_key'];
+	    url = SMapConfig[mapType + '_url'] || config[mapType + '_url'];
 
-	  document.write('<script src="'+url+key+'"><\/script>');
-	  window.SMap = window.mapCreate(type);
-	  getPluginScript(type);
+	    // document.write('<script src="' + url + key + '"><\/script>');
+	    window.SMap = window.mapCreate(type);
+	    // getPluginScript(type);
 	}
 
 	/**
@@ -238,23 +235,24 @@
 	 * 因此百度地图和谷歌地图也需要用插件的话，需要加载它们
 	 * 所以这个函数将引入我们config中的插件
 	 * */
-	function getPluginScript(type){
-	  if(type === 'a') {}
-	  else if (type === 'b') {
-	    document.write('<script src="'+ config.DMap_MarkerClusterer +'"><\/script>');
-	    document.write('<script src="'+ config.DMap_TextIconOverlay +'"><\/script>');
-	    document.write('<script src="'+ config.DMap_AreaRestriction +'"><\/script>');
-	  }
-	  else if (type === 'g') {
-	    document.write('<script src="'+ config.GMap_MarkerClusterer +'"><\/script>');
-	  }
+	function getPluginScript(type) {
+	    if (type === 'a') {
+	    }
+	    else if (type === 'b') {
+	        document.write('<script src="' + config.DMap_MarkerClusterer + '"><\/script>');
+	        document.write('<script src="' + config.DMap_TextIconOverlay + '"><\/script>');
+	        document.write('<script src="' + config.DMap_AreaRestriction + '"><\/script>');
+	    }
+	    else if (type === 'g') {
+	        document.write('<script src="' + config.GMap_MarkerClusterer + '"><\/script>');
+	    }
 	}
 
 	module.exports = window.SMap;
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -17342,10 +17340,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(7)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(6)(module)))
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -17361,7 +17359,7 @@
 
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports) {
 
 	/**
@@ -17392,25 +17390,25 @@
 
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 */
 
-	var LngLat = __webpack_require__(10);
-	var Bounds = __webpack_require__(11);
-	var Pixel = __webpack_require__(12);
-	var Size = __webpack_require__(13);
-	var Map = __webpack_require__(14);
-	var Marker = __webpack_require__(21);
-	var event = __webpack_require__(17);
-	var InfoWindow = __webpack_require__(23);
-	var Polyline = __webpack_require__(24);
-	var Polygon = __webpack_require__(25);
-	var Circle = __webpack_require__(26);
-	var MarkerClusterer = __webpack_require__(27);
+	var LngLat = __webpack_require__(9);
+	var Bounds = __webpack_require__(10);
+	var Pixel = __webpack_require__(11);
+	var Size = __webpack_require__(12);
+	var Map = __webpack_require__(13);
+	var Marker = __webpack_require__(20);
+	var event = __webpack_require__(16);
+	var InfoWindow = __webpack_require__(22);
+	var Polyline = __webpack_require__(23);
+	var Polygon = __webpack_require__(24);
+	var Circle = __webpack_require__(25);
+	var MarkerClusterer = __webpack_require__(26);
 
 	var GMap = {};
 
@@ -17433,14 +17431,14 @@
 
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 */
 
-	var util = __webpack_require__(8);
+	var util = __webpack_require__(7);
 
 	/**
 	 * @constructor
@@ -17540,7 +17538,7 @@
 
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
 	/**
@@ -17596,7 +17594,7 @@
 
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports) {
 
 	/**
@@ -17650,7 +17648,7 @@
 
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports) {
 
 	/**
@@ -17693,7 +17691,7 @@
 
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17702,132 +17700,141 @@
 	 * @return our map object
 	 */
 
-	var config = __webpack_require__(15);
-	var Bounds = __webpack_require__(11);
-	var onOff = __webpack_require__(16);
-	var formatOpts = __webpack_require__(20);
+	var config = __webpack_require__(14);
+	var Bounds = __webpack_require__(10);
+	var onOff = __webpack_require__(15);
+	var formatOpts = __webpack_require__(19);
 
 	/**
 	 * @constructor
 	 * @elem {Object}
 	 * @opts {Object}
 	 * */
-	function Map(id,opts) {
-	  var elem, newOpts;
+	function Map(id, opts) {
+	    var elem, newOpts;
 
-	  this._type = 'Map';
-	  elem = document.getElementById(id);
-	  newOpts = formatOpts.map(opts);
+	    this._type = 'Map';
+	    elem = document.getElementById(id);
+	    newOpts = formatOpts.map(opts);
 
-	  this._inner = new google.maps.Map(elem, newOpts);
-	  this._inner._smap = this;
-	  this._overLayers = {
-	    MarkerClusterer: [],
-	    Marker: [],
-	    InfoWindow: [],
-	    Polygon: [],
-	    Polyline: [],
-	    Circle: []
-	  };
+	    this._inner = new google.maps.Map(elem, newOpts);
+	    this._inner._smap = this;
+	    this._overLayers = {
+	        MarkerClusterer: [],
+	        Marker: [],
+	        InfoWindow: [],
+	        Polygon: [],
+	        Polyline: [],
+	        Circle: []
+	    };
 	}
 
 	Map.prototype = {
 
-	  plugin : mapPlugin,
+	    plugin: mapPlugin,
 
-	  clearMap: clearMap,
+	    service: function (pluginName, callback) {
 
-	  // TODO: setFitView
-	  setFitView: function() {
+	    },
 
-	  },
+	    setStatus: function () {
+	        return
+	    },
+	    clearMap: clearMap,
+	    clearInfoWindow: function () {
+	        var iws = this._overLayers.InfoWindow;
+	        iws.forEach(function (item) {
+	            item.close();
+	        })
+	    },
 
-	  /**
-	   * @param {LngLat} position
-	   * */
-	  panTo: function(position) {
-	    this._inner.panTo(position._inner);
-	  },
+	    // TODO: setFitView
+	    setFitView: function () {
 
-	  destroy: function() {
+	    },
 
-	  },
+	    /**
+	     * @param {LngLat} position
+	     * */
+	    panTo: function (position) {
+	        this._inner.panTo(position._inner);
+	    },
 
-	  /**
-	   * @param {Number} zoom
-	   * */
-	  setZoom: function(zoom) {
-	    this._inner.setZoom(zoom);
-	  },
+	    destroy: function () {
 
-	  getBounds: function() {
-	    return new Bounds('','',this._inner.getBounds());
-	  },
+	    },
 
-	  // todo:
-	  setBounds: function() {
+	    /**
+	     * @param {Number} zoom
+	     * */
+	    setZoom: function (zoom) {
+	        this._inner.setZoom(zoom);
+	    },
 
-	  },
+	    getBounds: function () {
+	        return new Bounds('', '', this._inner.getBounds());
+	    },
 
-	  on: onOff.on,
-	  off: onOff.off
+	    // todo:
+	    setBounds: function () {
+
+	    },
+
+	    on: onOff.on,
+	    off: onOff.off
 	};
 
 	function mapPlugin(plugins, fn) {
-	  if(plugins.length < 1) return;
+	    if (plugins.length < 1) return;
 
-	  plugins.forEach( function(plugin) {
+	    plugins.forEach(function (plugin) {
 
-	    console.log(plugin);
-	    if(plugin === 'GMap.MarkerClusterer') {
-	      $.getScript(config.GMap_MarkerClusterer, function() {
-	        fn();
-	      });
-	    }
+	        console.log(plugin);
+	        if (plugin === 'GMap.MarkerClusterer') {
+	            $.getScript(config.GMap_MarkerClusterer, function () {
+	                fn();
+	            });
+	        }
 
-	  })
+	    })
 	}
 
 	function clearMap() {
-	  var overLayers = this._overLayers;
+	    var overLayers = this._overLayers;
 
-	  for(var type in overLayers) {
+	    for (var type in overLayers) {
 
-	    switch (type) {
-	      case 'Marker':
-	      case 'Circle':
-	      case 'Polygon':
-	      case 'Polyline':
-	      case 'InfoWindow':
-	        if(overLayers[type].length > 0) {
-	          overLayers[type].forEach( function(item) {
-	            item._inner.setMap(null);
-	            item._inner = null;
-	            item = null;
-	          });
-	          overLayers.lenght = 0;
+	        switch (type) {
+	            case 'Marker':
+	            case 'Circle':
+	            case 'Polygon':
+	            case 'Polyline':
+	            case 'InfoWindow':
+	                if (overLayers[type].length > 0) {
+	                    overLayers[type].forEach(function (item) {
+	                        item._inner.setMap(null);
+	                    });
+	                    overLayers.lenght = 0;
+	                }
+	                break;
+	            case 'MarkerClusterer':
+	                if (overLayers.MarkerClusterer.length > 0) {
+	                    overLayers.MarkerClusterer.forEach(function (item) {
+	                        item._inner.clearMarkers();
+	                    });
+	                    overLayers.MarkerClusterer.length = 0;
+	                }
+	                break;
 	        }
-	        break;
-	      case 'MarkerClusterer':
-	        if(overLayers.MarkerClusterer.length > 0) {
-	          overLayers.MarkerClusterer.forEach( function(item) {
-	            item._inner.clearMarkers();
-	            item._inner = null;
-	            item = null;
-	          });
-	          overLayers.MarkerClusterer.length = 0;
-	        }
-	        break;
+
 	    }
-
-	  }
 	}
 
 	module.exports = Map;
 
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/**
@@ -17852,21 +17859,21 @@
 
 
 	  /**********************************地图插件地址域名url****************************/
-	  SMap_plugin_url: 'http://192.168.60.206:9000/src/components/map/',
+	  SMap_plugin_url: './',
 
 	  /**********************************百度插件地址***********************************/
-	  DMap_MarkerClusterer: 'http://192.168.60.206:9000/src/components/map/bmap/lib/markerclusterer.js',
-	  DMap_TextIconOverlay: 'http://192.168.60.206:9000/src/components/map/bmap/lib/TextIconOverlay.js',
-	  DMap_AreaRestriction: 'http://192.168.60.206:9000/src/components/map/bmap/lib/AreaRestriction.js',
+	  DMap_MarkerClusterer: "http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js",
+	  DMap_TextIconOverlay: "http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js",
+	  DMap_AreaRestriction: "http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js",
 
 	  /**********************************谷歌插件地址***********************************/
-	  GMap_MarkerClusterer: 'http://192.168.60.206:9000/src/components/map/google/markerclusterer.js'
+	  GMap_MarkerClusterer: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js'
 
 	};
 
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17874,7 +17881,7 @@
 	 * @onOff 基类，覆盖物的实例都具有on和off方法，都直接来自于此
 	 */
 
-	var event = __webpack_require__(17);
+	var event = __webpack_require__(16);
 	var onOff = {};
 
 	/**
@@ -17933,18 +17940,18 @@
 
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
 
-	var SMapEvent = __webpack_require__(18);
+	var SMapEvent = __webpack_require__(17);
 
 	var event = {};
 
-	event.map = __webpack_require__(19);
+	event.map = __webpack_require__(18);
 
 	event.getSMapEvent = function(e) {
 	  return new SMapEvent(e);
@@ -18030,7 +18037,7 @@
 
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18039,7 +18046,7 @@
 	 * Wrap event and return our new event object just like gaode AMap event.
 	 */
 
-	var LngLat = __webpack_require__(10);
+	var LngLat = __webpack_require__(9);
 
 	/**
 	 * 包装Google的事件触发时的event对象
@@ -18048,24 +18055,31 @@
 	 * @param {Object} e event object
 	 * */
 	function SMapEvent(e) {
-	  this._inner = e;
-	  this._type = 'Event';
+	    if (!e) {
+	        return
+	    }
+	    this._inner = e;
+	    this._type = 'Event';
 
-	  this.lnglat = new LngLat(e.latLng.lng(), e.latLng.lat());
-	  this.lnglat.I = e.latLng.lng();
-	  this.lnglat.L = e.latLng.lat();
+	    this.lnglat = null;
+	    if (e.latLng) {
+	        this.lnglat = new LngLat(e.latLng.lng(), e.latLng.lat());
+	        this.lnglat.I = e.latLng.lng();
+	        this.lnglat.L = e.latLng.lat();
+	    }
 
-	  this.pixel = {
-	    x: e.pixel.x,
-	    y: e.pixel.y
-	  };
+
+	    this.pixel = {
+	        x: e.pixel ? e.pixel.x : null,
+	        y: e.pixel ? e.pixel.y : null
+	    };
 	}
 
 	module.exports = SMapEvent;
 
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports) {
 
 	/**
@@ -18088,14 +18102,14 @@
 
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
 
-	var LngLat = __webpack_require__(10);
+	var LngLat = __webpack_require__(9);
 
 	module.exports = {
 	  map: formatOptsUni,
@@ -18115,7 +18129,7 @@
 
 	function formatOptsUni(opts) {
 
-	  if('position' in opts) {
+	  if(opts.position) {
 	    opts.position = new LngLat(opts.position);
 	  }
 
@@ -18207,16 +18221,16 @@
 
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 * @Class Marker
 	 */
-	var obc = __webpack_require__(22);
-	var onOff = __webpack_require__(16);
-	var formatOpts = __webpack_require__(20);
+	var obc = __webpack_require__(21);
+	var onOff = __webpack_require__(15);
+	var formatOpts = __webpack_require__(19);
 
 	/**
 	 * Represents a Marker
@@ -18227,38 +18241,99 @@
 	 * */
 	function Marker(opts, inner) {
 
-	  this._type = 'Marker';
+	    this._type = 'Marker';
 
-	  if(inner) {
-	    this._inner = inner;
-	  } else {
-	    // 在opts转换之前就要判断添加overlay
-	    obc.addOverlay(opts, this);
-	    var newOpts = formatOpts.marker(opts);
-	    this._inner = new google.maps.Marker(newOpts);
-	    if(opts.map) {
-	      this._inner._smap = opts.map;
+	    if(inner) {
+	        this._inner = inner;
+	    } else {
+	        // 在opts转换之前就要判断添加overlay
+	        obc.addOverlay(opts, this);
+	        var fOpts = formatOpts.marker(opts);//格式化opts
+	        google.maps.Marker.apply(this, fOpts);
+	        this._inner = this;
+	        if(opts.map) {
+	            this._inner._smap = fOpts.map;
+	        }
+	        this.position = this._inner.position
 	    }
-	  }
 	}
 
 	Marker.prototype = {
-	  setMap: obc.setMap,
-	  getMap: obc.getMap,
-	  hide: obc.hide,
-	  show: obc.show,
-	  on: onOff.on,
-	  off: onOff.off
+	    setMap: obc.setMap,
+	    getMap: obc.getMap,
+	    getPosition : function () {
+	        return this.position;
+	    },
+	    hide: obc.hide,
+	    show: obc.show,
+	    on: onOff.on,
+	    off: onOff.off
 	};
 
 	module.exports = Marker;
+
+
+	// function Marker(opts) {
+	//     this._type = 'Marker';
+	//     obc.addOverlay(opts, this);
+	//     var formatOpts = formatOpts.marker(opts);//转换opts
+	//     this.latlng = opts.latlng;
+	//     this.labelText = opts.labelText || '';
+	//     this.labelClass = opts.labelClass || 'writeb';
+	//     this.labelOffset = opts.labelOffset || new google.maps.Size(8, -33);
+	//     opts.icon = opts.icon || getTextIcon();
+	//     google.maps.Marker.apply(this, formatOpts);
+	//
+	//     this._inner = this;
+	// }
+	//
+	// Marker.prototype = new google.maps.Marker(new google.maps.LatLng(0, 0));
+	// Marker.prototype.initialize = function (map) {
+	//     google.maps.Marker.prototype.initialize.call(this, map);
+	//     var label = document.createElement('div');
+	//     label.className = this.labelClass;
+	//     label.innerHTML = this.labelText;
+	//     label.style.position = 'absolute';
+	//     label.style.width = '48px';
+	//     map.getPane(G_MAP_MARKER_PANE).appendChild(label);
+	//
+	//     this.smap = map;
+	//     this.label = label;
+	// };
+	// Marker.prototype.redraw = function (force) {
+	//     google.maps.Marker.prototype.redraw.call(this, map);
+	//     if (!force) {
+	//         return;
+	//     }
+	//     var point = this.map.fromLatLngToDivPixel(this.latlng);
+	//     var z = google.maps.Overlay.getZIndex(this.latlng.lat());
+	//
+	//     this.label.style.left = (point.x + this.labelOffset.width) + 'px';
+	//     this.label.style.top = (point.y + this.labelOffset.height) + 'px';
+	//     this.label.style.zIndex = z + 1;
+	// };
+	// Marker.prototype.remove = function () {
+	//     this.label.parentNode.removeChild(this.label);
+	//     this.label = null;
+	//     google.maps.Marker.prototype.remove.call(this);
+	// };
+	//
+	// Marker.prototype.setMap = obc.setMap;
+	// Marker.prototype.getMap = obc.getMap;
+	//
+	// Marker.prototype.hide = obc.hide;
+	// Marker.prototype.show = obc.show;
+	// Marker.prototype.on = onOff.on;
+	// Marker.prototype.off = onOff.off;
+	//
+	// module.exports = Marker;
 
 
 
 
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports) {
 
 	/**
@@ -18266,46 +18341,46 @@
 	 */
 
 	module.exports = {
-	  setMap: function(map) {
-	    if(map !== null) {
-	      this._inner._smap = map;
-	      map._overLayers[this._type].push(this);
-	      this._inner.setMap(map._inner);
-	    } else {
-	      this._inner.setMap(null);
+	    setMap: function (map) {
+	        if (map !== null) {
+	            this._inner._smap = map;
+	            map._overLayers[this._type].push(this);
+	            google.maps.Marker.prototype.setMap.call(this, map._inner);
+	        } else {
+	            this._inner.setMap(null);
+	        }
+	    },
+
+	    getMap: function () {
+	        return this._inner._smap;
+	    },
+
+	    hide: function () {
+	        this._inner.setVisible(false);
+	    },
+
+	    show: function () {
+	        this._inner.setVisible(true);
+	    },
+
+	    addOverlay: function (opts, self) {
+	        if ('map' in opts) {
+	            opts.map._overLayers[self._type].push(self);
+	        }
 	    }
-	  },
-
-	  getMap: function() {
-	    return this._inner._smap;
-	  },
-
-	  hide: function() {
-	    this._inner.setVisible(false);
-	  },
-
-	  show: function() {
-	    this._inner.setVisible(true);
-	  },
-
-	  addOverlay: function(opts, self) {
-	    if('map' in opts) {
-	      opts.map._overLayers[self._type].push(self);
-	    }
-	  }
 	};
 
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
-	var onOff = __webpack_require__(16);
-	var formatOpts = __webpack_require__(20);
-	var obc = __webpack_require__(22);
+	var onOff = __webpack_require__(15);
+	var formatOpts = __webpack_require__(19);
+	var obc = __webpack_require__(21);
 
 	/**
 	 * @constructor
@@ -18393,7 +18468,7 @@
 
 
 /***/ },
-/* 24 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18401,9 +18476,9 @@
 	 * @constructor Polyline
 	 */
 
-	var obc = __webpack_require__(22);
-	var onOff = __webpack_require__(16);
-	var formatOpts = __webpack_require__(20);
+	var obc = __webpack_require__(21);
+	var onOff = __webpack_require__(15);
+	var formatOpts = __webpack_require__(19);
 
 	/**
 	 * @constructor
@@ -18458,7 +18533,7 @@
 
 
 /***/ },
-/* 25 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18467,9 +18542,9 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(16);
-	var formatOpts = __webpack_require__(20);
-	var obc = __webpack_require__(22);
+	var onOff = __webpack_require__(15);
+	var formatOpts = __webpack_require__(19);
+	var obc = __webpack_require__(21);
 
 	/**
 	 * @constructor
@@ -18529,7 +18604,8 @@
 	   * @param {LngLat} point
 	   * */
 	  contains: function(point) {
-
+	    //TODO 多边形没实现contains
+	      // return this._inner.getBounds().contains(point);
 	  },
 
 	  on: onOff.on,
@@ -18543,7 +18619,7 @@
 
 
 /***/ },
-/* 26 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18552,10 +18628,10 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(16);
-	var formatOpts = __webpack_require__(20);
-	var obc = __webpack_require__(22);
-	var LngLat = __webpack_require__(10);
+	var onOff = __webpack_require__(15);
+	var formatOpts = __webpack_require__(19);
+	var obc = __webpack_require__(21);
+	var LngLat = __webpack_require__(9);
 
 	/**
 	 * @constructor
@@ -18565,9 +18641,11 @@
 	function Circle(opts) {
 	  this._type = 'Circle';
 	  obc.addOverlay(opts, this);
+	  this.opts = opts;
 
 	  var newOpts = formatOpts.circle(opts);
 	  this._inner = new google.maps.Circle(newOpts);
+	  this.extData = newOpts.extData;
 	}
 
 	Circle.prototype = {
@@ -18598,7 +18676,7 @@
 	  },
 
 	  setOptions: function() {
-	    this._inner.setOptions( formatOpts.polygon(opts) );
+	    this._inner.setOptions( formatOpts.polygon(this.opts) );
 	  },
 
 	  getOptions: function() {},
@@ -18613,11 +18691,11 @@
 	   * @ext {any} extData
 	   * */
 	  setExtData: function(ext) {
-	    this._inner.extDate = ext;
+	    this.extData = ext;
 	  },
 
 	  getExtData: function() {
-	    return this._inner.extDate;
+	    return this.extData;
 	  },
 
 	  /**
@@ -18626,7 +18704,7 @@
 	   * @return {Boolean} true or false
 	   * */
 	  contains: function(point) {
-
+	      return this._inner.getBounds().contains(point);
 	  },
 
 	  on: onOff.on,
@@ -18644,15 +18722,15 @@
 
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/15.
 	 */
 
-	var formatOpts = __webpack_require__(20);
-	var obc = __webpack_require__(22)
+	var formatOpts = __webpack_require__(19);
+	var obc = __webpack_require__(21)
 
 	/**
 	 * @constructor
@@ -18695,20 +18773,21 @@
 
 
 /***/ },
-/* 28 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 */
 
-	var LngLat = __webpack_require__(29);
-	var Bounds = __webpack_require__(30);
-	var Pixel = __webpack_require__(31);
-	var Size = __webpack_require__(32);
-	var Map = __webpack_require__(33);
-	var Marker = __webpack_require__(39);
-	var event = __webpack_require__(35);
+	var LngLat = __webpack_require__(28);
+	var Bounds = __webpack_require__(29);
+	var Pixel = __webpack_require__(30);
+	var Size = __webpack_require__(31);
+	var Map = __webpack_require__(32);
+	var Marker = __webpack_require__(40);
+	var Icon = __webpack_require__(38);
+	var event = __webpack_require__(34);
 	var InfoWindow = __webpack_require__(41);
 	var Polyline = __webpack_require__(42);
 	var Polygon = __webpack_require__(43);
@@ -18726,6 +18805,7 @@
 
 	DMap.Map = Map;
 	DMap.Marker = Marker;
+	DMap.Icon = Icon;
 	DMap.InfoWindow = InfoWindow;
 	DMap.Polyline = Polyline;
 	DMap.Polygon = Polygon;
@@ -18736,7 +18816,7 @@
 
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18745,7 +18825,7 @@
 	 * @attention 百度地图没有LngLat这个基础类，而是叫Point类。
 	 */
 
-	var util = __webpack_require__(8);
+	var util = __webpack_require__(7);
 
 	/**
 	 * @constructor
@@ -18849,7 +18929,7 @@
 
 
 /***/ },
-/* 30 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18859,8 +18939,8 @@
 	 * https://developers.google.com/maps/documentation/javascript/3.exp/reference#LatLngBounds
 	 */
 
-	var LngLat = __webpack_require__(29);
-	var util = __webpack_require__(8);
+	var LngLat = __webpack_require__(28);
+	var util = __webpack_require__(7);
 
 	/**
 	 * @constructor
@@ -18918,7 +18998,7 @@
 
 
 /***/ },
-/* 31 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/**
@@ -18971,7 +19051,7 @@
 
 
 /***/ },
-/* 32 */
+/* 31 */
 /***/ function(module, exports) {
 
 	/**
@@ -19016,7 +19096,7 @@
 
 
 /***/ },
-/* 33 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19027,10 +19107,10 @@
 	 * @attention 百度地图已经占掉了BMap这个顶级命名空间了，所以这里我们使用DMap来命名我们的顶级空间
 	 */
 
-	var config = __webpack_require__(15);
-	var Bounds = __webpack_require__(30);
-	var onOff = __webpack_require__(34);
-	var formatOpts = __webpack_require__(38);
+	var config = __webpack_require__(14);
+	var Bounds = __webpack_require__(29);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
 
 	/**
 	 * @constructor
@@ -19089,7 +19169,7 @@
 	  clearInfoWindow: function() {
 	    var iws = this._overLayers.InfoWindow;
 	    iws.forEach( function(item) {
-	      item._inner.hide();
+	      item.close();
 	    })
 	  },
 
@@ -19186,7 +19266,7 @@
 
 
 /***/ },
-/* 34 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19194,7 +19274,7 @@
 	 * @onOff 基类，覆盖物的实例都具有on和off方法，都直接来自于此
 	 */
 
-	var event = __webpack_require__(35);
+	var event = __webpack_require__(34);
 	var onOff = {};
 
 	/**
@@ -19253,7 +19333,7 @@
 
 
 /***/ },
-/* 35 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19265,11 +19345,11 @@
 	 * @url: http://api.map.baidu.com/library/EventWrapper/1.2/docs/symbols/BMapLib.EventWrapper.html
 	 */
 
-	var SMapEvent = __webpack_require__(36);
+	var SMapEvent = __webpack_require__(35);
 
 	var event = {};
 
-	event.map = __webpack_require__(37);
+	event.map = __webpack_require__(36);
 
 	event.listeners = [];
 
@@ -19323,7 +19403,7 @@
 	};
 
 	event.addListener = function(instance, eventName, handler, context) {
-	  if(!instance._inner) return;
+	  if(!instance || !instance._inner) return;
 
 	  var realInstance = instance._inner,
 	      relevantEvent = event.getRelevantEvent(instance, eventName),
@@ -19450,7 +19530,7 @@
 
 
 /***/ },
-/* 36 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19459,8 +19539,8 @@
 	 * 包装百度事件对象
 	 */
 
-	var LngLat = __webpack_require__(29);
-	var Pixel = __webpack_require__(31);
+	var LngLat = __webpack_require__(28);
+	var Pixel = __webpack_require__(30);
 
 	/**
 	 * 包装Google的事件触发时的event对象
@@ -19500,7 +19580,7 @@
 
 
 /***/ },
-/* 37 */
+/* 36 */
 /***/ function(module, exports) {
 
 	/**
@@ -19522,67 +19602,78 @@
 
 
 /***/ },
-/* 38 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
 
-	var LngLat = __webpack_require__(29);
+	var LngLat = __webpack_require__(28);
+	var Icon = __webpack_require__(38);
+	var Size = __webpack_require__(31);
 
 	module.exports = {
 
-	  map: formatOptsUni,
+	    map: formatOptsUni,
 
-	  infoWindow: formatOptsUni,
+	    infoWindow: formatOptsUni,
 
-	  marker: formatOptsUni,
+	    marker: formatOptsUni,
 
-	  polyline: formatOptsUni,
+	    polyline: formatOptsUni,
 
-	  polygon: formatOptsUni,
+	    polygon: formatOptsUni,
 
-	  circle: formatOptsUni,
+	    circle: formatOptsUni,
 
-	  markerClusterer: formatMarkerClusterer,
+	    markerClusterer: formatMarkerClusterer,
 
-	  path: canvertPath
+	    path: canvertPath
 	};
 
 	function formatOptsUni(opts) {
-	  if(!opts) return;
+	    if (!opts) return;
 
-	  if(typeof opts.position != 'undefined') {
-	    opts.position = (new LngLat(opts.position))._inner;
-	  }
+	    if (typeof opts.position != 'undefined') {
+	        opts.position = (new LngLat(opts.position))._inner;
+	    }
 
-	  if(opts.path) {
-	    opts.path = transfromPathToPaths(opts.path);
-	  }
+	    if (opts.path) {
+	        opts.path = transfromPathToPaths(opts.path);
+	    }
 
-	  if(opts.center) {
-	    opts.center = (new LngLat(opts.center))._inner;
-	  }
+	    if (opts.center) {
+	        opts.center = (new LngLat(opts.center))._inner;
+	    }
 
-	  if(opts.map) {
-	    opts.smap = opts.map;
-	    opts.map = opts.map._inner;
-	  }
+	    if (opts.map) {
+	        opts.smap = opts.map;
+	        opts.map = opts.map._inner;
+	    }
+	    if (opts.icon) {
+	        opts.icon = (new Icon(opts.icon))._inner;
+	    }
+	    if (opts.size) {
+	        opts.size = (new Size(opts.size._width,opts.size._height))._inner;
+	    }
+	    if (opts.offset) {
+	        opts.offset = (new Size(opts.offset.getX(),opts.offset.getY()))._inner;
+	    }
 
-	  return opts;
+	    return opts;
 	}
 
 	function transfromPathToPaths(path) {
-	  var paths = [];
-	  path.forEach( function(item, index) {
-	    paths.push(arrCreateLngLat(item));
-	  });
-	  return paths;
+	    var paths = [];
+	    path.forEach(function (item, index) {
+	        paths.push(arrCreateLngLat(item));
+	    });
+	    return paths;
 	}
 
 	function arrCreateLngLat(arr) {
-	  return new BMap.Point( parseFloat(arr[0]), parseFloat(arr[1]) );
+	    return new BMap.Point(parseFloat(arr[0]), parseFloat(arr[1]));
 	}
 
 
@@ -19602,31 +19693,31 @@
 	 *     }
 	 *
 	 *   *"<b>styles</b>":{Array<IconStyle>} 一组图标风格。单个图表风格包括以下几个属性：<br />
-	 *   url	{String}	 图片的url地址。(必选)<br />
-	 *   size {Size}	图片的大小。（必选）<br />
+	 *   url    {String}     图片的url地址。(必选)<br />
+	 *   size {Size}    图片的大小。（必选）<br />
 	 *   anchor {Size} 图标定位在地图上的位置相对于图标左上角的偏移值，默认偏移值为图标的中心位置。（可选）<br />
 	 *   offset {Size} 图片相对于可视区域的偏移值，此功能的作用等同于CSS中的background-position属性。（可选）<br />
 	 *   textSize {Number} 文字的大小。（可选，默认10）<br />
 	 *   textColor {String} 文字的颜色。（可选，默认black）<br />
 	 * */
 	function formatMarkerClusterer(map, markers, opts) {
-	  var newOpts = {};
+	    var newOpts = {};
 
-	  if(map._inner) {
-	    newOpts.map = map._inner;
-	  } else {
-	    newOpts.map = map;
-	  }
+	    if (map._inner) {
+	        newOpts.map = map._inner;
+	    } else {
+	        newOpts.map = map;
+	    }
 
-	  newOpts.opts = formatMarkerClustererOpts(opts);
+	    newOpts.opts = formatMarkerClustererOpts(opts);
 
-	  console.log(newOpts.opts);
+	    console.log(newOpts.opts);
 
-	  newOpts.opts.markers = markers.map( function(item) {
-	    return item._inner;
-	  });
+	    newOpts.opts.markers = markers.map(function (item) {
+	        return item._inner;
+	    });
 
-	  return newOpts;
+	    return newOpts;
 	}
 
 	/**
@@ -19634,23 +19725,23 @@
 	 * @diff : 百度 anchor 对应 imageOffset
 	 * */
 	function formatMarkerClustererOpts(opts) {
-	  if(opts.styles) {
-	    var styles = opts.styles;
-	    styles.forEach(function(item) {
-	      if(item.imageOffset) {
-	        item.anchor = item.imageOffset;
-	      }
-	      if(item.size) {
-	        item.size = item.size._inner;
-	      }
-	    })
-	  }
-	  return opts;
+	    if (opts.styles) {
+	        var styles = opts.styles;
+	        styles.forEach(function (item) {
+	            if (item.imageOffset) {
+	                item.anchor = item.imageOffset;
+	            }
+	            if (item.size) {
+	                item.size = item.size._inner;
+	            }
+	        })
+	    }
+	    return opts;
 	}
 
 	function canvertPath(path) {
-	  // TODO: 如何处理这个path还未定
-	  return path;
+	    // TODO: 如何处理这个path还未定
+	    return path;
 	}
 
 
@@ -19670,7 +19761,109 @@
 
 
 /***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by fizz on 2017/2/15.
+	 * @constructor Pixel
+	 * 在google map里面对应的是Point
+	 * https://developers.google.com/maps/documentation/javascript/reference#Point
+	 */
+
+
+	/**
+	 * @constructor
+	 * @param {Number} x
+	 * @param {Number} y
+	 * */
+
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
+
+	function Icon(opts, inner) {
+	    if(inner) {
+	        this._inner = inner;
+	    } else {
+	        this.image = opts;
+	        this.size = new BMap.Size(36,36);
+
+	        this._inner = new BMap.Icon(this.image, this.size);
+	    }
+	    this._type = 'Icon';
+	    return this;
+	}
+
+	Icon.prototype = {
+	    getImageSize:function(){
+	        return this._inner.size;
+	    },
+	    setImageSize:function(size){
+	        this._inner.size = size;
+	    }
+	};
+
+	module.exports = Icon;
+
+
+/***/ },
 /* 39 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by fizz on 2017/2/17.
+	 * @baseClass overlay 不可实例化的基类
+	 */
+
+	module.exports = {
+	    setMap: function (map) {
+	        if (map !== null) {
+	            // console.log(this);
+	            this._inner._smap = map;
+
+	            if (!this._isInMapOverlay) {
+	                map._overLayers[this._type].push(this);
+	                this._isInMapOverlay = true;
+	            }
+
+	            map._inner.addOverlay(this._inner);
+	        } else {
+	            map._inner.removeOverlay(this._inner);
+	        }
+	    },
+
+	    getMap: function () {
+	        return this._inner._smap;
+	    },
+
+	    hide: function () {
+	        this._inner.hide();
+	    },
+
+	    show: function () {
+	        this._inner.show();
+	    },
+
+	    addOverlay: function (opts, self) {
+	        if ('map' in opts) {
+	            if (!self._isInMapOverlay) {
+	                opts.map._overLayers[self._type].push(self);
+	                self._isInMapOverlay = true;
+	            }
+	        }
+	    },
+
+	    _init: function (opts) {
+	        if (opts.smap) {
+	            this._inner._smap = opts.smap;
+	            opts.smap._inner.addOverlay(this._inner);
+	        }
+	    }
+	};
+
+
+/***/ },
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19684,10 +19877,10 @@
 	 *
 	 */
 
-	var obc = __webpack_require__(40);
-	var onOff = __webpack_require__(34);
-	var formatOpts = __webpack_require__(38);
-	var LngLat = __webpack_require__(29);
+	var obc = __webpack_require__(39);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var LngLat = __webpack_require__(28);
 
 	/**
 	 * Represents a Marker
@@ -19698,98 +19891,71 @@
 	 * */
 	function Marker(opts, inner) {
 
-	  this._type = 'Marker';
-	  this._isInMapOverlay = false;
+	    this._type = 'Marker';
+	    this._isInMapOverlay = false;
 
-	  if(inner) {
-	    this._inner = inner;
-	  } else {
-	    // 在opts转换之前就要判断添加overlay
-	    obc.addOverlay(opts, this);
+	    if (inner) {
+	        this._inner = inner;
+	    } else {
+	        // 在opts转换之前就要判断添加overlay
+	        obc.addOverlay(opts, this);
 
-	    var newOpts = formatOpts.marker(opts);
+	        var newOpts = formatOpts.marker(opts);
 
-	    this._inner = new BMap.Marker(newOpts.position, newOpts);
+	        BMap.Marker.call(this, newOpts.position, newOpts);//继承BMap.Marker属性
 
-	    this._init(newOpts);
-	  }
+	        this.setMap = function (map) {
+	            console.log(map);
+	            map._inner.addOverlay(this);
+	            if (newOpts.content) {
+	                var that = this;
+	                setTimeout(function () {
+	                    $(that.xc).css({'z-index': newOpts.zIndex});
+	                    var div = $(that.xc).find('>div');
+	                    div.html(newOpts.content);
+	                    div.css({'background': '#178', 'font-size': '12px'});
+	                }, 0)
+	            }
+	        };
+
+	        this._inner = new BMap.Marker(newOpts.position, newOpts);
+
+	        this._init(newOpts);
+
+	        if (!newOpts.visible) {
+	            this.hide();
+	        }
+	        if (newOpts.extData) {
+	            this.extData = newOpts.extData;
+	        }
+	    }
 	}
 
-	Marker.prototype = {
-	  _init: obc._init,
-	  setMap: obc.setMap,
-	  getMap: obc.getMap,
-	  hide: obc.hide,
-	  show: obc.show,
+	Marker.prototype = new BMap.Marker();//继承BMap.Marker方法
 
-	  getPosition: function() {
-	    return new LngLat('', '', this._inner.getPosition());
-	  },
 
-	  on: onOff.on,
-	  off: onOff.off
+	Marker.prototype._init = obc._init;
+	Marker.prototype.setMap = obc.setMap;
+	Marker.prototype.getMap = obc.getMap;
+
+	Marker.prototype.setExtData = function (ext) {
+	    this.extData = ext;
 	};
+	Marker.prototype.getExtData = function () {
+	    return this.extData;
+	};
+
+	Marker.prototype.getPosition = function () {
+	    return new LngLat('', '', this._inner.getPosition());
+	};
+
+	Marker.prototype.on = onOff.on;
+	Marker.prototype.off = onOff.off;
 
 	module.exports = Marker;
 
 
 
-
-
-/***/ },
-/* 40 */
-/***/ function(module, exports) {
-
-	/**
-	 * Created by fizz on 2017/2/17.
-	 * @baseClass overlay 不可实例化的基类
-	 */
-
-	module.exports = {
-	  setMap: function(map) {
-	    if(map !== null) {
-	      // console.log(this);
-	      this._inner._smap = map;
-
-	      if(!this._isInMapOverlay) {
-	        map._overLayers[this._type].push(this);
-	        this._isInMapOverlay = true;
-	      }
-
-	      map._inner.addOverlay( this._inner );
-	    } else {
-	      map._inner.removeOverlay( this._inner );
-	    }
-	  },
-
-	  getMap: function() {
-	    return this._inner._smap;
-	  },
-
-	  hide: function() {
-	    this._inner.hide();
-	  },
-
-	  show: function() {
-	    this._inner.show();
-	  },
-
-	  addOverlay: function(opts, self) {
-	    if('map' in opts) {
-	      if(!self._isInMapOverlay) {
-	        opts.map._overLayers[self._type].push(self);
-	        self._isInMapOverlay = true;
-	      }
-	    }
-	  },
-
-	  _init: function(opts){
-	    if(opts.smap) {
-	      this._inner._smap = opts.smap;
-	      opts.smap._inner.addOverlay( this._inner );
-	    }
-	  }
-	};
 
 
 /***/ },
@@ -19802,10 +19968,10 @@
 	 *
 	 * 高德有 change 事件，百度没有
 	 */
-	var onOff = __webpack_require__(34);
-	var formatOpts = __webpack_require__(38);
-	var obc = __webpack_require__(40);
-	var LngLat = __webpack_require__(29);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
+	var LngLat = __webpack_require__(28);
 
 	/**
 	 * @constructor
@@ -19915,10 +20081,10 @@
 	 * @zIndex 百度Polyline 没有zIndex这个属性，高德有
 	 */
 
-	var obc = __webpack_require__(40);
-	var onOff = __webpack_require__(34);
-	var formatOpts = __webpack_require__(38);
-	var Bounds = __webpack_require__(30);
+	var obc = __webpack_require__(39);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var Bounds = __webpack_require__(29);
 
 	/**
 	 * @constructor
@@ -19998,9 +20164,9 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(34);
-	var formatOpts = __webpack_require__(38);
-	var obc = __webpack_require__(40);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
 
 	/**
 	 * @constructor
@@ -20085,10 +20251,10 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(34);
-	var formatOpts = __webpack_require__(38);
-	var obc = __webpack_require__(40);
-	var LngLat = __webpack_require__(29);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
+	var LngLat = __webpack_require__(28);
 
 	/**
 	 * @constructor
@@ -20193,8 +20359,8 @@
 	 * @Class MarkerClusterer
 	 */
 
-	var formatOpts = __webpack_require__(38);
-	var obc = __webpack_require__(40);
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
 
 	/**
 	 * @constructor
@@ -20443,29 +20609,3549 @@
 
 /***/ },
 /* 47 */
-/***/ function(module, exports) {
-
-	/**
-	 * Created by jesse on 2017/2/23.
-	 */
-
-
-/***/ },
-/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by jesse on 2017/2/23.
 	 */
+
+
+	__webpack_require__(48);
 	__webpack_require__(49);
-	__webpack_require__(51);
+	__webpack_require__(50);
 	__webpack_require__(53);
+	__webpack_require__(54);
 	__webpack_require__(55);
-	__webpack_require__(57);
-	__webpack_require__(59);
+	__webpack_require__(56);
+
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	/**
+	 * 命名大意：
+	 * dom    用户定义承载树的dom
+	 * html   树的html
+	 * item   data的每一条,可以是node也可以是child
+	 * child  树的叶子;子元素;成员
+	 * node   树的节点;文件夹;部门
+	 * layer  树的层级,包含同一层的item(node,child);
+	 * _      带有下划线的是插件需要的方法属性，用户不需要使用
+	 *
+	 *
+	 *
+	 *
+	 * 思路:
+	 * 1.node的id和child的id可以重复,因为实际场景可能是两种数据比如,部门和人员.对于省份和城市可能本身就不会重复
+	 * 2.选择数据,用户需要的结果是:1.所有child.2.node+child
+	 * 3.is_trigger如果是true,是为input框设计的,会去读取input框的宽度作为自身的宽度
+	 * 4.这里html的input显示的时候根据data决定是否check，
+	 * 5.每次的点击input产生的变化是html变了，然后data也变。
+	 * 6.4，5导致容易出错,但我觉得应该是根据操作data数据发生变化，变化完毕，统一一个方法决定html结构的变化，不过效率不一定更高
+	 * 7.only_child为true必然不会node_merge
+	 * 8.代码中还有一些根据标签(div,span)来做的判断,都不太靠谱
+	 *
+	 *
+	 */
+
+	;(function ($) {
+
+	    window.xTree = function (opt) {
+	        return new tree(opt);
+	    };
+
+	    var defOpt = {
+	        dom: '',  //jqueryDom
+	        is_trigger: false,  //是否需要触发? 否则直接显示
+	        has_search: false,
+	        only_child: true,//是否结果只要 child
+	        node_merge: true,//结果只显示最上层  比如   中国被选中  四川,成都则不会显示  否则 每个被勾选的节点都显示
+	        zIndex: 1,
+	        choose: false,  //哪些是选中的？优先级高于data  {nodeId:[1,2,3],id:[1,2,3]}
+	        // node_first:false,//是否需要节点排在前面  否则按照data的顺序
+	        is_multi: true,//是否多选
+	        expand: false, //是否展开，false、true、num  //todo expand
+	        width: null,
+	        maxHeight: 300,
+	        data: [],//{id:1,name:'xx',nodeId:'0',is_node:true,is_check:false},
+	        sel_ids: '',
+	        onInit: function () {
+	        },
+	        onBeforeOpen: function () {
+	        },
+	        onOpen: function () {
+	        },
+	        onCheck: function () {
+	        },
+	        onCancel: function () {
+	        },
+	        onChange: function () {
+	        },
+	        onClose: function () {
+	        },
+	    };
+
+
+	    var tree = function (opt) {
+	        this._init(opt);
+	        return this;
+	        /**
+	         * return {
+	         *     'start':this.start,
+	         *     'end':this.end
+	         * };  //todo  这样会导致 this 没有 别的方法 到底 还是不能正常使用
+	         */
+	    };
+
+
+	    /**
+	     *
+	     * @var opt  用户传进来的option
+	     * @var dom 打开tree的载体jquery dom
+	     * @var data  做tree的data
+	     * @var html tree的html
+	     */
+
+
+	    tree.prototype = {
+	        _is_open: false,  //是否open
+	        _originId: {nodeId: [], id: []},   //上次打开时候选中了哪一些id
+	        _searchTimer: '',   //搜索框的定时器
+	        _is_first: true,  //是不是第一次打开
+	        _init: function (opt) {
+	            var res = checkData(opt.data);
+	            if (!res) {
+	                return false;
+	            }
+
+	            this.opt = $.extend(true, {}, defOpt, opt);
+	            this.data = _initData(this.opt.data);
+	            this.rootId = _getRootId(this.data);
+	            if (this.opt.sel_ids) {
+	                _selData(this.data, this.opt.sel_ids);
+	            }
+
+	            this._originId = this.getId();
+
+	            this.dom = this.opt.dom;
+	            this.dom.css({'position': 'relative'});
+	            this.html = this._makePanel();
+
+	            this.opt.onInit.apply(this);
+
+	            var that = this;
+
+	            if (this.opt.is_trigger) {
+	                this.dom.off('click.xTree');
+	                this.dom.on('click.xTree', function (e) {
+	                    $('.xTreePanel').hide();
+	                    that.start();
+	                    e.stopPropagation();
+	                });
+	                $(document).on('click.xTree', function () {
+	                    that.end();
+	                });
+	            } else {
+	                this.start();
+	            }
+	        },
+
+	        /**
+	         *      方法
+	         *
+	         */
+	        start: function () {
+	            this.opt.onBeforeOpen.apply(this);
+
+	            this._showPanel();
+	            this._showData();
+	            this._expand();
+	            this._is_open = true;
+
+	            this.html.find('.x-tree-search').focus();
+
+	            this.opt.onOpen.apply(this);
+	            return this;
+	        },
+	        end: function () {
+	            if (this._is_open) {
+	                this.html.hide();
+
+	                this.opt.onClose.apply(this);
+
+	                this._originId = this.getId();
+
+	                this._is_open = false;
+	            }
+	        },
+
+	        getName: function () {
+	            var text = [];
+	            var data = this.data;
+	            if (this.opt.only_child) {
+	                $.each(data, function (i, n) {
+	                    if (n.is_check && !n.is_node) {
+	                        text.push(n.name);
+	                    }
+	                });
+	            } else {
+	                if (this.opt.node_merge) {
+	                    var nodes = [];
+	                    $.each(data, function (i, n) {
+	                        if (n.is_check && n.is_node) {
+	                            nodes.push(n.id);
+	                        }
+	                    });
+
+	                    var clone = $.extend(true, [], data); //直接赋值传的是引用
+	                    $.each(clone, function (i, n) {
+	                        if ((n.is_check && $.inArray(n.nodeId, nodes) != -1) || !n.is_check) {
+	                            clone[i] = null;
+	                        }
+	                    });
+
+	                    $.each(clone, function (i, n) {
+	                        if (n) {
+	                            text.push(n.name);
+	                        }
+	                    });
+	                } else {
+	                    $.each(data, function (i, n) {
+	                        if (n.is_check) {
+	                            text.push(n.name);
+	                        }
+	                    });
+	                }
+	            }
+
+	            return text.join();
+	        },
+	        getId: function () {
+	            var id = [];
+	            var nodeId = [];
+	            var data = this.data;
+
+	            if (this.opt.only_child) {
+	                $.each(data, function (i, n) {
+	                    if (n.is_check && !n.is_node) {
+	                        id.push(n.id);
+	                    }
+	                });
+
+	            } else {
+
+	                if (this.opt.node_merge) {
+	                    var node = [];
+	                    $.each(data, function (i, n) {
+	                        if (n.is_check && n.is_node) {
+	                            node.push(n.id);
+	//                            text.push( n.name);  //nodefirst
+	                        }
+	                    });
+
+	                    var clone = $.extend(true, [], data);
+	                    $.each(clone, function (i, n) {
+	                        if ((n.is_check && $.inArray(n.nodeId, node) != -1) || !n.is_check) {
+	                            clone[i] = null;
+	                        }
+	                    });
+
+
+	                    $.each(clone, function (i, n) {
+	                        if (n) {
+	                            if (n.is_node) {
+	                                nodeId.push(n.id);
+	                            } else {
+	                                id.push(n.id);
+	                            }
+	                        }
+	                    });
+	                } else {
+	                    $.each(data, function (i, n) {
+	                        if (n.is_check) {
+	                            if (n.is_node) {
+	                                nodeId.push(n.id);
+	                            } else {
+	                                id.push(n.id);
+	                            }
+	                        }
+	                    });
+	                }
+
+
+	                id = {'id': id, 'nodeId': nodeId};
+	            }
+	            return id;
+	        },
+	        cancelItem: function (id, type) {
+	            var item = {};
+	            var dom = this.html.find('input[data-isNode="' + parseInt(type) + '"][data-id="' + id + '"]').prop('checked', false);
+	            $.each(this.data, function (i, n) {
+	                if (n.id == id && n.is_node == type) {
+	                    item = n;
+	                    item.is_check = false;
+	                }
+	            });
+
+	            this._chgItem(item, dom);
+
+	        },
+	        cancelAll: function () {
+	            $.each(this.data, function (index, item) {
+	                item.is_check = false;
+	            });
+	            this.html.find('input').prop("checked", false);
+	            this.opt.onCancel.apply(this);
+	        },
+	        checkItem: function (id, type) {
+	            var item = {};
+	            var dom = this.html.find('input[data-isNode="' + parseInt(type) + '"][data-i="' + id + '"]').prop('checked', true);
+	            $.each(this.data, function (i, n) {
+	                if (n.id == id && n.is_node == type) {
+	                    item = n;
+	                    item.is_check = true;
+	                }
+	            });
+
+	            this._chgItem(item, dom);
+
+	        },
+	        checkAll: function () {
+	            if (this.opt.is_multi) {
+	                $.each(this.data, function (index, item) {
+	                    item.is_check = true;
+	                });
+	                this.html.find('input').prop("checked", true);
+	                this.opt.onCheck.apply(this);
+	            }
+	        },
+	        getItem: function () {
+	            var arr = [];
+	            var data = this.data;
+	            if (this.opt.only_child) {
+	                $.each(data, function (i, n) {
+	                    if (n.is_check && !n.is_node) {
+	                        arr.push(n);
+	                    }
+	                });
+	            } else {
+
+	                if (this.opt.node_merge) {
+	                    var node = [];
+	                    $.each(data, function (i, n) {
+	                        if (n.is_check && n.is_node) {
+	                            node.push(n.id);
+	//                            text.push( n.name);  //nodefirst
+	                        }
+	                    });
+
+	                    var clone = $.extend(true, [], data);
+	                    $.each(clone, function (i, n) {
+	                        if ((n.is_check && $.inArray(n.nodeId, node) != -1) || !n.is_check) {
+	                            clone[i] = null;
+	                        }
+	                    });
+
+
+	                    $.each(clone, function (i, n) {
+	                        if (n) {
+	                            arr.push(n);
+	                        }
+	                    });
+	                } else {
+	                    $.each(data, function (i, n) {
+	                        if (n.is_check) {
+	                            arr.push(n);
+	                        }
+	                    });
+	                }
+
+
+	            }
+	            return arr;
+	        },
+	        search: function (val) {
+	            this._removeLayer(this.rootId);
+
+	            if (val === '') {
+	                this.html.find('div[node-id="' + this.rootId + '"]').remove();
+	                this._showLayer(this.rootId);
+	            } else {
+	                for (var i in this.data) {
+	                    if (!this.data[i].is_node && this.data[i].name.indexOf(val) != -1) {
+	                        this.html.find('div[node-id="' + this.rootId + '"]').append(this._makeItem(this.data[i]));
+	                    }
+	                }
+	            }
+	        },
+
+
+	        /**
+	         *      数据方法
+	         */
+	        _getLayerData: function (parent) {
+	            var res = [];
+	            for (var i in this.data) {
+	                if (this.data[i].nodeId == parent) {
+	//                if(data[i].is_node){
+	//                    res.unshift(data[i])
+	//                }else{
+	//                    res.push(data[i]);
+	//                }
+
+	                    res.push(this.data[i]);  //原序
+	                }
+	            }
+	            return res;
+	        },
+
+	        _chgItem: function (item, dom) {
+
+	            if (this.opt.is_multi) {
+	                if (item.is_node) {
+	                    dom.parent().parent().find('label > input').prop('checked', item.is_check);
+	                    this._chgAllChildren(item.id, item.is_check);
+	                }
+
+	                if (!item.is_check) {
+	                    this._cancelParentNode(item.nodeId);
+	                } else {
+	                    this._checkParentNode(item.nodeId);
+	                }
+	            } else {
+	//                    this.html.find('input').prop("checked",false);
+	//                    $(this).prop('checked',true);
+	            }
+
+
+	            var childItem = [];
+	            this._getChild(item, childItem);
+
+
+	            if (!item.is_check) {
+	                this.opt.onCancel.apply(this);
+	            } else {
+	                this.opt.onCheck.apply(this);
+	            }
+	            this.opt.onChange.apply(this);
+
+	        },
+	        _getChild: function (node, cont) {
+	            if (node.is_node && node.has_children) {
+	                var that = this;
+	                $.each(that.data, function (i, n) {
+	                    if (n.nodeId == node.id) {
+	                        cont.push(n);
+	                        if (n.is_node && node.has_children) {
+	                            that._getChild(n, cont);
+	                        }
+	                    }
+	                })
+	            }
+	        },
+	        _cancelParentNode: function (id) {
+	            var obj = this;
+	            $.each(obj.data, function (i, n) {
+	                if (n.id == id && n.is_node && n.is_check) {
+	                    n.is_check = false;
+	                    obj.html.find('input[data-isNode="1"][data-id="' + id + '"]').prop('checked', false);
+	                    obj._cancelParentNode(n.nodeId);
+	                }
+	            })
+	        },
+	        _checkParentNode: function (id) {
+	            var obj = this;
+	            var allChildrenChecked = true;
+	            $.each(obj.data, function (i, n) {
+	                if (n.nodeId == id && !n.is_check) {
+	                    allChildrenChecked = false;
+	                }
+	            });
+	            $.each(obj.data, function (i, n) {
+	                if (n.id == id && n.is_node && !n.is_check && allChildrenChecked) {
+	                    n.is_check = true;
+	                    obj.html.find('input[data-isNode="1"][data-id="' + id + '"]').prop('checked', true);
+	                    obj._checkParentNode(n.nodeId);
+	                }
+	            });
+	        },
+	        _chgAllChildren: function (nodeid, bol) {
+	            var obj = this;
+	            $.each($.extend(true, [], this.data), function (i, n) {   //这句话 看起来 好像 不用 extend
+	                if (n.nodeId == nodeid) {
+	                    obj.data[i].is_check = bol;
+	                    if (n.is_node && n.has_children) {
+	                        obj._chgAllChildren(n.id, bol);
+	                    }
+	                }
+	            });
+	        },
+
+
+	        /**
+	         * 构造html内部方法
+	         */
+	        _makePanel: function () {
+	            var html = '<div></div>';
+
+	            if (this.opt.has_search) {
+	                html = this._makeSearch(html);
+	            }
+
+	            var css;
+	            if (this.opt.is_trigger) {
+	                css = {
+	                    'font-family': 'Microsoft YaHei',
+	                    'z-index': this.opt.zIndex,
+	                    border: '1px solid #5d5d5d',
+	                    'background': '#fff',
+	                    position: 'absolute',
+	                    maxHeight: this.opt.maxHeight,
+	                    padding: '0 1%',
+	                    'white-space': 'nowrap',
+	                    'overflow': 'auto'
+	                };
+	            } else {
+	                css = {
+	                    'font-family': 'Microsoft YaHei',
+	                    'background': '#fff',
+	                    maxHeight: this.opt.maxHeight,
+	                    padding: '0 1%',
+	                    'white-space': 'nowrap',
+	                    'overflow': 'auto'
+	                };
+	            }
+
+
+	            return $(html).css(css);
+	        },
+	        _makeSearch: function (html) {
+	            var search = '<input class="x-tree-search" type="text" placeholder="搜索"/></div>';
+	            search = $(search).css({
+	                'border': 'none',
+	                'padding': '4px 0',
+	                'margin': '5px auto 0 auto',
+	                'width': '98%',
+	                'display': 'block'
+	            });
+
+	            var obj = this;
+	            $(search).on('keyup paste', function () {
+	                var dom = this;
+	                clearTimeout(obj._searchTimer);
+	                obj._searchTimer = setTimeout(function () {
+	                    obj.search(dom.value);
+	                }, 100);
+	            });
+
+	            return $(html).append(search);
+
+	        },
+	        _makeNode: function (item) {
+	            var $html;
+	            if (this.opt.is_multi) {
+	                $html = $('<div node-id="' + item.id + '">' + makeExpand() + '<label><input type="checkbox" data-isNode="1" data-id="' + item.id + '" ' + (item.is_check ? 'checked' : '') + ' data-name="' + item.name + '"/><span>' + item.name + '</span></label></div>');
+	            }
+	            else {
+	                if (this.opt.only_child) {
+	                    $html = $('<div node-id="' + item.id + '">' + makeExpand() + '<span>' + item.name + '</span></div>');
+	                }
+	                else {
+	                    $html = $('<div node-id="' + item.id + '">' + makeExpand() + '<label><input type="radio" name="' + this.dom.selector + '" data-isNode="1" data-id="' + item.id + '" ' + (item.is_check ? 'checked' : '') + ' data-name="' + item.name + '"/><span>' + item.name + '</span></label></div>');
+	                }
+	            }
+	            $html.find('span').css({
+	                'cursor': 'pointer',
+	                'user-select': 'none',
+	                '-webkit-user-select': 'none',
+	                '-moz-user-select': 'none',
+	                '-ms-user-select': 'none'
+	            });
+	            $html.find('input').css({
+	                'vertical-align': 'middle'
+	            });
+	            var obj = this;
+	            $html.find('i').on('click', function (e) {
+	                if ($(this).hasClass('icon-jia1')) {
+	                    obj._showLayer(item.id);
+	                } else {
+	                    obj._removeLayer(item.id);
+	                }
+	            });
+	            return $html;
+	        },
+	        _makeChild: function (item) {
+	            var $html;
+	            if (this.opt.is_multi) {
+	                $html = $('<div><span></span><label><input type="checkbox" data-id="' + item.id + '" data-isNode="0" data-name="' + item.name + '" ' + (item.is_check ? 'checked' : '') + '/>' + item.name + '</label></div>');
+	            }
+	            else {
+	                $html = $('<div>' + (this.opt.only_child ? '' : '<span></span>') + '<label><input type="radio" name="' + this.dom.selector + '" data-id="' + item.id + '" data-isNode="0" data-name="' + item.name + '" />' + item.name + '</label></div>');
+	            }
+	            $html.find('span').css({
+	                'width': '16px',
+	                'user-select': 'none',
+	                '-webkit-user-select': 'none',
+	                '-moz-user-select': 'none',
+	                '-ms-user-select': 'none',
+	                'display': 'inline-block'
+	            });
+	            $html.find('input').css({
+	                'vertical-align': 'middle'
+	            });
+	            return $html;
+	        },
+	        _makeItem: function (item) {
+	            var $html;
+	            if (item.is_node && item.has_children) {
+	                $html = this._makeNode(item);
+	            } else {
+	                $html = this._makeChild(item);
+	            }
+
+	            var obj = this;
+	            $html.find('input').on('click', function () {
+	                if (obj.opt.is_multi) {
+	                    item.is_check = !item.is_check;
+	                } else {
+	                    $.each(obj.data, function (index, item) {
+	                        item.is_check = false;
+	                    });
+	                    item.is_check = true;
+	                }
+
+
+	                obj._chgItem(item, $(this));
+
+	            });
+
+	            return $html;
+	        },
+	        /**
+	         *      视图方法
+	         */
+
+	        _showPanel: function () {
+	            if (this.opt.is_trigger) {
+	                this.html.css({
+	                    top: this.dom.outerHeight(),
+	                    left: 0,
+	                    minWidth: 200
+	                    // minWidth: this.opt.width ? this.opt.width : this.dom.outerWidth() * 0.98
+	                });
+
+	                this.html.addClass('xTreePanel');
+
+	                this.html.on('click', function (e) {
+	                    e.stopPropagation();
+	                });
+	            }
+	            this.dom.append(this.html);
+
+	        },
+	        _showData: function () {
+	            if (this._is_first) {
+	                this._showLayer(this.rootId);
+	                this._is_first = false;
+	            } else {
+	                this.html.show();
+	            }
+	        },
+	        _expand: function () {
+	            var obj = this;
+	            if (obj.opt.expand === true) {
+	                $.each(obj.data, function (index, item) {
+	                    if (item.is_node && item.has_children) {
+	                        obj.html.find('i').filter('.icon-jia1').click();
+	                    }
+	                });
+	            } else if (obj.opt.expand) {
+	                var expandId = [];
+	                expandId.push(obj.rootId);
+	                for (var i = 0; i < obj.opt.expand; i++) {
+	                    expandId = obj._expandLevel(expandId);
+	                }
+	            }
+	        },
+	        _expandLevel: function (id) {
+	            var obj = this;
+	            var expandId = [];
+	            $.each(id, function (index, item) {
+	                $.each(obj.data, function (index2, item2) {
+	                    if (item2.nodeId === item) {
+	                        expandId.push(item2.id);
+	                        obj.html.find('div[node-id="' + item2.nodeId + '"] > i').filter('.icon-jia1').click();
+	                    }
+	                });
+	            });
+	            return expandId;
+	        },
+	        _showLayer: function (layerId) {
+	            var showData = this._getLayerData(layerId);
+	            var itemDiv = makeLayer();
+
+
+	            //这里 0节点的结构 和 子节点的结构 没有处理好    以后尽量让node-id 和  itemdiv 分开
+	            if (layerId === this.rootId) {
+	                itemDiv = $(itemDiv).attr('node-id', this.rootId);
+	                this.html.append(itemDiv);
+	                //itemDiv.parent().attr('node-id',0);
+
+	            } else {
+	                toShrink(this.html.find('div[node-id="' + layerId + '"] i'));
+	                this.html.find('div[node-id="' + layerId + '"]').append(itemDiv);
+	            }
+
+	            for (var i in showData) {
+	                itemDiv.append(this._makeItem(showData[i]));
+	            }
+	        },
+	        _removeLayer: function (layerId) {
+	            this.html.find('div[node-id="' + layerId + '"]>div').remove();
+	            toExpand(this.html.find('div[node-id="' + layerId + '"] i'));
+	        },
+
+
+	    };
+
+
+	    function makeLayer() {
+	        var html = '<div></div>';
+
+	        return $(html).css({
+	            'margin-left': '13px'
+	        });
+	    }
+
+	    function makeExpand() {
+	        // var html='<span data-icon="expand">＋</span>';
+	        var html = '<i class="iconfont icon-jia1"></i>';
+
+	        return $(html).css({
+	            'font-size': '12px',
+	            'vertical-align': 'base-line',
+	            'padding-right': '0px',
+	            'cursor': 'pointer'
+	        })[0].outerHTML;
+	    }
+
+	    function toShrink(dom) {
+	        dom.removeClass('icon-jia1');
+	        dom.addClass('icon-jian1');
+	    }
+
+	    function toExpand(dom) {
+	        dom.removeClass('icon-jian1');
+	        dom.addClass('icon-jia1');
+	    }
+
+	    function checkData(data) {
+	        for (var i in data) {
+	            return typeof data[i] == 'object';
+	        }
+	        return false;
+	    }
+
+	    function _initData(data) {
+	        var clone = $.extend(true, [], data);
+	        var len = clone.length;
+
+	        for (var k = 0; k < len; k++) {
+	            clone[k].has_children = false;
+	        }
+
+	        for (var i = 0; i < len; i++) {
+	            for (var j = i; j < len; j++) {
+	                if (clone[i].is_node && clone[i].id === clone[j].nodeId) {
+	                    clone[i].has_children = true;
+	                }
+	                if (clone[i].nodeId === clone[j].id && clone[j].is_node) {
+	                    clone[j].has_children = true;
+	                }
+	            }
+	        }
+
+	        return clone;
+	    }
+
+	    function _selData(data, selected) {
+	        var sel_ids = selected.split(',');
+	        for (var i = 0; i < sel_ids.length; i++) {
+	            for (var j = 0; j < data.length; j++) {
+	                if (data[j].id === sel_ids[i]) {
+	                    data[j].is_check = true;
+	                    _selParent(data, data[j].nodeId);
+	                    if (data[j].is_node && data[i].has_children) {
+	                        _selChildren(data, data[j].id);
+	                    }
+	                }
+	            }
+	        }
+	        return data;
+	    }
+
+	    function _selParent(data, nid) {
+	        if (!nid) {
+	            return false;
+	        }
+	        var selParent = true;
+	        var sel_p = {};
+	        for (var i = 0; i < data.length; i++) {
+	            if (data[i].id == nid) {
+	                sel_p = data[i];
+	            }
+	            if (data[i].nodeId == nid && !data[i].is_check) {
+	                selParent = false;
+	                return false;
+	            }
+
+	        }
+
+	        if (selParent) {
+	            sel_p.is_check = true;
+	            if (sel_p.nodeId) {
+	                _selParent(data, sel_p.nodeId);
+	            }
+	        }
+	    }
+
+	    function _selChildren(data, id) {
+	        if (!id) {
+	            return false;
+	        }
+	        for (var i = 0; i < data.length; i++) {
+	            if (data[i].nodeId === id) {
+	                data[i].is_check = true;
+	                if (data[i].is_node && data[i].has_children) {
+	                    _selChildren(data, data[i].id);
+	                }
+	            }
+
+	        }
+	    }
+
+	    function _getRootId(_data) {
+	        var rootId = [];
+	        var clone = $.extend(true, [], _data);
+	        for (var i = 0, len = _data.length; i < len; i++) {
+	            for (var j = i; j < len; j++) {
+	                if (_data[i].id === _data[j].nodeId) {
+	                    clone[j] = null;
+	                }
+	                if (_data[i].nodeId === _data[j].id) {
+	                    clone[i] = null;
+	                }
+	            }
+	        }
+	        $.each(clone, function (i, t) {
+	            if (t) {
+	                rootId.push(t.nodeId);
+	            }
+	        });
+
+	        // //去除数组重复值
+	        // function unique(array){
+	        //     var n = [];
+	        //     for(var i = 0; i < array.length; i++){
+	        //         if (n.indexOf(array[i]) == -1) n.push(array[i]);
+	        //     }
+	        //     return n;
+	        // }
+	        //
+	        // function unique(array){
+	        //     var r = [];
+	        //     for(var i = 0, l = array.length; i < l; i++) {
+	        //         for(var j = i + 1; j < l; j++){
+	        //             if (array[i] === array[j]) {
+	        //                 j = ++i;
+	        //             }
+	        //         }
+	        //         r.push(array[i]);
+	        //     }
+	        //     return r;
+	        // }
+	        // rootId = unique(rootId);
+
+	        return rootId[0];
+	    }
+
+
+	})(jQuery);
+
+
+
+
+
 
 /***/ },
 /* 49 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Administrator on 2017/1/6.
+	 */
+	;(function () {
+
+	    var psecond = 1000,
+	        pminute = 60*psecond,
+	        phour = 60*pminute,
+	        pday = 24*phour,
+	        pweek = 7*pday;
+
+	    function gettime(date) {
+	        var nowDate = date ? date : new Date();
+
+	        var time = nowDate.getTime(),
+	            msecond = nowDate.getMilliseconds(),
+	            second = nowDate.getSeconds(),
+	            minute = nowDate.getMinutes(),
+	            hour = nowDate.getHours(),
+	            dayWeek = nowDate.getDay(),
+	            dayMonth = nowDate.getDate(),
+	            month = nowDate.getMonth(),
+	            year = nowDate.getFullYear();
+
+	        var dayPass = hour*phour + minute*pminute + second*psecond + msecond,
+	            dayStart = time - dayPass,
+	            dayEnd = dayStart + pday,
+	            yesterdayStart = dayStart - pday,
+	            pastDayStart = time - pday;
+
+	        var weekPass = dayWeek * pday + dayPass,
+	            weekStart = time - weekPass,
+	            weekEnd = weekStart + pweek,
+	            lastWeekStart = weekStart - pweek,
+	            pastWeekStart = time - pweek;
+
+	        var monthStart = (new Date(year, month, 1)).getTime(),
+	            monthEnd = (new Date(year, month+1, 1)).getTime(),
+	            lastMonthStart = (new Date(year, month-1, 1)).getTime(),
+	            pastMonthStart = time - monthStart + lastMonthStart;
+
+	        var yearStart = (new Date(year, 0, 1)).getTime(),
+	            yearEnd = (new Date(year+1, 0, 1)).getTime(),
+	            lastYearStart = (new Date(year-1, 0, 1)).getTime(),
+	            pastYearStart = (new Date(time)).setFullYear(year-1);
+
+
+	        return {
+	            time: time,
+
+	            day: {
+	                start: dayStart,
+	                end: dayEnd
+	            },
+	            yesterday: {
+	                start: yesterdayStart,
+	                end: dayStart
+	            },
+	            pastDay: {
+	                start: pastDayStart,
+	                end: time
+	            },
+
+	            week: {
+	                start: weekStart,
+	                end: weekEnd
+	            },
+	            lastWeek: {
+	                start: lastWeekStart,
+	                end: weekStart
+	            },
+	            pastWeek: {
+	                start: pastWeekStart,
+	                end: time
+	            },
+
+	            month: {
+	                start: monthStart,
+	                end: monthEnd
+	            },
+	            lastMonth: {
+	                start: lastMonthStart,
+	                end: monthStart
+	            },
+	            pastMonth: {
+	                start: pastMonthStart,
+	                end: time
+	            },
+
+	            year: {
+	                start: yearStart,
+	                end: yearEnd
+	            },
+	            lastYear: {
+	                start: lastYearStart,
+	                end: yearStart
+	            },
+	            pastYear: {
+	                start: pastYearStart,
+	                end: time
+	            }
+	        }
+	    }
+
+	    window.xTime = gettime;
+
+	})();
+
+/***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+	 * Created by Administrator on 2016/11/4.
+	 */
+
+
+	;(function (factory) {
+	    if ("function" === 'function' && __webpack_require__(51)['amd']) {
+	        // AMD. Register as an anonymous module.
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(52)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else {
+	        // Browser globals
+	        factory(jQuery);
+	    }
+	})(function ($) {
+	    var global, dialog, view, view_ctrl, ctrl_right, ctrl_left, ctrl_close, detail;
+	    var ctrl_magnify, ctrl_shrink, ctrl_rotate, ctrl_recover;   //放大缩小旋转回复 按钮
+
+	    var loading;   //等待图片
+	    var imgDom;   //imgDom
+	    var showWidth, showHeight;   //图像在view 中显示的宽高
+	    var imgs = [];   //要显示的图像们
+	    var infoDom;  //要显示的信息
+	    var imageObj = new Image(); //用来加载图片的对象
+	    var index = 1;   //展示第几个图片
+	    var maxWeight; //图片最大放大系数  //由于图片可能一show 就被缩小了  而我们的放大系数是针对原图大小
+	    var weight = 1;  //图片放大缩小系数
+	    var rotate = 0;  //图片旋转度数
+	    var isNotMove = true;   //拖拽图片时 不响应点击事件 的开关
+	    var dragTime;   //拖拽图片时 定时器
+	    var startX, startY;  //拖拽图片
+
+	    var zIndex;  //还未投入使用
+	    var onSwitch = function () {
+	    };  //切换图片的函数
+
+
+	    function calcuImgTop() {
+	        var offset = view.height() - imgDom.height();
+	        return offset / 2;
+	    }
+
+	    function calcuImgWH() {
+	//            //计算在view中的  图像的宽高  （可能是原图大小  可能是被max-height max-width 处理过的）
+	//            if(image.width>view.width()){
+	//                showWidth=view.width();
+	//                showHeight=image.height*view.width()/image.width;
+	//            }else if(image.height>view.height()){
+	//                showHeight=view.height();
+	//                showWidth=image.width*view.height()/image.height;
+	//            }else{
+	//                showHeight=image.height;
+	//                showWidth=image.width;
+	//            }
+	        showHeight = imgDom.height();
+	        showWidth = imgDom.width();
+	    }
+
+	    function dragImg(e) {
+	        var offsetY = startY - e.pageY;
+	        var offsetX = startX - e.pageX;
+
+	        imgDom.css('margin-top', -offsetY);
+	        imgDom.css('margin-left', -offsetX);
+	    }
+
+	    function bindEVent() {
+	        //图片读取
+	        imageObj.onload = function () {
+	            imgDom.show();
+	            loading.hide();
+	            imgDom.prop('src', imageObj.src);
+	            imgDom.css({
+	                'margin-top': calcuImgTop()
+	            });
+	            maxWeight = (imageObj.width / imgDom.width()) * 1.5;
+	            calcuImgWH();
+	        };
+
+	        //隐藏imgview
+	        global.click(function (e) {
+	            if (isNotMove) {
+	                if (this === e.target) {
+	                    $(this).hide();
+	                    imageObj.src = "";
+
+	                }
+	            }
+	        });
+	        ctrl_close.click(function (e) {
+	            if (isNotMove) {
+	                if (this === e.target) {
+	                    global.hide();
+	                    imageObj.src = "";
+
+	                }
+	            }
+	        });
+
+	        //拖拽
+	        imgDom.bind('mousedown', function (e) {
+	            e.preventDefault();
+	            startX = e.pageX - parseInt(imgDom.css('margin-left'));
+	            startY = e.pageY - parseInt(imgDom.css('margin-top'));
+	            $(document).bind('mousemove', function (e) {
+	                e.preventDefault();
+	                $('body').css('cursor', 'move');
+	                isNotMove = false;
+	                dragImg(e);
+	            });
+	            $(document).bind('mouseup', function (e) {
+	                $(document).unbind('mousemove');
+	                $('body').css('cursor', 'initial');
+	                clearTimeout(dragTime);
+	                dragTime = setTimeout(function () {
+	                    isNotMove = true;
+	                }, 100);
+	            });
+	        });
+
+
+	        //切换
+	        imgDom.click(function (e) {
+	            if (isNotMove) {
+	                if (!showImg(++index)) {
+	                    index--;
+	                }
+	            }
+	        });
+
+
+	        ctrl_right.click(function (e) {
+	            if (!showImg(++index)) {
+	                index--;
+	            }
+	            e.stopPropagation();
+
+	        });
+
+
+	        ctrl_left.click(function (e) {
+	            if (!showImg(--index)) {
+	                index++;
+	            }
+	            e.stopPropagation();
+	        });
+
+
+	        imgDom.bind('mousewheel', function (event) {
+	            event.preventDefault();
+	            var direction = event.originalEvent.wheelDelta;
+
+	            if (direction == 120) {
+	                if (weight < maxWeight) {
+	                    weight += 0.1;
+	                }
+	            } else if (direction == -120) {
+	                if (weight > 0.5) {
+	                    weight -= 0.1;
+	                }
+	            }
+
+	            handlerImgScale();
+
+
+	//                console.log(event.deltaY, event.deltaFactor, event.originalEvent.deltaMode, event.originalEvent.wheelDelta);
+	        });
+
+
+	        ctrl_recover.click(function () {
+	            handerImgRecover();
+	        });
+
+	        ctrl_magnify.click(function () {
+	            if (weight < maxWeight) {
+	                weight += 0.1;
+	            }
+	            handlerImgScale();
+	        });
+
+	        ctrl_shrink.click(function () {
+	            if (weight > 0.5) {
+	                weight -= 0.1;
+	            }
+	            handlerImgScale();
+	        });
+
+	        ctrl_rotate.click(function () {
+	            fnRotateScale(imgDom[0], rotate += 90);
+	        });
+
+
+	    }
+
+	    function handlerImgScale() {
+	        imgDom.css('width', showWidth * weight);
+	        imgDom.css('height', showHeight * weight);
+	        imgDom.css('max-width', 'none');
+	        imgDom.css('max-height', 'none');
+	        imgDom.css('margin-top', calcuImgTop());
+	    }
+
+
+	    function buildHtml() {
+	        global = $('<div>').appendTo("body");
+	        global.css({
+	            'background': 'rgba(0,0,0,0.5)',
+	            'position': 'fixed',
+	            'top': '0',
+	            'bottom': '0',
+	            'left': '0',
+	            'right': '0',
+	            'z-index': '9999',
+	            'display': 'none'
+	        });
+
+	        dialog = $('<div>').appendTo(global);
+	        dialog.css({
+	            'width': '70%',
+	            'position': 'relative',
+	            'min-width': '500px',
+	            'margin': '0% auto',
+	            'padding': '10px 0',
+	            'height': '100%'
+	        });
+
+
+	        detail = $('<div>').appendTo(dialog);
+	        detail.css({
+	            'width': '30%',
+	            'background': '#ddd',
+	            'display': 'none',
+	//                'overflow':'hidden',
+	            'height': '100%',
+	            'float': 'left',
+	            'box-sizing': 'border-box',
+	            'padding': '1%'
+	        });
+
+	        view = $('<div>').appendTo(dialog);
+	        view.css({
+	            'background': '#000',
+	            'width': '100%',
+	            'padding': '1% 1% 50px 1%',
+	            'box-sizing': 'border-box',
+	            'overflow': 'hidden',
+	            'height': '100%',
+	            'user-select': 'none',
+	            'text-align': 'center',
+	            'position': 'relative',
+	            'line-height': '100%'
+	        });
+
+
+	        imgDom = $('<img>').appendTo(view);
+	        imgDom.css({
+	            'transition': 'transform 0.5s',
+	            'cursor': 'pointer'
+	        });
+
+	        view_ctrl = $('<div>').appendTo(view);
+	        view_ctrl.css({
+	            'position': 'absolute',
+	            'bottom': '5px',
+	            'background': '#000',
+	            'width': '98%'
+	        });
+
+
+	        ctrl_recover = $('<span class="x-imgView-recover">').appendTo(view_ctrl);
+	        ctrl_recover.css({
+	            'display': 'inline-block',
+	            'width': '22px',
+	            'height': '19px',
+	            'margin': '10px',
+	            'cursor': 'pointer'
+	        });
+
+	        ctrl_magnify = $('<span class="x-imgView-magnify">').appendTo(view_ctrl);
+	        ctrl_magnify.css({
+	            'display': 'inline-block',
+	            'width': '22px',
+	            'height': '20px',
+	            'margin': '10px',
+	            'cursor': 'pointer'
+	        });
+
+	        ctrl_shrink = $('<span class="x-imgView-shrink">').appendTo(view_ctrl);
+	        ctrl_shrink.css({
+	            'display': 'inline-block',
+	            'width': '21px',
+	            'height': '20px',
+	            'margin': '10px',
+	            'cursor': 'pointer'
+	        });
+
+	        ctrl_rotate = $('<span class="x-imgView-rotate">').appendTo(view_ctrl);
+	        ctrl_rotate.css({
+	            'display': 'inline-block',
+	            'width': '20px',
+	            'height': '20px',
+	            'margin': '10px',
+	            'cursor': 'pointer'
+	        });
+
+
+	        ctrl_left = $('<span class="x-imgView-left">').appendTo(view);
+	        ctrl_left.css({
+	            'display': 'inline-block',
+	            'position': 'absolute',
+	            'width': '25px',
+	            'height': '43px',
+	            'left': '1%',
+	            'top': '48%',
+	            'cursor': 'pointer'
+	        });
+
+	        ctrl_right = $('<span class="x-imgView-right">').appendTo(view);
+	        ctrl_right.css({
+	            'display': 'inline-block',
+	            'position': 'absolute',
+	            'width': '25px',
+	            'height': '43px',
+	            'cursor': 'pointer',
+	            'right': '1%',
+	            'top': '48%'
+	        });
+
+	        ctrl_close = $('<span class="x-imgView-close">').appendTo(dialog);
+	        ctrl_close.css({
+	            'display': 'inline-block',
+	            'position': 'absolute',
+	            'width': '30px',
+	            'height': '30px',
+	            'cursor': 'pointer',
+	            'right': '-14px',
+	            'top': '0'
+	        });
+
+
+	        loading = $('<span class="x-imgView-loading">').appendTo(view);
+	        loading.css({
+	            'position': 'absolute',
+	            'top': '48%',
+	            'left': '50%',
+	            'width': '40px',
+	            'height': '40px',
+	            'margin-left': '-30px',
+	            'display': 'none'
+	        });
+
+
+	    }
+
+	    function handerImgRecover() {
+	        //重新调整到初始位置
+	        imgDom.css({
+	            'max-height': '100%',
+	            'max-width': '100%',
+	            'margin-left': '0',
+	            'width': 'initial',
+	            'height': 'initial'
+	        });
+	        //改变宽高之后才能算出正确的 margin-top
+	        imgDom.css({
+	            'margin-top': calcuImgTop()
+	        });
+	        weight = 1;
+	        fnRotateScale(imgDom[0], rotate = 0);
+	    }
+
+	    var _is_init = false;
+
+	    function init() {
+	        if (!_is_init) {
+	            buildHtml();
+	            bindEVent();
+	            _is_init = true;
+	        }
+	    }
+
+
+	    //应该是load img   load完了应该才是 showimg
+	    function showImg(index) {
+	        if (!imgs[index]) {
+	            return false;
+	        }
+
+	        handerImgRecover();
+	        //判断左右两个按钮
+	        if (imgs.length == 0) {
+	            ctrl_right.hide();
+	            ctrl_left.hide();
+
+	        } else if (imgs.length == 1) {
+	            ctrl_right.hide();
+	            ctrl_left.hide();
+	        } else if (index == 0) {
+	            ctrl_left.hide();
+	            ctrl_right.show();
+	        } else if (index == imgs.length - 1) {
+	            ctrl_right.hide();
+	            ctrl_left.show();
+	        } else {
+	            ctrl_left.show();
+	            ctrl_right.show();
+	        }
+
+	        global.show();
+	        if (imgs.length) {
+	            loading.show();
+	        }
+	        imgDom.hide();
+	        onSwitch(index);
+	        imageObj.src = imgs[index];
+	        return true;
+
+	    }
+
+
+	    function fnRotateScale(dom, angle, scale) {
+	        if (dom && dom.nodeType === 1) {
+	            angle = parseFloat(angle) || 0;
+	            scale = parseFloat(scale) || 1;
+	            if (typeof(angle) === "number") {
+	                //IE
+	                var rad = angle * (Math.PI / 180);
+	                var m11 = Math.cos(rad) * scale, m12 = -1 * Math.sin(rad) * scale, m21 = Math.sin(rad) * scale;
+	                dom.style.filter = "progid:DXImageTransform.Microsoft.Matrix(M11=" + m11 + ",M12=" + m12 + ",M21=" + m21 + ",M22=" + m11 + ",SizingMethod='auto expand')";
+	                //Modern
+	                dom.style.MozTransform = "rotate(" + angle + "deg) scale(" + scale + ")";
+	                dom.style.WebkitTransform = "rotate(" + angle + "deg) scale(" + scale + ")";
+	                dom.style.OTransform = "rotate(" + angle + "deg) scale(" + scale + ")";
+	                dom.style.Transform = "rotate(" + angle + "deg) scale(" + scale + ")";
+	            }
+	        }
+	    }
+
+
+	    window.xImgView = function (option) {
+	        init();
+	        imgs = option.imgs;
+	        zIndex = option.zIndex || 2000;
+	        infoDom = option.infoDom;
+	        if (infoDom) {
+	            detail.show();
+	            detail.html(infoDom);
+	            $(infoDom).show();
+	            view.css('width', '70%');
+	        }
+	        onSwitch = option.onSwitch || function () {
+	            };
+	        showImg(index = 0);
+	    };
+
+
+	    $(document).ready(function () {
+	        //自动定义
+	        $('body').on('click', '.x-imgView .x-imgView-item', function () {
+	            init();
+	            imgs = [];
+	            $.each($(this).parent().children(), function (i) {
+	                imgs[i] = $(this).attr('x-imgView-src');
+	            });
+	            showImg(index = $(this).index());
+	        });
+
+
+	    });
+
+
+	});
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+	module.exports = function() { throw new Error("define cannot be used indirect"); };
+
+
+/***/ },
+/* 52 */
+/***/ function(module, exports) {
+
+	module.exports = window.$;
+
+/***/ },
+/* 53 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	 * jQuery Placeholder Plugin v2.3.1
+	 * https://github.com/mathiasbynens/jquery-placeholder
+	 *
+	 * Copyright 2011, 2015 Mathias Bynens
+	 * Released under the MIT license
+	 */
+	(function (factory) {
+	    if (true) {
+	        // AMD
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(52)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else if (typeof module === 'object' && module.exports) {
+	        factory(require('jquery'));
+	    } else {
+	        // Browser globals
+	        factory(jQuery);
+	    }
+	}(function ($) {
+
+	    /****
+	     * Allows plugin behavior simulation in modern browsers for easier debugging.
+	     * When setting to true, use attribute "placeholder-x" rather than the usual "placeholder" in your inputs/textareas
+	     * i.e. <input type="text" placeholder-x="my placeholder text" />
+	     */
+	    var debugMode = false;
+
+	    // Opera Mini v7 doesn't support placeholder although its DOM seems to indicate so
+	    var isOperaMini = Object.prototype.toString.call(window.operamini) === '[object OperaMini]';
+	    var isInputSupported = 'placeholder' in document.createElement('input') && !isOperaMini && !debugMode;
+	    var isTextareaSupported = 'placeholder' in document.createElement('textarea') && !isOperaMini && !debugMode;
+	    var valHooks = $.valHooks;
+	    var propHooks = $.propHooks;
+	    var hooks;
+	    var placeholder;
+	    var settings = {};
+
+	    if (isInputSupported && isTextareaSupported) {
+
+	        placeholder = $.fn.placeholder = function () {
+	            return this;
+	        };
+
+	        placeholder.input = true;
+	        placeholder.textarea = true;
+
+	    } else {
+
+	        placeholder = $.fn.placeholder = function (options) {
+
+	            var defaults = {customClass: 'placeholder'};
+	            settings = $.extend({}, defaults, options);
+
+	            return this.filter((isInputSupported ? 'textarea' : ':input') + '[' + (debugMode ? 'placeholder-x' : 'placeholder') + ']')
+	                .not('.' + settings.customClass)
+	                .not(':radio, :checkbox, [type=hidden]')
+	                .bind({
+	                    'focus.placeholder': clearPlaceholder,
+	                    'blur.placeholder': setPlaceholder
+	                })
+	                .data('placeholder-enabled', true)
+	                .trigger('blur.placeholder');
+	        };
+
+	        placeholder.input = isInputSupported;
+	        placeholder.textarea = isTextareaSupported;
+
+	        hooks = {
+	            'get': function (element) {
+
+	                var $element = $(element);
+	                var $passwordInput = $element.data('placeholder-password');
+
+	                if ($passwordInput) {
+	                    return $passwordInput[0].value;
+	                }
+
+	                return $element.data('placeholder-enabled') && $element.hasClass(settings.customClass) ? '' : element.value;
+	            },
+	            'set': function (element, value) {
+
+	                var $element = $(element);
+	                var $replacement;
+	                var $passwordInput;
+
+	                if (value !== '') {
+
+	                    $replacement = $element.data('placeholder-textinput');
+	                    $passwordInput = $element.data('placeholder-password');
+
+	                    if ($replacement) {
+	                        clearPlaceholder.call($replacement[0], true, value) || (element.value = value);
+	                        $replacement[0].value = value;
+
+	                    } else if ($passwordInput) {
+	                        clearPlaceholder.call(element, true, value) || ($passwordInput[0].value = value);
+	                        element.value = value;
+	                    }
+	                }
+
+	                if (!$element.data('placeholder-enabled')) {
+	                    element.value = value;
+	                    return $element;
+	                }
+
+	                if (value === '') {
+
+	                    element.value = value;
+
+	                    // Setting the placeholder causes problems if the element continues to have focus.
+	                    if (element != safeActiveElement()) {
+	                        // We can't use `triggerHandler` here because of dummy text/password inputs :(
+	                        setPlaceholder.call(element);
+	                    }
+
+	                } else {
+
+	                    if ($element.hasClass(settings.customClass)) {
+	                        clearPlaceholder.call(element);
+	                    }
+
+	                    element.value = value;
+	                }
+	                // `set` can not return `undefined`; see http://jsapi.info/jquery/1.7.1/val#L2363
+	                return $element;
+	            }
+	        };
+
+	        if (!isInputSupported) {
+	            valHooks.input = hooks;
+	            propHooks.value = hooks;
+	        }
+
+	        if (!isTextareaSupported) {
+	            valHooks.textarea = hooks;
+	            propHooks.value = hooks;
+	        }
+
+	        $(function () {
+	            // Look for forms
+	            $(document).delegate('form', 'submit.placeholder', function () {
+
+	                // Clear the placeholder values so they don't get submitted
+	                var $inputs = $('.' + settings.customClass, this).each(function () {
+	                    clearPlaceholder.call(this, true, '');
+	                });
+
+	                setTimeout(function () {
+	                    $inputs.each(setPlaceholder);
+	                }, 10);
+	            });
+	        });
+
+	        // Clear placeholder values upon page reload
+	        $(window).bind('beforeunload.placeholder', function () {
+
+	            var clearPlaceholders = true;
+
+	            try {
+	                // Prevent IE javascript:void(0) anchors from causing cleared values
+	                if (document.activeElement.toString() === 'javascript:void(0)') {
+	                    clearPlaceholders = false;
+	                }
+	            } catch (exception) {
+	            }
+
+	            if (clearPlaceholders) {
+	                $('.' + settings.customClass).each(function () {
+	                    this.value = '';
+	                });
+	            }
+	        });
+	    }
+
+	    function args(elem) {
+	        // Return an object of element attributes
+	        var newAttrs = {};
+	        var rinlinejQuery = /^jQuery\d+$/;
+
+	        $.each(elem.attributes, function (i, attr) {
+	            if (attr.specified && !rinlinejQuery.test(attr.name)) {
+	                newAttrs[attr.name] = attr.value;
+	            }
+	        });
+
+	        return newAttrs;
+	    }
+
+	    function clearPlaceholder(event, value) {
+
+	        var input = this;
+	        var $input = $(this);
+
+	        if (input.value === $input.attr((debugMode ? 'placeholder-x' : 'placeholder')) && $input.hasClass(settings.customClass)) {
+
+	            input.value = '';
+	            $input.removeClass(settings.customClass);
+
+	            if ($input.data('placeholder-password')) {
+
+	                $input = $input.hide().nextAll('input[type="password"]:first').show().attr('id', $input.removeAttr('id').data('placeholder-id'));
+
+	                // If `clearPlaceholder` was called from `$.valHooks.input.set`
+	                if (event === true) {
+	                    $input[0].value = value;
+
+	                    return value;
+	                }
+
+	                $input.focus();
+
+	            } else {
+	                input == safeActiveElement() && input.select();
+	            }
+	        }
+	    }
+
+	    function setPlaceholder(event) {
+	        var $replacement;
+	        var input = this;
+	        var $input = $(this);
+	        var id = input.id;
+
+	        // If the placeholder is activated, triggering blur event (`$input.trigger('blur')`) should do nothing.
+	        if (event && event.type === 'blur' && $input.hasClass(settings.customClass)) {
+	            return;
+	        }
+
+	        if (input.value === '') {
+	            if (input.type === 'password') {
+	                if (!$input.data('placeholder-textinput')) {
+
+	                    try {
+	                        $replacement = $input.clone().prop({'type': 'text'});
+	                    } catch (e) {
+	                        $replacement = $('<input>').attr($.extend(args(this), {'type': 'text'}));
+	                    }
+
+	                    $replacement
+	                        .removeAttr('name')
+	                        .data({
+	                            'placeholder-enabled': true,
+	                            'placeholder-password': $input,
+	                            'placeholder-id': id
+	                        })
+	                        .bind('focus.placeholder', clearPlaceholder);
+
+	                    $input
+	                        .data({
+	                            'placeholder-textinput': $replacement,
+	                            'placeholder-id': id
+	                        })
+	                        .before($replacement);
+	                }
+
+	                input.value = '';
+	                $input = $input.removeAttr('id').hide().prevAll('input[type="text"]:first').attr('id', $input.data('placeholder-id')).show();
+
+	            } else {
+
+	                var $passwordInput = $input.data('placeholder-password');
+
+	                if ($passwordInput) {
+	                    $passwordInput[0].value = '';
+	                    $input.attr('id', $input.data('placeholder-id')).show().nextAll('input[type="password"]:last').hide().removeAttr('id');
+	                }
+	            }
+
+	            $input.addClass(settings.customClass);
+	            $input[0].value = $input.attr((debugMode ? 'placeholder-x' : 'placeholder'));
+
+	        } else {
+	            $input.removeClass(settings.customClass);
+	        }
+	    }
+
+	    function safeActiveElement() {
+	        // Avoid IE9 `document.activeElement` of death
+	        try {
+	            return document.activeElement;
+	        } catch (exception) {
+	        }
+	    }
+	}));
+
+/***/ },
+/* 54 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Administrator on 2016/12/29.
+	 */
+
+	;(function (window, $) {
+
+	    window.xProgress2 = function (option) {
+	        return new xProgress(option);
+	    };
+
+	    var xProgress = function (option) {
+
+	        this._init(option);
+
+	        return this;
+	    };
+
+	    xProgress.prototype = {
+	        defaultOpt: {
+	            wrap: '.x-progress-wrap',
+	            pclass: 'x-progress-bar',
+	            tclass: 'x-progress-only',
+	            percentage: '0%',
+	            onchange: function () {console.log('onchange')}
+	        },
+	        _init: function (option) {
+	            this.option = $.extend(true, {}, this.defaultOpt, option);
+
+	            if(typeof this.option.wrap === "string"){
+	                this.wrap = $(this.option.wrap);
+	            }else{
+	                this.wrap = this.option.wrap;
+	            }
+
+	            if(typeof this.option.percentage === 'string'){
+	                this._makeprogress();
+	            }else{
+	                // var that = this;
+	                // $.each(this.percentage,function (index,item) {
+	                //     that._makeprogress();
+	                // });
+	            }
+	        },
+
+	        _makeprogress: function () {
+
+	            this.p = $('<div class="' + this.option.pclass + '" ></div>');
+	            this.t = $('<span class="' + this.option.tclass + '" ></span>');
+	            this.p.append(this.t);
+	            this.percentage = this.option.percentage;
+
+	            this.wrap.append(this.p);
+
+	            this._observer(this,'percentage');
+	            this._progress(this.percentage);
+	        },
+
+	        _observer: function (obj, k) {
+	            var that = this;
+	            var old = obj[k];
+	            Object.defineProperty(obj, k, {
+	                enumerable: true,
+	                configurable: true,
+	                get: function () {
+	                    return old;
+	                },
+	                set: function (next) {
+	                    if (next !== old) {
+	                        that._progress(next, old);
+	                    }
+	                    old = next;
+	                    this.option.onchange();
+	                }
+	            })
+	        },
+	        _progress: function (next, old) {
+	            this.p.stop(true,true);
+	            if(next==='0%'){
+	                this.p.css({width: next});
+	            }else{
+	                this.p.animate({width: next},1000);
+	            }
+	            // this.p.css({width: next});
+	            // this.p.width(next);
+	            this.t.text(next);
+	        },
+	        _p:function () {
+	        },
+	        _pp:function(obj, next, old){
+	            if(typeof obj.option.percentage === 'string'){
+	                obj._p(obj, next, old);
+	            }else{
+	                if(typeof obj.option.percentage === 'object'){
+	                    for (var i = 0, len = this.option.percentage; i < len; i++) {
+	                        obj._p(this.option, next, old);
+	                    }
+	                }
+	            }
+	        }
+	    };
+	})(window, jQuery);
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	 * jQuery Validation Plugin v1.15.0
+	 *
+	 * http://jqueryvalidation.org/
+	 *
+	 * Copyright (c) 2016 Jörn Zaefferer
+	 * Released under the MIT license
+	 */
+	(function( factory ) {
+		if ( true ) {
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(52)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if (typeof module === "object" && module.exports) {
+			module.exports = factory( require( "jquery" ) );
+		} else {
+			factory( jQuery );
+		}
+	}(function( $ ) {
+
+	$.extend( $.fn, {
+
+		// http://jqueryvalidation.org/validate/
+		validate: function( options ) {
+
+			// If nothing is selected, return nothing; can't chain anyway
+			if ( !this.length ) {
+				if ( options && options.debug && window.console ) {
+					console.warn( "Nothing selected, can't validate, returning nothing." );
+				}
+				return;
+			}
+
+			// Check if a validator for this form was already created
+			var validator = $.data( this[ 0 ], "validator" );
+			if ( validator ) {
+				return validator;
+			}
+
+			// Add novalidate tag if HTML5.
+			this.attr( "novalidate", "novalidate" );
+
+			validator = new $.validator( options, this[ 0 ] );
+			$.data( this[ 0 ], "validator", validator );
+
+			if ( validator.settings.onsubmit ) {
+
+				this.on( "click.validate", ":submit", function( event ) {
+					if ( validator.settings.submitHandler ) {
+						validator.submitButton = event.target;
+					}
+
+					// Allow suppressing validation by adding a cancel class to the submit button
+					if ( $( this ).hasClass( "cancel" ) ) {
+						validator.cancelSubmit = true;
+					}
+
+					// Allow suppressing validation by adding the html5 formnovalidate attribute to the submit button
+					if ( $( this ).attr( "formnovalidate" ) !== undefined ) {
+						validator.cancelSubmit = true;
+					}
+				} );
+
+				// Validate the form on submit
+				this.on( "submit.validate", function( event ) {
+					if ( validator.settings.debug ) {
+
+						// Prevent form submit to be able to see console output
+						event.preventDefault();
+					}
+					function handle() {
+						var hidden, result;
+						if ( validator.settings.submitHandler ) {
+							if ( validator.submitButton ) {
+
+								// Insert a hidden input as a replacement for the missing submit button
+								hidden = $( "<input type='hidden'/>" )
+									.attr( "name", validator.submitButton.name )
+									.val( $( validator.submitButton ).val() )
+									.appendTo( validator.currentForm );
+							}
+							result = validator.settings.submitHandler.call( validator, validator.currentForm, event );
+							if ( validator.submitButton ) {
+
+								// And clean up afterwards; thanks to no-block-scope, hidden can be referenced
+								hidden.remove();
+							}
+							if ( result !== undefined ) {
+								return result;
+							}
+							return false;
+						}
+						return true;
+					}
+
+					// Prevent submit for invalid forms or custom submit handlers
+					if ( validator.cancelSubmit ) {
+						validator.cancelSubmit = false;
+						return handle();
+					}
+					if ( validator.form() ) {
+						if ( validator.pendingRequest ) {
+							validator.formSubmitted = true;
+							return false;
+						}
+						return handle();
+					} else {
+						validator.focusInvalid();
+						return false;
+					}
+				} );
+			}
+
+			return validator;
+		},
+
+		// http://jqueryvalidation.org/valid/
+		valid: function() {
+			var valid, validator, errorList;
+
+			if ( $( this[ 0 ] ).is( "form" ) ) {
+				valid = this.validate().form();
+			} else {
+				errorList = [];
+				valid = true;
+				validator = $( this[ 0 ].form ).validate();
+				this.each( function() {
+					valid = validator.element( this ) && valid;
+					if ( !valid ) {
+						errorList = errorList.concat( validator.errorList );
+					}
+				} );
+				validator.errorList = errorList;
+			}
+			return valid;
+		},
+
+		// http://jqueryvalidation.org/rules/
+		rules: function( command, argument ) {
+
+			// If nothing is selected, return nothing; can't chain anyway
+			if ( !this.length ) {
+				return;
+			}
+
+			var element = this[ 0 ],
+				settings, staticRules, existingRules, data, param, filtered;
+
+			if ( command ) {
+				settings = $.data( element.form, "validator" ).settings;
+				staticRules = settings.rules;
+				existingRules = $.validator.staticRules( element );
+				switch ( command ) {
+				case "add":
+					$.extend( existingRules, $.validator.normalizeRule( argument ) );
+
+					// Remove messages from rules, but allow them to be set separately
+					delete existingRules.messages;
+					staticRules[ element.name ] = existingRules;
+					if ( argument.messages ) {
+						settings.messages[ element.name ] = $.extend( settings.messages[ element.name ], argument.messages );
+					}
+					break;
+				case "remove":
+					if ( !argument ) {
+						delete staticRules[ element.name ];
+						return existingRules;
+					}
+					filtered = {};
+					$.each( argument.split( /\s/ ), function( index, method ) {
+						filtered[ method ] = existingRules[ method ];
+						delete existingRules[ method ];
+						if ( method === "required" ) {
+							$( element ).removeAttr( "aria-required" );
+						}
+					} );
+					return filtered;
+				}
+			}
+
+			data = $.validator.normalizeRules(
+			$.extend(
+				{},
+				$.validator.classRules( element ),
+				$.validator.attributeRules( element ),
+				$.validator.dataRules( element ),
+				$.validator.staticRules( element )
+			), element );
+
+			// Make sure required is at front
+			if ( data.required ) {
+				param = data.required;
+				delete data.required;
+				data = $.extend( { required: param }, data );
+				$( element ).attr( "aria-required", "true" );
+			}
+
+			// Make sure remote is at back
+			if ( data.remote ) {
+				param = data.remote;
+				delete data.remote;
+				data = $.extend( data, { remote: param } );
+			}
+
+			return data;
+		}
+	} );
+
+	// Custom selectors
+	$.extend( $.expr[ ":" ], {
+
+		// http://jqueryvalidation.org/blank-selector/
+		blank: function( a ) {
+			return !$.trim( "" + $( a ).val() );
+		},
+
+		// http://jqueryvalidation.org/filled-selector/
+		filled: function( a ) {
+			var val = $( a ).val();
+			return val !== null && !!$.trim( "" + val );
+		},
+
+		// http://jqueryvalidation.org/unchecked-selector/
+		unchecked: function( a ) {
+			return !$( a ).prop( "checked" );
+		}
+	} );
+
+	// Constructor for validator
+	$.validator = function( options, form ) {
+		this.settings = $.extend( true, {}, $.validator.defaults, options );
+		this.currentForm = form;
+		this.init();
+	};
+
+	// http://jqueryvalidation.org/jQuery.validator.format/
+	$.validator.format = function( source, params ) {
+		if ( arguments.length === 1 ) {
+			return function() {
+				var args = $.makeArray( arguments );
+				args.unshift( source );
+				return $.validator.format.apply( this, args );
+			};
+		}
+		if ( params === undefined ) {
+			return source;
+		}
+		if ( arguments.length > 2 && params.constructor !== Array  ) {
+			params = $.makeArray( arguments ).slice( 1 );
+		}
+		if ( params.constructor !== Array ) {
+			params = [ params ];
+		}
+		$.each( params, function( i, n ) {
+			source = source.replace( new RegExp( "\\{" + i + "\\}", "g" ), function() {
+				return n;
+			} );
+		} );
+		return source;
+	};
+
+	$.extend( $.validator, {
+
+		defaults: {
+			messages: {},
+			groups: {},
+			rules: {},
+			errorClass: "error",
+			pendingClass: "pending",
+			validClass: "valid",
+			errorElement: "label",
+			focusCleanup: false,
+			focusInvalid: true,
+			errorContainer: $( [] ),
+			errorLabelContainer: $( [] ),
+			onsubmit: true,
+			ignore: ":hidden",
+			ignoreTitle: false,
+			onfocusin: function( element ) {
+				this.lastActive = element;
+
+				// Hide error label and remove error class on focus if enabled
+				if ( this.settings.focusCleanup ) {
+					if ( this.settings.unhighlight ) {
+						this.settings.unhighlight.call( this, element, this.settings.errorClass, this.settings.validClass );
+					}
+					this.hideThese( this.errorsFor( element ) );
+				}
+			},
+			onfocusout: function( element ) {
+				if ( !this.checkable( element ) && ( element.name in this.submitted || !this.optional( element ) ) ) {
+					this.element( element );
+				}
+			},
+			onkeyup: function( element, event ) {
+
+				// Avoid revalidate the field when pressing one of the following keys
+				// Shift       => 16
+				// Ctrl        => 17
+				// Alt         => 18
+				// Caps lock   => 20
+				// End         => 35
+				// Home        => 36
+				// Left arrow  => 37
+				// Up arrow    => 38
+				// Right arrow => 39
+				// Down arrow  => 40
+				// Insert      => 45
+				// Num lock    => 144
+				// AltGr key   => 225
+				var excludedKeys = [
+					16, 17, 18, 20, 35, 36, 37,
+					38, 39, 40, 45, 144, 225
+				];
+
+				if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
+					return;
+				} else if ( element.name in this.submitted || element.name in this.invalid ) {
+					this.element( element );
+				}
+			},
+			onclick: function( element ) {
+
+				// Click on selects, radiobuttons and checkboxes
+				if ( element.name in this.submitted ) {
+					this.element( element );
+
+				// Or option elements, check parent select in that case
+				} else if ( element.parentNode.name in this.submitted ) {
+					this.element( element.parentNode );
+				}
+			},
+			highlight: function( element, errorClass, validClass ) {
+				if ( element.type === "radio" ) {
+					this.findByName( element.name ).addClass( errorClass ).removeClass( validClass );
+				} else {
+					$( element ).addClass( errorClass ).removeClass( validClass );
+				}
+			},
+			unhighlight: function( element, errorClass, validClass ) {
+				if ( element.type === "radio" ) {
+					this.findByName( element.name ).removeClass( errorClass ).addClass( validClass );
+				} else {
+					$( element ).removeClass( errorClass ).addClass( validClass );
+				}
+			}
+		},
+
+		// http://jqueryvalidation.org/jQuery.validator.setDefaults/
+		setDefaults: function( settings ) {
+			$.extend( $.validator.defaults, settings );
+		},
+
+		messages: {
+			required: "This field is required.",
+			remote: "Please fix this field.",
+			email: "Please enter a valid email address.",
+			url: "Please enter a valid URL.",
+			date: "Please enter a valid date.",
+			dateISO: "Please enter a valid date ( ISO ).",
+			number: "Please enter a valid number.",
+			digits: "Please enter only digits.",
+			equalTo: "Please enter the same value again.",
+			maxlength: $.validator.format( "Please enter no more than {0} characters." ),
+			minlength: $.validator.format( "Please enter at least {0} characters." ),
+			rangelength: $.validator.format( "Please enter a value between {0} and {1} characters long." ),
+			range: $.validator.format( "Please enter a value between {0} and {1}." ),
+			max: $.validator.format( "Please enter a value less than or equal to {0}." ),
+			min: $.validator.format( "Please enter a value greater than or equal to {0}." ),
+			step: $.validator.format( "Please enter a multiple of {0}." )
+		},
+
+		autoCreateRanges: false,
+
+		prototype: {
+
+			init: function() {
+				this.labelContainer = $( this.settings.errorLabelContainer );
+				this.errorContext = this.labelContainer.length && this.labelContainer || $( this.currentForm );
+				this.containers = $( this.settings.errorContainer ).add( this.settings.errorLabelContainer );
+				this.submitted = {};
+				this.valueCache = {};
+				this.pendingRequest = 0;
+				this.pending = {};
+				this.invalid = {};
+				this.reset();
+
+				var groups = ( this.groups = {} ),
+					rules;
+				$.each( this.settings.groups, function( key, value ) {
+					if ( typeof value === "string" ) {
+						value = value.split( /\s/ );
+					}
+					$.each( value, function( index, name ) {
+						groups[ name ] = key;
+					} );
+				} );
+				rules = this.settings.rules;
+				$.each( rules, function( key, value ) {
+					rules[ key ] = $.validator.normalizeRule( value );
+				} );
+
+				function delegate( event ) {
+					var validator = $.data( this.form, "validator" ),
+						eventType = "on" + event.type.replace( /^validate/, "" ),
+						settings = validator.settings;
+					if ( settings[ eventType ] && !$( this ).is( settings.ignore ) ) {
+						settings[ eventType ].call( validator, this, event );
+					}
+				}
+
+				$( this.currentForm )
+					.on( "focusin.validate focusout.validate keyup.validate",
+						":text, [type='password'], [type='file'], select, textarea, [type='number'], [type='search'], " +
+						"[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month'], " +
+						"[type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color'], " +
+						"[type='radio'], [type='checkbox'], [contenteditable]", delegate )
+
+					// Support: Chrome, oldIE
+					// "select" is provided as event.target when clicking a option
+					.on( "click.validate", "select, option, [type='radio'], [type='checkbox']", delegate );
+
+				if ( this.settings.invalidHandler ) {
+					$( this.currentForm ).on( "invalid-form.validate", this.settings.invalidHandler );
+				}
+
+				// Add aria-required to any Static/Data/Class required fields before first validation
+				// Screen readers require this attribute to be present before the initial submission http://www.w3.org/TR/WCAG-TECHS/ARIA2.html
+				$( this.currentForm ).find( "[required], [data-rule-required], .required" ).attr( "aria-required", "true" );
+			},
+
+			// http://jqueryvalidation.org/Validator.form/
+			form: function() {
+				this.checkForm();
+				$.extend( this.submitted, this.errorMap );
+				this.invalid = $.extend( {}, this.errorMap );
+				if ( !this.valid() ) {
+					$( this.currentForm ).triggerHandler( "invalid-form", [ this ] );
+				}
+				this.showErrors();
+				return this.valid();
+			},
+
+			checkForm: function() {
+				this.prepareForm();
+				for ( var i = 0, elements = ( this.currentElements = this.elements() ); elements[ i ]; i++ ) {
+					this.check( elements[ i ] );
+				}
+				return this.valid();
+			},
+
+			// http://jqueryvalidation.org/Validator.element/
+			element: function( element ) {
+				var cleanElement = this.clean( element ),
+					checkElement = this.validationTargetFor( cleanElement ),
+					v = this,
+					result = true,
+					rs, group;
+
+				if ( checkElement === undefined ) {
+					delete this.invalid[ cleanElement.name ];
+				} else {
+					this.prepareElement( checkElement );
+					this.currentElements = $( checkElement );
+
+					// If this element is grouped, then validate all group elements already
+					// containing a value
+					group = this.groups[ checkElement.name ];
+					if ( group ) {
+						$.each( this.groups, function( name, testgroup ) {
+							if ( testgroup === group && name !== checkElement.name ) {
+								cleanElement = v.validationTargetFor( v.clean( v.findByName( name ) ) );
+								if ( cleanElement && cleanElement.name in v.invalid ) {
+									v.currentElements.push( cleanElement );
+									result = result && v.check( cleanElement );
+								}
+							}
+						} );
+					}
+
+					rs = this.check( checkElement ) !== false;
+					result = result && rs;
+					if ( rs ) {
+						this.invalid[ checkElement.name ] = false;
+					} else {
+						this.invalid[ checkElement.name ] = true;
+					}
+
+					if ( !this.numberOfInvalids() ) {
+
+						// Hide error containers on last error
+						this.toHide = this.toHide.add( this.containers );
+					}
+					this.showErrors();
+
+					// Add aria-invalid status for screen readers
+					$( element ).attr( "aria-invalid", !rs );
+				}
+
+				return result;
+			},
+
+			// http://jqueryvalidation.org/Validator.showErrors/
+			showErrors: function( errors ) {
+				if ( errors ) {
+					var validator = this;
+
+					// Add items to error list and map
+					$.extend( this.errorMap, errors );
+					this.errorList = $.map( this.errorMap, function( message, name ) {
+						return {
+							message: message,
+							element: validator.findByName( name )[ 0 ]
+						};
+					} );
+
+					// Remove items from success list
+					this.successList = $.grep( this.successList, function( element ) {
+						return !( element.name in errors );
+					} );
+				}
+				if ( this.settings.showErrors ) {
+					this.settings.showErrors.call( this, this.errorMap, this.errorList );
+				} else {
+					this.defaultShowErrors();
+				}
+			},
+
+			// http://jqueryvalidation.org/Validator.resetForm/
+			resetForm: function() {
+				if ( $.fn.resetForm ) {
+					$( this.currentForm ).resetForm();
+				}
+				this.invalid = {};
+				this.submitted = {};
+				this.prepareForm();
+				this.hideErrors();
+				var elements = this.elements()
+					.removeData( "previousValue" )
+					.removeAttr( "aria-invalid" );
+
+				this.resetElements( elements );
+			},
+
+			resetElements: function( elements ) {
+				var i;
+
+				if ( this.settings.unhighlight ) {
+					for ( i = 0; elements[ i ]; i++ ) {
+						this.settings.unhighlight.call( this, elements[ i ],
+							this.settings.errorClass, "" );
+						this.findByName( elements[ i ].name ).removeClass( this.settings.validClass );
+					}
+				} else {
+					elements
+						.removeClass( this.settings.errorClass )
+						.removeClass( this.settings.validClass );
+				}
+			},
+
+			numberOfInvalids: function() {
+				return this.objectLength( this.invalid );
+			},
+
+			objectLength: function( obj ) {
+				/* jshint unused: false */
+				var count = 0,
+					i;
+				for ( i in obj ) {
+					if ( obj[ i ] ) {
+						count++;
+					}
+				}
+				return count;
+			},
+
+			hideErrors: function() {
+				this.hideThese( this.toHide );
+			},
+
+			hideThese: function( errors ) {
+				errors.not( this.containers ).text( "" );
+				this.addWrapper( errors ).hide();
+			},
+
+			valid: function() {
+				return this.size() === 0;
+			},
+
+			size: function() {
+				return this.errorList.length;
+			},
+
+			focusInvalid: function() {
+				if ( this.settings.focusInvalid ) {
+					try {
+						$( this.findLastActive() || this.errorList.length && this.errorList[ 0 ].element || [] )
+						.filter( ":visible" )
+						.focus()
+
+						// Manually trigger focusin event; without it, focusin handler isn't called, findLastActive won't have anything to find
+						.trigger( "focusin" );
+					} catch ( e ) {
+
+						// Ignore IE throwing errors when focusing hidden elements
+					}
+				}
+			},
+
+			findLastActive: function() {
+				var lastActive = this.lastActive;
+				return lastActive && $.grep( this.errorList, function( n ) {
+					return n.element.name === lastActive.name;
+				} ).length === 1 && lastActive;
+			},
+
+			elements: function() {
+				var validator = this,
+					rulesCache = {};
+
+				// Select all valid inputs inside the form (no submit or reset buttons)
+				return $( this.currentForm )
+				.find( "input, select, textarea, [contenteditable]" )
+				.not( ":submit, :reset, :image, :disabled" )
+				.not( this.settings.ignore )
+				.filter( function() {
+					var name = this.name || $( this ).attr( "name" ); // For contenteditable
+					if ( !name && validator.settings.debug && window.console ) {
+						console.error( "%o has no name assigned", this );
+					}
+
+					// Set form expando on contenteditable
+					if ( this.hasAttribute( "contenteditable" ) ) {
+						this.form = $( this ).closest( "form" )[ 0 ];
+					}
+
+					// Select only the first element for each name, and only those with rules specified
+					if ( name in rulesCache || !validator.objectLength( $( this ).rules() ) ) {
+						return false;
+					}
+
+					rulesCache[ name ] = true;
+					return true;
+				} );
+			},
+
+			clean: function( selector ) {
+				return $( selector )[ 0 ];
+			},
+
+			errors: function() {
+				var errorClass = this.settings.errorClass.split( " " ).join( "." );
+				return $( this.settings.errorElement + "." + errorClass, this.errorContext );
+			},
+
+			resetInternals: function() {
+				this.successList = [];
+				this.errorList = [];
+				this.errorMap = {};
+				this.toShow = $( [] );
+				this.toHide = $( [] );
+			},
+
+			reset: function() {
+				this.resetInternals();
+				this.currentElements = $( [] );
+			},
+
+			prepareForm: function() {
+				this.reset();
+				this.toHide = this.errors().add( this.containers );
+			},
+
+			prepareElement: function( element ) {
+				this.reset();
+				this.toHide = this.errorsFor( element );
+			},
+
+			elementValue: function( element ) {
+				var $element = $( element ),
+					type = element.type,
+					val, idx;
+
+				if ( type === "radio" || type === "checkbox" ) {
+					return this.findByName( element.name ).filter( ":checked" ).val();
+				} else if ( type === "number" && typeof element.validity !== "undefined" ) {
+					return element.validity.badInput ? "NaN" : $element.val();
+				}
+
+				if ( element.hasAttribute( "contenteditable" ) ) {
+					val = $element.text();
+				} else {
+					val = $element.val();
+				}
+
+				if ( type === "file" ) {
+
+					// Modern browser (chrome & safari)
+					if ( val.substr( 0, 12 ) === "C:\\fakepath\\" ) {
+						return val.substr( 12 );
+					}
+
+					// Legacy browsers
+					// Unix-based path
+					idx = val.lastIndexOf( "/" );
+					if ( idx >= 0 ) {
+						return val.substr( idx + 1 );
+					}
+
+					// Windows-based path
+					idx = val.lastIndexOf( "\\" );
+					if ( idx >= 0 ) {
+						return val.substr( idx + 1 );
+					}
+
+					// Just the file name
+					return val;
+				}
+
+				if ( typeof val === "string" ) {
+					return val.replace( /\r/g, "" );
+				}
+				return val;
+			},
+
+			check: function( element ) {
+				element = this.validationTargetFor( this.clean( element ) );
+
+				var rules = $( element ).rules(),
+					rulesCount = $.map( rules, function( n, i ) {
+						return i;
+					} ).length,
+					dependencyMismatch = false,
+					val = this.elementValue( element ),
+					result, method, rule;
+
+				// If a normalizer is defined for this element, then
+				// call it to retreive the changed value instead
+				// of using the real one.
+				// Note that `this` in the normalizer is `element`.
+				if ( typeof rules.normalizer === "function" ) {
+					val = rules.normalizer.call( element, val );
+
+					if ( typeof val !== "string" ) {
+						throw new TypeError( "The normalizer should return a string value." );
+					}
+
+					// Delete the normalizer from rules to avoid treating
+					// it as a pre-defined method.
+					delete rules.normalizer;
+				}
+
+				for ( method in rules ) {
+					rule = { method: method, parameters: rules[ method ] };
+					try {
+						result = $.validator.methods[ method ].call( this, val, element, rule.parameters );
+
+						// If a method indicates that the field is optional and therefore valid,
+						// don't mark it as valid when there are no other rules
+						if ( result === "dependency-mismatch" && rulesCount === 1 ) {
+							dependencyMismatch = true;
+							continue;
+						}
+						dependencyMismatch = false;
+
+						if ( result === "pending" ) {
+							this.toHide = this.toHide.not( this.errorsFor( element ) );
+							return;
+						}
+
+						if ( !result ) {
+							this.formatAndAdd( element, rule );
+							return false;
+						}
+					} catch ( e ) {
+						if ( this.settings.debug && window.console ) {
+							console.log( "Exception occurred when checking element " + element.id + ", check the '" + rule.method + "' method.", e );
+						}
+						if ( e instanceof TypeError ) {
+							e.message += ".  Exception occurred when checking element " + element.id + ", check the '" + rule.method + "' method.";
+						}
+
+						throw e;
+					}
+				}
+				if ( dependencyMismatch ) {
+					return;
+				}
+				if ( this.objectLength( rules ) ) {
+					this.successList.push( element );
+				}
+				return true;
+			},
+
+			// Return the custom message for the given element and validation method
+			// specified in the element's HTML5 data attribute
+			// return the generic message if present and no method specific message is present
+			customDataMessage: function( element, method ) {
+				return $( element ).data( "msg" + method.charAt( 0 ).toUpperCase() +
+					method.substring( 1 ).toLowerCase() ) || $( element ).data( "msg" );
+			},
+
+			// Return the custom message for the given element name and validation method
+			customMessage: function( name, method ) {
+				var m = this.settings.messages[ name ];
+				return m && ( m.constructor === String ? m : m[ method ] );
+			},
+
+			// Return the first defined argument, allowing empty strings
+			findDefined: function() {
+				for ( var i = 0; i < arguments.length; i++ ) {
+					if ( arguments[ i ] !== undefined ) {
+						return arguments[ i ];
+					}
+				}
+				return undefined;
+			},
+
+			defaultMessage: function( element, rule ) {
+				var message = this.findDefined(
+						this.customMessage( element.name, rule.method ),
+						this.customDataMessage( element, rule.method ),
+
+						// 'title' is never undefined, so handle empty string as undefined
+						!this.settings.ignoreTitle && element.title || undefined,
+						$.validator.messages[ rule.method ],
+						"<strong>Warning: No message defined for " + element.name + "</strong>"
+					),
+					theregex = /\$?\{(\d+)\}/g;
+				if ( typeof message === "function" ) {
+					message = message.call( this, rule.parameters, element );
+				} else if ( theregex.test( message ) ) {
+					message = $.validator.format( message.replace( theregex, "{$1}" ), rule.parameters );
+				}
+
+				return message;
+			},
+
+			formatAndAdd: function( element, rule ) {
+				var message = this.defaultMessage( element, rule );
+
+				this.errorList.push( {
+					message: message,
+					element: element,
+					method: rule.method
+				} );
+
+				this.errorMap[ element.name ] = message;
+				this.submitted[ element.name ] = message;
+			},
+
+			addWrapper: function( toToggle ) {
+				if ( this.settings.wrapper ) {
+					toToggle = toToggle.add( toToggle.parent( this.settings.wrapper ) );
+				}
+				return toToggle;
+			},
+
+			defaultShowErrors: function() {
+				var i, elements, error;
+				for ( i = 0; this.errorList[ i ]; i++ ) {
+					error = this.errorList[ i ];
+					if ( this.settings.highlight ) {
+						this.settings.highlight.call( this, error.element, this.settings.errorClass, this.settings.validClass );
+					}
+					this.showLabel( error.element, error.message );
+				}
+				if ( this.errorList.length ) {
+					this.toShow = this.toShow.add( this.containers );
+				}
+				if ( this.settings.success ) {
+					for ( i = 0; this.successList[ i ]; i++ ) {
+						this.showLabel( this.successList[ i ] );
+					}
+				}
+				if ( this.settings.unhighlight ) {
+					for ( i = 0, elements = this.validElements(); elements[ i ]; i++ ) {
+						this.settings.unhighlight.call( this, elements[ i ], this.settings.errorClass, this.settings.validClass );
+					}
+				}
+				this.toHide = this.toHide.not( this.toShow );
+				this.hideErrors();
+				this.addWrapper( this.toShow ).show();
+			},
+
+			validElements: function() {
+				return this.currentElements.not( this.invalidElements() );
+			},
+
+			invalidElements: function() {
+				return $( this.errorList ).map( function() {
+					return this.element;
+				} );
+			},
+
+			showLabel: function( element, message ) {
+				var place, group, errorID, v,
+					error = this.errorsFor( element ),
+					elementID = this.idOrName( element ),
+					describedBy = $( element ).attr( "aria-describedby" );
+
+				if ( error.length ) {
+
+					// Refresh error/success class
+					error.removeClass( this.settings.validClass ).addClass( this.settings.errorClass );
+
+					// Replace message on existing label
+					error.html( message );
+				} else {
+
+					// Create error element
+					error = $( "<" + this.settings.errorElement + ">" )
+						.attr( "id", elementID + "-error" )
+						.addClass( this.settings.errorClass )
+						.html( message || "" );
+
+					// Maintain reference to the element to be placed into the DOM
+					place = error;
+					if ( this.settings.wrapper ) {
+
+						// Make sure the element is visible, even in IE
+						// actually showing the wrapped element is handled elsewhere
+						place = error.hide().show().wrap( "<" + this.settings.wrapper + "/>" ).parent();
+					}
+					if ( this.labelContainer.length ) {
+						this.labelContainer.append( place );
+					} else if ( this.settings.errorPlacement ) {
+						this.settings.errorPlacement( place, $( element ) );
+					} else {
+						place.insertAfter( element );
+					}
+
+					// Link error back to the element
+					if ( error.is( "label" ) ) {
+
+						// If the error is a label, then associate using 'for'
+						error.attr( "for", elementID );
+
+						// If the element is not a child of an associated label, then it's necessary
+						// to explicitly apply aria-describedby
+					} else if ( error.parents( "label[for='" + this.escapeCssMeta( elementID ) + "']" ).length === 0 ) {
+						errorID = error.attr( "id" );
+
+						// Respect existing non-error aria-describedby
+						if ( !describedBy ) {
+							describedBy = errorID;
+						} else if ( !describedBy.match( new RegExp( "\\b" + this.escapeCssMeta( errorID ) + "\\b" ) ) ) {
+
+							// Add to end of list if not already present
+							describedBy += " " + errorID;
+						}
+						$( element ).attr( "aria-describedby", describedBy );
+
+						// If this element is grouped, then assign to all elements in the same group
+						group = this.groups[ element.name ];
+						if ( group ) {
+							v = this;
+							$.each( v.groups, function( name, testgroup ) {
+								if ( testgroup === group ) {
+									$( "[name='" + v.escapeCssMeta( name ) + "']", v.currentForm )
+										.attr( "aria-describedby", error.attr( "id" ) );
+								}
+							} );
+						}
+					}
+				}
+				if ( !message && this.settings.success ) {
+					error.text( "" );
+					if ( typeof this.settings.success === "string" ) {
+						error.addClass( this.settings.success );
+					} else {
+						this.settings.success( error, element );
+					}
+				}
+				this.toShow = this.toShow.add( error );
+			},
+
+			errorsFor: function( element ) {
+				var name = this.escapeCssMeta( this.idOrName( element ) ),
+					describer = $( element ).attr( "aria-describedby" ),
+					selector = "label[for='" + name + "'], label[for='" + name + "'] *";
+
+				// 'aria-describedby' should directly reference the error element
+				if ( describer ) {
+					selector = selector + ", #" + this.escapeCssMeta( describer )
+						.replace( /\s+/g, ", #" );
+				}
+
+				return this
+					.errors()
+					.filter( selector );
+			},
+
+			// See https://api.jquery.com/category/selectors/, for CSS
+			// meta-characters that should be escaped in order to be used with JQuery
+			// as a literal part of a name/id or any selector.
+			escapeCssMeta: function( string ) {
+				return string.replace( /([\\!"#$%&'()*+,./:;<=>?@\[\]^`{|}~])/g, "\\$1" );
+			},
+
+			idOrName: function( element ) {
+				return this.groups[ element.name ] || ( this.checkable( element ) ? element.name : element.id || element.name );
+			},
+
+			validationTargetFor: function( element ) {
+
+				// If radio/checkbox, validate first element in group instead
+				if ( this.checkable( element ) ) {
+					element = this.findByName( element.name );
+				}
+
+				// Always apply ignore filter
+				return $( element ).not( this.settings.ignore )[ 0 ];
+			},
+
+			checkable: function( element ) {
+				return ( /radio|checkbox/i ).test( element.type );
+			},
+
+			findByName: function( name ) {
+				return $( this.currentForm ).find( "[name='" + this.escapeCssMeta( name ) + "']" );
+			},
+
+			getLength: function( value, element ) {
+				switch ( element.nodeName.toLowerCase() ) {
+				case "select":
+					return $( "option:selected", element ).length;
+				case "input":
+					if ( this.checkable( element ) ) {
+						return this.findByName( element.name ).filter( ":checked" ).length;
+					}
+				}
+				return value.length;
+			},
+
+			depend: function( param, element ) {
+				return this.dependTypes[ typeof param ] ? this.dependTypes[ typeof param ]( param, element ) : true;
+			},
+
+			dependTypes: {
+				"boolean": function( param ) {
+					return param;
+				},
+				"string": function( param, element ) {
+					return !!$( param, element.form ).length;
+				},
+				"function": function( param, element ) {
+					return param( element );
+				}
+			},
+
+			optional: function( element ) {
+				var val = this.elementValue( element );
+				return !$.validator.methods.required.call( this, val, element ) && "dependency-mismatch";
+			},
+
+			startRequest: function( element ) {
+				if ( !this.pending[ element.name ] ) {
+					this.pendingRequest++;
+					$( element ).addClass( this.settings.pendingClass );
+					this.pending[ element.name ] = true;
+				}
+			},
+
+			stopRequest: function( element, valid ) {
+				this.pendingRequest--;
+
+				// Sometimes synchronization fails, make sure pendingRequest is never < 0
+				if ( this.pendingRequest < 0 ) {
+					this.pendingRequest = 0;
+				}
+				delete this.pending[ element.name ];
+				$( element ).removeClass( this.settings.pendingClass );
+				if ( valid && this.pendingRequest === 0 && this.formSubmitted && this.form() ) {
+					$( this.currentForm ).submit();
+					this.formSubmitted = false;
+				} else if ( !valid && this.pendingRequest === 0 && this.formSubmitted ) {
+					$( this.currentForm ).triggerHandler( "invalid-form", [ this ] );
+					this.formSubmitted = false;
+				}
+			},
+
+			previousValue: function( element, method ) {
+				return $.data( element, "previousValue" ) || $.data( element, "previousValue", {
+					old: null,
+					valid: true,
+					message: this.defaultMessage( element, { method: method } )
+				} );
+			},
+
+			// Cleans up all forms and elements, removes validator-specific events
+			destroy: function() {
+				this.resetForm();
+
+				$( this.currentForm )
+					.off( ".validate" )
+					.removeData( "validator" )
+					.find( ".validate-equalTo-blur" )
+						.off( ".validate-equalTo" )
+						.removeClass( "validate-equalTo-blur" );
+			}
+
+		},
+
+		classRuleSettings: {
+			required: { required: true },
+			email: { email: true },
+			url: { url: true },
+			date: { date: true },
+			dateISO: { dateISO: true },
+			number: { number: true },
+			digits: { digits: true },
+			creditcard: { creditcard: true }
+		},
+
+		addClassRules: function( className, rules ) {
+			if ( className.constructor === String ) {
+				this.classRuleSettings[ className ] = rules;
+			} else {
+				$.extend( this.classRuleSettings, className );
+			}
+		},
+
+		classRules: function( element ) {
+			var rules = {},
+				classes = $( element ).attr( "class" );
+
+			if ( classes ) {
+				$.each( classes.split( " " ), function() {
+					if ( this in $.validator.classRuleSettings ) {
+						$.extend( rules, $.validator.classRuleSettings[ this ] );
+					}
+				} );
+			}
+			return rules;
+		},
+
+		normalizeAttributeRule: function( rules, type, method, value ) {
+
+			// Convert the value to a number for number inputs, and for text for backwards compability
+			// allows type="date" and others to be compared as strings
+			if ( /min|max|step/.test( method ) && ( type === null || /number|range|text/.test( type ) ) ) {
+				value = Number( value );
+
+				// Support Opera Mini, which returns NaN for undefined minlength
+				if ( isNaN( value ) ) {
+					value = undefined;
+				}
+			}
+
+			if ( value || value === 0 ) {
+				rules[ method ] = value;
+			} else if ( type === method && type !== "range" ) {
+
+				// Exception: the jquery validate 'range' method
+				// does not test for the html5 'range' type
+				rules[ method ] = true;
+			}
+		},
+
+		attributeRules: function( element ) {
+			var rules = {},
+				$element = $( element ),
+				type = element.getAttribute( "type" ),
+				method, value;
+
+			for ( method in $.validator.methods ) {
+
+				// Support for <input required> in both html5 and older browsers
+				if ( method === "required" ) {
+					value = element.getAttribute( method );
+
+					// Some browsers return an empty string for the required attribute
+					// and non-HTML5 browsers might have required="" markup
+					if ( value === "" ) {
+						value = true;
+					}
+
+					// Force non-HTML5 browsers to return bool
+					value = !!value;
+				} else {
+					value = $element.attr( method );
+				}
+
+				this.normalizeAttributeRule( rules, type, method, value );
+			}
+
+			// 'maxlength' may be returned as -1, 2147483647 ( IE ) and 524288 ( safari ) for text inputs
+			if ( rules.maxlength && /-1|2147483647|524288/.test( rules.maxlength ) ) {
+				delete rules.maxlength;
+			}
+
+			return rules;
+		},
+
+		dataRules: function( element ) {
+			var rules = {},
+				$element = $( element ),
+				type = element.getAttribute( "type" ),
+				method, value;
+
+			for ( method in $.validator.methods ) {
+				value = $element.data( "rule" + method.charAt( 0 ).toUpperCase() + method.substring( 1 ).toLowerCase() );
+				this.normalizeAttributeRule( rules, type, method, value );
+			}
+			return rules;
+		},
+
+		staticRules: function( element ) {
+			var rules = {},
+				validator = $.data( element.form, "validator" );
+
+			if ( validator.settings.rules ) {
+				rules = $.validator.normalizeRule( validator.settings.rules[ element.name ] ) || {};
+			}
+			return rules;
+		},
+
+		normalizeRules: function( rules, element ) {
+
+			// Handle dependency check
+			$.each( rules, function( prop, val ) {
+
+				// Ignore rule when param is explicitly false, eg. required:false
+				if ( val === false ) {
+					delete rules[ prop ];
+					return;
+				}
+				if ( val.param || val.depends ) {
+					var keepRule = true;
+					switch ( typeof val.depends ) {
+					case "string":
+						keepRule = !!$( val.depends, element.form ).length;
+						break;
+					case "function":
+						keepRule = val.depends.call( element, element );
+						break;
+					}
+					if ( keepRule ) {
+						rules[ prop ] = val.param !== undefined ? val.param : true;
+					} else {
+						$.data( element.form, "validator" ).resetElements( $( element ) );
+						delete rules[ prop ];
+					}
+				}
+			} );
+
+			// Evaluate parameters
+			$.each( rules, function( rule, parameter ) {
+				rules[ rule ] = $.isFunction( parameter ) && rule !== "normalizer" ? parameter( element ) : parameter;
+			} );
+
+			// Clean number parameters
+			$.each( [ "minlength", "maxlength" ], function() {
+				if ( rules[ this ] ) {
+					rules[ this ] = Number( rules[ this ] );
+				}
+			} );
+			$.each( [ "rangelength", "range" ], function() {
+				var parts;
+				if ( rules[ this ] ) {
+					if ( $.isArray( rules[ this ] ) ) {
+						rules[ this ] = [ Number( rules[ this ][ 0 ] ), Number( rules[ this ][ 1 ] ) ];
+					} else if ( typeof rules[ this ] === "string" ) {
+						parts = rules[ this ].replace( /[\[\]]/g, "" ).split( /[\s,]+/ );
+						rules[ this ] = [ Number( parts[ 0 ] ), Number( parts[ 1 ] ) ];
+					}
+				}
+			} );
+
+			if ( $.validator.autoCreateRanges ) {
+
+				// Auto-create ranges
+				if ( rules.min != null && rules.max != null ) {
+					rules.range = [ rules.min, rules.max ];
+					delete rules.min;
+					delete rules.max;
+				}
+				if ( rules.minlength != null && rules.maxlength != null ) {
+					rules.rangelength = [ rules.minlength, rules.maxlength ];
+					delete rules.minlength;
+					delete rules.maxlength;
+				}
+			}
+
+			return rules;
+		},
+
+		// Converts a simple string to a {string: true} rule, e.g., "required" to {required:true}
+		normalizeRule: function( data ) {
+			if ( typeof data === "string" ) {
+				var transformed = {};
+				$.each( data.split( /\s/ ), function() {
+					transformed[ this ] = true;
+				} );
+				data = transformed;
+			}
+			return data;
+		},
+
+		// http://jqueryvalidation.org/jQuery.validator.addMethod/
+		addMethod: function( name, method, message ) {
+			$.validator.methods[ name ] = method;
+			$.validator.messages[ name ] = message !== undefined ? message : $.validator.messages[ name ];
+			if ( method.length < 3 ) {
+				$.validator.addClassRules( name, $.validator.normalizeRule( name ) );
+			}
+		},
+
+		// http://jqueryvalidation.org/jQuery.validator.methods/
+		methods: {
+
+			// http://jqueryvalidation.org/required-method/
+			required: function( value, element, param ) {
+
+				// Check if dependency is met
+				if ( !this.depend( param, element ) ) {
+					return "dependency-mismatch";
+				}
+				if ( element.nodeName.toLowerCase() === "select" ) {
+
+					// Could be an array for select-multiple or a string, both are fine this way
+					var val = $( element ).val();
+					return val && val.length > 0;
+				}
+				if ( this.checkable( element ) ) {
+					return this.getLength( value, element ) > 0;
+				}
+				return value.length > 0;
+			},
+
+			// http://jqueryvalidation.org/email-method/
+			email: function( value, element ) {
+
+				// From https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address
+				// Retrieved 2014-01-14
+				// If you have a problem with this implementation, report a bug against the above spec
+				// Or use custom methods to implement your own email validation
+				return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( value );
+			},
+
+			// http://jqueryvalidation.org/url-method/
+			url: function( value, element ) {
+
+				// Copyright (c) 2010-2013 Diego Perini, MIT licensed
+				// https://gist.github.com/dperini/729294
+				// see also https://mathiasbynens.be/demo/url-regex
+				// modified to allow protocol-relative URLs
+				return this.optional( element ) || /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})).?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test( value );
+			},
+
+			// http://jqueryvalidation.org/date-method/
+			date: function( value, element ) {
+				return this.optional( element ) || !/Invalid|NaN/.test( new Date( value ).toString() );
+			},
+
+			// http://jqueryvalidation.org/dateISO-method/
+			dateISO: function( value, element ) {
+				return this.optional( element ) || /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/.test( value );
+			},
+
+			// http://jqueryvalidation.org/number-method/
+			number: function( value, element ) {
+				return this.optional( element ) || /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test( value );
+			},
+
+			// http://jqueryvalidation.org/digits-method/
+			digits: function( value, element ) {
+				return this.optional( element ) || /^\d+$/.test( value );
+			},
+
+			// http://jqueryvalidation.org/minlength-method/
+			minlength: function( value, element, param ) {
+				var length = $.isArray( value ) ? value.length : this.getLength( value, element );
+				return this.optional( element ) || length >= param;
+			},
+
+			// http://jqueryvalidation.org/maxlength-method/
+			maxlength: function( value, element, param ) {
+				var length = $.isArray( value ) ? value.length : this.getLength( value, element );
+				return this.optional( element ) || length <= param;
+			},
+
+			// http://jqueryvalidation.org/rangelength-method/
+			rangelength: function( value, element, param ) {
+				var length = $.isArray( value ) ? value.length : this.getLength( value, element );
+				return this.optional( element ) || ( length >= param[ 0 ] && length <= param[ 1 ] );
+			},
+
+			// http://jqueryvalidation.org/min-method/
+			min: function( value, element, param ) {
+				return this.optional( element ) || value >= param;
+			},
+
+			// http://jqueryvalidation.org/max-method/
+			max: function( value, element, param ) {
+				return this.optional( element ) || value <= param;
+			},
+
+			// http://jqueryvalidation.org/range-method/
+			range: function( value, element, param ) {
+				return this.optional( element ) || ( value >= param[ 0 ] && value <= param[ 1 ] );
+			},
+
+			// http://jqueryvalidation.org/step-method/
+			step: function( value, element, param ) {
+				var type = $( element ).attr( "type" ),
+					errorMessage = "Step attribute on input type " + type + " is not supported.",
+					supportedTypes = [ "text", "number", "range" ],
+					re = new RegExp( "\\b" + type + "\\b" ),
+					notSupported = type && !re.test( supportedTypes.join() );
+
+				// Works only for text, number and range input types
+				// TODO find a way to support input types date, datetime, datetime-local, month, time and week
+				if ( notSupported ) {
+					throw new Error( errorMessage );
+				}
+				return this.optional( element ) || ( value % param === 0 );
+			},
+
+			// http://jqueryvalidation.org/equalTo-method/
+			equalTo: function( value, element, param ) {
+
+				// Bind to the blur event of the target in order to revalidate whenever the target field is updated
+				var target = $( param );
+				if ( this.settings.onfocusout && target.not( ".validate-equalTo-blur" ).length ) {
+					target.addClass( "validate-equalTo-blur" ).on( "blur.validate-equalTo", function() {
+						$( element ).valid();
+					} );
+				}
+				return value === target.val();
+			},
+
+			// http://jqueryvalidation.org/remote-method/
+			remote: function( value, element, param, method ) {
+				if ( this.optional( element ) ) {
+					return "dependency-mismatch";
+				}
+
+				method = typeof method === "string" && method || "remote";
+
+				var previous = this.previousValue( element, method ),
+					validator, data, optionDataString;
+
+				if ( !this.settings.messages[ element.name ] ) {
+					this.settings.messages[ element.name ] = {};
+				}
+				previous.originalMessage = previous.originalMessage || this.settings.messages[ element.name ][ method ];
+				this.settings.messages[ element.name ][ method ] = previous.message;
+
+				param = typeof param === "string" && { url: param } || param;
+				optionDataString = $.param( $.extend( { data: value }, param.data ) );
+				if ( previous.old === optionDataString ) {
+					return previous.valid;
+				}
+
+				previous.old = optionDataString;
+				validator = this;
+				this.startRequest( element );
+				data = {};
+				data[ element.name ] = value;
+				$.ajax( $.extend( true, {
+					mode: "abort",
+					port: "validate" + element.name,
+					dataType: "json",
+					data: data,
+					context: validator.currentForm,
+					success: function( response ) {
+						var valid = response === true || response === "true",
+							errors, message, submitted;
+
+						validator.settings.messages[ element.name ][ method ] = previous.originalMessage;
+						if ( valid ) {
+							submitted = validator.formSubmitted;
+							validator.resetInternals();
+							validator.toHide = validator.errorsFor( element );
+							validator.formSubmitted = submitted;
+							validator.successList.push( element );
+							validator.invalid[ element.name ] = false;
+							validator.showErrors();
+						} else {
+							errors = {};
+							message = response || validator.defaultMessage( element, { method: method, parameters: value } );
+							errors[ element.name ] = previous.message = message;
+							validator.invalid[ element.name ] = true;
+							validator.showErrors( errors );
+						}
+						previous.valid = valid;
+						validator.stopRequest( element, valid );
+					}
+				}, param ) );
+				return "pending";
+			}
+		}
+
+	} );
+
+	// Ajax mode: abort
+	// usage: $.ajax({ mode: "abort"[, port: "uniqueport"]});
+	// if mode:"abort" is used, the previous request on that port (port can be undefined) is aborted via XMLHttpRequest.abort()
+
+	var pendingRequests = {},
+		ajax;
+
+	// Use a prefilter if available (1.5+)
+	if ( $.ajaxPrefilter ) {
+		$.ajaxPrefilter( function( settings, _, xhr ) {
+			var port = settings.port;
+			if ( settings.mode === "abort" ) {
+				if ( pendingRequests[ port ] ) {
+					pendingRequests[ port ].abort();
+				}
+				pendingRequests[ port ] = xhr;
+			}
+		} );
+	} else {
+
+		// Proxy ajax
+		ajax = $.ajax;
+		$.ajax = function( settings ) {
+			var mode = ( "mode" in settings ? settings : $.ajaxSettings ).mode,
+				port = ( "port" in settings ? settings : $.ajaxSettings ).port;
+			if ( mode === "abort" ) {
+				if ( pendingRequests[ port ] ) {
+					pendingRequests[ port ].abort();
+				}
+				pendingRequests[ port ] = ajax.apply( this, arguments );
+				return pendingRequests[ port ];
+			}
+			return ajax.apply( this, arguments );
+		};
+	}
+
+	}));
+
+/***/ },
+/* 56 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by Administrator on 2017/1/9.
+	 */
+
+	//自定义validator --begin
+	$.validator.setDefaults({
+	    debug: true,
+	    submitHandler: function () {
+	        alert("验证通过，提交成功!");
+	    }
+	});
+	//自定义validator --end
+
+	//自定义messages --begin
+	$.extend($.validator.messages, {
+	    required: "这里不能为空",
+	    remote: "请修正此字段",
+	    email: "请提供有效的邮箱, 格式name@domain.com",
+	    url: "请输入有效的网址",
+	    date: "请输入有效的日期",
+	    dateISO: "请输入有效的日期 (YYYY-MM-DD)",
+	    number: "请输入有效的数字",
+	    digits: "只能输入整数数字",
+	    creditcard: "请输入有效的信用卡号码",
+	    equalTo: "你的输入不相同",
+	    extension: "请检查后缀",
+	    maxlength: $.validator.format("最多可以输入 {0} 个字符"),
+	    minlength: $.validator.format("最少要输入 {0} 个字符"),
+	    rangelength: $.validator.format("请输入长度在 {0} 到 {1} 之间的字符串"),
+	    range: $.validator.format("请输入范围在 {0} 到 {1} 之间的数值"),
+	    max: $.validator.format("请输入不大于 {0} 的数值"),
+	    min: $.validator.format("请输入不小于 {0} 的数值")
+	});
+	//自定义messages --end
+
+
+	//自定义校验规则 --begin
+	$.validator.addMethod( "xlower", function( value, element ) {
+	    return /[a-z]/.test( value );
+	}, "请包含小写字母" );
+
+	$.validator.addMethod( "xcapital", function( value, element ) {
+	    return /[A-Z]/.test( value );
+	}, "请包含大写字母" );
+
+	$.validator.addMethod( "xdigit", function( value, element ) {
+	    return /\d/.test( value );
+	}, "请包含数字" );
+
+	$.validator.addMethod( "xspecial", function( value, element ) {
+	    return /\W/.test( value );
+	}, "请包含特殊字符" );
+
+	$.validator.addMethod( "xchars2", function( value, element ) {
+	    var val=0;
+	    if(/[a-z]/.test( value )){
+	        val++;
+	    }
+	    if(/[A-Z]/.test( value )){
+	        val++;
+	    }
+	    if(/\d/.test( value )){
+	        val++;
+	    }
+	    if(/\W/.test( value )){
+	        val++;
+	    }
+	    return val>=2;
+	}, "请至少包含2种字符" );
+
+
+	$.validator.addMethod( "xname", function( value, element ) {
+	    return /^(\w+|[\u4e00-\u9fa5]+)$/.test( value );
+	}, "姓名可以包含字母、数字、下划线或汉字" );
+
+	$.validator.addMethod( "xuser", function( value, element ) {
+	    return /^(?![\d_])[\w\u4e00-\u9fa5]+$/.test( value );
+	}, "用户名可以包含字母、数字、'_'和汉字，不允许以数字或'_'开头" );
+
+	$.validator.addMethod( "xpwd", function( value, element ) {
+	    return /^\S+$/.test( value );
+	}, "密码最少6位，可以包含任何非空白字符" );
+
+	$.validator.addMethod( "xphone", function( value, element ) {
+	    return /^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\d{8}$/.test(value);
+	}, "请输入正确的11位手机号码, 支持13[0-9], 14[5,7], 15[0, 1, 2, 3, 5, 6, 7, 8, 9], 17[0, 1, 6, 7, 8], 18[0-9]");//支持13[0-9], 14[5,7], 15[0, 1, 2, 3, 5, 6, 7, 8, 9], 17[0, 1, 6, 7, 8], 18[0-9]
+
+	$.validator.addMethod( "xemail", function( value, element ) {
+	    return /^[\w.]{1,64}@([a-z0-9-]{1,200}.){1,5}[a-z]{1,6}$/.test( value );
+	}, "请输入正确的Email地址，格式: name@domain" );
+
+	$.validator.addMethod( "xurl", function( value, element ) {
+	    return /^((http|ftp|https):\/\/)?[\w_.]+(\/[\w_]+)*\/?$/.test( value );
+	}, "请输入正确的url地址" );
+
+	$.validator.addMethod( "xip", function( value, element ) {
+	    return /^([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])$/.test( value );
+	}, "请输入正确的ip地址" );
+
+	$.validator.addMethod( "xpostid", function( value, element ) {
+	    return /^[1-9]\d{5}(?!\d)$/.test( value );
+	}, "请输入正确的邮政编码" );
+
+	$.validator.addMethod( "xtel", function( value, element ) {
+	    return /^(([0+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/.test( value );
+	}, "请输入正确的固定电话" );
+
+	$.validator.addMethod( "xidcn", function( value, element ) {
+	    return /^\d{17}([0-9]|X|x)$/.test( value );
+	}, "请输入正确的身份证" );
+	//自定义校验规则 --end
+
+
+
+
+
+/***/ },
+/* 57 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by jesse on 2017/2/23.
+	 */
+	__webpack_require__(58);
+	__webpack_require__(60);
+	__webpack_require__(62);
+	__webpack_require__(64);
+	__webpack_require__(66);
+	__webpack_require__(68);
+
+/***/ },
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20473,7 +24159,7 @@
 	 */
 
 
-	__webpack_require__(50);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./tip.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	$.fn.extend({
 	    hoverTips : function (){
@@ -20508,20 +24194,15 @@
 
 
 /***/ },
-/* 50 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 51 */
+/* 59 */,
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2017/2/17.
 	 */
 
-	__webpack_require__(52);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./tab.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	$('.x-tab-nav li').click(function(){
 	    var i = $(this).index();
@@ -20533,20 +24214,15 @@
 
 
 /***/ },
-/* 52 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 53 */
+/* 61 */,
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2017/2/17.
 	 */
 
-	__webpack_require__(54);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./nav.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	//导航-侧边栏
 	$(".x-nav-head").click(function() {
@@ -20567,20 +24243,15 @@
 	});
 
 /***/ },
-/* 54 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 55 */
+/* 63 */,
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2017/2/17.
 	 */
 
-	__webpack_require__(56);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./form.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	$('.x-form-radio').click(function(){
 	    $(this).addClass('x-checked').siblings().removeClass('x-checked');
@@ -20607,20 +24278,15 @@
 	});
 
 /***/ },
-/* 56 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 57 */
+/* 65 */,
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2016/12/27.
 	 */
 
-	__webpack_require__(58);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./popup.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	module.exports = window.xPopUp = function(type,option,time) {
 	    var layerDom; //底部遮罩层
@@ -20865,26 +24531,22 @@
 	};
 
 /***/ },
-/* 58 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 59 */
+/* 67 */,
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Administrator on 2017/2/28.
 	 */
 
-	__webpack_require__(60);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./table.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var count = 0;
 
 	$('.x-table th').click(function(){
 	    var iconDom = $(this).find('i');
 	    if(count % 3 == 0){
+	        console.log(3333);
 	        iconDom.removeClass('x-table-arrow').addClass('x-table-arrowUp')
 	    }else if(count % 3 == 1){
 	        iconDom.removeClass('x-table-arrowUp').addClass('x-table-arrowDown');
@@ -20896,23 +24558,18 @@
 
 
 /***/ },
-/* 60 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 61 */
+/* 69 */,
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by jesse on 2017/2/23.
 	 */
-	__webpack_require__(62);
-	__webpack_require__(63)
+	__webpack_require__(71);
+	__webpack_require__(72)
 
 /***/ },
-/* 62 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -86759,7 +90416,7 @@
 	;
 
 /***/ },
-/* 63 */
+/* 72 */
 /***/ function(module, exports) {
 
 	/**
@@ -86996,7 +90653,7 @@
 
 
 /***/ },
-/* 64 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -87004,26 +90661,26 @@
 	 */
 
 
-	__webpack_require__(65);
-	__webpack_require__(1);
+	__webpack_require__(74);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./common/styles/index.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 /***/ },
-/* 65 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by jesse on 2017/2/22.
 	 */
 
-	__webpack_require__(66);
+	__webpack_require__(75);
 
 
 /***/ },
-/* 66 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	var WebUploader = __webpack_require__(67);
+	var WebUploader = __webpack_require__(76);
 
 	// 当domReady的时候开始初始化
 	(function($) {
@@ -87731,7 +91388,7 @@
 
 
 /***/ },
-/* 67 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! WebUploader 0.1.6 */
@@ -87851,7 +91508,7 @@
 	        // in another project. That other project will only
 	        // see this AMD call, not the internal modules in
 	        // the closure below.
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(68) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (makeExport), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(52) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (makeExport), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else {
 
 	        // Browser globals case. Just assign the
@@ -95875,12 +99532,6 @@
 	    return require('webuploader');
 	});
 
-
-/***/ },
-/* 68 */
-/***/ function(module, exports) {
-
-	module.exports = window.$;
 
 /***/ }
 /******/ ]);
