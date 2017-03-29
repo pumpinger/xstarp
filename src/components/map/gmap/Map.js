@@ -6,8 +6,8 @@
 
 var config = require('../config');
 var Bounds = require('./Bounds');
-var onOff = require('./onOff');
-var formatOpts = require('./formatOpt');
+var onOff = require('./util/onOff');
+var formatOpts = require('./util/formatOpt');
 
 /**
  * @constructor

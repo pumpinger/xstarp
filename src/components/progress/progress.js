@@ -1,6 +1,7 @@
 /**
  * Created by Administrator on 2016/12/29.
  */
+require('./progress.scss');
 
 ;(function (window, $) {
 

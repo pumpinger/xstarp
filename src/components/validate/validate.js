@@ -2,6 +2,8 @@
  * Created by Administrator on 2017/1/9.
  */
 
+require('./jquery.validate.js');
+
 //自定义validator --begin
 $.validator.setDefaults({
     debug: true,

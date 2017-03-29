@@ -3,7 +3,7 @@
  * @onOff 基类，覆盖物的实例都具有on和off方法，都直接来自于此
  */
 
-var event = require('./event');
+var event = require('./../Event');
 var onOff = {};
 
 /**

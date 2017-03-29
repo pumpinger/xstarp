@@ -269,7 +269,7 @@
                     case 'polygon':
                         mouseTool.polygon(opt);
                         break;
-                    case 'marker':
+                    case 'Marker':
                         mouseTool.marker(opt);
                         break;
                     case 'circle':

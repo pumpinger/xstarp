@@ -2,7 +2,7 @@
  * Created by fizz on 2017/2/14.
  */
 
-var LngLat = require('./LngLat');
+var LngLat = require('./../Lnglat');
 
 module.exports = {
   map: formatOptsUni,

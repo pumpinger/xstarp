@@ -134,7 +134,7 @@ module.exports = (function() {
 
     // script.src = url+'?'+'time='+Date.parse(new Date());
     script.src = url;
-    document.body.appendChild(script);
+    document.body.append(script);
   };
 
   var loadGroup = function() {
