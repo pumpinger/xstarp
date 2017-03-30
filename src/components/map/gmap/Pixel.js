@@ -6,7 +6,6 @@
  */
 
 var format = require('./util/format.js');
-
 /**
  * @constructor
  * @param {Number} x
@@ -28,7 +27,6 @@ Pixel.prototype.getX = function () {
 Pixel.prototype.getY = function () {
     return this._inner.y;
 };
-
 /**
  * @param {Pixel} pixel
  * */
@@ -39,5 +37,4 @@ Pixel.prototype.equals = function (pixel) {
 Pixel.prototype.toString = function () {
     return this._inner.toString();
 };
-
 module.exports = Pixel;
