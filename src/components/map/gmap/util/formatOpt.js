@@ -3,29 +3,21 @@
  */
 
 var LngLat = require('./../Lnglat');
-
-
 function formatOptsUni(opts) {
-
     if (opts.position) {
-        opts.position = new LngLat(opts.position);
+        opts.position = new google.maps.LatLng({lat:opts.position.getLat(), lng:opts.position.getLng()});
     }
-
     if (opts.path) {
         opts.path = transfromPathToPaths(opts.path);
     }
-
     if (opts.center) {
-        opts.center = new LngLat(opts.center);
+        opts.center = new google.maps.LatLng({lat:opts.center[0], lng:opts.center[1]});
     }
-
     if (opts.map) {
         opts.map = opts.map._inner;
     }
-
     return opts;
 }
-
 function transfromPathToPaths(path) {
     var paths = [];
     path.forEach(function (item, index) {
@@ -33,12 +25,9 @@ function transfromPathToPaths(path) {
     });
     return paths;
 }
-
 function arrCreateLngLat(arr) {
     return new google.maps.LatLng({lng: arr[0], lat: arr[1]});
 }
-
-
 /**************************************************
  * markerClusterer
  * ***********************************************/
@@ -55,7 +44,6 @@ function formatMarkerClusterer(map, markers, opts) {
     newOpts.opts = formatMarkerClustererOpts(opts);
     return newOpts;
 }
-
 /**
  * @param {Object} opts
  * @diff : minClusterSize : minimumClusterSize

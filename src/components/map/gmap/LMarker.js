@@ -10,6 +10,7 @@ LMarker = function (options) {
     // this.labelOffset = options.labelOffset || new google.maps.Size(8, -33);
     // options.icon = options.icon || getTextIcon();
     // google.maps.OverlayView.apply(this, arguments);
+    return this;
 };
 
 LMarker.prototype = new google.maps.OverlayView();
@@ -52,7 +53,7 @@ LMarker.prototype.draw = function () {
     // Retrieve the south-west and north-east coordinates of this overlay
     // in LatLngs and convert them to pixel coordinates.
     // We'll use these coordinates to resize the div.
-    var position = overlayProjection.fromLatLngToDivPixel(this.options.position._inner);
+    var position = overlayProjection.fromLatLngToDivPixel(this.options.position);
 
     // Resize the image's div to fit the indicated dimensions.
     var div = this.div_;

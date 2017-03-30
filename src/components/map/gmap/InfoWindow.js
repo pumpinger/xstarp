@@ -16,10 +16,6 @@ function InfoWindow(options) {
     var IWOpts = formatOpts.infoWindow(options);
     this.options = IWOpts;
 
-    google.maps.OverlayView.apply(this, IWOpts);
-
-    console.log('infoW',this);
-
     this._inner = new google.maps.OverlayView(IWOpts);
 }
 
