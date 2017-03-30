@@ -16,7 +16,7 @@ function InfoWindow(options) {
     var IWOpts = formatOpts.infoWindow(options);
     this.options = IWOpts;
 
-    google.maps.OverlayView.apply(this, arguments);
+    google.maps.OverlayView.apply(this, IWOpts);
 
     console.log('infoW',this);
 
@@ -32,8 +32,6 @@ InfoWindow.prototype.open = function (map, pos) {
     if (pos) {
         this.setPosition(pos);
     }
-    this.setMap(map._inner);
-
     map._overLayers.InfoWindow.push(this);
 
     this._isOpen = true;
@@ -78,7 +76,7 @@ InfoWindow.prototype.draw = function () {
     // Retrieve the south-west and north-east coordinates of this overlay
     // in LatLngs and convert them to pixel coordinates.
     // We'll use these coordinates to resize the div.
-    var position = overlayProjection.fromLatLngToDivPixel(this.options.position._inner);
+    var position = overlayProjection.fromLatLngToDivPixel(this._inner.getPosition());
 
     // Resize the image's div to fit the indicated dimensions.
     var div = this.div_;

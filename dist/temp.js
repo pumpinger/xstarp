@@ -73,9 +73,9 @@
 
 	var util = __webpack_require__(5);
 	var GMap = __webpack_require__(6);
-	var DMap = __webpack_require__(26);
-	var loader = __webpack_require__(45);
-	var config = __webpack_require__(12);
+	var DMap = __webpack_require__(27);
+	var loader = __webpack_require__(46);
+	var config = __webpack_require__(13);
 
 	window.GMap = GMap;
 	window.DMap = DMap;
@@ -17378,16 +17378,16 @@
 	var LngLat = __webpack_require__(7);
 	var Bounds = __webpack_require__(8);
 	var Pixel = __webpack_require__(9);
-	var Size = __webpack_require__(10);
-	var Map = __webpack_require__(11);
-	var Marker = __webpack_require__(18);
-	var LMarker = __webpack_require__(20);
-	var event = __webpack_require__(14);
-	var InfoWindow = __webpack_require__(21);
-	var Polyline = __webpack_require__(22);
-	var Polygon = __webpack_require__(23);
-	var Circle = __webpack_require__(24);
-	var MarkerClusterer = __webpack_require__(25);
+	var Size = __webpack_require__(11);
+	var Map = __webpack_require__(12);
+	var Marker = __webpack_require__(19);
+	var LMarker = __webpack_require__(21);
+	var event = __webpack_require__(15);
+	var InfoWindow = __webpack_require__(22);
+	var Polyline = __webpack_require__(23);
+	var Polygon = __webpack_require__(24);
+	var Circle = __webpack_require__(25);
+	var MarkerClusterer = __webpack_require__(26);
 
 	var GMap = {};
 
@@ -17575,7 +17575,7 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/15.
@@ -17584,46 +17584,38 @@
 	 * https://developers.google.com/maps/documentation/javascript/reference#Point
 	 */
 
-
+	var format = __webpack_require__(10);
 	/**
 	 * @constructor
 	 * @param {Number} x
 	 * @param {Number} y
 	 * */
 	function Pixel(x, y, inner) {
-	  if(inner) {
-	    this._inner = inner;
-	  } else {
-	    this._inner = new google.maps.Point(x,y);
-	  }
-
-	  this._type = 'Pixel';
-	  return this;
+	    if (inner) {
+	        this._inner = inner;
+	    } else {
+	        this._inner = new google.maps.Point(x, y);
+	    }
+	    this._type = 'Pixel';
+	    return this;
 	}
 
-	Pixel.prototype = {
-	  getX: function() {
+	Pixel.prototype.getX = function () {
 	    return this._inner.x;
-	  },
-	  getY: function() {
-	    return this._inner.y;
-	  },
-
-	  /**
-	   * @param {Pixel} point
-	   * */
-	  equals: function(point) {
-	    return this._inner.equals(point);
-	  },
-
-	  toString: function() {
-	    return this._inner.toString();
-	  }
 	};
-
-
-
-
+	Pixel.prototype.getY = function () {
+	    return this._inner.y;
+	};
+	/**
+	 * @param {Pixel} pixel
+	 * */
+	Pixel.prototype.equals = function (pixel) {
+	    var point = format({Point: pixel}).Point;
+	    return this._inner.equals(point);
+	};
+	Pixel.prototype.toString = function () {
+	    return this._inner.toString();
+	};
 	module.exports = Pixel;
 
 
@@ -17632,46 +17624,55 @@
 /***/ function(module, exports) {
 
 	/**
+	 * Created by Administrator on 2017/3/30.
+	 */
+	function format(options) {
+	    if (options.Point) {
+	        options.Point = new google.maps.Point(options.Point.getX(), options.Point.getY());
+	    }
+	    return options;
+	}
+
+	module.exports = format;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
 	 * Created by fizz on 2017/2/15.
 	 */
 
-
+	var format = __webpack_require__(10);
 	/**
 	 * @constructor
 	 * @param {Number} width
 	 * @param {Number} height
 	 * */
 	function Size(width, height, inner) {
-	  if(inner) {
-	    this._inner = inner;
-	  } else {
-	    this._inner = new google.maps.Size();
-	  }
-
-	  this._type = 'Size';
-	  return this;
+	    if (inner) {
+	        this._inner = inner;
+	    } else {
+	        this._inner = new google.maps.Size(width, height);
+	    }
+	    this._type = 'Size';
+	    return this;
 	}
 
-	Size.prototype = {
-	  getWidth: function() {
+	Size.prototype.getWidth = function () {
 	    return this._inner.width;
-	  },
-	  getHeight: function() {
-	    return this._inner.height;
-	  },
-	  toString: function() {
-	    return this._inner.toString();
-	  }
 	};
-
-
-
-
+	Size.prototype.getHeight = function () {
+	    return this._inner.height;
+	};
+	Size.prototype.toString = function () {
+	    return this._inner.toString();
+	};
 	module.exports = Size;
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17680,10 +17681,10 @@
 	 * @return our map object
 	 */
 
-	var config = __webpack_require__(12);
+	var config = __webpack_require__(13);
 	var Bounds = __webpack_require__(8);
-	var onOff = __webpack_require__(13);
-	var formatOpts = __webpack_require__(17);
+	var onOff = __webpack_require__(14);
+	var formatOpts = __webpack_require__(18);
 
 	/**
 	 * @constructor
@@ -17814,7 +17815,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	/**
@@ -17853,7 +17854,7 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17861,7 +17862,7 @@
 	 * @onOff 基类，覆盖物的实例都具有on和off方法，都直接来自于此
 	 */
 
-	var event = __webpack_require__(14);
+	var event = __webpack_require__(15);
 	var onOff = {};
 
 	/**
@@ -17920,18 +17921,18 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
 
-	var SMapEvent = __webpack_require__(15);
+	var SMapEvent = __webpack_require__(16);
 
 	var event = {};
 
-	event.map = __webpack_require__(16);
+	event.map = __webpack_require__(17);
 
 	event.getSMapEvent = function(e) {
 	  return new SMapEvent(e);
@@ -18017,7 +18018,7 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18059,7 +18060,7 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	/**
@@ -18082,7 +18083,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18091,53 +18092,38 @@
 
 	var LngLat = __webpack_require__(7);
 
-	module.exports = {
-	  map: formatOptsUni,
-
-	  infoWindow: formatOptsUni,
-
-	  marker: formatOptsUni,
-
-	  polyline: formatOptsUni,
-
-	  polygon: formatOptsUni,
-
-	  circle: formatOptsUni,
-
-	  markerClusterer: formatMarkerClusterer
-	};
 
 	function formatOptsUni(opts) {
 
-	  if(opts.position) {
-	    opts.position = new LngLat(opts.position);
-	  }
+	    if (opts.position) {
+	        opts.position = new LngLat(opts.position);
+	    }
 
-	  if(opts.path) {
-	    opts.path = transfromPathToPaths(opts.path);
-	  }
+	    if (opts.path) {
+	        opts.path = transfromPathToPaths(opts.path);
+	    }
 
-	  if(opts.center) {
-	    opts.center = new LngLat(opts.center);
-	  }
+	    if (opts.center) {
+	        opts.center = new LngLat(opts.center);
+	    }
 
-	  if(opts.map) {
-	    opts.map = opts.map._inner;
-	  }
+	    if (opts.map) {
+	        opts.map = opts.map._inner;
+	    }
 
-	  return opts;
+	    return opts;
 	}
 
 	function transfromPathToPaths(path) {
-	  var paths = [];
-	  path.forEach( function(item, index) {
-	    paths.push(arrCreateLngLat(item));
-	  });
-	  return paths;
+	    var paths = [];
+	    path.forEach(function (item, index) {
+	        paths.push(arrCreateLngLat(item));
+	    });
+	    return paths;
 	}
 
 	function arrCreateLngLat(arr) {
-	  return new google.maps.LatLng({lng: arr[0], lat: arr[1]});
+	    return new google.maps.LatLng({lng: arr[0], lat: arr[1]});
 	}
 
 
@@ -18145,21 +18131,17 @@
 	 * markerClusterer
 	 * ***********************************************/
 	function formatMarkerClusterer(map, markers, opts) {
-	  var newOpts = {};
-
-	  if(map._inner) {
-	    newOpts.map = map._inner;
-	  } else {
-	    newOpts.map = map;
-	  }
-
-	  newOpts.markers = markers.map( function(item) {
-	    return item._inner;
-	  });
-
-	  newOpts.opts = formatMarkerClustererOpts(opts);
-
-	  return newOpts;
+	    var newOpts = {};
+	    if (map._inner) {
+	        newOpts.map = map._inner;
+	    } else {
+	        newOpts.map = map;
+	    }
+	    newOpts.markers = markers.map(function (item) {
+	        return item._inner;
+	    });
+	    newOpts.opts = formatMarkerClustererOpts(opts);
+	    return newOpts;
 	}
 
 	/**
@@ -18167,51 +18149,48 @@
 	 * @diff : minClusterSize : minimumClusterSize
 	 * */
 	function formatMarkerClustererOpts(opts) {
-	  if(opts.minClusterSize) {
-	    opts.minimumClusterSize = opts.minClusterSize;
-	  }
-
-	  if(opts.styles) {
-
-	    if(opts.styles) {
-	      var styles = opts.styles;
-	      if(styles.size) {
-	        styles.width = styles.getWidth();
-	        styles.height = styles.getHeight();
-	      }
+	    if (opts.minClusterSize) {
+	        opts.minimumClusterSize = opts.minClusterSize;
 	    }
 
-	  }
+	    if (opts.styles) {
+	        var styles = opts.styles;
+	        if (styles.size) {
+	            styles.width = styles.getWidth();
+	            styles.height = styles.getHeight();
+	        }
+	    }
 	}
 
+	module.exports = {
+	    map: formatOptsUni,
 
-	// var flightPlanCoordinates = [
-	//   {lat: 37.772, lng: -122.214},
-	//   {lat: 21.291, lng: -157.821},
-	//   {lat: -18.142, lng: 178.431},
-	//   {lat: -27.467, lng: 153.027}
-	// ];
+	    infoWindow: formatOptsUni,
 
-	// var lineArr = [
-	//   [116.368904, 39.913423],
-	//   [116.382122, 39.901176],
-	//   [116.387271, 39.912501],
-	//   [116.398258, 39.904600]
-	// ];
+	    marker: formatOptsUni,
+
+	    polyline: formatOptsUni,
+
+	    polygon: formatOptsUni,
+
+	    circle: formatOptsUni,
+
+	    markerClusterer: formatMarkerClusterer
+	};
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 * @Class Marker
 	 */
-	var obc = __webpack_require__(19);
-	var onOff = __webpack_require__(13);
-	var formatOpts = __webpack_require__(17);
-	var LMarker = __webpack_require__(20);
+	var obc = __webpack_require__(20);
+	var onOff = __webpack_require__(14);
+	var formatOpts = __webpack_require__(18);
+	var LMarker = __webpack_require__(21);
 
 	/**
 	 * Represents a Marker
@@ -18245,7 +18224,7 @@
 
 	        google.maps.Marker.apply(this, opts);
 	        console.log('this', this);
-	        console.log('_inner', this._inner);
+	        console.log('this._inner', this._inner);
 	        //marker2._inner.__gm.Eb.map.b.O.style.opacity = 1
 	    }
 	}
@@ -18289,7 +18268,7 @@
 	module.exports = Marker;
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	/**
@@ -18328,7 +18307,7 @@
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	/**
@@ -18414,15 +18393,15 @@
 	module.exports = LMarker;
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
-	var onOff = __webpack_require__(13);
-	var formatOpts = __webpack_require__(17);
-	var obc = __webpack_require__(19);
+	var onOff = __webpack_require__(14);
+	var formatOpts = __webpack_require__(18);
+	var obc = __webpack_require__(20);
 
 	/**
 	 * @constructor
@@ -18435,7 +18414,7 @@
 	    var IWOpts = formatOpts.infoWindow(options);
 	    this.options = IWOpts;
 
-	    google.maps.OverlayView.apply(this, arguments);
+	    google.maps.OverlayView.apply(this, IWOpts);
 
 	    console.log('infoW',this);
 
@@ -18451,8 +18430,6 @@
 	    if (pos) {
 	        this.setPosition(pos);
 	    }
-	    this.setMap(map._inner);
-
 	    map._overLayers.InfoWindow.push(this);
 
 	    this._isOpen = true;
@@ -18497,7 +18474,7 @@
 	    // Retrieve the south-west and north-east coordinates of this overlay
 	    // in LatLngs and convert them to pixel coordinates.
 	    // We'll use these coordinates to resize the div.
-	    var position = overlayProjection.fromLatLngToDivPixel(this.options.position._inner);
+	    var position = overlayProjection.fromLatLngToDivPixel(this._inner.getPosition());
 
 	    // Resize the image's div to fit the indicated dimensions.
 	    var div = this.div_;
@@ -18585,7 +18562,7 @@
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18593,9 +18570,9 @@
 	 * @constructor Polyline
 	 */
 
-	var obc = __webpack_require__(19);
-	var onOff = __webpack_require__(13);
-	var formatOpts = __webpack_require__(17);
+	var obc = __webpack_require__(20);
+	var onOff = __webpack_require__(14);
+	var formatOpts = __webpack_require__(18);
 
 	/**
 	 * @constructor
@@ -18650,7 +18627,7 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18659,9 +18636,9 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(13);
-	var formatOpts = __webpack_require__(17);
-	var obc = __webpack_require__(19);
+	var onOff = __webpack_require__(14);
+	var formatOpts = __webpack_require__(18);
+	var obc = __webpack_require__(20);
 
 	/**
 	 * @constructor
@@ -18736,7 +18713,7 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18745,9 +18722,9 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(13);
-	var formatOpts = __webpack_require__(17);
-	var obc = __webpack_require__(19);
+	var onOff = __webpack_require__(14);
+	var formatOpts = __webpack_require__(18);
+	var obc = __webpack_require__(20);
 	var LngLat = __webpack_require__(7);
 
 	/**
@@ -18839,15 +18816,15 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/15.
 	 */
 
-	var formatOpts = __webpack_require__(17);
-	var obc = __webpack_require__(19);
+	var formatOpts = __webpack_require__(18);
+	var obc = __webpack_require__(20);
 
 	/**
 	 * @constructor
@@ -18890,26 +18867,26 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/13.
 	 */
 
-	var LngLat = __webpack_require__(27);
-	var Bounds = __webpack_require__(28);
-	var Pixel = __webpack_require__(29);
-	var Size = __webpack_require__(30);
-	var Map = __webpack_require__(31);
-	var Marker = __webpack_require__(39);
-	var Icon = __webpack_require__(37);
-	var event = __webpack_require__(33);
-	var InfoWindow = __webpack_require__(40);
-	var Polyline = __webpack_require__(41);
-	var Polygon = __webpack_require__(42);
-	var Circle = __webpack_require__(43);
-	var MarkerClusterer = __webpack_require__(44);
+	var LngLat = __webpack_require__(28);
+	var Bounds = __webpack_require__(29);
+	var Pixel = __webpack_require__(30);
+	var Size = __webpack_require__(31);
+	var Map = __webpack_require__(32);
+	var Marker = __webpack_require__(40);
+	var Icon = __webpack_require__(38);
+	var event = __webpack_require__(34);
+	var InfoWindow = __webpack_require__(41);
+	var Polyline = __webpack_require__(42);
+	var Polygon = __webpack_require__(43);
+	var Circle = __webpack_require__(44);
+	var MarkerClusterer = __webpack_require__(45);
 
 	var DMap = {};
 
@@ -18933,7 +18910,7 @@
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19046,7 +19023,7 @@
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19056,7 +19033,7 @@
 	 * https://developers.google.com/maps/documentation/javascript/3.exp/reference#LatLngBounds
 	 */
 
-	var LngLat = __webpack_require__(27);
+	var LngLat = __webpack_require__(28);
 	var util = __webpack_require__(5);
 
 	/**
@@ -19115,7 +19092,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/**
@@ -19168,7 +19145,7 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	/**
@@ -19213,7 +19190,7 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19224,10 +19201,10 @@
 	 * @attention 百度地图已经占掉了BMap这个顶级命名空间了，所以这里我们使用DMap来命名我们的顶级空间
 	 */
 
-	var config = __webpack_require__(12);
-	var Bounds = __webpack_require__(28);
-	var onOff = __webpack_require__(32);
-	var formatOpts = __webpack_require__(36);
+	var config = __webpack_require__(13);
+	var Bounds = __webpack_require__(29);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
 
 	/**
 	 * @constructor
@@ -19383,7 +19360,7 @@
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19391,7 +19368,7 @@
 	 * @onOff 基类，覆盖物的实例都具有on和off方法，都直接来自于此
 	 */
 
-	var event = __webpack_require__(33);
+	var event = __webpack_require__(34);
 	var onOff = {};
 
 	/**
@@ -19450,7 +19427,7 @@
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19462,11 +19439,11 @@
 	 * @url: http://api.map.baidu.com/library/EventWrapper/1.2/docs/symbols/BMapLib.EventWrapper.html
 	 */
 
-	var SMapEvent = __webpack_require__(34);
+	var SMapEvent = __webpack_require__(35);
 
 	var event = {};
 
-	event.map = __webpack_require__(35);
+	event.map = __webpack_require__(36);
 
 	event.listeners = [];
 
@@ -19647,7 +19624,7 @@
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19656,8 +19633,8 @@
 	 * 包装百度事件对象
 	 */
 
-	var LngLat = __webpack_require__(27);
-	var Pixel = __webpack_require__(29);
+	var LngLat = __webpack_require__(28);
+	var Pixel = __webpack_require__(30);
 
 	/**
 	 * 包装Google的事件触发时的event对象
@@ -19697,7 +19674,7 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	/**
@@ -19719,16 +19696,16 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by fizz on 2017/2/14.
 	 */
 
-	var LngLat = __webpack_require__(27);
-	var Icon = __webpack_require__(37);
-	var Size = __webpack_require__(30);
+	var LngLat = __webpack_require__(28);
+	var Icon = __webpack_require__(38);
+	var Size = __webpack_require__(31);
 
 	module.exports = {
 
@@ -19878,7 +19855,7 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19895,8 +19872,8 @@
 	 * @param {Number} y
 	 * */
 
-	var formatOpts = __webpack_require__(36);
-	var obc = __webpack_require__(38);
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
 
 	function Icon(opts, inner) {
 	    if(inner) {
@@ -19924,7 +19901,7 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	/**
@@ -19980,7 +19957,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19994,10 +19971,10 @@
 	 *
 	 */
 
-	var obc = __webpack_require__(38);
-	var onOff = __webpack_require__(32);
-	var formatOpts = __webpack_require__(36);
-	var LngLat = __webpack_require__(27);
+	var obc = __webpack_require__(39);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var LngLat = __webpack_require__(28);
 
 	/**
 	 * Represents a Marker
@@ -20076,7 +20053,7 @@
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20085,10 +20062,10 @@
 	 *
 	 * 高德有 change 事件，百度没有
 	 */
-	var onOff = __webpack_require__(32);
-	var formatOpts = __webpack_require__(36);
-	var obc = __webpack_require__(38);
-	var LngLat = __webpack_require__(27);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
+	var LngLat = __webpack_require__(28);
 
 	/**
 	 * @constructor
@@ -20187,7 +20164,7 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20198,10 +20175,10 @@
 	 * @zIndex 百度Polyline 没有zIndex这个属性，高德有
 	 */
 
-	var obc = __webpack_require__(38);
-	var onOff = __webpack_require__(32);
-	var formatOpts = __webpack_require__(36);
-	var Bounds = __webpack_require__(28);
+	var obc = __webpack_require__(39);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var Bounds = __webpack_require__(29);
 
 	/**
 	 * @constructor
@@ -20272,7 +20249,7 @@
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20281,9 +20258,9 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(32);
-	var formatOpts = __webpack_require__(36);
-	var obc = __webpack_require__(38);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
 
 	/**
 	 * @constructor
@@ -20359,7 +20336,7 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20368,10 +20345,10 @@
 	 */
 
 	// var event = require('./event');
-	var onOff = __webpack_require__(32);
-	var formatOpts = __webpack_require__(36);
-	var obc = __webpack_require__(38);
-	var LngLat = __webpack_require__(27);
+	var onOff = __webpack_require__(33);
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
+	var LngLat = __webpack_require__(28);
 
 	/**
 	 * @constructor
@@ -20468,7 +20445,7 @@
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20476,8 +20453,8 @@
 	 * @Class MarkerClusterer
 	 */
 
-	var formatOpts = __webpack_require__(36);
-	var obc = __webpack_require__(38);
+	var formatOpts = __webpack_require__(37);
+	var obc = __webpack_require__(39);
 
 	/**
 	 * @constructor
@@ -20529,7 +20506,7 @@
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	/**

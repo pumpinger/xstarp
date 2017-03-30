@@ -39,7 +39,7 @@ function Marker(opts, inner) {
 
         google.maps.Marker.apply(this, opts);
         console.log('this', this);
-        console.log('_inner', this._inner);
+        console.log('this._inner', this._inner);
         //marker2._inner.__gm.Eb.map.b.O.style.opacity = 1
     }
 }
