@@ -72,7 +72,7 @@ InfoWindow.prototype.draw = function () {
     // Retrieve the south-west and north-east coordinates of this overlay
     // in LatLngs and convert them to pixel coordinates.
     // We'll use these coordinates to resize the div.
-    var position = overlayProjection.fromLatLngToDivPixel(this._inner.getPosition());
+    var position = overlayProjection.fromLatLngToDivPixel(this.getPosition());
 
     // Resize the image's div to fit the indicated dimensions.
     var div = this.div_;
@@ -137,7 +137,7 @@ InfoWindow.prototype.setPosition = function (LngLat) {
 };
 
 InfoWindow.prototype.getPosition = function () {
-    return this.options.position;
+    return this._inner.getPosition();
 };
 
 // todo: google 不支持
