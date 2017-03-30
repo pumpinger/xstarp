@@ -36,7 +36,6 @@ Pixel.prototype.equals = function (pixel) {
     var point = format({Point: pixel}).Point;
     return this._inner.equals(point);
 };
-
 Pixel.prototype.toString = function () {
     return this._inner.toString();
 };
