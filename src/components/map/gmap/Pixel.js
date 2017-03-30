@@ -5,13 +5,13 @@
  * https://developers.google.com/maps/documentation/javascript/reference#Point
  */
 
+var format = require('./util/format.js');
+
 /**
  * @constructor
  * @param {Number} x
  * @param {Number} y
  * */
-var format = require('./util/format.js');
-
 function Pixel(x, y, inner) {
     if (inner) {
         this._inner = inner;
