@@ -23,7 +23,7 @@
     <div id="x-chart1" style="width:100%;height: 400px"></div>
 ````
 ````js
-barChart({
+XChart.barChart({
         conId:'x-chart1',
         title:'标题',
         xArray:['星期一星期', '星期二星期', '星期三星星期', '星期四星星期'],
@@ -67,7 +67,7 @@ barChart({
     <div id="x-chart2" style="width:100%;height: 400px;"></div>
  ````
 ````js
-cirChart({
+XChart.cirChart({
      conId:'x-chart2',
      title:'饼图',
      seriesType:'pie',
@@ -95,7 +95,7 @@ cirChart({
 ````
 
 ````js
- cirChart({
+ XChart.cirChart({
           conId:'x-chart3',
           title:'环形图',
           seriesType:'pie',
@@ -117,7 +117,7 @@ cirChart({
  <div id="x-chart4" style="width:100%;height: 400px;"></div>
 ````
 ````js
- linesChart({
+ XChart.linesChart({
          conId:'x-chart4',
          title:'折线图',
          legendArray:['最高气温','最低气温'],

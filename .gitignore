@@ -1,8 +1,10 @@
 .idea/
 node_modules/
+dist/
 docs/dist
 
-npm-debug*
+*npm-debug.log
+npm.debug*
 
 # Logs
 logs
