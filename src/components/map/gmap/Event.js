@@ -6,7 +6,7 @@ var SMapEvent = require('./SMapEvent');
 
 var event = {};
 
-event.map = require('./EventMap');
+event.map = require('./util/EventMap');
 
 event.getSMapEvent = function(e) {
   return new SMapEvent(e);

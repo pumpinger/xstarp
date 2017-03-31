@@ -16,7 +16,6 @@ function SMapEvent(e) {
         return
     }
     this._inner = e;
-    this._type = 'Event';
 
     this.lnglat = null;
     if (e.latLng) {
@@ -24,12 +23,13 @@ function SMapEvent(e) {
         this.lnglat.I = e.latLng.lng();
         this.lnglat.L = e.latLng.lat();
     }
-
-
     this.pixel = {
         x: e.pixel ? e.pixel.x : null,
         y: e.pixel ? e.pixel.y : null
     };
+
+    this._type = 'Event';
+    return this;
 }
 
 module.exports = SMapEvent;
