@@ -15,8 +15,8 @@ function format(options) {
     if (options.LngLat) {
         options.LngLat = options.LngLat._inner;
     }
-    if (options.LngLat) {
-        options.LngLat = options.LngLat._inner;
+    if (options.Bounds) {
+        options.Bounds = options.Bounds._inner;
     }
     return options;
 }
