@@ -17,6 +17,7 @@ function InfoWindow(options) {
     this.options = IWOpts;
 
     this._inner = new google.maps.OverlayView(IWOpts);
+    return this;
 }
 
 InfoWindow.prototype = new google.maps.OverlayView();
@@ -32,8 +33,6 @@ InfoWindow.prototype.open = function (map, pos) {
 
     this._isOpen = true;
 };
-
-
 InfoWindow.prototype.onAdd = function () {
 
     var div = document.createElement('div');
@@ -43,14 +42,9 @@ InfoWindow.prototype.onAdd = function () {
     div.style.cursor = 'pointer';
     div.append(this.options.content);
 
-    // Create the img element and attach it to the div.
     var img = document.createElement('div');
-    // img.src = this.image_;
-    // img.style.width = '100%';
-    // img.style.height = '100%';
-    // img.style.position = 'absolute';
-
     div.append(img);
+
     var that = this;
     div.onclick = function (e) {
         google.maps.event.trigger(that, 'click', e);
@@ -59,7 +53,6 @@ InfoWindow.prototype.onAdd = function () {
 
     // Add the element to the "overlayLayer" pane.
     var panes = this.getPanes();
-    // this.getPanes().markerLayer.innerHTML = 'sss'
     panes.overlayMouseTarget.append(div);
 };
 InfoWindow.prototype.draw = function () {
@@ -76,28 +69,13 @@ InfoWindow.prototype.draw = function () {
 
     // Resize the image's div to fit the indicated dimensions.
     var div = this.div_;
-    div.style.left = position.x + 'px';
-    div.style.top = position.y + 'px';
+    div.style.left = position.getX() + 'px';
+    div.style.top = position.getY() + 'px';
 };
 InfoWindow.prototype.onRemove = function () {
     this.div_.parentNode.removeChild(this.div_);
     this.div_ = null;
 };
-
-// Set the visibility to 'hidden' or 'visible'.
-InfoWindow.prototype.hide = function () {
-    if (this.div_) {
-        // The visibility property must be a string enclosed in quotes.
-        this.div_.style.visibility = 'hidden';
-    }
-};
-
-InfoWindow.prototype.show = function () {
-    if (this.div_) {
-        this.div_.style.visibility = 'visible';
-    }
-};
-
 
 InfoWindow.prototype.close = function () {
     this.hide();
@@ -121,35 +99,40 @@ InfoWindow.prototype.getIsOpen = function () {
 InfoWindow.prototype.setContent = function (content) {
     this.div_.innerHTML = content;
 };
-
 InfoWindow.prototype.getContent = function () {
     return this.div_;
 };
-
 InfoWindow.prototype.setPosition = function (LngLat) {
     var overlayProjection = this._smap._inner.getProjection();
     var position = overlayProjection.fromLatLngToDivPixel(LngLat);
 
     var div = this.div_;
     this.options.position = LngLat;
-    div.style.left = position.x + 'px';
-    div.style.top = position.y + 'px';
+    div.style.left = LngLat.getX() + 'px';
+    div.style.top = LngLat.getY() + 'px';
 };
-
 InfoWindow.prototype.getPosition = function () {
-    return this._inner.getPosition();
+    return new LngLat(0, 0, this._inner.getPosition());
 };
-
-// todo: google 不支持
 InfoWindow.prototype.setSize = function (size) {
-
+    // todo: google 不支持
 };
-
-// todo: google 不支持
 InfoWindow.prototype.getSize = function () {
-
+    // todo: google 不支持
+    return this.options.size;
 };
-
+InfoWindow.prototype.hide = function () {
+    // Set the visibility to 'hidden' or 'visible'.
+    if (this.div_) {
+        // The visibility property must be a string enclosed in quotes.
+        this.div_.style.visibility = 'hidden';
+    }
+};
+InfoWindow.prototype.show = function () {
+    if (this.div_) {
+        this.div_.style.visibility = 'visible';
+    }
+};
 InfoWindow.prototype.on = onOff.on;
 InfoWindow.prototype.off = onOff.off;
 
