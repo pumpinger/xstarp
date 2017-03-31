@@ -26,7 +26,7 @@ function LngLat(lng, lat, inner) {
 LngLat.prototype.offset = function (w, s) {
     //todo
 };
-LngLat.prototype.distance = function () {
+LngLat.prototype.distance = function (lnglat) {
     //todo
 };
 LngLat.prototype.getLng = function () {
