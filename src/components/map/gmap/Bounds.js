@@ -5,46 +5,41 @@
  * https://developers.google.com/maps/documentation/javascript/3.exp/reference#LatLngBounds
  */
 
+var LngLat = require('./LngLat');
 /**
  * @constructor
  * @sw {LngLat} southWest
  * @ne {LngLat} northEast
  * */
 function Bounds(sw, ne, inner) {
-
-  if(inner) {
-    this._inner = inner;
-  } else {
-    this._inner = new google.maps.LatLngBounds(sw, ne);
-  }
-
-  this._type = 'Bounds';
-
-  return this;
+    if (inner) {
+        this._inner = inner;
+    } else {
+        this._inner = new google.maps.LatLngBounds(sw, ne);
+    }
+    this._type = 'Bounds';
+    return this;
 }
 
-Bounds.prototype = {
-  /**
-   * @param {LngLat} point
-   * */
-  contains: function(point) {
+/**
+ * @param {LngLat} point
+ * */
+Bounds.prototype.contains = function(point) {
     return this._inner.contains(point._inner);
-  },
+};
 
-  getCenter: function() {
-    return LngLat.wrap(this._inner.getCenter());
-  },
-
-  getSouthWest: function() {
+Bounds.prototype.getCenter = function() {
+    return LngLat(this._inner.getCenter());
+};
+Bounds.prototype.getSouthWest = function() {
     return this._inner.getSouthWest();
-  },
-  getNorthEast: function() {
+};
+Bounds.prototype.getNorthEast = function() {
     return this._inner.getNorthEast();
-  },
-  toString: function() {
+};
+Bounds.prototype.toString = function() {
     console.log("toString");
     return this._inner.toString();
-  }
 };
 
 module.exports = Bounds;

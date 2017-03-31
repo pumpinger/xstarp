@@ -31,8 +31,7 @@ Pixel.prototype.getY = function () {
  * @param {Pixel} pixel
  * */
 Pixel.prototype.equals = function (pixel) {
-    var point = format({Point: pixel}).Point;
-    return this._inner.equals(point);
+    return this._inner.equals(format({Pixel: pixel}).Pixel);
 };
 Pixel.prototype.toString = function () {
     return this._inner.toString();

@@ -2,31 +2,34 @@
  * Created by fizz on 2017/2/14.
  */
 
-var LngLat = require('./../Lnglat');
+var LngLat = require('./LngLat');
+
 function formatOptsUni(opts) {
     if (opts.position) {
-        opts.position = new google.maps.LatLng({lat:opts.position.getLat(), lng:opts.position.getLng()});
+        opts.position = new google.maps.LatLng({ lat: opts.position.getLat(), lng: opts.position.getLng() });
     }
     if (opts.path) {
         opts.path = transfromPathToPaths(opts.path);
     }
     if (opts.center) {
-        opts.center = new google.maps.LatLng({lat:opts.center[0], lng:opts.center[1]});
+        opts.center = new google.maps.LatLng({ lat: opts.center[0], lng: opts.center[1] });
     }
     if (opts.map) {
         opts.map = opts.map._inner;
     }
     return opts;
 }
+
 function transfromPathToPaths(path) {
     var paths = [];
-    path.forEach(function (item, index) {
+    path.forEach(function(item, index) {
         paths.push(arrCreateLngLat(item));
     });
     return paths;
 }
+
 function arrCreateLngLat(arr) {
-    return new google.maps.LatLng({lng: arr[0], lat: arr[1]});
+    return new google.maps.LatLng({ lng: arr[0], lat: arr[1] });
 }
 /**************************************************
  * markerClusterer
@@ -38,7 +41,7 @@ function formatMarkerClusterer(map, markers, opts) {
     } else {
         newOpts.map = map;
     }
-    newOpts.markers = markers.map(function (item) {
+    newOpts.markers = markers.map(function(item) {
         return item._inner;
     });
     newOpts.opts = formatMarkerClustererOpts(opts);

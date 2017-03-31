@@ -2,7 +2,7 @@
  * Created by fizz on 2017/2/13.
  */
 
-var LngLat = require('./Lnglat');
+var LngLat = require('./LngLat');
 var Bounds = require('./Bounds');
 var Pixel = require('./Pixel');
 var Size = require('./Size');
