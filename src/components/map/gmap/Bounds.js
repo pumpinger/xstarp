@@ -20,26 +20,22 @@ function Bounds(sw, ne, inner) {
     this._type = 'Bounds';
     return this;
 }
-
 /**
  * @param {LngLat} point
  * */
 Bounds.prototype.contains = function(point) {
     return this._inner.contains(point._inner);
 };
-
 Bounds.prototype.getCenter = function() {
-    return LngLat(this._inner.getCenter());
+    return new LngLat(0, 0, this._inner.getCenter());
 };
 Bounds.prototype.getSouthWest = function() {
-    return this._inner.getSouthWest();
+    return new LngLat(0, 0, this._inner.getSouthWest());
 };
 Bounds.prototype.getNorthEast = function() {
-    return this._inner.getNorthEast();
+    return new LngLat(0, 0, this._inner.getNorthEast());
 };
 Bounds.prototype.toString = function() {
-    console.log("toString");
     return this._inner.toString();
 };
-
 module.exports = Bounds;
