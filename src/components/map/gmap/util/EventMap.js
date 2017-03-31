@@ -1,6 +1,5 @@
 /**
- * Created by fizz on 2017/2/16.
- *
+ * gmap util eventMap
  */
 
 module.exports = {
