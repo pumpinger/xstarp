@@ -4,6 +4,7 @@
 var onOff = require('./util/onOff');
 var formatOpts = require('./util/formatOpt');
 var obc = require('./util/overlayBaseClass');
+var LngLat = require('./LngLat.js');
 
 /**
  * @constructor
@@ -112,7 +113,7 @@ InfoWindow.prototype.setPosition = function (LngLat) {
     div.style.top = LngLat.getY() + 'px';
 };
 InfoWindow.prototype.getPosition = function () {
-    return new LngLat(0, 0, this._inner.getPosition());
+    return new LngLat(0, 0, this.options.position);
 };
 InfoWindow.prototype.setSize = function (size) {
     // todo: google 不支持
