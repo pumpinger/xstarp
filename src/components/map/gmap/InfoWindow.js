@@ -25,7 +25,7 @@ InfoWindow.prototype = new google.maps.OverlayView();
 
 InfoWindow.prototype.open = function (map, pos) {
   this._smap = map;
-  this.setPosition(pos);
+  this.options.position = pos._inner;
   this.setMap(map._inner);
   map._overLayers.InfoWindow.push(this);
   this._isOpen = true;
@@ -101,6 +101,7 @@ InfoWindow.prototype.getContent = function () {
 };
 InfoWindow.prototype.setPosition = function (LngLat) {
     this.options.position = LngLat._inner;
+    this.draw();
 };
 InfoWindow.prototype.getPosition = function () {
   return new LngLat(0, 0, this.options.position);
