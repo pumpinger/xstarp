@@ -12,7 +12,7 @@ function formatOptsUni(opts) {
         opts.path = transfromPathToPaths(opts.path);
     }
     if (opts.center) {
-        opts.center = new google.maps.LatLng({ lat: opts.center[1], lng: opts.center[0] });
+        opts.center = new google.maps.LatLng({ lat: opts.center.getLat(), lng: opts.center.getLng() });
     }
     if (opts.map) {
         opts.map = opts.map._inner;
