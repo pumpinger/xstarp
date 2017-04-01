@@ -44,8 +44,8 @@ CMarker.prototype.draw = function () {
   var position = overlayProjection.fromLatLngToDivPixel(this.getPosition());
 
   // Resize the image's div to fit the indicated dimensions.
-  this.div_.style.left = position.getX() + 'px';
-  this.div_.style.top = position.getY() + 'px';
+  this.div_.style.left = position.x + 'px';
+  this.div_.style.top = position.y + 'px';
 };
 CMarker.prototype.onRemove = function () {
   this.div_.parentNode.removeChild(this.div_);
