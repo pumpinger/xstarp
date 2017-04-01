@@ -2,15 +2,14 @@
  * Created by Administrator on 2017/3/27.
  */
 
-LMarker = function (options) {
+CMarker = function (options) {
   this.options = options;
-  google.maps.OverlayView.apply(this, arguments);
+  google.maps.OverlayView.apply(this, options);
   return this;
 };
+CMarker.prototype = new google.maps.OverlayView();
 
-LMarker.prototype = new google.maps.OverlayView();
-
-LMarker.prototype.onAdd = function () {
+CMarker.prototype.onAdd = function () {
   var div = document.createElement('div');
   div.style.borderStyle = 'none';
   div.style.borderWidth = '0px';
@@ -32,7 +31,7 @@ LMarker.prototype.onAdd = function () {
   var panes = this.getPanes();
   panes.overlayMouseTarget.append(div);
 };
-LMarker.prototype.draw = function () {
+CMarker.prototype.draw = function () {
 
   // We use the south-west and north-east
   // coordinates of the overlay to peg it to the correct position and size.
@@ -48,21 +47,21 @@ LMarker.prototype.draw = function () {
   this.div_.style.left = position.getX() + 'px';
   this.div_.style.top = position.getY() + 'px';
 };
-LMarker.prototype.onRemove = function () {
+CMarker.prototype.onRemove = function () {
   this.div_.parentNode.removeChild(this.div_);
   this.div_ = null;
 };
 
-LMarker.prototype.getPosition = function () {
+CMarker.prototype.getPosition = function () {
   return this.options.position;
 };
-LMarker.prototype.setPosition = function (latlng) {
+CMarker.prototype.setPosition = function (latlng) {
     this.options.position = latlng._inner;
     this.draw();
 };
 
 // Set the visibility to 'hidden' or 'visible'.
-LMarker.prototype.setVisible = function (visible) {
+CMarker.prototype.setVisible = function (visible) {
   if (this.div_) {
     // The visibility property must be a string enclosed in quotes.
     if (visible) {
@@ -73,4 +72,4 @@ LMarker.prototype.setVisible = function (visible) {
   }
 };
 
-module.exports = LMarker;
+module.exports = CMarker;

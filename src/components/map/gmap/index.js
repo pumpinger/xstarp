@@ -8,7 +8,7 @@ var Pixel = require('./Pixel');
 var Size = require('./Size');
 var Map = require('./Map');
 var Marker = require('./Marker');
-var LMarker = require('./LMarker');
+var CMarker = require('./CMarker');
 var event = require('./Event');
 var InfoWindow = require('./InfoWindow');
 var Polyline = require('./Polyline');
@@ -27,7 +27,7 @@ GMap.Size = Size;
 
 GMap.Map = Map;
 GMap.Marker = Marker;
-GMap.LMarker = LMarker;
+GMap.CMarker = CMarker;
 GMap.InfoWindow = InfoWindow;
 GMap.Polyline = Polyline;
 GMap.Polygon = Polygon;

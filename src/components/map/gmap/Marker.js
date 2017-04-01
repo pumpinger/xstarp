@@ -5,7 +5,7 @@
 var obc = require('./util/overlayBaseClass');
 var onOff = require('./util/onOff');
 var format = require('./util/format.js');
-var LMarker = require('./LMarker');
+var CMarker = require('./CMarker');
 var LngLat = require('./LngLat.js');
 
 /**
@@ -25,8 +25,8 @@ function Marker(opts, inner) {
         if (newOpts.content) {
             newOpts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
             newOpts.label = newOpts.content;
-            this._inner = new LMarker(newOpts);
-            console.log('LMarker',this._inner);
+            this._inner = new CMarker(newOpts);
+            console.log('CMarker',this._inner);
             
         } else {
             this._inner = new google.maps.Marker(newOpts);
