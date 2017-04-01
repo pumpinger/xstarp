@@ -10,9 +10,7 @@
     </style>
 </head>
 <body>
-
 <div>InfoWindow test</div>
-
 <div id="container" class="map_container"></div>
 
 <script src="../../../dist/vendor/jquery.js"></script>
@@ -23,44 +21,43 @@
 <script src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjPUco3l_6-f8ZexAesZrYFzpGtRQHvSo"></script>
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-
 <script>
     SMapConfig = {
         SMap_target_type: 'g', //a,b,g
     };
 </script>
 <script src="../../../dist/temp.js"></script>
-
-
 <script>
+    var p1 = new SMap.LngLat(104.077955, 30.444575);
+    var p2 = new SMap.LngLat(104.037955, 30.444575);
+    var p3 = new SMap.LngLat(104.007955, 30.444575);
+    var px1 = new SMap.Pixel(-15, -34);
+    var px2 = new SMap.Pixel(9,9);
+    var px3 = new SMap.Pixel(9,9);
+    var icon = 'http://fhj.xbwq.com.cn/fhj/public/common/widget/module/location/track/images/track/track_map2_start.png';
+
     var smap = new SMap.Map('container', {
         resizeEnable: true,
         zoom: 13,
-        center: [104.077955, 30.444575]
+        center: p1
     });
-    console.log(smap);
-
-    var offset = new SMap.Pixel(-15, -34);
-    var icon = 'http://fhj.xbwq.com.cn/fhj/public/common/widget/module/location/track/images/track/track_map2_start.png';
 
     var marker = new SMap.Marker({
         icon: icon,
-        offset: offset,
-        position: new SMap.LngLat(104.077955, 30.477575),
+        offset: px1,
+        position: p1,
         extData: {iconval: 11, iconval_s: 22},
         visible: true,
         title: 'hello world111111111111',
         zIndex: 10,
         content: 'c1'   //自定义点标记覆盖物内容
     });
+
     marker.setMap(smap);
-
-    marker.on('click', markerHandler);
-
-    function markerHandler() {
+    marker.on('click', function(params) {
         console.log("click marker!");
-        iw.open(smap);
-    }
+        iw.open(smap,p3);
+    });
 
     function createInfoWindow(title, content, info_bottom, info_className, dataId) {
         var info_pop = document.createElement('div');
@@ -104,21 +101,12 @@
         smap.clearInfoWindow();
         $(".fenceMask").hide();
     }
-
     var info = createInfoWindow('title','content','info_bottom','info_className','dataId');
-    console.log(info);
-
-    var pix = new SMap.Pixel(9,9);
-    console.log('pix',pix);
-    var pix2 = new SMap.Pixel(9,9);
-    console.log('pix2',pix2);
 
     var iw = new SMap.InfoWindow({
         content: info,
-        position: new SMap.LngLat(104.077955, 30.477575),
+        position: p2,
     });
-    console.log('iw',iw);
-
     iw.on('closeclick', function (e) {
         console.log("你点击了关闭");
     });
