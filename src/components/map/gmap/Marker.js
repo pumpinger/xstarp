@@ -6,6 +6,7 @@ var obc = require('./util/overlayBaseClass');
 var onOff = require('./util/onOff');
 var format = require('./util/format.js');
 var LMarker = require('./LMarker');
+var LngLat = require('./LngLat.js');
 
 /**
  * Represents a Marker
@@ -59,7 +60,7 @@ Marker.prototype.setMap = function (map) {
 };
 Marker.prototype.getMap = obc.getMap;
 Marker.prototype.getPosition = function () {
-    return this._inner.getPosition();
+    return new LngLat(0,0,this._inner.getPosition());
 };
 
 Marker.prototype.hide = function () {
