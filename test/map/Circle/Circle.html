@@ -42,7 +42,7 @@
         center: p1
     });
 
-    var circle = new SMap.Circle({
+    var circle1 = new SMap.Circle({
         map: smap,
         center: p1,
         extData: {iconval: 11, iconval_s: 22},
@@ -50,8 +50,21 @@
         radius : 1000
     });
 
-    circle.setMap(smap);
-    circle.on('click', function(params) {
+    circle1.setMap(smap);
+    circle1.on('click', function(params) {
+        console.log("click marker!");
+        iw.open(smap,p1);
+    });
+
+    var circle2 = new SMap.Circle({
+        map: smap,
+        center: p3,
+        extData: {iconval: 11, iconval_s: 22},
+        zIndex: 10,
+        radius : 1000
+    });
+    circle2.setMap(smap);
+    circle2.on('click', function(params) {
         console.log("click marker!");
         iw.open(smap,p3);
     });

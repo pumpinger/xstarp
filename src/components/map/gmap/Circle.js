@@ -16,77 +16,79 @@ var LngLat = require('./LngLat');
  * @return an object, inner is prime google map Circle instance.
  * */
 function Circle(opts) {
-    this._type = 'Circle';
-    obc.addOverlay(opts, this);
-    this.opts = opts;
+  this._type = 'Circle';
+  obc.addOverlay(opts, this);
 
-    var newOpts = formatOpts.circle(opts);
-    this._inner = new google.maps.Circle(newOpts);
-    this.extData = newOpts.extData;
+  var newOpts = formatOpts.circle(opts);
+  this.opts = newOpts;
+  this._inner = new google.maps.Circle(newOpts);
+  this.extData = newOpts.extData;
+  this._inner.onclick = function (e) {
+    google.maps.event.trigger(that, 'click', e);
+  };
 }
 
-Circle.prototype = {
 
-    setMap: obc.setMap,
+Circle.prototype.setMap = obc.setMap;
 
-    setCenter: function(center) {
-        this._inner.setCenter(center);
-    },
-
-    getCenter: function() {
-        return new LngLat(' ', ' ', this._inner.getCenter());
-    },
-
-    getBounds: function() {
-
-    },
-
-    /**
-     * @param {Number} radius
-     * */
-    setRadius: function(radius) {
-        this._inner.setRadius(radius);
-    },
-
-    getRadius: function() {
-        return this._inner.getRadius();
-    },
-
-    setOptions: function() {
-        this._inner.setOptions(formatOpts.polygon(this.opts));
-    },
-
-    getOptions: function() {},
-
-    getArea: function() {},
-
-    hide: obc.hide,
-
-    show: obc.show,
-
-    /**
-     * @ext {any} extData
-     * */
-    setExtData: function(ext) {
-        this.extData = ext;
-    },
-
-    getExtData: function() {
-        return this.extData;
-    },
-
-    /**
-     * @function judge whether a point in the polygon inner
-     * @point {LngLat}
-     * @return {Boolean} true or false
-     * */
-    contains: function(point) {
-        return this._inner.getBounds().contains(point);
-    },
-
-    on: onOff.on,
-    off: onOff.off
+Circle.prototype.setCenter = function (center) {
+  this._inner.setCenter(center);
 };
+
+Circle.prototype.getCenter = function () {
+  return new LngLat(0, 0, this._inner.getCenter());
+};
+
+// Circle.prototype.getBounds = function () {
+
+// };
+
+/**
+ * @param {Number} radius
+ * */
+Circle.prototype.setRadius = function (radius) {
+  this._inner.setRadius(radius);
+};
+
+Circle.prototype.getRadius = function () {
+  return this._inner.getRadius();
+};
+
+Circle.prototype.setOptions = function (opts) {
+  this.opts = formatOpts.polygon(opts)
+  this._inner.setOptions(this.opts);
+};
+
+Circle.prototype.getOptions = function () {};
+
+Circle.prototype.getArea = function () {};
+
+Circle.prototype.hide = obc.hide;
+
+Circle.prototype.show = obc.show;
+
+/**
+ * @ext {any} extData
+ * */
+Circle.prototype.setExtData = function (ext) {
+  this.extData = ext;
+};
+
+Circle.prototype.getExtData = function () {
+  return this.extData;
+};
+
+/**
+ * @function judge whether a point in the polygon inner
+ * @point {LngLat}
+ * @return {Boolean} true or false
+ * */
+Circle.prototype.contains = function (point) {
+  return this._inner.getBounds().contains(point._inner);
+};
+
+Circle.prototype.on = onOff.on;
+Circle.prototype.off = onOff.off;
 
 var CircleEventMap = {
 

@@ -11,7 +11,7 @@ function formatOptsUni(opts) {
     if (opts.path) {
         opts.path = transfromPathToPaths(opts.path);
     }
-    if (opts.center) {
+    if (opts.center && opts.center._type === 'LngLat') {
         opts.center = new google.maps.LatLng({ lat: opts.center.getLat(), lng: opts.center.getLng() });
     }
     if (opts.map) {
