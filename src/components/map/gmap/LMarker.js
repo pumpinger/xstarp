@@ -42,12 +42,11 @@ LMarker.prototype.draw = function () {
   // Retrieve the south-west and north-east coordinates of this overlay
   // in LatLngs and convert them to pixel coordinates.
   // We'll use these coordinates to resize the div.
-  var position = overlayProjection.fromLatLngToDivPixel(this.options.position);
+  var position = overlayProjection.fromLatLngToDivPixel(this.getPosition());
 
   // Resize the image's div to fit the indicated dimensions.
-  var div = this.div_;
-  div.style.left = position.getX() + 'px';
-  div.style.top = position.getY() + 'px';
+  this.div_.style.left = position.getX() + 'px';
+  this.div_.style.top = position.getY() + 'px';
 };
 LMarker.prototype.onRemove = function () {
   this.div_.parentNode.removeChild(this.div_);
@@ -58,9 +57,8 @@ LMarker.prototype.getPosition = function () {
   return this.options.position;
 };
 LMarker.prototype.setPosition = function (latlng) {
-    this.options.position = latlng;
-    this.redraw()
-  return ;
+    this.options.position = latlng._inner;
+    this.draw();
 };
 
 // Set the visibility to 'hidden' or 'visible'.
