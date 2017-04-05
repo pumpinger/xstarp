@@ -33,57 +33,54 @@ function Map(id, opts) {
   };
 }
 
-Map.prototype = {
+  Map.prototype.plugin = mapPlugin;
 
-  plugin: mapPlugin,
+  Map.prototype.service = function (pluginName, callback) {
 
-  service: function (pluginName, callback) {
+  };
 
-  },
-
-  setStatus: function () {
+  Map.prototype.setStatus = function () {
     return
-  },
-  clearMap: clearMap,
-  clearInfoWindow: function () {
+  };
+  Map.prototype.clearMap = clearMap;
+  Map.prototype.clearInfoWindow = function () {
     var iws = this._overLayers.InfoWindow;
     iws.forEach(function (item) {
       item.close();
     })
-  },
+  };
 
   // TODO: setFitView
-  setFitView: function () {
+  Map.prototype.setFitView = function () {
 
-  },
+  };
 
   /**
    * @param {LngLat} position
    * */
-  panTo: function (position) {
+  Map.prototype.panTo = function (position) {
     this._inner.panTo(position._inner);
-  },
+  };
 
-  destroy: function () {
+  Map.prototype.destroy = function () {
 
-  },
+  };
 
   /**
    * @param {Number} zoom
    * */
-  setZoom: function (zoom) {
+  Map.prototype.setZoom = function (zoom) {
     this._inner.setZoom(zoom);
-  },
+  };
 
-  getBounds: function () {
+ Map.prototype.getBounds = function () {
     return new Bounds('', '', this._inner.getBounds());
-  },
-  setBounds: function () {
+  };
+  Map.prototype.setBounds = function () {
     // todo:    
-  },
-  on: onOff.on,
-  off: onOff.off
-};
+  };
+  Map.prototype.on = onOff.on;
+  Map.prototype.off = onOff.off
 
 function mapPlugin(plugins, fn) {
   if (plugins.length < 1) return;
