@@ -24,7 +24,7 @@
   <script src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjPUco3l_6-f8ZexAesZrYFzpGtRQHvSo"></script>
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-  
+
   <script>
     SMapConfig = {
       SMap_target_type: 'g', //a,b,g
@@ -58,15 +58,15 @@
     var cluster;
     var sts = [{
       url: "http://c163img.nos-eastchina1.126.net/m0.png",
-      size: new SMap.Size(32, 32),
-      offset: new SMap.Pixel(-16, -30)
+      size: new SMap.Size(53, 53),
+      // offset: new SMap.Pixel(-16, -30)
     }, {
       url: "http://c163img.nos-eastchina1.126.net/m1.png",
-      size: new SMap.Size(32, 32),
+      size: new SMap.Size(53, 53),
       offset: new SMap.Pixel(-16, -30)
     }, {
       url: 'http://c163img.nos-eastchina1.126.net/m2.png',
-      size: new SMap.Size(48, 48),
+      size: new SMap.Size(53, 53),
       offset: new SMap.Pixel(-24, -45),
       textColor: '#CC0066',
       anchor: 'anchor',
@@ -80,7 +80,7 @@
       var t = new SMap.Marker({
         position: item,
         icon: icon1,
-        // content: 'cm',
+        content: 'cm',
         title: 'hello world'
       });
       t.setMap(smap);
