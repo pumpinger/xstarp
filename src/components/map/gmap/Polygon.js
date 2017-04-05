@@ -22,59 +22,53 @@ function Polygon(opts) {
 
 }
 
-Polygon.prototype = {
+Polygon.prototype.setMap = obc.setMap;
 
-  setMap: obc.setMap,
+/**
+ * @param {path:Array LngLat | Array lngLat} path
+ * */
+Polygon.prototype.setPath = function (path) {
+  this._inner.setPath(path);
+};
+Polygon.prototype.getPath = function () {};
 
-  /**
-   * @param {path:Array LngLat | Array lngLat} path
-   * */
-  setPath: function(path) {
-    this._inner.setPath( path );
-  },
-  getPath: function() {},
-
-  setOptions: function() {
-    this._inner.setOptions( formatOpts.polygon(opts) );
-  },
-
-  getOptions: function() {},
-
-  getBounds: function() {},
-
-  getArea: function() {},
-
-  hide: obc.hide,
-
-  show: obc.show,
-
-
-
-  /**
-   * @param {any} ext extData
-   * */
-  setExtData: function(ext) {
-    this._inner.extDate = ext;
-  },
-
-  getExtData: function() {
-    return this._inner.extDate;
-  },
-
-  /**
-   * @function judge whether a point in the polygon inner
-   * @param {LngLat} point
-   * */
-  contains: function(point) {
-    //TODO 多边形没实现contains
-      // return this._inner.getBounds().contains(point);
-  },
-
-  on: onOff.on,
-  off: onOff.off
+Polygon.prototype.setOptions = function () {
+  this._inner.setOptions(formatOpts.polygon(opts));
 };
 
+Polygon.prototype.getOptions = function () {};
+
+Polygon.prototype.getBounds = function () {};
+
+Polygon.prototype.getArea = function () {};
+
+Polygon.prototype.hide = obc.hide;
+
+Polygon.prototype.show = obc.show;
+
+
+
+/**
+ * @param {any} ext extData
+ * */
+Polygon.prototype.setExtData = function (ext) {
+  this._inner.extDate = ext;
+};
+
+Polygon.prototype.getExtData = function () {
+  return this._inner.extDate;
+};
+
+/**
+ * @function judge whether a point in the polygon inner
+ * @param {LngLat} point
+ * */
+Polygon.prototype.contains = function (point) {
+  //TODO 多边形没实现contains
+  // return this._inner.getBounds().contains(point);
+};
+
+Polygon.prototype.on = onOff.on;
+Polygon.prototype.off = onOff.off;
+
 module.exports = Polygon;
-
-
-
