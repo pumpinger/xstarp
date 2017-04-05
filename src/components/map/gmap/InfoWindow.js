@@ -25,7 +25,9 @@ InfoWindow.prototype = new google.maps.OverlayView();
 
 InfoWindow.prototype.open = function (map, pos) {
   this._smap = map;
-  this.options.position = pos._inner;
+  if(pos){
+    this.options.position = pos._inner;
+  }
   this.setMap(map._inner);
   map._overLayers.InfoWindow.push(this);
   this._isOpen = true;
