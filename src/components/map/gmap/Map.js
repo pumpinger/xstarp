@@ -19,7 +19,7 @@ function Map(id, opts) {
   this._type = 'Map';
   elem = document.getElementById(id);
   newOpts = formatOpts.map(opts);
-  console.log("newOpts",newOpts);
+  console.log("newOpts", newOpts);
 
   this._inner = new google.maps.Map(elem, newOpts);
   this._inner._smap = this;
@@ -33,69 +33,27 @@ function Map(id, opts) {
   };
 }
 
-  Map.prototype.plugin = mapPlugin;
-
-  Map.prototype.service = function (pluginName, callback) {
-
-  };
-
-  Map.prototype.setStatus = function () {
-    return
-  };
-  Map.prototype.clearMap = clearMap;
-  Map.prototype.clearInfoWindow = function () {
-    var iws = this._overLayers.InfoWindow;
-    iws.forEach(function (item) {
-      item.close();
-    })
-  };
-
-  // TODO: setFitView
-  Map.prototype.setFitView = function () {
-
-  };
-
-  /**
-   * @param {LngLat} position
-   * */
-  Map.prototype.panTo = function (position) {
-    this._inner.panTo(position._inner);
-  };
-
-  Map.prototype.destroy = function () {
-
-  };
-
-  /**
-   * @param {Number} zoom
-   * */
-  Map.prototype.setZoom = function (zoom) {
-    this._inner.setZoom(zoom);
-  };
-
- Map.prototype.getBounds = function () {
-    return new Bounds('', '', this._inner.getBounds());
-  };
-  Map.prototype.setBounds = function () {
-    // todo:    
-  };
-  Map.prototype.on = onOff.on;
-  Map.prototype.off = onOff.off
-
-function mapPlugin(plugins, fn) {
+Map.prototype.plugin = function(plugins, fn) {
   if (plugins.length < 1) return;
-  plugins.forEach(function (plugin) {
+  plugins.forEach(function(plugin) {
     console.log(plugin);
     if (plugin === 'GMap.MarkerClusterer') {
-      $.getScript(config.GMap_MarkerClusterer, function () {
+      $.getScript(config.GMap_MarkerClusterer, function() {
         fn();
       });
     }
 
   })
-}
+};
 
-function clearMap() {
+Map.prototype.service = function(pluginName, callback) {
+
+};
+
+Map.prototype.setStatus = function() {
+  return
+};
+Map.prototype.clearMap = function() {
   var overLayers = this._overLayers;
   for (var type in overLayers) {
     switch (type) {
@@ -105,7 +63,7 @@ function clearMap() {
       case 'Polyline':
       case 'InfoWindow':
         if (overLayers[type].length > 0) {
-          overLayers[type].forEach(function (item) {
+          overLayers[type].forEach(function(item) {
             item._inner.setMap(null);
           });
           overLayers.lenght = 0;
@@ -113,7 +71,7 @@ function clearMap() {
         break;
       case 'MarkerClusterer':
         if (overLayers.MarkerClusterer.length > 0) {
-          overLayers.MarkerClusterer.forEach(function (item) {
+          overLayers.MarkerClusterer.forEach(function(item) {
             item._inner.clearMarkers();
           });
           overLayers.MarkerClusterer.length = 0;
@@ -122,6 +80,44 @@ function clearMap() {
     }
 
   }
-}
+};
+Map.prototype.clearInfoWindow = function() {
+  var iws = this._overLayers.InfoWindow;
+  iws.forEach(function(item) {
+    item.close();
+  })
+};
+
+// TODO: setFitView
+Map.prototype.setFitView = function() {
+
+};
+
+/**
+ * @param {LngLat} position
+ * */
+Map.prototype.panTo = function(position) {
+  this._inner.panTo(position._inner);
+};
+
+Map.prototype.destroy = function() {
+
+};
+
+/**
+ * @param {Number} zoom
+ * */
+Map.prototype.setZoom = function(zoom) {
+  this._inner.setZoom(zoom);
+};
+
+Map.prototype.getBounds = function() {
+  return new Bounds('', '', this._inner.getBounds());
+};
+Map.prototype.setBounds = function() {
+  // todo:    
+};
+Map.prototype.on = onOff.on;
+Map.prototype.off = onOff.off
 
 module.exports = Map;
