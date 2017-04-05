@@ -20,26 +20,27 @@ function Clusterer(map, markers, opts) {
   var newOpts = formatOpts.markerClusterer(map, markers, opts);
   this._inner = new MarkerClusterer(newOpts.map, newOpts.markers, newOpts.opts);
   this._inner._smap = map;
+  this._inner.onclick = function (e) {
+    google.maps.event.trigger(that, 'click', e);
+  };
 }
 
-Clusterer.prototype = {
-  getSize: function() {},
+  Clusterer.prototype.getSize=function() {};
 
-  setMap: obc.setMap,
+  Clusterer.prototype.setMap=obc.setMap;
 
-  getMap: function() {
+  Clusterer.prototype.getMap=function() {
     return this._inner.getMap();
-  },
+  };
 
-  addMarker: function() {},
-  removeMarker: function() {},
+  Clusterer.prototype.addMarker=function() {};
+  Clusterer.prototype.removeMarker=function() {};
 
   /**
    * @param {Array} styles
    * */
-  setStyles: function(styles) {
+  Clusterer.prototype.setStyles=function(styles) {
 
-  }
-};
+  };
 
 module.exports = Clusterer;
