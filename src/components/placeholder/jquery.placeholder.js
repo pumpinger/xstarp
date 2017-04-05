@@ -1,4 +1,4 @@
-/*!
+/*
  * jQuery Placeholder Plugin v2.3.1
  * https://github.com/mathiasbynens/jquery-placeholder
  *
