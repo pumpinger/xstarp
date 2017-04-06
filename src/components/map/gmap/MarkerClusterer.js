@@ -51,7 +51,12 @@ Clusterer.prototype.clearMarkers = function() {
 Clusterer.prototype.setStyles = function(styles) {
 
 };
-Clusterer.prototype.on = onOff.on;
+Clusterer.prototype.on = function(eventName, handler, context){
+    if(eventName == 'click'){
+        eventName = 'clusterclick';
+    }
+    onOff.on.call(this,eventName,handler,context);
+};
 Clusterer.prototype.off = onOff.off;
 
 
