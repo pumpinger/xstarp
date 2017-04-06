@@ -1,10 +1,12 @@
 /**
  * Created by Administrator on 2017/3/27.
  */
+var format = require('./util/formatOpt.js');
 
 CMarker = function (options) {
   this.options = options;
-  google.maps.OverlayView.apply(this, options);
+  var newOpts = format.marker(options);
+  google.maps.OverlayView.apply(this, newOpts);
   return this;
 };
 CMarker.prototype = new google.maps.OverlayView();
@@ -54,12 +56,14 @@ CMarker.prototype.onRemove = function () {
   this.div_.parentNode.removeChild(this.div_);
   this.div_ = null;
 };
-
+CMarker.prototype.getExtData = function () {
+    return this.options.extData;
+};
 CMarker.prototype.getPosition = function () {
-  return this.options.position;
+  return this.options.position._inner;
 };
 CMarker.prototype.setPosition = function (latlng) {
-    this.options.position = latlng._inner;
+    this.options.position = latlng;
     this.draw();
 };
 
