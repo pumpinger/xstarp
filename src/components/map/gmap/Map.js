@@ -37,7 +37,7 @@ Map.prototype.plugin = function(plugins, fn) {
   if (plugins.length < 1) return;
   plugins.forEach(function(plugin) {
     console.log(plugin);
-    if (plugin === 'GMap.MarkerClusterer') {
+    if (plugin === 'SMap.MarkerClusterer') {
       $.getScript(config.GMap_MarkerClusterer, function() {
         fn();
       });
