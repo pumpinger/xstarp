@@ -3,30 +3,32 @@
  */
 
 var LngLat = require('../LngLat');
+var util = require('./util.js');
 
 function formatOptsUni(opts) {
+  var formatOpts = util.extend({},opts);
   if (opts.position) {
-    opts.position = new google.maps.LatLng({
+    formatOpts.position = new google.maps.LatLng({
       lat: opts.position.getLat(),
       lng: opts.position.getLng()
     });
   }
   if (opts.path) {
-    opts.path = transfromPathToPaths(opts.path);
+    formatOpts.path = transfromPathToPaths(opts.path);
   }
   if (opts.center && opts.center._type === 'LngLat') {
-    opts.center = new google.maps.LatLng({
+    formatOpts.center = new google.maps.LatLng({
       lat: opts.center.getLat(),
       lng: opts.center.getLng()
     });
   }
   if(opts.offset){
-    opts.offset = opts.offset._inner;
+    formatOpts.offset = opts.offset._inner;
   }
   if (opts.map) {
-    opts.map = opts.map._inner;
+    formatOpts.map = opts.map._inner;
   }
-  return opts;
+  return formatOpts;
 }
 
 function transfromPathToPaths(path) {
@@ -52,17 +54,17 @@ function arrCreateLngLat(arr) {
  * markerClusterer
  * ***********************************************/
 function formatMarkerClusterer(map, markers, opts) {
-  var newOpts = {};
+  var formatOpts = {};
   if (map._inner) {
-    newOpts.map = map._inner;
+    formatOpts.map = map._inner;
   } else {
-    newOpts.map = map;
+    formatOpts.map = map;
   }
-  newOpts.markers = markers.map(function(item) {
+  formatOpts.markers = markers.map(function(item) {
     return item._inner;
   });
-  newOpts.opts = formatMarkerClustererOpts(opts);
-  return newOpts;
+  formatOpts.opts = formatMarkerClustererOpts(opts);
+  return formatOpts;
 }
 /**
  * @param {Object} opts
