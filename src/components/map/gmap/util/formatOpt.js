@@ -28,8 +28,13 @@ function formatOptsUni(opts) {
 
 function transfromPathToPaths(path) {
   var paths = [];
-  path.forEach(function (item, index) {
-    paths.push(arrCreateLngLat(item));
+  path.forEach(function(item, index) {
+    console.log(item);
+    if (item._type === 'LngLat') {
+      paths.push(item._inner);
+    } else {
+      paths.push(arrCreateLngLat(item));
+    }
   });
   return paths;
 }
@@ -50,7 +55,7 @@ function formatMarkerClusterer(map, markers, opts) {
   } else {
     newOpts.map = map;
   }
-  newOpts.markers = markers.map(function (item) {
+  newOpts.markers = markers.map(function(item) {
     return item._inner;
   });
   newOpts.opts = formatMarkerClustererOpts(opts);
