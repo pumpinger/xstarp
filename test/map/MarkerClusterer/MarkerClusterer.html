@@ -8,7 +8,6 @@
     .map_container {
       height: 600px;
     }
-
   </style>
 </head>
 
@@ -29,7 +28,6 @@
     SMapConfig = {
       SMap_target_type: 'g', //a,b,g
     };
-
   </script>
   <script src="../../../dist/temp.js"></script>
   <script>
@@ -76,7 +74,7 @@
 
     var markerArr = [p2, p3, p4, p5, p6, p7, p8];
 
-    markerArr.forEach(function (item) {
+    markerArr.forEach(function(item) {
       var t = new SMap.Marker({
         position: item,
         icon: icon1,
@@ -88,15 +86,17 @@
       console.log("t", t);
     });
 
-    smap.plugin([SMap.sPlugin.MarkerClusterer], function () {
+    smap.plugin(['SMap.MarkerClusterer'], function() {
       console.log("hello");
       cluster = new SMap.MarkerClusterer(smap, markers, {
-        imagePath: '../asset/m',
+        // imagePath: '../asset/m',
         styles: sts
       });
       console.log('cluster is: ', cluster)
+      // SMap.event.addListener(cluster, 'click', function(a) {
+      //   show_clusterWindow(a.markers, "userList");
+      // });
     });
-
   </script>
 </body>
 
