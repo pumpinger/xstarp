@@ -1,27 +1,26 @@
 /**
  * gmap util format
  */
+var util = require('./util.js');
 /**
  * @util
  * @options {Object} options
  * */
-var format = {};
-format.format = function (options) {
-    if (options.Pixel) {
-        formated.Pixel = options.Pixel._inner;
+var format ={};
+format.format = function (opts) {
+    var formated = util.extend({},opts);
+    if (opts.Pixel) {
+        formated.Pixel = format.pixel(opts.Pixel);
     }
-    if (options.Size) {
-        formated.Size = options.Size._inner;
+    if (opts.Size) {
+        formated.Size = format.size(opts.Size);
     }
-    if (options.LngLat) {
-        formated.LngLat = options.LngLat._inner;
+    if (opts.LngLat) {
+        formated.LngLat = opts.LngLat._inner;
     }
-    if (options.Bounds) {
-        formated.Bounds = options.Bounds._inner;
+    if (opts.Bounds) {
+        formated.Bounds = opts.Bounds._inner;
     }
-}
-format.marker = function(options) {
-    var formated = {};
     if (options.map) {
         formated.map = options.map._inner;
     }
@@ -29,5 +28,23 @@ format.marker = function(options) {
         formated.position = options.position._inner;
     }
     return formated;
+}
+format.pixel = function (Pixel) {
+    return Pixel._inner;
+}
+format.size = function (Size) {
+    return Size._inner;
+}
+format.lnglat = function (LngLat) {
+    return LngLat._inner;
+}
+format.bounds = function (Bounds) {
+    return Bounds._inner;
+}
+format.position = function (position) {
+    return Map._inner;
+}
+format.map = function (Map) {
+    return Map._inner;
 }
 module.exports = format;
