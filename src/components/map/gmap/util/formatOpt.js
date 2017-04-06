@@ -20,6 +20,9 @@ function formatOptsUni(opts) {
       lng: opts.center.getLng()
     });
   }
+  if(opts.offset){
+    opts.offset = opts.offset._inner;
+  }
   if (opts.map) {
     opts.map = opts.map._inner;
   }
