@@ -17,56 +17,63 @@ var LngLat = require('./LngLat.js');
  * @return an object, inner is prime google map Marker instance.
  * */
 function Marker(opts, inner) {
-    if (inner) {
-        this._inner = inner;
+  if (inner) {
+    this._inner = inner;
+  } else {
+    // 如果opts.map存在，则把自己增加到map对应的overlay中。
+    // obc.addOverlay(opts, this);
+    var newOpts = format.marker(opts);
+    if (newOpts.content) {
+      newOpts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
+      newOpts.label = newOpts.content;
+      this._inner = new CMarker(newOpts);
     } else {
-        // 如果opts.map存在，则把自己增加到map对应的overlay中。
-        // obc.addOverlay(opts, this);
-        var newOpts = format.marker(opts);
-        console.log('CMarker',this);        
-        if (newOpts.content) {
-            newOpts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
-            newOpts.label = newOpts.content;
-            this._inner = new CMarker(newOpts);
-            console.log('CMarker inner',this._inner);
-        } else {
-            this._inner = new google.maps.Marker(newOpts);
-        }
-        this._inner._smap = newOpts.map;
-        this.position = newOpts.position;
+      this._inner = new google.maps.Marker(newOpts);
     }
-    this._type = 'Marker';
-    return this;
+    this._inner._smap = newOpts.map;
+    this.position = newOpts.position;
+  }
+  this._type = 'Marker';
+  return this;
 }
 
 // Marker.prototype = new google.maps.Marker();
 
-Marker.prototype.setMap = function (map) {
-    if (map !== null) {
-        this._inner._smap = map;
-        map._overLayers[this._type].push(this);
-        this._inner.setMap(map._inner);
-        var that = this;
-        setTimeout(function () {
-            if (that._inner.content && that._inner.__gm.Eb.map) {
-                that._inner.__gm.Eb.map.b.O.style.opacity = 1;
-                that._inner.__gm.Eb.map.b.O.innerHTML = that._inner.content;
-            }},
-        1000); 
-    } else {
-        this._inner.setMap(null);
-    }
+Marker.prototype.setMap = function(map) {
+  if (map !== null) {
+    this._smap = map;
+    this._inner._smap = map;
+    map._overLayers[this._type].push(this);
+    this._inner.setMap(map._inner);
+    var that = this;
+    setTimeout(function() {
+        if (that._inner.content && that._inner.__gm.Eb.map) {
+          that._inner.__gm.Eb.map.b.O.style.opacity = 1;
+          that._inner.__gm.Eb.map.b.O.innerHTML = that._inner.content;
+        }
+      },
+      1000);
+  } else {
+    var markers = this._smap._overLayers.Marker;
+    var that = this;
+    markers.filter(function(item, index) {
+      if (item == that) {
+        markers.splice(index, 1);
+      }
+    });
+    this._inner.setMap(null);
+  }
 };
 Marker.prototype.getMap = obc.getMap;
-Marker.prototype.getPosition = function () {
-    return new LngLat(0,0,this._inner.getPosition());
+Marker.prototype.getPosition = function() {
+  return new LngLat(0, 0, this._inner.getPosition());
 };
 
-Marker.prototype.hide = function () {
-    this._inner.setVisible(false);
+Marker.prototype.hide = function() {
+  this._inner.setVisible(false);
 };
-Marker.prototype.show = function () {
-    this._inner.setVisible(true);
+Marker.prototype.show = function() {
+  this._inner.setVisible(true);
 };
 Marker.prototype.on = onOff.on;
 Marker.prototype.off = onOff.off;
