@@ -15,7 +15,7 @@ event.getSMapEvent = function(e) {
 event.addDomListener = function(instance, eventName, handler, context) {
   var listener = {};
 
-  if(context) {
+  if (context) {
     listener = google.maps.event.addDomListener(instance, eventName, function(e) {
       handler.call(context, e);
     });
@@ -26,32 +26,38 @@ event.addDomListener = function(instance, eventName, handler, context) {
 };
 
 event.addListener = function(instance, eventName, handler, context) {
-  var listener = {}, relevantEvent, realInstance;
+  var listener = {},
+    relevantEvent, realInstance;
 
   realInstance = instance._inner;
   relevantEvent = event.getRelevantEvent(instance, eventName);
 
-  if(context) {
+  if (context) {
     listener = google.maps.event.addListener(realInstance, relevantEvent, function(e) {
-      handler.call(context, event.getSMapEvent(e));
+      handler.call(context, event.getSMapEvent(e), realInstance);
     });
   } else {
     listener = google.maps.event.addListener(realInstance, relevantEvent, function(e) {
-      handler(event.getSMapEvent(e));
+      if (e.clusterIcon_) {
+        handler(e, realInstance);
+      } else {
+        handler(event.getSMapEvent(e), realInstance);
+      }
     });
   }
   return listener;
 };
 
 event.addListenerOnce = function(instance, eventName, handler, context) {
-  var listener = {}, relevantEvent, realInstance;
+  var listener = {},
+    relevantEvent, realInstance;
 
   realInstance = instance._inner;
 
   relevantEvent = event.getRelevantEvent(instance, eventName);
 
-  if(context) {
-    listener = google.maps.event.addListenerOnce(realInstance, relevantEvent, function (e) {
+  if (context) {
+    listener = google.maps.event.addListenerOnce(realInstance, relevantEvent, function(e) {
       handler.call(context, event.getSMapEvent(e));
     });
   } else {
@@ -73,8 +79,8 @@ event.triggerListener = function(instance, eventName, extArgs) {
 };
 
 event.getRelevantEvent = function(instance, eventName) {
-  if(instance._type in event.map) {
-    if(eventName in event.map[instance._type]) {
+  if (instance._type in event.map) {
+    if (eventName in event.map[instance._type]) {
       return event.map[instance._type][eventName];
     } else {
       return eventName;
