@@ -34,4 +34,8 @@ GMap.Polygon = Polygon;
 GMap.Circle = Circle;
 GMap.MarkerClusterer = MarkerClusterer;
 
+GMap.service = function (pluginName, callback) {
+    console.log('google.maps.service is not a function!');
+}
+
 module.exports = window.GMap = GMap;
