@@ -46,10 +46,6 @@ Map.prototype.plugin = function(plugins, fn) {
   })
 };
 
-Map.prototype.service = function(pluginName, callback) {
-
-};
-
 Map.prototype.setStatus = function() {
   return
 };
