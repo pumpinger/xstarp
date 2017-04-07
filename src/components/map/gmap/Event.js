@@ -37,9 +37,9 @@ event.addListener = function(instance, eventName, handler, context) {
       handler.call(context, event.getSMapEvent(e), realInstance);
     });
   } else {
-    listener = google.maps.event.addListener(realInstance, relevantEvent, function(e) {
+    listener = google.maps.event.addListener(realInstance, relevantEvent, function(e, a) {
       if (e.clusterIcon_) {
-        handler(e, realInstance);
+        handler(e, a, realInstance);
       } else {
         handler(event.getSMapEvent(e), realInstance);
       }
