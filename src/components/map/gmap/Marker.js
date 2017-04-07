@@ -71,6 +71,22 @@ Marker.prototype.getPosition = function() {
   return new LngLat(0, 0, this._inner.getPosition());
 };
 
+Marker.prototype.setPosition = function(LngLat) {
+  if (!LngLat) {
+    console.warn('Marker.setPosition() : !LngLat')
+    return;
+  }
+  if (LngLat._inner) {
+    this._inner.setPosition(LngLat._inner);
+  } else {
+    this._inner.setPosition(LngLat);
+  }
+};
+
+Marker.prototype.setzIndex = function(ZIndex) {
+    this._inner.setZIndex(ZIndex);
+};
+
 Marker.prototype.getExtData = function() {
   return this.options.extData;
 };
