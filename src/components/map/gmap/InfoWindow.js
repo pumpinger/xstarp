@@ -6,6 +6,7 @@ var util = require('./util/util');
 var formatOpts = require('./util/formatOpt');
 var obc = require('./util/overlayBaseClass');
 var Pixel = require('./Pixel.js');
+var LngLat = require('./LngLat.js');
 
 /**
  * @constructor
@@ -32,7 +33,11 @@ InfoWindow.prototype.defaultOpts = {
 InfoWindow.prototype.open = function(map, pos) {
   this._smap = map;
   if (pos) {
-    this.options.position = pos;
+    if (pos._inner) {
+      this.options.position = pos;
+    } else {
+      this.options.position = new LngLat(0, 0, pos);
+    }
   }
   this.setMap(map._inner);
   map._overLayers.InfoWindow.push(this);
