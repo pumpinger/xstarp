@@ -3,7 +3,7 @@
  */
 var format = require('./util/formatOpt.js');
 
-CMarker = function (options) {
+CMarker = function(options) {
   this.options = options;
   var newOpts = format.marker(options);
   google.maps.OverlayView.apply(this, newOpts);
@@ -11,7 +11,7 @@ CMarker = function (options) {
 };
 CMarker.prototype = new google.maps.OverlayView();
 
-CMarker.prototype.onAdd = function () {
+CMarker.prototype.onAdd = function() {
   var div = document.createElement('div');
   div.style.borderStyle = 'none';
   div.style.borderWidth = '0px';
@@ -24,11 +24,11 @@ CMarker.prototype.onAdd = function () {
 
   div.append(span);
   var that = this;
-  div.onclick = function (e) {
+  div.onclick = function(e) {
     google.maps.event.trigger(that, 'click', e);
   };
-   div.onmouseover = function (e) {
-    google.maps.event.trigger(that, 'mouseover', e);
+  div.onmousemove = function(e) {
+    google.maps.event.trigger(that, 'mousemove', e);
   };
   this.div_ = div;
 
@@ -36,7 +36,7 @@ CMarker.prototype.onAdd = function () {
   var panes = this.getPanes();
   panes.overlayMouseTarget.append(div);
 };
-CMarker.prototype.draw = function () {
+CMarker.prototype.draw = function() {
 
   // We use the south-west and north-east
   // coordinates of the overlay to peg it to the correct position and size.
@@ -52,23 +52,27 @@ CMarker.prototype.draw = function () {
   this.div_.style.left = position.x + 'px';
   this.div_.style.top = position.y + 'px';
 };
-CMarker.prototype.onRemove = function () {
+CMarker.prototype.onRemove = function() {
   this.div_.parentNode.removeChild(this.div_);
   this.div_ = null;
 };
-CMarker.prototype.getExtData = function () {
-    return this.options.extData;
+CMarker.prototype.getExtData = function() {
+  return this.options.extData;
 };
-CMarker.prototype.getPosition = function () {
+CMarker.prototype.getPosition = function() {
   return this.options.position._inner;
 };
-CMarker.prototype.setPosition = function (latlng) {
-    this.options.position = latlng;
-    this.draw();
+CMarker.prototype.setPosition = function(latlng) {
+  this.options.position = latlng;
+  this.draw();
+};
+
+CMarker.prototype.setZIndex = function(ZIndex) {
+  this.div_.style.zIndex = ZIndex;
 };
 
 // Set the visibility to 'hidden' or 'visible'.
-CMarker.prototype.setVisible = function (visible) {
+CMarker.prototype.setVisible = function(visible) {
   if (this.div_) {
     // The visibility property must be a string enclosed in quotes.
     if (visible) {
