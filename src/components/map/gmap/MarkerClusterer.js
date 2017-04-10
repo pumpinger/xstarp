@@ -5,6 +5,7 @@
 var formatOpts = require('./util/formatOpt');
 var obc = require('./util/overlayBaseClass');
 var onOff = require('./util/onOff.js');
+var MarkerClusterer = require('./markerclustererg.js');
 
 /**
  * @constructor
@@ -60,6 +61,5 @@ Clusterer.prototype.on = function(eventName, handler, context) {
   onOff.on.call(this, eventName, handler, context);
 };
 Clusterer.prototype.off = onOff.off;
-
 
 module.exports = Clusterer;
