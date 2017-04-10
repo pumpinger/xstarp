@@ -27,20 +27,20 @@ Polygon.prototype.setMap = obc.setMap;
 /**
  * @param {path:Array LngLat | Array lngLat} path
  * */
-Polygon.prototype.setPath = function (path) {
+Polygon.prototype.setPath = function(path) {
   this._inner.setPath(path);
 };
-Polygon.prototype.getPath = function () {};
+Polygon.prototype.getPath = function() {};
 
-Polygon.prototype.setOptions = function () {
+Polygon.prototype.setOptions = function() {
   this._inner.setOptions(formatOpts.polygon(opts));
 };
 
-Polygon.prototype.getOptions = function () {};
+Polygon.prototype.getOptions = function() {};
 
-Polygon.prototype.getBounds = function () {};
+Polygon.prototype.getBounds = function() {};
 
-Polygon.prototype.getArea = function () {};
+Polygon.prototype.getArea = function() {};
 
 Polygon.prototype.hide = obc.hide;
 
@@ -51,11 +51,11 @@ Polygon.prototype.show = obc.show;
 /**
  * @param {any} ext extData
  * */
-Polygon.prototype.setExtData = function (ext) {
+Polygon.prototype.setExtData = function(ext) {
   this._inner.extDate = ext;
 };
 
-Polygon.prototype.getExtData = function () {
+Polygon.prototype.getExtData = function() {
   return this._inner.extDate;
 };
 
@@ -63,9 +63,14 @@ Polygon.prototype.getExtData = function () {
  * @function judge whether a point in the polygon inner
  * @param {LngLat} point
  * */
-Polygon.prototype.contains = function (point) {
-  //TODO 多边形没实现contains
-  // return this._inner.getBounds().contains(point);
+Polygon.prototype.contains = function(point) {
+  var latlng;
+  if (point._inner) {
+    latlng = point._inner;
+  } else {
+    latlng = point;
+  }
+  return google.maps.geometry.poly.containsLocation(latlng, this);
 };
 
 Polygon.prototype.on = onOff.on;
