@@ -107,6 +107,15 @@ Map.prototype.setZoom = function(zoom) {
   this._inner.setZoom(zoom);
 };
 
+Map.prototype.setZoomAndCenter = function(zoom, center) {
+  this._inner.setZoom(zoom);
+  if (center._inner) {
+    this._inner.setCenter(center._inner);
+  } else {
+    this._inner.setCenter(center);
+  }
+};
+
 Map.prototype.getBounds = function() {
   return new Bounds('', '', this._inner.getBounds());
 };
