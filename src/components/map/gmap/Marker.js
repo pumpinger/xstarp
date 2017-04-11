@@ -21,12 +21,12 @@ function Marker(opts, inner) {
     this._inner = inner;
   } else {
     // 如果opts.map存在，则把自己增加到map对应的overlay中。
-    // obc.addOverlay(opts, this);
+    obc.addOverlay(opts, this);
     this.options = opts;
     var newOpts = format.marker(opts);
     if (opts.content) {
-      opts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
-      opts.label = opts.content;
+      // opts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
+      // opts.label = opts.content;
       this._inner = new CMarker(opts);
     } else {
       this._inner = new google.maps.Marker(newOpts);
@@ -81,6 +81,10 @@ Marker.prototype.setPosition = function(LngLat) {
   } else {
     this._inner.setPosition(LngLat);
   }
+};
+
+Marker.prototype.setIcon = function(icon) {
+    this._inner.setIcon(icon);
 };
 
 Marker.prototype.setzIndex = function(ZIndex) {
