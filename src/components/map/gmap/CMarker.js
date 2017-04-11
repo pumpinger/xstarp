@@ -67,8 +67,14 @@ CMarker.prototype.setPosition = function(latlng) {
   this.draw();
 };
 
+CMarker.prototype.setIcon = function(icon) {
+    // this.options.content = icon;
+};
+
 CMarker.prototype.setZIndex = function(ZIndex) {
-  this.div_.style.zIndex = ZIndex;
+  if(this.div_){
+    this.div_.style.zIndex = ZIndex;
+  }
 };
 
 // Set the visibility to 'hidden' or 'visible'.
