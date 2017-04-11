@@ -14,6 +14,8 @@ var formatOpts = require('./util/formatOpt');
  * */
 function Polyline(opts) {
   this._type = 'Polyline';
+  this.options = opts
+
   obc.addOverlay(opts, this);
 
   var newOpts = formatOpts.polyline(opts);
@@ -21,7 +23,9 @@ function Polyline(opts) {
 }
 
 Polyline.prototype.setPath = function () {};
-Polyline.prototype.getPath = function () {};
+Polyline.prototype.getPath = function () {
+  return this._inner.getPath().getArray();
+};
 Polyline.prototype.setOptions = function () {};
 Polyline.prototype.getOptions = function () {};
 Polyline.prototype.getLength = function () {};
@@ -36,11 +40,11 @@ Polyline.prototype.setMap = obc.setMap;
  * @ext {any} extData
  * */
 Polyline.prototype.setExtData = function (ext) {
-  this._inner.extDate = ext;
+  this.options.extData = ext;
 };
 
 Polyline.prototype.getExtData = function () {
-  return this._inner.extDate;
+  return this.options.extData;
 };
 
 Polyline.prototype.on = onOff.on;
