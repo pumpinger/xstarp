@@ -21,7 +21,9 @@ function Marker(opts, inner) {
     this._inner = inner;
   } else {
     // 如果opts.map存在，则把自己增加到map对应的overlay中。
+    this._type = 'Marker';
     obc.addOverlay(opts, this);
+    
     this.options = opts;
     var newOpts = format.marker(opts);
     if (opts.content) {
@@ -34,7 +36,6 @@ function Marker(opts, inner) {
     this._inner._smap = newOpts.map;
     this.position = newOpts.position;
   }
-  this._type = 'Marker';
   return this;
 }
 

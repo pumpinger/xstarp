@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <div>InfoWindow test</div>
+  <div class="test">Polygon test</div>
   <div id="container" class="map_container"></div>
 
   <script src="../../../dist/vendor/jquery.js"></script>
@@ -32,11 +32,11 @@
     var p1 = new SMap.LngLat(104.077955, 30.444575);
     var p2 = new SMap.LngLat(104.037955, 30.444575);
     var p3 = new SMap.LngLat(104.007955, 30.444575);
-    var p11 = new SMap.LngLat(104.077955, 30.406777);
-    var p12 = new SMap.LngLat(104.057955, 30.486777);
-    var p13 = new SMap.LngLat(104.037955, 30.446777);
-    var p14 = new SMap.LngLat(104.017955, 30.466777);
-    var p15 = new SMap.LngLat(104.037955, 30.426777);
+    var p11 = new SMap.LngLat(104.0020751953125, 30.475307597240135);
+    var p12 = new SMap.LngLat(103.97254943847656, 30.423808787714755);
+    var p13 = new SMap.LngLat(104.02816772460938, 30.387684205387366);
+    var p14 = new SMap.LngLat(104.1009521484375, 30.398345308243545);
+    var p15 = new SMap.LngLat(104.095458984375, 30.458736237439837);
     var p16 = new SMap.LngLat(104.057955, 30.406777);
     var p17 = new SMap.LngLat(104.077955, 30.426777);
     var p18 = new SMap.LngLat(104.007955, 30.446777);
@@ -51,7 +51,8 @@
       center: p1
     });
 
-    var polygonArr = [p11, p12, p13, p14, p11]
+
+    var polygonArr = [p11, p12, p13, p14]
     var polygon1 = new SMap.Polygon({
       path: polygonArr, //设置多边形边界路径
       editable: true,
@@ -63,61 +64,29 @@
     });
     polygon1.setMap(smap);
     polygon1.on('click', function(params) {
-      console.log("click marker!");
-      iw.open(smap, p1);
+      polygon1.setEditable(false);
+      console.log("click polygon !");
     });
 
-    function createInfoWindow(title, content, info_bottom, info_className, dataId) {
-      var info_pop = document.createElement('div');
-      info_pop.className = 'info-pop';
-
-      var info = document.createElement('div');
-      info.className = info_className;
-
-      // top title
-      var top = document.createElement("div");
-      var titleD = document.createElement("div");
-      var closeX = document.createElement("img");
-      top.className = "info-top";
-      titleD.innerHTML = title;
-      closeX.src = 'http://c163img.nos-eastchina1.126.net/16810786.jpg';
-      closeX.onclick = closeInfoWindow;
-      closeX.className = "info-close";
-      top.appendChild(titleD);
-      top.appendChild(closeX);
-      info.appendChild(top);
-
-      // middle title
-      var middle = document.createElement("div");
-      middle.className = "info-middle";
-      middle.style.backgroundColor = 'white';
-      middle.innerHTML = content;
-      info.appendChild(middle);
-
-      // bottom title
-      var bottom = document.createElement("div");
-      bottom.className = "info-bottom";
-      bottom.innerHTML = info_bottom;
-
-      info.appendChild(bottom);
-      info.setAttribute('data-id', dataId);
-      info_pop.appendChild(info);
-
-      return info_pop;
-    }
-
-    function closeInfoWindow() {
-      smap.clearInfoWindow();
-      $(".fenceMask").hide();
-    }
-    var info = createInfoWindow('title', 'content', 'info_bottom', 'info_className', 'dataId');
-
-    var iw = new SMap.InfoWindow({
-      content: info,
-      position: p2,
-    });
-    iw.on('closeclick', function(e) {
-      console.log("你点击了关闭");
+    smap.on('click', function(e) {
+      console.log(e);
+      console.log(e.lnglat);
+      polygonArr.push(e.lnglat);
+      polygon1.setMap(null);
+      polygon1 = new SMap.Polygon({
+        path: polygonArr, //设置多边形边界路径
+        editable: true,
+        strokeColor: "#FF33FF", //线颜色
+        strokeOpacity: 0.2, //线透明度
+        strokeWeight: 3, //线宽
+        fillColor: "#1791fc", //填充色
+        fillOpacity: 0.35 //填充透明度
+      });
+      polygon1.setMap(smap);
+      polygon1.on('click', function(params) {
+        polygon1.setEditable(false);
+        console.log("click polygon !");
+      });
     });
   </script>
 

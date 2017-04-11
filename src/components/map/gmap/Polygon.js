@@ -32,8 +32,12 @@ Polygon.prototype.setPath = function(path) {
 };
 Polygon.prototype.getPath = function() {};
 
-Polygon.prototype.setOptions = function() {
+Polygon.prototype.setOptions = function(opts) {
   this._inner.setOptions(formatOpts.polygon(opts));
+};
+
+Polygon.prototype.setEditable = function(editable) {
+  this._inner.setEditable(editable);
 };
 
 Polygon.prototype.getOptions = function() {};
@@ -52,11 +56,11 @@ Polygon.prototype.show = obc.show;
  * @param {any} ext extData
  * */
 Polygon.prototype.setExtData = function(ext) {
-  this._inner.extDate = ext;
+  this._inner.extData = ext;
 };
 
 Polygon.prototype.getExtData = function() {
-  return this._inner.extDate;
+  return this._inner.extData;
 };
 
 /**
@@ -70,7 +74,7 @@ Polygon.prototype.contains = function(point) {
   } else {
     latlng = point;
   }
-  return google.maps.geometry.poly.containsLocation(latlng, this);
+  return google.maps.geometry.poly.containsLocation(latlng, this._inner);
 };
 
 Polygon.prototype.on = onOff.on;

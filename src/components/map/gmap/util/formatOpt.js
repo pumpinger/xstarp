@@ -34,7 +34,6 @@ function formatOptsUni(opts) {
 function transfromPathToPaths(path) {
   var paths = [];
   path.forEach(function(item, index) {
-    console.log(item);
     if (item._type === 'LngLat') {
       paths.push(item._inner);
     } else {
