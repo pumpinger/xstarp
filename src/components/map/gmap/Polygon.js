@@ -28,9 +28,19 @@ Polygon.prototype.setMap = obc.setMap;
  * @param {path:Array LngLat | Array lngLat} path
  * */
 Polygon.prototype.setPath = function(path) {
-  this._inner.setPath(path);
+  var p = []
+  for (var index = 0; index < path.length; index++) {
+    if (path[index]._inner) {
+      p.push(path[index]._inner);
+    } else {
+      p.push(path[index]);
+    }
+  }
+  this._inner.setPath(p);
 };
-Polygon.prototype.getPath = function() {};
+Polygon.prototype.getPath = function() {
+  return this._inner.getPath();
+};
 
 Polygon.prototype.setOptions = function(opts) {
   this._inner.setOptions(formatOpts.polygon(opts));
