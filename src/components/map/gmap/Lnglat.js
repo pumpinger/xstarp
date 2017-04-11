@@ -9,6 +9,12 @@ var format = require('./util/format.js');
  * @lat {Number} lat
  * */
 function LngLat(lng, lat, inner) {
+    if(lng.constructor = String){
+        lng = parseFloat(lng);
+    }
+    if(lat.constructor = String){
+        lat = parseFloat(lat);
+    }
     if (inner) {
         this._inner = inner;
     } else {
