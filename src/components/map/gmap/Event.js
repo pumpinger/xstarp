@@ -74,7 +74,6 @@ event.removeListener = function(listener) {
 
 event.triggerListener = function(instance, eventName, extArgs) {
   var relevantEvent = event.getRelevantEvent(instance, eventName);
-
   google.maps.event.trigger(instance, relevantEvent, extArgs);
 };
 

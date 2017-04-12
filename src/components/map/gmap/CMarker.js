@@ -21,15 +21,17 @@ CMarker.prototype.onAdd = function() {
 
   // Create the img element and attach it to the div.
   var span = document.createElement('div');
-
   div.append(span);
+
   var that = this;
-  div.onclick = function(e) {
+  google.maps.event.addDomListener(div, 'click', function(e) {
     google.maps.event.trigger(that, 'click', e);
-  };
-  div.onmousemove = function(e) {
+  });
+
+  google.maps.event.addDomListener(div, 'mousemove', function(e) {
     google.maps.event.trigger(that, 'mousemove', e);
-  };
+  });
+
   this.div_ = div;
 
   // Add the element to the "overlayLayer" pane.

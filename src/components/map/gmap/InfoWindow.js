@@ -20,7 +20,7 @@ function InfoWindow(options) {
 
   var IWOpts = formatOpts.infoWindow(options);
 
-  this._inner = new google.maps.OverlayView(IWOpts);
+  this._inner = this;
   return this;
 }
 
@@ -52,9 +52,12 @@ InfoWindow.prototype.onAdd = function() {
   div.append(this.options.content);
 
   var that = this;
-  div.onclick = function(e) {
+  google.maps.event.addDomListener(div, 'click', function(e) {
     google.maps.event.trigger(that, 'click', e);
-  };
+  });
+  // div.onclick = function(e) {
+  //   google.maps.event.trigger(that, 'click', e);
+  // };
   this.div_ = div;
 
   // Add the element to the "overlayLayer" pane.
