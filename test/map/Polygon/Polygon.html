@@ -28,6 +28,7 @@
     };
   </script>
   <script src="../../../dist/temp.js"></script>
+  <script src="../../../src/components/map/google/clipper.js"></script>
   <script>
     var p1 = new SMap.LngLat(104.077955, 30.444575);
     var p2 = new SMap.LngLat(104.037955, 30.444575);
@@ -51,10 +52,9 @@
       center: p1
     });
 
-
-    var polygonArr = [p11, p12, p13, p14]
+    var polygonArr1 = [p11, p12, p13, p14]
     var polygon1 = new SMap.Polygon({
-      path: polygonArr, //设置多边形边界路径
+      path: polygonArr1, //设置多边形边界路径
       editable: true,
       strokeColor: "#FF33FF", //线颜色
       strokeOpacity: 0.2, //线透明度
@@ -68,26 +68,63 @@
       console.log("click polygon !");
     });
 
-    smap.on('click', function(e) {
-      console.log(e);
-      console.log(e.lnglat);
-      polygonArr.push(e.lnglat);
-      polygon1.setMap(null);
-      polygon1 = new SMap.Polygon({
-        path: polygonArr, //设置多边形边界路径
-        editable: true,
-        strokeColor: "#FF33FF", //线颜色
-        strokeOpacity: 0.2, //线透明度
-        strokeWeight: 3, //线宽
-        fillColor: "#1791fc", //填充色
-        fillOpacity: 0.35 //填充透明度
-      });
-      polygon1.setMap(smap);
-      polygon1.on('click', function(params) {
-        polygon1.setEditable(false);
-        console.log("click polygon !");
-      });
+
+    var polygonArr = [];
+    var polygon = new SMap.Polygon({
+      map: smap,
+      path: polygonArr, //设置多边形边界路径
+      editable: true,
+      strokeColor: "#FF33FF", //线颜色
+      strokeOpacity: 0.2, //线透明度
+      strokeWeight: 3, //线宽
+      fillColor: "#1791fc", //填充色
+      fillOpacity: 0.35 //填充透明度
     });
+
+    smap.on('click', polygon_callback);
+
+    function polygon_callback(e) {
+      polygonArr.push(e.lnglat);
+      updatePolygon(polygon, polygonArr);
+    }
+
+    function updatePolygon(polygon, polygonArr) {
+      polygon.setPath(polygonArr);
+      polygon.on('click', function(e, a) {
+        smap.off('click', polygon_callback);
+        SimplifyPolygon(polygon);
+        // polygon.setEditable(false);
+      });
+      return polygon;
+    }
+
+    function SimplifyPolygon(polygon) {
+      var path = polygon.getPath().b;
+      var xy = LngLat2xy(path);
+      var xySimplify = ClipperLib.Clipper.SimplifyPolygon(xy, 1);
+      var pathSimplify = xy2LngLat(xySimplify);
+      polygon.setPath(pathSimplify);
+      return polygon;
+    }
+
+    function LngLat2xy(n) {
+      var i = [];
+      for (var t in n) {
+        i.push({
+          X: 1e4 * n[t].lng(),
+          Y: 1e4 * n[t].lat()
+        })
+      };
+      return i
+    }
+
+    function xy2LngLat(n) {
+      var i = [];
+      for (var t in n[0]) {
+        i.push(new SMap.LngLat(n[0][t].X / 1e4, n[0][t].Y / 1e4));
+      }
+      return i
+    }
   </script>
 
 </body>
