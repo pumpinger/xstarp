@@ -23,13 +23,6 @@ function Circle(opts) {
   this.opts = newOpts;
   this._inner = new google.maps.Circle(newOpts);
   this.extData = newOpts.extData;
-
-  // google.maps.event.addDomListener(this._inner, 'click', function(e) {
-  //   google.maps.event.trigger(that, 'click', e);
-  // });
-  // this._inner.onclick = function (e) {
-  //   google.maps.event.trigger(that, 'click', e);
-  // };
 }
 
 

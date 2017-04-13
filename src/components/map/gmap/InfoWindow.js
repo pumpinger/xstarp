@@ -55,9 +55,6 @@ InfoWindow.prototype.onAdd = function() {
   google.maps.event.addDomListener(div, 'click', function(e) {
     google.maps.event.trigger(that, 'click', e);
   });
-  // div.onclick = function(e) {
-  //   google.maps.event.trigger(that, 'click', e);
-  // };
   this.div_ = div;
 
   // Add the element to the "overlayLayer" pane.
