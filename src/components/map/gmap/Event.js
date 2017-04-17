@@ -38,7 +38,7 @@ event.addListener = function(instance, eventName, handler, context) {
     });
   } else {
     listener = google.maps.event.addListener(realInstance, relevantEvent, function(e, a) {
-      if (e.clusterIcon_) {
+      if (e && e.clusterIcon_) {
         handler(e, a, realInstance);
       } else {
         handler(event.getSMapEvent(e), realInstance);

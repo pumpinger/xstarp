@@ -5,87 +5,24 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <style>
-    .map_container {
+    #map_container {
+      position: relative;
       height: 600px;
+    }
+
+    #pac-input {
+      position: absolute;
+      top: 60px;
+      left: 60px;
     }
   </style>
 </head>
 
 <body>
   <div>InfoWindow test</div>
-  <div id="container" class="map_container"></div>
-
-  <script>
-    function initAutocomplete() {
-      var map = new google.maps.Map(document.getElementById('container'), {
-        center: {
-          lat: -33.8688,
-          lng: 151.2195
-        },
-        zoom: 13,
-        mapTypeId: 'roadmap'
-      });
-
-      // Create the search box and link it to the UI element.
-      var input = document.getElementById('pac-input');
-      var searchBox = new google.maps.places.SearchBox(input);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-      // Bias the SearchBox results towards current map's viewport.
-      map.addListener('bounds_changed', function() {
-        searchBox.setBounds(map.getBounds());
-      });
-
-      var markers = [];
-      // Listen for the event fired when the user selects a prediction and retrieve
-      // more details for that place.
-      searchBox.addListener('places_changed', function() {
-        var places = searchBox.getPlaces();
-
-        if (places.length == 0) {
-          return;
-        }
-
-        // Clear out the old markers.
-        markers.forEach(function(marker) {
-          marker.setMap(null);
-        });
-        markers = [];
-
-        // For each place, get the icon, name and location.
-        var bounds = new google.maps.LatLngBounds();
-        places.forEach(function(place) {
-          if (!place.geometry) {
-            console.log("Returned place contains no geometry");
-            return;
-          }
-          var icon = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
-          };
-
-          // Create a marker for each place.
-          markers.push(new google.maps.Marker({
-            map: map,
-            icon: icon,
-            title: place.name,
-            position: place.geometry.location
-          }));
-
-          if (place.geometry.viewport) {
-            // Only geocodes have viewport.
-            bounds.union(place.geometry.viewport);
-          } else {
-            bounds.extend(place.geometry.location);
-          }
-        });
-        map.fitBounds(bounds);
-      });
-    }
-  </script>
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="container" class="map_container">
+  </div>
 
   <script src="../../../dist/vendor/jquery.js"></script>
   <script src="http://webapi.amap.com/maps?v=1.3&key=319766fcdf57589d1da6e0dfc89770d2"></script>
@@ -93,7 +30,7 @@
   <script src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
   <script src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
   <script src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjPUco3l_6-f8ZexAesZrYFzpGtRQHvSo&libraries=places&callback=initAutocomplete"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjPUco3l_6-f8ZexAesZrYFzpGtRQHvSo&libraries=places"></script>
   <script>
     SMapConfig = {
       SMap_target_type: 'g', //a,b,g
@@ -117,11 +54,74 @@
     var px3 = new SMap.Pixel(9, 9);
     var icon = 'http://fhj.xbwq.com.cn/fhj/public/common/widget/module/location/track/images/track/track_map2_start.png';
 
-    // var smap = new SMap.Map('container', {
-    //   resizeEnable: true,
-    //   zoom: 11,
-    //   center: p1
-    // });
+    var smap = new SMap.Map('container', {
+      resizeEnable: true,
+      zoom: 13,
+      center: p1,
+      mapTypeId: 'roadmap'
+    });
+
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    smap.controls = {
+      1: []
+    };
+    smap.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    // Bias the SearchBox results towards current map's viewport.
+    smap.on('bounds_changed', function() {
+      searchBox.setBounds(smap.getBounds()._inner);
+    });
+
+    var markers = [];
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function() {
+      var places = searchBox.getPlaces();
+
+      if (places.length == 0) {
+        return;
+      }
+
+      // Clear out the old markers.
+      markers.forEach(function(marker) {
+        marker.setMap(null);
+      });
+      markers = [];
+
+      // For each place, get the icon, name and location.
+      var bounds = new google.maps.LatLngBounds();
+      places.forEach(function(place) {
+        if (!place.geometry) {
+          console.log("Returned place contains no geometry");
+          return;
+        }
+        var icon = {
+          url: place.icon,
+          size: new SMap.Size(71, 71),
+          origin: new SMap.Pixel(0, 0),
+          anchor: new SMap.Pixel(17, 34),
+          scaledSize: new SMap.Size(25, 25)
+        };
+
+        // Create a marker for each place.
+        markers.push(new SMap.Marker({
+          map: smap,
+          icon: icon,
+          title: place.name,
+          position: place.geometry.location
+        }));
+
+        if (place.geometry.viewport) {
+          // Only geocodes have viewport.
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(place.geometry.location);
+        }
+      });
+      smap.fitBounds(bounds);
+    });
   </script>
 
 </body>
