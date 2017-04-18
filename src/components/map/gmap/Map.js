@@ -106,7 +106,9 @@ Map.prototype.destroy = function() {
 Map.prototype.setZoom = function(zoom) {
   this._inner.setZoom(zoom);
 };
-
+Map.prototype.getCenter = function() {
+    return this._inner.getCenter();
+};
 Map.prototype.setCenter = function(center) {
   if (center._inner) {
     this._inner.setCenter(center._inner);
