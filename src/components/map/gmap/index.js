@@ -15,6 +15,7 @@ var Polyline = require('./Polyline');
 var Polygon = require('./Polygon');
 var Circle = require('./Circle');
 var MarkerClusterer = require('./MarkerClusterer');
+var Geocoder = require('./Geocoder');
 
 var GMap = {};
 
@@ -33,7 +34,7 @@ GMap.Polyline = Polyline;
 GMap.Polygon = Polygon;
 GMap.Circle = Circle;
 GMap.MarkerClusterer = MarkerClusterer;
-GMap.Geocoder = google.maps.Geocoder;
+GMap.Geocoder = Geocoder;
 
 GMap.service = function (pluginName, callback) {
     console.log('google.maps.service is not a function!');

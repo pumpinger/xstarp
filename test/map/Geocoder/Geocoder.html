@@ -31,7 +31,7 @@
   <script src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
   <script src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
   <script src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjPUco3l_6-f8ZexAesZrYFzpGtRQHvSo&libraries=places"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjPUco3l_6-f8ZexAesZrYFzpGtRQHvSo"></script>
   <script>
     SMapConfig = {
       SMap_target_type: 'g', //a,b,g
@@ -57,71 +57,8 @@
 
     var smap = new SMap.Map('container', {
       resizeEnable: true,
-      zoom: 13,
-      center: p1,
-      mapTypeId: 'roadmap'
-    });
-
-    // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
-    var searchBox = new google.maps.places.SearchBox(input);
-    smap.controls = {
-      1: []
-    };
-    smap.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-    // Bias the SearchBox results towards current map's viewport.
-    smap.on('bounds_changed', function() {
-      searchBox.setBounds(smap.getBounds()._inner);
-    });
-
-    var markers = [];
-    // Listen for the event fired when the user selects a prediction and retrieve
-    // more details for that place.
-    searchBox.addListener('places_changed', function() {
-      var places = searchBox.getPlaces();
-
-      if (places.length == 0) {
-        return;
-      }
-
-      // Clear out the old markers.
-      markers.forEach(function(marker) {
-        marker.setMap(null);
-      });
-      markers = [];
-
-      // For each place, get the icon, name and location.
-      var bounds = new google.maps.LatLngBounds();
-      places.forEach(function(place) {
-        if (!place.geometry) {
-          console.log("Returned place contains no geometry");
-          return;
-        }
-        var icon = {
-          url: place.icon,
-          size: new SMap.Size(71, 71),
-          origin: new SMap.Pixel(0, 0),
-          anchor: new SMap.Pixel(17, 34),
-          scaledSize: new SMap.Size(25, 25)
-        };
-
-        // Create a marker for each place.
-        markers.push(new SMap.Marker({
-          map: smap,
-          icon: icon,
-          title: place.name,
-          position: place.geometry.location
-        }));
-
-        if (place.geometry.viewport) {
-          // Only geocodes have viewport.
-          bounds.union(place.geometry.viewport);
-        } else {
-          bounds.extend(place.geometry.location);
-        }
-      });
-      smap.fitBounds(bounds);
+      zoom: 11,
+      center: p1
     });
   </script>
 
