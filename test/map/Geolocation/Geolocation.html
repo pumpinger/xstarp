@@ -32,33 +32,19 @@
   </script>
   <script src="../../../dist/temp.js"></script>
   <script>
-    var p0 = new SMap.LngLat(104.06587958335876,30.657515837921938);
-    var p1 = new SMap.LngLat(104.077955, 30.444575);
-    var p2 = new SMap.LngLat(104.037955, 30.444575);
-    var p3 = new SMap.LngLat(104.007955, 30.444575);
-    var p11 = new SMap.LngLat(104.077955, 30.406777);
-    var p12 = new SMap.LngLat(104.057955, 30.426777);
-    var p13 = new SMap.LngLat(104.037955, 30.446777);
-    var p14 = new SMap.LngLat(104.017955, 30.466777);
-    var p15 = new SMap.LngLat(104.037955, 30.486777);
-    var p16 = new SMap.LngLat(104.057955, 30.406777);
-    var p17 = new SMap.LngLat(104.077955, 30.426777);
-    var p18 = new SMap.LngLat(104.007955, 30.446777);
-    var px1 = new SMap.Pixel(-15, -34);
-    var px2 = new SMap.Pixel(9, 9);
-    var px3 = new SMap.Pixel(9, 9);
-    var icon = 'http://fhj.xbwq.com.cn/fhj/public/common/widget/module/location/track/images/track/track_map2_start.png';
+    var p1 = new SMap.LngLat(104.06587958335876,30.657515837921938);
 
     var smap = new SMap.Map('container', {
       resizeEnable: true,
       zoom: 11,
-      center: p0
+      center: p1
     });
 
     var geocoder = new SMap.Geocoder();
     smap.on('click', function(e) {
-      console.log(e)
-      geocoder.geocode({'location': e._inner.latLng}, function(results, status) {
+      geocoder.geocode({
+        'location': e._inner.latLng
+      }, function(results, status) {
         if (status === 'OK') {
           console.log('results', results[0], results[0].formatted_address);
         } else {
@@ -66,6 +52,38 @@
         }
       });
     });
+
+
+
+    var infoWindow = new google.maps.InfoWindow({
+      map: smap._inner
+    });
+
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        console.log(pos)
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Location found.');
+        smap.setCenter(pos);
+      }, function() {
+        handleLocationError(true, infoWindow, smap.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, smap.getCenter());
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+    }
   </script>
 
 </body>
