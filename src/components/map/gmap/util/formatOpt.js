@@ -7,7 +7,7 @@ var util = require('./util.js');
 
 function formatOptsUni(opts) {
   var formatOpts = util.extend({},opts);
-  if (opts.position && !opts.position._inner) {
+  if (opts.position && opts.position._inner) {
     formatOpts.position = new google.maps.LatLng({
       lat: opts.position.getLat(),
       lng: opts.position.getLng()

@@ -9,13 +9,6 @@
       position: relative;
       height: 600px;
     }
-
-    #pac-input {
-      position: absolute;
-      top: 60px;
-      left: 60px;
-      z-index: 99;
-    }
   </style>
 </head>
 
@@ -59,6 +52,17 @@
       resizeEnable: true,
       zoom: 11,
       center: p1
+    });
+
+    var geocoder = new SMap.Geocoder();
+    smap.on('click', function(e) {
+      geocoder.geocode({'location': e._inner.latLng}, function(results, status) {
+        if (status === 'OK') {
+          console.log('results', results[0], results[0].formatted_address);
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
     });
   </script>
 

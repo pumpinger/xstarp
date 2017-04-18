@@ -85,8 +85,8 @@ Map.prototype.clearInfoWindow = function() {
 };
 
 // TODO: setFitView
-Map.prototype.setFitView = function() {
-
+Map.prototype.setFitView = function(bounds) {
+  this._inner.fitBounds(bounds);
 };
 
 /**

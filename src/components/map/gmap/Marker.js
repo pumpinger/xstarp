@@ -23,7 +23,7 @@ function Marker(opts, inner) {
     // 如果opts.map存在，则把自己增加到map对应的overlay中。
     this._type = 'Marker';
     obc.addOverlay(opts, this);
-    
+
     this.options = opts;
     var newOpts = format.marker(opts);
     if (opts.content) {
@@ -56,13 +56,16 @@ Marker.prototype.setMap = function(map) {
       },
       1000);
   } else {
-    var markers = this._smap._overLayers.Marker;
-    var that = this;
-    markers.filter(function(item, index) {
-      if (item == that) {
-        markers.splice(index, 1);
-      }
-    });
+    if (this._smap && this._smap._overLayers) {
+      var markers = this._smap._overLayers.Marker;
+      var that = this;
+      markers.filter(function(item, index) {
+        if (item == that) {
+          markers.splice(index, 1);
+        }
+      });
+    }
+
     this._inner.setMap(null);
   }
 };
@@ -85,11 +88,11 @@ Marker.prototype.setPosition = function(LngLat) {
 };
 
 Marker.prototype.setIcon = function(icon) {
-    this._inner.setIcon(icon);
+  this._inner.setIcon(icon);
 };
 
 Marker.prototype.setzIndex = function(ZIndex) {
-    this._inner.setZIndex(ZIndex);
+  this._inner.setZIndex(ZIndex);
 };
 
 Marker.prototype.getExtData = function() {

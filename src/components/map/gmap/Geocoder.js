@@ -1,8 +1,8 @@
 
-function Geocoder (){
-
+function Geocoder (options){
+    return this;
 }
 
-Geocoder.prototype = {};
+Geocoder.prototype = new google.maps.Geocoder();
 
 module.exports = Geocoder;
