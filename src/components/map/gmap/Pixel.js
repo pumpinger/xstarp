@@ -5,7 +5,6 @@
  * https://developers.google.com/maps/documentation/javascript/reference#Point
  */
 
-var format = require('./util/format.js');
 /**
  * @constructor
  * @param {Number} x
@@ -31,7 +30,11 @@ Pixel.prototype.getY = function () {
  * @param {Pixel} pixel
  * */
 Pixel.prototype.equals = function (pixel) {
-    return this._inner.equals(format({Pixel: pixel}).Pixel);
+    if(Pixel && Pixel._inner){
+        return this._inner.equals(Pixel._inner);
+    }else{
+        return this._inner.equals(Pixel);
+    }
 };
 Pixel.prototype.toString = function () {
     return this._inner.toString();

@@ -2,26 +2,28 @@
  * Created by fizz on 2017/2/13.
  */
 
-var format = require('./util/format.js');
 /**
  * @constructor
  * @lng {Number} lng
  * @lat {Number} lat
  * */
 function LngLat(lng, lat, inner) {
-    if(lng.constructor = String){
-        lng = parseFloat(lng);
-    }
-    if(lat.constructor = String){
-        lat = parseFloat(lat);
-    }
-    if (inner) {
-        this._inner = inner;
-    } else {
-        this._inner = new google.maps.LatLng({lat: lat, lng: lng});
-    }
-    this._type = 'LngLat';
-    return this;
+  if (lng.constructor = String) {
+    lng = parseFloat(lng);
+  }
+  if (lat.constructor = String) {
+    lat = parseFloat(lat);
+  }
+  if (inner) {
+    this._inner = inner;
+  } else {
+    this._inner = new google.maps.LatLng({
+      lat: lat,
+      lng: lng
+    });
+  }
+  this._type = 'LngLat';
+  return this;
 }
 
 /**
@@ -30,25 +32,25 @@ function LngLat(lng, lat, inner) {
  * @param {Number} s
  * */
 LngLat.prototype.offset = function (w, s) {
-    //todo
+  //todo
 };
 LngLat.prototype.distance = function (lnglat) {
-    //todo
+  //todo
 };
 LngLat.prototype.getLng = function () {
-    return this._inner.lng();
+  return this._inner.lng();
 };
 LngLat.prototype.getLat = function () {
-    return this._inner.lat();
+  return this._inner.lat();
 };
 LngLat.prototype.equals = function (lngLat) {
-    var LngLat = format({LngLat: lngLat}).LngLat;
-    return this._inner.equals(LngLat);
+  if (lngLat && lngLat._inner) {
+    return this._inner.equals(lngLat._inner);
+  } else {
+    return this._inner.equals(lngLat);
+  }
 };
 LngLat.prototype.toString = function () {
-    return this._inner.toString();
+  return this._inner.toString();
 };
 module.exports = LngLat;
-
-
-

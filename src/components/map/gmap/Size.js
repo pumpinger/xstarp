@@ -2,7 +2,6 @@
  * Created by fizz on 2017/2/15.
  */
 
-var format = require('./util/format.js');
 /**
  * @constructor
  * @param {Number} width

@@ -4,7 +4,6 @@
  */
 var obc = require('./util/overlayBaseClass');
 var onOff = require('./util/onOff');
-var format = require('./util/format.js');
 var format = require('./util/formatOpt.js');
 var CMarker = require('./CMarker');
 var LngLat = require('./LngLat.js');
