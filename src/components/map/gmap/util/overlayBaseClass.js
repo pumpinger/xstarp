@@ -5,6 +5,7 @@
 module.exports = {
   setMap: function(map) {
     if(map !== null) {
+      this._smap = map;      
       this._inner._smap = map;
       map._overLayers[this._type].push(this);
       this._inner.setMap(map._inner);

@@ -72,7 +72,7 @@ function MarkerClusterer(map, opt_markers, opt_options) {
    * @type {Array.<google.maps.Marker>}
    * @private
    */
-  this.markers_ = [];
+  this.markers = [];
 
   /**
    *  @type {Array.<Cluster>}
@@ -311,7 +311,7 @@ MarkerClusterer.prototype.isAverageCenter = function() {
  *  @return {Array.<google.maps.Marker>} The markers.
  */
 MarkerClusterer.prototype.getMarkers = function() {
-  return this.markers_;
+  return this.markers;
 };
 
 
@@ -321,7 +321,7 @@ MarkerClusterer.prototype.getMarkers = function() {
  *  @return {Number} The number of markers.
  */
 MarkerClusterer.prototype.getTotalMarkers = function() {
-  return this.markers_.length;
+  return this.markers.length;
 };
 
 
@@ -432,7 +432,7 @@ MarkerClusterer.prototype.pushMarkerTo_ = function(marker) {
       that.repaint();
     });
   }
-  this.markers_.push(marker);
+  this.markers.push(marker);
 };
 
 
@@ -459,10 +459,10 @@ MarkerClusterer.prototype.addMarker = function(marker, opt_nodraw) {
  */
 MarkerClusterer.prototype.removeMarker_ = function(marker) {
   var index = -1;
-  if (this.markers_.indexOf) {
-    index = this.markers_.indexOf(marker);
+  if (this.markers.indexOf) {
+    index = this.markers.indexOf(marker);
   } else {
-    for (var i = 0, m; m = this.markers_[i]; i++) {
+    for (var i = 0, m; m = this.markers[i]; i++) {
       if (m == marker) {
         index = i;
         break;
@@ -477,7 +477,7 @@ MarkerClusterer.prototype.removeMarker_ = function(marker) {
 
   marker.setMap(null);
 
-  this.markers_.splice(index, 1);
+  this.markers.splice(index, 1);
 
   return true;
 };
@@ -664,7 +664,7 @@ MarkerClusterer.prototype.clearMarkers = function() {
   this.resetViewport(true);
 
   // Set the markers a empty array.
-  this.markers_ = [];
+  this.markers = [];
 };
 
 
@@ -679,7 +679,7 @@ MarkerClusterer.prototype.resetViewport = function(opt_hide) {
   }
 
   // Reset the markers to not be added and to be invisible.
-  for (var i = 0, marker; marker = this.markers_[i]; i++) {
+  for (var i = 0, marker; marker = this.markers[i]; i++) {
     marker.isAdded = false;
     if (opt_hide) {
       marker.setMap(null);
@@ -789,7 +789,7 @@ MarkerClusterer.prototype.createClusters_ = function() {
     this.map_.getBounds().getNorthEast());
   var bounds = this.getExtendedBounds(mapBounds);
 
-  for (var i = 0, marker; marker = this.markers_[i]; i++) {
+  for (var i = 0, marker; marker = this.markers[i]; i++) {
     if (!marker.isAdded && this.isMarkerInBounds_(marker, bounds)) {
       this.addToClosestCluster_(marker);
     }
@@ -812,7 +812,7 @@ function Cluster(markerClusterer) {
   this.minClusterSize_ = markerClusterer.getMinClusterSize();
   this.averageCenter_ = markerClusterer.isAverageCenter();
   this.center_ = null;
-  this.markers_ = [];
+  this.markers = [];
   this.bounds_ = null;
   this.clusterIcon_ = new ClusterIcon(this, markerClusterer.getStyles(), markerClusterer.getGridSize());
 }
@@ -824,10 +824,10 @@ function Cluster(markerClusterer) {
  * @return {boolean} True if the marker is already added.
  */
 Cluster.prototype.isMarkerAlreadyAdded = function(marker) {
-  if (this.markers_.indexOf) {
-    return this.markers_.indexOf(marker) != -1;
+  if (this.markers.indexOf) {
+    return this.markers.indexOf(marker) != -1;
   } else {
-    for (var i = 0, m; m = this.markers_[i]; i++) {
+    for (var i = 0, m; m = this.markers[i]; i++) {
       if (m == marker) {
         return true;
       }
@@ -853,7 +853,7 @@ Cluster.prototype.addMarker = function(marker) {
     this.calculateBounds_();
   } else {
     if (this.averageCenter_) {
-      var l = this.markers_.length + 1;
+      var l = this.markers.length + 1;
       var lat = (this.center_.lat() * (l - 1) + marker.getPosition().lat()) / l;
       var lng = (this.center_.lng() * (l - 1) + marker.getPosition().lng()) / l;
       this.center_ = new google.maps.LatLng(lat, lng);
@@ -862,9 +862,9 @@ Cluster.prototype.addMarker = function(marker) {
   }
 
   marker.isAdded = true;
-  this.markers_.push(marker);
+  this.markers.push(marker);
 
-  var len = this.markers_.length;
+  var len = this.markers.length;
   if (len < this.minClusterSize_ && marker.getMap() != this.map_) {
     // Min cluster size not reached so show the marker.
     marker.setMap(this.map_);
@@ -873,7 +873,7 @@ Cluster.prototype.addMarker = function(marker) {
   if (len == this.minClusterSize_) {
     // Hide the markers that were showing.
     for (var i = 0; i < len; i++) {
-      this.markers_[i].setMap(null);
+      this.markers[i].setMap(null);
     }
   }
 
@@ -916,8 +916,8 @@ Cluster.prototype.getBounds = function() {
  */
 Cluster.prototype.remove = function() {
   this.clusterIcon_.remove();
-  this.markers_.length = 0;
-  delete this.markers_;
+  this.markers.length = 0;
+  delete this.markers;
 };
 
 
@@ -927,7 +927,7 @@ Cluster.prototype.remove = function() {
  * @return {number} The cluster center.
  */
 Cluster.prototype.getSize = function() {
-  return this.markers_.length;
+  return this.markers.length;
 };
 
 
@@ -937,7 +937,7 @@ Cluster.prototype.getSize = function() {
  * @return {Array.<google.maps.Marker>} The cluster center.
  */
 Cluster.prototype.getMarkers = function() {
-  return this.markers_;
+  return this.markers;
 };
 
 
@@ -992,20 +992,20 @@ Cluster.prototype.updateIcon = function() {
 
   if (mz && zoom > mz) {
     // The zoom is greater than our max zoom so show all the markers in cluster.
-    for (var i = 0, marker; marker = this.markers_[i]; i++) {
+    for (var i = 0, marker; marker = this.markers[i]; i++) {
       marker.setMap(this.map_);
     }
     return;
   }
 
-  if (this.markers_.length < this.minClusterSize_) {
+  if (this.markers.length < this.minClusterSize_) {
     // Min cluster size not yet reached.
     this.clusterIcon_.hide();
     return;
   }
 
   var numStyles = this.markerClusterer_.getStyles().length;
-  var sums = this.markerClusterer_.getCalculator()(this.markers_, numStyles);
+  var sums = this.markerClusterer_.getCalculator()(this.markers, numStyles);
   this.clusterIcon_.setCenter(this.center_);
   this.clusterIcon_.setSums(sums);
   this.clusterIcon_.show();
@@ -1289,3 +1289,5 @@ Object.keys = Object.keys || function(o) {
   }
   return result;
 };
+
+module.exports = MarkerClusterer;

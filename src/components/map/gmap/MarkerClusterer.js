@@ -4,6 +4,8 @@
 
 var formatOpts = require('./util/formatOpt');
 var obc = require('./util/overlayBaseClass');
+var onOff = require('./util/onOff.js');
+var MarkerClusterer = require('./markerclustererg.js');
 
 /**
  * @constructor
@@ -12,34 +14,52 @@ var obc = require('./util/overlayBaseClass');
  * @opts {MarkerClustererOptions}
  * */
 function Clusterer(map, markers, opts) {
-  if(markers.length < 1) return;
+  if (markers.length < 1) {
+    console.warn('MarkerCluster: markers.length < 1');
+  };
 
   this._type = 'MarkerClusterer';
-  obc.addOverlay({map: map}, this);
+  obc.addOverlay({
+    map: map
+  }, this);
 
   var newOpts = formatOpts.markerClusterer(map, markers, opts);
   this._inner = new MarkerClusterer(newOpts.map, newOpts.markers, newOpts.opts);
   this._inner._smap = map;
 }
 
-Clusterer.prototype = {
-  getSize: function() {},
+Clusterer.prototype.getSize = function() {};
 
-  setMap: obc.setMap,
+Clusterer.prototype.setMap = obc.setMap;
 
-  getMap: function() {
+Clusterer.prototype.getMap = function() {
+  if (this._inner) {
     return this._inner.getMap();
-  },
-
-  addMarker: function() {},
-  removeMarker: function() {},
-
-  /**
-   * @param {Array} styles
-   * */
-  setStyles: function(styles) {
-
   }
 };
+
+Clusterer.prototype.addMarker = function() {};
+Clusterer.prototype.removeMarker = function() {};
+
+Clusterer.prototype.clearMarkers = function() {
+  if (this._inner) {
+    this._inner.clearMarkers();
+  }
+};
+
+
+/**
+ * @param {Array} styles
+ * */
+Clusterer.prototype.setStyles = function(styles) {
+
+};
+Clusterer.prototype.on = function(eventName, handler, context) {
+  if (eventName == 'click') {
+    eventName = 'clusterclick';
+  }
+  onOff.on.call(this, eventName, handler, context);
+};
+Clusterer.prototype.off = onOff.off;
 
 module.exports = Clusterer;

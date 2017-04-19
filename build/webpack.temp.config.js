@@ -7,7 +7,7 @@ var extractCSS = new ExtractTextPlugin('[name].css');
 var extractLESS = new ExtractTextPlugin('[name].less');
 
 module.exports = {
-    watch: true,
+    // watch: true,
     entry: {
         temp: path.resolve(__dirname, '../src/temp.js')
     },

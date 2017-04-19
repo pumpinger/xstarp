@@ -14,46 +14,44 @@ var formatOpts = require('./util/formatOpt');
  * */
 function Polyline(opts) {
   this._type = 'Polyline';
+  this.options = opts
+
   obc.addOverlay(opts, this);
 
   var newOpts = formatOpts.polyline(opts);
   this._inner = new google.maps.Polyline(newOpts);
-  // this._inner._self = this;
 }
 
-Polyline.prototype = {
-  setPath: function() {},
-  getPath: function() {},
-  setOptions: function() {},
-  getOptions: function() {},
-  getLength: function() {},
-
-  getBounds: function() {},
-
-  hide: obc.hide,
-  show: obc.show,
-  setMap: obc.setMap,
-
-  /**
-   * @ext {any} extData
-   * */
-  setExtData: function(ext) {
-    this._inner.extDate = ext;
-  },
-
-  getExtData: function() {
-    return this._inner.extDate;
-  },
-
-  on: onOff.on,
-  off: onOff.off
+Polyline.prototype.setPath = function () {};
+Polyline.prototype.getPath = function () {
+  return this._inner.getPath().getArray();
 };
+Polyline.prototype.setOptions = function () {};
+Polyline.prototype.getOptions = function () {};
+Polyline.prototype.getLength = function () {};
+
+Polyline.prototype.getBounds = function () {};
+
+Polyline.prototype.hide = obc.hide;
+Polyline.prototype.show = obc.show;
+Polyline.prototype.setMap = obc.setMap;
+
+/**
+ * @ext {any} extData
+ * */
+Polyline.prototype.setExtData = function (ext) {
+  this.options.extData = ext;
+};
+
+Polyline.prototype.getExtData = function () {
+  return this.options.extData;
+};
+
+Polyline.prototype.on = onOff.on;
+Polyline.prototype.off = onOff.off;
 
 var PolylineEventMap = {
 
 };
 
 module.exports = Polyline;
-
-
-

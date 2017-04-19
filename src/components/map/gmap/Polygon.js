@@ -22,59 +22,72 @@ function Polygon(opts) {
 
 }
 
-Polygon.prototype = {
+Polygon.prototype.setMap = obc.setMap;
 
-  setMap: obc.setMap,
-
-  /**
-   * @param {path:Array LngLat | Array lngLat} path
-   * */
-  setPath: function(path) {
-    this._inner.setPath( path );
-  },
-  getPath: function() {},
-
-  setOptions: function() {
-    this._inner.setOptions( formatOpts.polygon(opts) );
-  },
-
-  getOptions: function() {},
-
-  getBounds: function() {},
-
-  getArea: function() {},
-
-  hide: obc.hide,
-
-  show: obc.show,
-
-
-
-  /**
-   * @param {any} ext extData
-   * */
-  setExtData: function(ext) {
-    this._inner.extDate = ext;
-  },
-
-  getExtData: function() {
-    return this._inner.extDate;
-  },
-
-  /**
-   * @function judge whether a point in the polygon inner
-   * @param {LngLat} point
-   * */
-  contains: function(point) {
-    //TODO 多边形没实现contains
-      // return this._inner.getBounds().contains(point);
-  },
-
-  on: onOff.on,
-  off: onOff.off
+/**
+ * @param {path:Array LngLat | Array lngLat} path
+ * */
+Polygon.prototype.setPath = function(path) {
+  var p = []
+  for (var index = 0; index < path.length; index++) {
+    if (path[index]._inner) {
+      p.push(path[index]._inner);
+    } else {
+      p.push(path[index]);
+    }
+  }
+  this._inner.setPath(p);
+};
+Polygon.prototype.getPath = function() {
+  return this._inner.getPath();
 };
 
+Polygon.prototype.setOptions = function(opts) {
+  this._inner.setOptions(formatOpts.polygon(opts));
+};
+
+Polygon.prototype.setEditable = function(editable) {
+  this._inner.setEditable(editable);
+};
+
+Polygon.prototype.getOptions = function() {};
+
+Polygon.prototype.getBounds = function() {};
+
+Polygon.prototype.getArea = function() {};
+
+Polygon.prototype.hide = obc.hide;
+
+Polygon.prototype.show = obc.show;
+
+
+
+/**
+ * @param {any} ext extData
+ * */
+Polygon.prototype.setExtData = function(ext) {
+  this._inner.extData = ext;
+};
+
+Polygon.prototype.getExtData = function() {
+  return this._inner.extData;
+};
+
+/**
+ * @function judge whether a point in the polygon inner
+ * @param {LngLat} point
+ * */
+Polygon.prototype.contains = function(point) {
+  var latlng;
+  if (point._inner) {
+    latlng = point._inner;
+  } else {
+    latlng = point;
+  }
+  return google.maps.geometry.poly.containsLocation(latlng, this._inner);
+};
+
+Polygon.prototype.on = onOff.on;
+Polygon.prototype.off = onOff.off;
+
 module.exports = Polygon;
-
-
-

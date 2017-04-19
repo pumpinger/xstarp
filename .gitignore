@@ -2,6 +2,7 @@
 node_modules/
 dist/
 docs/dist
+.vscode
 
 *npm-debug.log
 npm.debug*

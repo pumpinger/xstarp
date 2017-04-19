@@ -4,8 +4,10 @@
  */
 var obc = require('./util/overlayBaseClass');
 var onOff = require('./util/onOff');
-var formatOpts = require('./util/formatOpt');
-var LMarker = require('./LMarker');
+var format = require('./util/format.js');
+var format = require('./util/formatOpt.js');
+var CMarker = require('./CMarker');
+var LngLat = require('./LngLat.js');
 
 /**
  * Represents a Marker
@@ -15,67 +17,93 @@ var LMarker = require('./LMarker');
  * @return an object, inner is prime google map Marker instance.
  * */
 function Marker(opts, inner) {
-
+  if (inner) {
+    this._inner = inner;
+  } else {
+    // 如果opts.map存在，则把自己增加到map对应的overlay中。
     this._type = 'Marker';
+    obc.addOverlay(opts, this);
 
-    if (inner) {
-        this._inner = inner;
+    this.options = opts;
+    var newOpts = format.marker(opts);
+    if (opts.content) {
+      // opts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
+      // opts.label = opts.content;
+      this._inner = new CMarker(opts);
     } else {
-        // 在opts转换之前就要判断添加overlay
-        // obc.addOverlay(opts, this);
-        var newOpts = formatOpts.marker(opts);
-
-        if (newOpts.content) {
-            newOpts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
-            // newOpts.icon = 'http://c163img.nos-eastchina1.126.net/blank_36x36.png';
-            newOpts.label = newOpts.content;
-            this._inner = new LMarker(newOpts);
-        } else {
-            this._inner = new google.maps.Marker(newOpts);
-        }
-
-        this._inner._smap = newOpts.map;
-        this.position = newOpts.position;
-
-        google.maps.Marker.apply(this, opts);
-        console.log('this', this);
-        console.log('_inner', this._inner);
-        //marker2._inner.__gm.Eb.map.b.O.style.opacity = 1
+      this._inner = new google.maps.Marker(newOpts);
     }
+    this._inner._smap = newOpts.map;
+    this.position = newOpts.position;
+  }
+  return this;
 }
 
-Marker.prototype = new google.maps.Marker(new google.maps.LatLng(0, 0));
+// Marker.prototype = new google.maps.Marker();
 
-Marker.prototype.setMap = function (map) {
-    if (map !== null) {
-        this._inner._smap = map;
-        map._overLayers[this._type].push(this);
-        this._inner.setMap(map._inner);
-        var that = this;
-        console.log('inner',that._inner.__gm);
-        setTimeout(
-            function () {
-                if (that._inner.content && that._inner.__gm.Eb.map) {
-                    that._inner.__gm.Eb.map.b.O.style.opacity = 1;
-                    that._inner.__gm.Eb.map.b.O.innerHTML = that._inner.content;
-                }
-            }, 1000
-        );
-
-    } else {
-        this._inner.setMap(null);
+Marker.prototype.setMap = function(map) {
+  if (map !== null) {
+    this._smap = map;
+    this._inner._smap = map;
+    map._overLayers[this._type].push(this);
+    this._inner.setMap(map._inner);
+    var that = this;
+    setTimeout(function() {
+        if (that._inner.content && that._inner.__gm.Eb.map) {
+          that._inner.__gm.Eb.map.b.O.style.opacity = 1;
+          that._inner.__gm.Eb.map.b.O.innerHTML = that._inner.content;
+        }
+      },
+      1000);
+  } else {
+    if (this._smap && this._smap._overLayers) {
+      var markers = this._smap._overLayers.Marker;
+      var that = this;
+      markers.filter(function(item, index) {
+        if (item == that) {
+          markers.splice(index, 1);
+        }
+      });
     }
+
+    this._inner.setMap(null);
+  }
 };
 Marker.prototype.getMap = obc.getMap;
-Marker.prototype.getPosition = function () {
-    return this.position;
+
+Marker.prototype.getPosition = function() {
+  return new LngLat(0, 0, this._inner.getPosition());
 };
 
-Marker.prototype.hide = function () {
-    this._inner.hide()
+Marker.prototype.setPosition = function(LngLat) {
+  if (!LngLat) {
+    console.warn('Marker.setPosition() : !LngLat')
+    return;
+  }
+  if (LngLat._inner) {
+    this._inner.setPosition(LngLat._inner);
+  } else {
+    this._inner.setPosition(LngLat);
+  }
 };
-Marker.prototype.show = function () {
-    this._inner.show()
+
+Marker.prototype.setIcon = function(icon) {
+  this._inner.setIcon(icon);
+};
+
+Marker.prototype.setzIndex = function(ZIndex) {
+  this._inner.setZIndex(ZIndex);
+};
+
+Marker.prototype.getExtData = function() {
+  return this.options.extData;
+};
+
+Marker.prototype.hide = function() {
+  this._inner.setVisible(false);
+};
+Marker.prototype.show = function() {
+  this._inner.setVisible(true);
 };
 Marker.prototype.on = onOff.on;
 Marker.prototype.off = onOff.off;
