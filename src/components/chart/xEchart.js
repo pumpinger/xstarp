@@ -229,3 +229,10 @@ function linesChart(options) {
     var myChart = echarts.init(document.getElementById(options.conId));// 图表初始化的地方，在页面中要有一个地方来显示图表
     myChart.setOption(option); //显示图形
 }
+
+
+window.XChart ={
+  barChart:barChart,
+  cirChart:cirChart,
+  linesChart:linesChart
+};

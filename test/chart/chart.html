@@ -19,11 +19,9 @@
 <script src="../../dist/vendor/moment.js"></script>
 <script src="../../dist/vendor/jquery.js"></script>
 <script src="http://localhost:9000/xstarp.js"></script>
-<script src="../../src/components/chart/echarts.js"></script>
-<script src="../../src/components/chart/xEchart.js"></script>
 
 <script>
-    barChart({
+  XChart.barChart({
         conId:'x-chart1',
         title:'标题',
         xArray:['星期一星期', '星期二星期', '星期三星星期', '星期四星星期'],
@@ -46,7 +44,7 @@
             alert(param.value);
         }
     });
-    cirChart({
+  XChart.cirChart({
         conId:'x-chart2',
         title:'饼图',
         seriesType:'pie',
@@ -59,7 +57,7 @@
             {value:1548}
         ]
     });
-    cirChart({
+  XChart.cirChart({
         conId:'x-chart3',
         title:'饼图',
         seriesType:'pie',
@@ -73,7 +71,7 @@
             {value:1548}
         ]
     });
-    linesChart({
+  XChart.linesChart({
         conId:'x-chart4',
         title:'折线图',
         legendArray:['最高气温','最低气温'],
