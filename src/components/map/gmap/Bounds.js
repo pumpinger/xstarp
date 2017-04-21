@@ -24,6 +24,9 @@ function Bounds(sw, ne, inner) {
  * @param {LngLat} point
  * */
 Bounds.prototype.contains = function(point) {
+    if(!point){
+    return;
+  }
     return this._inner.contains(point._inner);
 };
 Bounds.prototype.getCenter = function() {

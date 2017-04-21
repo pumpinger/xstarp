@@ -64,7 +64,6 @@ Marker.prototype.setMap = function(map) {
         }
       });
     }
-
     this._inner.setMap(null);
   }
 };
@@ -87,10 +86,18 @@ Marker.prototype.setPosition = function(LngLat) {
 };
 
 Marker.prototype.setIcon = function(icon) {
+  if (!icon) {
+    console.warn('Marker.setIcon() : !icon')
+    return;
+  }
   this._inner.setIcon(icon);
 };
 
 Marker.prototype.setzIndex = function(ZIndex) {
+  if (!ZIndex) {
+    console.warn('Marker.setzIndex() : !ZIndex')
+    return;
+  }
   this._inner.setZIndex(ZIndex);
 };
 

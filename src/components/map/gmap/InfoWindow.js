@@ -31,6 +31,9 @@ InfoWindow.prototype.defaultOpts = {
 };
 
 InfoWindow.prototype.open = function(map, pos) {
+  if(!map || !pos){
+    return;
+  }
   this._smap = map;
   if (pos) {
     if (pos._inner) {
@@ -108,12 +111,18 @@ InfoWindow.prototype.close = function() {
  * @content {String|htmlDOM} content
  * */
 InfoWindow.prototype.setContent = function(content) {
+  if(!content){
+    return;
+  }
   this.div_.innerHTML = content;
 };
 InfoWindow.prototype.getContent = function() {
   return this.div_;
 };
 InfoWindow.prototype.setPosition = function(LngLat) {
+  if(!LngLat){
+    return;
+  }
   this.options.position = LngLat;
   this.draw();
 };

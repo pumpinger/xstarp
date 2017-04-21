@@ -28,6 +28,10 @@ Polygon.prototype.setMap = obc.setMap;
  * @param {path:Array LngLat | Array lngLat} path
  * */
 Polygon.prototype.setPath = function(path) {
+  if (!path) {
+    console.warn('Polygon.setPath() : !path')
+    return;
+  }
   var p = []
   for (var index = 0; index < path.length; index++) {
     if (path[index]._inner) {
@@ -43,10 +47,18 @@ Polygon.prototype.getPath = function() {
 };
 
 Polygon.prototype.setOptions = function(opts) {
+  if (!opts) {
+    console.warn('Polygon.setOptions() : !opts')
+    return;
+  }
   this._inner.setOptions(formatOpts.polygon(opts));
 };
 
 Polygon.prototype.setEditable = function(editable) {
+  if (!editable) {
+    console.warn('Polygon.setEditable() : !editable')
+    return;
+  }
   this._inner.setEditable(editable);
 };
 
@@ -66,6 +78,10 @@ Polygon.prototype.show = obc.show;
  * @param {any} ext extData
  * */
 Polygon.prototype.setExtData = function(ext) {
+  if (!ext) {
+    console.warn('Polygon.setExtData() : !ext')
+    return;
+  }
   this._inner.extData = ext;
 };
 

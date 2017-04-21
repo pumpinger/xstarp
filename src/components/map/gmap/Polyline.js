@@ -40,6 +40,10 @@ Polyline.prototype.setMap = obc.setMap;
  * @ext {any} extData
  * */
 Polyline.prototype.setExtData = function (ext) {
+  if (!ext) {
+    console.warn('Polyline.setExtData() : !ext')
+    return;
+  }
   this.options.extData = ext;
 };
 

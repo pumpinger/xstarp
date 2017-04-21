@@ -29,6 +29,9 @@ function Circle(opts) {
 Circle.prototype.setMap = obc.setMap;
 
 Circle.prototype.setCenter = function (center) {
+  if(!center){
+    return;
+  }
   this._inner.setCenter(center);
 };
 
@@ -36,14 +39,17 @@ Circle.prototype.getCenter = function () {
   return new LngLat(0, 0, this._inner.getCenter());
 };
 
-// Circle.prototype.getBounds = function () {
-
-// };
+Circle.prototype.getBounds = function () {
+  return this._inner.getBounds();
+};
 
 /**
  * @param {Number} radius
  * */
 Circle.prototype.setRadius = function (radius) {
+  if(!radius){
+    return;
+  }
   this._inner.setRadius(radius);
 };
 
@@ -52,6 +58,9 @@ Circle.prototype.getRadius = function () {
 };
 
 Circle.prototype.setOptions = function (opts) {
+  if(!opts){
+    return;
+  }
   this.opts = formatOpts.polygon(opts)
   this._inner.setOptions(this.opts);
 };
@@ -68,6 +77,9 @@ Circle.prototype.show = obc.show;
  * @ext {any} extData
  * */
 Circle.prototype.setExtData = function (ext) {
+  if(!ext){
+    return;
+  }
   this.extData = ext;
 };
 
@@ -81,6 +93,9 @@ Circle.prototype.getExtData = function () {
  * @return {Boolean} true or false
  * */
 Circle.prototype.contains = function (point) {
+  if(!point){
+    return;
+  }
   return this._inner.getBounds().contains(point._inner);
 };
 

@@ -44,7 +44,10 @@ LngLat.prototype.getLat = function () {
   return this._inner.lat();
 };
 LngLat.prototype.equals = function (lngLat) {
-  if (lngLat && lngLat._inner) {
+  if(!lngLat){
+    return;
+  }
+  if (lngLat._inner) {
     return this._inner.equals(lngLat._inner);
   } else {
     return this._inner.equals(lngLat);

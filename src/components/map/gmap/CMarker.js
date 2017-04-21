@@ -65,6 +65,9 @@ CMarker.prototype.getPosition = function() {
   return this.options.position._inner;
 };
 CMarker.prototype.setPosition = function(latlng) {
+  if(!latlng){
+    return;
+  }
   this.options.position = latlng;
   this.draw();
 };
