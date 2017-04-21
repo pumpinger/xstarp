@@ -91,6 +91,9 @@ InfoWindow.prototype.onRemove = function() {
 };
 
 InfoWindow.prototype.close = function() {
+    if(!this._smap){
+      return;
+    }
     var infoWindows = this._smap._overLayers.InfoWindow;
     var that = this;
     infoWindows.filter(function(item, index) {

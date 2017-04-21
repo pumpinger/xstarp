@@ -33,7 +33,9 @@ function Map(id, opts) {
 }
 
 Map.prototype.plugin = function (plugins, fn) {
-  if (!plugins || plugins.length < 1) {return;}
+  if (!plugins || plugins.length < 1) {
+    return;
+  }
   plugins.forEach(function (plugin) {
     console.log(plugin);
     if (plugin === 'SMap.MarkerClusterer') {
@@ -146,37 +148,36 @@ Map.prototype.getAllOverLayBounds = function () {
         arrayLatLng = arrayLatLng.concat(element.getPath().b);
       }, this);
     }
-
-    var lngMax = arrayLatLng[0].lng();
-    var lngMin = arrayLatLng[0].lng();
-    var latMax = arrayLatLng[0].lat();
-    var latMin = arrayLatLng[0].lat();
-
-    arrayLatLng.forEach(function (element) {
-      if (lngMax < element.lng()) {
-        lngMax = element.lng();
-      }
-      if (lngMin > element.lng()) {
-        lngMin = element.lng();
-      }
-      if (latMax < element.lat()) {
-        lngMax = element.lat();
-      }
-      if (latMin > element.lat()) {
-        latMin = element.lat();
-      }
-    }, this);
-
-    var sw = new google.maps.LatLng({
-      lat: latMin,
-      lng: lngMin
-    });
-    var ne = new google.maps.LatLng({
-      lat: latMax,
-      lng: lngMax
-    });
-    var latLngBounds = new google.maps.LatLngBounds(sw, ne);
-    bounds.union(latLngBounds);
+    if (arrayLatLng.length > 0) {
+      var lngMax = arrayLatLng[0].lng();
+      var lngMin = arrayLatLng[0].lng();
+      var latMax = arrayLatLng[0].lat();
+      var latMin = arrayLatLng[0].lat();
+      arrayLatLng.forEach(function (element) {
+        if (lngMax < element.lng()) {
+          lngMax = element.lng();
+        }
+        if (lngMin > element.lng()) {
+          lngMin = element.lng();
+        }
+        if (latMax < element.lat()) {
+          lngMax = element.lat();
+        }
+        if (latMin > element.lat()) {
+          latMin = element.lat();
+        }
+      }, this);
+      var sw = new google.maps.LatLng({
+        lat: latMin,
+        lng: lngMin
+      });
+      var ne = new google.maps.LatLng({
+        lat: latMax,
+        lng: lngMax
+      });
+      var latLngBounds = new google.maps.LatLngBounds(sw, ne);
+      bounds.union(latLngBounds);
+    }
   }
 
   //circle
