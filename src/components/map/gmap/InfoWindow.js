@@ -52,7 +52,7 @@ InfoWindow.prototype.onAdd = function() {
   div.style.borderWidth = '0px';
   div.style.position = 'absolute';
   div.style.cursor = 'pointer';
-  div.append(this.options.content);
+  div.appendChild(this.options.content);
 
   var that = this;
   google.maps.event.addDomListener(div, 'click', function(e) {
@@ -65,7 +65,7 @@ InfoWindow.prototype.onAdd = function() {
 
   // Add the element to the "overlayLayer" pane.
   var panes = this.getPanes();
-  panes.overlayMouseTarget.append(div);
+  panes.overlayMouseTarget.appendChild(div);
 };
 InfoWindow.prototype.draw = function() {
   // We use the south-west and north-east

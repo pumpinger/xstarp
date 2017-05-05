@@ -17,11 +17,11 @@ CMarker.prototype.onAdd = function() {
   div.style.borderWidth = '0px';
   div.style.position = 'absolute';
   div.style.cursor = 'pointer';
-  div.append(this.options.content);
+  div.appendChild(this.options.content);
 
   // Create the img element and attach it to the div.
   var span = document.createElement('div');
-  div.append(span);
+  div.appendChild(span);
 
   var that = this;
   google.maps.event.addDomListener(div, 'click', function(e) {
@@ -36,7 +36,7 @@ CMarker.prototype.onAdd = function() {
 
   // Add the element to the "overlayLayer" pane.
   var panes = this.getPanes();
-  panes.overlayMouseTarget.append(div);
+  panes.overlayMouseTarget.appendChild(div);
 };
 CMarker.prototype.draw = function() {
 
