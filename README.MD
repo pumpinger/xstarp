@@ -1,5 +1,4 @@
 # xstrap
-xstrap webpack 模块化版本
 
 ## 安装
 ```bash
@@ -12,9 +11,9 @@ $ cnpm install --save-dev node-sass
 ```
 
 ## 使用
-tip: 这些命令都是写在package.json里面的。
+tip: 命令写在package.json。
 
-- **开发**
+ **开发**
 ```bash
 $ npm run dev
 ```

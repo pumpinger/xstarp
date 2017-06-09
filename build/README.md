@@ -35,7 +35,7 @@
 - externals 这个配置是为了将jQuery声明为全局的变量。声明以后，在模块中使用$和jQuery这两个变量就不用再require了。  
 此外，moment也声明了全局变量~
 
-### Webpack.dev.config.js 和 Webpack.prod.config.js 又有啥区别？
+### Webpack.dev.config.js 和 Webpack/.prod.config.js 又有啥区别？
 
 **dev**
 - 开发服务版本

@@ -1,7 +1,7 @@
 .idea/
 node_modules/
-dist/
-docs/dist
+#dist/
+#docs/dist
 .vscode
 
 *npm-debug.log
