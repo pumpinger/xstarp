@@ -6,30 +6,12 @@
  * @second 自动引入对应地图的API
  * @third  自动引入对应地图的插件
  */
-var _ = require('lodash');
-
-var util = require('../../common/js/util.js');
-var GMap = require('./gmap/index.js');
-var DMap = require('./bmap/index.js');
-var loader = require('./loader');
-var config = require('./config');
-
-window.GMap = GMap;
-window.DMap = DMap;
-
-var SMap = {};
-
-window.mapCreate = mapCreate;
 
 /**
- * 默认设置地图类型为高德地图
+ * @entry 接收页面设置的地图属性
  * */
-// if(typeof AMap === 'undefined') {
-//   SMap = mapCreate('g');
-// }
-// else {
-//   SMap = mapCreate('a');
-// }
+
+var config = require('./config');
 
 /**
  * @function 返回一个地图顶级命名空间变量，适用于单页面多地图
@@ -52,6 +34,57 @@ function mapCreate(type) {
         return window.DMap;
     }
 }
+
+window.mapCreate = mapCreate;
+var SMap = {};
+
+if (typeof window.SMapConfig !== 'undefined') {
+    installMap(window.SMapConfig);
+} else {
+    installMap({});
+    console.warn("[你收到一条来自SMap的警告]：请在使用地图之前声明 SMap_target_type 这个变量！");
+}
+
+function installMap(SMapConfig) {
+    var type, mapType, url, key;
+
+    // 未设置则此处自动设置为高德地图
+    if (!SMapConfig.SMap_target_type) {
+        SMapConfig.SMap_target_type = 'a';
+    }
+
+    type = SMapConfig.SMap_target_type;
+
+    if (type === 'a') {
+        mapType = 'AMap';
+    }
+    else if (type === 'g') {
+        mapType = 'GMap';
+    }
+    else if (type === 'b') {
+        mapType = 'DMap';
+    }
+
+    key = SMapConfig[mapType + '_key'] || config[mapType + '_key'];
+    url = SMapConfig[mapType + '_url'] || config[mapType + '_url'];
+
+document.write('<script src=\'' + url + key + "' type='text/javascript'>\x3c/script>")
+    // window.SMap = window.mapCreate(type);
+    // getPluginScript(type);
+}
+
+
+var _ = require('lodash');
+
+var util = require('../../common/js/util.js');
+var GMap = require('./gmap/index.js');
+var DMap = require('./bmap/index.js');
+var loader = require('./loader');
+
+
+window.GMap = GMap;
+window.DMap = DMap;
+
 
 /**
  * @function 设置地图类型
@@ -101,43 +134,22 @@ function initMap(mapType, Map) {
     };
 }
 
-
 /**
- * @entry 接收页面设置的地图属性
- * */
-if (typeof window.SMapConfig !== 'undefined') {
-    installMap(window.SMapConfig);
-} else {
-    installMap({});
-    console.warn("[你收到一条来自SMap的警告]：请在使用地图之前声明 SMap_target_type 这个变量！");
-}
+ * @function 加载对应地图的脚本
+ *
+ */
 
-function installMap(SMapConfig) {
-    var type, mapType, url, key;
-
-    // 未设置则此处自动设置为高德地图
-    if (!SMapConfig.SMap_target_type) {
-        SMapConfig.SMap_target_type = 'a';
-    }
-
-    type = SMapConfig.SMap_target_type;
-
+function getMapScript(type) {
     if (type === 'a') {
-        mapType = 'AMap';
-    }
-    else if (type === 'g') {
-        mapType = 'GMap';
     }
     else if (type === 'b') {
-        mapType = 'DMap';
+        document.write('<script src="' + config.DMap_MarkerClusterer + '"><\/script>');
+        document.write('<script src="' + config.DMap_TextIconOverlay + '"><\/script>');
+        document.write('<script src="' + config.DMap_AreaRestriction + '"><\/script>');
     }
-
-    key = SMapConfig[mapType + '_key'] || config[mapType + '_key'];
-    url = SMapConfig[mapType + '_url'] || config[mapType + '_url'];
-
-    // document.write('<script src="' + url + key + '"><\/script>');
-    window.SMap = window.mapCreate(type);
-    // getPluginScript(type);
+    else if (type === 'g') {
+        document.write('<script src="' + config.GMap_MarkerClusterer + '"><\/script>');
+    }
 }
 
 /**
