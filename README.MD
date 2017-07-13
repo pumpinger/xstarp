@@ -11,8 +11,7 @@ $ npm install
 
 ## 使用
 
-
-- **开发**
+- 开发
 ```bash
 $ npm run watch
 $ npm run doc
@@ -24,15 +23,15 @@ $ npm run doc
 $ npm run build
 ```
 
-- **写文档**
+- 写文档
 
 在doc里面写相应组件的markdown文件
 
-- **写代码**
+- 写代码
 
 在src里面写相应组件js/scss
 
-
+__
 ### 目录结构 
 ```bash
 |---- root
