@@ -1,0 +1,92 @@
+
+
+
+
+
+
+//成套css
+@mixin opacity($opacity:50) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+
+@mixin inlineBlock() {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@mixin pointer(){
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;//这里以后能不能 用 插件自动加
+}
+
+
+
+//全局变量    主题
+$baseColorMain:#5bc0de;
+$baseColorSecond:#336699;
+$baseColorThird:#99CC33;
+
+$fontColorDeep:#111111;
+$fontColorLight:#fff;
+
+$borderColorDeep:#666;
+$borderColorLight:#ddd;
+
+$bgColorDeep:#ccc;
+$bgColorLight:#f4f4f4;
+
+$borderRadiusLevel:8px;
+$ElemRadiusLevel:5px;
+
+
+//常用颜色
+$successColor:#1AB394;
+$nomalColor:#5bc0de;
+$seriousColor:#336699;
+$warningColor:#ec971f;
+$dangerColor:#FF5722;
+$banColor:#d4d4d4;
+
+
+//函数
+@function negative($color) {
+  @if (lightness($color) < 70) {
+    @return $fontColorLight;
+  } @else {
+    @return $fontColorDeep;
+  }
+}
+
+//颜色数组
+$colors: (
+        red: #FF0000,
+        darkred: #8B0000,
+        mediumvioletred: #C71585,
+        indianred:#CD5C5C,
+        blue:#0000FF,
+        cadetblue:#5F9EA0,
+        cornflowerblue:#6495ED,
+        darkblue:#00008B,
+        darkslateblue:#483D8B,
+        green:#008000,
+        darkgreen:#006400,
+        darkolivegreen:#556B2F,
+        darkseagreen:#8FBC8F,
+        yellow:#FFFF00,
+        greenyellow:#ADFF2F,
+        orange:#FFA500,
+        darkorange:#FF8C00,
+        purple:#800080,
+        mediumpurple:#9370DB,
+);
+
+//样式-字体
+$baseFontSize: 14px;
+$minFontSize: 12px;
+$bigFontSize: 16px;
+$titleFontSize: 22px;
+$maxFontSize: 36px;
+//$fontSizeUnit: px;
+

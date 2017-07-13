@@ -1,0 +1,26 @@
+@import "../common/var";
+
+
+@for $i from $minFontSize through $maxFontSize {
+  .x-font-#{$i} { font-size: #{$i}px; }
+}
+
+.x-font-small {font-size: smaller}
+.x-font-large {font-size: larger;}
+
+
+//样式-颜色
+
+@each $key, $value in $colors {
+  .x-color-#{$key} {color:$value;}
+}
+
+
+//样式-基础css
+
+.x-style-textCenter {text-align: center;}
+.x-style-textLeft {text-align: left;}
+.x-style-textRight {text-align: right;}
+
+.x-style-floatRight {float: right;}
+.x-style-floatLeft {float: left;}

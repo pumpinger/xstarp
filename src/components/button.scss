@@ -1,0 +1,82 @@
+
+@import "../common/var";
+
+.x-button {@include inlineBlock;@include pointer();height:28px;line-height:28px;padding: 0 10px;background-color: $nomalColor
+;color:negative($baseColorMain);border-radius:$ElemRadiusLevel;font-size:$baseFontSize;}
+.x-button:hover{background-color:darken($nomalColor,10%)}
+
+
+.x-button i{margin-right:5px;}
+
+.x-button-large {height:36px;line-height:36px;padding: 0 15px;font-size:16px;}
+//.x-button-small {height:30px;line-height:30px;padding: 0 10px;font-size:$minFontSize;}
+.x-button-small {height:22px;line-height:22px;padding: 0 5px;font-size:$minFontSize;}
+
+
+
+
+.x-button-normal{background-color:$nomalColor;
+  &:hover{
+    background-color:darken($nomalColor,10%);
+  }
+}
+.x-button-success{background-color:$successColor;
+  &:hover{
+    background-color:darken($successColor,5%);
+  }
+}
+.x-button-serious{background-color:$seriousColor;
+  &:hover{
+    background-color:darken($seriousColor,10%);
+  }
+}
+.x-button-warning{background-color:$warningColor;
+  &:hover{
+    background-color:darken($warningColor,5%);
+  }
+}
+.x-button-ban{background-color:$banColor;
+  &:hover{
+    background-color:darken($banColor,10%);
+  }
+}
+
+.x-button-danger{background-color:$dangerColor;
+  &:hover{
+    background-color:darken($dangerColor,10%);
+  }
+}
+
+
+
+
+.x-button-group .x-button{
+  float:left;
+  border-radius:0;
+  &:first-child{
+    border-bottom-left-radius:$ElemRadiusLevel;
+    border-top-left-radius:$ElemRadiusLevel;
+  };
+  &:last-child{
+    border:{
+      top:{
+        right-radius:$ElemRadiusLevel ;
+      };
+      bottom:{
+        right-radius:$ElemRadiusLevel ;
+      }
+    }
+
+  }
+
+}
+
+.x-button-group{
+  overflow: auto;
+  @include inlineBlock();
+}
+
+
+
+
+

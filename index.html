@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test2</title>
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" href="vendor/vue.css">
+  <!--<link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">-->
+  <!--<link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">-->
+
+  <!--<link rel="stylesheet" href="http://localhost:9200/app.css">-->
+  <!--<script src="http://localhost:9200/app.js"></script>-->
+    <!--<script src="./dist/vendor.js"></script>-->
+
+    <link rel="stylesheet" href="./dist/app.css">
+    <!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+
+
+
+</head>
+<body>
+  <nav>
+      <a href="#/test.md">测试</a>
+      <a href="#/style.md">样式</a>
+      <a href="#/plug.md">插件</a>
+      <a href="#/wraps.md">封装</a>
+  </nav>
+  <div id="app"></div>
+</body>
+<script type="text/javascript" src="./vendor/markrun.min.js"></script>
+<script src="./dist/app.js"></script>
+
+<!--<script src="//unpkg.com/docsify"></script>-->
+<!--<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>-->
+<script>
+  window.$docsify = {
+      coverpage: './cover.md',
+      basePath:'./doc/',
+//      loadNavbar: true,
+//      loadSidebar:true,
+      name: 'XStrap',
+      maxLevel: 3,
+      subMaxLevel: 2,
+//      auto2top: true,
+      repo: '',
+      markdown: function(marked) {
+          markrun.setOptions({
+              template: '',
+              markdownParser: marked,
+              highlight: function (source, lang, data) {
+                  return Prism.highlight(source,  Prism.languages[lang] || Prism.languages.markup)
+              },
+              compile: {
+                  js: function (source) {
+                      // 如果需要编译则编译 source 后 eval
+                      // eval 前必须增加 setTimeout
+                      setTimeout(function () {
+                          //							if (!JSXTransformer) {
+                          //															eval(source)
+                          //							} else {
+                          //															source = JSXTransformer.transform(source).code
+                          //                            }
+                          eval(source)
+                      }, 100);
+                      return {
+                          lang: 'js',
+                          source: source,
+                          code: ''
+                      }
+                  }
+              }
+
+
+          });
+          return markrun;
+
+      }
+  }
+</script>
+<script src="./vendor/docsify.js"></script>
+</html>
+
