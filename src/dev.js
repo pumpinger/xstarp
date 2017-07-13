@@ -9,6 +9,7 @@ require('./components/button.scss');
 // require('./vendor/iconfont/iconfont.css');
 
 require('./components/tab/tab.js');
+require('./components/nav/nav.js');
 
 // require('./components/test/test.js');
 

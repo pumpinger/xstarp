@@ -4,8 +4,11 @@
 
 require('./nav.scss');
 
+
+
+
 //导航-侧边栏
-$(".x-nav-head").click(function() {
+$("body").on('click','.x-nav-head',function() {
     $(this).next('ul').slideToggle(300).parent().siblings('li').find('ul').slideUp();
     $(this).toggleClass('x-cur').parent().siblings('li').find('a.x-nav-head').removeClass('x-cur');
 
@@ -18,6 +21,7 @@ $(".x-nav-head").click(function() {
 });
 
 //导航-水平
-$('.x-nav-item').click(function(){
+$('body').on('click','.x-nav-item',function(){
+
     $(this).addClass('x-active').siblings('li').removeClass('x-active');
 });

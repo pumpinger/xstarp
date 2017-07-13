@@ -108,6 +108,7 @@ __webpack_require__(5);
 // require('./vendor/iconfont/iconfont.css');
 
 __webpack_require__(8);
+__webpack_require__(12);
 
 // require('./components/test/test.js');
 
@@ -10431,12 +10432,12 @@ return jQuery;
 
 __webpack_require__(6);
 
-// var  $ = require('jquery');
 
 $('body').on('click','.x-tab-nav li',function(){
     var i = $(this).index();
     $(this).addClass('x-active').siblings().removeClass('x-active');
-    $('.x-tab-content').eq(i).addClass('x-active').siblings().removeClass('x-active');
+    $(this).parents('.x-tab').find('.x-tab-content').eq(i).addClass('x-active').siblings().removeClass('x-active');
+
 });
 
 
@@ -10449,6 +10450,46 @@ $('body').on('click','.x-tab-nav li',function(){
 
 module.exports = __webpack_require__(1);
 
+
+/***/ }),
+/* 10 */,
+/* 11 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * Created by Administrator on 2017/2/17.
+ */
+
+__webpack_require__(11);
+
+
+
+
+//导航-侧边栏
+$("body").on('click','.x-nav-head',function() {
+    $(this).next('ul').slideToggle(300).parent().siblings('li').find('ul').slideUp();
+    $(this).toggleClass('x-cur').parent().siblings('li').find('a.x-nav-head').removeClass('x-cur');
+
+    if($(this).hasClass('x-cur')){
+        $(this).find('i').removeClass('icon-xiangxia1').addClass('icon-xiangshang2');
+        $(this).parent().siblings('li').find('i').addClass('icon-xiangxia1').removeClass('icon-xiangshang2');
+    }else{
+        $(this).find('i').addClass('icon-xiangxia1').removeClass('icon-xiangshang2');
+    }
+});
+
+//导航-水平
+$('body').on('click','.x-nav-item',function(){
+
+    $(this).addClass('x-active').siblings('li').removeClass('x-active');
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ })
 /******/ ]);

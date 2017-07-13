@@ -1,5 +1,6 @@
 # 按钮
 
+> .x-button 
 
 ## 主题
 ````html
@@ -42,6 +43,9 @@
 <div class="x-button"><i class="iconfont icon-baobei"></i>带符号</div>
 ````
 
+## 下拉菜单
+## 单选
+
 <br>
 <br>
 <br>
@@ -52,6 +56,8 @@ ___
 
 
 # 标签页
+
+> .x-tab  .x-tab-nav  .x-tab-contents
 
 ````html
 <div class="x-tab">
@@ -78,6 +84,8 @@ ___
 
 
 # 导航
+
+> .x-nav  .x-nav-cross   .x-nav-sidebar
 
 ````html
 <div class="x-tab">
