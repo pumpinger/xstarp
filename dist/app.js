@@ -63,11 +63,18 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(3);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 var g;
@@ -94,7 +101,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -105,10 +112,11 @@ module.exports = g;
 
 __webpack_require__(4);
 __webpack_require__(5);
-// require('./vendor/iconfont/iconfont.css');
-
 __webpack_require__(8);
-__webpack_require__(12);
+
+
+__webpack_require__(11);
+__webpack_require__(10);
 
 // require('./components/test/test.js');
 
@@ -131,18 +139,11 @@ __webpack_require__(12);
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(3);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(7);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(9);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 4 */
@@ -164,6 +165,18 @@ __webpack_require__(12);
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10423,7 +10436,7 @@ return jQuery;
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
@@ -10431,42 +10444,6 @@ return jQuery;
  */
 
 __webpack_require__(6);
-
-
-$('body').on('click','.x-tab-nav li',function(){
-    var i = $(this).index();
-    $(this).addClass('x-active').siblings().removeClass('x-active');
-    $(this).parents('.x-tab').find('.x-tab-content').eq(i).addClass('x-active').siblings().removeClass('x-active');
-
-});
-
-
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(1);
-
-
-/***/ }),
-/* 10 */,
-/* 11 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {/**
- * Created by Administrator on 2017/2/17.
- */
-
-__webpack_require__(11);
 
 
 
@@ -10489,7 +10466,36 @@ $('body').on('click','.x-nav-item',function(){
 
     $(this).addClass('x-active').siblings('li').removeClass('x-active');
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * Created by Administrator on 2017/2/17.
+ */
+
+__webpack_require__(7);
+
+
+$('body').on('click','.x-tab-nav li',function(){
+    var i = $(this).index();
+    $(this).addClass('x-active').siblings().removeClass('x-active');
+    $(this).parents('.x-tab').find('.x-tab-content').eq(i).addClass('x-active').siblings().removeClass('x-active');
+
+});
+
+
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
 
 /***/ })
 /******/ ]);

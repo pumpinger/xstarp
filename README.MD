@@ -60,6 +60,13 @@ __
 - 待补充
 
 
+## 待处理问题
+- 打包完成后修改html
+- soucemap
+- scss避免依赖重复
+- 第三方库如何导  如何不和appjs 在一起
+- 区分dev
+
 ### 构建工具
 - 使用webpack 对代码进行编译构建、模块打包
 - 开发环境（dev），生成环境（prod）分别打包
@@ -110,12 +117,6 @@ $ browser-sync start --server --files "**/*.css, **/*.html, **/*.js"
 [docsify](https://docsify.js.org/)
 
 
-## 其他问题
-- 打包完成后修改html
-- soucemap
-- scss避免依赖重复
-- 第三方库如何导  如何不和appjs 在一起
-- 区分dev
 
 
 ## 参考文章

@@ -38,8 +38,12 @@ module.exports = {
                 ])
             },*/
             {
-                test: /\.(png|jpg|gif|svg|eot|woff|ttf)$/,
-                use: 'file?name=./static/fonts/[name].[ext]',
+                test: /\.(svg|eot|woff|ttf)$/,
+                loader: 'file-loader?name=[name].[ext]&publicPath=./&outputPath=./vendor/fonts/',
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: 'file-loader?name=./dist/vendor/img/[name].[ext]',
             },
             {
                 // test: /\.(sass|scss)$/,
