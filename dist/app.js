@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -110,11 +110,17 @@ module.exports = g;
  */
 
 
+
+
+//   \$\((.*)\)\.click\(
+//   \$('body').on('click',$1,
+
 __webpack_require__(4);
 __webpack_require__(5);
 __webpack_require__(8);
 
 
+__webpack_require__(12);
 __webpack_require__(11);
 __webpack_require__(10);
 
@@ -10443,9 +10449,45 @@ return jQuery;
  * Created by Administrator on 2017/2/17.
  */
 
+__webpack_require__(19);
+
+
+
+$('body').on('click','.x-form-radio',function(){
+    $(this).addClass('x-checked').siblings().removeClass('x-checked');
+});
+
+$('body').on('click','.x-form-checkbox',function(){
+    console.log($(this).find("input").is(':checked'));
+    if($(this).find("input").is(':checked')){
+        $(this).addClass('x-checked');
+    }else{
+        $(this).removeClass('x-checked')
+    }
+});
+
+
+
+$('body').on('click','.x-form-switch',function(){
+    if($(this).find("input").is(':checked')){
+        $(this).addClass('x-form-onswitch');
+        $(this).find('span').text('开启');
+    }else{
+        $(this).removeClass('x-form-onswitch');
+        $(this).find('span').text('关闭');
+    }
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * Created by Administrator on 2017/2/17.
+ */
+
 __webpack_require__(6);
-
-
 
 
 //导航-侧边栏
@@ -10469,7 +10511,7 @@ $('body').on('click','.x-nav-item',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
@@ -10491,11 +10533,22 @@ $('body').on('click','.x-tab-nav li',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2);
 
+
+/***/ }),
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -5,8 +5,6 @@
 require('./nav.scss');
 
 
-
-
 //导航-侧边栏
 $("body").on('click','.x-nav-head',function() {
     $(this).next('ul').slideToggle(300).parent().siblings('li').find('ul').slideUp();

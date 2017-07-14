@@ -44,7 +44,7 @@
 ````
 
 ## 下拉菜单
-## 单选
+
 
 <br>
 <br>
@@ -155,6 +155,10 @@ ___
 ___
 
 # 表单
+> .x-form .x-form-title  .x-form-comtent .x-form-item .x-form-key .x-form-value
+
+
+\*表单还拥有配套的组件,可以更加款快捷的完成表单操作,见[表单组件]()
 
 ````html
 <div class="x-form">
@@ -169,7 +173,7 @@ ___
             <div class="x-form-value"><input type="password" name="passWord"></div>
         </div>
         <div  class="x-form-item">
-            <span class="x-form-key">文本框:</span>
+            <span class="x-form-key">文本:</span>
             <div class="x-form-value"><textarea></textarea></div>
         </div>
         <div  class="x-form-item">
@@ -216,7 +220,7 @@ ___
             </div>
         </div>
         <div class="x-form-item">
-            <span class="x-form-key">品牌类型: </span>
+            <span class="x-form-key">单选按钮: </span>
             <div class="x-form-value">
                 <lable class="x-form-radio x-checked">
                     <input type="radio" name="radio1" value="选项1" checked="checked">选项1
@@ -227,7 +231,7 @@ ___
             </div>
         </div>
         <div class="x-form-item">
-            <span class="x-form-key">价格范围: </span>
+            <span class="x-form-key">多选按钮: </span>
             <div class="x-form-value">
                 <label class="x-form-checkbox x-checked">
                     <input type="checkbox" name="checkbox1" value="选项1" checked="checked">选项1

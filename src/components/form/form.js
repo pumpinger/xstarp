@@ -4,12 +4,14 @@
 
 require('./form.scss');
 
-$('.x-form-radio').click(function(){
+
+
+$('body').on('click','.x-form-radio',function(){
     $(this).addClass('x-checked').siblings().removeClass('x-checked');
 });
 
-
-$('.x-form-checkbox').click(function(){
+$('body').on('click','.x-form-checkbox',function(){
+    console.log($(this).find("input").is(':checked'));
     if($(this).find("input").is(':checked')){
         $(this).addClass('x-checked');
     }else{
@@ -18,7 +20,8 @@ $('.x-form-checkbox').click(function(){
 });
 
 
-$('.x-form-switch').click(function(){
+
+$('body').on('click','.x-form-switch',function(){
     if($(this).find("input").is(':checked')){
         $(this).addClass('x-form-onswitch');
         $(this).find('span').text('开启');

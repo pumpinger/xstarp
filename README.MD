@@ -63,7 +63,8 @@ __
 ## 待处理问题
 - 打包完成后修改html
 - soucemap
-- scss避免依赖重复
+- scss避免依赖重复 
+- scss避免一直要引scss
 - 第三方库如何导  如何不和appjs 在一起
 - 区分dev
 

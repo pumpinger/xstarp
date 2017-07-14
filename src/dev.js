@@ -4,6 +4,11 @@
  */
 
 
+
+
+//   \$\((.*)\)\.click\(
+//   \$('body').on('click',$1,
+
 require('./common/init.css');
 require('./components/button.scss');
 require('./vendor/iconfont/iconfont.css');
@@ -11,6 +16,7 @@ require('./vendor/iconfont/iconfont.css');
 
 require('./components/tab/tab.js');
 require('./components/nav/nav.js');
+require('./components/form/form.js');
 
 // require('./components/test/test.js');
 
