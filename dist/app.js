@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -117,12 +117,12 @@ module.exports = g;
 
 __webpack_require__(4);
 __webpack_require__(5);
-__webpack_require__(8);
+__webpack_require__(9);
 
 
+__webpack_require__(13);
 __webpack_require__(12);
 __webpack_require__(11);
-__webpack_require__(10);
 
 // require('./components/test/test.js');
 
@@ -148,7 +148,7 @@ __webpack_require__(10);
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(9);
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(10);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
@@ -183,6 +183,12 @@ __webpack_require__(10);
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10442,14 +10448,14 @@ return jQuery;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/17.
  */
 
-__webpack_require__(19);
+__webpack_require__(6);
 
 
 
@@ -10480,14 +10486,14 @@ $('body').on('click','.x-form-switch',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/17.
  */
 
-__webpack_require__(6);
+__webpack_require__(7);
 
 
 //导航-侧边栏
@@ -10511,14 +10517,14 @@ $('body').on('click','.x-nav-item',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/17.
  */
 
-__webpack_require__(7);
+__webpack_require__(8);
 
 
 $('body').on('click','.x-tab-nav li',function(){
@@ -10533,22 +10539,11 @@ $('body').on('click','.x-tab-nav li',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2);
 
-
-/***/ }),
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

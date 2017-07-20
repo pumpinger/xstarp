@@ -6,8 +6,8 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-    <link rel="stylesheet" href="vendor/vue.css">
-  <!--<link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">-->
+    <!--<link rel="stylesheet" href="vendor/vue.css">-->
+  <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
   <!--<link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">-->
 
   <!--<link rel="stylesheet" href="http://localhost:9200/app.css">-->
@@ -32,8 +32,7 @@
 <script type="text/javascript" src="./vendor/markrun.min.js"></script>
 <script src="./dist/app.js"></script>
 
-<!--<script src="//unpkg.com/docsify"></script>-->
-<!--<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>-->
+
 <script>
   window.$docsify = {
       coverpage: './_cover.md',
@@ -41,8 +40,8 @@
 //      loadNavbar: true,
       loadSidebar:false,
       name: 'XStrap',
-//      maxLevel: 3,
-//      subMaxLevel: 2,
+      maxLevel: 1,
+      subMaxLevel: 2,
 //      auto2top: true,
       repo: '',
       markdown: function(marked) {
@@ -79,6 +78,8 @@
       }
   }
 </script>
-<script src="./vendor/docsify.js"></script>
+<!--<script src="./vendor/docsify.js"></script>-->
+<script src="//unpkg.com/docsify"></script>
+<!--<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>-->
 </html>
 
