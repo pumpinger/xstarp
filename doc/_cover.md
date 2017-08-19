@@ -1,4 +1,4 @@
-![logo](vendor/logo.jpg)
+![logo](../vendor/logo.jpg)
 
 # XStarp
 
