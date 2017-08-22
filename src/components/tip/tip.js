@@ -7,6 +7,7 @@ require('./tip.scss');
 
 $.fn.extend({
     hoverTips : function (){
+
         var self = $(this);
 
         var content = self.find('.x-tip-container').attr("data-tips");
@@ -14,6 +15,7 @@ $.fn.extend({
             .html("<p class='x-tip-content'></p>"
                 + "<p class='x-tip-cor'></p>");
         htmlDom.find(".x-tip-content").html( content );
+
 
         self.on("mouseenter",function(){
             self.append( htmlDom );

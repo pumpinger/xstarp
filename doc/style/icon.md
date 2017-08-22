@@ -1,4 +1,11 @@
 
+<style>
+.icon-list{padding:10px;}
+.icon-list li{display:inline-block;vertical-align:top;width:120px;height:120px;padding:10px 0;margin:2px 0;text-align:center;background:#f9f9f9;}
+.icon-list li i,.x-icon-list li span{display:block;}
+</style>
+
+
 # 图标
 
 ```规则
@@ -7,7 +14,7 @@
 ```
 
 ````html
-    <ul class="x-icon-list">
+    <ul class="icon-list">
         <li><i class="iconfont icon-yangshengqi"></i><span>icon-yangshengqi</span></li>
         <li><i class="iconfont icon-tishi"></i><span>icon-tishi</span></li>
         <li><i class="iconfont icon-jianqie"></i><span>icon-jianqie</span></li>

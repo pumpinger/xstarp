@@ -11,12 +11,39 @@
 
 require('./common/init.css');
 require('./components/button.scss');
+require('./components/alert.scss');
 require('./vendor/iconfont/iconfont.css');
+
+require('./components/page.scss');
+require('./components/panel.scss');
+
 
 
 require('./components/tab/tab.js');
 require('./components/nav/nav.js');
 require('./components/form/form.js');
+require('./components/tip/tip.js');
+require('./components/table/table.js');
+
+
+
+require('./components/imgview/imgview.js');
+require('./components/popup/popup.js');
+require('./components/progress/progress.js');
+require('./components/tree/tree.js');
+
+require('./components/validate/validate.js');
+
+
+
+
+
+
+
+
+
+
+
 
 // require('./components/test/test.js');
 

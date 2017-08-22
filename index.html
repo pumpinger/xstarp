@@ -47,23 +47,23 @@
                   return Prism.highlight(source,  Prism.languages[lang] || Prism.languages.markup)
               },
               compile: {
-//                  js: function (source) {
-//                      // 如果需要编译则编译 source 后 eval
-//                      // eval 前必须增加 setTimeout
-//                      setTimeout(function () {
-//                          //							if (!JSXTransformer) {
-//                          //															eval(source)
-//                          //							} else {
-//                          //															source = JSXTransformer.transform(source).code
-//                          //                            }
-//                          eval(source)
-//                      }, 100);
-//                      return {
-//                          lang: 'js',
-//                          source: source,
-//                          code: ''
-//                      }
-//                  }
+                  js: function (source) {
+                      // 如果需要编译则编译 source 后 eval
+                      // eval 前必须增加 setTimeout
+                      setTimeout(function () {
+                          //							if (!JSXTransformer) {
+                          //															eval(source)
+                          //							} else {
+                          //															source = JSXTransformer.transform(source).code
+                          //                            }
+                          eval(source)
+                      }, 100);
+                      return {
+                          lang: 'js',
+                          source: source,
+                          code: ''
+                      }
+                  }
               }
 
 
