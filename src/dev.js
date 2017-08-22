@@ -33,6 +33,9 @@ require('./components/progress/progress.js');
 require('./components/tree/tree.js');
 
 require('./components/validate/validate.js');
+require('./components/upload/upload.js');
+
+
 
 
 
