@@ -50,7 +50,7 @@ $dangerColor:#FF5722;
 $banColor:#d4d4d4;
 
 
-//函数
+//函数  取反色
 @function negative($color) {
   @if (lightness($color) < 70) {
     @return $fontColorLight;
