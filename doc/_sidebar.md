@@ -14,6 +14,7 @@
         - [弹窗](#/plug/popup.md)
         - [图片查看器](#/plug/imgview.md)
         - [进度](#/plug/progress.md)
+        - [表单](#/plug/form.md)
         - [树](#/plug/tree.md)
     - [封装](#/wraps/time.md)
         - [*时间选择器](#/wraps/time.md)
@@ -21,7 +22,7 @@
         - [*地图](#/wraps/map.md)
         - [ajax操作](#/wraps/ajax.md)
         - [格式化](#/wraps/formatter.md)
-        - [表单验证](#/wraps/validate.md)
+        - [验证](#/wraps/validate.md)
         - [文件上传](#/wraps/uploader.md)
 
     

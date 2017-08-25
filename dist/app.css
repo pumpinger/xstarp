@@ -682,7 +682,8 @@ ol, ul {
 
 .x-nav-sidebar .x-nav-child {
   width: 100%;
-  background: #2e313b; }
+  background: #2e313b;
+  padding-left: 18px; }
 
 .x-nav-sidebar .x-nav-child a {
   height: 40px;

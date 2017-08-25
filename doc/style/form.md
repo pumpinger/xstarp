@@ -4,7 +4,7 @@
 > .x-form .x-form-title  .x-form-comtent .x-form-item .x-form-key .x-form-value
 
 
-\*表单还拥有配套的组件,可以更加款快捷的完成表单操作,见[表单组件]()
+\*表单还拥有配套的组件,可以更加款快捷的完成表单操作,见[表单组件](#/plug/form.md)
 
 ````html
 <div class="x-form">
