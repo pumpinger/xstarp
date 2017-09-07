@@ -4,6 +4,8 @@
 
 > 以后应该是在 page 组件中
 
+
+
 ````html
     <div class="x-page">
         <div class="x-page-total">共有17条信息</div>
