@@ -22,6 +22,24 @@
 }
 
 
+@mixin textOver() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//@mixin clearfix() {    //scss  怎么代指自己
+//  &:before,
+//  &:after {
+//    content: " ";
+//    display: table;
+//  }
+//  &:after {
+//    clear: both;
+//  }
+//}
+
+
 
 //全局变量    主题
 $baseColorMain:#5bc0de;

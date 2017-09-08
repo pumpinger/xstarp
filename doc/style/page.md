@@ -5,6 +5,11 @@
 > 以后应该是在 page 组件中
 
 
+<style>
+
+    .x-page ul {margin:0;}
+
+</style>
 
 ````html
     <div class="x-page">

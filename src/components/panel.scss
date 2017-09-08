@@ -7,10 +7,16 @@
   overflow: auto;
   border: {
     top: {
-      left-radius: $borderRadiusLevel;
-      //right-radius: $borderRadiusLevel;
+      //left-radius: $borderRadiusLevel;
+      right-radius: $borderRadiusLevel;
     }
   }
 }
 .x-panel-title {background-color: $baseColorMain;font-size: 20px;color: negative($baseColorMain);padding: 10px;}
 .x-panel-content {padding: 10px;}
+
+.x-title {border-bottom: 1px $borderColorLight solid;line-height: 38px;font-size: 26px;}
+
+
+
+

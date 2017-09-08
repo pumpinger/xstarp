@@ -614,7 +614,7 @@ ol, ul {
 .x-panel {
   border: 1px solid #999;
   overflow: auto;
-  border-top-left-radius: 8px; }
+  border-top-right-radius: 8px; }
 
 .x-panel-title {
   background-color: #5bc0de;
@@ -624,6 +624,11 @@ ol, ul {
 
 .x-panel-content {
   padding: 10px; }
+
+.x-title {
+  border-bottom: 1px #ddd solid;
+  line-height: 38px;
+  font-size: 26px; }
 .x-tab-nav {
   border-bottom: 1px solid #ddd; }
 
