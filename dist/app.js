@@ -11025,7 +11025,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             init();
             imgs = [];
             $.each($(this).parent().children(), function (i) {
-                imgs[i] = $(this).attr('x-imgView-src');
+
+                if(  $(this).attr('x-imgView-src') ){
+                    imgs[i] = $(this).attr('x-imgView-src');
+                }else{
+                    imgs[i] = $(this).attr('src');
+                }
             });
             showImg(index = $(this).index());
         });

@@ -13,9 +13,7 @@
 
 # 面板
 
-```
 
-```
 
 ````html
 <div class="x-panel">
