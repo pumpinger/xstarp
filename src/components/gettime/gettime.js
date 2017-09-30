@@ -9,6 +9,10 @@
         pday = 24*phour,
         pweek = 7*pday;
 
+
+
+    //每次运行为了一个值,这里把每个值都算了一遍
+
     function gettime(date) {
         var nowDate = date ? date : new Date();
 

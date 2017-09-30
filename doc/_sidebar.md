@@ -19,6 +19,7 @@
     - [函数](#/fun/ajax.md)
         - [ajax操作](#/fun/ajax.md)
         - [格式化](#/fun/formatter.md)
+        - [获取时间](#/fun/gettime.md)
         - [验证](#/fun/validate.md)
     - [封装](#/wraps/time.md)
         - [*时间选择器](#/wraps/time.md)

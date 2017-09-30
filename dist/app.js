@@ -140,6 +140,8 @@ __webpack_require__(26);
 
 __webpack_require__(30);
 __webpack_require__(27);
+__webpack_require__(37);
+__webpack_require__(39);
 
 
 
@@ -22919,6 +22921,247 @@ $.validator.addMethod( "xidcn", function( value, element ) {
 
 module.exports = __webpack_require__(2);
 
+
+/***/ }),
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */
+/***/ (function(module, exports) {
+
+/**
+ * Created by Administrator on 2016/12/20.
+ */
+
+//格式化
+window.xFormat={
+    /**
+     *     2016/06/06
+     *     2016-06-06
+     *     2016/06/06
+     *     11:11:11
+     *     11:11
+     *     20160606
+     *     2016 06 06
+     */
+    str2time:function(str){
+
+        var res=str.replace(/-/g, "/");
+
+        if(  res.indexOf("/")    == -1 ){
+            if(  res.indexOf(":")    == -1 ){
+                //纯年
+
+                if(res.length == 8){
+                    res=res.substr(0,4)+'/'+res.substr(4,2)+'/'+res.substr(6,2);
+                }else{
+
+
+                    var temp =res.substr(0,2);
+                    if(  temp<100  &&  temp>30 ){
+                        temp  = '19'+temp
+                    }
+
+                    if(  temp<30  &&  temp>0 ){
+                        temp  = '20'+temp
+                    }
+
+                    res=temp+'/'+res.substr(2,2)+'/'+res.substr(4,2);
+
+                }
+
+            }else{
+                //纯时间
+                res='2016/06/06 '+res;
+
+            }
+
+        }else{
+            //处理年
+            var temp =res.split('/');
+            if(  temp[0]<100  &&  temp[0]>30 ){
+                temp[0]  = '19'+temp[0]
+            }
+
+            if(  temp[0]<30  &&  temp[0]>0 ){
+                temp[0]  = '20'+temp[0]
+            }
+            res=temp[0]+'/'+temp[1]+'/'+temp[2];
+
+        }
+
+
+        res=new Date(Date.parse(res));
+
+
+        if(res.getTime()){
+            return  res.getTime()/1000;
+        }else{
+            return false;
+        }
+
+
+
+    },
+    time2str:function(time){
+        var   now=new   Date(time*1000);
+        var   year=now.getFullYear();
+        var   month=now.getMonth()+1;
+        var   date=now.getDate();
+        var   hour=now.getHours();
+        var   minute=now.getMinutes();
+        var   second=now.getSeconds();
+
+        if(month  < 10){
+            month=  '0' + month;
+        }
+
+        if(date  < 10){
+            date=  '0' + date;
+        }
+
+        return   year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
+    },
+    number2money:function (number,n) {
+        n = n > 0 && n <= 20 ? n : 2;
+        number = parseFloat((number + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+        var l = number.split(".")[0].split("").reverse(),
+            r = number.split(".")[1];
+        var t = "";
+        for(i = 0; i < l.length; i ++ )
+        {
+            t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+        }
+        return t.split("").reverse().join("") + "." + r;
+
+    },
+    number2word:function (number) {
+
+
+    }
+};
+
+
+
+
+/***/ }),
+/* 38 */,
+/* 39 */
+/***/ (function(module, exports) {
+
+/**
+ * Created by Administrator on 2017/1/6.
+ */
+;(function () {
+
+    var psecond = 1000,
+        pminute = 60*psecond,
+        phour = 60*pminute,
+        pday = 24*phour,
+        pweek = 7*pday;
+
+
+
+    //每次运行为了一个值,这里把每个值都算了一遍
+
+    function gettime(date) {
+        var nowDate = date ? date : new Date();
+
+        var time = nowDate.getTime(),
+            msecond = nowDate.getMilliseconds(),
+            second = nowDate.getSeconds(),
+            minute = nowDate.getMinutes(),
+            hour = nowDate.getHours(),
+            dayWeek = nowDate.getDay(),
+            dayMonth = nowDate.getDate(),
+            month = nowDate.getMonth(),
+            year = nowDate.getFullYear();
+
+        var dayPass = hour*phour + minute*pminute + second*psecond + msecond,
+            dayStart = time - dayPass,
+            dayEnd = dayStart + pday,
+            yesterdayStart = dayStart - pday,
+            pastDayStart = time - pday;
+
+        var weekPass = dayWeek * pday + dayPass,
+            weekStart = time - weekPass,
+            weekEnd = weekStart + pweek,
+            lastWeekStart = weekStart - pweek,
+            pastWeekStart = time - pweek;
+
+        var monthStart = (new Date(year, month, 1)).getTime(),
+            monthEnd = (new Date(year, month+1, 1)).getTime(),
+            lastMonthStart = (new Date(year, month-1, 1)).getTime(),
+            pastMonthStart = time - monthStart + lastMonthStart;
+
+        var yearStart = (new Date(year, 0, 1)).getTime(),
+            yearEnd = (new Date(year+1, 0, 1)).getTime(),
+            lastYearStart = (new Date(year-1, 0, 1)).getTime(),
+            pastYearStart = (new Date(time)).setFullYear(year-1);
+
+
+        return {
+            time: time,
+
+            day: {
+                start: dayStart,
+                end: dayEnd
+            },
+            yesterday: {
+                start: yesterdayStart,
+                end: dayStart
+            },
+            pastDay: {
+                start: pastDayStart,
+                end: time
+            },
+
+            week: {
+                start: weekStart,
+                end: weekEnd
+            },
+            lastWeek: {
+                start: lastWeekStart,
+                end: weekStart
+            },
+            pastWeek: {
+                start: pastWeekStart,
+                end: time
+            },
+
+            month: {
+                start: monthStart,
+                end: monthEnd
+            },
+            lastMonth: {
+                start: lastMonthStart,
+                end: monthStart
+            },
+            pastMonth: {
+                start: pastMonthStart,
+                end: time
+            },
+
+            year: {
+                start: yearStart,
+                end: yearEnd
+            },
+            lastYear: {
+                start: lastYearStart,
+                end: yearStart
+            },
+            pastYear: {
+                start: pastYearStart,
+                end: time
+            }
+        }
+    }
+
+    window.xTime = gettime;
+
+})();
 
 /***/ })
 /******/ ]);

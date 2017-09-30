@@ -34,6 +34,8 @@ require('./components/tree/tree.js');
 
 require('./components/validate/validate.js');
 require('./components/upload/upload.js');
+require('./components/format/format.js');
+require('./components/gettime/gettime.js');
 
 
 
