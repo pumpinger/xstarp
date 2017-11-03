@@ -266,71 +266,85 @@
         });
 
 
-        ctrl_recover = $('<span class="x-imgView-recover">').appendTo(view_ctrl);
+        ctrl_recover = $('<span class="iconfont icon-tupian2222">').appendTo(view_ctrl);
         ctrl_recover.css({
             'display': 'inline-block',
-            'width': '22px',
-            'height': '19px',
+            'width': '20px',
+            'height': '20px',
+            'font-size': '20px',
+            'color': '#FFF',
             'margin': '10px',
             'cursor': 'pointer'
         });
 
-        ctrl_magnify = $('<span class="x-imgView-magnify">').appendTo(view_ctrl);
+        ctrl_magnify = $('<span class="iconfont icon-fangda1">').appendTo(view_ctrl);
         ctrl_magnify.css({
             'display': 'inline-block',
-            'width': '22px',
+            'width': '20px',
             'height': '20px',
+            'font-size': '20px',
+            'color': '#FFF',
             'margin': '10px',
             'cursor': 'pointer'
         });
 
-        ctrl_shrink = $('<span class="x-imgView-shrink">').appendTo(view_ctrl);
+        ctrl_shrink = $('<span class="iconfont icon-suoxiao1">').appendTo(view_ctrl);
         ctrl_shrink.css({
             'display': 'inline-block',
-            'width': '21px',
+            'width': '20px',
             'height': '20px',
+            'font-size': '20px',
+            'color': '#FFF',
             'margin': '10px',
             'cursor': 'pointer'
         });
 
-        ctrl_rotate = $('<span class="x-imgView-rotate">').appendTo(view_ctrl);
+        ctrl_rotate = $('<span class="iconfont icon-shuaxin">').appendTo(view_ctrl);
         ctrl_rotate.css({
             'display': 'inline-block',
             'width': '20px',
             'height': '20px',
+            'font-size': '20px',
+            'color': '#FFF',
             'margin': '10px',
             'cursor': 'pointer'
         });
 
 
-        ctrl_left = $('<span class="x-imgView-left">').appendTo(view);
+        ctrl_left = $('<span class="iconfont icon-xiangzuo1">').appendTo(view);
         ctrl_left.css({
             'display': 'inline-block',
             'position': 'absolute',
-            'width': '25px',
-            'height': '43px',
+            'width': '40px',
+            'height': '40px',
+            'font-size': '40px',
+            'color': '#FFF',
             'left': '1%',
             'top': '48%',
             'cursor': 'pointer'
         });
 
-        ctrl_right = $('<span class="x-imgView-right">').appendTo(view);
+        ctrl_right = $('<span class="iconfont icon-xiangyou1">').appendTo(view);
         ctrl_right.css({
             'display': 'inline-block',
             'position': 'absolute',
-            'width': '25px',
-            'height': '43px',
+            'width': '40px',
+            'height': '40px',
+            'font-size': '40px',
+            'color': '#FFF',
             'cursor': 'pointer',
             'right': '1%',
             'top': '48%'
         });
 
-        ctrl_close = $('<span class="x-imgView-close">').appendTo(dialog);
+        ctrl_close = $('<span class="iconfont icon-cuowu">').appendTo(dialog);
         ctrl_close.css({
             'display': 'inline-block',
             'position': 'absolute',
             'width': '30px',
             'height': '30px',
+            'font-size': '30px',
+            'color': '#FFF',
             'cursor': 'pointer',
             'right': '-14px',
             'top': '0'

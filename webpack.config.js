@@ -43,7 +43,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: 'file-loader?name=./dist/vendor/img/[name].[ext]',
+                use: 'file-loader?name=[name].[ext]&publicPath=./&outputPath=./img/',
             },
             {
                 // test: /\.(sass|scss)$/,

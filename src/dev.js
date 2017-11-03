@@ -16,6 +16,7 @@ require('./vendor/iconfont/iconfont.css');
 
 require('./components/page.scss');
 require('./components/panel.scss');
+require('./components/imgview/imgview.scss');
 
 
 

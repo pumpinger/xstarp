@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 31);
+/******/ 	return __webpack_require__(__webpack_require__.s = 34);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -118,30 +118,31 @@ module.exports = g;
 __webpack_require__(4);
 __webpack_require__(6);
 __webpack_require__(5);
-__webpack_require__(16);
+__webpack_require__(17);
 
-__webpack_require__(9);
 __webpack_require__(10);
+__webpack_require__(11);
+__webpack_require__(8);
 
 
 
-__webpack_require__(23);
-__webpack_require__(20);
-__webpack_require__(18);
-__webpack_require__(25);
-__webpack_require__(24);
-
-
-
-__webpack_require__(19);
-__webpack_require__(21);
-__webpack_require__(22);
 __webpack_require__(26);
-
-__webpack_require__(30);
+__webpack_require__(23);
+__webpack_require__(19);
+__webpack_require__(28);
 __webpack_require__(27);
-__webpack_require__(37);
-__webpack_require__(39);
+
+
+
+__webpack_require__(22);
+__webpack_require__(24);
+__webpack_require__(25);
+__webpack_require__(29);
+
+__webpack_require__(33);
+__webpack_require__(30);
+__webpack_require__(20);
+__webpack_require__(21);
 
 
 
@@ -180,7 +181,7 @@ __webpack_require__(39);
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(17);
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(18);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
@@ -263,6 +264,12 @@ __webpack_require__(39);
 
 /***/ }),
 /* 17 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10522,7 +10529,7 @@ return jQuery;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
@@ -10560,7 +10567,242 @@ $('body').on('click','.x-form-switch',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 19 */
+/* 20 */
+/***/ (function(module, exports) {
+
+/**
+ * Created by Administrator on 2016/12/20.
+ */
+
+//格式化
+window.xFormat={
+    /**
+     *     2016/06/06
+     *     2016-06-06
+     *     2016/06/06
+     *     11:11:11
+     *     11:11
+     *     20160606
+     *     2016 06 06
+     */
+    str2time:function(str){
+
+        var res=str.replace(/-/g, "/");
+
+        if(  res.indexOf("/")    == -1 ){
+            if(  res.indexOf(":")    == -1 ){
+                //纯年
+
+                if(res.length == 8){
+                    res=res.substr(0,4)+'/'+res.substr(4,2)+'/'+res.substr(6,2);
+                }else{
+
+
+                    var temp =res.substr(0,2);
+                    if(  temp<100  &&  temp>30 ){
+                        temp  = '19'+temp
+                    }
+
+                    if(  temp<30  &&  temp>0 ){
+                        temp  = '20'+temp
+                    }
+
+                    res=temp+'/'+res.substr(2,2)+'/'+res.substr(4,2);
+
+                }
+
+            }else{
+                //纯时间
+                res='2016/06/06 '+res;
+
+            }
+
+        }else{
+            //处理年
+            var temp =res.split('/');
+            if(  temp[0]<100  &&  temp[0]>30 ){
+                temp[0]  = '19'+temp[0]
+            }
+
+            if(  temp[0]<30  &&  temp[0]>0 ){
+                temp[0]  = '20'+temp[0]
+            }
+            res=temp[0]+'/'+temp[1]+'/'+temp[2];
+
+        }
+
+
+        res=new Date(Date.parse(res));
+
+
+        if(res.getTime()){
+            return  res.getTime()/1000;
+        }else{
+            return false;
+        }
+
+
+
+    },
+    time2str:function(time){
+        var   now=new   Date(time*1000);
+        var   year=now.getFullYear();
+        var   month=now.getMonth()+1;
+        var   date=now.getDate();
+        var   hour=now.getHours();
+        var   minute=now.getMinutes();
+        var   second=now.getSeconds();
+
+        if(month  < 10){
+            month=  '0' + month;
+        }
+
+        if(date  < 10){
+            date=  '0' + date;
+        }
+
+        return   year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
+    },
+    number2money:function (number,n) {
+        n = n > 0 && n <= 20 ? n : 2;
+        number = parseFloat((number + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+        var l = number.split(".")[0].split("").reverse(),
+            r = number.split(".")[1];
+        var t = "";
+        for(i = 0; i < l.length; i ++ )
+        {
+            t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+        }
+        return t.split("").reverse().join("") + "." + r;
+
+    },
+    number2word:function (number) {
+
+
+    }
+};
+
+
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
+
+/**
+ * Created by Administrator on 2017/1/6.
+ */
+;(function () {
+
+    var psecond = 1000,
+        pminute = 60*psecond,
+        phour = 60*pminute,
+        pday = 24*phour,
+        pweek = 7*pday;
+
+
+
+    //每次运行为了一个值,这里把每个值都算了一遍
+
+    function gettime(date) {
+        var nowDate = date ? date : new Date();
+
+        var time = nowDate.getTime(),
+            msecond = nowDate.getMilliseconds(),
+            second = nowDate.getSeconds(),
+            minute = nowDate.getMinutes(),
+            hour = nowDate.getHours(),
+            dayWeek = nowDate.getDay(),
+            dayMonth = nowDate.getDate(),
+            month = nowDate.getMonth(),
+            year = nowDate.getFullYear();
+
+        var dayPass = hour*phour + minute*pminute + second*psecond + msecond,
+            dayStart = time - dayPass,
+            dayEnd = dayStart + pday,
+            yesterdayStart = dayStart - pday,
+            pastDayStart = time - pday;
+
+        var weekPass = dayWeek * pday + dayPass,
+            weekStart = time - weekPass,
+            weekEnd = weekStart + pweek,
+            lastWeekStart = weekStart - pweek,
+            pastWeekStart = time - pweek;
+
+        var monthStart = (new Date(year, month, 1)).getTime(),
+            monthEnd = (new Date(year, month+1, 1)).getTime(),
+            lastMonthStart = (new Date(year, month-1, 1)).getTime(),
+            pastMonthStart = time - monthStart + lastMonthStart;
+
+        var yearStart = (new Date(year, 0, 1)).getTime(),
+            yearEnd = (new Date(year+1, 0, 1)).getTime(),
+            lastYearStart = (new Date(year-1, 0, 1)).getTime(),
+            pastYearStart = (new Date(time)).setFullYear(year-1);
+
+
+        return {
+            time: time,
+
+            day: {
+                start: dayStart,
+                end: dayEnd
+            },
+            yesterday: {
+                start: yesterdayStart,
+                end: dayStart
+            },
+            pastDay: {
+                start: pastDayStart,
+                end: time
+            },
+
+            week: {
+                start: weekStart,
+                end: weekEnd
+            },
+            lastWeek: {
+                start: lastWeekStart,
+                end: weekStart
+            },
+            pastWeek: {
+                start: pastWeekStart,
+                end: time
+            },
+
+            month: {
+                start: monthStart,
+                end: monthEnd
+            },
+            lastMonth: {
+                start: lastMonthStart,
+                end: monthStart
+            },
+            pastMonth: {
+                start: pastMonthStart,
+                end: time
+            },
+
+            year: {
+                start: yearStart,
+                end: yearEnd
+            },
+            lastYear: {
+                start: lastYearStart,
+                end: yearStart
+            },
+            pastYear: {
+                start: pastYearStart,
+                end: time
+            }
+        }
+    }
+
+    window.xTime = gettime;
+
+})();
+
+/***/ }),
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -10834,71 +11076,85 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         });
 
 
-        ctrl_recover = $('<span class="x-imgView-recover">').appendTo(view_ctrl);
+        ctrl_recover = $('<span class="iconfont icon-tupian2222">').appendTo(view_ctrl);
         ctrl_recover.css({
             'display': 'inline-block',
-            'width': '22px',
-            'height': '19px',
+            'width': '20px',
+            'height': '20px',
+            'font-size': '20px',
+            'color': '#FFF',
             'margin': '10px',
             'cursor': 'pointer'
         });
 
-        ctrl_magnify = $('<span class="x-imgView-magnify">').appendTo(view_ctrl);
+        ctrl_magnify = $('<span class="iconfont icon-fangda1">').appendTo(view_ctrl);
         ctrl_magnify.css({
             'display': 'inline-block',
-            'width': '22px',
+            'width': '20px',
             'height': '20px',
+            'font-size': '20px',
+            'color': '#FFF',
             'margin': '10px',
             'cursor': 'pointer'
         });
 
-        ctrl_shrink = $('<span class="x-imgView-shrink">').appendTo(view_ctrl);
+        ctrl_shrink = $('<span class="iconfont icon-suoxiao1">').appendTo(view_ctrl);
         ctrl_shrink.css({
             'display': 'inline-block',
-            'width': '21px',
+            'width': '20px',
             'height': '20px',
+            'font-size': '20px',
+            'color': '#FFF',
             'margin': '10px',
             'cursor': 'pointer'
         });
 
-        ctrl_rotate = $('<span class="x-imgView-rotate">').appendTo(view_ctrl);
+        ctrl_rotate = $('<span class="iconfont icon-shuaxin">').appendTo(view_ctrl);
         ctrl_rotate.css({
             'display': 'inline-block',
             'width': '20px',
             'height': '20px',
+            'font-size': '20px',
+            'color': '#FFF',
             'margin': '10px',
             'cursor': 'pointer'
         });
 
 
-        ctrl_left = $('<span class="x-imgView-left">').appendTo(view);
+        ctrl_left = $('<span class="iconfont icon-xiangzuo1">').appendTo(view);
         ctrl_left.css({
             'display': 'inline-block',
             'position': 'absolute',
-            'width': '25px',
-            'height': '43px',
+            'width': '40px',
+            'height': '40px',
+            'font-size': '40px',
+            'color': '#FFF',
             'left': '1%',
             'top': '48%',
             'cursor': 'pointer'
         });
 
-        ctrl_right = $('<span class="x-imgView-right">').appendTo(view);
+        ctrl_right = $('<span class="iconfont icon-xiangyou1">').appendTo(view);
         ctrl_right.css({
             'display': 'inline-block',
             'position': 'absolute',
-            'width': '25px',
-            'height': '43px',
+            'width': '40px',
+            'height': '40px',
+            'font-size': '40px',
+            'color': '#FFF',
             'cursor': 'pointer',
             'right': '1%',
             'top': '48%'
         });
 
-        ctrl_close = $('<span class="x-imgView-close">').appendTo(dialog);
+        ctrl_close = $('<span class="iconfont icon-cuowu">').appendTo(dialog);
         ctrl_close.css({
             'display': 'inline-block',
             'position': 'absolute',
             'width': '30px',
             'height': '30px',
+            'font-size': '30px',
+            'color': '#FFF',
             'cursor': 'pointer',
             'right': '-14px',
             'top': '0'
@@ -11044,14 +11300,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/17.
  */
 
-__webpack_require__(8);
+__webpack_require__(9);
 
 
 //导航-侧边栏
@@ -11075,14 +11331,14 @@ $('body').on('click','.x-nav-item',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2016/12/27.
  */
 
-__webpack_require__(11);
+__webpack_require__(12);
 
 module.exports = window.xPopUp = function(type,option,time) {
     var layerDom; //底部遮罩层
@@ -11328,13 +11584,13 @@ module.exports = window.xPopUp = function(type,option,time) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 22 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/**
  * Created by Administrator on 2016/12/29.
  */
-__webpack_require__(12);
+__webpack_require__(13);
 
 ;(function (window, $) {
 
@@ -11436,14 +11692,14 @@ __webpack_require__(12);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 23 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/17.
  */
 
-__webpack_require__(13);
+__webpack_require__(14);
 
 
 $('body').on('click','.x-tab-nav li',function(){
@@ -11458,14 +11714,14 @@ $('body').on('click','.x-tab-nav li',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/28.
  */
 
-__webpack_require__(14);
+__webpack_require__(15);
 
 var count = 0;
 $('.x-table th').click(function(){
@@ -11485,7 +11741,7 @@ $('.x-table th').click(function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
@@ -11493,7 +11749,7 @@ $('.x-table th').click(function(){
  */
 
 
-__webpack_require__(15);
+__webpack_require__(16);
 
 
 $('body').on('mouseover','.x-tip',function(){
@@ -11531,7 +11787,7 @@ $('body').on('mouseout','.x-tip',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/**
@@ -12391,11 +12647,11 @@ $('body').on('mouseout','.x-tip',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {
-var WebUploader = __webpack_require__(28);
+var WebUploader = __webpack_require__(31);
 
 // 当domReady的时候开始初始化
 (function($) {
@@ -13104,7 +13360,7 @@ var WebUploader = __webpack_require__(28);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! WebUploader 0.1.6 */
@@ -21253,7 +21509,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -22793,14 +23049,14 @@ if ( $.ajaxPrefilter ) {
 }));
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/1/9.
  */
 
-__webpack_require__(29);
+__webpack_require__(32);
 
 //自定义validator --begin
 $.validator.setDefaults({
@@ -22916,252 +23172,11 @@ $.validator.addMethod( "xidcn", function( value, element ) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2);
 
-
-/***/ }),
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */
-/***/ (function(module, exports) {
-
-/**
- * Created by Administrator on 2016/12/20.
- */
-
-//格式化
-window.xFormat={
-    /**
-     *     2016/06/06
-     *     2016-06-06
-     *     2016/06/06
-     *     11:11:11
-     *     11:11
-     *     20160606
-     *     2016 06 06
-     */
-    str2time:function(str){
-
-        var res=str.replace(/-/g, "/");
-
-        if(  res.indexOf("/")    == -1 ){
-            if(  res.indexOf(":")    == -1 ){
-                //纯年
-
-                if(res.length == 8){
-                    res=res.substr(0,4)+'/'+res.substr(4,2)+'/'+res.substr(6,2);
-                }else{
-
-
-                    var temp =res.substr(0,2);
-                    if(  temp<100  &&  temp>30 ){
-                        temp  = '19'+temp
-                    }
-
-                    if(  temp<30  &&  temp>0 ){
-                        temp  = '20'+temp
-                    }
-
-                    res=temp+'/'+res.substr(2,2)+'/'+res.substr(4,2);
-
-                }
-
-            }else{
-                //纯时间
-                res='2016/06/06 '+res;
-
-            }
-
-        }else{
-            //处理年
-            var temp =res.split('/');
-            if(  temp[0]<100  &&  temp[0]>30 ){
-                temp[0]  = '19'+temp[0]
-            }
-
-            if(  temp[0]<30  &&  temp[0]>0 ){
-                temp[0]  = '20'+temp[0]
-            }
-            res=temp[0]+'/'+temp[1]+'/'+temp[2];
-
-        }
-
-
-        res=new Date(Date.parse(res));
-
-
-        if(res.getTime()){
-            return  res.getTime()/1000;
-        }else{
-            return false;
-        }
-
-
-
-    },
-    time2str:function(time){
-        var   now=new   Date(time*1000);
-        var   year=now.getFullYear();
-        var   month=now.getMonth()+1;
-        var   date=now.getDate();
-        var   hour=now.getHours();
-        var   minute=now.getMinutes();
-        var   second=now.getSeconds();
-
-        if(month  < 10){
-            month=  '0' + month;
-        }
-
-        if(date  < 10){
-            date=  '0' + date;
-        }
-
-        return   year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
-    },
-    number2money:function (number,n) {
-        n = n > 0 && n <= 20 ? n : 2;
-        number = parseFloat((number + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
-        var l = number.split(".")[0].split("").reverse(),
-            r = number.split(".")[1];
-        var t = "";
-        for(i = 0; i < l.length; i ++ )
-        {
-            t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
-        }
-        return t.split("").reverse().join("") + "." + r;
-
-    },
-    number2word:function (number) {
-
-
-    }
-};
-
-
-
-
-/***/ }),
-/* 38 */,
-/* 39 */
-/***/ (function(module, exports) {
-
-/**
- * Created by Administrator on 2017/1/6.
- */
-;(function () {
-
-    var psecond = 1000,
-        pminute = 60*psecond,
-        phour = 60*pminute,
-        pday = 24*phour,
-        pweek = 7*pday;
-
-
-
-    //每次运行为了一个值,这里把每个值都算了一遍
-
-    function gettime(date) {
-        var nowDate = date ? date : new Date();
-
-        var time = nowDate.getTime(),
-            msecond = nowDate.getMilliseconds(),
-            second = nowDate.getSeconds(),
-            minute = nowDate.getMinutes(),
-            hour = nowDate.getHours(),
-            dayWeek = nowDate.getDay(),
-            dayMonth = nowDate.getDate(),
-            month = nowDate.getMonth(),
-            year = nowDate.getFullYear();
-
-        var dayPass = hour*phour + minute*pminute + second*psecond + msecond,
-            dayStart = time - dayPass,
-            dayEnd = dayStart + pday,
-            yesterdayStart = dayStart - pday,
-            pastDayStart = time - pday;
-
-        var weekPass = dayWeek * pday + dayPass,
-            weekStart = time - weekPass,
-            weekEnd = weekStart + pweek,
-            lastWeekStart = weekStart - pweek,
-            pastWeekStart = time - pweek;
-
-        var monthStart = (new Date(year, month, 1)).getTime(),
-            monthEnd = (new Date(year, month+1, 1)).getTime(),
-            lastMonthStart = (new Date(year, month-1, 1)).getTime(),
-            pastMonthStart = time - monthStart + lastMonthStart;
-
-        var yearStart = (new Date(year, 0, 1)).getTime(),
-            yearEnd = (new Date(year+1, 0, 1)).getTime(),
-            lastYearStart = (new Date(year-1, 0, 1)).getTime(),
-            pastYearStart = (new Date(time)).setFullYear(year-1);
-
-
-        return {
-            time: time,
-
-            day: {
-                start: dayStart,
-                end: dayEnd
-            },
-            yesterday: {
-                start: yesterdayStart,
-                end: dayStart
-            },
-            pastDay: {
-                start: pastDayStart,
-                end: time
-            },
-
-            week: {
-                start: weekStart,
-                end: weekEnd
-            },
-            lastWeek: {
-                start: lastWeekStart,
-                end: weekStart
-            },
-            pastWeek: {
-                start: pastWeekStart,
-                end: time
-            },
-
-            month: {
-                start: monthStart,
-                end: monthEnd
-            },
-            lastMonth: {
-                start: lastMonthStart,
-                end: monthStart
-            },
-            pastMonth: {
-                start: pastMonthStart,
-                end: time
-            },
-
-            year: {
-                start: yearStart,
-                end: yearEnd
-            },
-            lastYear: {
-                start: lastYearStart,
-                end: yearStart
-            },
-            pastYear: {
-                start: pastYearStart,
-                end: time
-            }
-        }
-    }
-
-    window.xTime = gettime;
-
-})();
 
 /***/ })
 /******/ ]);
