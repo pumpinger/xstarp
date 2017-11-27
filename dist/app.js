@@ -10564,6 +10564,46 @@ $('body').on('click','.x-form-switch',function(){
         $(this).find('span').text('关闭');
     }
 });
+
+
+
+
+//plug的表单
+
+
+
+
+window.xFormSubmit = function (option) {
+
+
+    var form = option.form;
+    var success = option.success;
+    var url = option.url?option.url:form.attr('action');
+
+    var data = form.serializeArray();
+
+    $.ajax({
+        url: url,
+        data:data,
+        success: function(data){
+            success(data);
+        },
+        error: function (status,msg){
+            xFormError(msg,status);
+        }
+    });
+};
+
+window.xFormError = function (msg) {
+    if(msg){
+        $('.x-form-item-error').show();
+        $('.x-form-item-error p').html(msg);
+    }else{
+        $('.x-form-item-error').hide();
+
+    }
+
+};
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),

@@ -776,6 +776,11 @@ select {
 .x-form-onswitch i {
   left: 30px;
   background-color: #fff; }
+
+.x-form-item-error {
+  display: none;
+  margin-top: 0;
+  color: #d80000; }
 .x-tip {
   position: relative;
   cursor: pointer; }
