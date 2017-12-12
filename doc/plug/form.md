@@ -4,8 +4,6 @@
 
 > 验证 提交(同步 异步) 报错
 
-* 提交方法
-* 报错方法
 
 <style>
  .x-form-item-error p {margin-top:0;margin-bottom:0;}
