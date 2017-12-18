@@ -7,9 +7,6 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const extractCSS = new ExtractTextPlugin('[name].css');
 // const extractSCSS = new ExtractTextPlugin('[name].scss.css');
 
@@ -28,18 +25,18 @@ module.exports = {
     },
     module: {
         rules: [
-            /*            {
-                            test: /\.css$/,
-                            // use: ['style-loader', 'css-loader'],
-                            // use:  ExtractTextPlugin.extract({
-                            //     loader: 'css-loader?importLoaders=1',
-                            // }),
-                            use:  extractCSS.extract([
-                                'css-loader',
-                                'sass-loader',
+/*            {
+                test: /\.css$/,
+                // use: ['style-loader', 'css-loader'],
+                // use:  ExtractTextPlugin.extract({
+                //     loader: 'css-loader?importLoaders=1',
+                // }),
+                use:  extractCSS.extract([
+                    'css-loader',
+                    'sass-loader',
 
-                            ])
-                        },*/
+                ])
+            },*/
             {
                 test: /\.(svg|eot|woff|ttf)$/,
                 loader: 'file-loader?name=[name].[ext]&publicPath=./&outputPath=./vendor/fonts/',
@@ -74,15 +71,11 @@ module.exports = {
     plugins: [     //分开打包
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: './vendor/vendor.js',
-            // chunks:['app','vendor']
+            filename: 'vendor.js',
+            minChunks: 2,
         }),
 
-
-        extractCSS,
-
-
-        // new webpack.ProvidePlugin({    //变成了编译过程中的全局变量  不用在自己文件require('jquery')
+        // new webpack.ProvidePlugin({    //变成了编译过程中的全局变量
         //     $: 'jquery',
         //     jQuery: 'jquery',
         //     'window.jQuery': 'jquery',
@@ -97,12 +90,6 @@ module.exports = {
         //     }
         // )
         // extractSCSS,
-
-        // new HtmlWebpackPlugin({
-        //     title: 'demo',
-        //     template: 'index.html' // 模板路径
-        // }),
-
     ],
 };
 
@@ -110,6 +97,3 @@ module.exports = {
 
 
 //场景2 ： 用户用我们的vendor ： 要1.CommonsChunkPlugin；2.test: require.resolve('jquery')    不要1.externals；2.new webpack.ProvidePlugin
-
-
-//现在  new webpack.ProvidePlugin 未发现明显作用了，可能是我错了
