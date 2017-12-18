@@ -2,7 +2,12 @@
 
 # 表单
 
-> 验证 提交(同步 异步) 报错
+
+
+> .x-form  .x-form-item .x-form-key .x-form-value
+
+\*配合验证,可以更加款快捷的完成表单操作,见[函数-验证](#/fun/validate.md)
+
 
 
 <style>
@@ -122,6 +127,8 @@ $('.submit').click(function (){
         });
 });
 
-    
+//报错方法：
+//xFormError(msg,status);
+
 
 ````

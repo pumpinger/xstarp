@@ -9,6 +9,8 @@
 //   \$\((.*)\)\.click\(
 //   \$('body').on('click',$1,
 
+
+//css
 require('./common/init.css');
 require('./components/button.scss');
 require('./components/alert.scss');
@@ -19,7 +21,7 @@ require('./components/panel.scss');
 require('./components/imgview/imgview.scss');
 
 
-
+//style
 require('./components/tab/tab.js');
 require('./components/nav/nav.js');
 require('./components/form/form.js');
@@ -27,16 +29,25 @@ require('./components/tip/tip.js');
 require('./components/table/table.js');
 
 
-
+//plug
 require('./components/imgview/imgview.js');
 require('./components/popup/popup.js');
 require('./components/progress/progress.js');
 require('./components/tree/tree.js');
 
+
+//fun
 require('./components/validate/validate.js');
-require('./components/upload/upload.js');
+require('./components/ajax/ajax.js');
 require('./components/format/format.js');
 require('./components/gettime/gettime.js');
+
+
+
+//wraps
+require('./components/time/time.js');
+require('./components/upload/upload.js');
+
 
 
 

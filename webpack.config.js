@@ -15,7 +15,7 @@ module.exports = {
     context: path.resolve(__dirname, './src'),
     entry: {
         app: ['./dev.js'],
-        // vendor: ['jquery']
+        jquery: ['jquery']
     },
     output: {
         path: path.resolve(__dirname, './dist'),

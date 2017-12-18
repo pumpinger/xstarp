@@ -63,14 +63,14 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 34);
+/******/ 	return __webpack_require__(__webpack_require__.s = 36);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(3);
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(2);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
@@ -104,172 +104,11 @@ module.exports = g;
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * 测试入口
- * Created by Administrator on 2017/6/12.
- */
-
-
-
-
-//   \$\((.*)\)\.click\(
-//   \$('body').on('click',$1,
-
-__webpack_require__(4);
-__webpack_require__(6);
-__webpack_require__(5);
-__webpack_require__(17);
-
-__webpack_require__(10);
-__webpack_require__(11);
-__webpack_require__(8);
-
-
-
-__webpack_require__(26);
-__webpack_require__(23);
-__webpack_require__(19);
-__webpack_require__(28);
-__webpack_require__(27);
-
-
-
-__webpack_require__(22);
-__webpack_require__(24);
-__webpack_require__(25);
-__webpack_require__(29);
-
-__webpack_require__(33);
-__webpack_require__(30);
-__webpack_require__(20);
-__webpack_require__(21);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// require('./components/test/test.js');
-
-
-
-
-
-// require('./components/test/ilovesass.scss');
-// require('./components/test/ilovesass2.scss');
-
-
-
-// var color=['red','blue','yellow','green','grey','orange','purple','black','white','green','purple'];
-// setInterval(function (){
-//     var i=Math.floor(Math.random()*10);
-//     $('body').css({
-//         'background-color':color[i]
-//     });
-// },2000);
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(18);
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(3);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 18 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10529,14 +10368,260 @@ return jQuery;
 
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * 测试入口
+ * Created by Administrator on 2017/6/12.
+ */
+
+
+
+
+//   \$\((.*)\)\.click\(
+//   \$('body').on('click',$1,
+
+
+//css
+__webpack_require__(5);
+__webpack_require__(7);
+__webpack_require__(6);
+__webpack_require__(18);
+
+__webpack_require__(11);
+__webpack_require__(12);
+__webpack_require__(9);
+
+
+//style
+__webpack_require__(27);
+__webpack_require__(24);
+__webpack_require__(20);
+__webpack_require__(30);
+__webpack_require__(28);
+
+
+//plug
+__webpack_require__(23);
+__webpack_require__(25);
+__webpack_require__(26);
+__webpack_require__(31);
+
+
+//fun
+__webpack_require__(35);
+__webpack_require__(19);
+__webpack_require__(21);
+__webpack_require__(22);
+
+
+
+//wraps
+__webpack_require__(29);
+__webpack_require__(32);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// require('./components/test/test.js');
+
+
+
+
+
+// require('./components/test/ilovesass.scss');
+// require('./components/test/ilovesass2.scss');
+
+
+
+// var color=['red','blue','yellow','green','grey','orange','purple','black','white','green','purple'];
+// setInterval(function (){
+//     var i=Math.floor(Math.random()*10);
+//     $('body').css({
+//         'background-color':color[i]
+//     });
+// },2000);
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * Created by Administrator on 2017/1/6.
+ */
+;(function () {
+
+
+
+    //todo  应该去  加载等待插件  require('../loading/loading.js');  还有弹窗
+
+
+
+    $('body').on('click','.x-ajax-del',function(){
+        $(".x-ajax-del").attr("disabled","disabled");
+        var url = $(this).data('url');
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            success: function(data){
+                $(".x-ajax-del").removeAttr("disabled");
+                if(data.ok ){//操作成功
+                    // xPopUp('prompt',{content:'操作成功'},2000);
+
+                    var refreshDomStr;
+                    if($(this).data('refresh')){
+                        refreshDomStr =$(this).data('refresh');
+                    }else{
+                        refreshDomStr ='.x-table';
+                    }
+
+                    var refreshUrl = location.href;
+                    $.get(refreshUrl,function(data){
+                        $(refreshDomStr).html($(data).find(refreshDomStr).html());
+                    });
+
+                }else{
+                    // xPopUp('prompt',{content:'操作失败'},2000);
+                }
+            },
+            error: function (data){
+                $(".x-ajax-del").removeAttr("disabled");
+                // xPopUp('prompt',{content:'操作失败'},2000);
+            }
+        });
+    });
+    $('body').on('click','.x-ajax-op',function(){
+        $(".x-ajax-del").attr("disabled","disabled");
+        var url = $(this).data('url');
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            success: function(data){
+                $(".x-ajax-del").removeAttr("disabled");
+
+                if(data.ok === 'ok'){
+                    // xPopUp('prompt',{content:'操作成功'},2000);
+                }else{
+                    $(".x-ajax-del").removeAttr("disabled");
+                    // xPopUp('prompt',{content:'操作失败'},2000);
+                }
+            },
+            error: function (){
+                $(".x-ajax-del").removeAttr("disabled");
+                xPopUp('prompt',{content:'操作失败'},2000);
+            }
+        });
+    });
+
+})();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/17.
  */
 
-__webpack_require__(7);
+__webpack_require__(8);
 
 
 
@@ -10607,7 +10692,7 @@ window.xFormError = function (msg) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 /**
@@ -10726,7 +10811,7 @@ window.xFormat={
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 /**
@@ -10842,7 +10927,7 @@ window.xFormat={
 })();
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -11340,14 +11425,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/17.
  */
 
-__webpack_require__(9);
+__webpack_require__(10);
 
 
 //导航-侧边栏
@@ -11371,14 +11456,14 @@ $('body').on('click','.x-nav-item',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2016/12/27.
  */
 
-__webpack_require__(12);
+__webpack_require__(13);
 
 module.exports = window.xPopUp = function(type,option,time) {
     var layerDom; //底部遮罩层
@@ -11624,13 +11709,13 @@ module.exports = window.xPopUp = function(type,option,time) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/**
  * Created by Administrator on 2016/12/29.
  */
-__webpack_require__(13);
+__webpack_require__(14);
 
 ;(function (window, $) {
 
@@ -11732,14 +11817,14 @@ __webpack_require__(13);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/17.
  */
 
-__webpack_require__(14);
+__webpack_require__(15);
 
 
 $('body').on('click','.x-tab-nav li',function(){
@@ -11754,14 +11839,14 @@ $('body').on('click','.x-tab-nav li',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/2/28.
  */
 
-__webpack_require__(15);
+__webpack_require__(16);
 
 var count = 0;
 $('.x-table th').click(function(){
@@ -11781,7 +11866,24 @@ $('.x-table th').click(function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 28 */
+/* 29 */
+/***/ (function(module, exports) {
+
+/**
+ * Created by Administrator on 2017/1/9.
+ */
+
+// require('./xxx');
+
+
+
+
+
+
+
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
@@ -11789,7 +11891,7 @@ $('.x-table th').click(function(){
  */
 
 
-__webpack_require__(16);
+__webpack_require__(17);
 
 
 $('body').on('mouseover','.x-tip',function(){
@@ -11827,7 +11929,7 @@ $('body').on('mouseout','.x-tip',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/**
@@ -12687,11 +12789,11 @@ $('body').on('mouseout','.x-tip',function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {
-var WebUploader = __webpack_require__(31);
+var WebUploader = __webpack_require__(33);
 
 // 当domReady的时候开始初始化
 (function($) {
@@ -13400,7 +13502,7 @@ var WebUploader = __webpack_require__(31);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! WebUploader 0.1.6 */
@@ -21549,7 +21651,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -23089,14 +23191,14 @@ if ( $.ajaxPrefilter ) {
 }));
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/**
  * Created by Administrator on 2017/1/9.
  */
 
-__webpack_require__(32);
+__webpack_require__(34);
 
 //自定义validator --begin
 $.validator.setDefaults({
@@ -23212,10 +23314,10 @@ $.validator.addMethod( "xidcn", function( value, element ) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(2);
+module.exports = __webpack_require__(4);
 
 
 /***/ })
