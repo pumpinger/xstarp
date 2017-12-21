@@ -45,7 +45,7 @@ module.exports = {
                         },*/
             {
                 test: /\.(svg|eot|woff|ttf)$/,
-                loader: 'file-loader?name=[name].[ext]&publicPath=./&outputPath=./vendor/fonts/',
+                loader: 'file-loader?name=[name].[ext]&publicPath=./&outputPath=./fonts/',
             },
             {
                 test: /\.(png|jpg|gif)$/,
@@ -109,8 +109,8 @@ module.exports = {
         // }),
 
         new TransferWebpackPlugin([
-            {from: path.resolve(__dirname,"./src/vendor/wdatepicker")}
-        ], path.resolve(__dirname,"./dist/vendor/wdatepicker"))
+            {from: "./src/vendor/wdatepicker",to:"./vendor/wdatepicker"}
+        ], path.resolve(__dirname,'./'))
 
     ],
 };
