@@ -6,9 +6,10 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin('[name].css');
 // const extractSCSS = new ExtractTextPlugin('[name].scss.css');
@@ -19,7 +20,7 @@ module.exports = {
     entry: {
         app: ['./dev.js'],
 
-        vendor: ['jquery','./components/upload/webuploader.js','./components/validate/jquery.validate.js'],
+        vendor: ['jquery','./vendor/webuploader.js','./vendor/jquery.validate.js'],
         // jquery: []
     },
     output: {
@@ -69,9 +70,11 @@ module.exports = {
         port:9200,
         contentBase: path.resolve(__dirname, './')  // 这里渲染根目录不重要因为要用docsify的服务器根目录,这里只是提供一个热更新js,css
     },
-    // externals:{
+    externals:{
     //     'jquery':'jQuery'   //伪装jquery ,把全局的jQuery 给他(就不会打包jQuery了)
-    // },
+        '$dp':'$dp',
+        'WdatePicker':'WdatePicker'
+    },
     // devtool:'source-map',
     plugins: [     //分开打包
         new webpack.optimize.CommonsChunkPlugin({
@@ -104,6 +107,10 @@ module.exports = {
         //     title: 'demo',
         //     template: 'index.html' // 模板路径
         // }),
+
+        new TransferWebpackPlugin([
+            {from: path.resolve(__dirname,"./src/vendor/wdatepicker")}
+        ], path.resolve(__dirname,"./dist/vendor/wdatepicker"))
 
     ],
 };

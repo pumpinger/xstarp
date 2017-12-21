@@ -1516,7 +1516,7 @@ $('.x-table th').click(function(){
  * Created by Administrator on 2017/1/9.
  */
 
-// require('./xxx');
+
 
 
 
@@ -2434,7 +2434,7 @@ $('body').on('mouseout','.x-tip',function(){
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var WebUploader = __webpack_require__(1);
+var WebUploader = __webpack_require__(2);
 
 // 当domReady的时候开始初始化
 (function($) {
@@ -3149,7 +3149,7 @@ var WebUploader = __webpack_require__(1);
  * Created by Administrator on 2017/1/9.
  */
 
-__webpack_require__(2);
+__webpack_require__(1);
 // require('../format/format.js');
 
 

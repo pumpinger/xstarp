@@ -2,7 +2,7 @@
  * Created by Administrator on 2017/1/9.
  */
 
-require('./jquery.validate.js');
+require('../../vendor/jquery.validate.js');
 // require('../format/format.js');
 
 

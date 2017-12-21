@@ -1,5 +1,5 @@
 
-var WebUploader = require('./webuploader.js');
+var WebUploader = require('../../vendor/webuploader.js');
 
 // 当domReady的时候开始初始化
 (function($) {
