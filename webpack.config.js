@@ -18,7 +18,9 @@ module.exports = {
     context: path.resolve(__dirname, './src'),
     entry: {
         app: ['./dev.js'],
-        vendor: ['jquery']
+
+        vendor: ['jquery','./components/upload/webuploader.js','./components/validate/jquery.validate.js'],
+        // jquery: []
     },
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -74,7 +76,7 @@ module.exports = {
     plugins: [     //分开打包
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: './vendor/vendor.js',
+            filename: './vendor/js/[name].js',
             // chunks:['app','vendor']
         }),
 

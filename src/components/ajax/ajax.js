@@ -1,6 +1,13 @@
 /**
  * Created by Administrator on 2017/1/6.
  */
+
+
+// require('../format/format.js');
+
+
+
+
 ;(function () {
 
 

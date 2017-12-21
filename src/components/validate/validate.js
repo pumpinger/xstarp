@@ -3,6 +3,8 @@
  */
 
 require('./jquery.validate.js');
+// require('../format/format.js');
+
 
 //自定义validator --begin
 $.validator.setDefaults({
