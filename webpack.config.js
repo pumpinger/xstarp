@@ -70,11 +70,11 @@ module.exports = {
         port:9200,
         contentBase: path.resolve(__dirname, './')  // 这里渲染根目录不重要因为要用docsify的服务器根目录,这里只是提供一个热更新js,css
     },
-    externals:{
+    // externals:{
     //     'jquery':'jQuery'   //伪装jquery ,把全局的jQuery 给他(就不会打包jQuery了)
-        '$dp':'$dp',
-        'WdatePicker':'WdatePicker'
-    },
+    //     '$dp':'$dp',
+    //     'WdatePicker':'WdatePicker'
+    // },
     // devtool:'source-map',
     plugins: [     //分开打包
         new webpack.optimize.CommonsChunkPlugin({

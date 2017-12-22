@@ -7,7 +7,7 @@
 > 看控制台
 
 ````js
-var xttt = xTime();
+var xttt = xGetTime();
 
 console.log(xttt);
 

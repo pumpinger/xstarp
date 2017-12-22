@@ -570,7 +570,7 @@ window.xFormat={
         }
     }
 
-    window.xTime = gettime;
+    window.xGetTime = gettime;
 
 })();
 
@@ -1518,11 +1518,61 @@ $('.x-table th').click(function(){
 
 
 
+// require('../../vendor/wdatepicker/WdatePicker.js');
+
+
+$('body').on('click','.x-date',function(){
 
 
 
+    var id = $(this).prop('id');
+
+    if(  ! id ){
+
+        id =  (new Date()).valueOf();
+        id += '_'+$(this).index();
+
+        $(this).prop('id',id);
+    }
+
+    WdatePicker({
+        el:id,
+        dateFmt:'yyyy年MM月dd日'
+    });
+});
+
+$('body').on('click','.x-time',function(){
 
 
+
+    var id = $(this).prop('id');
+
+    if(  ! id ){
+
+        id =  (new Date()).valueOf();
+        id += '_'+$(this).index();
+
+        $(this).prop('id',id);
+    }
+
+    WdatePicker({
+        el:id,
+        dateFmt:'HH:mm:ss'
+
+    });
+});
+
+window.XTime=function (option){
+
+    init(option);
+
+
+
+};
+
+function init(){
+
+}
 
 
 /***/ }),
@@ -3266,11 +3316,12 @@ $.validator.addMethod( "xidcn", function( value, element ) {
 
 
 /***/ }),
-/* 36 */
+/* 36 */,
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(4);
 
 
 /***/ })
-],[36]);
+],[37]);

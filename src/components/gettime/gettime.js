@@ -110,6 +110,6 @@
         }
     }
 
-    window.xTime = gettime;
+    window.xGetTime = gettime;
 
 })();
