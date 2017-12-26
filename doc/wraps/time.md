@@ -8,8 +8,14 @@
 
 ````html
 
-<input type="text" class="x-time"/>
-<input type="text" class="x-date"/>
+<input type="text" class="x-time" x-time-format=""  x-time-max=""  x-time-min=""  x-time-input="" x-time-value="" />
 
 ````
 
+
+````js
+
+xTime();
+
+
+````
