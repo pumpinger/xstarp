@@ -1521,25 +1521,6 @@ $('.x-table th').click(function(){
 // require('../../vendor/wdatepicker/WdatePicker.js');
 
 
-$('body').on('click','.x-date',function(){
-
-
-
-    var id = $(this).prop('id');
-
-    if(  ! id ){
-
-        id =  (new Date()).valueOf();
-        id += '_'+$(this).index();
-
-        $(this).prop('id',id);
-    }
-
-    WdatePicker({
-        el:id,
-        dateFmt:'yyyy年MM月dd日'
-    });
-});
 
 $('body').on('click','.x-time',function(){
 
@@ -1555,18 +1536,43 @@ $('body').on('click','.x-time',function(){
         $(this).prop('id',id);
     }
 
+
+    var format = $(this).attr('x-time-format')?  $(this).attr('x-time-format') : 'yyyy-MM-dd HH:mm:ss' ;
+    var max = $(this).attr('x-time-max')?  $(this).attr('x-time-max') : '' ;
+    var min = $(this).attr('x-time-max')?  $(this).attr('x-time-min') : '' ;
+    var input = $(this).attr('x-time-input')?  $(this).attr('x-time-input') : '' ;
+    var value = $(this).attr('x-time-value')?  $(this).attr('x-time-value') : '' ;
+
+
+
     WdatePicker({
         el:id,
-        dateFmt:'HH:mm:ss'
+        vel:$(input).get(0),
+        dateFmt:format,
+        maxDate:max,
+        minDate:min,
+        startDate:value,
+        // doubleCalendar:true,
 
     });
 });
+
+
 
 window.XTime=function (option){
 
     init(option);
 
 
+    /*
+    *
+    *
+     onpicking	function	null
+     onpicked	function	null
+     onclearing	function	null
+     oncleared
+
+     */
 
 };
 
@@ -3316,12 +3322,11 @@ $.validator.addMethod( "xidcn", function( value, element ) {
 
 
 /***/ }),
-/* 36 */,
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(4);
 
 
 /***/ })
-],[37]);
+],[36]);
