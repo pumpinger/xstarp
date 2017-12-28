@@ -1510,7 +1510,7 @@ $('.x-table th').click(function(){
 
 /***/ }),
 /* 31 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Created by Administrator on 2017/1/9.
@@ -1519,22 +1519,12 @@ $('.x-table th').click(function(){
 
 
 // require('../../vendor/wdatepicker/WdatePicker.js');
+__webpack_require__(43);
 
 
 
 $('body').on('click','.x-time',function(){
 
-
-
-    var id = $(this).prop('id');
-
-    if(  ! id ){
-
-        id =  (new Date()).valueOf();
-        id += '_'+$(this).index();
-
-        $(this).prop('id',id);
-    }
 
 
     var format = $(this).attr('x-time-format')?  $(this).attr('x-time-format') : 'yyyy-MM-dd HH:mm:ss' ;
@@ -1546,7 +1536,7 @@ $('body').on('click','.x-time',function(){
 
 
     WdatePicker({
-        el:id,
+        el: xCommon.getDomId(this),
         vel:$(input).get(0),
         dateFmt:format,
         maxDate:max,
@@ -1559,26 +1549,18 @@ $('body').on('click','.x-time',function(){
 
 
 
-window.XTime=function (option){
-
-    init(option);
 
 
-    /*
-    *
-    *
-     onpicking	function	null
-     onpicked	function	null
-     onclearing	function	null
-     oncleared
+window.xTime=function (dom,option){
 
-     */
+
+    option.el = xCommon.getDomId(dom);
+
+
+    WdatePicker(option);
 
 };
 
-function init(){
-
-}
 
 
 /***/ }),
@@ -3326,6 +3308,60 @@ $.validator.addMethod( "xidcn", function( value, element ) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(4);
+
+
+/***/ }),
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */
+/***/ (function(module, exports) {
+
+/**
+ * Created by Administrator on 2017/1/6.
+ */
+
+
+// require('../format/format.js');
+
+
+
+;(function () {
+
+    window.getDomId = function (dom) {
+
+        var id = $(dom).prop('id');
+
+        if(  ! id ){
+
+            id =  (new Date()).valueOf();
+            id += '_'+$(dom).index();
+
+            $(dom).prop('id',id);
+        }
+
+        return id;
+
+    };
+
+
+
+    window.xCommon = {
+        getDomId: getDomId
+    };
+
+})();
+
+
+
+
+
+
+
+
 
 
 /***/ })

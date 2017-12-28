@@ -5,22 +5,12 @@
 
 
 // require('../../vendor/wdatepicker/WdatePicker.js');
+require('../../common/common.js');
 
 
 
 $('body').on('click','.x-time',function(){
 
-
-
-    var id = $(this).prop('id');
-
-    if(  ! id ){
-
-        id =  (new Date()).valueOf();
-        id += '_'+$(this).index();
-
-        $(this).prop('id',id);
-    }
 
 
     var format = $(this).attr('x-time-format')?  $(this).attr('x-time-format') : 'yyyy-MM-dd HH:mm:ss' ;
@@ -32,7 +22,7 @@ $('body').on('click','.x-time',function(){
 
 
     WdatePicker({
-        el:id,
+        el: xCommon.getDomId(this),
         vel:$(input).get(0),
         dateFmt:format,
         maxDate:max,
@@ -45,23 +35,15 @@ $('body').on('click','.x-time',function(){
 
 
 
-window.XTime=function (option){
-
-    init(option);
 
 
-    /*
-    *
-    *
-     onpicking	function	null
-     onpicked	function	null
-     onclearing	function	null
-     oncleared
+window.xTime=function (dom,option){
 
-     */
+
+    option.el = xCommon.getDomId(dom);
+
+
+    WdatePicker(option);
 
 };
 
-function init(){
-
-}

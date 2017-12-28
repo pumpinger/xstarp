@@ -22,7 +22,7 @@
         - [获取时间](#/fun/gettime.md)
         - [*验证](#/fun/validate.md)
     - [封装](#/wraps/time.md)
-        - [*时间选择器](#/wraps/time.md)
+        - [时间选择器](#/wraps/time.md)
         - [*图表](#/wraps/chart.md)
         - [*地图](#/wraps/map.md)
         - [*文件上传](#/wraps/uploader.md)

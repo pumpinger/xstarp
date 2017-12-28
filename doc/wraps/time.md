@@ -86,12 +86,27 @@ WW	| 同上，如果小于两位数，前面补零 (01 - 53) 。
 ## 2.js方法
 
 
+> xTime(dom,option)
 
+````html
 
+<input type="text"  class="time_js"   placeholder="">
+````
 ````js
 
-// xTime();
+
+    $('body').on('click','.time_js',function (){
+        
+        xTime('.time_js',{
+            startDate:'1999-10-10',
+            onpicking:function (){
+                alert(1);
+            }
+        });
+    } );
 
 
 ````
+
+<a href="http://www.my97.net/demo/index.htm" target="_blank">option的详尽说明</a>
 
