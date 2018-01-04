@@ -21,6 +21,7 @@ module.exports = {
         app: ['./dev.js'],
 
         vendor: ['jquery','./vendor/webuploader.js','./vendor/jquery.validate.js'],
+        // vendor: ['./vendor/webuploader.js','./vendor/jquery.validate.js'],
         // jquery: []
     },
     output: {
@@ -71,7 +72,7 @@ module.exports = {
         contentBase: path.resolve(__dirname, './')  // 这里渲染根目录不重要因为要用docsify的服务器根目录,这里只是提供一个热更新js,css
     },
     // externals:{
-    //     'jquery':'jQuery'   //伪装jquery ,把全局的jQuery 给他(就不会打包jQuery了)
+    //     'jquery':'jQuery',   //伪装jquery ,把全局的jQuery 给他(就不会打包jQuery了)
     //     '$dp':'$dp',
     //     'WdatePicker':'WdatePicker'
     // },
@@ -115,10 +116,10 @@ module.exports = {
     ],
 };
 
-//场景1 ： 用户自己用自己的jq  ： 要1.externals；2.new webpack.ProvidePlugin     不要1.CommonsChunkPlugin；2.test: require.resolve('jquery')
+//场景1 ： 用户自己用自己的jq  ：切换vender   要1.externals；2.new webpack.ProvidePlugin     不要1.CommonsChunkPlugin；2.test: require.resolve('jquery')
 
 
-//场景2 ： 用户用我们的vendor ： 要1.CommonsChunkPlugin；2.test: require.resolve('jquery')    不要1.externals；2.new webpack.ProvidePlugin
+//场景2 ： 用户用我们的vendor ：切换vender   要1.CommonsChunkPlugin；2.test: require.resolve('jquery')    不要1.externals；2.new webpack.ProvidePlugin
 
 
 //现在  new webpack.ProvidePlugin 未发现明显作用了，可能是我错了

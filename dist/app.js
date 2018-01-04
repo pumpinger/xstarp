@@ -30,31 +30,31 @@ __webpack_require__(10);
 
 
 //style
-__webpack_require__(29);
-__webpack_require__(26);
-__webpack_require__(22);
-__webpack_require__(32);
 __webpack_require__(30);
+__webpack_require__(27);
+__webpack_require__(23);
+__webpack_require__(33);
+__webpack_require__(31);
 
 
 //plug
-__webpack_require__(25);
-__webpack_require__(27);
+__webpack_require__(26);
 __webpack_require__(28);
-__webpack_require__(33);
+__webpack_require__(29);
+__webpack_require__(34);
 
 
 //fun
-__webpack_require__(35);
-__webpack_require__(21);
-__webpack_require__(23);
+__webpack_require__(36);
+__webpack_require__(22);
 __webpack_require__(24);
+__webpack_require__(25);
 
 
 
 //wraps
-__webpack_require__(31);
-__webpack_require__(34);
+__webpack_require__(32);
+__webpack_require__(35);
 
 
 
@@ -189,6 +189,54 @@ __webpack_require__(34);
 
 
 
+;(function () {
+
+    window.getDomId = function (dom) {
+
+        var id = $(dom).prop('id');
+
+        if(  ! id ){
+
+            id =  (new Date()).valueOf();
+            id += '_'+$(dom).index();
+
+            $(dom).prop('id',id);
+        }
+
+        return id;
+
+    };
+
+
+
+    window.xCommon = {
+        getDomId: getDomId
+    };
+
+})();
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+/**
+ * Created by Administrator on 2017/1/6.
+ */
+
+
+// require('../format/format.js');
+
+
+
 
 ;(function () {
 
@@ -257,7 +305,7 @@ __webpack_require__(34);
 })();
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -336,7 +384,7 @@ window.xFormError = function (msg) {
 };
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 /**
@@ -455,7 +503,7 @@ window.xFormat={
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 /**
@@ -575,7 +623,7 @@ window.xFormat={
 })();
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -1073,7 +1121,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1103,7 +1151,7 @@ $('body').on('click','.x-nav-item',function(){
 });
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1355,7 +1403,7 @@ module.exports = window.xPopUp = function(type,option,time) {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1462,7 +1510,7 @@ __webpack_require__(15);
 })(window, jQuery);
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1483,7 +1531,7 @@ $('body').on('click','.x-tab-nav li',function(){
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1509,7 +1557,7 @@ $('.x-table th').click(function(){
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1519,7 +1567,7 @@ $('.x-table th').click(function(){
 
 
 // require('../../vendor/wdatepicker/WdatePicker.js');
-__webpack_require__(43);
+__webpack_require__(21);
 
 
 
@@ -1564,7 +1612,7 @@ window.xTime=function (dom,option){
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1609,7 +1657,7 @@ $('body').on('mouseout','.x-tip',function(){
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 /**
@@ -2468,7 +2516,7 @@ $('body').on('mouseout','.x-tip',function(){
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -3180,7 +3228,7 @@ var WebUploader = __webpack_require__(2);
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -3304,65 +3352,11 @@ $.validator.addMethod( "xidcn", function( value, element ) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(4);
 
 
-/***/ }),
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */
-/***/ (function(module, exports) {
-
-/**
- * Created by Administrator on 2017/1/6.
- */
-
-
-// require('../format/format.js');
-
-
-
-;(function () {
-
-    window.getDomId = function (dom) {
-
-        var id = $(dom).prop('id');
-
-        if(  ! id ){
-
-            id =  (new Date()).valueOf();
-            id += '_'+$(dom).index();
-
-            $(dom).prop('id',id);
-        }
-
-        return id;
-
-    };
-
-
-
-    window.xCommon = {
-        getDomId: getDomId
-    };
-
-})();
-
-
-
-
-
-
-
-
-
-
 /***/ })
-],[36]);
+],[37]);

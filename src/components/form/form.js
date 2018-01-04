@@ -44,6 +44,7 @@ window.xFormSubmit = function (option) {
 
     var form = option.form;
     var success = option.success;
+    var dataType = option.dataType?option.dataType:'json';
     var url = option.url?option.url:form.attr('action');
 
     var data = form.serializeArray();
@@ -51,7 +52,7 @@ window.xFormSubmit = function (option) {
     $.ajax({
         url: url,
         data:data,
-        dataType:'json',
+        dataType:dataType,
         type:'POST',
         success: function(data){
             success(data);
