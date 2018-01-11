@@ -85,6 +85,12 @@ module.exports = {
         }),
 
 
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }), //生产环境开  就好了
+
         extractCSS,
 
 
