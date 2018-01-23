@@ -5,6 +5,7 @@
 
 // require('../format/format.js');
 
+require('../popup/popup.js');
 
 
 
@@ -12,8 +13,8 @@
 
 
 
-    //todo  应该去  加载等待插件  require('../loading/loading.js');  还有弹窗
 
+    xPopUp('prompt',{content:'操作成功'},2000);
 
 
     $('body').on('click','.x-ajax-del',function(){

@@ -15,7 +15,7 @@ $('body').on('click','.x-time',function(){
 
     var format = $(this).attr('x-time-format')?  $(this).attr('x-time-format') : 'yyyy-MM-dd HH:mm:ss' ;
     var max = $(this).attr('x-time-max')?  $(this).attr('x-time-max') : '' ;
-    var min = $(this).attr('x-time-max')?  $(this).attr('x-time-min') : '' ;
+    var min = $(this).attr('x-time-min')?  $(this).attr('x-time-min') : '' ;
     var input = $(this).attr('x-time-input')?  $(this).attr('x-time-input') : '' ;
     var value = $(this).attr('x-time-value')?  $(this).attr('x-time-value') : '' ;
 

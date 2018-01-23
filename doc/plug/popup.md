@@ -6,7 +6,7 @@
 ## 提示
 
 ````html
-<span class="pop-button pop-button-prompt1">提示1</span>
+<span class="x-button x-button-success pop-button-prompt1">提示1</span>
    
 ````
 
@@ -22,7 +22,7 @@
         });
 ````
 ````html
-    <span class="pop-button pop-button-prompt2">提示2</span>
+    <span class="x-button x-button-success pop-button-prompt2">提示2</span>
 ````
 
 ````js
@@ -39,7 +39,7 @@
 ## 确定
 
 ````html
-    <span class="pop-button pop-button-confirm">确定</span>
+    <span class="x-button x-button-success pop-button-confirm">确定</span>
 ````
 
 ````js
@@ -63,7 +63,7 @@
 
 ````html
    
-    <span class="pop-button pop-button-define">自定义</span>
+    <span class="x-button x-button-success pop-button-define">自定义</span>
 ````
 
 ````js
@@ -102,9 +102,7 @@
     });
 ````
 
-````css
-    .pop-button{display:inline-block;height:36px;line-height:36px;width:60px;text-align:center;border-radius:4px;color:#fff;background:#1AB394;cursor:pointer;}
-````
+
 
 ### 用法说明
 
