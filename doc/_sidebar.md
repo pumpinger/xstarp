@@ -12,7 +12,6 @@
     - [插件](#/plug/tip.md)
         - [弹窗](#/plug/popup.md)
         - [图片查看器](#/plug/imgview.md)
-        - [*进度](#/plug/progress.md)
         - [表单](#/plug/form.md)
         - [*树](#/plug/tree.md)
         - [*等待](#/plug/loading.md)
@@ -23,8 +22,6 @@
         - [*验证](#/fun/validate.md)
     - [封装](#/wraps/time.md)
         - [时间选择器](#/wraps/time.md)
-        - [*图表](#/wraps/chart.md)
-        - [*地图](#/wraps/map.md)
         - [*文件上传](#/wraps/uploader.md)
 
     
