@@ -635,20 +635,27 @@ ol, ul {
 .x-nav-sidebar .x-nav-item i {
   float: right; }
 
-.x-nav-sidebar .x-nav-child {
+.x-nav-sidebar .x-nav-childs {
   width: 100%;
   background: #2e313b;
-  padding-left: 18px; }
+  padding-left: 18px;
+  display: none; }
 
-.x-nav-sidebar .x-nav-child a {
+.x-nav-sidebar .x-nav-head.x-active .x-nav-childs {
+  display: block; }
+
+.x-nav-sidebar .x-nav-child {
   height: 40px;
   line-height: 40px; }
 
-.x-nav-sidebar .x-nav-child a:hover {
+.x-nav-sidebar .x-nav-child:hover {
   color: #fff;
   background: #575961; }
 
-.x-nav-sidebar .x-nav-item a.x-cur {
+.x-nav-sidebar .x-nav-child.x-active {
+  background: #575961; }
+
+.x-nav-sidebar .x-nav-head.x-active {
   background: #404452; }
 .x-form {
   margin: 15px 0; }

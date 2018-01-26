@@ -13,10 +13,6 @@ require('../popup/popup.js');
 
 
 
-
-    xPopUp('prompt',{content:'操作成功'},2000);
-
-
     $('body').on('click','.x-ajax-del',function(){
         $(".x-ajax-del").attr("disabled","disabled");
         var url = $(this).data('url');
