@@ -8,16 +8,31 @@ require('./nav.scss');
 //导航-侧边栏
 $("body").on('click','.x-nav-sidebar  .x-nav-head',function() {
 
-    $(this).next('ul').slideToggle(300).parent().siblings('li').find('ul').slideUp();
-    $(this).toggleClass('x-active').parent().siblings('li').find('a.x-nav-head').removeClass('x-active');
 
-    if($(this).hasClass('x-active')){
-        $(this).find('i').removeClass('icon-xiangxia1').addClass('icon-xiangshang2');
-        $(this).parent().siblings('li').find('i').addClass('icon-xiangxia1').removeClass('icon-xiangshang2');
+
+    if(  $(this).parent('.x-nav-item').hasClass('x-active')  ){
+        $(this).siblings('.x-nav-childs').slideUp('slow',function (){
+            $(this).parent('.x-nav-item').removeClass('x-active');
+        }.bind(this));
+
     }else{
-        $(this).find('i').addClass('icon-xiangxia1').removeClass('icon-xiangshang2');
+
+        $(this).siblings('.x-nav-childs').slideUp(0);
+        $(this).siblings('.x-nav-childs').slideDown('slow',function (){
+            $(this).parent('.x-nav-item').addClass('x-active');
+        });
+
+
+        $(this).parent().siblings('.x-nav-item.x-active').find('.x-nav-childs').slideUp('slow',function (){
+            $(this).parent().siblings('.x-nav-item').removeClass('x-active');
+        }.bind(this));
     }
+
+
+
 });
+
+
 
 $("body").on('click','.x-nav-sidebar  .x-nav-child',function() {
 

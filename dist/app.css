@@ -641,9 +641,6 @@ ol, ul {
   padding-left: 18px;
   display: none; }
 
-.x-nav-sidebar .x-nav-head.x-active .x-nav-childs {
-  display: block; }
-
 .x-nav-sidebar .x-nav-child {
   height: 40px;
   line-height: 40px; }
@@ -652,10 +649,16 @@ ol, ul {
   color: #fff;
   background: #575961; }
 
+.x-nav-sidebar .x-nav-item.x-active .x-nav-childs {
+  display: block; }
+
+.x-nav-sidebar .x-nav-item.x-active .icon-xiangxia1 {
+  transform: rotate(180deg); }
+
 .x-nav-sidebar .x-nav-child.x-active {
   background: #575961; }
 
-.x-nav-sidebar .x-nav-head.x-active {
+.x-nav-sidebar .x-nav-item.x-active .x-nav-head {
   background: #404452; }
 .x-form {
   margin: 15px 0; }
