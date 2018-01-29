@@ -12,8 +12,8 @@
 
 ````js
     $('.pop-button-prompt1').click(function(){
-            xPopUp('prompt',{
-                p_width:200,
+            xPopup('prompt',{
+                width:200,
                 content:'操作成功',
                 btn:[{
                     name:'确定'
@@ -28,8 +28,8 @@
 ````js
    
     $('.pop-button-prompt2').click(function(){
-        xPopUp('prompt',{
-            p_width:200,
+        xPopup('prompt',{
+            width:200,
             content:'操作成功'
         },2000);
     });
@@ -45,12 +45,12 @@
 ````js
    
     $('.pop-button-confirm').click(function(){
-        xPopUp('confirm', {
+        xPopup('confirm', {
             content:'确定删除吗',
-            isClose:false,
+            isClose:true,
             confirmfn:function(){
-                xPopUp('prompt',{
-                    p_width:200,
+                xPopup('prompt',{
+                    width:200,
                     content:'操作成功'
                 },2000);
             }
@@ -69,8 +69,8 @@
 ````js
     $(".pop-button-define").click(function(){
         var edit_con = $('<input type="text">');
-        xPopUp('define',{
-            p_width:300,
+        xPopup('define',{
+            width:300,
             title:'用户信息',
             content:edit_con,
             btn:[{
@@ -78,8 +78,8 @@
                 classStr:'confirm',
                 isClose:true,
                 opra:function(){
-                    xPopUp('prompt',{
-                        p_width:200,
+                    xPopup('prompt',{
+                        width:200,
                         content:'保存成功'
                     },2000);
                 }
@@ -106,8 +106,8 @@
 
 ### 用法说明
 
-1、xPopUp方法来调用
-2、xPopUp共有三个参数，type、option、time
+1、xPopup方法来调用
+2、xPopup共有三个参数，type、option、time
 
 | 参数 | 说明 | 值  |
 | ------------- |:-------------:| -----:|
@@ -115,11 +115,12 @@
 | option | 弹窗属性 |  |
 | time | 弹窗自动关闭时间 |   ||
 
+#### option
 
 | option属性| 类型 | 说明 | 示例 |
 | ------------- |:-------------:| -----:|
-| p_width | Number | 弹窗宽度 | |
-| p_height | Number | 弹窗高度 | |
+| width | Number | 弹窗宽度 | |
+| height | Number | 弹窗高度 | |
 | title | String | 弹窗标题 | '提示' |
 | content | String | 弹窗内容 |  |
 | btn | Array | 弹窗按钮 | '确认' '取消' |

@@ -4,7 +4,7 @@
 
 require('./popup.scss');
 
-module.exports = window.xPopUp = function(type,option,time) {
+module.exports = window.xPopup = function(type,option,time) {
     var layerDom; //底部遮罩层
     var mainDom; //主体内容
     var closeDom; //关闭按钮
@@ -23,8 +23,8 @@ module.exports = window.xPopUp = function(type,option,time) {
     function init(){
 
         option = {
-            p_width:600,
-            p_height:150,
+            width:600,
+            height:150,
             title:'提示',
             content:'',
             btn:'',
@@ -89,8 +89,8 @@ module.exports = window.xPopUp = function(type,option,time) {
         mainDom = init();
 
         mainDom.css({
-            width:option.p_width,
-            height:option.p_height
+            width:option.width,
+            height:option.height
         });
 
         if(option.btn){
@@ -128,8 +128,8 @@ module.exports = window.xPopUp = function(type,option,time) {
         mainDom = init();
 
         mainDom.css({
-            width:option.p_width,
-            height:option.p_height
+            width:option.width,
+            height:option.height
         });
 
         contentDom = $('<div><div class="x-pop-title">提示</div>'+
@@ -185,8 +185,8 @@ module.exports = window.xPopUp = function(type,option,time) {
         mainDom = init();
 
         mainDom.css({
-            width:option.p_width,
-            height:option.p_height
+            width:option.width,
+            height:option.height
         });
 
         if(option.btn){

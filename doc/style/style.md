@@ -3,7 +3,7 @@
 
 # dmeo
 
-## xpopup
+## xPopup
 ````html
 <div id="button">点我呀点我呀，你倒是点我呀！</div>
 ````
@@ -11,7 +11,7 @@
 ````js
 console.log(2);
 $('#button').click(function(){
-    xPopUp('prompt',{
+    xPopup('prompt',{
         p_width:200,
         content:'操作成功',
         btn:[{

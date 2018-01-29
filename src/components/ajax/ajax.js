@@ -22,7 +22,7 @@ require('../popup/popup.js');
             success: function(data){
                 $(".x-ajax-del").removeAttr("disabled");
                 if(data.ok ){//操作成功
-                    // xPopUp('prompt',{content:'操作成功'},2000);
+                    // xPopup('prompt',{content:'操作成功'},2000);
 
                     var refreshDomStr;
                     if($(this).data('refresh')){
@@ -37,12 +37,12 @@ require('../popup/popup.js');
                     });
 
                 }else{
-                    // xPopUp('prompt',{content:'操作失败'},2000);
+                    // xPopup('prompt',{content:'操作失败'},2000);
                 }
             },
             error: function (data){
                 $(".x-ajax-del").removeAttr("disabled");
-                // xPopUp('prompt',{content:'操作失败'},2000);
+                // xPopup('prompt',{content:'操作失败'},2000);
             }
         });
     });
@@ -56,15 +56,15 @@ require('../popup/popup.js');
                 $(".x-ajax-del").removeAttr("disabled");
 
                 if(data.ok === 'ok'){
-                    // xPopUp('prompt',{content:'操作成功'},2000);
+                    // xPopup('prompt',{content:'操作成功'},2000);
                 }else{
                     $(".x-ajax-del").removeAttr("disabled");
-                    // xPopUp('prompt',{content:'操作失败'},2000);
+                    // xPopup('prompt',{content:'操作失败'},2000);
                 }
             },
             error: function (){
                 $(".x-ajax-del").removeAttr("disabled");
-                xPopUp('prompt',{content:'操作失败'},2000);
+                xPopup('prompt',{content:'操作失败'},2000);
             }
         });
     });
